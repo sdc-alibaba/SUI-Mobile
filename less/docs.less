@@ -1,5 +1,5 @@
-@import "variables.scss";
-@import "mixins.scss";
+@import "variables.less";
+@import "mixins.less";
 
 // Clearfix mixin for docs
 
@@ -63,7 +63,7 @@ body {
 .docs-header,
 .docs-sub-header {
   position: relative;
-  @include directional-gradient(#0a1855, #da0024)
+  .directional-gradient(#0a1855, #da0024)
 }
 .docs-header {
   height: 100vh;
@@ -73,8 +73,8 @@ body {
   .carbonad {
     position: relative !important;
     margin-top: 0 !important;
-    @include animation-name(fadeintext);
-    @include animation-duration(2s);
+    .animation-name(fadeintext);
+    .animation-duration(2s);
   }
   .version {
     margin-top: 15px;
@@ -108,7 +108,8 @@ body {
     top: 50% !important;
     right: 15px !important;
     margin-top: 0 !important;
-    @include transform(translateY(-50%) !important);
+    -webkit-transform: translateY(-50%)!important;
+    transform: translateY(-50%)!important;
   }
 }
 
@@ -126,7 +127,7 @@ body {
   margin-bottom: 0;
   font-size: 22px;
   font-weight: 400;
-  @include transform(translateX(-50%));
+  .transform(translateX(-50%));
 }
 .docs-nav {
   .docs-nav-trigger {
@@ -166,7 +167,7 @@ body {
 .docs-title a,
 .docs-nav-item {
   color: #fff;
-  @include transition(opacity .2s linear);
+  .transition(opacity .2s linear);
 
   &:active,
   &:focus {
@@ -181,7 +182,7 @@ body {
     position: static;
     float: left;
     font-weight: 300;
-    @include transform(translateX(0));
+    .transform(translateX(0));
   }
 
   // Docs nav
@@ -213,10 +214,10 @@ body {
     display: block;
     color: #777;
     cursor: pointer;
-    @include transition(opacity .2 linear);
+    .transition(opacity .2 linear);
 
     &:hover {
-      color: $primary-color;
+      color: @primary-color;
     }
     &:active {
       opacity: .5;
@@ -241,7 +242,7 @@ body {
     background-clip: padding-box;
     border: 1px solid rgba(0,0,0,.2);
     border-radius: 3px;
-    @include box-shadow(0 0 8px rgba(0,0,0,.05));
+    .box-shadow(0 0 8px rgba(0,0,0,.05));
 
     &.active {
       display: block;
@@ -275,7 +276,7 @@ body {
 
       &:hover {
         color: #fff;
-        background-color: $primary-color;
+        background-color: @primary-color;
       }
     }
   }
@@ -287,8 +288,8 @@ body {
   position: relative;
   padding: 50px 10px;
   text-align: center;
-  @include animation-name(fadeintext);
-  @include animation-duration(2s);
+  .animation-name(fadeintext);
+  .animation-duration(2s);
 
   .btn {
     display: block;
@@ -298,11 +299,11 @@ body {
     color: #0a1855;
     background-color: #fff;
     border: 0;
-    @include transition(all .2s linear);
+    .transition(all .2s linear);
 
     &:hover {
       background-color: #fff;
-      @include box-shadow(0 0 50px rgba(255,255,255,.3));
+      .box-shadow(0 0 50px rgba(255,255,255,.3));
     }
     &:active {
       opacity: .5;
@@ -322,7 +323,7 @@ body {
 @media screen and (min-width: 768px) {
   .docs-header-content {
     top: 30%;
-    @include transform(translateY(-50%));
+    .transform(translateY(-50%));
 
     .btn {
       display: inline-block;
@@ -447,7 +448,7 @@ body {
 .docs-module {
   padding: 20px;
   margin-top: 20px;
-  border: $border-default;
+  border: @border-default;
   border-radius: 3px;
 
   .btn-block {
@@ -556,10 +557,10 @@ body {
   -webkit-transition: -webkit-transform .5s;
      -moz-transition: -moz-transform .5s;
           transition: transform .5s;
-  @include transform(translate3d(0, -55px, 0));
+  .transform(translate3d(0, -55px, 0));
 
   &.visible {
-    @include transform(translate3d(0, 0, 0));
+    .transform(translate3d(0, 0, 0));
   }
 
   .segmented-control {
@@ -586,7 +587,7 @@ body {
     width: 100%;
     padding: 3px;
     overflow: hidden;
-    border: $border-default;
+    border: @border-default;
     border-radius: 3px;
   }
   .example-title {
@@ -637,9 +638,9 @@ code {
   font-size: 16px;
 }
 .component-example {
-  font-size: $font-size-default;
-  font-family: $font-family-default;
-  line-height: $line-height-default;
+  font-size: @font-size-default;
+  font-family: @font-family-default;
+  line-height: @line-height-default;
 }
 .component-example,
 .component-example .bar,
@@ -647,8 +648,8 @@ code {
   position: relative;
 }
 .component-example .bar {
-  border-top: $border-default;
-  border-bottom: $border-default;
+  border-top: @border-default;
+  border-bottom: @border-default;
 
   &.bar-header-secondary {
     top: 0 !important;
@@ -723,7 +724,7 @@ code {
     padding-left: 0;
     padding-right: 0;
     opacity: .3;
-    @include transition(opacity .2s ease-in-out);
+    .transition(opacity .2s ease-in-out);
 
     &.active {
       opacity: 1;
@@ -877,9 +878,9 @@ code {
 
 .device {
   display: none;
-  font-size: $font-size-default;
-  font-family: $font-family-default;
-  line-height: $line-height-default;
+  font-size: @font-size-default;
+  font-family: @font-family-default;
+  line-height: @line-height-default;
 }
 @media screen and (min-width: 768px) {
   .device {
@@ -894,7 +895,7 @@ code {
     background-size: 300%;
     background-repeat: no-repeat;
     background-position: 0 0;
-    @include transition(background-image .1s linear);
+    .transition(background-image .1s linear);
 
     &.device-fixed {
       position: fixed;
@@ -908,8 +909,8 @@ code {
     width: 321px;
     height: 569px;
     overflow: hidden;
-    font-size: $font-size-default;
-    line-height: $line-height-default;
+    font-size: @font-size-default;
+    line-height: @line-height-default;
     background-color: #fff;
   }
   .device .content,
@@ -943,7 +944,7 @@ hr {
 }
 
 .column-group {
-  @include clearfix;
+  .clearfix;
 }
 
 
@@ -1115,8 +1116,8 @@ hr {
   background-color: #f0ad4e;
 }
 .browser-support-yes {
-  background-color: $positive-color;
+  background-color: @positive-color;
 }
 .browser-support-no {
-  background-color: $negative-color;
+  background-color: @negative-color;
 }

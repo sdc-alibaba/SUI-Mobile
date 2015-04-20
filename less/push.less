@@ -7,7 +7,7 @@
   &.fade {
     left: 0;
     opacity: 0;
-    @include transition(opacity .4s);
+    .transition(opacity .4s);
 
     &.in {
       opacity: 1;
@@ -20,16 +20,16 @@
     -webkit-transition: -webkit-transform .4s;
        -moz-transition: -moz-transform .4s;
             transition: transform .4s;
-    @include transform(translate3d(0, 0, 0));
+    .transform(translate3d(0, 0, 0));
 
     &.left {
       z-index: 1;
-      @include transform(translate3d(-100%, 0, 0));
+      .transform(translate3d(-100%, 0, 0));
     }
 
     &.right {
       z-index: 3;
-      @include transform(translate3d(100%, 0, 0));
+      .transform(translate3d(100%, 0, 0));
     }
   }
 }
@@ -49,7 +49,7 @@
     color: #bbb;
     text-decoration: none;
     -webkit-font-smoothing: antialiased;
-    @include transform(translateY(-50%));
+    .transform(translateY(-50%));
   }
 }
 .navigate-left:after,

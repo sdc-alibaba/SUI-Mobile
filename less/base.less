@@ -16,21 +16,21 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  font-family: $font-family-default;
-  font-size: $font-size-default;
-  line-height: $line-height-default;
+  font-family: @font-family-default;
+  font-size: @font-size-default;
+  line-height: @line-height-default;
   color: #000;
   background-color: #fff;
 }
 
 // Universal link styling
 a {
-  color: $primary-color;
+  color: @primary-color;
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0,0,0,0); // Removes the dark touch outlines on links in webkit browsers.
 
   &:active {
-    color: darken($primary-color, 10%);
+    color: darken(@primary-color, 10%);
   }
 }
 
@@ -49,37 +49,37 @@ a {
 // Hack to force all relatively and absolutely positioned elements still render while scrolling
 // Note: This is a bug for "-webkit-overflow-scrolling: touch"
 .content > * {
-  @include transform(translateZ(0));
+  .transform(translateZ(0));
 }
 
 // Pad top/bottom of content so it doesn't hide behind bars.
 // Note: For these to work, content must come after both bars in the markup
 .bar-nav ~ .content {
-  padding-top: $bar-base-height;
+  padding-top: @bar-base-height;
 }
 .bar-header-secondary ~ .content {
-  padding-top: ($bar-base-height*2);
+  padding-top: (@bar-base-height*2);
 }
 
 // Footer bar padding
 .bar-footer ~ .content {
-  padding-bottom: $bar-base-height;
+  padding-bottom: @bar-base-height;
 }
 .bar-footer-secondary ~ .content {
-  padding-bottom: ($bar-base-height*2);
+  padding-bottom: (@bar-base-height*2);
 }
 
 // Tab bar padding
 .bar-tab ~ .content {
-  padding-bottom: $bar-tab-height;
+  padding-bottom: @bar-tab-height;
 }
 .bar-footer-secondary-tab ~ .content {
-  padding-bottom: ($bar-tab-height+$bar-base-height);
+  padding-bottom: (@bar-tab-height+@bar-base-height);
 }
 
 // Utility classes
 .content-padded {
-  margin: $bar-side-spacing;
+  margin: @bar-side-spacing;
 }
 .text-center {
   text-align: center;
@@ -91,5 +91,5 @@ a {
   float: right;
 }
 .clearfix {
-  @include clearfix();
+  .clearfix();
 }

@@ -7,15 +7,15 @@
   display: inline-block;
   padding: 6px 8px 7px;
   margin-bottom: 0; // For input.btn
-  font-size: $button-font-size;
-  font-weight: $font-weight-light;
+  font-size: @button-font-size;
+  font-weight: @font-weight-light;
   line-height: 1;
   color: #333;
   text-align: center;
   white-space: nowrap;
   vertical-align: top;
   cursor: pointer;
-  background-color: $chrome-color;
+  background-color: @chrome-color;
   border: 1px solid #ccc;
   border-radius: 3px;
 
@@ -40,42 +40,42 @@
 // Primary button (Default color is blue)
 .btn-primary {
   color: #fff;
-  background-color: $primary-color;
-  border: 1px solid $primary-color;
+  background-color: @primary-color;
+  border: 1px solid @primary-color;
 
   &:active,
   &.active {
     color: #fff;
-    background-color: darken($primary-color, 10%);
-    border: 1px solid darken($primary-color, 10%);
+    background-color: darken(@primary-color, 10%);
+    border: 1px solid darken(@primary-color, 10%);
   }
 }
 
 // Positive button (Default color is green)
 .btn-positive {
   color: #fff;
-  background-color: $positive-color;
-  border: 1px solid $positive-color;
+  background-color: @positive-color;
+  border: 1px solid @positive-color;
 
   &:active,
   &.active {
     color: #fff;
-    background-color: darken($positive-color, 10%);
-    border: 1px solid darken($positive-color, 10%);
+    background-color: darken(@positive-color, 10%);
+    border: 1px solid darken(@positive-color, 10%);
   }
 }
 
 // Negative button (Default color is red)
 .btn-negative {
   color: #fff;
-  background-color: $negative-color;
-  border: 1px solid $negative-color;
+  background-color: @negative-color;
+  border: 1px solid @negative-color;
 
   &:active,
   &.active {
     color: #fff;
-    background-color: darken($negative-color, 10%);
-    border: 1px solid darken($negative-color, 10%);
+    background-color: darken(@negative-color, 10%);
+    border: 1px solid darken(@negative-color, 10%);
   }
 }
 
@@ -84,13 +84,13 @@
   background-color: transparent;
 
   &.btn-primary {
-    color: $primary-color;
+    color: @primary-color;
   }
   &.btn-positive {
-    color: $positive-color;
+    color: @positive-color;
   }
   &.btn-negative {
-    color: $negative-color;
+    color: @negative-color;
   }
   // Active states
   &.btn-primary:active,
@@ -104,13 +104,13 @@
 .btn-link {
   padding-top: 6px;
   padding-bottom: 6px;
-  color: $primary-color;
+  color: @primary-color;
   background-color: transparent;
   border: 0;
 
   &:active,
   &.active {
-    color: darken($primary-color, 10%);
+    color: darken(@primary-color, 10%);
     background-color: transparent;
   }
 }

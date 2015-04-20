@@ -25,11 +25,11 @@ module.exports = function (grunt) {
     // Metadata.
     meta: {
       distPath:       'dist/',
-      docsAssetsPath: 'docs/assets/',
+      doclessetsPath: 'docs/assets/',
       docsDistPath:   'docs/dist/',
       docsPath:       'docs/',
       jsPath:         'js/',
-      srcPath:        'sass/'
+      srcPath:        'less/'
     },
 
     banner: '/*!\n' +
@@ -64,19 +64,14 @@ module.exports = function (grunt) {
       }
     },
 
-    sass: {
-      options: {
-        sourcemap: 'none',
-        style: 'expanded',
-        unixNewlines: true
-      },
+    less: {
       core: {
-        src: 'sass/ratchet.scss',
+        src: 'less/ratchet.less',
         dest: '<%= meta.distPath %>css/<%= pkg.name %>.css'
       },
       docs: {
-        src: 'sass/docs.scss',
-        dest: '<%= meta.docsAssetsPath %>css/docs.css'
+        src: 'less/docs.less',
+        dest: '<%= meta.doclessetsPath %>css/docs.css'
       }
     },
 
@@ -89,7 +84,7 @@ module.exports = function (grunt) {
         files: {
           src: [
             '<%= meta.distPath %>css/*.css',
-            '<%= meta.docsAssetsPath %>css/docs.css'
+            '<%= meta.doclessetsPath %>css/docs.css'
           ]
         }
       }
@@ -97,16 +92,16 @@ module.exports = function (grunt) {
 
     csscomb: {
       options: {
-        config: 'sass/.csscomb.json'
+        config: 'less/.csscomb.json'
       },
       core: {
         files: {
-          '<%= sass.core.dest %>': '<%= sass.core.dest %>'
+          '<%= less.core.dest %>': '<%= less.core.dest %>'
         }
       },
       docs: {
         files: {
-          '<%= sass.docs.dest %>': '<%= sass.docs.dest %>'
+          '<%= less.docs.dest %>': '<%= less.docs.dest %>'
         }
       }
     },
@@ -141,10 +136,10 @@ module.exports = function (grunt) {
         ]
       },
       core: {
-        src: '<%= sass.core.dest %>'
+        src: '<%= less.core.dest %>'
       },
       docs: {
-        src: '<%= sass.docs.dest %>'
+        src: '<%= less.docs.dest %>'
       }
     },
 
@@ -158,10 +153,10 @@ module.exports = function (grunt) {
       },
       docs: {
         src: [
-          '<%= meta.docsAssetsPath %>css/docs.css',
-          '<%= meta.docsAssetsPath %>css/pygments-manni.css'
+          '<%= meta.doclessetsPath %>css/docs.css',
+          '<%= meta.doclessetsPath %>css/pygments-manni.css'
         ],
-        dest: '<%= meta.docsAssetsPath %>css/docs.min.css'
+        dest: '<%= meta.doclessetsPath %>css/docs.min.css'
       }
     },
 
@@ -180,10 +175,10 @@ module.exports = function (grunt) {
       },
       docs: {
         src: [
-          '<%= meta.docsAssetsPath %>js/docs.js',
-          '<%= meta.docsAssetsPath %>js/fingerblast.js'
+          '<%= meta.doclessetsPath %>js/docs.js',
+          '<%= meta.doclessetsPath %>js/fingerblast.js'
         ],
-        dest: '<%= meta.docsAssetsPath %>js/docs.min.js'
+        dest: '<%= meta.doclessetsPath %>js/docs.min.js'
       }
     },
 
@@ -198,7 +193,7 @@ module.exports = function (grunt) {
         tasks: ['dist-js', 'copy']
       },
       css: {
-        files: '<%= meta.srcPath %>**/*.scss',
+        files: '<%= meta.srcPath %>**/*.less',
         tasks: ['dist-css', 'copy']
       },
       html: {
@@ -222,7 +217,7 @@ module.exports = function (grunt) {
         src: 'js/*.js'
       },
       docs: {
-        src: ['<%= meta.docsAssetsPath %>/js/docs.js', '<%= meta.docsAssetsPath %>/js/fingerblast.js']
+        src: ['<%= meta.doclessetsPath %>/js/docs.js', '<%= meta.doclessetsPath %>/js/fingerblast.js']
       }
     },
 
@@ -243,7 +238,7 @@ module.exports = function (grunt) {
 
     csslint: {
       options: {
-        csslintrc: 'sass/.csslintrc'
+        csslintrc: 'less/.csslintrc'
       },
       src: [
         '<%= meta.distPath %>/css/<%= pkg.name %>.css'
@@ -252,7 +247,7 @@ module.exports = function (grunt) {
         options: {
           ids: false
         },
-        src: ['<%= meta.docsAssetsPath %>/css/docs.css']
+        src: ['<%= meta.doclessetsPath %>/css/docs.css']
       }
     },
 
@@ -281,11 +276,11 @@ module.exports = function (grunt) {
   });
 
   // Load the plugins
-  require('load-grunt-tasks')(grunt, { scope: 'devDependencies' });
+  require('load-grunt-tasks')(grunt);
   require('time-grunt')(grunt);
 
   // Default task(s).
-  grunt.registerTask('dist-css', ['sass', 'autoprefixer', 'usebanner', 'csscomb', 'cssmin']);
+  grunt.registerTask('dist-css', ['less', 'autoprefixer', 'usebanner', 'csscomb', 'cssmin']);
   grunt.registerTask('dist-js', ['concat', 'uglify']);
   grunt.registerTask('dist', ['clean', 'dist-css', 'dist-js', 'copy', 'build-ratchicons-data']);
   grunt.registerTask('validate-html', ['jekyll']);
