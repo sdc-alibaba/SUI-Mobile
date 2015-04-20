@@ -112,6 +112,11 @@ module.exports = function (grunt) {
         src: 'fonts/*',
         dest: '<%= meta.distPath %>'
       },
+      img: {
+        expand: true,
+        src: 'img/*',
+        dest: '<%= meta.distPath %>'
+      },
       docs: {
         expand: true,
         cwd: '<%= meta.distPath %>',
