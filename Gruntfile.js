@@ -21,7 +21,7 @@ module.exports = function (grunt) {
 
     // Metadata.
     meta: {
-      distPath:       (grunt.option('target')+"/") || 'dist/',
+      distPath:       'dist/',
       doclessetsPath: 'docs/assets/',
       docsDistPath:   'docs/dist/',
       docsPath:       'docs/',
