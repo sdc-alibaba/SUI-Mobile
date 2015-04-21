@@ -119,9 +119,11 @@ body {
   position: absolute;
   left: 50%;
   z-index: 20;
+  margin: 0;
   margin-bottom: 0;
   font-size: 22px;
   font-weight: 400;
+  line-height: 1;
   -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
        -o-transform: translateX(-50%);
