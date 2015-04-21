@@ -1,8 +1,5 @@
 /*!
- * Ratchet's Gruntfile
- * http://goratchet.com
- * Copyright 2015 Connor Sears
- * Licensed under MIT (https://github.com/twbs/ratchet/blob/master/LICENSE)
+ * SUI Mobile
  */
 
 /* jshint node: true */
@@ -34,11 +31,8 @@ module.exports = function (grunt) {
 
     banner: '/*!\n' +
             ' * =====================================================\n' +
-            ' * SUI v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
-            ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-            ' * Licensed under <%= pkg.license %> (https://github.com/twbs/ratchet/blob/master/LICENSE)\n' +
+            ' * SUI Mobile v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
             ' *\n' +
-            ' * v<%= pkg.version %> designed by @connors.\n' +
             ' * =====================================================\n' +
             ' */\n',
 
@@ -47,7 +41,7 @@ module.exports = function (grunt) {
     },
 
     concat: {
-      ratchet: {
+      sm: {
         options: {
           banner: '<%= banner %>'
         },
@@ -66,7 +60,7 @@ module.exports = function (grunt) {
 
     less: {
       core: {
-        src: 'less/ratchet.less',
+        src: 'less/sm.less',
         dest: '<%= meta.distPath %>css/<%= pkg.name %>.css'
       },
       docs: {
@@ -152,7 +146,7 @@ module.exports = function (grunt) {
       options: {
         keepSpecialComments: '*' // keep all important comments
       },
-      ratchet: {
+      sm: {
         src: '<%= meta.distPath %>css/<%= pkg.name %>.css',
         dest: '<%= meta.distPath %>css/<%= pkg.name %>.min.css'
       },
@@ -174,8 +168,8 @@ module.exports = function (grunt) {
         mangle: true,
         preserveComments: false
       },
-      ratchet: {
-        src: '<%= concat.ratchet.dest %>',
+      sm: {
+        src: '<%= concat.sm.dest %>',
         dest: '<%= meta.distPath %>js/<%= pkg.name %>.min.js'
       },
       docs: {

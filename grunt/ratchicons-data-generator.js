@@ -13,7 +13,7 @@ var fs = require('fs');
 module.exports = function generateRatchiconsData() {
   // Pass encoding, utf8, so `readFileSync` will return a string instead of a
   // buffer
-  var ratchiconsFile = fs.readFileSync('less/ratchicons.less', 'utf8');
+  var ratchiconsFile = fs.readFileSync('less/smicons.less', 'utf8');
   var ratchiconsLines = ratchiconsFile.split('\n');
 
   // Use any line that starts with ".icon-" and capture the class name
