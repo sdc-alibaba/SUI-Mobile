@@ -1,4 +1,5 @@
 *.swp
+*.swo
 node_modules
 dist/
 .sass-cache/
