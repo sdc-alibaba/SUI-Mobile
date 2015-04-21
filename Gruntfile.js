@@ -14,6 +14,8 @@ module.exports = function (grunt) {
   };
 
   var generateRatchiconsData = require('./grunt/ratchicons-data-generator.js');
+  
+  var dist = grunt.option('buildTo') ? (grunt.option('buildTo') + "/") : "dist/";
 
   // Project configuration.
   grunt.initConfig({
@@ -21,7 +23,7 @@ module.exports = function (grunt) {
 
     // Metadata.
     meta: {
-      distPath:       'dist/',
+      distPath:       dist,
       doclessetsPath: 'docs/assets/',
       docsDistPath:   'docs/dist/',
       docsPath:       'docs/',
