@@ -48,13 +48,7 @@ module.exports = function (grunt) {
           banner: '<%= banner %>'
         },
         src: [
-          'js/common.js',
-          'js/modals.js',
-          'js/popovers.js',
-          'js/push.js',
-          'js/segmented-controllers.js',
-          'js/sliders.js',
-          'js/toggles.js'
+          'js/tabs.js',
         ],
         dest: '<%= meta.distPath %>js/<%= pkg.name %>.js'
       }

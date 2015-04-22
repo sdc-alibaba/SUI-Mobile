@@ -13,6 +13,8 @@ dev 分支上是最新的代码，daily分支只是在发布代码的时候用�
 
 # 迁移代码的一些主意事项
 
+使用这个版本的 [F7](https://github.com/sdc-fe/Framework7-Plus)
+
 ## 分类
 
   - 导航和布局：导航栏和工具栏（ratchet），标签页，栅格
@@ -39,3 +41,5 @@ dev 分支上是最新的代码，daily分支只是在发布代码的时候用�
 比如有些组件会依赖 `clicks.js`，那么要把 `clicks.js` 中的代码复制到组件的js文件中去。
 一些组件会提供 app.xxx 方法，那么应该把他改成 $.xxx，但是注意不要和 zepto 默认方法冲突
 有些组件依赖 `dom7` 要改成 `zepto` （大部分api都是一致的）
+
+参考 `tabs.js` 的实现。
