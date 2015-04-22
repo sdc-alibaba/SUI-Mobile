@@ -79,12 +79,9 @@
 
   $.showTab = showTab;
 
-  $(document).on("click", "a", function(e) {
+  $(document).on("click", ".tab-link", function(e) {
     e.preventDefault();
     var clicked = $(this);
-    if (clicked.hasClass('tab-link')) {
-      isTabLink = true;
-      showTab(clicked.data("tab") || clicked.attr('href'), clicked);
-    }
+    showTab(clicked.data("tab") || clicked.attr('href'), clicked);
   })
 }(Zepto);
