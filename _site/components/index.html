@@ -236,10 +236,10 @@
           <button class="btn pull-right">
             Right
           </button>
-          <div class="segmented-control">
-            <a class="control-item active">One</a>
-            <a class="control-item">Two</a>
-            <a class="control-item">Three</a>
+          <div class="buttons-row">
+            <a href="#tab1" class="tab-link active button">Tab 1</a>
+            <a href="#tab2" class="tab-link button">Tab 2</a>
+            <a href="#tab3" class="tab-link button">Tab 3</a>
           </div>
         </header>
       </div>
@@ -251,10 +251,10 @@
   <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn pull-right"</span><span class="nt">&gt;</span>
     Right
   <span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"segmented-control"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"control-item active"</span><span class="nt">&gt;</span>One<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"control-item"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"control-item"</span><span class="nt">&gt;</span>Three<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab1"</span> <span class="na">class=</span><span class="s">"tab-link active button"</span><span class="nt">&gt;</span>Tab 1<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab2"</span> <span class="na">class=</span><span class="s">"tab-link button"</span><span class="nt">&gt;</span>Tab 2<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab3"</span> <span class="na">class=</span><span class="s">"tab-link button"</span><span class="nt">&gt;</span>Tab 3<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/header&gt;</span></code></pre></div>
 
@@ -356,10 +356,10 @@
       <div class="component-example component-example-fullbleed">
         <!-- Segmented control in standard bar fixed to top -->
         <nav class="bar bar-standard">
-          <div class="segmented-control">
-            <a class="control-item active">Thing one</a>
-            <a class="control-item">Thing two</a>
-            <a class="control-item">Thing three</a>
+          <div class="buttons-row">
+            <a href="#tab1" class="tab-link active button">Tab 1</a>
+            <a href="#tab2" class="tab-link button">Tab 2</a>
+            <a href="#tab3" class="tab-link button">Tab 3</a>
           </div>
         </nav>
 
@@ -371,10 +371,10 @@
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Segmented control in standard bar fixed to top --&gt;</span>
 <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"bar bar-standard"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"segmented-control"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"control-item active"</span><span class="nt">&gt;</span>Thing one<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"control-item"</span><span class="nt">&gt;</span>Thing two<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"control-item"</span><span class="nt">&gt;</span>Thing three<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab1"</span> <span class="na">class=</span><span class="s">"tab-link active button"</span><span class="nt">&gt;</span>Tab 1<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab2"</span> <span class="na">class=</span><span class="s">"tab-link button"</span><span class="nt">&gt;</span>Tab 2<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab3"</span> <span class="na">class=</span><span class="s">"tab-link button"</span><span class="nt">&gt;</span>Tab 3<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/nav&gt;</span>
 
@@ -478,19 +478,16 @@
         <div id="tab1" class="tab active">
           <div class="content-block">
             <p>This is tab 1 content</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum mi quis felis scelerisque faucibus. Aliquam ut commodo justo. Mauris vitae pharetra arcu. Sed tincidunt dui et nibh auctor pretium. Nam accumsan fermentum sem. Suspendisse potenti. Nulla sed orci malesuada, pellentesque elit vitae, cursus lorem. Praesent et vehicula sapien, ut rhoncus quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae mi nec lorem aliquet venenatis quis nec nibh. Aenean sit amet leo ligula. Fusce in massa et nisl dictum ultricies et vitae dui. Sed sagittis quis diam sed lobortis. Donec in massa pharetra, tristique purus vitae, consequat mauris. Aliquam tellus ante, pharetra in mattis ut, dictum quis erat.</p>
           </div>
         </div>
         <div id="tab2" class="tab">
           <div class="content-block">
             <p>This is tab 2 content</p>
-            <p>Ut ac lobortis lacus, non pellentesque arcu. Quisque sodales sapien malesuada, condimentum nunc at, viverra lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus eu pulvinar turpis, id tristique quam. Aenean venenatis molestie diam, sit amet condimentum nisl pretium id. Donec diam tortor, mollis in vehicula id, vehicula consectetur nulla. Quisque posuere rutrum mauris, eu rutrum turpis blandit at. Proin volutpat tortor sit amet metus porttitor accumsan. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut dapibus posuere dictum.</p>
           </div>
         </div>
         <div id="tab3" class="tab">
           <div class="content-block">
             <p>This is tab 3 content</p>
-            <p>Nulla gravida libero eget lobortis iaculis. In sed elit eu nibh adipiscing faucibus. Sed ac accumsan lacus. In ut diam quis turpis fringilla volutpat. In ultrices dignissim consequat. Cras pretium tortor et lorem condimentum posuere. Nulla facilisi. Suspendisse pretium egestas lacus ac laoreet. Mauris rhoncus quis ipsum quis tristique. Vivamus ultricies urna quis nunc egestas, in euismod turpis fringilla. Nam tellus massa, vehicula eu sapien non, dapibus tempor lorem. Fusce placerat orci arcu, eu dignissim enim porttitor vel. Nullam porttitor vel dolor sed feugiat. Suspendisse potenti. Maecenas ac mattis odio. Sed vel ultricies lacus, sed posuere libero.</p>
           </div>
         </div>
       </div>
@@ -509,19 +506,16 @@
     <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"tab1"</span> <span class="na">class=</span><span class="s">"tab active"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;p&gt;</span>This is tab 1 content<span class="nt">&lt;/p&gt;</span>
-        <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum mi quis felis scelerisque faucibus. Aliquam ut commodo justo. Mauris vitae pharetra arcu. Sed tincidunt dui et nibh auctor pretium. Nam accumsan fermentum sem. Suspendisse potenti. Nulla sed orci malesuada, pellentesque elit vitae, cursus lorem. Praesent et vehicula sapien, ut rhoncus quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae mi nec lorem aliquet venenatis quis nec nibh. Aenean sit amet leo ligula. Fusce in massa et nisl dictum ultricies et vitae dui. Sed sagittis quis diam sed lobortis. Donec in massa pharetra, tristique purus vitae, consequat mauris. Aliquam tellus ante, pharetra in mattis ut, dictum quis erat.<span class="nt">&lt;/p&gt;</span>
       <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"tab2"</span> <span class="na">class=</span><span class="s">"tab"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;p&gt;</span>This is tab 2 content<span class="nt">&lt;/p&gt;</span>
-        <span class="nt">&lt;p&gt;</span>Ut ac lobortis lacus, non pellentesque arcu. Quisque sodales sapien malesuada, condimentum nunc at, viverra lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus eu pulvinar turpis, id tristique quam. Aenean venenatis molestie diam, sit amet condimentum nisl pretium id. Donec diam tortor, mollis in vehicula id, vehicula consectetur nulla. Quisque posuere rutrum mauris, eu rutrum turpis blandit at. Proin volutpat tortor sit amet metus porttitor accumsan. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut dapibus posuere dictum.<span class="nt">&lt;/p&gt;</span>
       <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"tab3"</span> <span class="na">class=</span><span class="s">"tab"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;p&gt;</span>This is tab 3 content<span class="nt">&lt;/p&gt;</span>
-        <span class="nt">&lt;p&gt;</span>Nulla gravida libero eget lobortis iaculis. In sed elit eu nibh adipiscing faucibus. Sed ac accumsan lacus. In ut diam quis turpis fringilla volutpat. In ultrices dignissim consequat. Cras pretium tortor et lorem condimentum posuere. Nulla facilisi. Suspendisse pretium egestas lacus ac laoreet. Mauris rhoncus quis ipsum quis tristique. Vivamus ultricies urna quis nunc egestas, in euismod turpis fringilla. Nam tellus massa, vehicula eu sapien non, dapibus tempor lorem. Fusce placerat orci arcu, eu dignissim enim porttitor vel. Nullam porttitor vel dolor sed feugiat. Suspendisse potenti. Maecenas ac mattis odio. Sed vel ultricies lacus, sed posuere libero.<span class="nt">&lt;/p&gt;</span>
       <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
