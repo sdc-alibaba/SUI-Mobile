@@ -511,14 +511,25 @@
   window.addEventListener('touchmove', function () { isScrolling = true; });
   window.addEventListener('touchend', touchend);
   window.addEventListener('click', function (e) {
-    if (getTarget(e)) {
-      e.preventDefault();
+    //支持通过click触发
+    var target = getTarget(e);
+
+    if (!target) {
+      return;
     }
+
+    e.preventDefault();
+
+    PUSH({
+      url        : target.href,
+      hash       : target.hash,
+      timeout    : target.getAttribute('data-timeout'),
+      transition : target.getAttribute('data-transition')
+    });
   });
   window.addEventListener('popstate', popstate);
 
   // TODO : Remove this line in the next major version
   window.PUSH = PUSH;
-  window.RATCHET.push = PUSH;
 
 }());

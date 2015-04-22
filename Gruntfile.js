@@ -49,6 +49,7 @@ module.exports = function (grunt) {
         },
         src: [
           'js/tabs.js',
+          'js/push.js'
         ],
         dest: '<%= meta.distPath %>js/<%= pkg.name %>.js'
       }
