@@ -48,6 +48,7 @@ module.exports = function (grunt) {
           banner: '<%= banner %>'
         },
         src: [
+          'js/common.js',
           'js/tabs.js',
           'js/push.js'
         ],
