@@ -178,6 +178,12 @@ module.exports = function (grunt) {
         dest: '<%= meta.doclessetsPath %>js/docs.min.js'
       }
     },
+    qunit: {
+      options: {
+        inject: 'js/tests/unit/phantom.js'
+      },
+      files: 'js/tests/index.html'
+    },
 
     watch: {
       options: {
