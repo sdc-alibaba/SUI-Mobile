@@ -19,7 +19,7 @@ body {
   font-family: @font-family-default;
   font-size: @font-size-default;
   line-height: @line-height-default;
-  color: #000;
+  color: @color-text;
   background-color: #fff;
 }
 
@@ -33,12 +33,12 @@ p {
 
 // Universal link styling
 a {
-  color: @color-primary;
+  color: @color-link;
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0,0,0,0); // Removes the dark touch outlines on links in webkit browsers.
 
   &:active {
-    color: darken(@color-primary, 10%);
+    color: @color-link-active;
   }
 }
 
