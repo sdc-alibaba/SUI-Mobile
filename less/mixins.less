@@ -1,36 +1,3 @@
-.transition(@d) {
-    -webkit-transition-duration: @d;
-    transition-duration: @d;
-}
-.delay(@d) {
-    -webkit-transition-delay: @d;
-    transition-delay: @d;
-}
-.transform(@t) {
-    -webkit-transform: @t;
-    transform: @t;
-}
-.transform-origin(@to) {
-    -webkit-transform-origin: @to;
-    transform-origin: @to;
-}
-.translate3d(@x:0, @y:0, @z:0) {
-    -webkit-transform: translate3d(@x,@y,@z);
-    transform: translate3d(@x,@y,@z);
-}
-.animation(@a) {
-    -webkit-animation: @a;
-    animation: @a;
-}
-.border-box(){
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-.box-shadow(@bs) {
-    -webkit-box-shadow: @bs;
-    box-shadow: @bs;
-}
 .scrollable(){
     overflow: auto;
     -webkit-overflow-scrolling: touch;
@@ -141,12 +108,12 @@
         background-color: @color;
         display: block;
         z-index: 15;
-        .transform-origin(50% 0%);
+        transform-origin: 50% 0%;
         html.ios-gt-6.pixel-ratio-2 & {
-            .transform(scaleY(0.5));
+            transform: scaleY(0.5);
         }
         html.ios-gt-6.pixel-ratio-3 & {
-            .transform(scaleY(0.33));
+            transform: scaleY(0.33);
         }
     }
 }
@@ -163,12 +130,12 @@
         background-color: @color;
         display: block;
         z-index: 15;
-        .transform-origin(0% 50%);
+        transform-origin: 0% 50%;
         html.ios-gt-6.pixel-ratio-2 & {
-            .transform(scaleX(0.5));
+            transform: scaleX(0.5);
         }
         html.ios-gt-6.pixel-ratio-3 & {
-            .transform(scaleX(0.33));
+            transform: scaleX(0.33);
         }
     }
 }
@@ -185,12 +152,12 @@
         background-color: @color;
         display: block;
         z-index: 15;
-        .transform-origin(50% 100%);
+        transform-origin: 50% 100%;
         html.ios-gt-6.pixel-ratio-2 & {
-            .transform(scaleY(0.5));
+            transform: scaleY(0.5);
         }
         html.ios-gt-6.pixel-ratio-3 & {
-            .transform(scaleY(0.33));
+            transform: scaleY(0.33);
         }
     }
 }
@@ -207,12 +174,12 @@
         background-color: @color;
         display: block;
         z-index: 15;
-        .transform-origin(100% 50%);
+        transform-origin: 100% 50%;
         html.ios-gt-6.pixel-ratio-2 & {
-            .transform(scaleX(0.5));
+            transform: scaleX(0.5);
         }
         html.ios-gt-6.pixel-ratio-3 & {
-            .transform(scaleX(0.33));
+            transform: scaleX(0.33);
         }
     }
 }
@@ -277,6 +244,52 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{@color-from}', endColorstr='#{@color-to}', GradientType=1 ); // IE6-9
 }
 
+.hairline(@type, @color, @offset) when (@type = single) {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='1'><rect fill='#{@color}' x='0' y='0' width='100%' height='0.5'/></svg>");
+  background-position: @offset 100%;
+}
+.hairline(@type, @color, @offset) when (@type = double) {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='1'><rect fill='#{@color}' x='0' y='0' width='100%' height='0.5'/></svg>"),
+                      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='1'><rect fill='#{@color}' x='0' y='0' width='100%' height='0.5'/></svg>");
+    background-position: @offset 100%, @offset 0;
+  background-repeat: no-repeat;
+}
+
+
+//已删除的mixin
+/*.transition(@d) {
+    -webkit-transition-duration: @d;
+    transition-duration: @d;
+}
+.delay(@d) {
+    -webkit-transition-delay: @d;
+    transition-delay: @d;
+}
+.transform(@t) {
+    -webkit-transform: @t;
+    transform: @t;
+}
+.transform-origin(@to) {
+    -webkit-transform-origin: @to;
+    transform-origin: @to;
+}
+.translate3d(@x:0, @y:0, @z:0) {
+    -webkit-transform: translate3d(@x,@y,@z);
+    transform: translate3d(@x,@y,@z);
+}
+.animation(@a) {
+    -webkit-animation: @a;
+    animation: @a;
+}
+.border-box(){
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.box-shadow(@bs) {
+    -webkit-box-shadow: @bs;
+    box-shadow: @bs;
+}
 .animation-name(@name) {
   -webkit-animation-name: @name;
      -moz-animation-name: @name;
@@ -292,14 +305,4 @@
      -moz-animation-direction: @direction;
           animation-direction: @direction;
 }
-
-.hairline(@type, @color, @offset) when (@type = single) {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='1'><rect fill='#{@color}' x='0' y='0' width='100%' height='0.5'/></svg>");
-  background-position: @offset 100%;
-}
-.hairline(@type, @color, @offset) when (@type = double) {
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='1'><rect fill='#{@color}' x='0' y='0' width='100%' height='0.5'/></svg>"),
-                      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='1'><rect fill='#{@color}' x='0' y='0' width='100%' height='0.5'/></svg>");
-    background-position: @offset 100%, @offset 0;
-  background-repeat: no-repeat;
-}
+*/

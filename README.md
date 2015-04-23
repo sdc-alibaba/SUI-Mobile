@@ -15,6 +15,7 @@ dev 分支上是最新的代码，daily分支只是在发布代码的时候用�
 
 使用这个版本的 [F7](https://github.com/sdc-fe/Framework7-Plus)
 
+
 ## 分类
 
   - 导航和布局：导航栏和工具栏（ratchet），标签页，栅格
@@ -43,3 +44,7 @@ dev 分支上是最新的代码，daily分支只是在发布代码的时候用�
 有些组件依赖 `dom7` 要改成 `zepto` （大部分api都是一致的）
 
 参考 `tabs.js` 的实现。
+
+## mixins
+
+我们使用 `autoprefix` 来做浏览器前缀的补全，所以所有只是用来补全浏览器前缀的mixin都要去掉，目前已经在 `mixins.less` 文件中删除了这些mixin，被删除的部分以注释形式写在文件末尾方便查看。

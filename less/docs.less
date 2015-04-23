@@ -73,8 +73,8 @@ body {
   .carbonad {
     position: relative !important;
     margin-top: 0 !important;
-    .animation-name(fadeintext);
-    .animation-duration(2s);
+    animation-name: fadeintext;
+    animation-duration: 2s;
   }
   .version {
     margin-top: 15px;
@@ -108,7 +108,6 @@ body {
     top: 50% !important;
     right: 15px !important;
     margin-top: 0 !important;
-    -webkit-transform: translateY(-50%)!important;
     transform: translateY(-50%)!important;
   }
 }
@@ -129,7 +128,7 @@ body {
   font-weight: 400;
   line-height: 1;
   margin: 0;
-  .transform(translateX(-50%));
+  transform: translateX(-50%);
 }
 .docs-nav {
   .docs-nav-trigger {
@@ -169,7 +168,7 @@ body {
 .docs-title a,
 .docs-nav-item {
   color: #fff;
-  .transition(opacity .2s linear);
+  transition: opacity .2s linear;
 
   &:active,
   &:focus {
@@ -184,7 +183,7 @@ body {
     position: static;
     float: left;
     font-weight: 300;
-    .transform(translateX(0));
+    transform: translateX(0);
   }
 
   // Docs nav
@@ -216,7 +215,7 @@ body {
     display: block;
     color: #777;
     cursor: pointer;
-    .transition(opacity .2 linear);
+    transition: opacity .2 linear;
 
     &:hover {
       color: @primary-color;
@@ -244,7 +243,7 @@ body {
     background-clip: padding-box;
     border: 1px solid rgba(0,0,0,.2);
     border-radius: 3px;
-    .box-shadow(0 0 8px rgba(0,0,0,.05));
+    box-shadow: 0 0 8px rgba(0,0,0,.05);
 
     &.active {
       display: block;
@@ -290,8 +289,8 @@ body {
   position: relative;
   padding: 50px 10px;
   text-align: center;
-  .animation-name(fadeintext);
-  .animation-duration(2s);
+  animation-name: fadeintext;
+  animation-duration: 2s;
 
   .btn {
     display: block;
@@ -301,11 +300,11 @@ body {
     color: #0a1855;
     background-color: #fff;
     border: 0;
-    .transition(all .2s linear);
+    transition: all .2s linear;
 
     &:hover {
       background-color: #fff;
-      .box-shadow(0 0 50px rgba(255,255,255,.3));
+      box-shadow: 0 0 50px rgba(255,255,255,.3);
     }
     &:active {
       opacity: .5;
@@ -325,7 +324,7 @@ body {
 @media screen and (min-width: 768px) {
   .docs-header-content {
     top: 30%;
-    .transform(translateY(-50%));
+    transform: translateY(-50%);
 
     .btn {
       display: inline-block;
@@ -556,13 +555,11 @@ body {
   padding-bottom: 8px;
   background-color: #fff;
   border-bottom: 1px solid #ddd;
-  -webkit-transition: -webkit-transform .5s;
-     -moz-transition: -moz-transform .5s;
-          transition: transform .5s;
-  .transform(translate3d(0, -55px, 0));
+  transition: transform .5s;
+  transform: translate3d(0, -55px, 0);
 
   &.visible {
-    .transform(translate3d(0, 0, 0));
+    transform: translate3d(0, 0, 0);
   }
 
   .segmented-control {
@@ -726,7 +723,7 @@ code {
     padding-left: 0;
     padding-right: 0;
     opacity: .3;
-    .transition(opacity .2s ease-in-out);
+    transition: opacity .2s ease-in-out;
 
     &.active {
       opacity: 1;
@@ -897,7 +894,7 @@ code {
     background-size: 300%;
     background-repeat: no-repeat;
     background-position: 0 0;
-    .transition(background-image .1s linear);
+    transition: background-image .1s linear;
 
     &.device-fixed {
       position: fixed;

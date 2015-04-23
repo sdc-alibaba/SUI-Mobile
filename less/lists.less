@@ -59,7 +59,7 @@
 
     // List items
     li {
-        .border-box();
+        box-sizing: border-box;
         position: relative;
     }
     
@@ -67,7 +67,7 @@
         .flexbox();
         .flex-shrink(0);
         .flex-wrap(nowrap);
-        .border-box();
+        box-sizing: border-box;
         .align-items(center);
         padding-top: 7px;
         padding-bottom: 8px;
@@ -89,7 +89,7 @@
         padding-top: 8px;
         padding-bottom: 7px;
         min-height: 44px;
-        .border-box();
+        box-sizing: border-box;
         .flexbox();
         -webkit-box-flex:1;
         -ms-flex:1;
@@ -132,7 +132,7 @@
         position: relative;
     }
     .item-link {
-        .transition(300ms);
+        transition-duration: 300ms;
         display: block;
         color: inherit;
 
@@ -146,7 +146,7 @@
             background-position: calc(~"100% - 15px") center;
         }
         html:not(.watch-active-state) &:active, &.active-state {
-            .transition(0ms);
+            transition-duration: 0ms;
             background-color: #d9d9d9;
             .item-inner {
                 .hairline-color(bottom, transparent);
@@ -162,7 +162,7 @@
         }
     }
     .item-content {
-        .border-box();
+        box-sizing: border-box;
         padding-left: 15px;
         min-height: 44px;
         .flexbox();
@@ -184,9 +184,9 @@
         transform-style: preserve-3d;
     }
     .swipeout.deleting {
-        .transition(300ms);
+        transition-duration: 300ms;
         .swipeout-content {
-            .transform(translateX(-100%));
+            transform: translateX(-100%);
         }
     }
     .swipeout.transitioning {
@@ -232,7 +232,7 @@
     }
     .swipeout-actions-right {
         right: 0%;
-        .transform(translateX(100%));
+        transform: translateX(100%);
         a:after {
             left: 100%;
             margin-left: -1px;
@@ -240,7 +240,7 @@
     }
     .swipeout-actions-left {
         left: 0%;
-        .transform(translateX(-100%));
+        transform: translateX(-100%);
         a:after {
             right: 100%;
             margin-right: -1px;
@@ -252,7 +252,7 @@
         overflow: hidden;
         white-space: nowrap;
         max-width: 100%;
-        text-overflow:ellipsis;
+        text-overflow: ellipsis;
     }
     .item-text {
         font-size: 15px;
@@ -349,7 +349,7 @@
     }
     &.sortable {
         .item-inner {
-            .transition(300ms);       
+            transition-duration: 300ms;
         }
     }
     &.sortable-opened {
@@ -366,14 +366,14 @@
     }
     &.sortable-sorting {
         li {
-            .transition(300ms);
+            transition-duration: 300ms;
         }
     }
     li.sorting {
         z-index: 50;
         background: rgba(255,255,255,0.8);
         box-shadow: 0px 2px 8px rgba(0,0,0,0.6);
-        .transition(0ms);
+        transition-duration: 0ms;
         .item-inner {
             .hairline-remove(bottom);
         }
