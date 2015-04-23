@@ -159,8 +159,10 @@ html.android {
         border-radius: 27px;
     }
     &.active {
+      &, &:active {
         background: @blue;
         color: #fff;
+      }
     }
     &.button-big {
         font-size: 17px;
@@ -171,7 +173,7 @@ html.android {
         color:#fff;
         background: @blue;
         border: none;
-        &:active {
+        &.active, &:active {
             background: darken(@blue, 10%);
         }
     }
