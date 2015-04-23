@@ -776,6 +776,13 @@ code {
   width: 300px;
   margin: 10px auto;
 }
+.grid-demo .row {
+  margin-bottom: 10px;
+  text-align: center;
+}
+.grid-demo .row > [class*=col-] {
+  border: 1px solid #ddd;
+}
 #segmentedControlsInDevice .segmented-control {
   margin-top: 10px;
   margin-right: 10px;

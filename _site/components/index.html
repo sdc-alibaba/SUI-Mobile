@@ -82,11 +82,12 @@
 </span>
 
 <div class="docs-component-group js-component-group">
-  <a class="docs-component-item" href="#bars" data-ignore="push">标题栏</a>
   <a class="docs-component-item" href="#typography" data-ignore="push">文本样式</a>
+  <a class="docs-component-item" href="#bars" data-ignore="push">标题栏</a>
   <a class="docs-component-item" href="#buttons" data-ignore="push">按钮</a>
   <a class="docs-component-item" href="#forms" data-ignore="push">表单</a>
   <a class="docs-component-item" href="#tabs" data-ignore="push">标签页</a>
+  <a class="docs-component-item" href="#grid" data-ignore="push">栅格</a>
   <a class="docs-component-item" href="#push" data-ignore="push">push.js</a>
   <a class="docs-component-item" href="#ratchicons" data-ignore="push">图标</a>
 </div>
@@ -129,6 +130,41 @@
 
     <div class="column lg-units-7 docs-content">
       <!-- Bars -->
+  <!-- Typography -->
+  <article class="component" id="typography">
+    <h3 class="component-title">Typography</h3>
+    <p class="component-description">Use headings and paragraphs to title and describe sections of your app. Apply or wrap elements with <code>.content-padded</code> to give the content space around the screen.</p>
+
+    <div class="component-example component-example-fullbleed">
+      <div class="content-padded">
+        <h1>h1. Heading</h1>
+        <h2>h2. Heading</h2>
+        <h3>h3. Heading</h3>
+        <h4>h4. Heading</h4>
+        <h5>h5. Heading</h5>
+        <h6>h6. Heading</h6>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco.</p>
+      </div>
+    </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-padded"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>h1. Heading<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;h2&gt;</span>h2. Heading<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;h3&gt;</span>h3. Heading<span class="nt">&lt;/h3&gt;</span>
+  <span class="nt">&lt;h4&gt;</span>h4. Heading<span class="nt">&lt;/h4&gt;</span>
+  <span class="nt">&lt;h5&gt;</span>h5. Heading<span class="nt">&lt;/h5&gt;</span>
+  <span class="nt">&lt;h6&gt;</span>h6. Heading<span class="nt">&lt;/h6&gt;</span>
+  <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+  quis nostrud exercitation ullamco.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+  </article>
+
+
+
         <article class="component active" id="bars">
         <h3 class="component-title">Title bar</h3>
         <p class="component-description">Title bars are full width and docked to the top of the viewport.</p>
@@ -653,40 +689,53 @@
 
 </article>
 
-  <!-- Typography -->
-  <article class="component" id="typography">
-    <h3 class="component-title">Typography</h3>
-    <p class="component-description">Use headings and paragraphs to title and describe sections of your app. Apply or wrap elements with <code>.content-padded</code> to give the content space around the screen.</p>
+  <article class="component active" id="grid">
+  <h3 class="component-title">响应式栅格</h3>
+  <p class="component-description"></p>
 
-    <div class="component-example component-example-fullbleed">
-      <div class="content-padded">
-        <h1>h1. Heading</h1>
-        <h2>h2. Heading</h2>
-        <h3>h3. Heading</h3>
-        <h4>h4. Heading</h4>
-        <h5>h5. Heading</h5>
-        <h6>h6. Heading</h6>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco.</p>
+  <div class="component-example component-example-fullbleed">
+    <div class="content-padded grid-demo">
+      <div class="row">
+        <div class="col-50">50%</div>
+        <div class="col-50">50%</div>
+      </div>
+      <div class="row">
+        <div class="col-33">33%</div>
+        <div class="col-33">33%</div>
+        <div class="col-33">33%</div>
+      </div>
+      <div class="row">
+        <div class="col-20">20%</div>
+        <div class="col-80">80%</div>
+      </div>
+      <h2>无间距</h2>
+      <div class="row no-gutter">
+        <div class="col-20">20%</div>
+        <div class="col-80">80%</div>
       </div>
     </div>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-padded"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;h1&gt;</span>h1. Heading<span class="nt">&lt;/h1&gt;</span>
-  <span class="nt">&lt;h2&gt;</span>h2. Heading<span class="nt">&lt;/h2&gt;</span>
-  <span class="nt">&lt;h3&gt;</span>h3. Heading<span class="nt">&lt;/h3&gt;</span>
-  <span class="nt">&lt;h4&gt;</span>h4. Heading<span class="nt">&lt;/h4&gt;</span>
-  <span class="nt">&lt;h5&gt;</span>h5. Heading<span class="nt">&lt;/h5&gt;</span>
-  <span class="nt">&lt;h6&gt;</span>h6. Heading<span class="nt">&lt;/h6&gt;</span>
-  <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-  quis nostrud exercitation ullamco.<span class="nt">&lt;/p&gt;</span>
+  </div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-padded grid-demo"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-50"</span><span class="nt">&gt;</span>50%<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-50"</span><span class="nt">&gt;</span>50%<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-33"</span><span class="nt">&gt;</span>33%<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-33"</span><span class="nt">&gt;</span>33%<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-33"</span><span class="nt">&gt;</span>33%<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-20"</span><span class="nt">&gt;</span>20%<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-80"</span><span class="nt">&gt;</span>80%<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;h2&gt;</span>无间距<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row no-gutter"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-20"</span><span class="nt">&gt;</span>20%<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-80"</span><span class="nt">&gt;</span>80%<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
-
-  </article>
-
-
+</article>
 
       <article class="component" id="push">
       <h3 class="component-title">Push</h3>
