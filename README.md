@@ -2,7 +2,10 @@ SUI Mobile
 
 # 环境
 
-执行 `jeklly serve` 打开本地服务器.
+执行 `jekyll serve` 打开本地服务器.
+
+如果你的系统中没有ruby，请先[安装ruby](https://www.ruby-lang.org/en/documentation/installation/)。然后再安装 `jekyll` 和 `rouge` （执行 `gem install jekyll` 和 `gem install rouge`）。
+如果发现 `gem install` 失败，可能是因为 gem 服务器被和谐，参考[淘宝gem镜像](https://ruby.taobao.org/)
 
 # 分支
 
