@@ -10,7 +10,7 @@
   height: @bar-base-height;
   padding-right: @bar-side-spacing;
   padding-left: @bar-side-spacing;
-  background-color: @chrome-color;
+  background-color: white;
   border-bottom: @border-default;
   -webkit-backface-visibility: hidden; // Make sure the bar is visible when a modal animates in.
           backface-visibility: hidden;
@@ -102,7 +102,7 @@
     // Active states for the tab bar
     &.active,
     &:active {
-      color: @primary-color;
+      color: @color-primary;
     }
 
     // Activity badge on an icon
@@ -156,12 +156,12 @@
   font-size: 16px;
   line-height: @bar-base-height;
   height: @bar-base-height;
-  color: @primary-color;
+  color: @color-primary;
   border: 0;
 
   &:active,
   &.active {
-    color: darken(@primary-color, 10%);
+    color: darken(@color-primary, 10%);
   }
 }
 

@@ -5,6 +5,22 @@
  * =====================================================
  */
 
+/*@blue:#007aff;
+@red: #ff3b30;
+@white: #ffffff;
+@black: #000000;
+@lightblue: #5ac8fa;
+@yellow: #ffcc00;
+@orange: #ff9500;
+@pink: #ff2d55;
+@green: #4cd964;
+@gray: #8e8e93;
+*/
+/*
+@default-color:  #fff;
+@positive-color: #5cb85c;
+@negative-color: #d9534f;
+*/
 /*.transition(@d) {
     -webkit-transition-duration: @d;
     transition-duration: @d;
@@ -263,7 +279,7 @@ body {
             transition: opacity .2 linear;
   }
   .docs-jump-menu:hover {
-    color: #428bca;
+    color: #007aff;
   }
   .docs-jump-menu:active {
     opacity: .5;
@@ -323,7 +339,7 @@ body {
   }
   .docs-component-group .docs-component-item:hover {
     color: #fff;
-    background-color: #428bca;
+    background-color: #007aff;
   }
 }
 .docs-header-content {
@@ -1036,8 +1052,8 @@ hr {
   background-color: #f0ad4e;
 }
 .browser-support-yes {
-  background-color: #5cb85c;
+  background-color: #4cd964;
 }
 .browser-support-no {
-  background-color: #d9534f;
+  background-color: #ff3b30;
 }

@@ -17,17 +17,22 @@
 // Colors
 // --------------------------------------------------
 
-// Main theme colors
-@primary-color: #428bca;
-@chrome-color:  #fff;
+// 主色
+@color-primary: #007aff;
+@color-danger: #ff3b30;
+@color-warning: #ff9500;
+@color-success: #4cd964;
 
-// Action colors
-@default-color:  #fff;
-@positive-color: #5cb85c;
-@negative-color: #d9534f;
+@color-primary-active: darken(@color-primary, 10%);
+@color-danger-active: darken(@color-danger, 10%);
+@color-warning-active: darken(@color-warning, 10%);
+@color-success-active: darken(@color-success, 10%);
 
-//
-@blue:#007aff;
+//链接色
+@color-link: #007aff; //链接色有可能不同于主色
+
+//这里是F7 的颜色定义，供参考，全部要改成上面的定义
+/*@blue:#007aff;
 @red: #ff3b30;
 @white: #ffffff;
 @black: #000000;
@@ -37,6 +42,17 @@
 @pink: #ff2d55;
 @green: #4cd964;
 @gray: #8e8e93;
+*/
+
+//这里是原 ratchet 定义，供参考
+// Action colors
+/*
+@default-color:  #fff;
+@positive-color: #5cb85c;
+@negative-color: #d9534f;
+*/
+
+
 
 // Bars
 // --------------------------------------------------

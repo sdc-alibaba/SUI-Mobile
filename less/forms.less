@@ -102,7 +102,7 @@
         display: none;
         &:checked {
             &+ .checkbox {
-                background: #4cd964;
+                background: @color-success;
                 &:before {
                     transform: scale(0);
                 }
@@ -125,8 +125,8 @@ html.android {
 }
 //Buttons
 .button {
-    border: 1px solid @blue;
-    color: @blue;
+    border: 1px solid @color-primary;
+    color: @color-primary;
     text-decoration: none;
     text-align: center;
     display: block;
@@ -153,14 +153,14 @@ html.android {
     }
 
     &:active {
-        background: rgba(red(@blue), green(@blue), blue(@blue), .15);
+        background: rgba(red(@color-primary), green(@color-primary), blue(@color-primary), .15);
     }
     &.button-round {
         border-radius: 27px;
     }
     &.active {
       &, &:active {
-        background: @blue;
+        background: @color-primary;
         color: #fff;
       }
     }
@@ -171,10 +171,10 @@ html.android {
     }
     &.button-fill {
         color:#fff;
-        background: @blue;
+        background: @color-primary;
         border: none;
         &.active, &:active {
-            background: darken(@blue, 10%);
+            background: darken(@color-primary, 10%);
         }
     }
     .button-link {
@@ -293,7 +293,7 @@ html.android {
         height: 2px;
         margin-top: -1px;
         z-index: 1;
-        background: @blue;
+        background: @color-primary;
         content: ' ';
     }
 }
@@ -325,7 +325,7 @@ label.label-checkbox {
         &:checked + .item-media{
             i.icon-form-checkbox {
                 border: none;
-                background-color: @blue;
+                background-color: @color-primary;
             }
             i.icon-form-checkbox:after {
                 background: no-repeat center;
