@@ -84,6 +84,7 @@
 <div class="docs-component-group js-component-group">
   <a class="docs-component-item" href="#bars" data-ignore="push">标题栏</a>
   <a class="docs-component-item" href="#typography" data-ignore="push">文本样式</a>
+  <a class="docs-component-item" href="#buttons" data-ignore="push">按钮</a>
   <a class="docs-component-item" href="#forms" data-ignore="push">表单</a>
   <a class="docs-component-item" href="#tabs" data-ignore="push">标签页</a>
   <a class="docs-component-item" href="#push" data-ignore="push">push.js</a>
@@ -396,6 +397,137 @@
 
   </article>
 
+
+  <article class="component active" id="buttons">
+  <h3 class="component-title">按钮</h3>
+  <p class="component-description">按钮</p>
+
+  <div class="component-example component-example-fullbleed">
+    <div class="content-block-title">按钮</div>
+    <div class="content-block">
+      <p><a href="#" class="button">Usual Button 1</a></p>
+    </div>
+    <div class="content-block">
+      <p><a href="#" class="button active">Active Button</a></p>
+    </div>
+    <div class="content-block">
+      <p><a href="#" class="button button-round">Round Button 1</a></p>
+      <p><a href="#" class="button button-round active">Round Button Active</a></p>
+    </div>
+    <div class="content-block">
+      <p><a href="#" class="button button-big">Big Button </a></p>
+      <p><a href="#" class="button button-big button-round">Big Round Button </a></p>
+      <p><a href="#" class="button button-big button-round active">Big Round Active Button </a></p>
+    </div>
+  </div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block-title"</span><span class="nt">&gt;</span>按钮<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Usual Button 1<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button active"</span><span class="nt">&gt;</span>Active Button<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round"</span><span class="nt">&gt;</span>Round Button 1<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round active"</span><span class="nt">&gt;</span>Round Button Active<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-big"</span><span class="nt">&gt;</span>Big Button <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-big button-round"</span><span class="nt">&gt;</span>Big Round Button <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-big button-round active"</span><span class="nt">&gt;</span>Big Round Active Button <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+</article>
+<article class="component active">
+  <h3 class="component-title">按钮组</h3>
+  <div class="component-example component-example-fullbleed">
+    <div class="content-block-title">Buttons Row / Segmented Controller</div>
+    <div class="content-block">
+      <p class="buttons-row"><a href="#" class="button">Button 1</a><a href="#" class="button">Button 2</a><a href="#" class="button">Button 3</a></p>
+      <p class="buttons-row"><a href="#" class="button active">Button 1</a><a href="#" class="button">Button 2</a><a href="#" class="button">Button 3</a></p>
+      <p class="buttons-row"><a href="#" class="button button-round">Button 1</a><a href="#" class="button button-round">Button 2</a></p>
+      <p class="buttons-row"><a href="#" class="button button-round">Button 1</a><a href="#" class="button button-round active">Button 2</a></p>
+    </div>
+  </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block-title"</span><span class="nt">&gt;</span>Buttons Row / Segmented Controller<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 1<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 2<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 3<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button active"</span><span class="nt">&gt;</span>Button 1<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 2<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 3<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round"</span><span class="nt">&gt;</span>Button 1<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round"</span><span class="nt">&gt;</span>Button 2<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round"</span><span class="nt">&gt;</span>Button 1<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round active"</span><span class="nt">&gt;</span>Button 2<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+</article>
+<article class="component active">
+  <h3 class="component-title">填充按钮</h3>
+  <p class="component-description">按钮</p>
+  <div class="component-example component-example-fullbleed">
+    <div class="content-block-title">Fill buttons    </div>
+    <div class="content-block">
+      <p><a href="#" class="button button-fill">Fill Button </a></p>
+      <p><a href="#" class="button button-round button-fill">Round Fill Button</a></p>
+      <p><a href="#" class="button button-big button-fill">Big Fill Button </a></p>
+    </div>
+  </div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block-title"</span><span class="nt">&gt;</span>Fill buttons    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-fill"</span><span class="nt">&gt;</span>Fill Button <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round button-fill"</span><span class="nt">&gt;</span>Round Fill Button<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-big button-fill"</span><span class="nt">&gt;</span>Big Fill Button <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+</article>
+<article class="component active">
+  <h3 class="component-title">按钮</h3>
+  <p class="component-description">按钮</p>
+  <div class="component-example component-example-fullbleed">
+    <div class="content-block-title">List block buttons</div>
+    <div class="list-block">
+      <ul>
+        <li><a href="#" class="item-link list-button">List Button 1</a></li>
+        <li><a href="#" class="item-link list-button">List Button 2</a></li>
+        <li><a href="#" class="item-link list-button">List Button 3</a></li>
+      </ul>
+    </div>
+    <div class="content-block-title">Inset list block buttons</div>
+    <div class="list-block inset">
+      <ul>
+        <li><a href="#" class="item-link list-button">List Button 1</a></li>
+        <li><a href="#" class="item-link list-button">List Button 2</a></li>
+        <li><a href="#" class="item-link list-button">List Button 3</a></li>
+      </ul>
+    </div>
+    <div class="content-block-title">Using Grid</div>
+    <div class="content-block">
+      <div class="row">
+        <div class="col-50"><a href="#" class="button button-big button-fill color-red">Cancel</a></div>
+        <div class="col-50"><a href="#" class="button button-big button-fill color-green">Submit</a></div>
+      </div>
+    </div>
+  </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block-title"</span><span class="nt">&gt;</span>List block buttons<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-block"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ul&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"item-link list-button"</span><span class="nt">&gt;</span>List Button 1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"item-link list-button"</span><span class="nt">&gt;</span>List Button 2<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"item-link list-button"</span><span class="nt">&gt;</span>List Button 3<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block-title"</span><span class="nt">&gt;</span>Inset list block buttons<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-block inset"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ul&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"item-link list-button"</span><span class="nt">&gt;</span>List Button 1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"item-link list-button"</span><span class="nt">&gt;</span>List Button 2<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"item-link list-button"</span><span class="nt">&gt;</span>List Button 3<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block-title"</span><span class="nt">&gt;</span>Using Grid<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-50"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-big button-fill color-red"</span><span class="nt">&gt;</span>Cancel<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-50"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-big button-fill color-green"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+</article>
 
   <article class="component active" id="forms">
   <h3 class="component-title">表单</h3>
