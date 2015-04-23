@@ -133,11 +133,10 @@
 // Bars with buttons
 // --------------------------------------------------
 
-.bar .btn {
+.bar .button {
   position: relative;
   top: 7px;
   z-index: 20; // Position the buttons on top of .title
-  padding: 6px 12px 7px;
   margin-top: 0;
   font-weight: @font-weight-light;
 
@@ -151,11 +150,12 @@
 }
 
 // Bars with link buttons (Line the text up with content)
-.bar .btn-link {
+.bar .button-link {
   top: 0;
   padding: 0;
   font-size: 16px;
   line-height: @bar-base-height;
+  height: @bar-base-height;
   color: @primary-color;
   border: 0;
 
@@ -168,17 +168,16 @@
 // Bars with block buttons
 //
 // Add proper padding
-.bar .btn-block {
+.bar .button-block {
   top: 6px;
-  padding: 7px 0;
-  margin-bottom: 0;
   font-size: 16px; // Scale down font size to fit in bar.
+  width: 100%;
 }
 
 // Nav buttons (Only applicable within bars)
 //
 // Buttons inside bars that sit closer against the viewport.
-.bar .btn-nav {
+.bar .button-nav {
   &.pull-left {
     margin-left: -5px;
 
@@ -208,8 +207,8 @@
     font-size: 24px;
   }
 
-  // Vertical center the larger icons in btns.
-  .btn .icon {
+  // Vertical center the larger icons in buttons.
+  .button .icon {
     top: 3px;
     padding: 0;
   }
@@ -234,15 +233,4 @@
 .bar input[type="search"] {
   height: 29px;
   margin: 6px 0;
-}
-
-
-// Bars with segmented controls
-// --------------------------------------------------
-
-// Position the control correctly inside a bar.
-.bar .buttons-row {
-  position: relative;
-  top: 7px;
-  margin: 0 auto;
 }

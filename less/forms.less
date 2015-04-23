@@ -152,7 +152,7 @@ html.android {
         width: 100%;
     }
 
-    html:not(.watch-active-state) &:active, &.active-state {
+    &:active {
         background: rgba(red(@blue), green(@blue), blue(@blue), .15);
     }
     &.button-round {
@@ -171,9 +171,16 @@ html.android {
         color:#fff;
         background: @blue;
         border: none;
-        html:not(.watch-active-state) &:active, &.active-state {
-            opacity: 0.8;
+        &:active {
+            background: darken(@blue, 10%);
         }
+    }
+    .button-link {
+      padding-top: 6px;
+      padding-bottom: 6px;
+      color: #428bca;
+      background-color: transparent;
+      border: 0;
     }
     i.icon {
         &:first-child {
