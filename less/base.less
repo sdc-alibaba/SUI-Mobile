@@ -4,9 +4,9 @@
 
 // Use box sizing on all the things!
 * {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout:none;
 }
 
 // We fix position the body and scroll `.content`.
@@ -21,6 +21,14 @@ body {
   line-height: @line-height-default;
   color: #000;
   background-color: #fff;
+}
+
+a, input, textarea, select {
+    outline: 0;
+}
+
+p {
+    margin: 1em 0;
 }
 
 // Universal link styling
