@@ -2,7 +2,10 @@ SUI Mobile
 
 # 环境
 
-执行 `jeklly serve` 打开本地服务器.
+执行 `jekyll serve` 打开本地服务器.
+
+如果你的系统中没有ruby，请先[安装ruby](https://www.ruby-lang.org/en/documentation/installation/)。然后再安装 `jekyll` 和 `rouge` （执行 `gem install jekyll` 和 `gem install rouge`）。
+如果发现 `gem install` 失败，可能是因为 gem 服务器被和谐，参考[淘宝gem镜像](https://ruby.taobao.org/)
 
 # 分支
 
@@ -14,6 +17,7 @@ dev 分支上是最新的代码，daily分支只是在发布代码的时候用�
 # 迁移代码的一些主意事项
 
 使用这个版本的 [F7](https://github.com/sdc-fe/Framework7-Plus)
+
 
 ## 分类
 
@@ -34,6 +38,12 @@ dev 分支上是最新的代码，daily分支只是在发布代码的时候用�
 通过REM实现整页缩放，除了字体大小以外，任何以前以px和em为单位的地方都要改成REM。
 
 
+## 颜色规范
+
+不要以颜色名来命名 class，比如 `color-red` 这样的要全部干掉。
+现在有四种主色 `@color-primary`, `@color-success`, `@color-danger`, `@color-warning`。 F7 中所有直接用类似 `@blue` `@red` 这样的颜色都要换调。
+
+
 ## 封装和解耦
 
 代码要尽量减少耦合，F7 中的 JS 代码存在大量耦合，迁移的时候主意每一个JS插件都要是独立的zepto插件，独立为一个文件并且最好不要依赖其他插件（除了依赖zepto）。
@@ -43,3 +53,7 @@ dev 分支上是最新的代码，daily分支只是在发布代码的时候用�
 有些组件依赖 `dom7` 要改成 `zepto` （大部分api都是一致的）
 
 参考 `tabs.js` 的实现。
+
+## mixins
+
+我们使用 `autoprefix` 来做浏览器前缀的补全，所以所有只是用来补全浏览器前缀的mixin都要去掉，目前已经在 `mixins.less` 文件中删除了这些mixin，被删除的部分以注释形式写在文件末尾方便查看。

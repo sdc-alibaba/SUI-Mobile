@@ -5,6 +5,72 @@
  * =====================================================
  */
 
+/*
+@blue:#007aff;
+@red: #ff3b30;
+@white: #ffffff;
+@black: #000000;
+@lightblue: #5ac8fa;
+@yellow: #ffcc00;
+@orange: #ff9500;
+@pink: #ff2d55;
+@green: #4cd964;
+@gray: #8e8e93;
+*/
+/*
+@default-color:  #fff;
+@positive-color: #5cb85c;
+@negative-color: #d9534f;
+*/
+/*.transition(@d) {
+    -webkit-transition-duration: @d;
+    transition-duration: @d;
+}
+.delay(@d) {
+    -webkit-transition-delay: @d;
+    transition-delay: @d;
+}
+.transform(@t) {
+    -webkit-transform: @t;
+    transform: @t;
+}
+.transform-origin(@to) {
+    -webkit-transform-origin: @to;
+    transform-origin: @to;
+}
+.translate3d(@x:0, @y:0, @z:0) {
+    -webkit-transform: translate3d(@x,@y,@z);
+    transform: translate3d(@x,@y,@z);
+}
+.animation(@a) {
+    -webkit-animation: @a;
+    animation: @a;
+}
+.border-box(){
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.box-shadow(@bs) {
+    -webkit-box-shadow: @bs;
+    box-shadow: @bs;
+}
+.animation-name(@name) {
+  -webkit-animation-name: @name;
+     -moz-animation-name: @name;
+          animation-name: @name;
+}
+.animation-duration(@duration) {
+  -webkit-animation-duration: @duration;
+     -moz-animation-duration: @duration;
+          animation-duration: @duration;
+}
+.animation-direction(@direction) {
+  -webkit-animation-direction: @direction;
+     -moz-animation-direction: @direction;
+          animation-direction: @direction;
+}
+*/
 html,
 body {
   width: 100%;
@@ -163,9 +229,9 @@ body {
 .docs-title a,
 .docs-nav-item {
   color: #fff;
-  -webkit-transition-duration: opacity .2s linear;
-       -o-transition-duration: opacity .2s linear;
-          transition-duration: opacity .2s linear;
+  -webkit-transition: opacity .2s linear;
+       -o-transition: opacity .2s linear;
+          transition: opacity .2s linear;
 }
 .docs-title a:active,
 .docs-nav-item:active,
@@ -209,12 +275,12 @@ body {
     display: block;
     color: #777;
     cursor: pointer;
-    -webkit-transition-duration: opacity .2 linear;
-         -o-transition-duration: opacity .2 linear;
-            transition-duration: opacity .2 linear;
+    -webkit-transition: opacity .2 linear;
+         -o-transition: opacity .2 linear;
+            transition: opacity .2 linear;
   }
   .docs-jump-menu:hover {
-    color: #428bca;
+    color: #007aff;
   }
   .docs-jump-menu:active {
     opacity: .5;
@@ -274,7 +340,7 @@ body {
   }
   .docs-component-group .docs-component-item:hover {
     color: #fff;
-    background-color: #428bca;
+    background-color: #007aff;
   }
 }
 .docs-header-content {
@@ -296,9 +362,9 @@ body {
   color: #0a1855;
   background-color: #fff;
   border: 0;
-  -webkit-transition-duration: all .2s linear;
-       -o-transition-duration: all .2s linear;
-          transition-duration: all .2s linear;
+  -webkit-transition: all .2s linear;
+       -o-transition: all .2s linear;
+          transition: all .2s linear;
 }
 .docs-header-content .btn:hover {
   background-color: #fff;
@@ -663,9 +729,9 @@ code {
     padding-right: 0;
     padding-left: 0;
     opacity: .3;
-    -webkit-transition-duration: opacity .2s ease-in-out;
-         -o-transition-duration: opacity .2s ease-in-out;
-            transition-duration: opacity .2s ease-in-out;
+    -webkit-transition: opacity .2s ease-in-out;
+         -o-transition: opacity .2s ease-in-out;
+            transition: opacity .2s ease-in-out;
   }
   .component.active {
     opacity: 1;
@@ -709,6 +775,13 @@ code {
 #blockButtonsInDevice .btn-block {
   width: 300px;
   margin: 10px auto;
+}
+.grid-demo .row {
+  margin-bottom: 10px;
+  text-align: center;
+}
+.grid-demo .row > [class*=col-] {
+  border: 1px solid #ddd;
 }
 #segmentedControlsInDevice .segmented-control {
   margin-top: 10px;
@@ -799,9 +872,9 @@ code {
     background-position: 0 0;
     -webkit-background-size: 300% 300%;
             background-size: 300%;
-    -webkit-transition-duration: background-image .1s linear;
-         -o-transition-duration: background-image .1s linear;
-            transition-duration: background-image .1s linear;
+    -webkit-transition: background-image .1s linear;
+         -o-transition: background-image .1s linear;
+            transition: background-image .1s linear;
   }
   .device.device-fixed {
     position: fixed;
@@ -987,8 +1060,8 @@ hr {
   background-color: #f0ad4e;
 }
 .browser-support-yes {
-  background-color: #5cb85c;
+  background-color: #4cd964;
 }
 .browser-support-no {
-  background-color: #d9534f;
+  background-color: #ff3b30;
 }
