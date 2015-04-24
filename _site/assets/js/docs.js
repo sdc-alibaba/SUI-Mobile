@@ -62,7 +62,11 @@ $(function () {
     eventListeners = true;
 
     device.on('click', function (e) {
-      e.preventDefault();
+      var $t = $(e.target);
+      var tag = $t.attr("tagName").toUpperCase();
+      if(tag == 'BUTTON' || tag == 'A') {
+        e.preventDefault();
+      }
     });
 
     // Mobile navigation

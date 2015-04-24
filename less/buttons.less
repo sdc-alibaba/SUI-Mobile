@@ -1,12 +1,14 @@
 //Buttons
 .button {
+    @btn-height: 29px;
+    @btn-big-height: 49px;
     border: 1px solid @color-primary;
     color: @color-primary;
     text-decoration: none;
     text-align: center;
     display: block;
     border-radius: 5px;
-    line-height: 27px;
+    line-height: (@btn-height - 2px);
     box-sizing: border-box;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -15,7 +17,7 @@
     background: none;
     padding: 0 10px;
     margin: 0;
-    height: 29px;
+    height: @btn-height;
     white-space: nowrap;
     position: relative;
     overflow: hidden;
@@ -31,7 +33,7 @@
         background: rgba(red(@color-primary), green(@color-primary), blue(@color-primary), .15);
     }
     &.button-round {
-        border-radius: 27px;
+        border-radius: (@btn-height - 2px);
     }
     &.active {
       &, &:active {
@@ -41,15 +43,19 @@
     }
     &.button-big {
         font-size: 17px;
-        height: 44px;
-        line-height: 42px;
+        height: @btn-big-height;
+        line-height: (@btn-big-height - 2px);
     }
     &.button-fill {
         color:#fff;
         background: @color-primary;
         border: none;
+        line-height: @btn-height;
         &.active, &:active {
             background: @color-primary-active;
+        }
+        &.button-big {
+          line-height: @btn-big-height;
         }
     }
     .button-link {
