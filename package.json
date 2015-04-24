@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "grunt-contrib-less": "^1.0.1",
-    "grunt-contrib-qunit": "^0.7.0"
+    "grunt-contrib-qunit": "^0.7.0",
+    "grunt-pixrem": "^0.1.2"
   }
 }
