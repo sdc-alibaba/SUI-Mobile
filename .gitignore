@@ -3,3 +3,4 @@
 node_modules
 dist/
 .sass-cache/
+_site/sitemap.xml
