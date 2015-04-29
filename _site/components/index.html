@@ -849,9 +849,8 @@
       </article>
 
   <article class="component active" id="modal">
-  <h3 class="component-title">标签页</h3>
-  <p class="component-description">标签页</p>
-
+  
+  <h3 class="component-title">alert</h3>
   <div class="component-example component-example-fullbleed">
     <div class="">
 
@@ -864,20 +863,20 @@
       <script type="text/javascript">     
         $(function(){
            $(document).on('click','.alert-text',function () {
-            $.alert('Here goes alert text');
-          });
+              $.alert('Here goes alert text');
+           });
            
-          $('.alert-text-title').on('click', function () {
+          $(document).on('click','.alert-text-title', function () {
               $.alert('Here goes alert text', 'Custom Title!');
           });
            
-          $('.alert-text-title-callback').on('click', function () {
+          $(document).on('click', '.alert-text-title-callback',function () {
               $.alert('Here goes alert text', 'Custom Title!', function () {
                   $.alert('Button clicked!')
               });
           });
            
-          $('.alert-text-callback').on('click', function () {
+          $(document).on('click', '.alert-text-callback',function () {
               $.alert('Here goes alert text', function () {
                   $.alert('Button clicked!')
               });
