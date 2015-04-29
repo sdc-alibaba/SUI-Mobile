@@ -49,7 +49,8 @@ module.exports = function (grunt) {
         src: [
           'js/common.js',
           'js/tabs.js',
-          'js/push.js'
+          'js/push.js',
+          'js/modal.js'
         ],
         dest: '<%= meta.distPath %>js/<%= pkg.name %>.js'
       }

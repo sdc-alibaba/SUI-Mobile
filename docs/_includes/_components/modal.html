@@ -1,0 +1,53 @@
+<article class="component active" id="modal">
+  <h3 class="component-title">标签页</h3>
+  <p class="component-description">标签页</p>
+
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+
+      <div class="content-block">
+        <p><a href="" class="alert-text">Alert With Text</a></p>
+        <p><a href="" class="alert-text-title">Alert With Text and Title</a></p>
+        <p><a href="" class="alert-text-title-callback">Alert With Text and Title and Callback</a></p>
+        <p><a href="" class="alert-text-callback">Alert With Text and Callback</a></p>
+      </div>
+      <script type="text/javascript">     
+        $(function(){
+           $(document).on('click','.alert-text',function () {
+            $.alert('Here goes alert text');
+          });
+           
+          $('.alert-text-title').on('click', function () {
+              $.alert('Here goes alert text', 'Custom Title!');
+          });
+           
+          $('.alert-text-title-callback').on('click', function () {
+              $.alert('Here goes alert text', 'Custom Title!', function () {
+                  $.alert('Button clicked!')
+              });
+          });
+           
+          $('.alert-text-callback').on('click', function () {
+              $.alert('Here goes alert text', function () {
+                  $.alert('Button clicked!')
+              });
+          });
+        })
+   
+      </script>
+     
+    </div>
+  </div>
+
+{% highlight html %}
+    <div class="content-block">
+      <p><a href="#" class="alert-text">Alert With Text</a></p>
+      <p><a href="#" class="alert-text-title">Alert With Text and Title</a></p>
+      <p><a href="#" class="alert-text-title-callback">Alert With Text and Title and Callback</a></p>
+      <p><a href="#" class="alert-text-callback">Alert With Text and Callback</a></p>
+    </div>
+    
+     
+{% endhighlight %}
+
+</article>

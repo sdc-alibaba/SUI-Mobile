@@ -18,7 +18,8 @@
 <link rel="stylesheet" href="/assets/css/docs.min.css">
 
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/img/apple-touch-icon-114x114.png">
-
+<script src="/assets/js/zepto.js"></script>
+<script src="/assets/js/zepto-extras.js"></script>
 <script>
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-36050008-1']);
@@ -90,6 +91,7 @@
   <a class="docs-component-item" href="#grid" data-ignore="push">栅格</a>
   <a class="docs-component-item" href="#push" data-ignore="push">push.js</a>
   <a class="docs-component-item" href="#ratchicons" data-ignore="push">图标</a>
+  <a class="docs-component-item" href="#modal" data-ignore="push">对话框</a>
 </div>
 
 
@@ -846,6 +848,56 @@
 
       </article>
 
+  <article class="component active" id="modal">
+  <h3 class="component-title">标签页</h3>
+  <p class="component-description">标签页</p>
+
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+
+      <div class="content-block">
+        <p><a href="" class="alert-text">Alert With Text</a></p>
+        <p><a href="" class="alert-text-title">Alert With Text and Title</a></p>
+        <p><a href="" class="alert-text-title-callback">Alert With Text and Title and Callback</a></p>
+        <p><a href="" class="alert-text-callback">Alert With Text and Callback</a></p>
+      </div>
+      <script type="text/javascript">     
+        $(function(){
+           $(document).on('click','.alert-text',function () {
+            $.alert('Here goes alert text');
+          });
+           
+          $('.alert-text-title').on('click', function () {
+              $.alert('Here goes alert text', 'Custom Title!');
+          });
+           
+          $('.alert-text-title-callback').on('click', function () {
+              $.alert('Here goes alert text', 'Custom Title!', function () {
+                  $.alert('Button clicked!')
+              });
+          });
+           
+          $('.alert-text-callback').on('click', function () {
+              $.alert('Here goes alert text', function () {
+                  $.alert('Button clicked!')
+              });
+          });
+        })
+   
+      </script>
+     
+    </div>
+  </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"alert-text"</span><span class="nt">&gt;</span>Alert With Text<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"alert-text-title"</span><span class="nt">&gt;</span>Alert With Text and Title<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"alert-text-title-callback"</span><span class="nt">&gt;</span>Alert With Text and Title and Callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"alert-text-callback"</span><span class="nt">&gt;</span>Alert With Text and Callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+</article>
+
     <!-- Table views -->
 
     <!-- Push docs -->
@@ -1006,8 +1058,7 @@
 
 
 
-<script src="/assets/js/zepto.js"></script>
-<script src="/assets/js/zepto-extras.js"></script>
+
 <script src="/dist/js/sm.js"></script>
 <script src="/assets/js/docs.js"></script>
 
