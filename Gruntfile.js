@@ -48,6 +48,7 @@ module.exports = function (grunt) {
         },
         src: [
           'js/zepto-adapter.js',
+          'js/template7.js',
           'js/common.js',
           'js/tabs.js',
           'js/push.js'
