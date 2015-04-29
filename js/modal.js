@@ -40,7 +40,7 @@
 
         var modal = $(_modalTemplateTempDiv).children();
 
-        $('.device-content').append(modal[0]);
+        $($.modal.prototype.defaults.modalContainer).append(modal[0]);
         
         // Add events on buttons
         modal.find('.modal-button').each(function (index, el) {
@@ -167,7 +167,7 @@
         $.closeModal('.modal.modal-in');
     };
     $.showIndicator = function () {
-        $('.device-content').append('<div class="preloader-indicator-overlay"></div><div class="preloader-indicator-modal"><span class="preloader preloader-white"></span></div>');
+        $($.modal.prototype.defaults.modalContainer).append('<div class="preloader-indicator-overlay"></div><div class="preloader-indicator-modal"><span class="preloader preloader-white"></span></div>');
     };
     $.hideIndicator = function () {
         $('.preloader-indicator-overlay, .preloader-indicator-modal').remove();
@@ -245,7 +245,7 @@
             }
             _modalTemplateTempDiv.innerHTML = modalHTML;
             modal = $(_modalTemplateTempDiv).children();
-            $('.device-content').append(modal[0]);
+            $($.modal.prototype.defaults.modalContainer).append(modal[0]);
             groupSelector = '.actions-modal-group';
             buttonSelector = '.actions-modal-button';
         }
@@ -279,7 +279,7 @@
             if (_modal.childNodes.length > 0) {
                 modal = _modal.childNodes[0];
                 if (removeOnClose) modal.classList.add('remove-on-close');
-                $('.device-content').append(modal);
+                $($.modal.prototype.defaults.modalContainer).append(modal);
             }
             else return false; //nothing found
         }
@@ -393,7 +393,7 @@
             if (_modal.childNodes.length > 0) {
                 modal = _modal.childNodes[0];
                 if (removeOnClose) modal.classList.add('remove-on-close');
-                $('.device-content').append(modal);
+                $($.modal.prototype.defaults.modalContainer).append(modal);
             }
             else return false; //nothing found
         }
@@ -413,7 +413,7 @@
             pickerModal = $(pickerModal);
             if (pickerModal.length > 0) {
                 if (removeOnClose) pickerModal.addClass('remove-on-close');
-                $('.device-content').append(pickerModal[0]);
+                $($.modal.prototype.defaults.modalContainer).append(pickerModal[0]);
             }
             else return false; //nothing found
         }
@@ -457,10 +457,10 @@
         var overlay;
         if (!isLoginScreen && !isPickerModal) {
             if ($('.modal-overlay').length === 0 && !isPopup) {
-                $('.device-content').append('<div class="modal-overlay"></div>');
+                $($.modal.prototype.defaults.modalContainer).append('<div class="modal-overlay"></div>');
             }
             if ($('.popup-overlay').length === 0 && isPopup) {
-                $('.device-content').append('<div class="popup-overlay"></div>');
+                $($.modal.prototype.defaults.modalContainer).append('<div class="popup-overlay"></div>');
             }
             overlay = isPopup ? $('.popup-overlay') : $('.modal-overlay');
         }
@@ -473,7 +473,7 @@
 
         // Picker modal body class
         if (isPickerModal) {
-            $('.device-content').addClass('with-picker-modal');
+            $($.modal.prototype.defaults.modalContainer).addClass('with-picker-modal');
         }
 
         // Classes for transition in
@@ -511,8 +511,8 @@
         
         // Picker modal body class
         if (isPickerModal) {
-            $('.device-content').removeClass('with-picker-modal');
-            $('.device-content').addClass('picker-modal-closing');
+            $($.modal.prototype.defaults.modalContainer).removeClass('with-picker-modal');
+            $($.modal.prototype.defaults.modalContainer).addClass('picker-modal-closing');
         }
 
         if (!isPopover) {
@@ -521,7 +521,7 @@
                 else modal.trigger('opened');
                 
                 if (isPickerModal) {
-                    $('.device-content').removeClass('picker-modal-closing');
+                    $($.modal.prototype.defaults.modalContainer).removeClass('picker-modal-closing');
                 }
                 if (isPopup || isLoginScreen || isPickerModal) {
                     modal.removeClass('modal-out').hide();
@@ -533,7 +533,7 @@
                     modal.remove();
                 }
             });
-            if (isModal && $.params.modalStack) {
+            if (isModal &&  $.modal.prototype.defaults.modalStack ) {
                 $.modalStackClearQueue();
             }
         }
@@ -548,6 +548,7 @@
     $.modal.prototype.defaults = {
         modalButtonOk: '确定',
         modalButtonCancel: '取消',
-        modalPreloaderTitle: '加载中'
+        modalPreloaderTitle: '加载中',
+        modalContainer : '.device-content'
     };
 }(Zepto);
