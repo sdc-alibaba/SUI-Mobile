@@ -70,3 +70,19 @@ JS组件都需要写单元测试（因此JS组件要先改造成一个独立的 
 - 测试事件是否正确触发，以及参数是否正确。
 
 单元测试不要怕麻烦，越详细越好，具体请参考 `tabs.js`。
+
+## JS 组件的一些依赖问题
+
+JS 组件一般会有这几种依赖
+
+### Template7
+如果组件中用到了 `t7` 这个变量，它其实是 `Template7` 的一个引用，直接改成 `$.Template7` 即可。
+或者在组件内部声明 `var t7 = $.Template7`。
+
+### 默认配置
+很多组件会用到 `app.params.xxx` ，这是组件的默认配置，以前是在 F7 初始化的时候配置的。
+最好的方法是改成组件自己的配置，比如在 modal 组件中，全部改成 `$.modal.prototype.defaults.xxx` ，然后把默认配置全部写到 `$.modal.prototype.defaults` 中。
+
+### Dom7
+在 F7 中，`$` 其实是 `Dom7`，我们现在改成了 `Zepto`。它们大部分API是一致的，但是部分API有区别，比如 Dom7 有一个 `transitionEnd` 方法，Zepto 中没有。
+如果遇到这种情况，直接把这个方法加到 `zepto-adapter.js` 文件中。
