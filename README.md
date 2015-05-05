@@ -86,3 +86,7 @@ JS 组件一般会有这几种依赖
 ### Dom7
 在 F7 中，`$` 其实是 `Dom7`，我们现在改成了 `Zepto`。它们大部分API是一致的，但是部分API有区别，比如 Dom7 有一个 `transitionEnd` 方法，Zepto 中没有。
 如果遇到这种情况，直接把这个方法加到 `zepto-adapter.js` 文件中。
+
+
+## fastclick
+我们引入了最好的 [fastclick](https://github.com/ftlabs/fastclick) 库赖解决点击穿透问题，所以不要用 zepto 提供的 `tab` 事件，它是由点击穿透的问题的，直接绑定 `click` 事件即可。
