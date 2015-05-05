@@ -1071,3 +1071,6 @@ hr {
 code {
   color: #c30;
 }
+pre code {
+  color: #333;
+}
