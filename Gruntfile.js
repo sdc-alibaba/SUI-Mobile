@@ -14,8 +14,7 @@ module.exports = function (grunt) {
   };
 
   var generateRatchiconsData = require('./grunt/ratchicons-data-generator.js');
-  
-  var dist = grunt.option('buildTo') ? (grunt.option('buildTo') + "/") : "dist/";
+  var dist = grunt.option('buildTo') ? (grunt.option('buildTo') + '/') : 'dist/';
 
   // Project configuration.
   grunt.initConfig({
@@ -48,6 +47,9 @@ module.exports = function (grunt) {
           banner: '<%= banner %>'
         },
         src: [
+          'js/zepto-adapter.js',
+          'js/fastclick.js',
+          'js/template7.js',
           'js/common.js',
           'js/tabs.js',
           'js/push.js'
@@ -178,6 +180,7 @@ module.exports = function (grunt) {
         dest: '<%= meta.doclessetsPath %>js/docs.min.js'
       }
     },
+
     qunit: {
       options: {
         inject: 'js/tests/unit/phantom.js'
@@ -224,36 +227,6 @@ module.exports = function (grunt) {
       }
     },
 
-    jscs: {
-      options: {
-        config: 'js/.jscsrc'
-      },
-      grunt: {
-        src: '<%= jshint.grunt.src %>'
-      },
-      src: {
-        src: '<%= jshint.src.src %>'
-      },
-      docs: {
-        src: '<%= jshint.docs.src %>'
-      }
-    },
-
-    csslint: {
-      options: {
-        csslintrc: 'less/.csslintrc'
-      },
-      src: [
-        '<%= meta.distPath %>/css/<%= pkg.name %>.css'
-      ],
-      docs: {
-        options: {
-          ids: false
-        },
-        src: ['<%= meta.doclessetsPath %>/css/docs.css']
-      }
-    },
-
     sed: {
       versionNumber: {
         pattern: (function () {
@@ -288,8 +261,8 @@ module.exports = function (grunt) {
   grunt.registerTask('dist', ['clean', 'dist-css', 'dist-js', 'copy', 'build-ratchicons-data']);
   grunt.registerTask('validate-html', ['jekyll']);
   grunt.registerTask('build', ['dist']);
-  grunt.registerTask('default', ['dist']);
-  grunt.registerTask('test', ['dist', 'csslint', 'jshint', 'jscs', 'validate-html']);
+  grunt.registerTask('default', ['test', 'dist']);
+  grunt.registerTask('test', ['dist', 'jshint', 'qunit', 'validate-html']);
   grunt.registerTask('server', ['dist', 'jekyll', 'connect', 'watch']);
 
   grunt.registerTask('build-ratchicons-data', generateRatchiconsData);

@@ -3,12 +3,19 @@ $(function () {
 
   module('tabs plugin')
 
-  //test plugin api exist
+  //接口存在
   test('should be defined on zepto object', function () {
     ok($.showTab, 'tabs method is defined')
+    var showTab = $.showTab.noConflict();
+
+    equal($.showTab, undefined, 'no conflict is ok');
+    ok(showTab, 'no conflict return is ok');
+
+    //恢复
+    $.showTab = showTab;
   })
 
-  //test show tab by showTab method
+  //通过JS调用
   test('should show tab when call showTab method', function () {
 
     var tabsBody = '<div class="tabs">\
@@ -25,7 +32,7 @@ $(function () {
     equal($('#qunit-fixture').find('.tab.active').attr('id'), 'tab-test-1')
   })
 
-  //test show tab by click
+  //模拟用户点击操作
   test('should show tab when click', function () {
     var tabs = '<div class="buttons-row"> \
     <a href="#tab-test-1" id="tab-link-1" class="tab-link active button">Tab 1</a> \
@@ -47,7 +54,7 @@ $(function () {
     equal($('#qunit-fixture').find('.tab.active').attr('id'), 'tab-test-1');
   })
 
-  //test show tab event is triggered
+  //检测事件是否正常触发
   test('should trigger showTab event', function () {
     stop();
     var tabs = '<div class="buttons-row"> \

@@ -1,7 +1,10 @@
 /* ===============================================================================
 ************   Tabs   ************
 =============================================================================== */
+/* global Zepto:true */
 +function ($) {
+  "use strict";
+
   var showTab = function (tab, tabLink, force) {
     var newTab = $(tab);
     if (arguments.length === 2) {
@@ -77,11 +80,18 @@
     return true;
   };
 
+  var old = $.showTab;
   $.showTab = showTab;
+
+  $.showTab.noConflict = function () {
+    $.showTab = old;
+    return this;
+  };
+
 
   $(document).on("click", ".tab-link", function(e) {
     e.preventDefault();
     var clicked = $(this);
     showTab(clicked.data("tab") || clicked.attr('href'), clicked);
-  })
+  });
 }(Zepto);

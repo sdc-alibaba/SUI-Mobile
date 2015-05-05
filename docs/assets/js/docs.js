@@ -64,7 +64,7 @@ $(function () {
     device.on('click', function (e) {
       var $t = $(e.target);
       var tag = $t.attr("tagName").toUpperCase();
-      if(tag == 'BUTTON' || tag == 'A') {
+      if(tag === 'BUTTON' || tag === 'A') {
         e.preventDefault();
       }
     });

@@ -71,6 +71,9 @@
           animation-direction: @direction;
 }
 */
+html {
+  font-size: 20px!important;
+}
 html,
 body {
   width: 100%;
