@@ -1068,3 +1068,6 @@ hr {
 .browser-support-no {
   background-color: #ff3b30;
 }
+code {
+  color: #c30;
+}
