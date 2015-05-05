@@ -862,6 +862,7 @@
       </div>
       <script type="text/javascript">     
         $(function(){
+           $.modal.prototype.defaults.modalContainer = ".device-content";
            $(document).on('click','.alert-text',function () {
               $.alert('Here goes alert text');
            });
@@ -888,19 +889,294 @@
     </div>
   </div>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Push<span class="nt">&lt;/h1&gt;</span>
-      <span class="nt">&lt;/header&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"alert-text"</span><span class="nt">&gt;</span>Alert With Text<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-          <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"alert-text-title"</span><span class="nt">&gt;</span>Alert With Text and Title<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-          <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"alert-text-title-callback"</span><span class="nt">&gt;</span>Alert With Text and Title and Callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-          <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"alert-text-callback"</span><span class="nt">&gt;</span>Alert With Text and Callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-      
-    <span class="nt">&lt;/div&gt;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Alert<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"alert-text"</span><span class="nt">&gt;</span>Alert With Text<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"alert-text-title"</span><span class="nt">&gt;</span>Alert With Text and Title<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"alert-text-title-callback"</span><span class="nt">&gt;</span>Alert With Text and Title and Callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"alert-text-callback"</span><span class="nt">&gt;</span>Alert With Text and Callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
 
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+</article>
+
+<article class="component active">
+  <h3 class="component-title">confirm</h3>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content-block">
+        <p><a href="#" class="confirm-ok">Confirm with text and Ok callback</a></p>
+        <p><a href="#" class="confirm-ok-cancel">Confirm with text, Ok and Cancel callbacks</a></p>
+        <p><a href="#" class="confirm-title-ok">Confirm with text, title and Ok callback</a></p>
+        <p><a href="#" class="confirm-title-ok-cancel">Confirm with text, title, Ok and Cancel callback</a></p>
+      </div>
+      <script type="text/javascript">
+        $(document).on('click','.confirm-ok', function () {
+            $.confirm('Are you sure?', function () {
+                $.alert('You clicked Ok button');
+            });
+        });
+         
+        $(document).on('click', '.confirm-ok-cancel',function () {
+            $.confirm('Are you sure?', 
+              function () {
+                $.alert('You clicked Ok button');
+              },
+              function () {
+                $.alert('You clicked Cancel button');
+              }
+            );
+        });
+        $(document).on('click','.confirm-title-ok', function () {
+            $.confirm('Are you sure?', 'Custom Title', function () {
+                $.alert('You clicked Ok button');
+            });
+        });
+        $(document).on('click','.confirm-title-ok-cancel', function () {
+            $.confirm('Are you sure?', 'Custom Title', 
+              function () {
+                $.alert('You clicked Ok button');
+              },
+              function () {
+                $.alert('You clicked Cancel button');
+              }
+            );
+        });            
+
+      </script>
+    </div>
+  </div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>confirm<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"confirm-ok"</span><span class="nt">&gt;</span>Confirm with text and Ok callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"confirm-ok-cancel"</span><span class="nt">&gt;</span>Confirm with text, Ok and Cancel callbacks<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"confirm-title-ok"</span><span class="nt">&gt;</span>Confirm with text, title and Ok callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"confirm-title-ok-cancel"</span><span class="nt">&gt;</span>Confirm with text, title, Ok and Cancel callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+</article>
+
+<article class="component active">
+  <h3 class="component-title">prompt</h3>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content-block">
+        <p><a href="#" class="prompt-ok">Prompt with text and Ok callback</a></p>
+        <p><a href="#" class="prompt-ok-cancel">Prompt with text, Ok and Cancel callbacks</a></p>
+        <p><a href="#" class="prompt-title-ok">Prompt with text, title and Ok callback</a></p>
+        <p><a href="#" class="prompt-title-ok-cancel">Prompt with text, title, Ok and Cancel callback</a></p>
+      </div>
+      <script type="text/javascript">
+        $(document).on('click','.prompt-ok', function () {
+            $.prompt('What is your name?', function (value) {
+                $.alert('Your name is "' + value + '". You clicked Ok button');
+            });
+        });
+         
+        $(document).on('click','.prompt-ok-cancel', function () {
+            $.prompt('What is your name?', 
+              function (value) {
+                $.alert('Your name is "' + value + '". You clicked Ok button');
+              },
+              function (value) {
+                $.alert('Your name is "' + value + '". You clicked Cancel button');
+              }
+            );
+        });
+        $(document).on('click', '.prompt-title-ok',function () {
+            $.prompt('What is your name?', 'Custom Title', function (value) {
+                $.alert('Your name is "' + value + '". You clicked Ok button');
+            });
+        });
+        $(document).on('click', '.prompt-title-ok-cancel',function () {
+            $.prompt('What is your name?', 'Custom Title', 
+              function (value) {
+                $.alert('Your name is "' + value + '". You clicked Ok button');
+              },
+              function (value) {
+                $.alert('Your name is "' + value + '". You clicked Cancel button');
+              }
+            );
+        });              
+
+      </script>
+    </div>
+  </div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>prompt<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"prompt-ok"</span><span class="nt">&gt;</span>Prompt with text and Ok callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"prompt-ok-cancel"</span><span class="nt">&gt;</span>Prompt with text, Ok and Cancel callbacks<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"prompt-title-ok"</span><span class="nt">&gt;</span>Prompt with text, title and Ok callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"prompt-title-ok-cancel"</span><span class="nt">&gt;</span>Prompt with text, title, Ok and Cancel callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+</article>
+
+<article class="component active">
+  <h3 class="component-title">嵌套Modals</h3>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content-block">
+        <p><a href="#" class="name">What is your name?</a></p>
+      </div>
+      <script type="text/javascript">
+     $(document).on('click','.name', function () {
+          $.prompt('What is your name?', function (value) {
+              $.confirm('Are you sure that your name is ' + value + '?', function () {
+                  $.alert('Ok, your name is "' + value + '"!');
+              });
+          });
+      });
+      </script>    
+    </div>
+  </div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>嵌套Modals<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"name"</span><span class="nt">&gt;</span>What is your name?<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+</article>
+
+<article class="component active">
+  <h3 class="component-title">预加载 Modal (Preloader Modal)</h3>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content-block">
+        <p><a href="#" class="open-preloader">Open Preloader</a></p>
+        <p><a href="#" class="open-preloader-title">Open Preloader with custom title</a></p>
+      </div>
+      <script type="text/javascript">
+        $(document).on('click', '.open-preloader', function () {
+            $.showPreloader();
+            setTimeout(function () {
+                $.hidePreloader();
+            }, 2000);
+        });
+        $(document).on('click','.open-preloader-title', function () {
+            $.showPreloader('Custom Title')
+            setTimeout(function () {
+                $.hidePreloader();
+            }, 2000);
+        }); 
+      </script>    
+    </div>
+  </div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>预加载 Modal (Preloader Modal)<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-preloader"</span><span class="nt">&gt;</span>Open Preloader<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-preloader-title"</span><span class="nt">&gt;</span>Open Preloader with custom title<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+</article>
+
+<article class="component active">
+  <h3 class="component-title">指示器(indicator)</h3>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content-block">
+        <p><a href="#" class="open-indicator">Open Indicator</a></p>
+      </div>
+      <script type="text/javascript">
+        $(document).on('click','.open-indicator', function () {
+            $.showIndicator();
+            setTimeout(function () {
+                $.hideIndicator();
+            }, 2000);
+        });
+        
+      </script>    
+    </div>
+  </div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>指示器(indicator)<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-indicator"</span><span class="nt">&gt;</span>Open Indicator<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+</article>
+
+<article class="component active">
+  <h3 class="component-title">Popup</h3>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content-block">
+        <p><a href="#" class="open-about">Open About Popup </a></p>
+        <p><a href="#" class="open-services">Open Services Popup </a></p>
+      </div>
+      
+      <script type="text/javascript">
+        $(document).on('click','.open-about', function () {
+          $.popup('.popup-about');
+        });
+         
+        $(document).on('click','.open-services', function () {
+          $.popup('.popup-services');
+        });          
+      </script>    
+    </div>
+   <!-- About Popup -->
+    <div class="popup popup-about">
+      <div class="content-block">
+        <p>About</p>
+        <p><a href="#" class="close-popup">Close popup</a></p>
+        <p>Lorem ipsum dolor ...</p>
+      </div>
+    </div>
+    <!-- Services Popup -->
+    <div class="popup popup-services">
+      <div class="content-block">
+        <p>Services</p>
+        <p><a href="#" class="close-popup">Close popup</a></p>
+        <p>Lorem ipsum dolor ...</p>
+      </div>
+    </div>
+  </div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Popup<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-about"</span><span class="nt">&gt;</span>Open About Popup <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-services"</span><span class="nt">&gt;</span>Open Services Popup <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+       
+<span class="nt">&lt;/div&gt;</span> 
+<span class="c">&lt;!-- About Popup --&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"popup popup-about"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;p&gt;</span>About<span class="nt">&lt;/p&gt;</span>
+          <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"close-popup"</span><span class="nt">&gt;</span>Close popup<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+          <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor ...<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="c">&lt;!-- Services Popup --&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"popup popup-services"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;p&gt;</span>Services<span class="nt">&lt;/p&gt;</span>
+          <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"close-popup"</span><span class="nt">&gt;</span>Close popup<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+          <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor ...<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span></code></pre></div>
 </article>
 
     <!-- Table views -->

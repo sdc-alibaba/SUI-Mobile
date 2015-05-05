@@ -9,6 +9,7 @@
 
     $.modalStack = [];
     var t7 = $.Template7;
+
     $.modalStackClearQueue = function () {
         if ($.modalStack.length) {
             ($.modalStack.shift())();
@@ -404,7 +405,7 @@
             $.sizeNavbars(modal.find('.' + $.modal.prototype.defaults.viewClass)[0]);
         }
         $.openModal(modal);
-        $.refreshScroller(modal.find('.page-content'));
+     
         return modal[0];
     };
     $.pickerModal = function (pickerModal, removeOnClose) {
@@ -545,10 +546,81 @@
         }
         return true;
     };
+    function handleClicks(e) {
+        /*jshint validthis:true */
+        var clicked = $(this);
+        var url = clicked.attr('href');
+        var isLink = clicked[0].nodeName.toLowerCase() === 'a';
+        
+        // Check if link is external 
+        if (isLink) {
+            if (clicked.is($.modal.prototype.defaults.externalLinks)) {
+                if(clicked.attr('target') === '_system') {
+                    e.preventDefault();
+                    window.open(url, '_system');
+                }
+                return;
+            }
+        }
+
+        //Collect Clicked data- attributes
+        var clickedData = clicked.dataset();
+
+       
+        
+      
+        // Popover
+        if (clicked.hasClass('open-popover')) {
+            var popover;
+            if (clickedData.popover) {
+                popover = clickedData.popover;
+            }
+            else popover = '.popover';
+            $.popover(popover, clicked);
+        }
+        if (clicked.hasClass('close-popover')) {
+            $.closeModal('.popover.modal-in');
+        }
+        // Popup
+        var popup;
+        if (clicked.hasClass('open-popup')) {
+            if (clickedData.popup) {
+                popup = clickedData.popup;
+            }
+            else popup = '.popup';
+            $.popup(popup);
+        }
+        if (clicked.hasClass('close-popup')) {
+            if (clickedData.popup) {
+                popup = clickedData.popup;
+            }
+            else popup = '.popup.modal-in';
+            $.closeModal(popup);
+        }
+     
+        // Close Modal
+        if (clicked.hasClass('modal-overlay')) {
+            if ($('.modal.modal-in').length > 0 && $.modal.prototype.defaults.modalCloseByOutside)
+                $.closeModal('.modal.modal-in');
+            if ($('.actions-modal.modal-in').length > 0 && $.modal.prototype.defaults.actionsCloseByOutside)
+                $.closeModal('.actions-modal.modal-in');
+            
+            if ($('.popover.modal-in').length > 0) $.closeModal('.popover.modal-in');
+        }
+        if (clicked.hasClass('popup-overlay')) {
+            if ($('.popup.modal-in').length > 0 && $.modal.prototype.defaults.popupCloseByOutside)
+                $.closeModal('.popup.modal-in');
+        }
+
+      
+      
+       
+    }
+    $(document).on('click', 'a, .open-panel, .close-panel, .panel-overlay, .modal-overlay, .popup-overlay, .swipeout-delete, .swipeout-close, .close-popup, .open-popup, .open-popover, .open-login-screen, .close-login-screen .smart-select, .toggle-sortable, .open-sortable, .close-sortable, .accordion-item-toggle, .close-picker', handleClicks);
     $.modal.prototype.defaults = {
         modalButtonOk: '确定',
         modalButtonCancel: '取消',
         modalPreloaderTitle: '加载中',
-        modalContainer : '.device-content'
+        modalContainer : document.body 
     };
 }(Zepto);

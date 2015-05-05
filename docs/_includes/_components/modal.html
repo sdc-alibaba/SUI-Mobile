@@ -12,6 +12,7 @@
       </div>
       <script type="text/javascript">     
         $(function(){
+           $.modal.prototype.defaults.modalContainer = ".device-content";
            $(document).on('click','.alert-text',function () {
               $.alert('Here goes alert text');
            });
@@ -38,21 +39,306 @@
     </div>
   </div>
 
-{% highlight html %}
-    <div class="content-block">
-      <header class="bar bar-nav">
-          <h1 class="title">Push</h1>
-      </header>
-      <div class="content">
-          <p><a href="#" class="alert-text">Alert With Text</a></p>
-          <p><a href="#" class="alert-text-title">Alert With Text and Title</a></p>
-          <p><a href="#" class="alert-text-title-callback">Alert With Text and Title and Callback</a></p>
-          <p><a href="#" class="alert-text-callback">Alert With Text and Callback</a></p>
+{% highlight html %}  
+<header class="bar bar-nav">
+    <h1 class="title">Alert</h1>
+</header>
+<div class="content">
+  <div class="content-block">
+    <p><a href="#" class="alert-text">Alert With Text</a></p>
+    <p><a href="#" class="alert-text-title">Alert With Text and Title</a></p>
+    <p><a href="#" class="alert-text-title-callback">Alert With Text and Title and Callback</a></p>
+    <p><a href="#" class="alert-text-callback">Alert With Text and Callback</a></p>
+  </div>
+
+</div>     
+{% endhighlight %}
+</article>
+
+<article class="component active">
+  <h3 class="component-title">confirm</h3>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content-block">
+        <p><a href="#" class="confirm-ok">Confirm with text and Ok callback</a></p>
+        <p><a href="#" class="confirm-ok-cancel">Confirm with text, Ok and Cancel callbacks</a></p>
+        <p><a href="#" class="confirm-title-ok">Confirm with text, title and Ok callback</a></p>
+        <p><a href="#" class="confirm-title-ok-cancel">Confirm with text, title, Ok and Cancel callback</a></p>
+      </div>
+      <script type="text/javascript">
+        $(document).on('click','.confirm-ok', function () {
+            $.confirm('Are you sure?', function () {
+                $.alert('You clicked Ok button');
+            });
+        });
+         
+        $(document).on('click', '.confirm-ok-cancel',function () {
+            $.confirm('Are you sure?', 
+              function () {
+                $.alert('You clicked Ok button');
+              },
+              function () {
+                $.alert('You clicked Cancel button');
+              }
+            );
+        });
+        $(document).on('click','.confirm-title-ok', function () {
+            $.confirm('Are you sure?', 'Custom Title', function () {
+                $.alert('You clicked Ok button');
+            });
+        });
+        $(document).on('click','.confirm-title-ok-cancel', function () {
+            $.confirm('Are you sure?', 'Custom Title', 
+              function () {
+                $.alert('You clicked Ok button');
+              },
+              function () {
+                $.alert('You clicked Cancel button');
+              }
+            );
+        });            
+
+      </script>
+    </div>
+  </div>
+{% highlight html %}  
+<header class="bar bar-nav">
+    <h1 class="title">confirm</h1>
+</header>
+<div class="content">
+  <div class="content-block">
+    <p><a href="#" class="confirm-ok">Confirm with text and Ok callback</a></p>
+    <p><a href="#" class="confirm-ok-cancel">Confirm with text, Ok and Cancel callbacks</a></p>
+    <p><a href="#" class="confirm-title-ok">Confirm with text, title and Ok callback</a></p>
+    <p><a href="#" class="confirm-title-ok-cancel">Confirm with text, title, Ok and Cancel callback</a></p>
+  </div>
+
+</div>     
+{% endhighlight %}
+</article>
+
+<article class="component active">
+  <h3 class="component-title">prompt</h3>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content-block">
+        <p><a href="#" class="prompt-ok">Prompt with text and Ok callback</a></p>
+        <p><a href="#" class="prompt-ok-cancel">Prompt with text, Ok and Cancel callbacks</a></p>
+        <p><a href="#" class="prompt-title-ok">Prompt with text, title and Ok callback</a></p>
+        <p><a href="#" class="prompt-title-ok-cancel">Prompt with text, title, Ok and Cancel callback</a></p>
+      </div>
+      <script type="text/javascript">
+        $(document).on('click','.prompt-ok', function () {
+            $.prompt('What is your name?', function (value) {
+                $.alert('Your name is "' + value + '". You clicked Ok button');
+            });
+        });
+         
+        $(document).on('click','.prompt-ok-cancel', function () {
+            $.prompt('What is your name?', 
+              function (value) {
+                $.alert('Your name is "' + value + '". You clicked Ok button');
+              },
+              function (value) {
+                $.alert('Your name is "' + value + '". You clicked Cancel button');
+              }
+            );
+        });
+        $(document).on('click', '.prompt-title-ok',function () {
+            $.prompt('What is your name?', 'Custom Title', function (value) {
+                $.alert('Your name is "' + value + '". You clicked Ok button');
+            });
+        });
+        $(document).on('click', '.prompt-title-ok-cancel',function () {
+            $.prompt('What is your name?', 'Custom Title', 
+              function (value) {
+                $.alert('Your name is "' + value + '". You clicked Ok button');
+              },
+              function (value) {
+                $.alert('Your name is "' + value + '". You clicked Cancel button');
+              }
+            );
+        });              
+
+      </script>
+    </div>
+  </div>
+{% highlight html %}  
+<header class="bar bar-nav">
+    <h1 class="title">prompt</h1>
+</header>
+<div class="content">
+  <div class="content-block">
+    <p><a href="#" class="prompt-ok">Prompt with text and Ok callback</a></p>
+    <p><a href="#" class="prompt-ok-cancel">Prompt with text, Ok and Cancel callbacks</a></p>
+    <p><a href="#" class="prompt-title-ok">Prompt with text, title and Ok callback</a></p>
+    <p><a href="#" class="prompt-title-ok-cancel">Prompt with text, title, Ok and Cancel callback</a></p>
+  </div>
+
+</div>     
+{% endhighlight %}
+</article>
+
+<article class="component active">
+  <h3 class="component-title">嵌套Modals</h3>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content-block">
+        <p><a href="#" class="name">What is your name?</a></p>
+      </div>
+      <script type="text/javascript">
+     $(document).on('click','.name', function () {
+          $.prompt('What is your name?', function (value) {
+              $.confirm('Are you sure that your name is ' + value + '?', function () {
+                  $.alert('Ok, your name is "' + value + '"!');
+              });
+          });
+      });
+      </script>    
+    </div>
+  </div>
+{% highlight html %}  
+<header class="bar bar-nav">
+    <h1 class="title">嵌套Modals</h1>
+</header>
+<div class="content">
+  <div class="content-block">
+    <p><a href="#" class="name">What is your name?</a></p>
+  </div>
+</div>     
+{% endhighlight %}
+</article>
+
+<article class="component active">
+  <h3 class="component-title">预加载 Modal (Preloader Modal)</h3>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content-block">
+        <p><a href="#" class="open-preloader">Open Preloader</a></p>
+        <p><a href="#" class="open-preloader-title">Open Preloader with custom title</a></p>
+      </div>
+      <script type="text/javascript">
+        $(document).on('click', '.open-preloader', function () {
+            $.showPreloader();
+            setTimeout(function () {
+                $.hidePreloader();
+            }, 2000);
+        });
+        $(document).on('click','.open-preloader-title', function () {
+            $.showPreloader('Custom Title')
+            setTimeout(function () {
+                $.hidePreloader();
+            }, 2000);
+        }); 
+      </script>    
+    </div>
+  </div>
+{% highlight html %}  
+<header class="bar bar-nav">
+    <h1 class="title">预加载 Modal (Preloader Modal)</h1>
+</header>
+<div class="content">
+  <div class="content-block">
+    <p><a href="#" class="open-preloader">Open Preloader</a></p>
+    <p><a href="#" class="open-preloader-title">Open Preloader with custom title</a></p>
+  </div>
+
+</div>     
+{% endhighlight %}
+</article>
+
+<article class="component active">
+  <h3 class="component-title">指示器(indicator)</h3>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content-block">
+        <p><a href="#" class="open-indicator">Open Indicator</a></p>
+      </div>
+      <script type="text/javascript">
+        $(document).on('click','.open-indicator', function () {
+            $.showIndicator();
+            setTimeout(function () {
+                $.hideIndicator();
+            }, 2000);
+        });
+        
+      </script>    
+    </div>
+  </div>
+{% highlight html %}  
+<header class="bar bar-nav">
+    <h1 class="title">指示器(indicator)</h1>
+</header>
+<div class="content">
+  <div class="content-block">
+    <p><a href="#" class="open-indicator">Open Indicator</a></p>
+  </div>
+</div>     
+{% endhighlight %}
+</article>
+
+<article class="component active">
+  <h3 class="component-title">Popup</h3>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content-block">
+        <p><a href="#" class="open-about">Open About Popup </a></p>
+        <p><a href="#" class="open-services">Open Services Popup </a></p>
       </div>
       
+      <script type="text/javascript">
+        $(document).on('click','.open-about', function () {
+          $.popup('.popup-about');
+        });
+         
+        $(document).on('click','.open-services', function () {
+          $.popup('.popup-services');
+        });          
+      </script>    
     </div>
-    
-     
+   <!-- About Popup -->
+    <div class="popup popup-about">
+      <div class="content-block">
+        <p>About</p>
+        <p><a href="#" class="close-popup">Close popup</a></p>
+        <p>Lorem ipsum dolor ...</p>
+      </div>
+    </div>
+    <!-- Services Popup -->
+    <div class="popup popup-services">
+      <div class="content-block">
+        <p>Services</p>
+        <p><a href="#" class="close-popup">Close popup</a></p>
+        <p>Lorem ipsum dolor ...</p>
+      </div>
+    </div>
+  </div>
+{% highlight html %}  
+<header class="bar bar-nav">
+    <h1 class="title">Popup</h1>
+</header>
+<div class="content">
+    <div class="content-block">
+      <p><a href="#" class="open-about">Open About Popup </a></p>
+      <p><a href="#" class="open-services">Open Services Popup </a></p>
+    </div>
+       
+</div> 
+<!-- About Popup -->
+      <div class="popup popup-about">
+        <div class="content-block">
+          <p>About</p>
+          <p><a href="#" class="close-popup">Close popup</a></p>
+          <p>Lorem ipsum dolor ...</p>
+        </div>
+      </div>
+      <!-- Services Popup -->
+      <div class="popup popup-services">
+        <div class="content-block">
+          <p>Services</p>
+          <p><a href="#" class="close-popup">Close popup</a></p>
+          <p>Lorem ipsum dolor ...</p>
+        </div>
+      </div>    
 {% endhighlight %}
-
 </article>
