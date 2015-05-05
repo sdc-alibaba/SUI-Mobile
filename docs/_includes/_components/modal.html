@@ -1,21 +1,17 @@
 <article class="component" id="modal">
-      <h3 class="component-title">Modal</h3>
-      <p class="component-description">Modal 是从App的主要内容区域上弹出的一小块内容块. Modals经常被用来向用户询问信息，或通知或警告用户。 Modal和其他所有的遮罩图层一样，是所谓的“临时视图”的一部分。</p>
-      <p class="component-description">Modals 可以只用JavaScript打开。所以让我们来看看使用modals的相关APP方法</p>
-</article>
+  <h3 class="component-title">Modal</h3>
+  <p class="component-description">Modal 是从App的主要内容区域上弹出的一小块内容块. Modals经常被用来向用户询问信息，或通知或警告用户。 Modal和其他所有的遮罩图层一样，是所谓的“临时视图”的一部分。</p>
+  <p class="component-description">Modals 可以只用JavaScript打开。所以让我们来看看使用modals的相关APP方法</p>
 
-<article class="component" >
-      <h3 class="component-title">预定义的 Modals</h3>
-      <ul>
-        <li>1.注意，如果你没有指定预定义的modal标题，它讲使用默认的标题("Framework7")，这个可以在App 初始化时，通过传递 modalTitle 参数改变。</li>
-        <li>2.预定义modals的按钮文本(如 "Ok" 和 "Cancel") 也可以在 App 初始化时，通过传递 modalButtonOk 和 modalButtonCancel 参数改变。</li>
-      </ul>
-      <p class="component-description">首先，让我们看看已经预定义的最常用的modal:</p>
-</article>
+  <h3 class="component-title">预定义的 Modals</h3>
+  <ul>
+    <li>1.注意，如果你没有指定预定义的modal标题，它讲使用默认的标题("Framework7")，这个可以在App 初始化时，通过传递 modalTitle 参数改变。</li>
+    <li>2.预定义modals的按钮文本(如 "Ok" 和 "Cancel") 也可以在 App 初始化时，通过传递 modalButtonOk 和 modalButtonCancel 参数改变。</li>
+  </ul>
+  <p class="component-description">首先，让我们看看已经预定义的最常用的modal:</p>
 
-<article class="component active" >
   <h3 class="component-title">Alert</h3>
-  <p class="component-description">我们需要调用以下任一一种App方法来打开Alert modal ：myApp.alert(<span class="sh">text, [title, callbackOk]</span>)</br>or </br>
+  <p class="component-description">我们需要调用以下任一一种App方法来打开Alert modal ：<code>myApp.alert(text, [title, callbackOk])</code></br>or </br>
   myApp.alert(<span class="sh">text, [callbackOk]</span>)</p>
   <ul>
     <li><span class="sh">text</span> - string. Alert文本</li>
@@ -33,6 +29,7 @@
       </div>
       <script type="text/javascript">     
         $(function(){
+          //只在本站例子中需要加这行改变容器，默认document.body
            $.modal.prototype.defaults.modalContainer = ".device-content";
            $(document).on('click','.alert-text',function () {
               $.alert('Here goes alert text');
@@ -60,52 +57,52 @@
     </div>
   </div>
 
-{% highlight html %}  
-<header class="bar bar-nav">
-  <h1 class="title">Alert</h1>
-</header>
-...
-<div class="content">
-  <div class="content-block">
-    <p><a href="#" class="alert-text">Alert With Text</a></p>
-    <p><a href="#" class="alert-text-title">Alert With Text and Title</a></p>
-    <p><a href="#" class="alert-text-title-callback">Alert With Text and Title and Callback</a></p>
-    <p><a href="#" class="alert-text-callback">Alert With Text and Callback</a></p>
-  </div>
-</div> 
- ...
-{% endhighlight %}
-{% highlight js %}  
-$(function(){
-   $.modal.prototype.defaults.modalContainer = ".device-content";
-   $(document).on('click','.alert-text',function () {
-      $.alert('Here goes alert text');
-   });
-   
-  $(document).on('click','.alert-text-title', function () {
-      $.alert('Here goes alert text', 'Custom Title!');
-  });
-   
-  $(document).on('click', '.alert-text-title-callback',function () {
-      $.alert('Here goes alert text', 'Custom Title!', function () {
-          $.alert('Button clicked!')
-      });
-  });
-   
-  $(document).on('click', '.alert-text-callback',function () {
-      $.alert('Here goes alert text', function () {
-          $.alert('Button clicked!')
-      });
-  });
-})
-   
-{% endhighlight %}
+  {% highlight html %}  
+  <header class="bar bar-nav">
+    <h1 class="title">Alert</h1>
+  </header>
+  ...
+  <div class="content">
+    <div class="content-block">
+      <p><a href="#" class="alert-text">Alert With Text</a></p>
+      <p><a href="#" class="alert-text-title">Alert With Text and Title</a></p>
+      <p><a href="#" class="alert-text-title-callback">Alert With Text and Title and Callback</a></p>
+      <p><a href="#" class="alert-text-callback">Alert With Text and Callback</a></p>
+    </div>
+  </div> 
+   ...
+  {% endhighlight %}
+  {% highlight js %}  
+  $(function(){
+     $.modal.prototype.defaults.modalContainer = ".device-content";
+     $(document).on('click','.alert-text',function () {
+        $.alert('Here goes alert text');
+     });
+     
+    $(document).on('click','.alert-text-title', function () {
+        $.alert('Here goes alert text', 'Custom Title!');
+    });
+     
+    $(document).on('click', '.alert-text-title-callback',function () {
+        $.alert('Here goes alert text', 'Custom Title!', function () {
+            $.alert('Button clicked!')
+        });
+    });
+     
+    $(document).on('click', '.alert-text-callback',function () {
+        $.alert('Here goes alert text', function () {
+            $.alert('Button clicked!')
+        });
+    });
+  })
+     
+  {% endhighlight %}
 </article>
 
 <article class="component active">
   <h3 class="component-title">Confirm</h3>
-  <p class="component-description">Confirm modal 经常在需要确认一些行为时被使用. 打开Alert modal同样也需要调用以下任一一种App方法：myApp.confirm(<span class="sh">text, [title, callbackOk, callbackCancel]</span>)</br>or </br>
- myApp.confirm(<span class="sh">text, [callbackOk, callbackCancel]</span>)</p>
+  <p class="component-description">Confirm modal 经常在需要确认一些行为时被使用. 打开Alert modal同样也需要调用以下任一一种App方法：<code>myApp.confirm(text, [title, callbackOk, callbackCancel])</code></br>or </br>
+ <code>myApp.confirm(text, [callbackOk, callbackCancel])</code></p>
   <ul>
     <li><span class="sh">text</span>  - string. Confirm 文本</li>
     <li><span class="sh">title</span> - string. Optional. Confirm modal 标题</li>
@@ -157,60 +154,60 @@ $(function(){
       </script>
     </div>
   </div>
-{% highlight html %}  
-<header class="bar bar-nav">
-  <h1 class="title">Confirm</h1>
-</header>
-...
-<div class="content">
-  <div class="content-block">
-    <p><a href="#" class="confirm-ok">Confirm with text and Ok callback</a></p>
-    <p><a href="#" class="confirm-ok-cancel">Confirm with text, Ok and Cancel callbacks</a></p>
-    <p><a href="#" class="confirm-title-ok">Confirm with text, title and Ok callback</a></p>
-    <p><a href="#" class="confirm-title-ok-cancel">Confirm with text, title, Ok and Cancel callback</a></p>
+  {% highlight html %}  
+  <header class="bar bar-nav">
+    <h1 class="title">Confirm</h1>
+  </header>
+  ...
+  <div class="content">
+    <div class="content-block">
+      <p><a href="#" class="confirm-ok">Confirm with text and Ok callback</a></p>
+      <p><a href="#" class="confirm-ok-cancel">Confirm with text, Ok and Cancel callbacks</a></p>
+      <p><a href="#" class="confirm-title-ok">Confirm with text, title and Ok callback</a></p>
+      <p><a href="#" class="confirm-title-ok-cancel">Confirm with text, title, Ok and Cancel callback</a></p>
+    </div>
   </div>
-</div>
-...
-{% endhighlight %}
-{% highlight js %}  
-$(document).on('click','.confirm-ok', function () {
-    $.confirm('Are you sure?', function () {
-        $.alert('You clicked Ok button');
-    });
-});
- 
-$(document).on('click', '.confirm-ok-cancel',function () {
-    $.confirm('Are you sure?', 
-      function () {
-        $.alert('You clicked Ok button');
-      },
-      function () {
-        $.alert('You clicked Cancel button');
-      }
-    );
-});
-$(document).on('click','.confirm-title-ok', function () {
-    $.confirm('Are you sure?', 'Custom Title', function () {
-        $.alert('You clicked Ok button');
-    });
-});
-$(document).on('click','.confirm-title-ok-cancel', function () {
-    $.confirm('Are you sure?', 'Custom Title', 
-      function () {
-        $.alert('You clicked Ok button');
-      },
-      function () {
-        $.alert('You clicked Cancel button');
-      }
-    );
-});    
-{% endhighlight %}
+  ...
+  {% endhighlight %}
+  {% highlight js %}  
+  $(document).on('click','.confirm-ok', function () {
+      $.confirm('Are you sure?', function () {
+          $.alert('You clicked Ok button');
+      });
+  });
+   
+  $(document).on('click', '.confirm-ok-cancel',function () {
+      $.confirm('Are you sure?', 
+        function () {
+          $.alert('You clicked Ok button');
+        },
+        function () {
+          $.alert('You clicked Cancel button');
+        }
+      );
+  });
+  $(document).on('click','.confirm-title-ok', function () {
+      $.confirm('Are you sure?', 'Custom Title', function () {
+          $.alert('You clicked Ok button');
+      });
+  });
+  $(document).on('click','.confirm-title-ok-cancel', function () {
+      $.confirm('Are you sure?', 'Custom Title', 
+        function () {
+          $.alert('You clicked Ok button');
+        },
+        function () {
+          $.alert('You clicked Cancel button');
+        }
+      );
+  });    
+  {% endhighlight %}
 </article>
 
 <article class="component active">
   <h3 class="component-title">Prompt</h3>
-  <p class="component-description">Prompt modal 经常在需要从用户那里得到一些数据/答案时使用。打开 Prompt modal同样也需要调用以下任一一种App方法：myApp.prompt(<span class="sh">text, [title, callbackOk, callbackCancel]</span>)</br>or </br>
- myApp.prompt(<span class="sh">text, [callbackOk, callbackCancel]</span>)</p>
+  <p class="component-description">Prompt modal 经常在需要从用户那里得到一些数据/答案时使用。打开 Prompt modal同样也需要调用以下任一一种App方法：<code>myApp.prompt(text, [title, callbackOk, callbackCancel])</code></br>or </br>
+ <code>myApp.prompt(text, [callbackOk, callbackCancel])</code></p>
   <ul>
     <li><span class="sh">text</span> - string. Prompt 文本/问题</li>
     <li><span class="sh">title</span>  - string. Optional. Prompt modal 标题</li>
@@ -262,96 +259,151 @@ $(document).on('click','.confirm-title-ok-cancel', function () {
       </script>
     </div>
   </div>
-{% highlight html %}  
-<header class="bar bar-nav">
-  <h1 class="title">Prompt</h1>
-</header>
-...
-<div class="content">
-  <div class="content-block">
-    <p><a href="#" class="prompt-ok">Prompt with text and Ok callback</a></p>
-    <p><a href="#" class="prompt-ok-cancel">Prompt with text, Ok and Cancel callbacks</a></p>
-    <p><a href="#" class="prompt-title-ok">Prompt with text, title and Ok callback</a></p>
-    <p><a href="#" class="prompt-title-ok-cancel">Prompt with text, title, Ok and Cancel callback</a></p>
-  </div>
-</div>  
-...  
-{% endhighlight %}
-{% highlight js %}  
-$(document).on('click','.prompt-ok', function () {
-      $.prompt('What is your name?', function (value) {
-          $.alert('Your name is "' + value + '". You clicked Ok button');
-      });
-  });
-   
-  $(document).on('click','.prompt-ok-cancel', function () {
-      $.prompt('What is your name?', 
-        function (value) {
-          $.alert('Your name is "' + value + '". You clicked Ok button');
-        },
-        function (value) {
-          $.alert('Your name is "' + value + '". You clicked Cancel button');
-        }
-      );
-  });
-  $(document).on('click', '.prompt-title-ok',function () {
-      $.prompt('What is your name?', 'Custom Title', function (value) {
-          $.alert('Your name is "' + value + '". You clicked Ok button');
-      });
-  });
-  $(document).on('click', '.prompt-title-ok-cancel',function () {
-      $.prompt('What is your name?', 'Custom Title', 
-        function (value) {
-          $.alert('Your name is "' + value + '". You clicked Ok button');
-        },
-        function (value) {
-          $.alert('Your name is "' + value + '". You clicked Cancel button');
-        }
-      );
-  });           
-{% endhighlight %}
+  {% highlight html %}  
+  <header class="bar bar-nav">
+    <h1 class="title">Prompt</h1>
+  </header>
+  ...
+  <div class="content">
+    <div class="content-block">
+      <p><a href="#" class="prompt-ok">Prompt with text and Ok callback</a></p>
+      <p><a href="#" class="prompt-ok-cancel">Prompt with text, Ok and Cancel callbacks</a></p>
+      <p><a href="#" class="prompt-title-ok">Prompt with text, title and Ok callback</a></p>
+      <p><a href="#" class="prompt-title-ok-cancel">Prompt with text, title, Ok and Cancel callback</a></p>
+    </div>
+  </div>  
+  ...  
+  {% endhighlight %}
+  {% highlight js %}  
+  $(document).on('click','.prompt-ok', function () {
+        $.prompt('What is your name?', function (value) {
+            $.alert('Your name is "' + value + '". You clicked Ok button');
+        });
+    });
+     
+    $(document).on('click','.prompt-ok-cancel', function () {
+        $.prompt('What is your name?', 
+          function (value) {
+            $.alert('Your name is "' + value + '". You clicked Ok button');
+          },
+          function (value) {
+            $.alert('Your name is "' + value + '". You clicked Cancel button');
+          }
+        );
+    });
+    $(document).on('click', '.prompt-title-ok',function () {
+        $.prompt('What is your name?', 'Custom Title', function (value) {
+            $.alert('Your name is "' + value + '". You clicked Ok button');
+        });
+    });
+    $(document).on('click', '.prompt-title-ok-cancel',function () {
+        $.prompt('What is your name?', 'Custom Title', 
+          function (value) {
+            $.alert('Your name is "' + value + '". You clicked Ok button');
+          },
+          function (value) {
+            $.alert('Your name is "' + value + '". You clicked Cancel button');
+          }
+        );
+    });           
+  {% endhighlight %}
 </article>
 
 <article class="component active">
   <h3 class="component-title">嵌套Modals</h3>
   <p class="component-description">当然,您可能已经注意到,你在任何其他modal回调函数中“嵌套“这个modals</p>
-  <div class="component-example component-example-fullbleed">
+   <div class="component-example component-example-fullbleed">
     <div class="">
       <div class="content-block">
-        <p><a href="#" class="name">What is your name?</a></p>
+        <p><a href="#" class="prompt-ok">Prompt with text and Ok callback</a></p>
+        <p><a href="#" class="prompt-ok-cancel">Prompt with text, Ok and Cancel callbacks</a></p>
+        <p><a href="#" class="prompt-title-ok">Prompt with text, title and Ok callback</a></p>
+        <p><a href="#" class="prompt-title-ok-cancel">Prompt with text, title, Ok and Cancel callback</a></p>
       </div>
       <script type="text/javascript">
-       $(document).on('click','.name', function () {
+        $(document).on('click','.prompt-ok', function () {
             $.prompt('What is your name?', function (value) {
-                $.confirm('Are you sure that your name is ' + value + '?', function () {
-                    $.alert('Ok, your name is "' + value + '"!');
-                });
+                $.alert('Your name is "' + value + '". You clicked Ok button');
             });
         });
-      </script>    
+         
+        $(document).on('click','.prompt-ok-cancel', function () {
+            $.prompt('What is your name?', 
+              function (value) {
+                $.alert('Your name is "' + value + '". You clicked Ok button');
+              },
+              function (value) {
+                $.alert('Your name is "' + value + '". You clicked Cancel button');
+              }
+            );
+        });
+        $(document).on('click', '.prompt-title-ok',function () {
+            $.prompt('What is your name?', 'Custom Title', function (value) {
+                $.alert('Your name is "' + value + '". You clicked Ok button');
+            });
+        });
+        $(document).on('click', '.prompt-title-ok-cancel',function () {
+            $.prompt('What is your name?', 'Custom Title', 
+              function (value) {
+                $.alert('Your name is "' + value + '". You clicked Ok button');
+              },
+              function (value) {
+                $.alert('Your name is "' + value + '". You clicked Cancel button');
+              }
+            );
+        });              
+
+      </script>
     </div>
   </div>
-{% highlight html %}  
-<header class="bar bar-nav">
-  <h1 class="title">嵌套Modals</h1>
-</header>
-...
-<div class="content">
-  <div class="content-block">
-    <p><a href="#" class="name">What is your name?</a></p>
-  </div>
-</div>  
- ...
-{% endhighlight %}
-{% highlight js %} 
-$(document).on('click','.name', function () {
-    $.prompt('What is your name?', function (value) {
-        $.confirm('Are you sure that your name is ' + value + '?', function () {
-            $.alert('Ok, your name is "' + value + '"!');
+  {% highlight html %}  
+  <header class="bar bar-nav">
+    <h1 class="title">Prompt</h1>
+  </header>
+  ...
+  <div class="content">
+    <div class="content-block">
+      <p><a href="#" class="prompt-ok">Prompt with text and Ok callback</a></p>
+      <p><a href="#" class="prompt-ok-cancel">Prompt with text, Ok and Cancel callbacks</a></p>
+      <p><a href="#" class="prompt-title-ok">Prompt with text, title and Ok callback</a></p>
+      <p><a href="#" class="prompt-title-ok-cancel">Prompt with text, title, Ok and Cancel callback</a></p>
+    </div>
+  </div>  
+  ...  
+  {% endhighlight %}
+  {% highlight js %}  
+  $(document).on('click','.prompt-ok', function () {
+        $.prompt('What is your name?', function (value) {
+            $.alert('Your name is "' + value + '". You clicked Ok button');
         });
     });
-}); 
-{% endhighlight %}
+     
+    $(document).on('click','.prompt-ok-cancel', function () {
+        $.prompt('What is your name?', 
+          function (value) {
+            $.alert('Your name is "' + value + '". You clicked Ok button');
+          },
+          function (value) {
+            $.alert('Your name is "' + value + '". You clicked Cancel button');
+          }
+        );
+    });
+    $(document).on('click', '.prompt-title-ok',function () {
+        $.prompt('What is your name?', 'Custom Title', function (value) {
+            $.alert('Your name is "' + value + '". You clicked Ok button');
+        });
+    });
+    $(document).on('click', '.prompt-title-ok-cancel',function () {
+        $.prompt('What is your name?', 'Custom Title', 
+          function (value) {
+            $.alert('Your name is "' + value + '". You clicked Ok button');
+          },
+          function (value) {
+            $.alert('Your name is "' + value + '". You clicked Cancel button');
+          }
+        );
+    });           
+  {% endhighlight %}
 </article>
 
 <article class="component active">
@@ -384,33 +436,33 @@ $(document).on('click','.name', function () {
       </script>    
     </div>
   </div>
-{% highlight html %}  
-<header class="bar bar-nav">
-  <h1 class="title">预加载 Modal (Preloader Modal)</h1>
-</header>
-...
-<div class="content">
-  <div class="content-block">
-    <p><a href="#" class="open-preloader">Open Preloader</a></p>
-    <p><a href="#" class="open-preloader-title">Open Preloader with custom title</a></p>
-  </div>
-</div>  
-...   
-{% endhighlight %}
-{% highlight js %} 
-$(document).on('click', '.open-preloader', function () {
-  $.showPreloader();
-  setTimeout(function () {
-      $.hidePreloader();
-  }, 2000);
-});
-$(document).on('click','.open-preloader-title', function () {
-  $.showPreloader('Custom Title')
-  setTimeout(function () {
-      $.hidePreloader();
-  }, 2000);
-});  
-{% endhighlight %}
+  {% highlight html %}  
+  <header class="bar bar-nav">
+    <h1 class="title">预加载 Modal (Preloader Modal)</h1>
+  </header>
+  ...
+  <div class="content">
+    <div class="content-block">
+      <p><a href="#" class="open-preloader">Open Preloader</a></p>
+      <p><a href="#" class="open-preloader-title">Open Preloader with custom title</a></p>
+    </div>
+  </div>  
+  ...   
+  {% endhighlight %}
+  {% highlight js %} 
+  $(document).on('click', '.open-preloader', function () {
+    $.showPreloader();
+    setTimeout(function () {
+        $.hidePreloader();
+    }, 2000);
+  });
+  $(document).on('click','.open-preloader-title', function () {
+    $.showPreloader('Custom Title')
+    setTimeout(function () {
+        $.hidePreloader();
+    }, 2000);
+  });  
+  {% endhighlight %}
 </article>
 
 <article class="component active">
@@ -434,32 +486,32 @@ $(document).on('click','.open-preloader-title', function () {
       </script>    
     </div>
   </div>
-{% highlight html %}  
-<header class="bar bar-nav">
-    <h1 class="title">指示器(indicator)</h1>
-</header>
-...
-<div class="content">
-  <div class="content-block">
-    <p><a href="#" class="open-indicator">Open Indicator</a></p>
+  {% highlight html %}  
+  <header class="bar bar-nav">
+      <h1 class="title">指示器(indicator)</h1>
+  </header>
+  ...
+  <div class="content">
+    <div class="content-block">
+      <p><a href="#" class="open-indicator">Open Indicator</a></p>
+    </div>
   </div>
-</div>
-...     
-{% endhighlight %}
-{% highlight js %}  
-$(document).on('click','.open-indicator', function () {
-    $.showIndicator();
-    setTimeout(function () {
-        $.hideIndicator();
-    }, 2000);
-});
-{% endhighlight %}
+  ...     
+  {% endhighlight %}
+  {% highlight js %}  
+  $(document).on('click','.open-indicator', function () {
+      $.showIndicator();
+      setTimeout(function () {
+          $.hideIndicator();
+      }, 2000);
+  });
+  {% endhighlight %}
 </article>
 
 <article class="component active">
   <h3 class="component-title">自定义Modals</h3>
   <p class="component-description">Ok, 所有的预定义modals都只是一些适用于特定的场景的方法. 让我们看看如何创建自定义的 modals: </p>
-  <p class="component-description">myApp.modal(<span class="sh">parameters</span>) - 显示 custom modal </p>
+  <p class="component-description"><code>myApp.modal(parameters)</code> - 显示 custom modal </p>
   <ul>
     <li><span class="sh">parameters</span> - object. Modal 的 parameters/options对象</li>
   </ul>
@@ -663,256 +715,253 @@ $(document).on('click','.open-indicator', function () {
       </script>    
     </div>
   </div>
-{% highlight html %}  
-<header class="bar bar-nav">
-    <h1 class="title">自定义Modals</h1>
-</header>
-...
-<div class="content">
-  <div class="content-block">
-    <p><a href="#" class="open-3-modal">Modal With 3 Buttons</a></p>
-    <p><a href="#" class="open-slider-modal">Modal With Slider</a></p>
-    <p><a href="#" class="open-tabs-modal">Modal With Tabs</a></p>
-    <p><a href="#" class="open-vertical-modal">Modal With Vertical Buttons</a></p>
+  {% highlight html %}  
+  <header class="bar bar-nav">
+      <h1 class="title">自定义Modals</h1>
+  </header>
+  ...
+  <div class="content">
+    <div class="content-block">
+      <p><a href="#" class="open-3-modal">Modal With 3 Buttons</a></p>
+      <p><a href="#" class="open-slider-modal">Modal With Slider</a></p>
+      <p><a href="#" class="open-tabs-modal">Modal With Tabs</a></p>
+      <p><a href="#" class="open-vertical-modal">Modal With Vertical Buttons</a></p>
+    </div>
   </div>
-</div>
-... 
-{% endhighlight %}
-{% highlight js %}  
-$(document).on('click','.open-3-modal', function () {
-  $.modal({
-    title:  'Modal with 3 buttons',
-    text: 'Vivamus feugiat diam velit. Maecenas aliquet egestas lacus, eget pretium massa mattis non. Donec volutpat euismod nisl in posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae',
-    buttons: [
-      {
-        text: 'B1',
-        onClick: function() {
-          $.alert('You clicked first button!')
-        }
-      },
-      {
-        text: 'B2',
-        onClick: function() {
-          $.alert('You clicked second button!')
-        }
-      },
-      {
-        text: 'B3',
-        bold: true,
-        onClick: function() {
-          $.alert('You clicked third button!')
-        }
-      },
-    ]
-  })
-  });
-  $(document).on('click','.open-slider-modal', function () {
-  var modal = $.modal({
-    title: 'Awesome Photos?',
-    text: 'What do you think about my photos?',
-    afterText:  '<div class="swiper-container" style="width: auto; margin:5px -15px -15px">'+
-                  '<div class="swiper-pagination"></div>'+
-                  '<div class="swiper-wrapper">'+
-                    '<div class="swiper-slide"><img src="..." height="150" style="display:block"></div>' +
-                    '<div class="swiper-slide"><img src="..." height="150" style="display:block"></div>'+
-                  '</div>'+
-                '</div>',
-    buttons: [
-      {
-        text: 'Bad :('
-      },
-      {
-        text: 'Awesome!',
-        bold: true,
-        onClick: function () {
-          $.alert('Thanks! I know you like it!')
-        }
-      },
-    ]
-  })
-  $.swiper($$(modal).find('.swiper-container'), {pagination: '.swiper-pagination'});
-  });
+  ... 
+  {% endhighlight %}
+  {% highlight js %}  
+  $(document).on('click','.open-3-modal', function () {
+    $.modal({
+      title:  'Modal with 3 buttons',
+      text: 'Vivamus feugiat diam velit. Maecenas aliquet egestas lacus, eget pretium massa mattis non. Donec volutpat euismod nisl in posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae',
+      buttons: [
+        {
+          text: 'B1',
+          onClick: function() {
+            $.alert('You clicked first button!')
+          }
+        },
+        {
+          text: 'B2',
+          onClick: function() {
+            $.alert('You clicked second button!')
+          }
+        },
+        {
+          text: 'B3',
+          bold: true,
+          onClick: function() {
+            $.alert('You clicked third button!')
+          }
+        },
+      ]
+    })
+    });
+    $(document).on('click','.open-slider-modal', function () {
+    var modal = $.modal({
+      title: 'Awesome Photos?',
+      text: 'What do you think about my photos?',
+      afterText:  '<div class="swiper-container" style="width: auto; margin:5px -15px -15px">'+
+                    '<div class="swiper-pagination"></div>'+
+                    '<div class="swiper-wrapper">'+
+                      '<div class="swiper-slide"><img src="..." height="150" style="display:block"></div>' +
+                      '<div class="swiper-slide"><img src="..." height="150" style="display:block"></div>'+
+                    '</div>'+
+                  '</div>',
+      buttons: [
+        {
+          text: 'Bad :('
+        },
+        {
+          text: 'Awesome!',
+          bold: true,
+          onClick: function () {
+            $.alert('Thanks! I know you like it!')
+          }
+        },
+      ]
+    })
+    $.swiper($$(modal).find('.swiper-container'), {pagination: '.swiper-pagination'});
+    });
 
-  $(document).on('click','.open-tabs-modal', function () {
-  $.modal({
-    title:  '<div class="buttons-row">'+
-              '<a href="#tab1" class="button active tab-link">Tab 1</a>'+
-              '<a href="#tab2" class="button tab-link">Tab 2</a>'+
+    $(document).on('click','.open-tabs-modal', function () {
+    $.modal({
+      title:  '<div class="buttons-row">'+
+                '<a href="#tab1" class="button active tab-link">Tab 1</a>'+
+                '<a href="#tab2" class="button tab-link">Tab 2</a>'+
+              '</div>',
+      text: '<div class="tabs">'+
+              '<div class="tab active" id="tab1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis nunc non dolor euismod feugiat. Sed at sapien nisl. Ut et tincidunt metus. Suspendisse nec risus vel sapien placerat tincidunt. Nunc pulvinar urna tortor.</div>'+
+              '<div class="tab" id="tab2">Vivamus feugiat diam velit. Maecenas aliquet egestas lacus, eget pretium massa mattis non. Donec volutpat euismod nisl in posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae</div>'+
             '</div>',
-    text: '<div class="tabs">'+
-            '<div class="tab active" id="tab1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis nunc non dolor euismod feugiat. Sed at sapien nisl. Ut et tincidunt metus. Suspendisse nec risus vel sapien placerat tincidunt. Nunc pulvinar urna tortor.</div>'+
-            '<div class="tab" id="tab2">Vivamus feugiat diam velit. Maecenas aliquet egestas lacus, eget pretium massa mattis non. Donec volutpat euismod nisl in posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae</div>'+
-          '</div>',
-    buttons: [
-      {
-        text: 'Ok, got it',
-        bold: true
-      },
-    ]
-  })
-  });
+      buttons: [
+        {
+          text: 'Ok, got it',
+          bold: true
+        },
+      ]
+    })
+    });
 
-  $(document).on('click','.open-vertical-modal', function () {
-  $.modal({
-    title:  'Vertical Buttons Layout',
-    text: 'Vivamus feugiat diam velit. Maecenas aliquet egestas lacus, eget pretium massa mattis non. Donec volutpat euismod nisl in posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae',
-    verticalButtons: true,
-    buttons: [
-      {
-        text: 'Button 1',
-        onClick: function() {
-          $.alert('You clicked first button!')
-        }
-      },
-      {
-        text: 'Button 2',
-        onClick: function() {
-          $.alert('You clicked second button!')
-        }
-      },
-      {
-        text: 'Button 3',
-        onClick: function() {
-          $.alert('You clicked third button!')
-        }
-      },
-    ]
-  })
-  });
-{% endhighlight %}
-  <h3 class="component-title">用 JavaScript 关闭 Modals</h3>
-  <p class="component-description">任何 Modal 可以用 JavaScript 来关闭，不仅仅是通过点击按钮。因此我们需要看看相关App方法：</p>
-  <p class="component-description">myApp.closeModal(<span class="sh">modal</span>) - 关闭任意 modal</p>
-  <ul>
-    <li><span class="sh">modal</span> - HTMLElement or string ( CSS 选择器). 可选. 除了指定的，任何被打开modal都将被关闭。</li>
-  </ul> 
-   <h3 class="component-title">Modal 事件</h3>
-      <p class="component-description">如果你希望能自定义 modal 模板，你可在 初始化APP 的时候传入一个 modalTemplate 参数。这个参数的值是一个 Template7 模板，当编译该模板的时候会传入一个 groups 参数。</p>
-      <p class="component-description">这个模板可能是这样的：</p>
-{% highlight html %}  
-<div class="modal {{#unless buttons}}modal-no-buttons{{/unless}}">
-  <div class="modal-inner">
-    {{#if title}}
-     <div class="modal-title">{{title}}</div>
+    $(document).on('click','.open-vertical-modal', function () {
+    $.modal({
+      title:  'Vertical Buttons Layout',
+      text: 'Vivamus feugiat diam velit. Maecenas aliquet egestas lacus, eget pretium massa mattis non. Donec volutpat euismod nisl in posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae',
+      verticalButtons: true,
+      buttons: [
+        {
+          text: 'Button 1',
+          onClick: function() {
+            $.alert('You clicked first button!')
+          }
+        },
+        {
+          text: 'Button 2',
+          onClick: function() {
+            $.alert('You clicked second button!')
+          }
+        },
+        {
+          text: 'Button 3',
+          onClick: function() {
+            $.alert('You clicked third button!')
+          }
+        },
+      ]
+    })
+    });
+  {% endhighlight %}
+    <h3 class="component-title">用 JavaScript 关闭 Modals</h3>
+    <p class="component-description">任何 Modal 可以用 JavaScript 来关闭，不仅仅是通过点击按钮。因此我们需要看看相关App方法：</p>
+    <p class="component-description"><code>myApp.closeModal(modal)</code> - 关闭任意 modal</p>
+    <ul>
+      <li><span class="sh">modal</span> - HTMLElement or string ( CSS 选择器). 可选. 除了指定的，任何被打开modal都将被关闭。</li>
+    </ul> 
+     <h3 class="component-title">Modal 事件</h3>
+        <p class="component-description">如果你希望能自定义 modal 模板，你可在 初始化APP 的时候传入一个 modalTemplate 参数。这个参数的值是一个 Template7 模板，当编译该模板的时候会传入一个 groups 参数。</p>
+        <p class="component-description">这个模板可能是这样的：</p>
+  {% highlight html %}  
+  <div class="modal {{#unless buttons}}modal-no-buttons{{/unless}}">
+    <div class="modal-inner">
+      {{#if title}}
+       <div class="modal-title">{{title}}</div>
+      {{/if}}
+      {{#if text}}
+       <div class="modal-text">{{text}}</div>
+      {{/if}}
+      {{#if afterText}}
+      {{afterText}}
+      {{/if}}
+      </div>
+      {{#if buttons}}
+        <div class="modal-buttons">
+      {{#each buttons}}
+        <span class="modal-button {{#if bold}}modal-button-bold{{/if}}">{{text}}</span>
+      {{/each}}
+      </div>
     {{/if}}
-    {{#if text}}
-     <div class="modal-text">{{text}}</div>
-    {{/if}}
-    {{#if afterText}}
-    {{afterText}}
-    {{/if}}
-    </div>
-    {{#if buttons}}
-      <div class="modal-buttons">
-    {{#each buttons}}
-      <span class="modal-button {{#if bold}}modal-button-bold{{/if}}">{{text}}</span>
-    {{/each}}
-    </div>
-  {{/if}}
-</div>  
-{% endhighlight %}
+  </div>  
+  {% endhighlight %}
 </article>
-
-
 
 <article class="component active">
   <h3 class="component-title">Popup</h3>
   <p class="component-description">Popup 是一种可以包含任何Html内容的弹出窗口，从App的主内容区域上弹出。 Popup 和其他所有的遮罩图层一样，是所谓的“临时视图”的一部分。</p>
   <h3 class="component-title">Popup 布局</h3>
   <p class="component-description">Popup 布局相当简单. 你所需要做的就是将 <div class="popup"> 任何需要展示的内容 </div> 放到 body 里正确的位置上:</p>
-{% highlight html %}  
-<div class="modal {{#unless buttons}}modal-no-buttons{{/unless}}">
+  {% highlight html %}  
+  <div class="modal {{#unless buttons}}modal-no-buttons{{/unless}}">
+    ...
+    <div class="popup">
+      Any HTML content goes here
+    </div>
+  </div>  
+  {% endhighlight %}
+   <h3 class="component-title">Popup 尺寸</h3>
+    <p class="component-description">默认的 Popup 在手机和平板(iPad)上尺寸有一些不同。在手机上是全屏的，在平板上宽高都是630px。如果你想使它在平板上也是全屏的，你应该添加额外的"tablet-fullscreen"类到需要的popup中：</p>
+  {% highlight html %}  
+  <div class="modal {{#unless buttons}}modal-no-buttons{{/unless}}">
+    ...
+    <!-- This popup has fullscreen size on tablets -->
+    <div class="popup tablet-fullscreen">
+      Any HTML content goes here
+    </div>
+  </div>  
+  {% endhighlight %}
+    <h3 class="component-title">打开和关闭 Popup</h3>
+    <h4 class="component-title">通过HTML</h4>
+    <p class="component-description">可以通过在链接上使用特定的类和data属性打开和关闭所需的popups：</p>
+    <ul>
+      <li>为了打开popup，我们需要添加 "open-popup" 类到任意 HTML 元素上 (最好是链接)</li>
+      <li>为了关闭popup，我们需要添加 "close-popup" 类到任意 HTML 元素上 (最好是链接)</li>
+      <li>如果你的App里有超过一个popups, 你需要指定适当popup，则需添加额外的属性 data-popup=".my-popup" 到这个 HTML 元素上</li>
+    </ul>
+    <p class="component-description">根据上面的注意点：</p>
+    <div class="component-example component-example-fullbleed">
+      <div class="">
+        <div class="content-block">
+          <!-- In data-popup attribute we specify CSS selector of popup we need to open -->
+          <p><a href="#" data-popup=".popup-about" class="open-popup">Open About Popup </a></p>
+          <p><a href="#" data-popup=".popup-services" class="open-popup">Open Services Popup </a></p>
+        </div>
+      </div>
+     <!-- About Popup -->
+      <div class="popup popup-about">
+        <div class="content-block">
+          <p>About</p>
+          <p><a href="#" class="close-popup">Close popup</a></p>
+          <p>Lorem ipsum dolor ...</p>
+        </div>
+      </div>
+      <!-- Services Popup -->
+      <div class="popup popup-services">
+        <div class="content-block">
+          <p>Services</p>
+          <p><a href="#" class="close-popup">Close popup</a></p>
+          <p>Lorem ipsum dolor ...</p>
+        </div>
+      </div>
+    </div>
+  {% highlight html %}  
+  <header class="bar bar-nav">
+      <h1 class="title">Popup(HTML)</h1>
+  </header>
   ...
-  <div class="popup">
-    Any HTML content goes here
-  </div>
-</div>  
-{% endhighlight %}
- <h3 class="component-title">Popup 尺寸</h3>
-  <p class="component-description">默认的 Popup 在手机和平板(iPad)上尺寸有一些不同。在手机上是全屏的，在平板上宽高都是630px。如果你想使它在平板上也是全屏的，你应该添加额外的"tablet-fullscreen"类到需要的popup中：</p>
-{% highlight html %}  
-<div class="modal {{#unless buttons}}modal-no-buttons{{/unless}}">
-  ...
-  <!-- This popup has fullscreen size on tablets -->
-  <div class="popup tablet-fullscreen">
-    Any HTML content goes here
-  </div>
-</div>  
-{% endhighlight %}
-  <h3 class="component-title">打开和关闭 Popup</h3>
-  <h4 class="component-title">通过HTML</h4>
-  <p class="component-description">可以通过在链接上使用特定的类和data属性打开和关闭所需的popups：</p>
-  <ul>
-    <li>为了打开popup，我们需要添加 "open-popup" 类到任意 HTML 元素上 (最好是链接)</li>
-    <li>为了关闭popup，我们需要添加 "close-popup" 类到任意 HTML 元素上 (最好是链接)</li>
-    <li>如果你的App里有超过一个popups, 你需要指定适当popup，则需添加额外的属性 data-popup=".my-popup" 到这个 HTML 元素上</li>
-  </ul>
-  <p class="component-description">根据上面的注意点：</p>
-  <div class="component-example component-example-fullbleed">
-    <div class="">
+  <div class="content">
       <div class="content-block">
-        <!-- In data-popup attribute we specify CSS selector of popup we need to open -->
-        <p><a href="#" data-popup=".popup-about" class="open-popup">Open About Popup </a></p>
-        <p><a href="#" data-popup=".popup-services" class="open-popup">Open Services Popup </a></p>
+        <p><a href="#" class="open-about">Open About Popup </a></p>
+        <p><a href="#" class="open-services">Open Services Popup </a></p>
       </div>
-    </div>
-   <!-- About Popup -->
-    <div class="popup popup-about">
-      <div class="content-block">
-        <p>About</p>
-        <p><a href="#" class="close-popup">Close popup</a></p>
-        <p>Lorem ipsum dolor ...</p>
-      </div>
-    </div>
-    <!-- Services Popup -->
-    <div class="popup popup-services">
-      <div class="content-block">
-        <p>Services</p>
-        <p><a href="#" class="close-popup">Close popup</a></p>
-        <p>Lorem ipsum dolor ...</p>
-      </div>
-    </div>
-  </div>
-{% highlight html %}  
-<header class="bar bar-nav">
-    <h1 class="title">Popup(HTML)</h1>
-</header>
-...
-<div class="content">
+         
+  </div> 
+  <!-- About Popup -->
+  <div class="popup popup-about">
     <div class="content-block">
-      <p><a href="#" class="open-about">Open About Popup </a></p>
-      <p><a href="#" class="open-services">Open Services Popup </a></p>
+      <p>About</p>
+      <p><a href="#" class="close-popup">Close popup</a></p>
+      <p>Lorem ipsum dolor ...</p>
     </div>
-       
-</div> 
-<!-- About Popup -->
-<div class="popup popup-about">
-  <div class="content-block">
-    <p>About</p>
-    <p><a href="#" class="close-popup">Close popup</a></p>
-    <p>Lorem ipsum dolor ...</p>
   </div>
-</div>
-<!-- Services Popup -->
-<div class="popup popup-services">
-  <div class="content-block">
-    <p>Services</p>
-    <p><a href="#" class="close-popup">Close popup</a></p>
-    <p>Lorem ipsum dolor ...</p>
-  </div>
-</div>  
-{% endhighlight %}
+  <!-- Services Popup -->
+  <div class="popup popup-services">
+    <div class="content-block">
+      <p>Services</p>
+      <p><a href="#" class="close-popup">Close popup</a></p>
+      <p>Lorem ipsum dolor ...</p>
+    </div>
+  </div>  
+  {% endhighlight %}
 </article>
-
 
 <article class="component active">
   <h4 class="component-title">使用 JavaScript</h4>
   <p class="component-description">我们也可以用使用JavaScript来打开和关闭Popups ，因此我们需要看一下相关的App方法：</p>
-  <p class="component-description">myApp.popup(<span class="sh">popup</span>) - 打开 Popup</p>
+  <p class="component-description"><code>myApp.popup(popup)</code> - 打开 Popup</p>
   <ul>
     <li><span class="sh">popup</span> - HTML元素 或者 字符串 (需要打开的popup的 CSS 选择器) . 必需</li>
   </ul>
-  <p class="component-description">myApp.closeModal(<span class="sh">popup</span>) - 关闭 Popup</p>
+  <p class="component-description"><code>myApp.closeModal(popup)</code> - 关闭 Popup</p>
   <ul>
     <li><span class="sh">popup</span> - HTML元素 或者 字符串 (需要打开的popup的 CSS 选择器). 可选. 如果没有设置这个值，任何打开着的Popup/Modal 都将被关闭</li>
   </ul>
@@ -950,43 +999,166 @@ $(document).on('click','.open-3-modal', function () {
       </div>
     </div>
   </div>
-{% highlight html %}  
-<header class="bar bar-nav">
-    <h1 class="title">Popup(JavaScript)</h1>
-</header>
-...
-<div class="content">
+  {% highlight html %}  
+  <header class="bar bar-nav">
+      <h1 class="title">Popup(JavaScript)</h1>
+  </header>
+  ...
+  <div class="content">
+      <div class="content-block">
+        <p><a href="#" class="open-about">Open About Popup </a></p>
+        <p><a href="#" class="open-services">Open Services Popup </a></p>
+      </div>
+         
+  </div> 
+  <!-- About Popup -->
+  <div class="popup popup-about">
     <div class="content-block">
-      <p><a href="#" class="open-about">Open About Popup </a></p>
-      <p><a href="#" class="open-services">Open Services Popup </a></p>
+      <p>About</p>
+      <p><a href="#" class="close-popup">Close popup</a></p>
+      <p>Lorem ipsum dolor ...</p>
     </div>
-       
-</div> 
-<!-- About Popup -->
-<div class="popup popup-about">
-  <div class="content-block">
-    <p>About</p>
-    <p><a href="#" class="close-popup">Close popup</a></p>
-    <p>Lorem ipsum dolor ...</p>
   </div>
-</div>
-<!-- Services Popup -->
-<div class="popup popup-services">
-  <div class="content-block">
-    <p>Services</p>
-    <p><a href="#" class="close-popup">Close popup</a></p>
-    <p>Lorem ipsum dolor ...</p>
-  </div>
-</div>  
+  <!-- Services Popup -->
+  <div class="popup popup-services">
+    <div class="content-block">
+      <p>Services</p>
+      <p><a href="#" class="close-popup">Close popup</a></p>
+      <p>Lorem ipsum dolor ...</p>
+    </div>
+  </div>  
 
-{% endhighlight %}
-{% highlight html %}  
-$(document).on('click','.open-about', function () {
-  $.popup('.popup-about');
-});
- 
-$(document).on('click','.open-services', function () {
-  $.popup('.popup-services');
-});   
-{% endhighlight %}
+  {% endhighlight %}
+  {% highlight js %}  
+  $(document).on('click','.open-about', function () {
+    $.popup('.popup-about');
+  });
+   
+  $(document).on('click','.open-services', function () {
+    $.popup('.popup-services');
+  });   
+  {% endhighlight %}
 </article>
+
+<article class="component active">
+  <h3 class="component-title">Popup 事件</h3>
+  <p class="component-description">Popup 和 Modals有一样的事件, 如果你需要在打开/关闭popup时使用JavaScript做一些事情的时候，这些事件会很有用。</p>
+  <table class="events-table">
+    <thead>
+      <tr>
+        <th>Event（事件）</th>
+        <th>Target（目标）</th>
+        <th>Description（描述）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>open</td>
+        <td>Popup Element<span>&lt;div class="popup"&gt;</span></td>
+        <td>当 Popup 开始打开动画时，事件将被触发。</td>
+      </tr>
+      <tr>
+        <td>opened</td>
+        <td>Popup Element<span>&lt;div class="popup"&gt;</span></td>
+        <td>当 Popup 完成打开动画时，事件将被触发。</td>
+      </tr>
+      <tr>
+        <td>close</td>
+        <td>Popup Element<span>&lt;div class="popup"&gt;</span></td>
+        <td>当 Popup 开始结束动画时，事件将被触发。</td>
+      </tr>
+      <tr>
+        <td>closed</td>
+        <td>Popup Element<span>&lt;div class="popup"&gt;</span></td>
+        <td>当 Popup 完成结束动画后，事件将被触发。</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content">
+        <div class="content-block">
+          <!-- In data-popup attribute we specify CSS selector of popup we need to open -->
+          <p><a href="#" data-popup=".popup-about" class="open-popup">Open About Popup </a></p>
+          <p><a href="#" data-popup=".popup-services" class="open-popup">Open Services Popup </a></p>
+        </div>
+      </div>
+      <script type="text/javascript">
+        $(document).on('click','.popup-about', function () {
+          console.log('About Popup opened')
+        });
+        $(document).on('click','.popup-about', function () {
+          console.log('About Popup is closing')
+        });
+        $(document).on('click','.popup-services', function () {
+          console.log('Services Popup is opening')
+        });
+        $(document).on('click','.popup-services', function () {
+          console.log('Services Popup is closed')
+        });            
+      </script>    
+    </div>
+   <!-- About Popup -->
+    <div class="popup popup-about">
+      <div class="content-block">
+        <p>About</p>
+        <p><a href="#" class="close-popup">Close popup</a></p>
+        <p>Lorem ipsum dolor ...</p>
+      </div>
+      
+    </div>
+    <!-- Services Popup -->
+    <div class="popup popup-services">
+      <div class="content-block">
+        <p>Services</p>
+        <p><a href="#" class="close-popup">Close popup</a></p>
+        <p>Lorem ipsum dolor ...</p>
+      </div>
+    </div>
+  </div>
+  {% highlight html %}  
+  <header class="bar bar-nav">
+      <h1 class="title">Popup事件</h1>
+  </header>
+  ...
+  <div class="content">
+    <div class="content-block">
+      <!-- In data-popup attribute we specify CSS selector of popup we need to open -->
+      <p><a href="#" data-popup=".popup-about" class="open-popup">Open About Popup </a></p>
+      <p><a href="#" data-popup=".popup-services" class="open-popup">Open Services Popup </a></p>
+    </div>
+  </div>
+  <!-- About Popup -->
+  <div class="popup popup-about">
+    <div class="content-block">
+      <p>About</p>
+      <p><a href="#" class="close-popup">Close popup</a></p>
+      <p>Lorem ipsum dolor ...</p>
+    </div>
+  </div>
+  <!-- Services Popup -->
+  <div class="popup popup-services">
+    <div class="content-block">
+      <p>Services</p>
+      <p><a href="#" class="close-popup">Close popup</a></p>
+      <p>Lorem ipsum dolor ...</p>
+    </div>
+  </div>  
+
+  {% endhighlight %}
+  {% highlight js %}  
+  $(document).on('click','.popup-about', function () {
+    console.log('About Popup opened')
+  });
+  $(document).on('click','.popup-about', function () {
+    console.log('About Popup is closing')
+  });
+  $(document).on('click','.popup-services', function () {
+    console.log('Services Popup is opening')
+  });
+  $(document).on('click','.popup-services', function () {
+    console.log('Services Popup is closed')
+  });    
+  {% endhighlight %}
+</article>
+
