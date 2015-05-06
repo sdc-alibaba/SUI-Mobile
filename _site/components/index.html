@@ -877,6 +877,7 @@
   <span class="nt">&lt;/div&gt;</span> 
    ...</code></pre></div>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+     <span class="c1">//只在本站例子中需要加这行改变容器，默认document.body</span>
      <span class="nx">$</span><span class="p">.</span><span class="nx">modal</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">modalContainer</span> <span class="o">=</span> <span class="s2">".device-content"</span><span class="p">;</span>
      <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.alert-text'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
         <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Here goes alert text'</span><span class="p">);</span>
@@ -905,10 +906,10 @@
   <p class="component-description">Confirm modal 经常在需要确认一些行为时被使用. 打开Alert modal同样也需要调用以下任一一种App方法：<code>myApp.confirm(text, [title, callbackOk, callbackCancel])</code></br>或者 </br>
  <code>myApp.confirm(text, [callbackOk, callbackCancel])</code></p>
   <ul>
-    <li><span class="sh">text</span>  - string. Confirm 文本</li>
-    <li><span class="sh">title</span> - string. Optional. Confirm modal 标题</li>
-    <li><span class="sh">callbackOk</span>  - function. Optional. 在 Confirm modal下，当用户点击“Ok”按钮时，回调函数将被执行。(当用户确认操作）</li>
-    <li><span class="sh">callbackCancel</span>   - function. Optional. 在 Confirm modal下，当用户点击“Cancel”按钮时，回调函数将被执行。(当用户不想进行操作)</li>
+    <li><code>text  - string. Confirm 文本</code></li>
+    <li><code>title - string. Optional</code>. Confirm modal 标题</li>
+    <li><scode>callbackOk  - function. Optional</code>. 在 Confirm modal下，当用户点击“Ok”按钮时，回调函数将被执行。(当用户确认操作）</li>
+    <li><code>callbackCancel  - function. Optional</code>. 在 Confirm modal下，当用户点击“Cancel”按钮时，回调函数将被执行。(当用户不想进行操作)</li>
   </ul>
   <p class="component-description">该方法返回动态创建的modal的HTML元素。</p>
   <div class="component-example component-example-fullbleed">
@@ -1006,10 +1007,10 @@
   <p class="component-description">Prompt modal 经常在需要从用户那里得到一些数据/答案时使用。打开 Prompt modal同样也需要调用以下任一一种App方法：<code>myApp.prompt(text, [title, callbackOk, callbackCancel])</code></br>或者</br>
  <code>myApp.prompt(text, [callbackOk, callbackCancel])</code></p>
   <ul>
-    <li><span class="sh">text</span> - string. Prompt 文本/问题</li>
-    <li><span class="sh">title</span>  - string. Optional. Prompt modal 标题</li>
-    <li><span class="sh">callbackOk</span>  - function. Optional. 在 Prompt modal下，当用户点击“Ok”按钮时，回调函数将被执行。回调函数的参数是输入框的值</li>
-    <li><span class="sh">callbackCancel</span> - function. Optional. 在 Prompt modal下，当用户点击“Cancel”按钮时，回调函数将被执行。回调函数的参数是输入框的值</li>
+    <li><code>text - string</code>. Prompt 文本/问题</li>
+    <li><code>title  - string</code>. Optional. Prompt modal 标题</li>
+    <li><code>callbackOk  - function</code>. Optional. 在 Prompt modal下，当用户点击“Ok”按钮时，回调函数将被执行。回调函数的参数是输入框的值</li>
+    <li><code>callbackCancel - function</code>. Optional. 在 Prompt modal下，当用户点击“Cancel”按钮时，回调函数将被执行。回调函数的参数是输入框的值</li>
   </ul>
   <p class="component-description">该方法返回动态创建的modal的HTML元素。</p>
   <div class="component-example component-example-fullbleed">
@@ -1197,9 +1198,9 @@
 
 <article class="component active">
   <h3 class="component-title">预加载 Modal (Preloader Modal)</h3>
-  <p class="component-description">预加载 Modal 用来提示一些后台活动（像Ajax请求）和阻止在这个活动期间的任何用户操作。 打开预加载 modal 我们也需要调用适当的App方法: myApp.show预加载(<span class="sh">[title]</span>)- 显示 预加载 modal</p>
+  <p class="component-description">预加载 Modal 用来提示一些后台活动（像Ajax请求）和阻止在这个活动期间的任何用户操作。 打开预加载 modal 我们也需要调用适当的App方法: myApp.show预加载(<code>[title]</code>)- 显示 预加载 modal</p>
   <ul>
-    <li><span class="sh">title</span>  - string. Optional. 预加载 modal 标题. 默认（没有指定）的时候，它等同于 "Loading...". 你可以在App初始化时通过 modal预加载Title 参数改变默认的 预加载 标题。</li>
+    <li><code>title  - string. Optional</code>. 预加载 modal 标题. 默认（没有指定）的时候，它等同于 "Loading...". 你可以在App初始化时通过 modal预加载Title 参数改变默认的 预加载 标题。</li>
   </ul>
   <p class="component-description">该方法返回动态创建的modal的HTML元素。</p>
   <p class="component-description">myApp.hide预加载() - 隐藏/关闭 预加载 modal. 因为 预加载 modal 没有任何按钮, 它应该用 JavaScript 来关闭</p>
@@ -1294,7 +1295,7 @@
   <p class="component-description">Ok, 所有的预定义modals都只是一些适用于特定的场景的方法. 让我们看看如何创建自定义的 modals: </p>
   <p class="component-description"><code>myApp.modal(parameters)</code> - 显示 custom modal </p>
   <ul>
-    <li><span class="sh">parameters</span> - object. Modal 的 parameters/options对象</li>
+    <li><code>parameters - object</code>. Modal 的 parameters/options对象</li>
   </ul>
   <p class="component-description">该方法返回动态创建的modal的HTML元素。 </p>
   <p class="component-description">这里有 Modal 的参数列表: </p>
@@ -1613,7 +1614,7 @@
     <p class="component-description">任何 Modal 可以用 JavaScript 来关闭，不仅仅是通过点击按钮。因此我们需要看看相关App方法：</p>
     <p class="component-description"><code>myApp.closeModal(modal)</code> - 关闭任意 modal</p>
     <ul>
-      <li><span class="sh">modal</span> - HTMLElement or string ( CSS 选择器). 可选. 除了指定的，任何被打开modal都将被关闭。</li>
+      <li><code>modal - HTMLElement or string ( CSS 选择器)</code>. 可选. 除了指定的，任何被打开modal都将被关闭。</li>
     </ul> 
      <h3 class="component-title">Modal 事件</h3>
         <p class="component-description">如果你希望能自定义 modal 模板，你可在 初始化APP 的时候传入一个 modalTemplate 参数。这个参数的值是一个 Template7 模板，当编译该模板的时候会传入一个 groups 参数。</p>
@@ -1728,11 +1729,11 @@
   <p class="component-description">我们也可以用使用JavaScript来打开和关闭Popups ，因此我们需要看一下相关的App方法：</p>
   <p class="component-description"><code>myApp.popup(popup)</code> - 打开 Popup</p>
   <ul>
-    <li><span class="sh">popup</span> - HTML元素 或者 字符串 (需要打开的popup的 CSS 选择器) . 必需</li>
+    <li><code>popup - HTML元素 或者 字符串 (需要打开的popup的 CSS 选择器) </code>. 必需</li>
   </ul>
   <p class="component-description"><code>myApp.closeModal(popup)</code> - 关闭 Popup</p>
   <ul>
-    <li><span class="sh">popup</span> - HTML元素 或者 字符串 (需要打开的popup的 CSS 选择器). 可选. 如果没有设置这个值，任何打开着的Popup/Modal 都将被关闭</li>
+    <li><code>popup - HTML元素 或者 字符串 (需要打开的popup的 CSS 选择器)</code>. 可选. 如果没有设置这个值，任何打开着的Popup/Modal 都将被关闭</li>
   </ul>
   <div class="component-example component-example-fullbleed">
     <div class="">
