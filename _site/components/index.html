@@ -1071,130 +1071,39 @@
   <span class="nt">&lt;/div&gt;</span>  
   ...</code></pre></div>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.prompt-ok'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">.</span><span class="nx">prompt</span><span class="p">(</span><span class="s1">'What is your name?'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Ok button'</span><span class="p">);</span>
-        <span class="p">});</span>
-    <span class="p">});</span>
-     
-    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.prompt-ok-cancel'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">.</span><span class="nx">prompt</span><span class="p">(</span><span class="s1">'What is your name?'</span><span class="p">,</span> 
-          <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Ok button'</span><span class="p">);</span>
-          <span class="p">},</span>
-          <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Cancel button'</span><span class="p">);</span>
-          <span class="p">}</span>
-        <span class="p">);</span>
-    <span class="p">});</span>
-    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'.prompt-title-ok'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">.</span><span class="nx">prompt</span><span class="p">(</span><span class="s1">'What is your name?'</span><span class="p">,</span> <span class="s1">'Custom Title'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Ok button'</span><span class="p">);</span>
-        <span class="p">});</span>
-    <span class="p">});</span>
-    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'.prompt-title-ok-cancel'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">.</span><span class="nx">prompt</span><span class="p">(</span><span class="s1">'What is your name?'</span><span class="p">,</span> <span class="s1">'Custom Title'</span><span class="p">,</span> 
-          <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Ok button'</span><span class="p">);</span>
-          <span class="p">},</span>
-          <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Cancel button'</span><span class="p">);</span>
-          <span class="p">}</span>
-        <span class="p">);</span>
-    <span class="p">});</span></code></pre></div>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">prompt</span><span class="p">(</span><span class="s1">'What is your name?'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Ok button'</span><span class="p">);</span>
+      <span class="p">});</span>
+  <span class="p">});</span>
+   
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.prompt-ok-cancel'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">prompt</span><span class="p">(</span><span class="s1">'What is your name?'</span><span class="p">,</span> 
+        <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Ok button'</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Cancel button'</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">);</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'.prompt-title-ok'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">prompt</span><span class="p">(</span><span class="s1">'What is your name?'</span><span class="p">,</span> <span class="s1">'Custom Title'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Ok button'</span><span class="p">);</span>
+      <span class="p">});</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'.prompt-title-ok-cancel'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">prompt</span><span class="p">(</span><span class="s1">'What is your name?'</span><span class="p">,</span> <span class="s1">'Custom Title'</span><span class="p">,</span> 
+        <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Ok button'</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Cancel button'</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">);</span>
+  <span class="p">});</span></code></pre></div>
 </article>
 
-<article class="component active">
-  <h3 class="component-title">嵌套Modals</h3>
-  <p class="component-description">当然,您可能已经注意到,你在任何其他modal回调函数中“嵌套“这个modals</p>
-   <div class="component-example component-example-fullbleed">
-    <div class="">
-      <div class="content-block">
-        <p><a href="#" class="prompt-ok">Prompt with text and Ok callback</a></p>
-        <p><a href="#" class="prompt-ok-cancel">Prompt with text, Ok and Cancel callbacks</a></p>
-        <p><a href="#" class="prompt-title-ok">Prompt with text, title and Ok callback</a></p>
-        <p><a href="#" class="prompt-title-ok-cancel">Prompt with text, title, Ok and Cancel callback</a></p>
-      </div>
-      <script type="text/javascript">
-        $(document).on('click','.prompt-ok', function () {
-            $.prompt('What is your name?', function (value) {
-                $.alert('Your name is "' + value + '". You clicked Ok button');
-            });
-        });
-         
-        $(document).on('click','.prompt-ok-cancel', function () {
-            $.prompt('What is your name?', 
-              function (value) {
-                $.alert('Your name is "' + value + '". You clicked Ok button');
-              },
-              function (value) {
-                $.alert('Your name is "' + value + '". You clicked Cancel button');
-              }
-            );
-        });
-        $(document).on('click', '.prompt-title-ok',function () {
-            $.prompt('What is your name?', 'Custom Title', function (value) {
-                $.alert('Your name is "' + value + '". You clicked Ok button');
-            });
-        });
-        $(document).on('click', '.prompt-title-ok-cancel',function () {
-            $.prompt('What is your name?', 'Custom Title', 
-              function (value) {
-                $.alert('Your name is "' + value + '". You clicked Ok button');
-              },
-              function (value) {
-                $.alert('Your name is "' + value + '". You clicked Cancel button');
-              }
-            );
-        });              
 
-      </script>
-    </div>
-  </div>
-  <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Prompt<span class="nt">&lt;/h1&gt;</span>
-  <span class="nt">&lt;/header&gt;</span>
-  ...
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"prompt-ok"</span><span class="nt">&gt;</span>Prompt with text and Ok callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"prompt-ok-cancel"</span><span class="nt">&gt;</span>Prompt with text, Ok and Cancel callbacks<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"prompt-title-ok"</span><span class="nt">&gt;</span>Prompt with text, title and Ok callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"prompt-title-ok-cancel"</span><span class="nt">&gt;</span>Prompt with text, title, Ok and Cancel callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>  
-  ...</code></pre></div>
-  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.prompt-ok'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">.</span><span class="nx">prompt</span><span class="p">(</span><span class="s1">'What is your name?'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Ok button'</span><span class="p">);</span>
-        <span class="p">});</span>
-    <span class="p">});</span>
-     
-    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.prompt-ok-cancel'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">.</span><span class="nx">prompt</span><span class="p">(</span><span class="s1">'What is your name?'</span><span class="p">,</span> 
-          <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Ok button'</span><span class="p">);</span>
-          <span class="p">},</span>
-          <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Cancel button'</span><span class="p">);</span>
-          <span class="p">}</span>
-        <span class="p">);</span>
-    <span class="p">});</span>
-    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'.prompt-title-ok'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">.</span><span class="nx">prompt</span><span class="p">(</span><span class="s1">'What is your name?'</span><span class="p">,</span> <span class="s1">'Custom Title'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Ok button'</span><span class="p">);</span>
-        <span class="p">});</span>
-    <span class="p">});</span>
-    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'.prompt-title-ok-cancel'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">.</span><span class="nx">prompt</span><span class="p">(</span><span class="s1">'What is your name?'</span><span class="p">,</span> <span class="s1">'Custom Title'</span><span class="p">,</span> 
-          <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Ok button'</span><span class="p">);</span>
-          <span class="p">},</span>
-          <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Cancel button'</span><span class="p">);</span>
-          <span class="p">}</span>
-        <span class="p">);</span>
-    <span class="p">});</span></code></pre></div>
-</article>
 
 <article class="component active">
   <h3 class="component-title">预加载 Modal (Preloader Modal)</h3>

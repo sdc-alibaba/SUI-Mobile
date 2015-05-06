@@ -277,135 +277,40 @@
   {% endhighlight %}
   {% highlight js %}  
   $(document).on('click','.prompt-ok', function () {
-        $.prompt('What is your name?', function (value) {
-            $.alert('Your name is "' + value + '". You clicked Ok button');
-        });
-    });
-     
-    $(document).on('click','.prompt-ok-cancel', function () {
-        $.prompt('What is your name?', 
-          function (value) {
-            $.alert('Your name is "' + value + '". You clicked Ok button');
-          },
-          function (value) {
-            $.alert('Your name is "' + value + '". You clicked Cancel button');
-          }
-        );
-    });
-    $(document).on('click', '.prompt-title-ok',function () {
-        $.prompt('What is your name?', 'Custom Title', function (value) {
-            $.alert('Your name is "' + value + '". You clicked Ok button');
-        });
-    });
-    $(document).on('click', '.prompt-title-ok-cancel',function () {
-        $.prompt('What is your name?', 'Custom Title', 
-          function (value) {
-            $.alert('Your name is "' + value + '". You clicked Ok button');
-          },
-          function (value) {
-            $.alert('Your name is "' + value + '". You clicked Cancel button');
-          }
-        );
-    });           
+      $.prompt('What is your name?', function (value) {
+          $.alert('Your name is "' + value + '". You clicked Ok button');
+      });
+  });
+   
+  $(document).on('click','.prompt-ok-cancel', function () {
+      $.prompt('What is your name?', 
+        function (value) {
+          $.alert('Your name is "' + value + '". You clicked Ok button');
+        },
+        function (value) {
+          $.alert('Your name is "' + value + '". You clicked Cancel button');
+        }
+      );
+  });
+  $(document).on('click', '.prompt-title-ok',function () {
+      $.prompt('What is your name?', 'Custom Title', function (value) {
+          $.alert('Your name is "' + value + '". You clicked Ok button');
+      });
+  });
+  $(document).on('click', '.prompt-title-ok-cancel',function () {
+      $.prompt('What is your name?', 'Custom Title', 
+        function (value) {
+          $.alert('Your name is "' + value + '". You clicked Ok button');
+        },
+        function (value) {
+          $.alert('Your name is "' + value + '". You clicked Cancel button');
+        }
+      );
+  });           
   {% endhighlight %}
 </article>
 
-<article class="component active">
-  <h3 class="component-title">嵌套Modals</h3>
-  <p class="component-description">当然,您可能已经注意到,你在任何其他modal回调函数中“嵌套“这个modals</p>
-   <div class="component-example component-example-fullbleed">
-    <div class="">
-      <div class="content-block">
-        <p><a href="#" class="prompt-ok">Prompt with text and Ok callback</a></p>
-        <p><a href="#" class="prompt-ok-cancel">Prompt with text, Ok and Cancel callbacks</a></p>
-        <p><a href="#" class="prompt-title-ok">Prompt with text, title and Ok callback</a></p>
-        <p><a href="#" class="prompt-title-ok-cancel">Prompt with text, title, Ok and Cancel callback</a></p>
-      </div>
-      <script type="text/javascript">
-        $(document).on('click','.prompt-ok', function () {
-            $.prompt('What is your name?', function (value) {
-                $.alert('Your name is "' + value + '". You clicked Ok button');
-            });
-        });
-         
-        $(document).on('click','.prompt-ok-cancel', function () {
-            $.prompt('What is your name?', 
-              function (value) {
-                $.alert('Your name is "' + value + '". You clicked Ok button');
-              },
-              function (value) {
-                $.alert('Your name is "' + value + '". You clicked Cancel button');
-              }
-            );
-        });
-        $(document).on('click', '.prompt-title-ok',function () {
-            $.prompt('What is your name?', 'Custom Title', function (value) {
-                $.alert('Your name is "' + value + '". You clicked Ok button');
-            });
-        });
-        $(document).on('click', '.prompt-title-ok-cancel',function () {
-            $.prompt('What is your name?', 'Custom Title', 
-              function (value) {
-                $.alert('Your name is "' + value + '". You clicked Ok button');
-              },
-              function (value) {
-                $.alert('Your name is "' + value + '". You clicked Cancel button');
-              }
-            );
-        });              
 
-      </script>
-    </div>
-  </div>
-  {% highlight html %}  
-  <header class="bar bar-nav">
-    <h1 class="title">Prompt</h1>
-  </header>
-  ...
-  <div class="content">
-    <div class="content-block">
-      <p><a href="#" class="prompt-ok">Prompt with text and Ok callback</a></p>
-      <p><a href="#" class="prompt-ok-cancel">Prompt with text, Ok and Cancel callbacks</a></p>
-      <p><a href="#" class="prompt-title-ok">Prompt with text, title and Ok callback</a></p>
-      <p><a href="#" class="prompt-title-ok-cancel">Prompt with text, title, Ok and Cancel callback</a></p>
-    </div>
-  </div>  
-  ...  
-  {% endhighlight %}
-  {% highlight js %}  
-  $(document).on('click','.prompt-ok', function () {
-        $.prompt('What is your name?', function (value) {
-            $.alert('Your name is "' + value + '". You clicked Ok button');
-        });
-    });
-     
-    $(document).on('click','.prompt-ok-cancel', function () {
-        $.prompt('What is your name?', 
-          function (value) {
-            $.alert('Your name is "' + value + '". You clicked Ok button');
-          },
-          function (value) {
-            $.alert('Your name is "' + value + '". You clicked Cancel button');
-          }
-        );
-    });
-    $(document).on('click', '.prompt-title-ok',function () {
-        $.prompt('What is your name?', 'Custom Title', function (value) {
-            $.alert('Your name is "' + value + '". You clicked Ok button');
-        });
-    });
-    $(document).on('click', '.prompt-title-ok-cancel',function () {
-        $.prompt('What is your name?', 'Custom Title', 
-          function (value) {
-            $.alert('Your name is "' + value + '". You clicked Ok button');
-          },
-          function (value) {
-            $.alert('Your name is "' + value + '". You clicked Cancel button');
-          }
-        );
-    });           
-  {% endhighlight %}
-</article>
 
 <article class="component active">
   <h3 class="component-title">预加载 Modal (Preloader Modal)</h3>
