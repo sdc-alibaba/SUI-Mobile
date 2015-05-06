@@ -1,6 +1,10 @@
 /*===============================================================================
 ************   Accordion   ************
 ===============================================================================*/
+/* global Zepto:true */
++function ($) {
+  "use strict";
+
 $.accordionToggle = function (item) {
     item = $(item);
     if (item.length === 0) return;
@@ -18,10 +22,10 @@ $.accordionOpen = function (item) {
     }
     content.css('height', content[0].scrollHeight + 'px').transitionEnd(function () {
         if (item.hasClass('accordion-item-expanded')) {
-            content.transition(0);
+            //content.transition(0);
             content.css('height', 'auto');
             var clientLeft = content[0].clientLeft;
-            content.transition('');
+            //content.transition('');
             item.trigger('opened');
         }
         else {
@@ -37,18 +41,18 @@ $.accordionClose = function (item) {
     var content = item.children('.accordion-item-content');
     if (content.length === 0) content = item.find('.accordion-item-content');
     item.removeClass('accordion-item-expanded');
-    content.transition(0);
+    //content.transition(0);
     content.css('height', content[0].scrollHeight + 'px');
     // Relayout
     var clientLeft = content[0].clientLeft;
     // Close
-    content.transition('');
+    //content.transition('');
     content.css('height', '').transitionEnd(function () {
         if (item.hasClass('accordion-item-expanded')) {
-            content.transition(0);
+            //content.transition(0);
             content.css('height', 'auto');
             var clientLeft = content[0].clientLeft;
-            content.transition('');
+            //content.transition('');
             item.trigger('opened');
         }
         else {
@@ -58,3 +62,16 @@ $.accordionClose = function (item) {
     });
     item.trigger('close');
 };
+
+$(document).on("click", ".accordion-item .item-content, .accordion-item-toggle", function(e) {
+    e.preventDefault();
+    var clicked = $(this);
+    // Accordion
+    if (clicked.hasClass('accordion-item-toggle') || (clicked.hasClass('item-link') && clicked.parent().hasClass('accordion-item'))) {
+        var accordionItem = clicked.parent('.accordion-item');
+        if (accordionItem.length === 0) accordionItem = clicked.parents('.accordion-item');
+        if (accordionItem.length === 0) accordionItem = clicked.parents('li');
+        $.accordionToggle(accordionItem);
+    }
+});
+}(Zepto);
