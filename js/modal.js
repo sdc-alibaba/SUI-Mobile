@@ -550,18 +550,7 @@
         /*jshint validthis:true */
         var clicked = $(this);
         var url = clicked.attr('href');
-        var isLink = clicked[0].nodeName.toLowerCase() === 'a';
-        
-        // Check if link is external 
-        if (isLink) {
-            if (clicked.is($.modal.prototype.defaults.externalLinks)) {
-                if(clicked.attr('target') === '_system') {
-                    e.preventDefault();
-                    window.open(url, '_system');
-                }
-                return;
-            }
-        }
+       
 
         //Collect Clicked data- attributes
         var clickedData = clicked.dataset();
