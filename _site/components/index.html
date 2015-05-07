@@ -1831,6 +1831,55 @@
   <span class="p">});</span></code></pre></div>
 </article>
 
+<article class="component active">
+  <h3 class="component-title">动态的 Popup</h3>
+  <p class="component-description">Framework7允许你调用相关的App方法时传递HTML内容来动态地创建Popup:</p>
+  <p class="component-description"><code>myApp.popup(popupHTML, removeOnClose)</code> - 打开 Popup</p>
+  <ul>
+    <li><code>popupHTML</code> - string. popup的HTML字符串</li>
+    <li><code>removeOnClose</code> - boolean. 可选, 默认 - true. 如果是 true， 那么 Popup 在关闭时将从DOM中移除</li>
+  </ul>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content">
+        <div class="content-block">
+          <!-- In data-popup attribute we specify CSS selector of popup we need to open -->
+          <p><a href="#" class="create-popup">Create Popup</a></p>
+        </div>
+      </div>
+      <script type="text/javascript">
+        $(document).on('click','.create-popup', function () {
+          var popupHTML = '<div class="popup">'+
+                            '<div class="content-block">'+
+                              '<p>Popup created dynamically.</p>'+
+                              '<p><a href="#" class="close-popup">Close me</a></p>'+
+                            '</div>'+
+                          '</div>'
+          $.popup(popupHTML);
+        });                   
+      </script>    
+    </div>
+   </div>
+  <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>动态的 Popup<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/header&gt;</span>
+  ...
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- In data-popup attribute we specify CSS selector of popup we need to open --&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"create-popup"</span><span class="nt">&gt;</span>Create Popup<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span></code></pre></div>
+  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.create-popup'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">popupHTML</span> <span class="o">=</span> <span class="s1">'&lt;div class="popup"&gt;'</span><span class="o">+</span>
+                      <span class="s1">'&lt;div class="content-block"&gt;'</span><span class="o">+</span>
+                        <span class="s1">'&lt;p&gt;Popup created dynamically.&lt;/p&gt;'</span><span class="o">+</span>
+                        <span class="s1">'&lt;p&gt;&lt;a href="#" class="close-popup"&gt;Close me&lt;/a&gt;&lt;/p&gt;'</span><span class="o">+</span>
+                      <span class="s1">'&lt;/div&gt;'</span><span class="o">+</span>
+                    <span class="s1">'&lt;/div&gt;'</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">popup</span><span class="p">(</span><span class="nx">popupHTML</span><span class="p">);</span>
+  <span class="p">});</span></code></pre></div>
+</article>
 
   <article class="component" id="accordion">
   <h3 class="component-title">手风琴列表视图</h3>

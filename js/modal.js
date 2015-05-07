@@ -606,7 +606,7 @@
        
     }
     $(document).on('click', ' .modal-overlay, .popup-overlay, .close-popup, .open-popup, .open-popover,  .close-picker', handleClicks);
-    var defaults = defaults = {
+    var defaults =  $.modal.prototype.defaults  = {
         modalButtonOk: '确定',
         modalButtonCancel: '取消',
         modalPreloaderTitle: '加载中',
