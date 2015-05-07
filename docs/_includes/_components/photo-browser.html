@@ -1,0 +1,263 @@
+<article class="component active" id="tabs">
+  <h3 class="component-title">图片浏览器</h3>
+  <p class="component-description">图片浏览器</p>
+
+  <div class="component-example component-example-fullbleed">
+    <div class="page-content">
+      <div class="content-block-title">Light Theme</div>
+      <div class="content-block row">
+        <div class="col-33"><a href="#" class="button pb-standalone">Standalone</a></div>
+        <div class="col-33"><a href="#" class="button pb-popup">Popup</a></div>
+        <div class="col-33"><a href="#" class="button pb-page">Page</a></div>
+      </div>
+      <div class="content-block-title">Dark Theme</div>
+      <div class="content-block row">
+        <div class="col-50"><a href="#" class="button pb-standalone-dark">Standalone</a></div>
+        <div class="col-50"><a href="#" class="button pb-popup-dark">Popup</a></div>
+      </div>
+    </div> 
+    <script>
+      /*=== 默认为 standalone ===*/
+      var myPhotoBrowserStandalone = $.photoBrowser({
+          photos : [
+              'http://lorempixel.com/1024/1024/sports/1/',
+              'http://lorempixel.com/1024/1024/sports/2/',
+              'http://lorempixel.com/1024/1024/sports/3/',
+          ]
+      });
+      //点击时打开图片浏览器
+      $('.pb-standalone').on('click', function () {
+          myPhotoBrowserStandalone.open();
+      });
+       
+      /*=== Popup ===*/
+      var myPhotoBrowserPopup = $.photoBrowser({
+          photos : [
+              'http://lorempixel.com/1024/1024/sports/1/',
+              'http://lorempixel.com/1024/1024/sports/2/',
+              'http://lorempixel.com/1024/1024/sports/3/',
+          ],
+          type: 'popup'
+      });
+      $('.pb-popup').on('click', function () {
+          myPhotoBrowserPopup.open();
+      });
+       
+      /*=== 作为Page ===*/
+      var myPhotoBrowserPage = $.photoBrowser({
+          photos : [
+              'http://lorempixel.com/1024/1024/sports/1/',
+              'http://lorempixel.com/1024/1024/sports/2/',
+              'http://lorempixel.com/1024/1024/sports/3/',
+          ],
+          type: 'page',
+          backLinkText: 'Back'
+      });
+      $('.pb-page').on('click', function () {
+          myPhotoBrowserPage.open();
+      });
+       
+      /*=== Standalone Dark ===*/
+      var myPhotoBrowserDark = $.photoBrowser({
+          photos : [
+              'http://lorempixel.com/1024/1024/sports/1/',
+              'http://lorempixel.com/1024/1024/sports/2/',
+              'http://lorempixel.com/1024/1024/sports/3/',
+          ],
+          theme: 'dark'
+      });
+      $('.pb-standalone-dark').on('click', function () {
+          myPhotoBrowserDark.open();
+      });
+       
+      /*=== Popup Dark ===*/
+      var myPhotoBrowserPopupDark = $.photoBrowser({
+          photos : [
+              'http://lorempixel.com/1024/1024/sports/1/',
+              'http://lorempixel.com/1024/1024/sports/2/',
+              'http://lorempixel.com/1024/1024/sports/3/',
+          ],
+          theme: 'dark',
+          type: 'popup'
+      });
+      $('.pb-popup-dark').on('click', function () {
+          myPhotoBrowserPopupDark.open();
+      }); 
+       
+      /*=== 有标题 ===*/
+      var myPhotoBrowserPopupDark = $.photoBrowser({
+          photos : [
+              {
+                  url: 'http://lorempixel.com/1024/1024/sports/1/',
+                  caption: 'Caption 1 Text'
+              },
+              {
+                  url: 'http://lorempixel.com/1024/1024/sports/2/',
+                  caption: 'Second Caption Text'
+              },
+              // 这个没有标题
+              {
+                  url: 'http://lorempixel.com/1024/1024/sports/3/',
+              },
+          ],
+          theme: 'dark',
+          type: 'standalone'
+      });
+      $('.pb-standalone-captions').on('click', function () {
+          myPhotoBrowserPopupDark.open();
+      });
+       
+      /*=== 有视频 ===*/
+      var myPhotoBrowserPopupDark = $.photoBrowser({
+          photos : [
+              {
+                  html: '<iframe src="//www.youtube.com/embed/lmc21V-zBq0?list=PLpj0FBQgLGEr3mtZ5BTwtmSwF1dkPrPRM" frameborder="0" allowfullscreen></iframe>',
+                  caption: 'Woodkid - Run Boy Run (Official HD Video)'
+              },
+              {
+                  url: 'http://lorempixel.com/1024/1024/sports/2/',
+                  caption: 'Second Caption Text'
+              },
+              {
+                  url: 'http://lorempixel.com/1024/1024/sports/3/',
+              },
+          ],
+          theme: 'dark',
+          type: 'standalone'
+      });
+      $('.pb-standalone-video').on('click', function () {
+          myPhotoBrowserPopupDark.open();
+      });
+    </script>
+  </div>
+
+{% highlight html %}
+<div class="page-content">
+  <div class="content-block-title">Light Theme</div>
+  <div class="content-block row">
+    <div class="col-33"><a href="#" class="button pb-standalone">Standalone</a></div>
+    <div class="col-33"><a href="#" class="button pb-popup">Popup</a></div>
+    <div class="col-33"><a href="#" class="button pb-page">Page</a></div>
+  </div>
+  <div class="content-block-title">Dark Theme</div>
+  <div class="content-block row">
+    <div class="col-50"><a href="#" class="button pb-standalone-dark">Standalone</a></div>
+    <div class="col-50"><a href="#" class="button pb-popup-dark">Popup</a></div>
+  </div>
+</div> 
+<script>
+  /*=== 默认为 standalone ===*/
+  var myPhotoBrowserStandalone = $.photoBrowser({
+      photos : [
+          'http://lorempixel.com/1024/1024/sports/1/',
+          'http://lorempixel.com/1024/1024/sports/2/',
+          'http://lorempixel.com/1024/1024/sports/3/',
+      ]
+  });
+  //点击时打开图片浏览器
+  $('.pb-standalone').on('click', function () {
+      myPhotoBrowserStandalone.open();
+  });
+   
+  /*=== Popup ===*/
+  var myPhotoBrowserPopup = $.photoBrowser({
+      photos : [
+          'http://lorempixel.com/1024/1024/sports/1/',
+          'http://lorempixel.com/1024/1024/sports/2/',
+          'http://lorempixel.com/1024/1024/sports/3/',
+      ],
+      type: 'popup'
+  });
+  $('.pb-popup').on('click', function () {
+      myPhotoBrowserPopup.open();
+  });
+   
+  /*=== 作为Page ===*/
+  var myPhotoBrowserPage = $.photoBrowser({
+      photos : [
+          'http://lorempixel.com/1024/1024/sports/1/',
+          'http://lorempixel.com/1024/1024/sports/2/',
+          'http://lorempixel.com/1024/1024/sports/3/',
+      ],
+      type: 'page',
+      backLinkText: 'Back'
+  });
+  $('.pb-page').on('click', function () {
+      myPhotoBrowserPage.open();
+  });
+   
+  /*=== Standalone Dark ===*/
+  var myPhotoBrowserDark = $.photoBrowser({
+      photos : [
+          'http://lorempixel.com/1024/1024/sports/1/',
+          'http://lorempixel.com/1024/1024/sports/2/',
+          'http://lorempixel.com/1024/1024/sports/3/',
+      ],
+      theme: 'dark'
+  });
+  $('.pb-standalone-dark').on('click', function () {
+      myPhotoBrowserDark.open();
+  });
+   
+  /*=== Popup Dark ===*/
+  var myPhotoBrowserPopupDark = $.photoBrowser({
+      photos : [
+          'http://lorempixel.com/1024/1024/sports/1/',
+          'http://lorempixel.com/1024/1024/sports/2/',
+          'http://lorempixel.com/1024/1024/sports/3/',
+      ],
+      theme: 'dark',
+      type: 'popup'
+  });
+  $('.pb-popup-dark').on('click', function () {
+      myPhotoBrowserPopupDark.open();
+  }); 
+   
+  /*=== 有标题 ===*/
+  var myPhotoBrowserPopupDark = $.photoBrowser({
+      photos : [
+          {
+              url: 'http://lorempixel.com/1024/1024/sports/1/',
+              caption: 'Caption 1 Text'
+          },
+          {
+              url: 'http://lorempixel.com/1024/1024/sports/2/',
+              caption: 'Second Caption Text'
+          },
+          // 这个没有标题
+          {
+              url: 'http://lorempixel.com/1024/1024/sports/3/',
+          },
+      ],
+      theme: 'dark',
+      type: 'standalone'
+  });
+  $('.pb-standalone-captions').on('click', function () {
+      myPhotoBrowserPopupDark.open();
+  });
+   
+  /*=== 有视频 ===*/
+  var myPhotoBrowserPopupDark = $.photoBrowser({
+      photos : [
+          {
+              html: '<iframe src="//www.youtube.com/embed/lmc21V-zBq0?list=PLpj0FBQgLGEr3mtZ5BTwtmSwF1dkPrPRM" frameborder="0" allowfullscreen></iframe>',
+              caption: 'Woodkid - Run Boy Run (Official HD Video)'
+          },
+          {
+              url: 'http://lorempixel.com/1024/1024/sports/2/',
+              caption: 'Second Caption Text'
+          },
+          {
+              url: 'http://lorempixel.com/1024/1024/sports/3/',
+          },
+      ],
+      theme: 'dark',
+      type: 'standalone'
+  });
+  $('.pb-standalone-video').on('click', function () {
+      myPhotoBrowserPopupDark.open();
+  });
+</script>
+{% endhighlight %}
+
+</article>
