@@ -1068,3 +1068,56 @@
   {% endhighlight %}
 </article>
 
+<article class="component active">
+  <h3 class="component-title">动态的 Popup</h3>
+  <p class="component-description">Framework7允许你调用相关的App方法时传递HTML内容来动态地创建Popup:</p>
+  <p class="component-description"><code>myApp.popup(popupHTML, removeOnClose)</code> - 打开 Popup</p>
+  <ul>
+    <li><code>popupHTML</code> - string. popup的HTML字符串</li>
+    <li><code>removeOnClose</code> - boolean. 可选, 默认 - true. 如果是 true， 那么 Popup 在关闭时将从DOM中移除</li>
+  </ul>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content">
+        <div class="content-block">
+          <!-- In data-popup attribute we specify CSS selector of popup we need to open -->
+          <p><a href="#" class="create-popup">Create Popup</a></p>
+        </div>
+      </div>
+      <script type="text/javascript">
+        $(document).on('click','.create-popup', function () {
+          var popupHTML = '<div class="popup">'+
+                            '<div class="content-block">'+
+                              '<p>Popup created dynamically.</p>'+
+                              '<p><a href="#" class="close-popup">Close me</a></p>'+
+                            '</div>'+
+                          '</div>'
+          $.popup(popupHTML);
+        });                   
+      </script>    
+    </div>
+   </div>
+  {% highlight html %}  
+  <header class="bar bar-nav">
+      <h1 class="title">动态的 Popup</h1>
+  </header>
+  ...
+  <div class="content">
+    <div class="content-block">
+      <!-- In data-popup attribute we specify CSS selector of popup we need to open -->
+      <p><a href="#" class="create-popup">Create Popup</a></p>
+    </div>
+  </div>
+  {% endhighlight %}
+  {% highlight js %}  
+  $(document).on('click','.create-popup', function () {
+    var popupHTML = '<div class="popup">'+
+                      '<div class="content-block">'+
+                        '<p>Popup created dynamically.</p>'+
+                        '<p><a href="#" class="close-popup">Close me</a></p>'+
+                      '</div>'+
+                    '</div>'
+    $.popup(popupHTML);
+  }); 
+  {% endhighlight %}
+</article>
