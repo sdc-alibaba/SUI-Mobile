@@ -89,9 +89,11 @@
   <a class="docs-component-item" href="#forms" data-ignore="push">表单</a>
   <a class="docs-component-item" href="#tabs" data-ignore="push">标签页</a>
   <a class="docs-component-item" href="#grid" data-ignore="push">栅格</a>
+  <a class="docs-component-item" href="#modal" data-ignore="push">对话框</a>
+  <a class="docs-component-item" href="#accordion" data-ignore="push">手风琴</a>
+  <a class="docs-component-item" href="#cards" data-ignore="push">卡片</a>
   <a class="docs-component-item" href="#push" data-ignore="push">push.js</a>
   <a class="docs-component-item" href="#ratchicons" data-ignore="push">图标</a>
-  <a class="docs-component-item" href="#modal" data-ignore="push">对话框</a>
 </div>
 
 
@@ -738,71 +740,6 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 </article>
-
-      <article class="component" id="push">
-      <h3 class="component-title">Push</h3>
-      <p class="component-description">Push.js is the engine that connects Ratchet pages together with AJAX and the history api. Push.js is listening to all clicks on a page, so just make sure it's included and link something in your Ratchet project up.</p>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- A one.html link --&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
-
-      <p class="component-note">This will use push to replace everything in the .content div with the .content of two.html. Also, it will either update or remove .bar-nav and .bar-tab according to their presences in two.html.</p>
-
-      <p class="component-description">Now that pages are being loaded through push, it's easy to specify transitions for animations between pages. There are three different transitions to chose from: <code>fade</code>, <code>slide-in</code>, or <code>slide-out</code>.</p>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- An one.html link that animates to two.html --&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span> <span class="na">data-transition=</span><span class="s">"fade"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
-
-      <p class="component-description">A working version of push:</p>
-
-      <div class="component-example component-example-fullbleed">
-        <header class="bar bar-nav">
-          <h1 class="title">Push</h1>
-        </header>
-        <div class="content">
-          <div class="card">
-            <ul class="table-view">
-              <li class="table-view-cell">
-                <a class="navigate-right" href="/two.html" data-transition="slide-in">
-                  Load new page with push
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Push<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;/header&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"table-view"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"table-view-cell"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navigate-right"</span> <span class="na">href=</span><span class="s">"../two.html"</span> <span class="na">data-transition=</span><span class="s">"slide-in"</span><span class="nt">&gt;</span>
-          Load new page with push
-        <span class="nt">&lt;/a&gt;</span>
-      <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;/ul&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></div>
-
-        <p class="component-description">Have a link you don't want to intercepted by push? Try this:</p>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Use data-ignore="push" to prevent the push.js interception --&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://www.google.com"</span> <span class="na">data-ignore=</span><span class="s">"push"</span><span class="nt">&gt;</span>Google<span class="nt">&lt;a&gt;</span></code></pre></div>
-
-        <p class="component-description">Push.js binds an event to the document that returns a detail object and can be used to fire a callback.</p>
-
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Only needed if you want to fire a callback</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'push'</span><span class="p">,</span> <span class="nx">myFunction</span><span class="p">);</span></code></pre></div>
-
-        <p class="component-description">Push.js can be triggered manually by using the PUSH(options) function. When passing options, url is required, container, transition and timeout are optional. As of version 2.1.0 Ratchet has its own namespace and can also be called with RATCHET.push(options).</p>
-
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">PUSH</span><span class="p">({</span><span class="na">url</span><span class="p">:</span> <span class="s2">"/signin"</span><span class="p">});</span>
-<span class="nx">RATCHET</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="na">url</span><span class="p">:</span> <span class="s2">"/signin"</span><span class="p">});</span></code></pre></div>
-
-      </article>
 
   <article class="component" id="modal">
   <h3 class="component-title">Modal</h3>
@@ -2178,6 +2115,71 @@
   <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
 </article>
+
+      <article class="component" id="push">
+      <h3 class="component-title">Push</h3>
+      <p class="component-description">Push.js is the engine that connects Ratchet pages together with AJAX and the history api. Push.js is listening to all clicks on a page, so just make sure it's included and link something in your Ratchet project up.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- A one.html link --&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
+
+      <p class="component-note">This will use push to replace everything in the .content div with the .content of two.html. Also, it will either update or remove .bar-nav and .bar-tab according to their presences in two.html.</p>
+
+      <p class="component-description">Now that pages are being loaded through push, it's easy to specify transitions for animations between pages. There are three different transitions to chose from: <code>fade</code>, <code>slide-in</code>, or <code>slide-out</code>.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- An one.html link that animates to two.html --&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span> <span class="na">data-transition=</span><span class="s">"fade"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
+
+      <p class="component-description">A working version of push:</p>
+
+      <div class="component-example component-example-fullbleed">
+        <header class="bar bar-nav">
+          <h1 class="title">Push</h1>
+        </header>
+        <div class="content">
+          <div class="card">
+            <ul class="table-view">
+              <li class="table-view-cell">
+                <a class="navigate-right" href="/two.html" data-transition="slide-in">
+                  Load new page with push
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Push<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"table-view"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"table-view-cell"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navigate-right"</span> <span class="na">href=</span><span class="s">"../two.html"</span> <span class="na">data-transition=</span><span class="s">"slide-in"</span><span class="nt">&gt;</span>
+          Load new page with push
+        <span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+        <p class="component-description">Have a link you don't want to intercepted by push? Try this:</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Use data-ignore="push" to prevent the push.js interception --&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://www.google.com"</span> <span class="na">data-ignore=</span><span class="s">"push"</span><span class="nt">&gt;</span>Google<span class="nt">&lt;a&gt;</span></code></pre></div>
+
+        <p class="component-description">Push.js binds an event to the document that returns a detail object and can be used to fire a callback.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Only needed if you want to fire a callback</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'push'</span><span class="p">,</span> <span class="nx">myFunction</span><span class="p">);</span></code></pre></div>
+
+        <p class="component-description">Push.js can be triggered manually by using the PUSH(options) function. When passing options, url is required, container, transition and timeout are optional. As of version 2.1.0 Ratchet has its own namespace and can also be called with RATCHET.push(options).</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">PUSH</span><span class="p">({</span><span class="na">url</span><span class="p">:</span> <span class="s2">"/signin"</span><span class="p">});</span>
+<span class="nx">RATCHET</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="na">url</span><span class="p">:</span> <span class="s2">"/signin"</span><span class="p">});</span></code></pre></div>
+
+      </article>
 
     <!-- Table views -->
 
