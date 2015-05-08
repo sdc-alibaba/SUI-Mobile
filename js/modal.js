@@ -18,8 +18,8 @@
     $.modal = function (params) {
         params = params || {};
         var modalHTML = '';
-        if ($.modal.prototype.defaults.modalTemplate) {
-            if (!$._compiledTemplates.modal) $._compiledTemplates.modal = t7.compile($.modal.prototype.defaults.modalTemplate);
+        if (defaults.modalTemplate) {
+            if (!$._compiledTemplates.modal) $._compiledTemplates.modal = t7.compile(defaults.modalTemplate);
             modalHTML = $._compiledTemplates.modal(params);
         }
         else {
@@ -41,7 +41,7 @@
 
         var modal = $(_modalTemplateTempDiv).children();
 
-        $($.modal.prototype.defaults.modalContainer).append(modal[0]);
+        $(defaults.modalContainer).append(modal[0]);
         
         // Add events on buttons
         modal.find('.modal-button').each(function (index, el) {
@@ -61,8 +61,8 @@
         }
         return $.modal({
             text: text || '',
-            title: typeof title === 'undefined' ? $.modal.prototype.defaults.modalTitle : title,
-            buttons: [ {text: $.modal.prototype.defaults.modalButtonOk, bold: true, onClick: callbackOk} ]
+            title: typeof title === 'undefined' ? defaults.modalTitle : title,
+            buttons: [ {text: defaults.modalButtonOk, bold: true, onClick: callbackOk} ]
         });
     };
     $.confirm = function (text, title, callbackOk, callbackCancel) {
@@ -73,10 +73,10 @@
         }
         return $.modal({
             text: text || '',
-            title: typeof title === 'undefined' ? $.modal.prototype.defaults.modalTitle : title,
+            title: typeof title === 'undefined' ? defaults.modalTitle : title,
             buttons: [
-                {text: $.modal.prototype.defaults.modalButtonCancel, onClick: callbackCancel},
-                {text: $.modal.prototype.defaults.modalButtonOk, bold: true, onClick: callbackOk}
+                {text: defaults.modalButtonCancel, onClick: callbackCancel},
+                {text: defaults.modalButtonOk, bold: true, onClick: callbackOk}
             ]
         });
     };
@@ -88,14 +88,14 @@
         }
         return $.modal({
             text: text || '',
-            title: typeof title === 'undefined' ? $.modal.prototype.defaults.modalTitle : title,
+            title: typeof title === 'undefined' ? defaults.modalTitle : title,
             afterText: '<input type="text" class="modal-text-input">',
             buttons: [
                 {
-                    text: $.modal.prototype.defaults.modalButtonCancel
+                    text: defaults.modalButtonCancel
                 },
                 {
-                    text: $.modal.prototype.defaults.modalButtonOk,
+                    text: defaults.modalButtonOk,
                     bold: true
                 }
             ],
@@ -113,14 +113,14 @@
         }
         return $.modal({
             text: text || '',
-            title: typeof title === 'undefined' ? $.modal.prototype.defaults.modalTitle : title,
-            afterText: '<input type="text" name="modal-username" placeholder="' + $.modal.prototype.defaults.modalUsernamePlaceholder + '" class="modal-text-input modal-text-input-double"><input type="password" name="modal-password" placeholder="' + $.modal.prototype.defaults.modalPasswordPlaceholder + '" class="modal-text-input modal-text-input-double">',
+            title: typeof title === 'undefined' ? defaults.modalTitle : title,
+            afterText: '<input type="text" name="modal-username" placeholder="' + defaults.modalUsernamePlaceholder + '" class="modal-text-input modal-text-input-double"><input type="password" name="modal-password" placeholder="' + defaults.modalPasswordPlaceholder + '" class="modal-text-input modal-text-input-double">',
             buttons: [
                 {
-                    text: $.modal.prototype.defaults.modalButtonCancel
+                    text: defaults.modalButtonCancel
                 },
                 {
-                    text: $.modal.prototype.defaults.modalButtonOk,
+                    text: defaults.modalButtonOk,
                     bold: true
                 }
             ],
@@ -140,14 +140,14 @@
         }
         return $.modal({
             text: text || '',
-            title: typeof title === 'undefined' ? $.modal.prototype.defaults.modalTitle : title,
-            afterText: '<input type="password" name="modal-password" placeholder="' + $.modal.prototype.defaults.modalPasswordPlaceholder + '" class="modal-text-input">',
+            title: typeof title === 'undefined' ? defaults.modalTitle : title,
+            afterText: '<input type="password" name="modal-password" placeholder="' + defaults.modalPasswordPlaceholder + '" class="modal-text-input">',
             buttons: [
                 {
-                    text: $.modal.prototype.defaults.modalButtonCancel
+                    text: defaults.modalButtonCancel
                 },
                 {
-                    text: $.modal.prototype.defaults.modalButtonOk,
+                    text: defaults.modalButtonOk,
                     bold: true
                 }
             ],
@@ -160,7 +160,7 @@
     };
     $.showPreloader = function (title) {
         return $.modal({
-            title: title || $.modal.prototype.defaults.modalPreloaderTitle,
+            title: title || defaults.modalPreloaderTitle,
             text: '<div class="preloader"></div>'
         });
     };
@@ -168,7 +168,7 @@
         $.closeModal('.modal.modal-in');
     };
     $.showIndicator = function () {
-        $($.modal.prototype.defaults.modalContainer).append('<div class="preloader-indicator-overlay"></div><div class="preloader-indicator-modal"><span class="preloader preloader-white"></span></div>');
+        $(defaults.modalContainer).append('<div class="preloader-indicator-overlay"></div><div class="preloader-indicator-modal"><span class="preloader preloader-white"></span></div>');
     };
     $.hideIndicator = function () {
         $('.preloader-indicator-overlay, .preloader-indicator-modal').remove();
@@ -196,7 +196,7 @@
         }
         var modalHTML;
         if (toPopover) {
-            var actionsToPopoverTemplate = $.modal.prototype.defaults.modalActionsToPopoverTemplate || 
+            var actionsToPopoverTemplate = defaults.modalActionsToPopoverTemplate || 
                 '<div class="popover actions-popover">' +
                   '<div class="popover-inner">' +
                     '{{#each this}}' +
@@ -223,8 +223,8 @@
             buttonSelector = '.list-button';
         }
         else {
-            if ($.modal.prototype.defaults.modalActionsTemplate) {
-                if (!$._compiledTemplates.actions) $._compiledTemplates.actions = t7.compile($.modal.prototype.defaults.modalActionsTemplate);
+            if (defaults.modalActionsTemplate) {
+                if (!$._compiledTemplates.actions) $._compiledTemplates.actions = t7.compile(defaults.modalActionsTemplate);
                 modalHTML = $._compiledTemplates.actions(params);
             }
             else {
@@ -246,7 +246,7 @@
             }
             _modalTemplateTempDiv.innerHTML = modalHTML;
             modal = $(_modalTemplateTempDiv).children();
-            $($.modal.prototype.defaults.modalContainer).append(modal[0]);
+            $(defaults.modalContainer).append(modal[0]);
             groupSelector = '.actions-modal-group';
             buttonSelector = '.actions-modal-button';
         }
@@ -280,7 +280,7 @@
             if (_modal.childNodes.length > 0) {
                 modal = _modal.childNodes[0];
                 if (removeOnClose) modal.classList.add('remove-on-close');
-                $($.modal.prototype.defaults.modalContainer).append(modal);
+                $(defaults.modalContainer).append(modal);
             }
             else return false; //nothing found
         }
@@ -379,8 +379,8 @@
             $(window).off('resize', sizePopover);
         });
         
-        if (modal.find('.' + $.modal.prototype.defaults.viewClass).length > 0) {
-            $.sizeNavbars(modal.find('.' + $.modal.prototype.defaults.viewClass)[0]);
+        if (modal.find('.' + defaults.viewClass).length > 0) {
+            $.sizeNavbars(modal.find('.' + defaults.viewClass)[0]);
         }
 
         $.openModal(modal);
@@ -394,15 +394,15 @@
             if (_modal.childNodes.length > 0) {
                 modal = _modal.childNodes[0];
                 if (removeOnClose) modal.classList.add('remove-on-close');
-                $($.modal.prototype.defaults.modalContainer).append(modal);
+                $(defaults.modalContainer).append(modal);
             }
             else return false; //nothing found
         }
         modal = $(modal);
         if (modal.length === 0) return false;
         modal.show();
-        if (modal.find('.' + $.modal.prototype.defaults.viewClass).length > 0) {
-            $.sizeNavbars(modal.find('.' + $.modal.prototype.defaults.viewClass)[0]);
+        if (modal.find('.' + defaults.viewClass).length > 0) {
+            $.sizeNavbars(modal.find('.' + defaults.viewClass)[0]);
         }
         $.openModal(modal);
      
@@ -414,7 +414,7 @@
             pickerModal = $(pickerModal);
             if (pickerModal.length > 0) {
                 if (removeOnClose) pickerModal.addClass('remove-on-close');
-                $($.modal.prototype.defaults.modalContainer).append(pickerModal[0]);
+                $(defaults.modalContainer).append(pickerModal[0]);
             }
             else return false; //nothing found
         }
@@ -429,8 +429,8 @@
         modal = $(modal);
         if (modal.length === 0) return false;
         modal.show();
-        if (modal.find('.' + $.modal.prototype.defaults.viewClass).length > 0) {
-            $.sizeNavbars(modal.find('.' + $.modal.prototype.defaults.viewClass)[0]);
+        if (modal.find('.' + defaults.viewClass).length > 0) {
+            $.sizeNavbars(modal.find('.' + defaults.viewClass)[0]);
         }
         $.openModal(modal);
         return modal[0];
@@ -438,7 +438,7 @@
     $.openModal = function (modal) {
         modal = $(modal);
         var isModal = modal.hasClass('modal');
-        if ($('.modal.modal-in:not(.modal-out)').length && $.modal.prototype.defaults.modalStack && isModal) {
+        if ($('.modal.modal-in:not(.modal-out)').length && defaults.modalStack && isModal) {
             $.modalStack.push(function () {
                 $.openModal(modal);
             });
@@ -458,10 +458,10 @@
         var overlay;
         if (!isLoginScreen && !isPickerModal) {
             if ($('.modal-overlay').length === 0 && !isPopup) {
-                $($.modal.prototype.defaults.modalContainer).append('<div class="modal-overlay"></div>');
+                $(defaults.modalContainer).append('<div class="modal-overlay"></div>');
             }
             if ($('.popup-overlay').length === 0 && isPopup) {
-                $($.modal.prototype.defaults.modalContainer).append('<div class="popup-overlay"></div>');
+                $(defaults.modalContainer).append('<div class="popup-overlay"></div>');
             }
             overlay = isPopup ? $('.popup-overlay') : $('.modal-overlay');
         }
@@ -474,7 +474,7 @@
 
         // Picker modal body class
         if (isPickerModal) {
-            $($.modal.prototype.defaults.modalContainer).addClass('with-picker-modal');
+            $(defaults.modalContainer).addClass('with-picker-modal');
         }
 
         // Classes for transition in
@@ -512,8 +512,8 @@
         
         // Picker modal body class
         if (isPickerModal) {
-            $($.modal.prototype.defaults.modalContainer).removeClass('with-picker-modal');
-            $($.modal.prototype.defaults.modalContainer).addClass('picker-modal-closing');
+            $(defaults.modalContainer).removeClass('with-picker-modal');
+            $(defaults.modalContainer).addClass('picker-modal-closing');
         }
 
         if (!isPopover) {
@@ -522,7 +522,7 @@
                 else modal.trigger('opened');
                 
                 if (isPickerModal) {
-                    $($.modal.prototype.defaults.modalContainer).removeClass('picker-modal-closing');
+                    $(defaults.modalContainer).removeClass('picker-modal-closing');
                 }
                 if (isPopup || isLoginScreen || isPickerModal) {
                     modal.removeClass('modal-out').hide();
@@ -534,7 +534,7 @@
                     modal.remove();
                 }
             });
-            if (isModal &&  $.modal.prototype.defaults.modalStack ) {
+            if (isModal &&  defaults.modalStack ) {
                 $.modalStackClearQueue();
             }
         }
@@ -550,18 +550,7 @@
         /*jshint validthis:true */
         var clicked = $(this);
         var url = clicked.attr('href');
-        var isLink = clicked[0].nodeName.toLowerCase() === 'a';
-        
-        // Check if link is external 
-        if (isLink) {
-            if (clicked.is($.modal.prototype.defaults.externalLinks)) {
-                if(clicked.attr('target') === '_system') {
-                    e.preventDefault();
-                    window.open(url, '_system');
-                }
-                return;
-            }
-        }
+       
 
         //Collect Clicked data- attributes
         var clickedData = clicked.dataset();
@@ -600,15 +589,15 @@
      
         // Close Modal
         if (clicked.hasClass('modal-overlay')) {
-            if ($('.modal.modal-in').length > 0 && $.modal.prototype.defaults.modalCloseByOutside)
+            if ($('.modal.modal-in').length > 0 && defaults.modalCloseByOutside)
                 $.closeModal('.modal.modal-in');
-            if ($('.actions-modal.modal-in').length > 0 && $.modal.prototype.defaults.actionsCloseByOutside)
+            if ($('.actions-modal.modal-in').length > 0 && defaults.actionsCloseByOutside)
                 $.closeModal('.actions-modal.modal-in');
             
             if ($('.popover.modal-in').length > 0) $.closeModal('.popover.modal-in');
         }
         if (clicked.hasClass('popup-overlay')) {
-            if ($('.popup.modal-in').length > 0 && $.modal.prototype.defaults.popupCloseByOutside)
+            if ($('.popup.modal-in').length > 0 && defaults.popupCloseByOutside)
                 $.closeModal('.popup.modal-in');
         }
 
@@ -616,8 +605,8 @@
       
        
     }
-    $(document).on('click', 'a, .open-panel, .close-panel, .panel-overlay, .modal-overlay, .popup-overlay, .swipeout-delete, .swipeout-close, .close-popup, .open-popup, .open-popover, .open-login-screen, .close-login-screen .smart-select, .toggle-sortable, .open-sortable, .close-sortable, .accordion-item-toggle, .close-picker', handleClicks);
-    $.modal.prototype.defaults = {
+    $(document).on('click', ' .modal-overlay, .popup-overlay, .close-popup, .open-popup, .open-popover,  .close-picker', handleClicks);
+    var defaults =  $.modal.prototype.defaults  = {
         modalButtonOk: '确定',
         modalButtonCancel: '取消',
         modalPreloaderTitle: '加载中',

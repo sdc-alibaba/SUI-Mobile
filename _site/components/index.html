@@ -89,9 +89,11 @@
   <a class="docs-component-item" href="#forms" data-ignore="push">表单</a>
   <a class="docs-component-item" href="#tabs" data-ignore="push">标签页</a>
   <a class="docs-component-item" href="#grid" data-ignore="push">栅格</a>
+  <a class="docs-component-item" href="#modal" data-ignore="push">对话框</a>
+  <a class="docs-component-item" href="#accordion" data-ignore="push">手风琴</a>
+  <a class="docs-component-item" href="#cards" data-ignore="push">卡片</a>
   <a class="docs-component-item" href="#push" data-ignore="push">push.js</a>
   <a class="docs-component-item" href="#ratchicons" data-ignore="push">图标</a>
-  <a class="docs-component-item" href="#modal" data-ignore="push">对话框</a>
 </div>
 
 
@@ -739,77 +741,29 @@
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 </article>
 
-      <article class="component" id="push">
-      <h3 class="component-title">Push</h3>
-      <p class="component-description">Push.js is the engine that connects Ratchet pages together with AJAX and the history api. Push.js is listening to all clicks on a page, so just make sure it's included and link something in your Ratchet project up.</p>
+  <article class="component" id="modal">
+  <h3 class="component-title">Modal</h3>
+  <p class="component-description">Modal 是从App的主要内容区域上弹出的一小块内容块. Modals经常被用来向用户询问信息，或通知或警告用户。 Modal和其他所有的遮罩图层一样，是所谓的“临时视图”的一部分。</p>
+  <p class="component-description">Modals 可以只用JavaScript打开。所以让我们来看看使用modals的相关APP方法</p>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- A one.html link --&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
+  <h3 class="component-title">预定义的 Modals</h3>
+  <ul>
+    <li>1.注意，如果你没有指定预定义的modal标题，它讲使用默认的标题("Framework7")，这个可以在App 初始化时，通过传递 modalTitle 参数改变。</li>
+    <li>2.预定义modals的按钮文本(如 "Ok" 和 "Cancel") 也可以在 App 初始化时，通过传递 modalButtonOk 和 modalButtonCancel 参数改变。</li>
+  </ul>
+  <p class="component-description">首先，让我们看看已经预定义的最常用的modal:</p>
 
-      <p class="component-note">This will use push to replace everything in the .content div with the .content of two.html. Also, it will either update or remove .bar-nav and .bar-tab according to their presences in two.html.</p>
+  <h3 class="component-title">Alert</h3>
+  <p class="component-description">我们需要调用以下任一一种App方法来打开Alert modal ：<code>myApp.alert(text, [title, callbackOk])</code> </br>或者</br> <code>myApp.alert(text, [callbackOk])</code></p>
 
-      <p class="component-description">Now that pages are being loaded through push, it's easy to specify transitions for animations between pages. There are three different transitions to chose from: <code>fade</code>, <code>slide-in</code>, or <code>slide-out</code>.</p>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- An one.html link that animates to two.html --&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span> <span class="na">data-transition=</span><span class="s">"fade"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
-
-      <p class="component-description">A working version of push:</p>
-
-      <div class="component-example component-example-fullbleed">
-        <header class="bar bar-nav">
-          <h1 class="title">Push</h1>
-        </header>
-        <div class="content">
-          <div class="card">
-            <ul class="table-view">
-              <li class="table-view-cell">
-                <a class="navigate-right" href="/two.html" data-transition="slide-in">
-                  Load new page with push
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Push<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;/header&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"table-view"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"table-view-cell"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navigate-right"</span> <span class="na">href=</span><span class="s">"../two.html"</span> <span class="na">data-transition=</span><span class="s">"slide-in"</span><span class="nt">&gt;</span>
-          Load new page with push
-        <span class="nt">&lt;/a&gt;</span>
-      <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;/ul&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></div>
-
-        <p class="component-description">Have a link you don't want to intercepted by push? Try this:</p>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Use data-ignore="push" to prevent the push.js interception --&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://www.google.com"</span> <span class="na">data-ignore=</span><span class="s">"push"</span><span class="nt">&gt;</span>Google<span class="nt">&lt;a&gt;</span></code></pre></div>
-
-        <p class="component-description">Push.js binds an event to the document that returns a detail object and can be used to fire a callback.</p>
-
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Only needed if you want to fire a callback</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'push'</span><span class="p">,</span> <span class="nx">myFunction</span><span class="p">);</span></code></pre></div>
-
-        <p class="component-description">Push.js can be triggered manually by using the PUSH(options) function. When passing options, url is required, container, transition and timeout are optional. As of version 2.1.0 Ratchet has its own namespace and can also be called with RATCHET.push(options).</p>
-
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">PUSH</span><span class="p">({</span><span class="na">url</span><span class="p">:</span> <span class="s2">"/signin"</span><span class="p">});</span>
-<span class="nx">RATCHET</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="na">url</span><span class="p">:</span> <span class="s2">"/signin"</span><span class="p">});</span></code></pre></div>
-
-      </article>
-
-  <article class="component active" id="modal">
-  
-  <h3 class="component-title">alert</h3>
+  <ul>
+    <li><code>text</code> - string. Alert文本</li>
+    <li><code>title</code> - string. Optional. Alert modal 标题</li>
+    <li><code>callbackOk</code>  - function. Optional.在Alert modal下，当用户点击“Ok”按钮时，回调函数将被执行。</li>
+  </ul>
+  <p class="component-description">该方法返回动态创建的modal的HTML元素。</p>
   <div class="component-example component-example-fullbleed">
     <div class="">
-
       <div class="content-block">
         <p><a href="" class="alert-text">Alert With Text</a></p>
         <p><a href="" class="alert-text-title">Alert With Text and Title</a></p>
@@ -818,6 +772,7 @@
       </div>
       <script type="text/javascript">     
         $(function(){
+          //只在本站例子中需要加这行改变容器，默认document.body
            $.modal.prototype.defaults.modalContainer = ".device-content";
            $(document).on('click','.alert-text',function () {
               $.alert('Here goes alert text haha');
@@ -845,22 +800,55 @@
     </div>
   </div>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Alert<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;/header&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"alert-text"</span><span class="nt">&gt;</span>Alert With Text<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"alert-text-title"</span><span class="nt">&gt;</span>Alert With Text and Title<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"alert-text-title-callback"</span><span class="nt">&gt;</span>Alert With Text and Title and Callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"alert-text-callback"</span><span class="nt">&gt;</span>Alert With Text and Callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-
-<span class="nt">&lt;/div&gt;</span></code></pre></div>
+  <span class="nt">&lt;/header&gt;</span>
+  ...
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"alert-text"</span><span class="nt">&gt;</span>Alert With Text<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"alert-text-title"</span><span class="nt">&gt;</span>Alert With Text and Title<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"alert-text-title-callback"</span><span class="nt">&gt;</span>Alert With Text and Title and Callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"alert-text-callback"</span><span class="nt">&gt;</span>Alert With Text and Callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span> 
+   ...</code></pre></div>
+  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+     <span class="c1">//只在本站例子中需要加这行改变容器，默认document.body</span>
+     <span class="nx">$</span><span class="p">.</span><span class="nx">modal</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">modalContainer</span> <span class="o">=</span> <span class="s2">".device-content"</span><span class="p">;</span>
+     <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.alert-text'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Here goes alert text'</span><span class="p">);</span>
+     <span class="p">});</span>
+     
+    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.alert-text-title'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Here goes alert text'</span><span class="p">,</span> <span class="s1">'Custom Title!'</span><span class="p">);</span>
+    <span class="p">});</span>
+     
+    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'.alert-text-title-callback'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Here goes alert text'</span><span class="p">,</span> <span class="s1">'Custom Title!'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Button clicked!'</span><span class="p">)</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+     
+    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'.alert-text-callback'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Here goes alert text'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Button clicked!'</span><span class="p">)</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">})</span></code></pre></div>
 </article>
 
 <article class="component active">
-  <h3 class="component-title">confirm</h3>
+  <h3 class="component-title">Confirm</h3>
+  <p class="component-description">Confirm modal 经常在需要确认一些行为时被使用. 打开Alert modal同样也需要调用以下任一一种App方法：<code>myApp.confirm(text, [title, callbackOk, callbackCancel])</code></br>或者 </br>
+ <code>myApp.confirm(text, [callbackOk, callbackCancel])</code></p>
+  <ul>
+    <li><code>text  - string. Confirm 文本</code></li>
+    <li><code>title - string. Optional</code>. Confirm modal 标题</li>
+    <li><scode>callbackOk  - function. Optional</code>. 在 Confirm modal下，当用户点击“Ok”按钮时，回调函数将被执行。(当用户确认操作）</li>
+    <li><code>callbackCancel  - function. Optional</code>. 在 Confirm modal下，当用户点击“Cancel”按钮时，回调函数将被执行。(当用户不想进行操作)</li>
+  </ul>
+  <p class="component-description">该方法返回动态创建的modal的HTML元素。</p>
   <div class="component-example component-example-fullbleed">
     <div class="">
       <div class="content-block">
@@ -905,22 +893,63 @@
       </script>
     </div>
   </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>confirm<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;/header&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"confirm-ok"</span><span class="nt">&gt;</span>Confirm with text and Ok callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"confirm-ok-cancel"</span><span class="nt">&gt;</span>Confirm with text, Ok and Cancel callbacks<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"confirm-title-ok"</span><span class="nt">&gt;</span>Confirm with text, title and Ok callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"confirm-title-ok-cancel"</span><span class="nt">&gt;</span>Confirm with text, title, Ok and Cancel callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Confirm<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/header&gt;</span>
+  ...
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"confirm-ok"</span><span class="nt">&gt;</span>Confirm with text and Ok callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"confirm-ok-cancel"</span><span class="nt">&gt;</span>Confirm with text, Ok and Cancel callbacks<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"confirm-title-ok"</span><span class="nt">&gt;</span>Confirm with text, title and Ok callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"confirm-title-ok-cancel"</span><span class="nt">&gt;</span>Confirm with text, title, Ok and Cancel callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-
-<span class="nt">&lt;/div&gt;</span></code></pre></div>
+  ...</code></pre></div>
+  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.confirm-ok'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="s1">'Are you sure?'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'You clicked Ok button'</span><span class="p">);</span>
+      <span class="p">});</span>
+  <span class="p">});</span>
+   
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'.confirm-ok-cancel'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="s1">'Are you sure?'</span><span class="p">,</span> 
+        <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'You clicked Ok button'</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'You clicked Cancel button'</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">);</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.confirm-title-ok'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="s1">'Are you sure?'</span><span class="p">,</span> <span class="s1">'Custom Title'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'You clicked Ok button'</span><span class="p">);</span>
+      <span class="p">});</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.confirm-title-ok-cancel'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="s1">'Are you sure?'</span><span class="p">,</span> <span class="s1">'Custom Title'</span><span class="p">,</span> 
+        <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'You clicked Ok button'</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'You clicked Cancel button'</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">);</span>
+  <span class="p">});</span></code></pre></div>
 </article>
 
 <article class="component active">
-  <h3 class="component-title">prompt</h3>
+  <h3 class="component-title">Prompt</h3>
+  <p class="component-description">Prompt modal 经常在需要从用户那里得到一些数据/答案时使用。打开 Prompt modal同样也需要调用以下任一一种App方法：<code>myApp.prompt(text, [title, callbackOk, callbackCancel])</code></br>或者</br>
+ <code>myApp.prompt(text, [callbackOk, callbackCancel])</code></p>
+  <ul>
+    <li><code>text - string</code>. Prompt 文本/问题</li>
+    <li><code>title  - string</code>. Optional. Prompt modal 标题</li>
+    <li><code>callbackOk  - function</code>. Optional. 在 Prompt modal下，当用户点击“Ok”按钮时，回调函数将被执行。回调函数的参数是输入框的值</li>
+    <li><code>callbackCancel - function</code>. Optional. 在 Prompt modal下，当用户点击“Cancel”按钮时，回调函数将被执行。回调函数的参数是输入框的值</li>
+  </ul>
+  <p class="component-description">该方法返回动态创建的modal的HTML元素。</p>
   <div class="component-example component-example-fullbleed">
     <div class="">
       <div class="content-block">
@@ -965,50 +994,62 @@
       </script>
     </div>
   </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>prompt<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;/header&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"prompt-ok"</span><span class="nt">&gt;</span>Prompt with text and Ok callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"prompt-ok-cancel"</span><span class="nt">&gt;</span>Prompt with text, Ok and Cancel callbacks<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"prompt-title-ok"</span><span class="nt">&gt;</span>Prompt with text, title and Ok callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"prompt-title-ok-cancel"</span><span class="nt">&gt;</span>Prompt with text, title, Ok and Cancel callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-
-<span class="nt">&lt;/div&gt;</span></code></pre></div>
+  <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Prompt<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/header&gt;</span>
+  ...
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"prompt-ok"</span><span class="nt">&gt;</span>Prompt with text and Ok callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"prompt-ok-cancel"</span><span class="nt">&gt;</span>Prompt with text, Ok and Cancel callbacks<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"prompt-title-ok"</span><span class="nt">&gt;</span>Prompt with text, title and Ok callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"prompt-title-ok-cancel"</span><span class="nt">&gt;</span>Prompt with text, title, Ok and Cancel callback<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>  
+  ...</code></pre></div>
+  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.prompt-ok'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">prompt</span><span class="p">(</span><span class="s1">'What is your name?'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Ok button'</span><span class="p">);</span>
+      <span class="p">});</span>
+  <span class="p">});</span>
+   
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.prompt-ok-cancel'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">prompt</span><span class="p">(</span><span class="s1">'What is your name?'</span><span class="p">,</span> 
+        <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Ok button'</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Cancel button'</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">);</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'.prompt-title-ok'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">prompt</span><span class="p">(</span><span class="s1">'What is your name?'</span><span class="p">,</span> <span class="s1">'Custom Title'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Ok button'</span><span class="p">);</span>
+      <span class="p">});</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'.prompt-title-ok-cancel'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">prompt</span><span class="p">(</span><span class="s1">'What is your name?'</span><span class="p">,</span> <span class="s1">'Custom Title'</span><span class="p">,</span> 
+        <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Ok button'</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Your name is "'</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'". You clicked Cancel button'</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">);</span>
+  <span class="p">});</span></code></pre></div>
 </article>
 
-<article class="component active">
-  <h3 class="component-title">嵌套Modals</h3>
-  <div class="component-example component-example-fullbleed">
-    <div class="">
-      <div class="content-block">
-        <p><a href="#" class="name">What is your name?</a></p>
-      </div>
-      <script type="text/javascript">
-     $(document).on('click','.name', function () {
-          $.prompt('What is your name?', function (value) {
-              $.confirm('Are you sure that your name is ' + value + '?', function () {
-                  $.alert('Ok, your name is "' + value + '"!');
-              });
-          });
-      });
-      </script>    
-    </div>
-  </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>嵌套Modals<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;/header&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"name"</span><span class="nt">&gt;</span>What is your name?<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></div>
-</article>
+
 
 <article class="component active">
   <h3 class="component-title">预加载 Modal (Preloader Modal)</h3>
+  <p class="component-description">预加载 Modal 用来提示一些后台活动（像Ajax请求）和阻止在这个活动期间的任何用户操作。 打开预加载 modal 我们也需要调用适当的App方法: myApp.show预加载(<code>[title]</code>)- 显示 预加载 modal</p>
+  <ul>
+    <li><code>title  - string. Optional</code>. 预加载 modal 标题. 默认（没有指定）的时候，它等同于 "Loading...". 你可以在App初始化时通过 modal预加载Title 参数改变默认的 预加载 标题。</li>
+  </ul>
+  <p class="component-description">该方法返回动态创建的modal的HTML元素。</p>
+  <p class="component-description">myApp.hide预加载() - 隐藏/关闭 预加载 modal. 因为 预加载 modal 没有任何按钮, 它应该用 JavaScript 来关闭</p>
   <div class="component-example component-example-fullbleed">
     <div class="">
       <div class="content-block">
@@ -1031,20 +1072,36 @@
       </script>    
     </div>
   </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>预加载 Modal (Preloader Modal)<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;/header&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-preloader"</span><span class="nt">&gt;</span>Open Preloader<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-preloader-title"</span><span class="nt">&gt;</span>Open Preloader with custom title<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-
-<span class="nt">&lt;/div&gt;</span></code></pre></div>
+  <span class="nt">&lt;/header&gt;</span>
+  ...
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-preloader"</span><span class="nt">&gt;</span>Open Preloader<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-preloader-title"</span><span class="nt">&gt;</span>Open Preloader with custom title<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>  
+  ...</code></pre></div>
+  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'.open-preloader'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">showPreloader</span><span class="p">();</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">hidePreloader</span><span class="p">();</span>
+    <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.open-preloader-title'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">showPreloader</span><span class="p">(</span><span class="s1">'Custom Title'</span><span class="p">)</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">hidePreloader</span><span class="p">();</span>
+    <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
+  <span class="p">});</span></code></pre></div>
 </article>
 
 <article class="component active">
   <h3 class="component-title">指示器(indicator)</h3>
+  <p class="component-description">如果你不需要用像预加载Modal这样如此大的modal 窗口去指示活动, 你可以使用简单并且小的指示器modal: </p>
+  <p class="component-description">myApp.showIndicator() - 显示指示器 modal </p>
+  <p class="component-description">myApp.hideIndicator() - 隐藏/关闭指示器 modal. 因为指示器modal没有任何按钮, 它需要用JavaScript来关闭 </p>
   <div class="component-example component-example-fullbleed">
     <div class="">
       <div class="content-block">
@@ -1061,18 +1118,469 @@
       </script>    
     </div>
   </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>指示器(indicator)<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;/header&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-indicator"</span><span class="nt">&gt;</span>Open Indicator<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>指示器(indicator)<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/header&gt;</span>
+  ...
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-indicator"</span><span class="nt">&gt;</span>Open Indicator<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></div>
+  ...</code></pre></div>
+  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.open-indicator'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">showIndicator</span><span class="p">();</span>
+      <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">.</span><span class="nx">hideIndicator</span><span class="p">();</span>
+      <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
+  <span class="p">});</span></code></pre></div>
+</article>
+
+<article class="component active">
+  <h3 class="component-title">自定义Modals</h3>
+  <p class="component-description">Ok, 所有的预定义modals都只是一些适用于特定的场景的方法. 让我们看看如何创建自定义的 modals: </p>
+  <p class="component-description"><code>myApp.modal(parameters)</code> - 显示 custom modal </p>
+  <ul>
+    <li><code>parameters - object</code>. Modal 的 parameters/options对象</li>
+  </ul>
+  <p class="component-description">该方法返回动态创建的modal的HTML元素。 </p>
+  <p class="component-description">这里有 Modal 的参数列表: </p>
+  <table class="params-table">
+    <thead>
+      <tr>
+        <th>参数</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>描述</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>title</td>
+        <td>字符串</td>
+        <td></td>
+        <td>可选. Modal 标题 (可以是html字符串)</td>
+      </tr>
+      <tr>
+        <td>text</td>
+        <td>字符串</td>
+        <td></td>
+        <td>可选. Modal 文本 (可以是html字符串)</td>
+      </tr>
+      <tr>
+        <td>afterText</td>
+        <td>字符串</td>
+        <td></td>
+        <td>可选. 将被放在"text"后的文本 (可以是html字符串)</td>
+      </tr>
+      <tr>
+        <td>buttons</td>
+        <td>数组</td>
+        <td></td>
+        <td>可选. 按钮数组. 每个按钮应该被表示为带按钮参数的对象 (看下面)</td>
+      </tr>
+      <tr>
+        <td>verticalButtons</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Optional. Set to <code>true</code> to enable vertical buttons layout</td>
+      </tr>
+      <tr>
+        <td>onClick</td>
+        <td>函数</td>
+        <td></td>
+        <td>可选. 回调函数将在用户点击任何Modal按钮后被触发执行. 它接收 <b>modal</b> (Modal的 HTML元素) 和 <b>index</b>作为参数 (被点击按钮的索引号)</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="component-description">让我们一起来看看按钮参数: </p>
+  <table class="params-table">
+    <thead>
+      <tr>
+        <th>参数</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>描述</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>text</td>
+        <td>字符串</td>
+        <td></td>
+        <td>按钮文本 (可以是 HTML 字符串)</td>
+      </tr>
+      <tr>
+        <td>bold</td>
+        <td>布尔值</td>
+        <td>false</td>
+        <td>可选. 设置为true会加粗按钮文本</td>
+      </tr>
+      <tr>
+        <td>close</td>
+        <td>布尔值</td>
+        <td>true</td>
+        <td>可选. 如果是“true”，点击这个按钮后modal会被关闭</td>
+      </tr>
+      <tr>
+        <td>onClick</td>
+        <td>函数</td>
+        <td></td>
+        <td>可选. 用户点击这个按钮后，回调函数会被执行</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="component-description">这样的配置选项允许我们创建灵活的modals。让我们来看一些例子 </p>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content-block">
+        <p><a href="#" class="open-3-modal">Modal With 3 Buttons</a></p>
+        <p><a href="#" class="open-slider-modal">Modal With Slider</a></p>
+        <p><a href="#" class="open-tabs-modal">Modal With Tabs</a></p>
+        <p><a href="#" class="open-vertical-modal">Modal With Vertical Buttons</a></p>
+      </div>
+      <script type="text/javascript">
+        $(document).on('click','.open-3-modal', function () {
+          $.modal({
+            title:  'Modal with 3 buttons',
+            text: 'Vivamus feugiat diam velit. Maecenas aliquet egestas lacus, eget pretium massa mattis non. Donec volutpat euismod nisl in posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae',
+            buttons: [
+              {
+                text: 'B1',
+                onClick: function() {
+                  $.alert('You clicked first button!')
+                }
+              },
+              {
+                text: 'B2',
+                onClick: function() {
+                  $.alert('You clicked second button!')
+                }
+              },
+              {
+                text: 'B3',
+                bold: true,
+                onClick: function() {
+                  $.alert('You clicked third button!')
+                }
+              },
+            ]
+          })
+        });
+        $(document).on('click','.open-slider-modal', function () {
+          var modal = $.modal({
+            title: 'Awesome Photos?',
+            text: 'What do you think about my photos?',
+            afterText:  '<div class="swiper-container" style="width: auto; margin:5px -15px -15px">'+
+                          '<div class="swiper-pagination"></div>'+
+                          '<div class="swiper-wrapper">'+
+                            '<div class="swiper-slide"><img src="..." height="150" style="display:block"></div>' +
+                            '<div class="swiper-slide"><img src="..." height="150" style="display:block"></div>'+
+                          '</div>'+
+                        '</div>',
+            buttons: [
+              {
+                text: 'Bad :('
+              },
+              {
+                text: 'Awesome!',
+                bold: true,
+                onClick: function () {
+                  $.alert('Thanks! I know you like it!')
+                }
+              },
+            ]
+          })
+          $.swiper($$(modal).find('.swiper-container'), {pagination: '.swiper-pagination'});
+        });
+         
+         $(document).on('click','.open-tabs-modal', function () {
+          $.modal({
+            title:  '<div class="buttons-row">'+
+                      '<a href="#tab1" class="button active tab-link">Tab 1</a>'+
+                      '<a href="#tab2" class="button tab-link">Tab 2</a>'+
+                    '</div>',
+            text: '<div class="tabs">'+
+                    '<div class="tab active" id="tab1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis nunc non dolor euismod feugiat. Sed at sapien nisl. Ut et tincidunt metus. Suspendisse nec risus vel sapien placerat tincidunt. Nunc pulvinar urna tortor.</div>'+
+                    '<div class="tab" id="tab2">Vivamus feugiat diam velit. Maecenas aliquet egestas lacus, eget pretium massa mattis non. Donec volutpat euismod nisl in posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae</div>'+
+                  '</div>',
+            buttons: [
+              {
+                text: 'Ok, got it',
+                bold: true
+              },
+            ]
+          })
+        });
+         
+        $(document).on('click','.open-vertical-modal', function () {
+          $.modal({
+            title:  'Vertical Buttons Layout',
+            text: 'Vivamus feugiat diam velit. Maecenas aliquet egestas lacus, eget pretium massa mattis non. Donec volutpat euismod nisl in posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae',
+            verticalButtons: true,
+            buttons: [
+              {
+                text: 'Button 1',
+                onClick: function() {
+                  $.alert('You clicked first button!')
+                }
+              },
+              {
+                text: 'Button 2',
+                onClick: function() {
+                  $.alert('You clicked second button!')
+                }
+              },
+              {
+                text: 'Button 3',
+                onClick: function() {
+                  $.alert('You clicked third button!')
+                }
+              },
+            ]
+          })
+        });       
+      </script>    
+    </div>
+  </div>
+  <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>自定义Modals<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/header&gt;</span>
+  ...
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-3-modal"</span><span class="nt">&gt;</span>Modal With 3 Buttons<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-slider-modal"</span><span class="nt">&gt;</span>Modal With Slider<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-tabs-modal"</span><span class="nt">&gt;</span>Modal With Tabs<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-vertical-modal"</span><span class="nt">&gt;</span>Modal With Vertical Buttons<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  ...</code></pre></div>
+  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.open-3-modal'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">modal</span><span class="p">({</span>
+      <span class="na">title</span><span class="p">:</span>  <span class="s1">'Modal with 3 buttons'</span><span class="p">,</span>
+      <span class="na">text</span><span class="p">:</span> <span class="s1">'Vivamus feugiat diam velit. Maecenas aliquet egestas lacus, eget pretium massa mattis non. Donec volutpat euismod nisl in posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae'</span><span class="p">,</span>
+      <span class="na">buttons</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="na">text</span><span class="p">:</span> <span class="s1">'B1'</span><span class="p">,</span>
+          <span class="na">onClick</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'You clicked first button!'</span><span class="p">)</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">text</span><span class="p">:</span> <span class="s1">'B2'</span><span class="p">,</span>
+          <span class="na">onClick</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'You clicked second button!'</span><span class="p">)</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">text</span><span class="p">:</span> <span class="s1">'B3'</span><span class="p">,</span>
+          <span class="na">bold</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="na">onClick</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'You clicked third button!'</span><span class="p">)</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+      <span class="p">]</span>
+    <span class="p">})</span>
+    <span class="p">});</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.open-slider-modal'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">modal</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">modal</span><span class="p">({</span>
+      <span class="na">title</span><span class="p">:</span> <span class="s1">'Awesome Photos?'</span><span class="p">,</span>
+      <span class="na">text</span><span class="p">:</span> <span class="s1">'What do you think about my photos?'</span><span class="p">,</span>
+      <span class="na">afterText</span><span class="p">:</span>  <span class="s1">'&lt;div class="swiper-container" style="width: auto; margin:5px -15px -15px"&gt;'</span><span class="o">+</span>
+                    <span class="s1">'&lt;div class="swiper-pagination"&gt;&lt;/div&gt;'</span><span class="o">+</span>
+                    <span class="s1">'&lt;div class="swiper-wrapper"&gt;'</span><span class="o">+</span>
+                      <span class="s1">'&lt;div class="swiper-slide"&gt;&lt;img src="..." height="150" style="display:block"&gt;&lt;/div&gt;'</span> <span class="o">+</span>
+                      <span class="s1">'&lt;div class="swiper-slide"&gt;&lt;img src="..." height="150" style="display:block"&gt;&lt;/div&gt;'</span><span class="o">+</span>
+                    <span class="s1">'&lt;/div&gt;'</span><span class="o">+</span>
+                  <span class="s1">'&lt;/div&gt;'</span><span class="p">,</span>
+      <span class="na">buttons</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="na">text</span><span class="p">:</span> <span class="s1">'Bad :('</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">text</span><span class="p">:</span> <span class="s1">'Awesome!'</span><span class="p">,</span>
+          <span class="na">bold</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="na">onClick</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Thanks! I know you like it!'</span><span class="p">)</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+      <span class="p">]</span>
+    <span class="p">})</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">swiper</span><span class="p">(</span><span class="nx">$$</span><span class="p">(</span><span class="nx">modal</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.swiper-container'</span><span class="p">),</span> <span class="p">{</span><span class="na">pagination</span><span class="p">:</span> <span class="s1">'.swiper-pagination'</span><span class="p">});</span>
+    <span class="p">});</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.open-tabs-modal'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">modal</span><span class="p">({</span>
+      <span class="na">title</span><span class="p">:</span>  <span class="s1">'&lt;div class="buttons-row"&gt;'</span><span class="o">+</span>
+                <span class="s1">'&lt;a href="#tab1" class="button active tab-link"&gt;Tab 1&lt;/a&gt;'</span><span class="o">+</span>
+                <span class="s1">'&lt;a href="#tab2" class="button tab-link"&gt;Tab 2&lt;/a&gt;'</span><span class="o">+</span>
+              <span class="s1">'&lt;/div&gt;'</span><span class="p">,</span>
+      <span class="na">text</span><span class="p">:</span> <span class="s1">'&lt;div class="tabs"&gt;'</span><span class="o">+</span>
+              <span class="s1">'&lt;div class="tab active" id="tab1"&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis nunc non dolor euismod feugiat. Sed at sapien nisl. Ut et tincidunt metus. Suspendisse nec risus vel sapien placerat tincidunt. Nunc pulvinar urna tortor.&lt;/div&gt;'</span><span class="o">+</span>
+              <span class="s1">'&lt;div class="tab" id="tab2"&gt;Vivamus feugiat diam velit. Maecenas aliquet egestas lacus, eget pretium massa mattis non. Donec volutpat euismod nisl in posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae&lt;/div&gt;'</span><span class="o">+</span>
+            <span class="s1">'&lt;/div&gt;'</span><span class="p">,</span>
+      <span class="na">buttons</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="na">text</span><span class="p">:</span> <span class="s1">'Ok, got it'</span><span class="p">,</span>
+          <span class="na">bold</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+      <span class="p">]</span>
+    <span class="p">})</span>
+    <span class="p">});</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.open-vertical-modal'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">modal</span><span class="p">({</span>
+      <span class="na">title</span><span class="p">:</span>  <span class="s1">'Vertical Buttons Layout'</span><span class="p">,</span>
+      <span class="na">text</span><span class="p">:</span> <span class="s1">'Vivamus feugiat diam velit. Maecenas aliquet egestas lacus, eget pretium massa mattis non. Donec volutpat euismod nisl in posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae'</span><span class="p">,</span>
+      <span class="na">verticalButtons</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">buttons</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="na">text</span><span class="p">:</span> <span class="s1">'Button 1'</span><span class="p">,</span>
+          <span class="na">onClick</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'You clicked first button!'</span><span class="p">)</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">text</span><span class="p">:</span> <span class="s1">'Button 2'</span><span class="p">,</span>
+          <span class="na">onClick</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'You clicked second button!'</span><span class="p">)</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">text</span><span class="p">:</span> <span class="s1">'Button 3'</span><span class="p">,</span>
+          <span class="na">onClick</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'You clicked third button!'</span><span class="p">)</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+      <span class="p">]</span>
+    <span class="p">})</span>
+    <span class="p">});</span></code></pre></div>
+    <h3 class="component-title">用 JavaScript 关闭 Modals</h3>
+    <p class="component-description">任何 Modal 可以用 JavaScript 来关闭，不仅仅是通过点击按钮。因此我们需要看看相关App方法：</p>
+    <p class="component-description"><code>myApp.closeModal(modal)</code> - 关闭任意 modal</p>
+    <ul>
+      <li><code>modal - HTMLElement or string ( CSS 选择器)</code>. 可选. 除了指定的，任何被打开modal都将被关闭。</li>
+    </ul> 
+     <h3 class="component-title">Modal 事件</h3>
+        <p class="component-description">如果你希望能自定义 modal 模板，你可在 初始化APP 的时候传入一个 modalTemplate 参数。这个参数的值是一个 Template7 模板，当编译该模板的时候会传入一个 groups 参数。</p>
+        <p class="component-description">这个模板可能是这样的：</p>
+  <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal modal-no-buttons"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-inner"</span><span class="nt">&gt;</span>
+      
+       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-title"</span><span class="nt">&gt;&lt;/div&gt;</span>
+      
+      
+       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-text"</span><span class="nt">&gt;&lt;/div&gt;</span>
+      
+      
+      
+      
+      <span class="nt">&lt;/div&gt;</span>
+      
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-buttons"</span><span class="nt">&gt;</span>
+      
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"modal-button modal-button-bold"</span><span class="nt">&gt;&lt;/span&gt;</span>
+      
+      <span class="nt">&lt;/div&gt;</span>
+    
+  <span class="nt">&lt;/div&gt;</span></code></pre></div>
 </article>
 
 <article class="component active">
   <h3 class="component-title">Popup</h3>
+  <p class="component-description">Popup 是一种可以包含任何Html内容的弹出窗口，从App的主内容区域上弹出。 Popup 和其他所有的遮罩图层一样，是所谓的“临时视图”的一部分。</p>
+  <h3 class="component-title">Popup 布局</h3>
+  <p class="component-description">Popup 布局相当简单. 你所需要做的就是将 <div class="popup"> 任何需要展示的内容 </div> 放到 body 里正确的位置上:</p>
+  <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal modal-no-buttons"</span><span class="nt">&gt;</span>
+    ...
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"popup"</span><span class="nt">&gt;</span>
+      Any HTML content goes here
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span></code></pre></div>
+   <h3 class="component-title">Popup 尺寸</h3>
+    <p class="component-description">默认的 Popup 在手机和平板(iPad)上尺寸有一些不同。在手机上是全屏的，在平板上宽高都是630px。如果你想使它在平板上也是全屏的，你应该添加额外的"tablet-fullscreen"类到需要的popup中：</p>
+  <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal modal-no-buttons"</span><span class="nt">&gt;</span>
+    ...
+    <span class="c">&lt;!-- This popup has fullscreen size on tablets --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"popup tablet-fullscreen"</span><span class="nt">&gt;</span>
+      Any HTML content goes here
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span></code></pre></div>
+    <h3 class="component-title">打开和关闭 Popup</h3>
+    <h4 class="component-title">通过HTML</h4>
+    <p class="component-description">可以通过在链接上使用特定的类和data属性打开和关闭所需的popups：</p>
+    <ul>
+      <li>为了打开popup，我们需要添加 "open-popup" 类到任意 HTML 元素上 (最好是链接)</li>
+      <li>为了关闭popup，我们需要添加 "close-popup" 类到任意 HTML 元素上 (最好是链接)</li>
+      <li>如果你的App里有超过一个popups, 你需要指定适当popup，则需添加额外的属性 data-popup=".my-popup" 到这个 HTML 元素上</li>
+    </ul>
+    <p class="component-description">根据上面的注意点：</p>
+    <div class="component-example component-example-fullbleed">
+      <div class="">
+        <div class="content-block">
+          <!-- In data-popup attribute we specify CSS selector of popup we need to open -->
+          <p><a href="#" data-popup=".popup-about" class="open-popup">Open About Popup </a></p>
+          <p><a href="#" data-popup=".popup-services" class="open-popup">Open Services Popup </a></p>
+        </div>
+      </div>
+     <!-- About Popup -->
+      <div class="popup popup-about">
+        <div class="content-block">
+          <p>About</p>
+          <p><a href="#" class="close-popup">Close popup</a></p>
+          <p>Lorem ipsum dolor ...</p>
+        </div>
+      </div>
+      <!-- Services Popup -->
+      <div class="popup popup-services">
+        <div class="content-block">
+          <p>Services</p>
+          <p><a href="#" class="close-popup">Close popup</a></p>
+          <p>Lorem ipsum dolor ...</p>
+        </div>
+      </div>
+    </div>
+  <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Popup(HTML)<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/header&gt;</span>
+  ...
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-about"</span><span class="nt">&gt;</span>Open About Popup <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+        <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-services"</span><span class="nt">&gt;</span>Open Services Popup <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+         
+  <span class="nt">&lt;/div&gt;</span> 
+  <span class="c">&lt;!-- About Popup --&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"popup popup-about"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;</span>About<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"close-popup"</span><span class="nt">&gt;</span>Close popup<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor ...<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="c">&lt;!-- Services Popup --&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"popup popup-services"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;</span>Services<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"close-popup"</span><span class="nt">&gt;</span>Close popup<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor ...<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span></code></pre></div>
+</article>
+
+<article class="component active">
+  <h4 class="component-title">使用 JavaScript</h4>
+  <p class="component-description">我们也可以用使用JavaScript来打开和关闭Popups ，因此我们需要看一下相关的App方法：</p>
+  <p class="component-description"><code>myApp.popup(popup)</code> - 打开 Popup</p>
+  <ul>
+    <li><code>popup - HTML元素 或者 字符串 (需要打开的popup的 CSS 选择器) </code>. 必需</li>
+  </ul>
+  <p class="component-description"><code>myApp.closeModal(popup)</code> - 关闭 Popup</p>
+  <ul>
+    <li><code>popup - HTML元素 或者 字符串 (需要打开的popup的 CSS 选择器)</code>. 可选. 如果没有设置这个值，任何打开着的Popup/Modal 都将被关闭</li>
+  </ul>
   <div class="component-example component-example-fullbleed">
     <div class="">
       <div class="content-block">
@@ -1107,32 +1615,207 @@
       </div>
     </div>
   </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Popup<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;/header&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-about"</span><span class="nt">&gt;</span>Open About Popup <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-services"</span><span class="nt">&gt;</span>Open Services Popup <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-       
-<span class="nt">&lt;/div&gt;</span> 
-<span class="c">&lt;!-- About Popup --&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"popup popup-about"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;p&gt;</span>About<span class="nt">&lt;/p&gt;</span>
-          <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"close-popup"</span><span class="nt">&gt;</span>Close popup<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-          <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor ...<span class="nt">&lt;/p&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
+  <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Popup(JavaScript)<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/header&gt;</span>
+  ...
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-about"</span><span class="nt">&gt;</span>Open About Popup <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+        <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-services"</span><span class="nt">&gt;</span>Open Services Popup <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
       <span class="nt">&lt;/div&gt;</span>
-      <span class="c">&lt;!-- Services Popup --&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"popup popup-services"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;p&gt;</span>Services<span class="nt">&lt;/p&gt;</span>
-          <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"close-popup"</span><span class="nt">&gt;</span>Close popup<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-          <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor ...<span class="nt">&lt;/p&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;/div&gt;</span></code></pre></div>
+         
+  <span class="nt">&lt;/div&gt;</span> 
+  <span class="c">&lt;!-- About Popup --&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"popup popup-about"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;</span>About<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"close-popup"</span><span class="nt">&gt;</span>Close popup<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor ...<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="c">&lt;!-- Services Popup --&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"popup popup-services"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;</span>Services<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"close-popup"</span><span class="nt">&gt;</span>Close popup<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor ...<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span></code></pre></div>
+  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.open-about'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">popup</span><span class="p">(</span><span class="s1">'.popup-about'</span><span class="p">);</span>
+  <span class="p">});</span>
+   
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.open-services'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">popup</span><span class="p">(</span><span class="s1">'.popup-services'</span><span class="p">);</span>
+  <span class="p">});</span></code></pre></div>
+</article>
+
+<article class="component active">
+  <h3 class="component-title">Popup 事件</h3>
+  <p class="component-description">Popup 和 Modals有一样的事件, 如果你需要在打开/关闭popup时使用JavaScript做一些事情的时候，这些事件会很有用。</p>
+  <table class="events-table">
+    <thead>
+      <tr>
+        <th>事件</th>
+        <th>目标</th>
+        <th>描述</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>open</td>
+        <td>Popup Element<span>&lt;div class="popup"&gt;</span></td>
+        <td>当 Popup 开始打开动画时，事件将被触发。</td>
+      </tr>
+      <tr>
+        <td>opened</td>
+        <td>Popup Element<span>&lt;div class="popup"&gt;</span></td>
+        <td>当 Popup 完成打开动画时，事件将被触发。</td>
+      </tr>
+      <tr>
+        <td>close</td>
+        <td>Popup Element<span>&lt;div class="popup"&gt;</span></td>
+        <td>当 Popup 开始结束动画时，事件将被触发。</td>
+      </tr>
+      <tr>
+        <td>closed</td>
+        <td>Popup Element<span>&lt;div class="popup"&gt;</span></td>
+        <td>当 Popup 完成结束动画后，事件将被触发。</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content">
+        <div class="content-block">
+          <!-- In data-popup attribute we specify CSS selector of popup we need to open -->
+          <p><a href="#" data-popup=".popup-about" class="open-popup">Open About Popup </a></p>
+          <p><a href="#" data-popup=".popup-services" class="open-popup">Open Services Popup </a></p>
+        </div>
+      </div>
+      <script type="text/javascript">
+        $(document).on('click','.popup-about', function () {
+          console.log('About Popup opened')
+        });
+        $(document).on('click','.popup-about', function () {
+          console.log('About Popup is closing')
+        });
+        $(document).on('click','.popup-services', function () {
+          console.log('Services Popup is opening')
+        });
+        $(document).on('click','.popup-services', function () {
+          console.log('Services Popup is closed')
+        });            
+      </script>    
+    </div>
+   <!-- About Popup -->
+    <div class="popup popup-about">
+      <div class="content-block">
+        <p>About</p>
+        <p><a href="#" class="close-popup">Close popup</a></p>
+        <p>Lorem ipsum dolor ...</p>
+      </div>
+      
+    </div>
+    <!-- Services Popup -->
+    <div class="popup popup-services">
+      <div class="content-block">
+        <p>Services</p>
+        <p><a href="#" class="close-popup">Close popup</a></p>
+        <p>Lorem ipsum dolor ...</p>
+      </div>
+    </div>
+  </div>
+  <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Popup事件<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/header&gt;</span>
+  ...
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- In data-popup attribute we specify CSS selector of popup we need to open --&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">data-popup=</span><span class="s">".popup-about"</span> <span class="na">class=</span><span class="s">"open-popup"</span><span class="nt">&gt;</span>Open About Popup <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">data-popup=</span><span class="s">".popup-services"</span> <span class="na">class=</span><span class="s">"open-popup"</span><span class="nt">&gt;</span>Open Services Popup <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="c">&lt;!-- About Popup --&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"popup popup-about"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;</span>About<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"close-popup"</span><span class="nt">&gt;</span>Close popup<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor ...<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="c">&lt;!-- Services Popup --&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"popup popup-services"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;</span>Services<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"close-popup"</span><span class="nt">&gt;</span>Close popup<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor ...<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span></code></pre></div>
+  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.popup-about'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'About Popup opened'</span><span class="p">)</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.popup-about'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'About Popup is closing'</span><span class="p">)</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.popup-services'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Services Popup is opening'</span><span class="p">)</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.popup-services'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Services Popup is closed'</span><span class="p">)</span>
+  <span class="p">});</span></code></pre></div>
+</article>
+
+<article class="component active">
+  <h3 class="component-title">动态的 Popup</h3>
+  <p class="component-description">Framework7允许你调用相关的App方法时传递HTML内容来动态地创建Popup:</p>
+  <p class="component-description"><code>myApp.popup(popupHTML, removeOnClose)</code> - 打开 Popup</p>
+  <ul>
+    <li><code>popupHTML</code> - string. popup的HTML字符串</li>
+    <li><code>removeOnClose</code> - boolean. 可选, 默认 - true. 如果是 true， 那么 Popup 在关闭时将从DOM中移除</li>
+  </ul>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content">
+        <div class="content-block">
+          <!-- In data-popup attribute we specify CSS selector of popup we need to open -->
+          <p><a href="#" class="create-popup">Create Popup</a></p>
+        </div>
+      </div>
+      <script type="text/javascript">
+        $(document).on('click','.create-popup', function () {
+          var popupHTML = '<div class="popup">'+
+                            '<div class="content-block">'+
+                              '<p>Popup created dynamically.</p>'+
+                              '<p><a href="#" class="close-popup">Close me</a></p>'+
+                            '</div>'+
+                          '</div>'
+          $.popup(popupHTML);
+        });                   
+      </script>    
+    </div>
+   </div>
+  <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>动态的 Popup<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/header&gt;</span>
+  ...
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- In data-popup attribute we specify CSS selector of popup we need to open --&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"create-popup"</span><span class="nt">&gt;</span>Create Popup<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span></code></pre></div>
+  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.create-popup'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">popupHTML</span> <span class="o">=</span> <span class="s1">'&lt;div class="popup"&gt;'</span><span class="o">+</span>
+                      <span class="s1">'&lt;div class="content-block"&gt;'</span><span class="o">+</span>
+                        <span class="s1">'&lt;p&gt;Popup created dynamically.&lt;/p&gt;'</span><span class="o">+</span>
+                        <span class="s1">'&lt;p&gt;&lt;a href="#" class="close-popup"&gt;Close me&lt;/a&gt;&lt;/p&gt;'</span><span class="o">+</span>
+                      <span class="s1">'&lt;/div&gt;'</span><span class="o">+</span>
+                    <span class="s1">'&lt;/div&gt;'</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">popup</span><span class="p">(</span><span class="nx">popupHTML</span><span class="p">);</span>
+  <span class="p">});</span></code></pre></div>
 </article>
 
   <article class="component" id="list">
@@ -2156,6 +2839,71 @@
   <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
 </article>
+
+      <article class="component" id="push">
+      <h3 class="component-title">Push</h3>
+      <p class="component-description">Push.js is the engine that connects Ratchet pages together with AJAX and the history api. Push.js is listening to all clicks on a page, so just make sure it's included and link something in your Ratchet project up.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- A one.html link --&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
+
+      <p class="component-note">This will use push to replace everything in the .content div with the .content of two.html. Also, it will either update or remove .bar-nav and .bar-tab according to their presences in two.html.</p>
+
+      <p class="component-description">Now that pages are being loaded through push, it's easy to specify transitions for animations between pages. There are three different transitions to chose from: <code>fade</code>, <code>slide-in</code>, or <code>slide-out</code>.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- An one.html link that animates to two.html --&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span> <span class="na">data-transition=</span><span class="s">"fade"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
+
+      <p class="component-description">A working version of push:</p>
+
+      <div class="component-example component-example-fullbleed">
+        <header class="bar bar-nav">
+          <h1 class="title">Push</h1>
+        </header>
+        <div class="content">
+          <div class="card">
+            <ul class="table-view">
+              <li class="table-view-cell">
+                <a class="navigate-right" href="/two.html" data-transition="slide-in">
+                  Load new page with push
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Push<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"table-view"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"table-view-cell"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navigate-right"</span> <span class="na">href=</span><span class="s">"../two.html"</span> <span class="na">data-transition=</span><span class="s">"slide-in"</span><span class="nt">&gt;</span>
+          Load new page with push
+        <span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+        <p class="component-description">Have a link you don't want to intercepted by push? Try this:</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Use data-ignore="push" to prevent the push.js interception --&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://www.google.com"</span> <span class="na">data-ignore=</span><span class="s">"push"</span><span class="nt">&gt;</span>Google<span class="nt">&lt;a&gt;</span></code></pre></div>
+
+        <p class="component-description">Push.js binds an event to the document that returns a detail object and can be used to fire a callback.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Only needed if you want to fire a callback</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'push'</span><span class="p">,</span> <span class="nx">myFunction</span><span class="p">);</span></code></pre></div>
+
+        <p class="component-description">Push.js can be triggered manually by using the PUSH(options) function. When passing options, url is required, container, transition and timeout are optional. As of version 2.1.0 Ratchet has its own namespace and can also be called with RATCHET.push(options).</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">PUSH</span><span class="p">({</span><span class="na">url</span><span class="p">:</span> <span class="s2">"/signin"</span><span class="p">});</span>
+<span class="nx">RATCHET</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="na">url</span><span class="p">:</span> <span class="s2">"/signin"</span><span class="p">});</span></code></pre></div>
+
+      </article>
 
     <!-- Table views -->
 

@@ -21,7 +21,6 @@
     visibility: hidden;
     opacity: 0;
     transition-duration: @modalDuration;
-    
     &.modal-overlay-visible {
         visibility: visible;
         opacity: 1;
@@ -31,20 +30,19 @@
     z-index: 10200;
 }
 .modal {
-    width: 270px;
+    width: 13.5rem;
     position: absolute;
     z-index: 11000;
     left: 50%;
-    margin-left: -135px;
+    margin-left: -6.75rem;
     margin-top: 0;
     top: 50%;
     text-align: center;
-    border-radius: 7px;
+    border-radius: 0.35rem;
     opacity: 0;
     transform: translate3d(0,0,0) scale(1.185);
- 
     transition-property: transform, opacity;
-    color:#000;
+    color: #000;
     display: none;
     &.modal-in {
         opacity: 1;
@@ -59,22 +57,22 @@
     }
 }
 .modal-inner {
-    padding: 15px;
+    padding: 0.75rem;
     .hairline(bottom, #b5b5b5);
-    border-radius: 7px 7px 0 0;
+    border-radius: 0.35rem 0.35rem 0 0;
     position: relative;
     background: @modalBgColor;
 }
 .modal-title {
     font-weight: 500;
-    font-size: 18px;
+    font-size: 0.9rem;
     text-align: center;
     +.modal-text {
-        margin-top: 5px;
+        margin-top: 0.25rem;
     }
 }
 .modal-buttons {
-    height: 44px;
+    height: 2.2rem;
     overflow: hidden;
     .flexbox();
     .justify-content(center);
@@ -85,10 +83,10 @@
 }
 .modal-button {
     width: 100%;
-    padding: 0 5px;
-    height: 44px;
-    font-size: 17px;
-    line-height: 44px;
+    padding: 0 0.25rem;
+    height: 2.2rem;
+    font-size: 0.85rem;
+    line-height: 2.2rem;
     text-align: center;
     color: @modalButonColor;
     background: @modalButonBg;
@@ -103,14 +101,14 @@
     -webkit-box-flex:1;
     -ms-flex:1;
     &:first-child {
-        border-radius: 0 0 0 7px;
+        border-radius: 0 0 0 0.35rem;
     }
     &:last-child {
         .hairline-remove(right);
-        border-radius: 0 0 7px 0;
+        border-radius: 0 0 0.35rem 0;
     }
     &:first-child:last-child {
-        border-radius: 0 0 7px 7px;
+        border-radius: 0 0 0.35rem 0.35rem;
     }
     &.modal-button-bold {
         font-weight: 500;
@@ -124,14 +122,14 @@
         .hairline(bottom, #b5b5b5);
         border-radius: 0;
         &:last-child {
-            border-radius: 0 0 7px 7px;
+            border-radius: 0 0 0.35rem 0.35rem;
             .hairline-remove(bottom);
         }
     }
 }
 .modal-no-buttons {
     .modal-inner {
-        border-radius: 7px;
+        border-radius: 0.35rem;
         .hairline-remove(bottom);
     }
     .modal-buttons {
@@ -157,7 +155,7 @@
     }
 }
 .actions-modal-group {
-    margin: 8px;
+    margin: 0.4rem;
 }
 .actions-modal-button, .actions-modal-label {
     width: 100%;
@@ -183,14 +181,14 @@
         color: @color-danger;
     }
     &:first-child {
-        border-radius: 4px 4px 0 0;
+        border-radius: 0.2rem 0.2rem 0 0;
     }
     &:last-child {
         .hairline-remove(bottom);
-        border-radius: 0 0 4px 4px;
+        border-radius: 0 0 0.2rem 0.2rem;
     }
     &:first-child:last-child {
-        border-radius: 4px;
+        border-radius: 0.2rem;
     }
     &.disabled {
         opacity: 0.95;
@@ -199,18 +197,18 @@
 }
 .actions-modal-button {
     cursor: pointer;
-    line-height: 43px;
-    font-size: 20px;
+    line-height: 2.15rem;
+    font-size:1rem;
     color: @color-primary;
     html:not(.watch-active-state) &:active, &.active-state {
         background: @actionsModalActiveButtonBg;
     }
 }
 .actions-modal-label {
-    font-size: 13px;
+    font-size: 0.65rem;
     line-height: 1.3;
-    min-height: 44px;
-    padding: 8px 10px;
+    min-height: 2.2rem;
+    padding: 0.4rem 0.5rem;
     color: #8a8a8a;
     .flexbox();
     .justify-content(center);
@@ -219,41 +217,41 @@
 // Prompt
 input.modal-text-input {
     box-sizing: border-box;
-    height: 30px;
+    height: 1.5rem;
     background: #fff;
     margin: 0;
-    margin-top: 15px;
-    padding: 0 5px;
-    border: 1px solid #a0a0a0;
-    border-radius: 5px;
+    margin-top: 0.75rem;
+    padding: 0 0.25rem;
+    border: 0.05rem solid #a0a0a0;
+    border-radius: 0.25rem;
     width: 100%;
-    font-size: 14px;
+    font-size: 0.7rem;
     font-family: inherit;
     display: block;
     box-shadow: 0 0 0 rgba(0,0,0,0);
     appearance: none;
     + input.modal-text-input {
-        margin-top: 5px;
+        margin-top: 0.25rem;
     }
     &.modal-text-input-double {
-        border-radius: 5px 5px 0 0;
+        border-radius: 0.25rem 0.25rem 0 0;
         + input.modal-text-input {
             margin-top: 0;
             border-top: 0;
-            border-radius: 0 0 5px 5px;
+            border-radius: 0 0 0.25rem 0.25rem;
         }
     }
 }
 // Popover
 .popover {
-    width: 320px;
+    width: 16rem;
     background:@popoverBg;
     z-index: 11000;
     margin: 0;
     top: 0;
     opacity: 0;
     left: 0;
-    border-radius: 7px;
+    border-radius: 0.35rem;
     position: absolute;
     display: none;
     transform: none;
@@ -270,70 +268,70 @@ input.modal-text-input {
         &:first-child {
             ul {
                 .hairline-remove(top);
-                border-radius: 7px 7px 0 0;
+                border-radius: 0.35rem 0.35rem 0 0;
             }
             li:first-child a{
-                border-radius: 7px 7px 0 0;
+                border-radius: 0.35rem 0.35rem 0 0;
             }
         }
         &:last-child {
             ul {
                 .hairline-remove(bottom);
-                border-radius: 0 0 7px 7px;
+                border-radius: 0 0 0.35rem 0.35rem;
             }
             li:last-child a{
-                border-radius: 0 0 7px 7px;
+                border-radius: 0 0 0.35rem 0.35rem;
             }
         }
         &:first-child:last-child {
             li:first-child:last-child a, ul:first-child:last-child {
-                border-radius: 7px;
+                border-radius: 0.35rem;
             }
         }
         + .list-block {
-            margin-top: 35px;
+            margin-top: 1.75rem;
         }
     }
 }
 .popover-angle {
-    width: 26px;
-    height: 26px;
+    width: 1.3rem;
+    height: 1.3rem;
     position: absolute;
-    left: -26px;
+    left: -1.3rem;
     top: 0;
     z-index: 100;
     overflow: hidden;
     &:after {
         content:' ';
         background: @popoverBg;
-        width: 26px;
-        height: 26px;
+        width: 1.3rem;
+        height: 1.3rem;
         position: absolute;
         left: 0;
         top: 0;
-        border-radius: 3px;
+        border-radius: 1.5rem;
         transform: rotate(45deg);
     }
     &.on-left {
-        left: -26px;
+        left: -1.3rem;
         &:after {
-            left: 19px;
+            left: 0.95rem;
             top: 0;
         }
     }
     &.on-right {
         left: 100%;
         &:after {
-            left: -19px;
+            left: -0.95rem;
             top: 0;
         }
     }
     &.on-top {
         left: 0;
-        top: -26px;
+        top: -1.3rem;
         &:after {
             left: 0;
-            top: 19px;
+            top: 0.95rem;
         }
     }
     &.on-bottom {
@@ -341,7 +339,7 @@ input.modal-text-input {
         top: 100%;
         &:after {
             left: 0;
-            top: -19px;
+            top: -0.95rem;
         }
     }
 }
@@ -350,16 +348,16 @@ input.modal-text-input {
 }
 .actions-popover {
     .list-block + .list-block {
-        margin-top: 20px;
+        margin-top: 1rem;
     }
     .list-block ul {
         background: #fff;
     }
 }
 .actions-popover-label {
-    padding: 8px 10px;
+    padding: 0.4rem 0.5rem;
     color:#8a8a8a;
-    font-size: 13px;
+    font-size: 0.65rem;
     line-height: 1.3;
     text-align: center;
     position: relative;
@@ -395,55 +393,38 @@ input.modal-text-input {
 .login-screen.modal-in, .login-screen.modal-out {
     display: block;
 }
-// iPad Popup
-/*@media all and (min-width:630px) and (min-height:630px) {
-    .popup:not(.tablet-fullscreen) {
-        width: 630px;
-        height: 630px;
-        left: 50%;
-        top: 50%;
-        margin-left: -315px;
-        margin-top: -315px;
-        translate3d: 0,1024px,0;
-        &.modal-in {
-            translate3d: 0,0,0;
-        }
-        &.modal-out {
-            translate3d: 0,1024px,0;
-        }
-    }
-}*/
+
 html.with-statusbar-overlay {
     // iPhone with statusbar overlay
     .popup {
-        height: ~"-webkit-calc(100% - 20px)";
-        height: ~"calc(100% - 20px)";
-        top: 20px;
+        height: ~"-webkit-calc(100% -1rem)";
+        height: ~"calc(100% - 1rem)";
+        top: 1rem;
     }
     .popup-overlay {
         z-index: 9800;
     }
     @media all and (max-width:629px), (max-height:629px) {
         .popup {
-            height: ~"-webkit-calc(100% - 20px)";
-            height: ~"calc(100% - 20px)";
-            top: 20px;
+            height: ~"-webkit-calc(100% - 1rem)";
+            height: ~"calc(100% - 1rem)";
+            top: 1rem;
         }
         .popup-overlay {
             z-index: 9800;
         }
     }
     .login-screen, .popup.tablet-fullscreen {
-        height: ~"-webkit-calc(100% - 20px)";
-        height: ~"calc(100% - 20px)";
-        top: 20px;
+        height: ~"-webkit-calc(100% - 1rem)";
+        height: ~"calc(100% - 1rem)";
+        top: 1rem;
     }
 }
 
 //Preloaders modals
 .modal .preloader {
-    width: 34px;
-    height: 34px;
+    width: 1.7rem;
+    height: 1.7rem;
 }
 .preloader-indicator-overlay {
     visibility: visible;
@@ -454,16 +435,16 @@ html.with-statusbar-overlay {
     position: absolute;
     left: 50%;
     top: 50%;
-    padding: 8px;
-    margin-left: -25px;
-    margin-top: -25px;
+    padding: 0.4rem;
+    margin-left: -1.25rem;
+    margin-top: -1.25rem;
     background: rgba(0,0,0,0.8);
     z-index: 11000;
-    border-radius: 5px;
+    border-radius: 0.25rem;
     .preloader {
         display: block;
-        width: 34px;
-        height: 34px;
+        width: 1.7rem;
+        height: 1.7rem;
     }
 }
 
@@ -473,7 +454,7 @@ html.with-statusbar-overlay {
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 260px;
+    height: 13rem;
     z-index: 11500;
     display: none;
     transition-property: transform;
@@ -497,9 +478,9 @@ html.with-statusbar-overlay {
         position: relative;
         width: 100%;
         + .picker-modal-inner {
-            height: ~"-webkit-calc(100% - 44px)";
-            height: ~"-moz-calc(100% - 44px)";
-            height: ~"calc(100% - 44px)";    
+            height: ~"-webkit-calc(100% - 2.2rem)";
+            height: ~"-moz-calc(100% - 2.2rem)";
+            height: ~"calc(100% - 2.2rem)";    
         }
     }
     &.picker-modal-inline, .popover & {
