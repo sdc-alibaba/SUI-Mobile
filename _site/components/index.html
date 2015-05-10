@@ -89,6 +89,7 @@
   <a class="docs-component-item" href="#tabs" data-ignore="push">标签页</a>
   <a class="docs-component-item" href="#grid" data-ignore="push">栅格</a>
   <a class="docs-component-item" href="#push" data-ignore="push">push.js</a>
+  <a class="docs-component-item" href="#scroller" data-ignore="push">滚动条</a>
   <a class="docs-component-item" href="#ratchicons" data-ignore="push">图标</a>
 </div>
 
@@ -165,274 +166,236 @@
 
 
 
-        <article class="component active" id="bars">
-        <h3 class="component-title">Title bar</h3>
-        <p class="component-description">Title bars are full width and docked to the top of the viewport.</p>
-
-        <div class="component-example component-example-fullbleed">
-          <header class="bar bar-nav">
+  <article class="component active" id="bars">
+    <h3 class="component-title">Title bar</h3>
+    <p class="component-description">Title bars are full width and docked to the top of the viewport.</p>
+    <div class="component-example component-example-fullbleed">
+        <header class="bar bar-nav">
             <h1 class="title">Title</h1>
-          </header>
-        </div>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;/header&gt;</span></code></pre></div>
-
-    </article>
-
-    <article class="component">
-      <h3 class="component-title">Title bar with buttons</h3>
-      <p class="component-description">Buttons in a title bar are left or right aligned and should be used for actions. Use the <code>.pull-right</code> or <code>.pull-left</code> utility classes to float the buttons. Also, be sure to place any floated elements before the title.</p>
-
-      <div class="component-example component-example-fullbleed">
+        </header>
+    </div>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;/header&gt;</span></code></pre></div>
+</article>
+<article class="component">
+    <h3 class="component-title">Title bar with buttons</h3>
+    <p class="component-description">Buttons in a title bar are left or right aligned and should be used for actions. Use the <code>.pull-right</code> or <code>.pull-left</code> utility classes to float the buttons. Also, be sure to place any floated elements before the title.</p>
+    <div class="component-example component-example-fullbleed">
         <header class="bar bar-nav">
-          <button class="button pull-left">
+            <button class="button pull-left">
+                Left
+            </button>
+            <button class="button pull-right">
+                Right
+            </button>
+            <h1 class="title">Title</h1>
+        </header>
+    </div>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button pull-left"</span><span class="nt">&gt;</span>
             Left
-          </button>
-          <button class="button pull-right">
+        <span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button pull-right"</span><span class="nt">&gt;</span>
             Right
-          </button>
-          <h1 class="title">Title</h1>
-        </header>
-      </div>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button pull-left"</span><span class="nt">&gt;</span>
-    Left
-  <span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button pull-right"</span><span class="nt">&gt;</span>
-    Right
-  <span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;/header&gt;</span></code></pre></div>
-
-    </article>
-
-    <article class="component">
-      <h3 class="component-title">Title bar with icons</h3>
-      <p class="component-description">Icons can also be used for actions in toolbars. Again, be sure to use utility classes to float the icons into position.</p>
-
-      <div class="component-example component-example-fullbleed">
+        <span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;/header&gt;</span></code></pre></div>
+</article>
+<article class="component">
+    <h3 class="component-title">Title bar with icons</h3>
+    <p class="component-description">Icons can also be used for actions in toolbars. Again, be sure to use utility classes to float the icons into position.</p>
+    <div class="component-example component-example-fullbleed">
         <header class="bar bar-nav">
-          <a class="icon icon-left-nav pull-left"></a>
-          <a class="icon icon-compose pull-right"></a>
-          <h1 class="title">Title</h1>
+            <a class="icon icon-left-nav pull-left"></a>
+            <a class="icon icon-compose pull-right"></a>
+            <h1 class="title">Title</h1>
         </header>
-      </div>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-left-nav pull-left"</span><span class="nt">&gt;&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-compose pull-right"</span><span class="nt">&gt;&lt;/a&gt;</span>
-  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;/header&gt;</span></code></pre></div>
-
-    </article>
-
-    <article class="component">
-      <h3 class="component-title">Title bar with link buttons and icons</h3>
-      <p class="component-description">Link buttons can be used in tool bars to remove the outline. Use these in conjuction with icons to recreate the nav feel from iOS7. Note the use of <code>.button-nav</code> to bring the buttons a little bit closer to the edge of the viewport.</p>
-
-      <div class="component-example component-example-fullbleed">
+    </div>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-left-nav pull-left"</span><span class="nt">&gt;&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-compose pull-right"</span><span class="nt">&gt;&lt;/a&gt;</span>
+        <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;/header&gt;</span></code></pre></div>
+</article>
+<article class="component">
+    <h3 class="component-title">Title bar with link buttons and icons</h3>
+    <p class="component-description">Link buttons can be used in tool bars to remove the outline. Use these in conjuction with icons to recreate the nav feel from iOS7. Note the use of <code>.button-nav</code> to bring the buttons a little bit closer to the edge of the viewport.</p>
+    <div class="component-example component-example-fullbleed">
         <header class="bar bar-nav">
-          <button class="button button-link button-nav pull-left">
-            <span class="icon icon-left-nav"></span>
+            <button class="button button-link button-nav pull-left">
+                <span class="icon icon-left-nav"></span> Left
+            </button>
+            <button class="button button-link button-nav pull-right">
+                Right
+                <span class="icon icon-right-nav"></span>
+            </button>
+            <h1 class="title">Title</h1>
+        </header>
+    </div>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-link button-nav pull-left"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-left-nav"</span><span class="nt">&gt;&lt;/span&gt;</span> Left
+        <span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-link button-nav pull-right"</span><span class="nt">&gt;</span>
+            Right
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-right-nav"</span><span class="nt">&gt;&lt;/span&gt;</span>
+        <span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;/header&gt;</span></code></pre></div>
+</article>
+<article class="component">
+    <h3 class="component-title">Title bar with segmented control</h3>
+    <p class="component-description">Title bars can also house segmented controls. Feel free to add accompanying buttons too. The control will automatically layout itself out correctly.</p>
+    <div class="component-example component-example-fullbleed">
+        <header class="bar bar-nav">
+            <button class="button pull-left">
+                Left
+            </button>
+            <button class="button pull-right">
+                Right
+            </button>
+            <div class="buttons-row">
+                <a href="#tab1" class="tab-link active button">Tab 1</a>
+                <a href="#tab2" class="tab-link button">Tab 2</a>
+                <a href="#tab3" class="tab-link button">Tab 3</a>
+            </div>
+        </header>
+    </div>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button pull-left"</span><span class="nt">&gt;</span>
             Left
-          </button>
-          <button class="button button-link button-nav pull-right">
+        <span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button pull-right"</span><span class="nt">&gt;</span>
             Right
-            <span class="icon icon-right-nav"></span>
-          </button>
-          <h1 class="title">Title</h1>
-        </header>
-      </div>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-link button-nav pull-left"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-left-nav"</span><span class="nt">&gt;&lt;/span&gt;</span>
-    Left
-  <span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-link button-nav pull-right"</span><span class="nt">&gt;</span>
-    Right
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-right-nav"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;/header&gt;</span></code></pre></div>
-
-    </article>
-
-    <article class="component">
-      <h3 class="component-title">Title bar with segmented control</h3>
-      <p class="component-description">Title bars can also house segmented controls. Feel free to add accompanying buttons too. The control will automatically layout itself out correctly.</p>
-
-      <div class="component-example component-example-fullbleed">
-        <header class="bar bar-nav">
-          <button class="button pull-left">
-            Left
-          </button>
-          <button class="button pull-right">
-            Right
-          </button>
-          <div class="buttons-row">
-            <a href="#tab1" class="tab-link active button">Tab 1</a>
-            <a href="#tab2" class="tab-link button">Tab 2</a>
-            <a href="#tab3" class="tab-link button">Tab 3</a>
-          </div>
-        </header>
-      </div>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button pull-left"</span><span class="nt">&gt;</span>
-    Left
-  <span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button pull-right"</span><span class="nt">&gt;</span>
-    Right
-  <span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab1"</span> <span class="na">class=</span><span class="s">"tab-link active button"</span><span class="nt">&gt;</span>Tab 1<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab2"</span> <span class="na">class=</span><span class="s">"tab-link button"</span><span class="nt">&gt;</span>Tab 2<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab3"</span> <span class="na">class=</span><span class="s">"tab-link button"</span><span class="nt">&gt;</span>Tab 3<span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/header&gt;</span></code></pre></div>
-
-    </article>
-
-    <article class="component">
-      <h3 class="component-title">Tab bar</h3>
-      <p class="component-description">Use Ratchicons in the <code>.tab-bar</code> to represent different sections of your app.</p>
-
-      <div class="component-example component-example-fullbleed">
+        <span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab1"</span> <span class="na">class=</span><span class="s">"tab-link active button"</span><span class="nt">&gt;</span>Tab 1<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab2"</span> <span class="na">class=</span><span class="s">"tab-link button"</span><span class="nt">&gt;</span>Tab 2<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab3"</span> <span class="na">class=</span><span class="s">"tab-link button"</span><span class="nt">&gt;</span>Tab 3<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/header&gt;</span></code></pre></div>
+</article>
+<article class="component">
+    <h3 class="component-title">Tab bar</h3>
+    <p class="component-description">Use Ratchicons in the <code>.tab-bar</code> to represent different sections of your app.</p>
+    <div class="component-example component-example-fullbleed">
         <nav class="bar bar-tab">
-          <a class="tab-item active" href="#">
-            <span class="icon icon-home"></span>
-            <span class="tab-label">Label</span>
-          </a>
-          <a class="tab-item" href="#">
-            <span class="icon icon-person"></span>
-            <span class="tab-label">Label</span>
-          </a>
-          <a class="tab-item" href="#">
-            <span class="icon icon-star-filled"></span>
-            <span class="tab-label">Label</span>
-          </a>
-          <a class="tab-item" href="#">
-            <span class="icon icon-search"></span>
-            <span class="tab-label">Label</span>
-          </a>
-          <a class="tab-item" href="#">
-            <span class="icon icon-gear"></span>
-            <span class="tab-label">Label</span>
-          </a>
+            <a class="tab-item active" href="#">
+                <span class="icon icon-home"></span>
+                <span class="tab-label">Label</span>
+            </a>
+            <a class="tab-item" href="#">
+                <span class="icon icon-person"></span>
+                <span class="tab-label">Label</span>
+            </a>
+            <a class="tab-item" href="#">
+                <span class="icon icon-star-filled"></span>
+                <span class="tab-label">Label</span>
+            </a>
+            <a class="tab-item" href="#">
+                <span class="icon icon-search"></span>
+                <span class="tab-label">Label</span>
+            </a>
+            <a class="tab-item" href="#">
+                <span class="icon icon-gear"></span>
+                <span class="tab-label">Label</span>
+            </a>
         </nav>
-      </div>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"bar bar-tab"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-home"</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/span&gt;</span>
-  <span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"badge badge-negative badge-filled"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-person"</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Profile<span class="nt">&lt;/span&gt;</span>
-  <span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-star-filled"</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Favorites<span class="nt">&lt;/span&gt;</span>
-  <span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-search"</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Search<span class="nt">&lt;/span&gt;</span>
-  <span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-gear"</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Settings<span class="nt">&lt;/span&gt;</span>
-  <span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/nav&gt;</span></code></pre></div>
-
+    </div>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"bar bar-tab"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-home"</span><span class="nt">&gt;&lt;/span&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"badge badge-negative badge-filled"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-person"</span><span class="nt">&gt;&lt;/span&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Profile<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-star-filled"</span><span class="nt">&gt;&lt;/span&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Favorites<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-search"</span><span class="nt">&gt;&lt;/span&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Search<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-gear"</span><span class="nt">&gt;&lt;/span&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Settings<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/nav&gt;</span></code></pre></div>
     <p class="component-note touch-only"><strong>Note:</strong> Use push.js to actually change content.</p>
-  </article>
-
-  <article class="component">
-      <h3 class="component-title">Tab bar (labels only)</h3>
-      <p class="component-description">If you don't want to use icons, that's okay too. The text will appear larger to use the additional space.</p>
-
-      <div class="component-example component-example-fullbleed">
+</article>
+<article class="component">
+    <h3 class="component-title">Tab bar (labels only)</h3>
+    <p class="component-description">If you don't want to use icons, that's okay too. The text will appear larger to use the additional space.</p>
+    <div class="component-example component-example-fullbleed">
         <nav class="bar bar-tab">
-          <a class="tab-item active" href="#">
+            <a class="tab-item active" href="#">
             Label
           </a>
-          <a class="tab-item" href="#">
+            <a class="tab-item" href="#">
             Label
           </a>
-          <a class="tab-item" href="#">
+            <a class="tab-item" href="#">
             Label
           </a>
         </nav>
-      </div>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"bar bar-tab"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+    </div>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"bar bar-tab"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
     Label
   <span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
     Label
   <span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
     Label
   <span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/nav&gt;</span></code></pre></div>
-
+    <span class="nt">&lt;/nav&gt;</span></code></pre></div>
     <p class="component-note touch-only"><strong>Note:</strong> Use push.js to actually change content.</p>
-  </article>
-
-  <article class="component">
-      <h3 class="component-title">Standard bars</h3>
-      <p class="component-description">Standard bars are basic fixed elements that can be positioned in four places. These can be used to house buttons, icons, or segmented controls (see following examples).</p>
-
-      <div class="component-example component-example-fullbleed">
+</article>
+<article class="component">
+    <h3 class="component-title">Standard bars</h3>
+    <p class="component-description">Standard bars are basic fixed elements that can be positioned in four places. These can be used to house buttons, icons, or segmented controls (see following examples).</p>
+    <div class="component-example component-example-fullbleed">
         <!-- Segmented control in standard bar fixed to top -->
         <nav class="bar bar-standard">
-          <div class="buttons-row">
-            <a href="#tab1" class="tab-link active button">Tab 1</a>
-            <a href="#tab2" class="tab-link button">Tab 2</a>
-            <a href="#tab3" class="tab-link button">Tab 3</a>
-          </div>
+            <div class="buttons-row">
+                <a href="#tab1" class="tab-link active button">Tab 1</a>
+                <a href="#tab2" class="tab-link button">Tab 2</a>
+                <a href="#tab3" class="tab-link button">Tab 3</a>
+            </div>
         </nav>
-
         <!-- Block button in standard bar fixed below top bar -->
         <div class="bar bar-standard bar-header-secondary">
-          <button class="button button-block">Block level button</button>
+            <button class="button button-block">Block level button</button>
         </div>
-      </div>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Segmented control in standard bar fixed to top --&gt;</span>
-<span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"bar bar-standard"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab1"</span> <span class="na">class=</span><span class="s">"tab-link active button"</span><span class="nt">&gt;</span>Tab 1<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab2"</span> <span class="na">class=</span><span class="s">"tab-link button"</span><span class="nt">&gt;</span>Tab 2<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab3"</span> <span class="na">class=</span><span class="s">"tab-link button"</span><span class="nt">&gt;</span>Tab 3<span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/nav&gt;</span>
-
-<span class="c">&lt;!-- Block button in standard bar fixed below top bar --&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bar bar-standard bar-header-secondary"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-block"</span><span class="nt">&gt;</span>Block level button<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-
-<span class="c">&lt;!-- Block button in standard bar fixed above the footer --&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bar bar-standard bar-footer-secondary"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-block"</span><span class="nt">&gt;</span>Block level button<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-
-<span class="c">&lt;!-- Icons in standard bar fixed to the bottom of the screen --&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bar bar-standard bar-footer"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-compose pull-left"</span><span class="nt">&gt;&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-gear pull-right"</span><span class="nt">&gt;&lt;/a&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></div>
-
-  </article>
-
+    </div>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Segmented control in standard bar fixed to top --&gt;</span>
+    <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"bar bar-standard"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab1"</span> <span class="na">class=</span><span class="s">"tab-link active button"</span><span class="nt">&gt;</span>Tab 1<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab2"</span> <span class="na">class=</span><span class="s">"tab-link button"</span><span class="nt">&gt;</span>Tab 2<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab3"</span> <span class="na">class=</span><span class="s">"tab-link button"</span><span class="nt">&gt;</span>Tab 3<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/nav&gt;</span>
+    <span class="c">&lt;!-- Block button in standard bar fixed below top bar --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bar bar-standard bar-header-secondary"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-block"</span><span class="nt">&gt;</span>Block level button<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="c">&lt;!-- Block button in standard bar fixed above the footer --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bar bar-standard bar-footer-secondary"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-block"</span><span class="nt">&gt;</span>Block level button<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="c">&lt;!-- Icons in standard bar fixed to the bottom of the screen --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bar bar-standard bar-footer"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-compose pull-left"</span><span class="nt">&gt;&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-gear pull-right"</span><span class="nt">&gt;&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span></code></pre></div>
+</article>
 
   <article class="component active" id="buttons">
   <h3 class="component-title">按钮</h3>
@@ -737,58 +700,49 @@
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 </article>
 
-      <article class="component" id="push">
-      <h3 class="component-title">Push</h3>
-      <p class="component-description">Push.js is the engine that connects Ratchet pages together with AJAX and the history api. Push.js is listening to all clicks on a page, so just make sure it's included and link something in your Ratchet project up.</p>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- A one.html link --&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
-
-      <p class="component-note">This will use push to replace everything in the .content div with the .content of two.html. Also, it will either update or remove .bar-nav and .bar-tab according to their presences in two.html.</p>
-
-      <p class="component-description">Now that pages are being loaded through push, it's easy to specify transitions for animations between pages. There are three different transitions to chose from: <code>fade</code>, <code>slide-in</code>, or <code>slide-out</code>.</p>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- An one.html link that animates to two.html --&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span> <span class="na">data-transition=</span><span class="s">"fade"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
-
-      <p class="component-description">A working version of push:</p>
-
-      <div class="component-example component-example-fullbleed">
+  <article class="component" id="push">
+    <h3 class="component-title">Push</h3>
+    <p class="component-description">Push.js is the engine that connects Ratchet pages together with AJAX and the history api. Push.js is listening to all clicks on a page, so just make sure it's included and link something in your Ratchet project up.</p>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- A one.html link --&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
+    <p class="component-note">This will use push to replace everything in the .content div with the .content of two.html. Also, it will either update or remove .bar-nav and .bar-tab according to their presences in two.html.</p>
+    <p class="component-description">Now that pages are being loaded through push, it's easy to specify transitions for animations between pages. There are three different transitions to chose from: <code>fade</code>, <code>slide-in</code>, or <code>slide-out</code>.</p>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- An one.html link that animates to two.html --&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span> <span class="na">data-transition=</span><span class="s">"fade"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
+    <p class="component-description">A working version of push:</p>
+    <div class="component-example component-example-fullbleed">
         <header class="bar bar-nav">
-          <h1 class="title">Push</h1>
+            <h1 class="title">Push</h1>
         </header>
         <div class="content">
-          <div class="card">
-            <ul class="table-view">
-              <li class="table-view-cell">
-                <a class="navigate-right" href="/two.html" data-transition="slide-in">
+            <div class="card">
+                <ul class="table-view">
+                    <li class="table-view-cell">
+                        <a class="navigate-right" href="/two.html" data-transition="slide-in">
                   Load new page with push
                 </a>
-              </li>
-            </ul>
-          </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Push<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;/header&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"table-view"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"table-view-cell"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navigate-right"</span> <span class="na">href=</span><span class="s">"../two.html"</span> <span class="na">data-transition=</span><span class="s">"slide-in"</span><span class="nt">&gt;</span>
+    </div>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Push<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;/header&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"table-view"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"table-view-cell"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navigate-right"</span> <span class="na">href=</span><span class="s">"../two.html"</span> <span class="na">data-transition=</span><span class="s">"slide-in"</span><span class="nt">&gt;</span>
           Load new page with push
         <span class="nt">&lt;/a&gt;</span>
-      <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;/ul&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></div>
-
-        <p class="component-description">Have a link you don't want to intercepted by push? Try this:</p>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Use data-ignore="push" to prevent the push.js interception --&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://www.google.com"</span> <span class="na">data-ignore=</span><span class="s">"push"</span><span class="nt">&gt;</span>Google<span class="nt">&lt;a&gt;</span></code></pre></div>
+                <span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;/ul&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span></code></pre></div>
+    <p class="component-description">Have a link you don't want to intercepted by push? Try this:</p>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Use data-ignore="push" to prevent the push.js interception --&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://www.google.com"</span> <span class="na">data-ignore=</span><span class="s">"push"</span><span class="nt">&gt;</span>Google<span class="nt">&lt;a&gt;</span></code></pre></div>
 
         <p class="component-description">Push.js binds an event to the document that returns a detail object and can be used to fire a callback.</p>
 
@@ -801,6 +755,67 @@
 <span class="nx">RATCHET</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="na">url</span><span class="p">:</span> <span class="s2">"/signin"</span><span class="p">});</span></code></pre></div>
 
       </article>
+
+  <article class="component active" id="scroller">
+    <h3 class="component-title">滚动条</h3>
+    <p class="component-description">在auto的模式下对于版本号小于4.4.0的Android 版本 和 版本号小于6.0.0的ios使用大名鼎鼎的iscroll.js作为js滚动的引擎。当然也可以通过配置来决定全部使用js滚动或者native的滚动。js的滚动的事件和js接口和native的一样，唯一不同的是js的滚动条需要手动初始化和当滚动容器高度发生变化时需要人工refresh一下。</p>
+    
+    <div class="component-example component-example-fullbleed">
+        <div class="">
+            滚动ti
+        </div>
+    </div>
+
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>滚动条<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span> <span class="na">id=</span><span class="s">"scroller-demo"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>滚动方式<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-content"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-content-inner"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;h3&gt;</span>滚动具有三种模式：<span class="nt">&lt;/h3&gt;</span>
+                <span class="nt">&lt;ul&gt;</span>
+                    <span class="nt">&lt;li&gt;</span>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）<span class="nt">&lt;/li&gt;</span>
+                    <span class="nt">&lt;li&gt;</span>2. js模式: 使用js滚动<span class="nt">&lt;/li&gt;</span>
+                    <span class="nt">&lt;li&gt;</span>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了<span class="nt">&lt;/li&gt;</span>
+                <span class="nt">&lt;/ul&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>滚动方式<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-content"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-content-inner"</span> <span class="nt">&gt;</span>
+                <span class="nt">&lt;h3&gt;</span>滚动具有三种模式：<span class="nt">&lt;/h3&gt;</span>
+                <span class="nt">&lt;ul&gt;</span>
+                    <span class="nt">&lt;li&gt;</span>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）<span class="nt">&lt;/li&gt;</span>
+                    <span class="nt">&lt;li&gt;</span>2. js模式: 使用js滚动<span class="nt">&lt;/li&gt;</span>
+                    <span class="nt">&lt;li&gt;</span>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了<span class="nt">&lt;/li&gt;</span>
+                <span class="nt">&lt;/ul&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>滚动方式<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-content"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-content-inner"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;h3&gt;</span>滚动具有三种模式：<span class="nt">&lt;/h3&gt;</span>
+                <span class="nt">&lt;ul&gt;</span>
+                    <span class="nt">&lt;li&gt;</span>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）<span class="nt">&lt;/li&gt;</span>
+                    <span class="nt">&lt;li&gt;</span>2. js模式: 使用js滚动<span class="nt">&lt;/li&gt;</span>
+                    <span class="nt">&lt;li&gt;</span>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了<span class="nt">&lt;/li&gt;</span>
+                <span class="nt">&lt;/ul&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span></code></pre></div>
+</article>
 
   <article class="component" id="accordion">
   <h3 class="component-title">手风琴列表视图</h3>

@@ -1,0 +1,63 @@
+<article class="component active" id="scroller">
+    <h3 class="component-title">滚动条</h3>
+    <p class="component-description">在auto的模式下对于版本号小于4.4.0的Android 版本 和 版本号小于6.0.0的ios使用大名鼎鼎的iscroll.js作为js滚动的引擎。当然也可以通过配置来决定全部使用js滚动或者native的滚动。js的滚动的事件和js接口和native的一样，唯一不同的是js的滚动条需要手动初始化和当滚动容器高度发生变化时需要人工refresh一下。</p>
+    
+    <div class="component-example component-example-fullbleed">
+        <div class="">
+            滚动ti
+        </div>
+    </div>
+
+    {% highlight html %}
+<header class="bar bar-nav">
+    <h1 class="title">滚动条</h1>
+</header>
+<div class="content" id="scroller-demo">
+    <div class="card">
+        <div class="card-header">滚动方式</div>
+        <div class="card-content">
+            <div class="card-content-inner">
+                <h3>滚动具有三种模式：</h3>
+                <ul>
+                    <li>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）</li>
+                    <li>2. js模式: 使用js滚动</li>
+                    <li>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">滚动方式</div>
+        <div class="card-content">
+            <div class="card-content-inner" >
+                <h3>滚动具有三种模式：</h3>
+                <ul>
+                    <li>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）</li>
+                    <li>2. js模式: 使用js滚动</li>
+                    <li>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">滚动方式</div>
+        <div class="card-content">
+            <div class="card-content-inner">
+                <h3>滚动具有三种模式：</h3>
+                <ul>
+                    <li>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）</li>
+                    <li>2. js模式: 使用js滚动</li>
+                    <li>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+  $(function () {
+      
+  });
+</script>
+
+    {% endhighlight %}
+</article>

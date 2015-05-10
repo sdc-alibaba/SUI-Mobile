@@ -52,7 +52,9 @@ module.exports = function (grunt) {
           'js/template7.js',
           'js/common.js',
           'js/tabs.js',
-          'js/push.js'
+          'js/push.js',
+          'js/iscroll.js',
+          'js/scroller.js'
         ],
         dest: '<%= meta.distPath %>js/<%= pkg.name %>.js'
       }
