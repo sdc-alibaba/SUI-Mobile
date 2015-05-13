@@ -3,63 +3,373 @@
   <p class="component-description">表单</p>
 
   <div class="component-example component-example-fullbleed">
-    <div class="list-block">
-      <ul>
-        <!-- Text inputs -->
-        <li>
-          <div class="item-content">
-            <div class="item-media"><i class="icon icon-form-name"></i></div>
-            <div class="item-inner">
-              <div class="item-title label">Name</div>
-              <div class="item-input">
-                <input type="text" placeholder="Your name">
+    <header class="bar bar-nav">
+      <h1 class='title'>表单</h1>
+    </header>
+    <div class="content">
+      <div class="list-block">
+        <ul>
+          <!-- Text inputs -->
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-form-name"></i></div>
+              <div class="item-inner">
+                <div class="item-title label">Name</div>
+                <div class="item-input">
+                  <input type="text" placeholder="Your name">
+                </div>
               </div>
             </div>
-          </div>
-        </li>
-        <li>
-          <div class="item-content">
-            <div class="item-media"><i class="icon icon-form-email"></i></div>
-            <div class="item-inner">
-              <div class="item-title label">E-mail</div>
-              <div class="item-input">
-                <input type="email" placeholder="E-mail">
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-form-email"></i></div>
+              <div class="item-inner">
+                <div class="item-title label">E-mail</div>
+                <div class="item-input">
+                  <input type="email" placeholder="E-mail">
+                </div>
               </div>
             </div>
-          </div>
-        </li>
-      </ul>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-form-password"></i></div>
+              <div class="item-inner">
+                <div class="item-title label">Password</div>
+                <div class="item-input">
+                  <input type="password" placeholder="Password" class="">
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-form-gender"></i></div>
+              <div class="item-inner">
+                <div class="item-title label">Gender</div>
+                <div class="item-input">
+                  <select>
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- Date -->
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+              <div class="item-inner">
+                <div class="item-title label">Birth date</div>
+                <div class="item-input">
+                  <input type="date" placeholder="Birth day" value="2014-04-30">
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- Date time-->
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+              <div class="item-inner">
+                <div class="item-title label">Date time</div>
+                <div class="item-input">
+                  <input type="datetime-local">
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- Switch (Checkbox) -->
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-form-toggle"></i></div>
+              <div class="item-inner">
+                <div class="item-title label">Switch</div>
+                <div class="item-input">
+                  <label class="label-switch">
+                    <input type="checkbox">
+                    <div class="checkbox"></div>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="content-block">
+        <div class="row">
+          <div class="col-50"><a href="#" class="button button-big button-fill button-danger">取消</a></div>
+          <div class="col-50"><a href="#" class="button button-big button-fill button-success">提交</a></div>
+        </div>
+      </div>
     </div>
   </div>
 
 {% highlight html %}
-<div class="list-block">
-  <ul>
-    <!-- Text inputs -->
-    <li>
-      <div class="item-content">
-        <div class="item-media"><i class="icon icon-form-name"></i></div>
-        <div class="item-inner">
-          <div class="item-title label">Name</div>
-          <div class="item-input">
-            <input type="text" placeholder="Your name">
+<header class="bar bar-nav">
+  <h1 class='title'>表单</h1>
+</header>
+<div class="content">
+  <div class="list-block">
+    <ul>
+      <!-- Text inputs -->
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-name"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">Name</div>
+            <div class="item-input">
+              <input type="text" placeholder="Your name">
+            </div>
           </div>
         </div>
-      </div>
-    </li>
-    <li>
-      <div class="item-content">
-        <div class="item-media"><i class="icon icon-form-email"></i></div>
-        <div class="item-inner">
-          <div class="item-title label">E-mail</div>
-          <div class="item-input">
-            <input type="email" placeholder="E-mail">
+      </li>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-email"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">E-mail</div>
+            <div class="item-input">
+              <input type="email" placeholder="E-mail">
+            </div>
           </div>
         </div>
-      </div>
-    </li>
-  </ul>
+      </li>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-password"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">Password</div>
+            <div class="item-input">
+              <input type="password" placeholder="Password" class="">
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-gender"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">Gender</div>
+            <div class="item-input">
+              <select>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </li>
+      <!-- Date -->
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">Birth date</div>
+            <div class="item-input">
+              <input type="date" placeholder="Birth day" value="2014-04-30">
+            </div>
+          </div>
+        </div>
+      </li>
+      <!-- Date time-->
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">Date time</div>
+            <div class="item-input">
+              <input type="datetime-local">
+            </div>
+          </div>
+        </div>
+      </li>
+      <!-- Switch (Checkbox) -->
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-toggle"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">Switch</div>
+            <div class="item-input">
+              <label class="label-switch">
+                <input type="checkbox">
+                <div class="checkbox"></div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <div class="row">
+      <div class="col-50"><a href="#" class="button button-big button-fill button-danger">取消</a></div>
+      <div class="col-50"><a href="#" class="button button-big button-fill button-success">提交</a></div>
+    </div>
+  </div>
 </div>
 {% endhighlight %}
+</article>
 
+<article class="component active" id="forms">
+  <h3 class="component-title">只有图标的表单</h3>
+  <p class="component-description">只有图标的表单</p>
+
+  <div class="component-example component-example-fullbleed">
+    <header class="bar bar-nav">
+      <h1 class='title'>只有图标的表单</h1>
+    </header>
+    <div class="content">
+      <div class="list-block">
+        <ul>
+          <!-- Text inputs -->
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-form-name"></i></div>
+              <div class="item-inner">
+                <div class="item-input">
+                  <input type="text" placeholder="Your name">
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-form-email"></i></div>
+              <div class="item-inner">
+                <div class="item-input">
+                  <input type="email" placeholder="E-mail">
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Select -->
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-form-gender"></i></div>
+              <div class="item-inner">
+                <div class="item-input">
+                  <select>
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+{% highlight html %}
+<header class="bar bar-nav">
+  <h1 class='title'>只有图标的表单</h1>
+</header>
+<div class="content">
+  <div class="list-block">
+    <ul>
+      <!-- Text inputs -->
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-name"></i></div>
+          <div class="item-inner">
+            <div class="item-input">
+              <input type="text" placeholder="Your name">
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-email"></i></div>
+          <div class="item-inner">
+            <div class="item-input">
+              <input type="email" placeholder="E-mail">
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Select -->
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-gender"></i></div>
+          <div class="item-inner">
+            <div class="item-input">
+              <select>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+{% endhighlight %}
+</article>
+
+<article class="component active" id="forms">
+  <h3 class="component-title">只有文案的表单</h3>
+  <p class="component-description">只有文案的表单</p>
+
+  <div class="component-example component-example-fullbleed">
+    <header class="bar bar-nav">
+      <h1 class='title'>只有文案的表单</h1>
+    </header>
+    <div class="content">
+      <div class="list-block">
+        <ul>
+          <!-- Text inputs -->
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title label">Name</div>
+                <div class="item-input">
+                  <input type="text" placeholder="Your name">
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title label">E-mail</div>
+                <div class="item-input">
+                  <input type="email" placeholder="E-mail">
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Select -->
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title label">Gender</div>
+                <div class="item-input">
+                  <select>
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+    </div>
+  </div>
+
+{% highlight html %}
+<header class="bar bar-nav">
+  <h1 class='title'>只有文案的表单</h1>
+</header>
+<div class="content">
+</div>
+{% endhighlight %}
 </article>
