@@ -1,0 +1,731 @@
+<article class="component" id="list">
+  <h3 class="component-title">列表</h3>
+  <p class="component-description">列表</p>
+
+  <div class="component-example component-example-fullbleed">
+    <header class="bar bar-nav">
+      <h1 class="title">List View</h1>
+    </header>
+    <div class="content">
+      <div class="content-block-title">Full Layout</div>
+      <div class="list-block">
+        <ul>
+          <li class="item-content">
+            <div class="item-media"><i class="icon icon-f7"></i></div>
+            <div class="item-inner">
+              <div class="item-title">Item title</div>
+              <div class="item-after">Label</div>
+            </div>
+          </li>
+          <li class="item-content">
+            <div class="item-media"><i class="icon icon-f7"></i></div>
+            <div class="item-inner">
+              <div class="item-title">Item with badge</div>
+              <div class="item-after"><span class="badge">5</span></div>
+            </div>
+          </li>
+          <li class="item-content">
+            <div class="item-media"><i class="icon icon-f7"></i></div>
+            <div class="item-inner">
+              <div class="item-title">Another item</div>
+              <div class="item-after">Another label</div>
+            </div>
+          </li>
+        </ul>
+        <div class="list-block-label">List block label text goes here</div>
+      </div>
+      <div class="content-block-title">Only titles</div>
+      <div class="list-block">
+        <ul>
+          <li class="item-content">
+            <div class="item-inner">
+              <div class="item-title">Item title</div>
+            </div>
+          </li>
+          <li class="item-content">
+            <div class="item-inner">
+              <div class="item-title">Item with badge</div>
+            </div>
+          </li>
+          <li class="item-content">
+            <div class="item-inner">
+              <div class="item-title">Another item</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  {% highlight html %}
+  <header class="bar bar-nav">
+    <h1 class="title">List View</h1>
+  </header>
+  <div class="content">
+    <div class="content-block-title">Full Layout</div>
+    <div class="list-block">
+      <ul>
+        <li class="item-content">
+          <div class="item-media"><i class="icon icon-f7"></i></div>
+          <div class="item-inner">
+            <div class="item-title">Item title</div>
+            <div class="item-after">Label</div>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-media"><i class="icon icon-f7"></i></div>
+          <div class="item-inner">
+            <div class="item-title">Item with badge</div>
+            <div class="item-after"><span class="badge">5</span></div>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-media"><i class="icon icon-f7"></i></div>
+          <div class="item-inner">
+            <div class="item-title">Another item</div>
+            <div class="item-after">Another label</div>
+          </div>
+        </li>
+      </ul>
+      <div class="list-block-label">List block label text goes here</div>
+    </div>
+    <div class="content-block-title">Only titles</div>
+    <div class="list-block">
+      <ul>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title">Item title</div>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title">Item with badge</div>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title">Another item</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  {% endhighlight %}
+
+</article>
+
+<article class="component active">
+  <h3 class="component-title">联系人列表</h3>
+  <p class="component-description">联系人列表 <code><div class="list-block"></code></p>
+
+  <div class="component-example component-example-fullbleed">
+    <header class="bar bar-nav">
+      <h1 class="title">Contacts List</h1>
+    </header>
+    <div class="content">
+      <div class="list-block contacts-block">
+        <div class="list-group">
+          <ul>
+            <li class="list-group-title">A</li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Aaron </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Abbie</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Adam</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Adele</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Agatha</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Agnes</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Albert</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Alexander</div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="list-group">
+          <ul>
+            <li class="list-group-title">B</li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Bailey</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Barclay</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Bartolo</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Bellamy</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Belle</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Benjamin</div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="list-group">
+          <ul>
+            <li class="list-group-title">C</li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Caiden</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Calvin</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Candy</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Carl</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Cherilyn</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Chester</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Chloe</div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="list-group">
+          <ul>
+            <li class="list-group-title">V</li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Vladimir</div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% highlight html %}
+  <header class="bar bar-nav">
+    <h1 class="title">Contacts List</h1>
+  </header>
+  <div class="content">
+    <div class="list-block contacts-block">
+      <div class="list-group">
+        <ul>
+          <li class="list-group-title">A</li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Aaron </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Abbie</div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Adam</div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Adele</div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Agatha</div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Agnes</div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Albert</div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Alexander</div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="list-group">
+        <ul>
+          <li class="list-group-title">B</li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Bailey</div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Barclay</div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Bartolo</div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Bellamy</div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Belle</div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Benjamin</div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="list-group">
+        <ul>
+          <li class="list-group-title">C</li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Caiden</div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Calvin</div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Candy</div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Carl</div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Cherilyn</div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Chester</div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Chloe</div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="list-group">
+        <ul>
+          <li class="list-group-title">V</li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Vladimir</div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  {% endhighlight %}
+
+</article>
+
+<article class="component active">
+  <h3 class="component-title">多媒体列表</h3>
+  <p class="component-description">多媒体列表 <code><div class="list-block"></code></p>
+
+  <div class="component-example component-example-fullbleed">
+    <header class="bar bar-nav">
+      <h1 class="title">Media List View</h1>
+    </header>
+    <div class="content">
+      <div class="content-block-title">Songs</div>
+      <div class="list-block media-list">
+        <ul>
+          <li>
+            <a href="#" class="item-link item-content">
+              <div class="item-media"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="80"></div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">Yellow Submarine</div>
+                  <div class="item-after">$15</div>
+                </div>
+                <div class="item-subtitle">Beatles</div>
+                <div class="item-text">Lorem ipsum dolor sit amet...</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="content-block-title">Mail App</div>
+      <div class="list-block media-list">
+        <ul>
+          <li>
+            <a href="#" class="item-link item-content">
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">Facebook</div>
+                  <div class="item-after">17:14</div>
+                </div>
+                <div class="item-subtitle">New messages from John Doe</div>
+                <div class="item-text">Lorem ipsum dolor sit amet...</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="content-block-title">Something more simple</div>
+      <div class="list-block media-list">
+        <ul>
+          <li>
+            <div class="item-content">
+              <div class="item-media"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="44"></div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">Yellow Submarine</div>
+                </div>
+                <div class="item-subtitle">Beatles</div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="content-block-title">Inset</div>
+      <div class="list-block media-list inset">
+        <ul>
+          <li>
+            <a href="#" class="item-link item-content">
+              <div class="item-media"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="44"></div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">Yellow Submarine</div>
+                </div>
+                <div class="item-subtitle">Beatles</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  {% highlight html %}
+  <header class="bar bar-nav">
+    <h1 class="title">Media List View</h1>
+  </header>
+  <div class="content">
+    <div class="content-block-title">Songs</div>
+    <div class="list-block media-list">
+      <ul>
+        <li>
+          <a href="#" class="item-link item-content">
+            <div class="item-media"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="80"></div>
+            <div class="item-inner">
+              <div class="item-title-row">
+                <div class="item-title">Yellow Submarine</div>
+                <div class="item-after">$15</div>
+              </div>
+              <div class="item-subtitle">Beatles</div>
+              <div class="item-text">Lorem ipsum dolor sit amet...</div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="content-block-title">Mail App</div>
+    <div class="list-block media-list">
+      <ul>
+        <li>
+          <a href="#" class="item-link item-content">
+            <div class="item-inner">
+              <div class="item-title-row">
+                <div class="item-title">Facebook</div>
+                <div class="item-after">17:14</div>
+              </div>
+              <div class="item-subtitle">New messages from John Doe</div>
+              <div class="item-text">Lorem ipsum dolor sit amet...</div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="content-block-title">Something more simple</div>
+    <div class="list-block media-list">
+      <ul>
+        <li>
+          <div class="item-content">
+            <div class="item-media"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="44"></div>
+            <div class="item-inner">
+              <div class="item-title-row">
+                <div class="item-title">Yellow Submarine</div>
+              </div>
+              <div class="item-subtitle">Beatles</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="content-block-title">Inset</div>
+    <div class="list-block media-list inset">
+      <ul>
+        <li>
+          <a href="#" class="item-link item-content">
+            <div class="item-media"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="44"></div>
+            <div class="item-inner">
+              <div class="item-title-row">
+                <div class="item-title">Yellow Submarine</div>
+              </div>
+              <div class="item-subtitle">Beatles</div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  {% endhighlight %}
+
+</article>
+
+<article class="component active">
+  <h3 class="component-title">可排序列表</h3>
+  <p class="component-description">可排序列表 <code><div class="list-block"></code></p>
+
+  <div class="component-example component-example-fullbleed">
+    <header class="bar bar-nav">
+      <h1 class="title">Sortable</h1>
+    </header>
+    <div class="content">
+      <div class="content-block">
+        <!-- 我们在data-sortable属性中指定目标可排序列表 -->
+        <p><a href="#" data-sortable=".sortable" class="open-sortable">Enable sortable</a></p>
+        <p><a href="#" data-sortable=".sortable" class="close-sortable">Disable sortable</a></p>
+        <p><a href="#" data-sortable=".sortable" class="toggle-sortable">Toggle sortable</a></p>
+      </div>
+      <!-- 可排序列表 -->
+      <div class="list-block sortable">
+        <ul>
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-f7"></i></div>
+              <div class="item-inner">
+                <div class="item-title">Item 1</div>
+                <div class="item-after">$10</div>
+              </div>
+            </div>
+            <!-- 可排序句柄  -->
+            <div class="sortable-handler"></div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-f7"></i></div>
+              <div class="item-inner">
+                <div class="item-title">Item 2</div>
+                <div class="item-after">$20</div>
+              </div>
+            </div>
+            <div class="sortable-handler"></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  {% highlight html %}
+  <header class="bar bar-nav">
+    <h1 class="title">Sortable</h1>
+  </header>
+  <div class="content">
+    <div class="content-block">
+      <!-- 我们在data-sortable属性中指定目标可排序列表 -->
+      <p><a href="#" data-sortable=".sortable" class="open-sortable">Enable sortable</a></p>
+      <p><a href="#" data-sortable=".sortable" class="close-sortable">Disable sortable</a></p>
+      <p><a href="#" data-sortable=".sortable" class="toggle-sortable">Toggle sortable</a></p>
+    </div>
+    <!-- 可排序列表 -->
+    <div class="list-block sortable">
+      <ul>
+        <li>
+          <div class="item-content">
+            <div class="item-media"><i class="icon icon-f7"></i></div>
+            <div class="item-inner">
+              <div class="item-title">Item 1</div>
+              <div class="item-after">$10</div>
+            </div>
+          </div>
+          <!-- 可排序句柄  -->
+          <div class="sortable-handler"></div>
+        </li>
+        <li>
+          <div class="item-content">
+            <div class="item-media"><i class="icon icon-f7"></i></div>
+            <div class="item-inner">
+              <div class="item-title">Item 2</div>
+              <div class="item-after">$20</div>
+            </div>
+          </div>
+          <div class="sortable-handler"></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  {% endhighlight %}
+
+</article>
