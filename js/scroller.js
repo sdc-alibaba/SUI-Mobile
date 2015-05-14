@@ -21,7 +21,50 @@
             }
             return 1;
         }
-        //自定义的滚动条
+        //重置zepto自带的滚动条
+    var _zeptoMethodCache = {
+        "scrollTop": $.fn.scrollTop,
+        "scrollLeft": $.fn.scrollLeft
+    };
+    //重置scrollLeft和scrollRight
+    (function() {
+        $.extend($.fn, {
+            scrollTop: function(top) {
+                if (!this.length) return;
+                var scroller = this.data('scroller');
+                if (scroller && this.hasClass('javascript-scroll')) { //js滚动
+                    if (top !== undefined) {
+                        scroller.scroller.scrollTo(0, -1 * top);
+                        return this;
+                    } else {
+                        return scroller.scroller.getComputedPosition().y * -1;
+                    }
+                } else {
+                    return _zeptoMethodCache['scrollTop'].apply(this, arguments);
+                }
+            }
+        });
+        $.extend($.fn, {
+            scrollLeft: function(left) {
+                if (!this.length) return;
+                var scroller = this.data('scroller');
+                if (scroller && this.hasClass('javascript-scroll')) { //js滚动
+                    if (top !== undefined) {
+                        scroller.scroller.scrollTo(-1 * left, 0);
+                        return this;
+                    } else {
+                        return scroller.scroller.getComputedPosition().x * -1;
+                    }
+                } else {
+                    return _zeptoMethodCache['scrollLeft'].apply(this, arguments);
+                }
+            }
+        });
+    })();
+
+
+
+    //自定义的滚动条
     var Scroller = function(pageContent, options) {
         var $pageContent = this.$pageContent = $(pageContent);
 
