@@ -3,16 +3,13 @@
   <p class="component-description">图片浏览器</p>
 
   <div class="component-example component-example-fullbleed">
-    <div class="page-content">
-      <div class="content-block-title">Light Theme</div>
+    <header class="bar bar-nav">
+      <h1 class="title">List View</h1>
+    </header>
+    <div class="content">
       <div class="content-block row">
         <div class="col-50"><a href="#" class="button pb-standalone">Standalone</a></div>
         <div class="col-50"><a href="#" class="button pb-popup">Popup</a></div>
-      </div>
-      <div class="content-block-title">Dark Theme</div>
-      <div class="content-block row">
-        <div class="col-50"><a href="#" class="button pb-standalone-dark">Standalone</a></div>
-        <div class="col-50"><a href="#" class="button pb-popup-dark">Popup</a></div>
       </div>
       <div class="content-block"><a href="#" class="button pb-standalone-captions">With Captions</a></div>
       <div class="content-block"><a href="#" class="button pb-standalone-video">With Video</a></div>
@@ -122,27 +119,23 @@
   </div>
 
 {% highlight html %}
-<div class="page-content">
-  <div class="content-block-title">Light Theme</div>
+<header class="bar bar-nav">
+  <h1 class="title">List View</h1>
+</header>
+<div class="content">
   <div class="content-block row">
     <div class="col-50"><a href="#" class="button pb-standalone">Standalone</a></div>
     <div class="col-50"><a href="#" class="button pb-popup">Popup</a></div>
   </div>
-  <div class="content-block-title">Dark Theme</div>
-  <div class="content-block row">
-    <div class="col-50"><a href="#" class="button pb-standalone-dark">Standalone</a></div>
-    <div class="col-50"><a href="#" class="button pb-popup-dark">Popup</a></div>
-  </div>
   <div class="content-block"><a href="#" class="button pb-standalone-captions">With Captions</a></div>
   <div class="content-block"><a href="#" class="button pb-standalone-video">With Video</a></div>
-</div> 
-<div class="test-browser-container"></div>
+</div>
 {% endhighlight %}
 {% highlight js %}
 /*=== 默认为 standalone ===*/
 $(function(){
   /*=== 默认为 standalone ===*/
-  $.photoBrowser.prototype.defaults.container = '.test-browser-container';
+  $.photoBrowser.prototype.defaults.container = '#iwindow';
   var myPhotoBrowserStandalone = $.photoBrowser({
       photos : [
           '//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg',

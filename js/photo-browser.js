@@ -30,7 +30,7 @@
                             //     '</div>' +
                             // '</div>';
                             '<header class="bar bar-nav">' + 
-                              '<a class="icon icon-left-nav pull-left photo-browser-close-link"></a>' + 
+                              '<a class="icon icon-left-nav pull-left photo-browser-close-link' + (pb.params.type === 'popup' ?  " close-popup" : "") + '"></a>' + 
                               // <a class="icon icon-compose pull-right"></a> 
                               '<h1 class="title"><div class="center sliding"><span class="photo-browser-current"></span> <span class="photo-browser-of">' + pb.params.ofText + '</span> <span class="photo-browser-total"></span></div></h1>' +
                             '</header>';

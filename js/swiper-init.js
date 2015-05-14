@@ -6,9 +6,12 @@ Framework7 Swiper Additions
     $.swiper = function (container, params) {
         return new $.Swiper(container, params);
     };
+    $.fn.swiper = function (params) {
+        return new $.Swiper(this, params);
+    };
     $.initPageSwiper = function (pageContainer) {
         var page = $(pageContainer);
-        var swipers = page.find('.swiper-init');
+        var swipers = page.find('.swiper-container');
         if (swipers.length === 0) return;
         function destroySwiperOnRemove(slider) {
             function destroySwiper() {
@@ -32,7 +35,7 @@ Framework7 Swiper Additions
     };
     $.reinitPageSwiper = function (pageContainer) {
         var page = $(pageContainer);
-        var sliders = page.find('.swiper-init');
+        var sliders = page.find('.swiper-container');
         if (sliders.length === 0) return;
         for (var i = 0; i < sliders.length; i++) {
             var sliderInstance = sliders[0].swiper;
