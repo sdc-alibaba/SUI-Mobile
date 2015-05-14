@@ -1,63 +1,136 @@
-<article class="component active" id="scroller">
+<article class="component active " id="scroller">
     <h3 class="component-title">滚动条</h3>
     <p class="component-description">在auto的模式下对于版本号小于4.4.0的Android 版本 和 版本号小于6.0.0的ios使用大名鼎鼎的iscroll.js作为js滚动的引擎。当然也可以通过配置来决定全部使用js滚动或者native的滚动。js的滚动的事件和js接口和native的一样，唯一不同的是js的滚动条需要手动初始化和当滚动容器高度发生变化时需要人工refresh一下。</p>
-    
     <div class="component-example component-example-fullbleed">
-        <div class="">
-            滚动ti
+        <header class="bar bar-nav">
+            <h1 class="title">滚动条</h1>
+        </header>
+        <div class="content" id="scroller-demo">
+            <div class="card">
+                <div class="card-header">滚动方式</div>
+                <div class="card-content">
+                    <div class="card-content-inner">
+                        <h3>滚动具有三种模式：</h3>
+                        <ul>
+                            <li>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）</li>
+                            <li>2. js模式: 使用js滚动</li>
+                            <li>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">滚动方式</div>
+                <div class="card-content">
+                    <div class="card-content-inner">
+                        <h3>滚动具有三种模式：</h3>
+                        <ul>
+                            <li>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）</li>
+                            <li>2. js模式: 使用js滚动</li>
+                            <li>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">滚动方式</div>
+                <div class="card-content">
+                    <div class="card-content-inner">
+                        <h3>滚动具有三种模式：</h3>
+                        <ul>
+                            <li>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）</li>
+                            <li>2. js模式: 使用js滚动</li>
+                            <li>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
+        <script type="text/javascript">
+        $(function() {
+            $(".content").scroller({
+                type: 'js'
+            });
+        });
+        </script>
     </div>
-
     {% highlight html %}
-<header class="bar bar-nav">
-    <h1 class="title">滚动条</h1>
-</header>
-<div class="content" id="scroller-demo">
-    <div class="card">
-        <div class="card-header">滚动方式</div>
-        <div class="card-content">
-            <div class="card-content-inner">
-                <h3>滚动具有三种模式：</h3>
-                <ul>
-                    <li>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）</li>
-                    <li>2. js模式: 使用js滚动</li>
-                    <li>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了</li>
-                </ul>
+    <header class="bar bar-nav">
+        <h1 class="title">滚动条</h1>
+    </header>
+    <div class="content" id="scroller-demo">
+        <div class="card">
+            <div class="card-header">滚动方式</div>
+            <div class="card-content">
+                <div class="card-content-inner">
+                    <h3>滚动具有三种模式：</h3>
+                    <ul>
+                        <li>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）</li>
+                        <li>2. js模式: 使用js滚动</li>
+                        <li>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">滚动方式</div>
+            <div class="card-content">
+                <div class="card-content-inner">
+                    <h3>滚动具有三种模式：</h3>
+                    <ul>
+                        <li>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）</li>
+                        <li>2. js模式: 使用js滚动</li>
+                        <li>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">滚动方式</div>
+            <div class="card-content">
+                <div class="card-content-inner">
+                    <h3>滚动具有三种模式：</h3>
+                    <ul>
+                        <li>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）</li>
+                        <li>2. js模式: 使用js滚动</li>
+                        <li>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-    <div class="card">
-        <div class="card-header">滚动方式</div>
-        <div class="card-content">
-            <div class="card-content-inner" >
-                <h3>滚动具有三种模式：</h3>
-                <ul>
-                    <li>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）</li>
-                    <li>2. js模式: 使用js滚动</li>
-                    <li>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">滚动方式</div>
-        <div class="card-content">
-            <div class="card-content-inner">
-                <h3>滚动具有三种模式：</h3>
-                <ul>
-                    <li>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）</li>
-                    <li>2. js模式: 使用js滚动</li>
-                    <li>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<script type="text/javascript">
-  $(function () {
-      
-  });
-</script>
-
+    <script type="text/javascript">
+    $(function() {
+        /*$("#scroller-demo").scroller({
+            type: 'js'
+        });*/
+        $('#scroller-demo').on('scrollstop',function (e) {
+          console.log(e);
+        });
+    });
+    </script>
     {% endhighlight %}
+    <p class="component-description">
+        滚动的方式可以通过配置项 type 来进行配置：
+        <ul>
+            <li>1. auto: ios版本小于6.0.0和android版本小于4.4.0使用js滚动，其他使用native的滚动条</li>
+            <li>2. js: 都使用js的滚动条</li>
+            <li>3. native: 直接使用native的滚动条</li>
+        </ul>
+    </p>
+    <p class="component-description">
+        上边demo使用的是js接口的调用方式，scroller.js 同时提供data-api的模式。通过添加标签属性
+        <code>data-toggle="scroller"</code>。 滚动类型通过：<code>data-scroller-type="auto"</code>
+    </p> 来配置。
+</article>
+<article class="component active">
+    <h3 class="component-title">滚动事件</h3>
+    <div class="component-description">
+        滚动条提供三个事件：
+        <ul>
+          <li>1. <code>scrollStart</code>: 滚动开始时触发</li>
+          <li>2. <code>scroll</code>: 滚动中触发</li>
+          <li>3. <code>scrollEnd</code>: 滚动结束后触发</li>
+        </ul>
+    </div>
 </article>

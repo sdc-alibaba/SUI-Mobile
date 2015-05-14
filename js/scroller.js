@@ -4,10 +4,10 @@
 /* global Zepto:true */
 + function($) {
     "use strict";
-        //比较一个字符串版本号
-        //a > b === 1
-        //a = b === 0
-        //a < b === -1
+    //比较一个字符串版本号
+    //a > b === 1
+    //a = b === 0
+    //a < b === -1
     function compareVersion(a, b) {
             if (a === b) return 0;
             var as = a.split('.');
@@ -25,7 +25,7 @@
     var Scroller = function(pageContent, options) {
         var $pageContent = this.$pageContent = $(pageContent);
 
-        this.options = $.extend({},this._defaults, options);
+        this.options = $.extend({}, this._defaults, options);
 
         var type = this.options.type;
         //auto的type,系统版本的小于4.4.0的安卓设备和系统版本小于6.0.0的ios设备，启用js版的iscoll
@@ -48,6 +48,7 @@
              app.pullToRefreshDone = app.pullToRefreshDoneJS;
              app.pullToRefreshTrigger = app.pullToRefreshTriggerJS;
              app.destroyToRefresh = app.destroyToRefreshJS;*/
+            $pageContent.addClass('javascript-scroll');
         } else {
             $pageContent.addClass('native-scroll');
         }
@@ -72,24 +73,23 @@
 
         },
         _bindEventToDomWhenJs: function() {
-            var eventTypes = [
-                //"beforeScrollStart", //executed as soon as user touches the screen but before the scrolling has initiated.
-                //"scrollCancel", //scroll initiated but didn't happen.
-                "scrollStart", //the scroll started.
-                "scroll", //the content is scrolling. Available only in scroll-probe.js edition. See onScroll event.
-                "scrollEnd", //content stopped scrolling.
-                //"flick", //user flicked left/right.
-                //"zoomStart", //user started zooming.
-                //"zoomEnd", //zoom ended.
-            ];
-            //TODO: 保持和滚动的事件的参数统一。
+            //"scrollStart", //the scroll started.
+            //"scroll", //the content is scrolling. Available only in scroll-probe.js edition. See onScroll event.
+            //"scrollEnd", //content stopped scrolling.
             if (this.scroller) {
                 var self = this;
-                for (var i = 0; i < eventTypes.length; i++) {
-                    this.scroller.on(eventTypes[i], function() {
-                        //self.$pageContent.trigger(eventTypes[i]);
-                    });
-                };
+                this.scroller.on('scrollStart', function function_name() {
+                    self.$pageContent.trigger('scrollstart');
+                });
+                this.scroller.on('scroll', function function_name() {
+                    self.$pageContent.trigger('scroll');
+                });
+                this.scroller.on('scrollEnd', function function_name() {
+                    self.$pageContent.trigger('scrollend');
+                });
+            } else {
+                //TODO: 实现native的scrollStart和scrollEnd
+
             }
         },
         refresh: function() {
@@ -137,9 +137,10 @@
             //如果 scroller 没有被初始化，对scroller 进行初始化r
             if (!data) {
                 //获取data-api的值
-                
-                if (!options.type&&$this.data('scroller-type')) options.type = $this.data('scroller-type');
+
+                if (!options.type && $this.data('scroller-type')) options.type = $this.data('scroller-type');
                 $this.data('scroller', (data = new Scroller(this, options)));
+
             } else {
                 //TODO: 如果已经初始化了。  
             }

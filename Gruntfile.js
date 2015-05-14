@@ -52,6 +52,7 @@ module.exports = function (grunt) {
           'js/template7.js',
           'js/common.js',
           'js/tabs.js',
+          'js/modal.js',
           'js/push.js',
           'js/iscroll.js',
           'js/scroller.js'
@@ -229,16 +230,6 @@ module.exports = function (grunt) {
       }
     },
 
-    sed: {
-      versionNumber: {
-        pattern: (function () {
-          var old = grunt.option('oldver');
-          return old ? RegExp.quote(old) : old;
-        })(),
-        replacement: grunt.option('newver'),
-        recursive: true
-      }
-    },
 
     connect: {
       site: {
@@ -272,5 +263,4 @@ module.exports = function (grunt) {
   // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
   // This can be overzealous, so its changes should always be manually reviewed!
-  grunt.registerTask('change-version-number', 'sed');
 };
