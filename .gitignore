@@ -3,8 +3,6 @@
 node_modules
 dist/
 .sass-cache/
-<<<<<<< HEAD
 .DS_Store
-=======
 _site/sitemap.xml
->>>>>>> 263513bde2998598283a1f7baa6c201a40a12c94
+
