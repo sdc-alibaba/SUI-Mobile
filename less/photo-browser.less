@@ -1,4 +1,5 @@
 /* === Photo Browser === */
+
 .photo-browser {
     position: absolute;
     left: 0;
@@ -6,69 +7,104 @@
     width: 100%;
     height: 100%;
     z-index: 10500;
-    body > & {
-        opacity: 0;
-        display: none;
-        transform: translate3d(0,0,0);
-        &.photo-browser-in {
-            display: block;
-            animation: photoBrowserIn 400ms forwards;
-        }
-        &.photo-browser-out {
-            display: block;
-            animation: photoBrowserOut 400ms forwards;
-        }
-        html.with-statusbar-overlay & {
-            height: ~"-webkit-calc(100% - 1rem)";
-            height: ~"calc(100% - 1rem)";
-            top: 1rem;
-        }
+    // opacity: 0;
+    // display: none;
+    // transform: translate3d(0, 0, 0);
+    .bar-tab .tab-item .icon {
+        width: 14px;
+        height: 14px;
+        margin-top: -5px;
     }
-    .popup > &, body > & {
+    .bar-tab~.photo-browser-captions {
+      bottom: 52px;
+      -webkit-transform: translate3d(0,0,0);
+      transform: translate3d(0,0,0);
+    }
+    &.photo-browser-in {
+        display: block;
+        animation: photoBrowserIn 400ms forwards;
+    }
+    &.photo-browser-out {
+        display: block;
+        animation: photoBrowserOut 400ms forwards;
+    }
+    html.with-statusbar-overlay & {
+        height: ~"-webkit-calc(100% - 1rem)";
+        height: ~"calc(100% - 1rem)";
+        top: 1rem;
+    }
+    .popup > &,
+    body > & {
         .navbar, .toolbar {
-            transform: translate3d(0,0,0);
+            transform: translate3d(0, 0, 0);
         }
     }
     .page[data-page="photo-browser-slides"] {
-        background:none;
+        background: none;
     }
-
+    //add
+    .page {
+        box-sizing: border-box;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: #efeff4;
+    }
+    .view {
+      overflow: hidden;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 5000;
+    }
 }
+
 .page[data-page="photo-browser-slides"] {
     .toolbar a {
         color: @color-success;
     }
 }
+
 .photo-browser-popup {
     background: none;
 }
-.photo-browser, .view[data-page="photo-browser-slides"] {
+
+.photo-browser,
+.view[data-page="photo-browser-slides"] {
     .navbar, .toolbar {
-        background: rgba(247,247,247,0.95);
+        background: rgba(247, 247, 247, 0.95);
         transition: 400ms;
     }
 }
 
-.view[data-page="photo-browser-slides"] .page[data-page="photo-browser-slides"]{
+.view[data-page="photo-browser-slides"] .page[data-page="photo-browser-slides"] {
     .navbar, .toolbar {
-        transform: translate3d(0,0,0);
+        transform: translate3d(0, 0, 0);
     }
 }
+
 .photo-browser-exposed {
     .navbar, .toolbar {
         opacity: 0;
         visibility: hidden;
-        pointer-events:none;
+        pointer-events: none;
     }
     .photo-browser-swiper-container {
         background: #000;
     }
 }
+
 .photo-browser-of {
     margin: 0 0.25rem;
 }
+
 .photo-browser-captions {
-    pointer-events:none;
+    pointer-events: none;
     position: absolute;
     left: 0;
     width: 100%;
@@ -80,6 +116,7 @@
         opacity: 0;
     }
 }
+
 .toolbar ~ .photo-browser-captions {
     bottom: 2.2rem;
     transform: translate3d(0, 0rem, 0);
@@ -94,15 +131,15 @@
 .photo-browser-caption {
     box-sizing: border-box;
     transition: 300ms;
-    position:absolute;
-    bottom:0;
-    left:0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
     opacity: 0;
-    padding:0.2rem 0.25px;
-    width:100%;
-    text-align:center;
-    color:#fff;
-    background: rgba(0,0,0,0.8);
+    padding: 0.2rem 0.25px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.8);
     &:empty {
         display: none;
     }
@@ -110,12 +147,12 @@
         opacity: 1;
     }
     .photo-browser-captions-light & {
-        background: rgba(255,255,255,0.8);
-        color:#000;
+        background: rgba(255, 255, 255, 0.8);
+        color: #000;
     }
     .photo-browser-exposed & {
-        color:#fff;
-        background: rgba(0,0,0,0.8);
+        color: #fff;
+        background: rgba(0, 0, 0, 0.8);
     }
 }
 
@@ -129,6 +166,7 @@
     background: #fff;
     transition: 400ms;
 }
+
 .photo-browser-swiper-wrapper {
     position: absolute;
     left: 0;
@@ -138,9 +176,11 @@
     padding: 0;
     display: flex;
 }
+
 .photo-browser-link-inactive {
     opacity: 0.3;
 }
+
 .photo-browser-slide {
     width: 100%;
     height: 100%;
@@ -152,7 +192,7 @@
     flex-shrink: 0;
     box-sizing: border-box;
     &.transitioning {
-       transition: 400ms; 
+        transition: 400ms;
     }
     span.photo-browser-zoom-container {
         width: 100%;
@@ -166,7 +206,9 @@
         max-height: 100%;
         display: none;
     }
-    &.swiper-slide-active, &.swiper-slide-next, &.swiper-slide-prev {
+    &.swiper-slide-active,
+    &.swiper-slide-next,
+    &.swiper-slide-prev {
         span.photo-browser-zoom-container {
             display: block;
         }
@@ -197,7 +239,7 @@
 
 .photo-browser-dark {
     .navbar, .toolbar {
-        background: rgba(30,30,30,0.8);
+        background: rgba(30, 30, 30, 0.8);
         // .hairline-remove(top);
         // .hairline-remove(bottom);
         &:before {
@@ -208,32 +250,32 @@
         }
         color:#fff;
         a {
-            color:#fff;
+            color: #fff;
         }
     }
     .photo-browser-swiper-container {
         background: #000;
     }
-
 }
 
 @keyframes photoBrowserIn {
     0% {
-        transform: translate3d(0,0,0) scale(0.5);
+        transform: translate3d(0, 0, 0) scale(0.5);
         opacity: 0;
     }
     100% {
-        transform: translate3d(0,0,0) scale(1);
+        transform: translate3d(0, 0, 0) scale(1);
         opacity: 1;
     }
 }
+
 @keyframes photoBrowserOut {
     0% {
-        transform: translate3d(0,0,0) scale(1);
+        transform: translate3d(0, 0, 0) scale(1);
         opacity: 1;
     }
     100% {
-        transform: translate3d(0,0,0) scale(0.5);
+        transform: translate3d(0, 0, 0) scale(0.5);
         opacity: 0;
     }
 }

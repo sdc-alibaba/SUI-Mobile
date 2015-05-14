@@ -3,6 +3,9 @@
 ======================================================*/
 +function($){
     var PhotoBrowser = function (params) {
+
+        'use strict';
+
         var pb = this, i;
 
         var defaults = this.defaults;
@@ -15,24 +18,39 @@
         }
 
         pb.params = params;
-        
+
         var iconColor = pb.params.theme === 'dark' ? 'color-white' : '';
 
         var navbarTemplate = pb.params.navbarTemplate ||
-                            '<div class="navbar">' +
-                                '<div class="navbar-inner">' +
-                                    '<div class="left sliding"><a href="#" class="link ' + (pb.params.type === 'page' && 'back') + ' close-popup photo-browser-close-link" data-popup=".photo-browser-popup"><i class="icon icon-back ' + iconColor + '"></i><span>' + pb.params.backLinkText + '</span></a></div>' +
-                                    '<div class="center sliding"><span class="photo-browser-current"></span> <span class="photo-browser-of">' + pb.params.ofText + '</span> <span class="photo-browser-total"></span></div>' +
-                                    '<div class="right"></div>' +
-                                '</div>' +
-                            '</div>';
+                            // '<div class="navbar">' +
+                            //     '<div class="navbar-inner">' +
+                            //         '<div class="left sliding"><a href="#" class="link ' + (pb.params.type === 'page' && 'back') + ' close-popup photo-browser-close-link" data-popup=".photo-browser-popup"><i class="icon icon-back ' + iconColor + '"></i><span>' + pb.params.backLinkText + '</span></a></div>' +
+                            //         '<div class="center sliding"><span class="photo-browser-current"></span> <span class="photo-browser-of">' + pb.params.ofText + '</span> <span class="photo-browser-total"></span></div>' +
+                            //         '<div class="right"></div>' +
+                            //     '</div>' +
+                            // '</div>';
+                            '<header class="bar bar-nav">' + 
+                              '<a class="icon icon-left-nav pull-left photo-browser-close-link"></a>' + 
+                              // <a class="icon icon-compose pull-right"></a> 
+                              '<h1 class="title"><div class="center sliding"><span class="photo-browser-current"></span> <span class="photo-browser-of">' + pb.params.ofText + '</span> <span class="photo-browser-total"></span></div></h1>' +
+                            '</header>';
+
         var toolbarTemplate = pb.params.toolbarTemplate ||
-                            '<div class="toolbar tabbar">' +
-                                '<div class="toolbar-inner">' +
-                                    '<a href="#" class="link photo-browser-prev"><i class="icon icon-prev ' + iconColor + '"></i></a>' +
-                                    '<a href="#" class="link photo-browser-next"><i class="icon icon-next ' + iconColor + '"></i></a>' +
-                                '</div>' +
-                            '</div>';
+                            // '<div class="toolbar tabbar">' +
+                            //     '<div class="toolbar-inner">' +
+                            //         '<a href="#" class="link photo-browser-prev"><i class="icon icon-prev ' + iconColor + '"></i></a>' +
+                            //         '<a href="#" class="link photo-browser-next"><i class="icon icon-next ' + iconColor + '"></i></a>' +
+                            //     '</div>' +
+                            // '</div>';
+
+                            '<nav class="bar bar-tab">' +
+                              '<a class="tab-item photo-browser-prev" href="#">' +
+                                '<i class="icon icon-prev"></i>' +
+                              '</a>' +
+                              '<a class="tab-item photo-browser-next" href="#">' +
+                                '<i class="icon icon-next"></i>' +
+                              '</a>' +
+                            '</nav>';
 
         var template = pb.params.template ||
                         '<div class="photo-browser photo-browser-' + pb.params.theme + '">' +
@@ -120,16 +138,16 @@
             pb.openIndex = index;
             // pb.initialLazyLoaded = false;
             if (pb.params.type === 'standalone') {
-                $('body').append(htmlTemplate);
+                $(pb.params.container).append(htmlTemplate);
             }
             if (pb.params.type === 'popup') {
-                pb.popup = app.popup('<div class="popup photo-browser-popup">' + htmlTemplate + '</div>');
+                pb.popup = $.popup('<div class="popup photo-browser-popup">' + htmlTemplate + '</div>');
                 $(pb.popup).on('closed', pb.onPopupClose);
             }
             if (pb.params.type === 'page') {
                 $(document).on('pageBeforeInit', pb.onPageBeforeInit);
                 $(document).on('pageBeforeRemove', pb.onPageBeforeRemove);
-                if (!pb.params.view) pb.params.view = app.mainView;
+                if (!pb.params.view) pb.params.view = $.mainView;
                 pb.params.view.loadContent(htmlTemplate);
                 return;
             }
@@ -237,7 +255,7 @@
             }
             if (pb.params.type === 'standalone') {
                 pb.container.addClass('photo-browser-in');
-                app.sizeNavbars(pb.container);
+                // $.sizeNavbars(pb.container);
             }
             pb.swiperContainer = pb.container.find('.photo-browser-swiper-container');
             pb.swiperWrapper = pb.container.find('.photo-browser-swiper-wrapper');
@@ -289,7 +307,7 @@
                 sliderSettings.onTouchEnd = pb.swipeCloseTouchEnd;
             }
 
-            pb.swiper = app.swiper(pb.swiperContainer, sliderSettings);
+            pb.swiper = $.swiper(pb.swiperContainer, sliderSettings);
             if (index === 0) {
                 pb.onSliderTransitionStart(pb.swiper);
             }
@@ -305,11 +323,10 @@
                 target[action]('gesturestart', pb.onSlideGestureStart);
                 target[action]('gesturechange', pb.onSlideGestureChange);
                 target[action]('gestureend', pb.onSlideGestureEnd);
-
                 // Move image
-                target[action](app.touchEvents.start, pb.onSlideTouchStart);
-                target[action](app.touchEvents.move, pb.onSlideTouchMove);
-                target[action](app.touchEvents.end, pb.onSlideTouchEnd);
+                target[action]('touchstart', pb.onSlideTouchStart);
+                target[action]('touchmove', pb.onSlideTouchMove);
+                target[action]('touchend', pb.onSlideTouchEnd);
             }
             pb.container.find('.photo-browser-close-link')[action]('click', pb.close);
         };
@@ -393,7 +410,7 @@
         pb.onSlideTouchStart = function (e) {
             if (!gestureImg || gestureImg.length === 0) return;
             if (imageIsTouched) return;
-            if (app.device.os === 'android') e.preventDefault();
+            if ($.device.os === 'android') e.preventDefault();
             imageIsTouched = true;
             imageTouchesStart.x = e.type === 'touchstart' ? e.targetTouches[0].pageX : e.pageX;
             imageTouchesStart.y = e.type === 'touchstart' ? e.targetTouches[0].pageY : e.pageY;
@@ -543,7 +560,7 @@
                         pb.close();
                     }
                     if (pb.params.type === 'popup') {
-                        app.closeModal(pb.popup);
+                        $.closeModal(pb.popup);
                     }
                     if (pb.params.onSwipeToClose) {
                         pb.params.onSwipeToClose(pb);
@@ -571,6 +588,7 @@
     PhotoBrowser.prototype = {
         defaults: {
             photos : [],
+            container: 'body',
             initialSlide: 0,
             spaceBetween: 20,
             speed: 300,
@@ -603,11 +621,16 @@
             onDoubleTap(swiper, e)
             onSwipeToClose(pb)
             */
-        };
+        }
     }
 
     $.photoBrowser = function (params) {
+        $.extend(params, $.photoBrowser.prototype.defaults);
         return new PhotoBrowser(params);
     };
-    
+
+    $.photoBrowser.prototype = {
+        defaults: {}
+    }
+
 }(Zepto);
