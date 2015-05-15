@@ -47,7 +47,7 @@ $.initSortable = function () {
     }
     function handleTouchMove(e) {
         if (!isTouched || !sortingEl) return;
-        var pageX = e.type === 'touchmove' ? e.targetTouches[0].pageX : e.pageX;
+        //var pageX = e.type === 'touchmove' ? e.targetTouches[0].pageX : e.pageX;
         var pageY = e.type === 'touchmove' ? e.targetTouches[0].pageY : e.pageY;
         if (!isMoved) {
             sortingEl.addClass('sorting');

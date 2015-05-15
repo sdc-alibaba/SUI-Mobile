@@ -23,8 +23,8 @@ $.accordionOpen = function (item) {
     content.css('height', content[0].scrollHeight + 'px').transitionEnd(function () {
         if (item.hasClass('accordion-item-expanded')) {
             //content.transition(0);
-            content.css('height', 'auto');
-            var clientLeft = content[0].clientLeft;
+            //content.css('height', 'auto');
+            //var clientLeft = content[0].clientLeft;
             //content.transition('');
             item.trigger('opened');
         }
@@ -44,14 +44,14 @@ $.accordionClose = function (item) {
     //content.transition(0);
     content.css('height', content[0].scrollHeight + 'px');
     // Relayout
-    var clientLeft = content[0].clientLeft;
+    //var clientLeft = content[0].clientLeft;
     // Close
     //content.transition('');
     content.css('height', '').transitionEnd(function () {
         if (item.hasClass('accordion-item-expanded')) {
             //content.transition(0);
-            content.css('height', 'auto');
-            var clientLeft = content[0].clientLeft;
+            //content.css('height', 'auto');
+            //var clientLeft = content[0].clientLeft;
             //content.transition('');
             item.trigger('opened');
         }
