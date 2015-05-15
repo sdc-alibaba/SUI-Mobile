@@ -2956,16 +2956,14 @@
         </div>
         <script type="text/javascript">
         $(function() {
-            $(".content").scroller({
-                type: 'js'
-            });
+            $("#scroller-demo").scroller();
         });
         </script>
     </div>
     <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>滚动条<span class="nt">&lt;/h1&gt;</span>
     <span class="nt">&lt;/header&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span> <span class="na">id=</span><span class="s">"scroller-demo"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>滚动方式<span class="nt">&lt;/div&gt;</span>
             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-content"</span><span class="nt">&gt;</span>
@@ -3005,15 +3003,17 @@
                 <span class="nt">&lt;/div&gt;</span>
             <span class="nt">&lt;/div&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
-    <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s2">"#scroller-demo"</span><span class="p">).</span><span class="nx">scroller</span><span class="p">({</span>
-            <span class="na">type</span><span class="p">:</span> <span class="s1">'js'</span>
-        <span class="p">});</span>
-        
+    <span class="nt">&lt;/div&gt;</span></code></pre></div>
+    <h3 class="component-title">滚动条初始化</h3>
+    <p class="component-description">
+        zepto 插件初始化方法：
+    </p>
+    <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">".content"</span><span class="p">).</span><span class="nx">scroller</span><span class="p">({</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s1">'js'</span>
     <span class="p">});</span>
-    <span class="nt">&lt;/script&gt;</span></code></pre></div>
+<span class="p">});</span></code></pre></div>
+
     <p class="component-description">
         滚动的方式可以通过配置项 type 来进行配置：
         <ul>
@@ -3024,7 +3024,7 @@
     </p>
     <p class="component-description">
         上边demo使用的是js接口的调用方式，scroller.js 同时提供data-api的模式。通过添加标签属性
-        <code>data-toggle="scroller"</code>。 滚动类型通过：<code>data-scroller-type="auto"</code>
+        <code>data-toggle="scroller"</code>。 滚动类型通过：<code>data-type="auto"</code>
     </p> 来配置。
 </article>
 <article class="component active">

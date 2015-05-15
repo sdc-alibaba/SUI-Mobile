@@ -33,7 +33,7 @@
             scrollTop: function(top) {
                 if (!this.length) return;
                 var scroller = this.data('scroller');
-                if (scroller && this.hasClass('javascript-scroll')) { //js滚动
+                if (scroller && scroller.scroller) { //js滚动
                     if (top !== undefined) {
                         scroller.scroller.scrollTo(0, -1 * top);
                         return this;
@@ -49,7 +49,7 @@
             scrollLeft: function(left) {
                 if (!this.length) return;
                 var scroller = this.data('scroller');
-                if (scroller && this.hasClass('javascript-scroll')) { //js滚动
+                if (scroller && scroller.scroller) { //js滚动
                     if (top !== undefined) {
                         scroller.scroller.scrollTo(-1 * left, 0);
                         return this;
@@ -107,13 +107,13 @@
             //"scrollEnd", //content stopped scrolling.
             if (this.scroller) {
                 var self = this;
-                this.scroller.on('scrollStart', function function_name() {
+                this.scroller.on('scrollStart', function() {
                     self.$pageContent.trigger('scrollstart');
                 });
-                this.scroller.on('scroll', function function_name() {
+                this.scroller.on('scroll', function() {
                     self.$pageContent.trigger('scroll');
                 });
-                this.scroller.on('scrollEnd', function function_name() {
+                this.scroller.on('scrollEnd', function() {
                     self.$pageContent.trigger('scrollend');
                 });
             } else {
@@ -149,7 +149,8 @@
             var $pageContentInner = $this.find('.scroller-content-inner');
             //如果滚动内容没有被包裹，自动添加wrap
             if (!$pageContentInner[0]) {
-                $this.html('<div class="scroller-content-inner">' + $this.html() + '</div>');
+               // $this.html('<div class="scroller-content-inner">' + $this.html() + '</div>');
+                $this.children().wrapAll('<div class="scroller-content-inner"></div>'); 
             }
 
             if ($this.hasClass('pull-to-refresh-content')) {
@@ -160,13 +161,11 @@
 
 
             var data = $this.data('scroller');
-            var options = $.extend({}, typeof option === 'object' && option);
+            var options = $.extend({}, $this.dataset(), typeof option === 'object' && option);
 
             //如果 scroller 没有被初始化，对scroller 进行初始化r
             if (!data) {
-                //获取data-api的值
-
-                if (!options.type && $this.data('scroller-type')) options.type = $this.data('scroller-type');
+                //获取data-api的
                 $this.data('scroller', (data = new Scroller(this, options)));
 
             } else {

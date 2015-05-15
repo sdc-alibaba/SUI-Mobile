@@ -51,9 +51,7 @@
         </div>
         <script type="text/javascript">
         $(function() {
-            $(".content").scroller({
-                type: 'js'
-            });
+            $("#scroller-demo").scroller();
         });
         </script>
     </div>
@@ -61,7 +59,7 @@
     <header class="bar bar-nav">
         <h1 class="title">滚动条</h1>
     </header>
-    <div class="content" id="scroller-demo">
+    <div class="content">
         <div class="card">
             <div class="card-header">滚动方式</div>
             <div class="card-content">
@@ -102,15 +100,20 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-    $(function() {
-        $("#scroller-demo").scroller({
-            type: 'js'
-        });
-        
-    });
-    </script>
+    
     {% endhighlight %}
+    <h3 class="component-title">滚动条初始化</h3>
+    <p class="component-description">
+        zepto 插件初始化方法：
+    </p>
+    {% highlight js %} 
+$(function() {
+    $(".content").scroller({
+        type: 'js'
+    });
+});
+    {% endhighlight %}
+
     <p class="component-description">
         滚动的方式可以通过配置项 type 来进行配置：
         <ul>
@@ -121,7 +124,7 @@
     </p>
     <p class="component-description">
         上边demo使用的是js接口的调用方式，scroller.js 同时提供data-api的模式。通过添加标签属性
-        <code>data-toggle="scroller"</code>。 滚动类型通过：<code>data-scroller-type="auto"</code>
+        <code>data-toggle="scroller"</code>。 滚动类型通过：<code>data-type="auto"</code>
     </p> 来配置。
 </article>
 <article class="component active">
