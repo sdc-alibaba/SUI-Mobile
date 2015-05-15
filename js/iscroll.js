@@ -282,7 +282,7 @@
 
     function IScroll(el, options) {
         this.wrapper = typeof el === 'string' ? document.querySelector(el) : el;
-        this.scroller = $(this.wrapper).find('.scroller-content-inner')[0];
+        this.scroller = $(this.wrapper).find('.scroller-content-inner')[0]; // jshint ignore:line
 
 
         this.scrollerStyle = this.scroller.style; // cache style for better performance
@@ -708,7 +708,7 @@
                 return false;
             }
 
-            if (this.options.ptr && this.y > 44 && this.startY * -1 < $(window).height() && !this.ptrLock) {
+            if (this.options.ptr && this.y > 44 && this.startY * -1 < $(window).height() && !this.ptrLock) {// jshint ignore:line
                 // not trigger ptr when user want to scroll to top
                 y = this.options.ptrOffset || 44;
                 this._execEvent('ptr');

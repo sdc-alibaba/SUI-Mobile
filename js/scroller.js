@@ -168,8 +168,6 @@
                 //获取data-api的
                 $this.data('scroller', (data = new Scroller(this, options)));
 
-            } else {
-                //TODO: 如果已经初始化了。  
             }
             if (typeof option === 'string' && typeof data[option] === 'function') {
                 internal_return = data[option].apply(data, args);
@@ -199,10 +197,19 @@
         $.fn.scroller = old;
         return this;
     };
-    //添加data-api
-    //
+    //添加data-api，并且对.content进行初始化
     $(function() {
-        $('[data-toggle="scroller"]').scroller();
+        $('[data-toggle="scroller"],.content').scroller();
     });
+
+    //统一的接口,带有 .javascript-scroll 的content 进行刷新
+    $.refreshScroller = function(){
+        $('.javascript-scroll').scroller('refresh');
+    };
+    //全局初始化方法，会对页面上的 [data-toggle="scroller"]，.content. 进行滚动条初始化
+    $.initScroller =  function(option){
+        this.options = $.extend({}, typeof option === 'object' && option);
+        $('[data-toggle="scroller"],.content').scroller(option);
+    };
 
 }(Zepto);
