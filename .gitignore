@@ -5,4 +5,4 @@ dist/
 .sass-cache/
 .DS_Store
 _site/sitemap.xml
-
+*.orig

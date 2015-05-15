@@ -10,11 +10,11 @@
 }
 .card {
     background: #fff;
-    box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
-    margin: 10px;
+    box-shadow: 0 0.05rem 0.1rem rgba(0,0,0,0.3);
+    margin: 0.5rem;
     position: relative;
-    border-radius: 2px;
-    font-size: 14px;
+    border-radius: 0.1rem;
+    font-size: 0.7rem;
     .list-block, .content-block {
         margin: 0;
     }
@@ -27,7 +27,7 @@
     position: relative;
 }
 .card-content-inner {
-    padding: 15px;
+    padding: 0.75rem;
     position: relative;
     > p:first-child {
         margin-top: 0;
@@ -36,13 +36,13 @@
         margin-bottom: 0;
     }
     > .list-block, >.content-block {
-        margin: -15px;
+        margin: -0.75rem;
     }
 }
 .card-header, .card-footer {
-    min-height: 44px;
+    min-height: 2.2rem;
     position: relative;
-    padding: 10px 15px;
+    padding: 0.5rem 0.75rem;
     box-sizing: border-box;
     .flexbox();
     .justify-content(space-between);
@@ -54,12 +54,12 @@
         .align-items(flex-end);
     }
     a.link {
-        line-height: 44px;
-        height: 44px;
+        line-height: 2.2rem;
+        height: 2.2rem;
         text-decoration: none;
         position: relative;
-        margin-top: -10px;
-        margin-bottom: -10px;
+        margin-top: -0.5rem;
+        margin-bottom: -0.5rem;
         .flexbox();
         .justify-content(flex-start);
         .align-items(center);
@@ -69,14 +69,14 @@
             transition-duration: 0ms;
         }
         i+span, i+i, span+i, span+span {
-            margin-left: 7px;
+            margin-left: 0.35rem;
         }
         i.icon {
             display: block;
         }
     }
     a.icon-only {
-        min-width: 44px;
+        min-width: 2.2rem;
         .flexbox();
         .justify-content(center);
         .align-items(center);
@@ -84,15 +84,15 @@
     }
 }
 .card-header {
-    border-radius: 2px 2px 0 0;
-    font-size: 17px;
+    border-radius: 0.1rem 0.1rem 0 0;
+    font-size: 0.85rem;
     .hairline(bottom, #e1e1e1);
     &.no-border {
         .hairline-remove(bottom);
     }
 }
 .card-footer {
-    border-radius: 0 0 2px 2px;
+    border-radius: 0 0 0.1rem 0.1rem;
     color:#6d6d72;
     .hairline(top, #e1e1e1);
     &.no-border {
