@@ -147,7 +147,8 @@ $(function () {
     }
 
     function updateContent(content) {
-      $('#iwindow').html(content);
+      var $page = $('#iwindow').html(content);
+      $.initPageSwiper($page);
     }
 
     // Injection of components into device

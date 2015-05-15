@@ -52,6 +52,12 @@ module.exports = function (grunt) {
           'js/template7.js',
           'js/common.js',
           'js/tabs.js',
+          'js/push.js',
+          'js/modal.js',
+          'js/swiper-init.js',
+          'js/swipeout.js',
+          'js/swiper.js',
+          'js/photo-browser.js',
           'js/modal.js',
           'js/push.js'
         ],
