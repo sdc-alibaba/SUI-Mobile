@@ -1,6 +1,6 @@
 <article class="component" id="accordion">
-  <h3 class="component-title">手风琴列表视图</h3>
-  <p class="component-description">手风琴列表视图</p>
+  <h3 class="component-title">手风琴布局（Accordion）</h3>
+  <p class="component-description">通常，手风琴布局可以这样实现:</p>
 
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
@@ -171,4 +171,72 @@
 
   {% endhighlight %}
 
+  <p>上面的代码:</p>
+  <ul>
+    <li><code>accordion-list</code> - 多个手风琴元素的列表. 可选
+    <li><code>accordion-item</code> - 单个手风琴元素. 必选
+    <li><code>accordion-item-toggle</code> - 用来展开／折叠手风琴元素内容的开关. 必选</li>
+    <li><code>accordion-item-content</code> - 隐藏的手风琴元素的内容. 必选</li>
+    </li>
+    <li><code>accordion-item-expanded</code> - 展开的手风琴元素</li>
+    </li>
+  </ul>
+
+  <h3 class="component-title">JavaScript API</h3>
+  <p>手风琴组件有JavaScript API，你可以在JS中控制打开和关闭。方法说明如下：</p>
+  <p class="component-description"><code>$.accordionOpen(item)</code> - 打开指定的条目</p>
+  <ul>
+    <li>item - HTMLElement or string (想要操作的条目的CSS选择器 (&lt;div class="accordion-item"&gt;). 必须。</li>
+  </ul>
+  <p class="component-description"><code>$.accordionClose(item)</code> - 关闭指定条目</p>
+  <ul>
+    <li>item - HTMLElement or string (想要操作的条目的CSS选择器 (&lt;div class="accordion-item"&gt;). 必须</li>
+  </ul>
+  <p class="component-description"><code>$.accordionToggle(item)</code> - toggle 指定条目</p>
+  <ul>
+    <li>item - HTMLElement or string (想要操作的条目的CSS选择器 (&lt;div class="accordion-item"&gt;). Required</li>
+  </ul>
+
+  <h3 class="component-title">事件</h3>
+  <p class="component-description">手风琴有这些事件:</p>
+  <table class="params-table">
+    <thead>
+      <tr>
+        <th width="15%">事件名称</th>
+        <th>Target</th>
+        <th>说明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>open</td>
+        <td>Accordion item<span>&lt;div class="accordion-item"&gt;</span></td>
+        <td>某一条目开始执行打开动画的时候会触发</td>
+      </tr>
+      <tr>
+        <td>opened</td>
+        <td>Accordion item<span>&lt;div class="accordion-item"&gt;</span></td>
+        <td>某一条目完成打开动画后触发</td>
+      </tr>
+      <tr>
+        <td>close</td>
+        <td>Accordion item<span>&lt;div class="accordion-item"&gt;</span></td>
+        <td>某一条目开始执行关闭动画的时候会触发</td>
+      </tr>
+      <tr>
+        <td>closed</td>
+        <td>Accordion item<span>&lt;div class="accordion-item"&gt;</span></td>
+        <td>某一条目完成关闭动画后触发</td>
+      </tr>
+    </tbody>
+  </table>
+  {% highlight js %}
+  $(document).on('opened', '.accordion-item', function () {
+    $.alert('Accordion item opened');
+  }); 
+   
+  $(document).on('closed', '.accordion-item', function (e) {
+    $.alert('Accordion item closed');
+  });
+  {% endhighlight %}     
 </article>
