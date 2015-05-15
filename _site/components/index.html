@@ -13,9 +13,10 @@
 
 <!-- Google Web Fonts -->
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,500,700%7COpen+Sans:400,300">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1431676360_347254.css">
 
-<link rel="stylesheet" href="/dist/css/sm.min.css">
-<link rel="stylesheet" href="/assets/css/docs.min.css">
+<link rel="stylesheet" href="/dist/css/sm.css">
+<link rel="stylesheet" href="/assets/css/docs.css">
 
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/img/apple-touch-icon-114x114.png">
 <script src="/assets/js/zepto.js"></script>
@@ -77,9 +78,9 @@
   <div class="container">
     <div class="column units-2">
       <span class="docs-jump-menu pull-left js-jump-menu">
-  <span class="icon icon-list"></span>
+  <span class="icon icon-menu"></span>
   组件
-  <span class="icon icon-caret"></span>
+  <span class="icon icon-caret-down"></span>
 </span>
 
 <div class="docs-component-group js-component-group">
@@ -220,14 +221,14 @@
 
       <div class="component-example component-example-fullbleed">
         <header class="bar bar-nav">
-          <a class="icon icon-left-nav pull-left"></a>
-          <a class="icon icon-compose pull-right"></a>
+          <a class="icon icon-left pull-left"></a>
+          <a class="icon icon-edit pull-right"></a>
           <h1 class="title">标题</h1>
         </header>
       </div>
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-left-nav pull-left"</span><span class="nt">&gt;&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-left pull-left"</span><span class="nt">&gt;&lt;/a&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-compose pull-right"</span><span class="nt">&gt;&lt;/a&gt;</span>
   <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>标题<span class="nt">&lt;/h1&gt;</span>
 <span class="nt">&lt;/header&gt;</span></code></pre></div>
@@ -241,12 +242,12 @@
       <div class="component-example component-example-fullbleed">
         <header class="bar bar-nav">
           <button class="button button-link button-nav pull-left">
-            <span class="icon icon-left-nav"></span>
+            <span class="icon icon-left"></span>
             返回
           </button>
           <button class="button button-link button-nav pull-right">
             下一步
-            <span class="icon icon-right-nav"></span>
+            <span class="icon icon-right"></span>
           </button>
           <h1 class="title">标题</h1>
         </header>
@@ -254,12 +255,12 @@
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-link button-nav pull-left"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-left-nav"</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-left"</span><span class="nt">&gt;&lt;/span&gt;</span>
     返回
   <span class="nt">&lt;/button&gt;</span>
   <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-link button-nav pull-right"</span><span class="nt">&gt;</span>
     下一步
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-right-nav"</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-right"</span><span class="nt">&gt;&lt;/span&gt;</span>
   <span class="nt">&lt;/button&gt;</span>
   <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>标题<span class="nt">&lt;/h1&gt;</span>
 <span class="nt">&lt;/header&gt;</span></code></pre></div>
@@ -311,19 +312,19 @@
             <span class="tab-label">Label</span>
           </a>
           <a class="tab-item" href="#">
-            <span class="icon icon-person"></span>
+            <span class="icon icon-me"></span>
             <span class="tab-label">Label</span>
           </a>
           <a class="tab-item" href="#">
-            <span class="icon icon-star-filled"></span>
+            <span class="icon icon-star"></span>
             <span class="tab-label">Label</span>
           </a>
           <a class="tab-item" href="#">
-            <span class="icon icon-search"></span>
+            <span class="icon icon-cart"></span>
             <span class="tab-label">Label</span>
           </a>
           <a class="tab-item" href="#">
-            <span class="icon icon-gear"></span>
+            <span class="icon icon-settings"></span>
             <span class="tab-label">Label</span>
           </a>
         </nav>
@@ -332,24 +333,23 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"bar bar-tab"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-home"</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Label<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"badge badge-negative badge-filled"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-person"</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Profile<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-me"</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Label<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-star-filled"</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Favorites<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-star"</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Label<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-search"</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Search<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-cart"</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Label<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-gear"</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Settings<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-settings"</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Label<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></div>
 
@@ -430,8 +430,8 @@
 
 <span class="c">&lt;!-- Icons in standard bar fixed to the bottom of the screen --&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bar bar-standard bar-footer"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-compose pull-left"</span><span class="nt">&gt;&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-gear pull-right"</span><span class="nt">&gt;&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-edit pull-left"</span><span class="nt">&gt;&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-settings pull-right"</span><span class="nt">&gt;&lt;/a&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   </article>
