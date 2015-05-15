@@ -8,20 +8,21 @@
     //a > b === 1
     //a = b === 0
     //a < b === -1
-    function compareVersion(a, b) {
-            if (a === b) return 0;
-            var as = a.split('.');
-            var bs = b.split('.');
-            for (var i = 0; i < as.length; i++) {
-                var x = parseInt(as[i]);
-                if (!bs[i]) return 1;
-                var y = parseInt(bs[i]);
-                if (x < y) return -1;
-                if (x > y) return 1;
-            }
-            return 1;
+    var compareVersion = function(a, b) {
+        var as = a.split('.');
+        var bs = b.split('.');
+        if (a === b) return 0;
+
+        for (var i = 0; i < as.length; i++) {
+            var x = parseInt(as[i]);
+            if (!bs[i]) return 1;
+            var y = parseInt(bs[i]);
+            if (x < y) return -1;
+            if (x > y) return 1;
         }
-        //重置zepto自带的滚动条
+        return 1;
+    };
+    //重置zepto自带的滚动条
     var _zeptoMethodCache = {
         "scrollTop": $.fn.scrollTop,
         "scrollLeft": $.fn.scrollLeft
@@ -40,7 +41,7 @@
                         return scroller.scroller.getComputedPosition().y * -1;
                     }
                 } else {
-                    return _zeptoMethodCache['scrollTop'].apply(this, arguments);
+                    return _zeptoMethodCache.scrollTop.apply(this, arguments);
                 }
             }
         });
@@ -56,7 +57,7 @@
                         return scroller.scroller.getComputedPosition().x * -1;
                     }
                 } else {
-                    return _zeptoMethodCache['scrollLeft'].apply(this, arguments);
+                    return _zeptoMethodCache.scrollLeft.apply(this, arguments);
                 }
             }
         });
@@ -65,10 +66,10 @@
 
 
     //自定义的滚动条
-    var Scroller = function(pageContent, options) {
+    var Scroller = function(pageContent, _options) {
         var $pageContent = this.$pageContent = $(pageContent);
 
-        this.options = $.extend({}, this._defaults, options);
+        this.options = $.extend({}, this._defaults, _options);
 
         var type = this.options.type;
         //auto的type,系统版本的小于4.4.0的安卓设备和系统版本小于6.0.0的ios设备，启用js版的iscoll
@@ -84,7 +85,7 @@
                 options.ptr = true;
                 options.ptrOffset = 44;
             }
-            this.scroller = new IScroll(pageContent, options);
+            this.scroller = new IScroll(pageContent, options); // jshint ignore:line
             //和native滚动统一起来
             this._bindEventToDomWhenJs();
             /* app.initPullToRefresh = app.initPullToRefreshJS;
@@ -175,7 +176,7 @@
 
 
             var data = $this.data('scroller');
-            var options = $.extend({}, typeof option == 'object' && option);
+            var options = $.extend({}, typeof option === 'object' && option);
 
             //如果 scroller 没有被初始化，对scroller 进行初始化r
             if (!data) {
@@ -187,7 +188,7 @@
             } else {
                 //TODO: 如果已经初始化了。  
             }
-            if (typeof option == 'string' && typeof data[option] === 'function') {
+            if (typeof option === 'string' && typeof data[option] === 'function') {
                 internal_return = data[option].apply(data, args);
                 if (internal_return !== undefined)
                     return false;
