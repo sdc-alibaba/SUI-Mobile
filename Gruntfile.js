@@ -53,7 +53,6 @@ module.exports = function (grunt) {
           'js/common.js',
           'js/tabs.js',
           'js/push.js',
-          'js/swipeout.js',
           'js/sortable.js',
           'js/modal.js',
           'js/accordion.js'
