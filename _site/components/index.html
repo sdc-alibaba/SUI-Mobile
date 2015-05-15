@@ -3489,32 +3489,6 @@
           myPhotoBrowserPopup.open();
         });
          
-        /*=== Standalone Dark ===*/
-        var myPhotoBrowserDark = $.photoBrowser({
-            photos : [
-                '//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg',
-                '//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg',
-                '//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg',
-            ],
-            theme: 'dark'
-        });
-        $(document).on('click','.pb-standalone-dark',function () {
-          myPhotoBrowserDark.open();
-        });
-         
-        /*=== Popup Dark ===*/
-        var myPhotoBrowserPopupDark = $.photoBrowser({
-            photos : [
-                '//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg',
-                '//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg',
-                '//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg',
-            ],
-            theme: 'dark',
-            type: 'popup'
-        });
-        $(document).on('click','.pb-popup-dark',function () {
-          myPhotoBrowserPopupDark.open();
-        });
          
         /*=== 有标题 ===*/
         var myPhotoBrowserCaptions = $.photoBrowser({
@@ -3603,34 +3577,7 @@
   <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.pb-popup'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="nx">myPhotoBrowserPopup</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
   <span class="p">});</span>
-   
-  <span class="cm">/*=== Standalone Dark ===*/</span>
-  <span class="kd">var</span> <span class="nx">myPhotoBrowserDark</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">photoBrowser</span><span class="p">({</span>
-      <span class="na">photos</span> <span class="p">:</span> <span class="p">[</span>
-          <span class="s1">'//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
-          <span class="s1">'//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
-          <span class="s1">'//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
-      <span class="p">],</span>
-      <span class="na">theme</span><span class="p">:</span> <span class="s1">'dark'</span>
-  <span class="p">});</span>
-  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.pb-standalone-dark'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nx">myPhotoBrowserDark</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
-  <span class="p">});</span>
-   
-  <span class="cm">/*=== Popup Dark ===*/</span>
-  <span class="kd">var</span> <span class="nx">myPhotoBrowserPopupDark</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">photoBrowser</span><span class="p">({</span>
-      <span class="na">photos</span> <span class="p">:</span> <span class="p">[</span>
-          <span class="s1">'//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
-          <span class="s1">'//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
-          <span class="s1">'//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
-      <span class="p">],</span>
-      <span class="na">theme</span><span class="p">:</span> <span class="s1">'dark'</span><span class="p">,</span>
-      <span class="na">type</span><span class="p">:</span> <span class="s1">'popup'</span>
-  <span class="p">});</span>
-  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.pb-popup-dark'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nx">myPhotoBrowserPopupDark</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
-  <span class="p">});</span>
-   
+
   <span class="cm">/*=== 有标题 ===*/</span>
   <span class="kd">var</span> <span class="nx">myPhotoBrowserCaptions</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">photoBrowser</span><span class="p">({</span>
       <span class="na">photos</span> <span class="p">:</span> <span class="p">[</span>
