@@ -90,6 +90,7 @@
   <a class="docs-component-item" href="#tabs" data-ignore="push">标签页</a>
   <a class="docs-component-item" href="#grid" data-ignore="push">栅格</a>
   <a class="docs-component-item" href="#modal" data-ignore="push">对话框</a>
+  <a class="docs-component-item" href="#list" data-ignore="push">列表</a>
   <a class="docs-component-item" href="#accordion" data-ignore="push">手风琴</a>
   <a class="docs-component-item" href="#cards" data-ignore="push">卡片</a>
   <a class="docs-component-item" href="#push" data-ignore="push">push.js</a>
@@ -443,126 +444,160 @@
   <p class="component-description">按钮</p>
 
   <div class="component-example component-example-fullbleed">
-    <div class="content-block-title">按钮</div>
-    <div class="content-block">
-      <p><a href="#" class="button">Usual Button 1</a></p>
-      <p><a href="#" class="button button-success">success button</a></p>
-      <p><a href="#" class="button button-danger">danger button</a></p>
-      <p><a href="#" class="button button-warning">warning button</a></p>
-    </div>
-    <div class="content-block">
-      <p><a href="#" class="button button-round">Round Button 1</a></p>
-    </div>
-    <div class="content-block">
-      <p><a href="#" class="button button-big">Big Button </a></p>
-      <p><a href="#" class="button button-big button-round">Big Round Button </a></p>
+    <header class="bar bar-nav">
+      <h1 class='title'>按钮</h1>
+    </header>
+    <div class="content">
+      <div class="content-block">
+        <p><a href="#" class="button">Usual Button 1</a></p>
+        <p><a href="#" class="button button-success">success button</a></p>
+        <p><a href="#" class="button button-danger">danger button</a></p>
+        <p><a href="#" class="button button-warning">warning button</a></p>
+      </div>
+      <div class="content-block">
+        <p><a href="#" class="button button-round">Round Button 1</a></p>
+      </div>
+      <div class="content-block">
+        <p><a href="#" class="button button-big">Big Button </a></p>
+        <p><a href="#" class="button button-big button-round">Big Round Button </a></p>
+      </div>
     </div>
   </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block-title"</span><span class="nt">&gt;</span>按钮<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Usual Button 1<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-  <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-success"</span><span class="nt">&gt;</span>success button<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-  <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-danger"</span><span class="nt">&gt;</span>danger button<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-  <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-warning"</span><span class="nt">&gt;</span>warning button<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round"</span><span class="nt">&gt;</span>Round Button 1<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-big"</span><span class="nt">&gt;</span>Big Button <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-  <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-big button-round"</span><span class="nt">&gt;</span>Big Round Button <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">'title'</span><span class="nt">&gt;</span>按钮<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Usual Button 1<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-success"</span><span class="nt">&gt;</span>success button<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-danger"</span><span class="nt">&gt;</span>danger button<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-warning"</span><span class="nt">&gt;</span>warning button<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round"</span><span class="nt">&gt;</span>Round Button 1<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-big"</span><span class="nt">&gt;</span>Big Button <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-big button-round"</span><span class="nt">&gt;</span>Big Round Button <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 </article>
 <article class="component active">
   <h3 class="component-title">按钮组</h3>
   <div class="component-example component-example-fullbleed">
-    <div class="content-block-title">Buttons Row / Segmented Controller</div>
-    <div class="content-block">
-      <p class="buttons-row"><a href="#" class="button">Button 1</a><a href="#" class="button">Button 2</a><a href="#" class="button">Button 3</a></p>
-      <p class="buttons-row"><a href="#" class="button active">Button 1</a><a href="#" class="button">Button 2</a><a href="#" class="button">Button 3</a></p>
-      <p class="buttons-row"><a href="#" class="button button-round">Button 1</a><a href="#" class="button button-round">Button 2</a></p>
-      <p class="buttons-row"><a href="#" class="button button-round">Button 1</a><a href="#" class="button button-round active">Button 2</a></p>
-    </div>
-  </div>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block-title"</span><span class="nt">&gt;</span>Buttons Row / Segmented Controller<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 1<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 2<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 3<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-  <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button active"</span><span class="nt">&gt;</span>Button 1<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 2<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 3<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-  <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round"</span><span class="nt">&gt;</span>Button 1<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round"</span><span class="nt">&gt;</span>Button 2<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-  <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round"</span><span class="nt">&gt;</span>Button 1<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round active"</span><span class="nt">&gt;</span>Button 2<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></div>
-</article>
-<article class="component active">
-  <h3 class="component-title">填充按钮</h3>
-  <p class="component-description">按钮</p>
-  <div class="component-example component-example-fullbleed">
-    <div class="content-block-title">Fill buttons    </div>
-    <div class="content-block">
-      <p><a href="#" class="button button-fill">Fill Button </a></p>
-      <p><a href="#" class="button button-fill button-success">Fill Button </a></p>
-      <p><a href="#" class="button button-fill button-danger">Fill Button </a></p>
-      <p><a href="#" class="button button-fill button-warning">Fill Button </a></p>
-    </div>
-  </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block-title"</span><span class="nt">&gt;</span>Fill buttons    <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-fill"</span><span class="nt">&gt;</span>Fill Button <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-  <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-fill button-success"</span><span class="nt">&gt;</span>Fill Button <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-  <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-fill button-danger"</span><span class="nt">&gt;</span>Fill Button <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-  <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-fill button-warning"</span><span class="nt">&gt;</span>Fill Button <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></div>
-</article>
-<article class="component active">
-  <h3 class="component-title">按钮</h3>
-  <p class="component-description">按钮</p>
-  <div class="component-example component-example-fullbleed">
-    <div class="content-block-title">List block buttons</div>
-    <div class="list-block">
-      <ul>
-        <li><a href="#" class="item-link list-button">List Button 1</a></li>
-        <li><a href="#" class="item-link list-button">List Button 2</a></li>
-        <li><a href="#" class="item-link list-button">List Button 3</a></li>
-      </ul>
-    </div>
-    <div class="content-block-title">Inset list block buttons</div>
-    <div class="list-block inset">
-      <ul>
-        <li><a href="#" class="item-link list-button">List Button 1</a></li>
-        <li><a href="#" class="item-link list-button">List Button 2</a></li>
-        <li><a href="#" class="item-link list-button">List Button 3</a></li>
-      </ul>
-    </div>
-    <div class="content-block-title">Using Grid</div>
-    <div class="content-block">
-      <div class="row">
-        <div class="col-50"><a href="#" class="button button-big button-fill button-danger">Cancel</a></div>
-        <div class="col-50"><a href="#" class="button button-big button-fill button-success">Submit</a></div>
+    <header class="bar bar-nav">
+      <h1 class='title'>按钮组</h1>
+    </header>
+    <div class="content">
+      <div class="content-block">
+        <p class="buttons-row"><a href="#" class="button">Button 1</a><a href="#" class="button">Button 2</a><a href="#" class="button">Button 3</a></p>
+        <p class="buttons-row"><a href="#" class="button active">Button 1</a><a href="#" class="button">Button 2</a><a href="#" class="button">Button 3</a></p>
+        <p class="buttons-row"><a href="#" class="button button-round">Button 1</a><a href="#" class="button button-round">Button 2</a></p>
+        <p class="buttons-row"><a href="#" class="button button-round">Button 1</a><a href="#" class="button button-round active">Button 2</a></p>
       </div>
     </div>
   </div>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block-title"</span><span class="nt">&gt;</span>List block buttons<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-block"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ul&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"item-link list-button"</span><span class="nt">&gt;</span>List Button 1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"item-link list-button"</span><span class="nt">&gt;</span>List Button 2<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"item-link list-button"</span><span class="nt">&gt;</span>List Button 3<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-  <span class="nt">&lt;/ul&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block-title"</span><span class="nt">&gt;</span>Inset list block buttons<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-block inset"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ul&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"item-link list-button"</span><span class="nt">&gt;</span>List Button 1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"item-link list-button"</span><span class="nt">&gt;</span>List Button 2<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"item-link list-button"</span><span class="nt">&gt;</span>List Button 3<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-  <span class="nt">&lt;/ul&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block-title"</span><span class="nt">&gt;</span>Using Grid<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-50"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-big button-fill button-danger"</span><span class="nt">&gt;</span>Cancel<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-50"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-big button-fill button-success"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">'title'</span><span class="nt">&gt;</span>按钮组<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 1<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 2<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 3<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button active"</span><span class="nt">&gt;</span>Button 1<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 2<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 3<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round"</span><span class="nt">&gt;</span>Button 1<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round"</span><span class="nt">&gt;</span>Button 2<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round"</span><span class="nt">&gt;</span>Button 1<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round active"</span><span class="nt">&gt;</span>Button 2<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+</article>
+<article class="component active">
+  <h3 class="component-title">填充按钮</h3>
+  <p class="component-description">填充按钮</p>
+  <div class="component-example component-example-fullbleed">
+    <header class="bar bar-nav">
+      <h1 class='title'>填充按钮</h1>
+    </header>
+    <div class="content">
+      <div class="content-block">
+        <p><a href="#" class="button button-fill">Fill Button </a></p>
+        <p><a href="#" class="button button-fill button-success">Fill Button </a></p>
+        <p><a href="#" class="button button-fill button-danger">Fill Button </a></p>
+        <p><a href="#" class="button button-fill button-warning">Fill Button </a></p>
+      </div>
+    </div>
+  </div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">'title'</span><span class="nt">&gt;</span>填充按钮<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-fill"</span><span class="nt">&gt;</span>Fill Button <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-fill button-success"</span><span class="nt">&gt;</span>Fill Button <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-fill button-danger"</span><span class="nt">&gt;</span>Fill Button <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-fill button-warning"</span><span class="nt">&gt;</span>Fill Button <span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+</article>
+<article class="component active">
+  <h3 class="component-title">使用列表和栅格</h3>
+  <p class="component-description">使用列表和栅格来进行按钮布局</p>
+  <div class="component-example component-example-fullbleed">
+    <header class="bar bar-nav">
+      <h1 class='title'>列表和栅格布局按钮</h1>
+    </header>
+    <div class="content">
+      <div class="content-block-title">List block buttons</div>
+      <div class="list-block">
+        <ul>
+          <li><a href="#" class="item-link list-button">List Button 1</a></li>
+          <li><a href="#" class="item-link list-button">List Button 2</a></li>
+          <li><a href="#" class="item-link list-button">List Button 3</a></li>
+        </ul>
+      </div>
+      <div class="content-block-title">Inset list block buttons</div>
+      <div class="list-block inset">
+        <ul>
+          <li><a href="#" class="item-link list-button">List Button 1</a></li>
+          <li><a href="#" class="item-link list-button">List Button 2</a></li>
+          <li><a href="#" class="item-link list-button">List Button 3</a></li>
+        </ul>
+      </div>
+      <div class="content-block-title">Using Grid</div>
+      <div class="content-block">
+        <div class="row">
+          <div class="col-50"><a href="#" class="button button-big button-fill button-danger">Cancel</a></div>
+          <div class="col-50"><a href="#" class="button button-big button-fill button-success">Submit</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">'title'</span><span class="nt">&gt;</span>列表和栅格布局按钮<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block-title"</span><span class="nt">&gt;</span>List block buttons<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"item-link list-button"</span><span class="nt">&gt;</span>List Button 1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"item-link list-button"</span><span class="nt">&gt;</span>List Button 2<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"item-link list-button"</span><span class="nt">&gt;</span>List Button 3<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block-title"</span><span class="nt">&gt;</span>Inset list block buttons<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-block inset"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"item-link list-button"</span><span class="nt">&gt;</span>List Button 1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"item-link list-button"</span><span class="nt">&gt;</span>List Button 2<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"item-link list-button"</span><span class="nt">&gt;</span>List Button 3<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block-title"</span><span class="nt">&gt;</span>Using Grid<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-50"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-big button-fill button-danger"</span><span class="nt">&gt;</span>Cancel<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-50"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-big button-fill button-success"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 </article>
@@ -572,63 +607,410 @@
   <p class="component-description">表单</p>
 
   <div class="component-example component-example-fullbleed">
-    <div class="list-block">
-      <ul>
-        <!-- Text inputs -->
-        <li>
-          <div class="item-content">
-            <div class="item-media"><i class="icon icon-form-name"></i></div>
-            <div class="item-inner">
-              <div class="item-title label">Name</div>
-              <div class="item-input">
-                <input type="text" placeholder="Your name">
+    <header class="bar bar-nav">
+      <h1 class='title'>表单</h1>
+    </header>
+    <div class="content">
+      <div class="list-block">
+        <ul>
+          <!-- Text inputs -->
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-form-name"></i></div>
+              <div class="item-inner">
+                <div class="item-title label">Name</div>
+                <div class="item-input">
+                  <input type="text" placeholder="Your name">
+                </div>
               </div>
             </div>
-          </div>
-        </li>
-        <li>
-          <div class="item-content">
-            <div class="item-media"><i class="icon icon-form-email"></i></div>
-            <div class="item-inner">
-              <div class="item-title label">E-mail</div>
-              <div class="item-input">
-                <input type="email" placeholder="E-mail">
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-form-email"></i></div>
+              <div class="item-inner">
+                <div class="item-title label">E-mail</div>
+                <div class="item-input">
+                  <input type="email" placeholder="E-mail">
+                </div>
               </div>
             </div>
-          </div>
-        </li>
-      </ul>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-form-password"></i></div>
+              <div class="item-inner">
+                <div class="item-title label">Password</div>
+                <div class="item-input">
+                  <input type="password" placeholder="Password" class="">
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-form-gender"></i></div>
+              <div class="item-inner">
+                <div class="item-title label">Gender</div>
+                <div class="item-input">
+                  <select>
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- Date -->
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+              <div class="item-inner">
+                <div class="item-title label">Birth date</div>
+                <div class="item-input">
+                  <input type="date" placeholder="Birth day" value="2014-04-30">
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- Date time-->
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+              <div class="item-inner">
+                <div class="item-title label">Date time</div>
+                <div class="item-input">
+                  <input type="datetime-local">
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- Switch (Checkbox) -->
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-form-toggle"></i></div>
+              <div class="item-inner">
+                <div class="item-title label">Switch</div>
+                <div class="item-input">
+                  <label class="label-switch">
+                    <input type="checkbox">
+                    <div class="checkbox"></div>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="content-block">
+        <div class="row">
+          <div class="col-50"><a href="#" class="button button-big button-fill button-danger">取消</a></div>
+          <div class="col-50"><a href="#" class="button button-big button-fill button-success">提交</a></div>
+        </div>
+      </div>
     </div>
   </div>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-block"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ul&gt;</span>
-    <span class="c">&lt;!-- Text inputs --&gt;</span>
-    <span class="nt">&lt;li&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-form-name"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-title label"</span><span class="nt">&gt;</span>Name<span class="nt">&lt;/div&gt;</span>
-          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">placeholder=</span><span class="s">"Your name"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">'title'</span><span class="nt">&gt;</span>表单<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+      <span class="c">&lt;!-- Text inputs --&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-form-name"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-title label"</span><span class="nt">&gt;</span>Name<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">placeholder=</span><span class="s">"Your name"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
           <span class="nt">&lt;/div&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-form-email"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-title label"</span><span class="nt">&gt;</span>E-mail<span class="nt">&lt;/div&gt;</span>
-          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">placeholder=</span><span class="s">"E-mail"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-form-email"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-title label"</span><span class="nt">&gt;</span>E-mail<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">placeholder=</span><span class="s">"E-mail"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
           <span class="nt">&lt;/div&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-  <span class="nt">&lt;/ul&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-form-password"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-title label"</span><span class="nt">&gt;</span>Password<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">placeholder=</span><span class="s">"Password"</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-form-gender"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-title label"</span><span class="nt">&gt;</span>Gender<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;select&gt;</span>
+                <span class="nt">&lt;option&gt;</span>Male<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option&gt;</span>Female<span class="nt">&lt;/option&gt;</span>
+              <span class="nt">&lt;/select&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="c">&lt;!-- Date --&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-form-calendar"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-title label"</span><span class="nt">&gt;</span>Birth date<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"date"</span> <span class="na">placeholder=</span><span class="s">"Birth day"</span> <span class="na">value=</span><span class="s">"2014-04-30"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="c">&lt;!-- Date time--&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-form-calendar"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-title label"</span><span class="nt">&gt;</span>Date time<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"datetime-local"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="c">&lt;!-- Switch (Checkbox) --&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-form-toggle"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-title label"</span><span class="nt">&gt;</span>Switch<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"label-switch"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;&lt;/div&gt;</span>
+              <span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-50"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-big button-fill button-danger"</span><span class="nt">&gt;</span>取消<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-50"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-big button-fill button-success"</span><span class="nt">&gt;</span>提交<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
+</article>
 
+<article class="component active" id="forms">
+  <h3 class="component-title">只有图标的表单</h3>
+  <p class="component-description">只有图标的表单</p>
+
+  <div class="component-example component-example-fullbleed">
+    <header class="bar bar-nav">
+      <h1 class='title'>只有图标的表单</h1>
+    </header>
+    <div class="content">
+      <div class="list-block">
+        <ul>
+          <!-- Text inputs -->
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-form-name"></i></div>
+              <div class="item-inner">
+                <div class="item-input">
+                  <input type="text" placeholder="Your name">
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-form-email"></i></div>
+              <div class="item-inner">
+                <div class="item-input">
+                  <input type="email" placeholder="E-mail">
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Select -->
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-form-gender"></i></div>
+              <div class="item-inner">
+                <div class="item-input">
+                  <select>
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">'title'</span><span class="nt">&gt;</span>只有图标的表单<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+      <span class="c">&lt;!-- Text inputs --&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-form-name"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">placeholder=</span><span class="s">"Your name"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-form-email"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">placeholder=</span><span class="s">"E-mail"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+
+      <span class="c">&lt;!-- Select --&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-form-gender"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;select&gt;</span>
+                <span class="nt">&lt;option&gt;</span>Male<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option&gt;</span>Female<span class="nt">&lt;/option&gt;</span>
+              <span class="nt">&lt;/select&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+</article>
+
+<article class="component active" id="forms">
+  <h3 class="component-title">只有文案的表单</h3>
+  <p class="component-description">只有文案的表单</p>
+
+  <div class="component-example component-example-fullbleed">
+    <header class="bar bar-nav">
+      <h1 class='title'>只有文案的表单</h1>
+    </header>
+    <div class="content">
+      <div class="list-block">
+        <ul>
+          <!-- Text inputs -->
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title label">Name</div>
+                <div class="item-input">
+                  <input type="text" placeholder="Your name">
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title label">E-mail</div>
+                <div class="item-input">
+                  <input type="email" placeholder="E-mail">
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Select -->
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title label">Gender</div>
+                <div class="item-input">
+                  <select>
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">'title'</span><span class="nt">&gt;</span>只有文案的表单<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+      <span class="c">&lt;!-- Text inputs --&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-title label"</span><span class="nt">&gt;</span>Name<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">placeholder=</span><span class="s">"Your name"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-title label"</span><span class="nt">&gt;</span>E-mail<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">placeholder=</span><span class="s">"E-mail"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+
+      <span class="c">&lt;!-- Select --&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-title label"</span><span class="nt">&gt;</span>Gender<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;select&gt;</span>
+                <span class="nt">&lt;option&gt;</span>Male<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option&gt;</span>Female<span class="nt">&lt;/option&gt;</span>
+              <span class="nt">&lt;/select&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 </article>
 
   <article class="component active" id="tabs">
@@ -636,7 +1018,10 @@
   <p class="component-description">标签页</p>
 
   <div class="component-example component-example-fullbleed">
-    <div class="">
+    <header class="bar bar-nav">
+      <h1 class='title'>标签页</h1>
+    </header>
+    <div class="content">
       <div class="content-block">
         <div class="buttons-row">
           <a href="#tab1" class="tab-link active button">Tab 1</a>
@@ -664,7 +1049,10 @@
     </div>
   </div>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">'title'</span><span class="nt">&gt;</span>标签页<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab1"</span> <span class="na">class=</span><span class="s">"tab-link active button"</span><span class="nt">&gt;</span>Tab 1<span class="nt">&lt;/a&gt;</span>
@@ -698,45 +1086,55 @@
   <p class="component-description"></p>
 
   <div class="component-example component-example-fullbleed">
-    <div class="content-padded grid-demo">
-      <div class="row">
-        <div class="col-50">50%</div>
-        <div class="col-50">50%</div>
-      </div>
-      <div class="row">
-        <div class="col-33">33%</div>
-        <div class="col-33">33%</div>
-        <div class="col-33">33%</div>
-      </div>
-      <div class="row">
-        <div class="col-20">20%</div>
-        <div class="col-80">80%</div>
-      </div>
-      <h2>无间距</h2>
-      <div class="row no-gutter">
-        <div class="col-20">20%</div>
-        <div class="col-80">80%</div>
+    <header class="bar bar-nav">
+      <h1 class='title'>栅格</h1>
+    </header>
+    <div class="content">
+      <div class="content-padded grid-demo">
+        <div class="row">
+          <div class="col-50">50%</div>
+          <div class="col-50">50%</div>
+        </div>
+        <div class="row">
+          <div class="col-33">33%</div>
+          <div class="col-33">33%</div>
+          <div class="col-33">33%</div>
+        </div>
+        <div class="row">
+          <div class="col-20">20%</div>
+          <div class="col-80">80%</div>
+        </div>
+        <h2>无间距</h2>
+        <div class="row no-gutter">
+          <div class="col-20">20%</div>
+          <div class="col-80">80%</div>
+        </div>
       </div>
     </div>
   </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-padded grid-demo"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-50"</span><span class="nt">&gt;</span>50%<span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-50"</span><span class="nt">&gt;</span>50%<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-33"</span><span class="nt">&gt;</span>33%<span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-33"</span><span class="nt">&gt;</span>33%<span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-33"</span><span class="nt">&gt;</span>33%<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-20"</span><span class="nt">&gt;</span>20%<span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-80"</span><span class="nt">&gt;</span>80%<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;h2&gt;</span>无间距<span class="nt">&lt;/h2&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row no-gutter"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-20"</span><span class="nt">&gt;</span>20%<span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-80"</span><span class="nt">&gt;</span>80%<span class="nt">&lt;/div&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">'title'</span><span class="nt">&gt;</span>栅格<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-padded grid-demo"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-50"</span><span class="nt">&gt;</span>50%<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-50"</span><span class="nt">&gt;</span>50%<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-33"</span><span class="nt">&gt;</span>33%<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-33"</span><span class="nt">&gt;</span>33%<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-33"</span><span class="nt">&gt;</span>33%<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-20"</span><span class="nt">&gt;</span>20%<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-80"</span><span class="nt">&gt;</span>80%<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>无间距<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row no-gutter"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-20"</span><span class="nt">&gt;</span>20%<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-80"</span><span class="nt">&gt;</span>80%<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 </article>
