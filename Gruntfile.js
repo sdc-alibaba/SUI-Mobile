@@ -13,7 +13,6 @@ module.exports = function (grunt) {
     return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&');
   };
 
-  var generateRatchiconsData = require('./grunt/ratchicons-data-generator.js');
   var dist = grunt.option('buildTo') ? (grunt.option('buildTo') + '/') : 'dist/';
 
   // Project configuration.
@@ -52,10 +51,18 @@ module.exports = function (grunt) {
           'js/template7.js',
           'js/common.js',
           'js/tabs.js',
-          'js/modal.js',
           'js/push.js',
+          'js/modal.js',
           'js/iscroll.js',
-          'js/scroller.js'
+          'js/scroller.js',
+          'js/swiper-init.js',
+          'js/swipeout.js',
+          'js/swiper.js',
+          'js/photo-browser.js',
+          'js/modal.js',
+          'js/sortable.js',
+          'js/accordion.js',
+          'js/push.js'
         ],
         dest: '<%= meta.distPath %>js/<%= pkg.name %>.js'
       }
@@ -251,14 +258,12 @@ module.exports = function (grunt) {
   // Default task(s).
   grunt.registerTask('dist-css', ['less', 'autoprefixer', 'usebanner', 'csscomb', 'cssmin']);
   grunt.registerTask('dist-js', ['concat', 'uglify']);
-  grunt.registerTask('dist', ['clean', 'dist-css', 'dist-js', 'copy', 'build-ratchicons-data']);
+  grunt.registerTask('dist', ['clean', 'dist-css', 'dist-js', 'copy']);
   grunt.registerTask('validate-html', ['jekyll']);
   grunt.registerTask('build', ['dist']);
   grunt.registerTask('default', ['test', 'dist']);
   grunt.registerTask('test', ['dist', 'jshint', 'qunit', 'validate-html']);
   grunt.registerTask('server', ['dist', 'jekyll', 'connect', 'watch']);
-
-  grunt.registerTask('build-ratchicons-data', generateRatchiconsData);
 
   // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z

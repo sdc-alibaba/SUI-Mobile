@@ -1,6 +1,13 @@
 <article class="component" id="list">
   <h3 class="component-title">列表</h3>
-  <p class="component-description">列表</p>
+  <p class="component-description">常在iOS应用中看到的列表，是种多功能且强大的交互组件。列表将数据展现在一个可滚动的多行的列表中，可以将数据划分成不同的片段/组（sections/groups）。</p>
+  <p class="component-description">列表有以下用途：</p>
+  <ul>
+    <li>让用户可以浏览结构化的多级数据</li>
+    <li>展现一个索引列表</li>
+    <li>在可视化的不同分组中，显示详细信息和控件</li>
+    <li>展现一个可以选择的列表</li>
+  </ul>
 
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
@@ -112,11 +119,25 @@
   </div>
   {% endhighlight %}
 
+  <p class="component-description">其中：</p>
+  <ul>
+    <li><code>item-content</code> - <code>item-media</code>和<code>item-inner</code>的主要弹性(flex)容器。<strong>必选</strong>元素。</li>
+    <li><code>item-media</code> - 媒体元素（如图标，图片等）的容器。<strong>可选</strong>元素。</li>
+    <li><code>item-inner</code> - <code>item-title</code>和<code>item-after</code>的主要弹性(flex)容器。<strong>必选</strong>元素。</li>
+    <li><code>item-title</code> - 单行列表项目标题。<strong>必选</strong>元素。</li>
+    <li><code>item-after</code> - 列表项目标签。可以包含任意额外的html元素（例如标签文本、徽章、switch/toggle、按钮等等）。<strong>可选</strong>元素。</li>
+  </ul>
+
 </article>
 
 <article class="component active">
-  <h3 class="component-title">联系人列表</h3>
-  <p class="component-description">联系人列表 <code><div class="list-block"></code></p>
+  <h3 class="component-title">联系人列表（Contacts List）</h3>
+  <p class="component-description">联系人列表用来展示个人的联系方式。</p>
+  <p>联系人列表是<a href="#list">分组列表（Grouped Lists）</a>的一个特殊的类型，主要有2点不同：</p>
+  <ul>
+    <li>列表区域元素（“list-block”）需要带上额外的“contacts-block”类</li>
+    <li>页面内容元素（“page-content”）需要带上额外的“contacts-content”类</li>
+  </ul>
 
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
@@ -489,8 +510,9 @@
 </article>
 
 <article class="component active">
-  <h3 class="component-title">多媒体列表</h3>
-  <p class="component-description">多媒体列表 <code><div class="list-block"></code></p>
+  <h3 class="component-title">多媒体列表（Media List View）</h3>
+  <p class="component-description">多媒体列表是<a href="#list">列表（list view）</a>的扩展，它是为了展示更复杂的数据比如产品，服务，用户等等。</p>
+  <p class="component-description">当然，它的布局更为复杂：</p>
 
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
@@ -642,11 +664,23 @@
   </div>
   {% endhighlight %}
 
+  <p class="component-description">其中：</p>
+  <ul>
+    <li><code>item-media</code>和<code>item-inner</code>的主要弹性(flex)容器。<strong>必选</strong>元素。</li>
+    <li><code>item-media</code> - 媒体元素（如图标，图片等）的容器. <strong>可选</strong>元素。</li>
+    <li><code>item-inner</code> - <code>item-title</code>和<code>item-after</code>的主要弹性(flex)容器。<strong>必选</strong>元素。</li>
+    <li><code>item-title-row</code> - <code>item-title</code> 和 <code>item-after</code>的主要弹性(flex)容器。<strong>必选</strong>元素。</li>
+    <li><code>item-title</code> - 单行列表项目标题。<strong>可选</strong>元素。</li>
+    <li><code>item-after</code> - 列表项目标签。可以包含任意额外的html元素（例如标签文本、徽章、switch/toggle、按钮等等）。<strong>可选</strong>元素。</li>
+    <li><code>item-subtitle</code> - 额外的单行标题。<strong>可选</strong>元素。</li>
+    <li><code>item-text</code> - 额外的两行布局的容器，用来放置细节描述。<strong>可选</strong>元素。</li>
+  </ul>
+
 </article>
 
 <article class="component active">
-  <h3 class="component-title">可排序列表</h3>
-  <p class="component-description">可排序列表 <code><div class="list-block"></code></p>
+  <h3 class="component-title">可排序列表（Sortable List）</h3>
+  <p class="component-description">可排序列表是<a href="#list">列表</a>的扩展，可以对列表进行排序。</p>
 
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
@@ -727,5 +761,64 @@
     </div>
   </div>
   {% endhighlight %}
+
+  <p class="component-description">其中：</p>
+  <ul>
+    <li><code>sortable-handler</code> - 可拖拽元素（"draggable" element）（默认隐藏），允许你通过它来调整列表顺序</li>
+  </ul>
+  <p class="component-description">使列表变成可排序列表视图十分简单，只需要给列表区加上“sortable”类，并在列表元素<li>中加入“sortable-handler”元素作为其直接子元素</p>
+
+  <h3 class="component-title">通过JavaScript控制</h3>
+  <p class="component-description"><code>$.sortableOpen(sortableContainer)</code> - 在指定的可排序列表开启排序功能</p>
+  <ul>
+    <li><code>sortableContainer</code> - 可排序列表的HTML元素或CSS选择器，可选的。如果没有指定，Framework7默认将第一个&lt;div class="list-block sortable"&gt;元素作为该方法目标。</li>
+  </ul>
+  <p class="component-description"><code>$.sortableClose(sortableContainer)</code> - 在指定的可排序列表关闭排序功能</p>
+  <ul>
+    <li><code>sortableContainer</code> - 可排序列表的HTML元素或CSS选择器，可选的。如果没有指定，Framework7默认将第一个&lt;div class="list-block sortable"&gt;元素作为该方法目标。</li>
+  </ul>
+  <p class="component-description"><code>$.sortableToggle(sortableContainer)</code> - 在指定的可排序列表切换（开启／关闭）排序功能</p>
+  <ul>
+    <li><code>sortableContainer</code> - 可排序列表的HTML元素或CSS选择器，可选的。如果没有指定，Framework7默认将第一个&lt;div class="list-block sortable"&gt;元素作为该方法目标。</li>
+  </ul>
+  {% highlight js %}
+  $(document).on('click', '.open', function () {
+    $.sortableOpen('.sortable');
+  });
+  $(document).on('click', '.close', function () {
+    $.sortableClose('.sortable');
+  });
+  $(document).on('click', '.toggle', function () {
+    $.sortableToggle('.sortable');
+  });
+  {% endhighlight %} 
+
+  <h3 class="component-title">事件</h3>
+  <table class="params-table">
+    <thead>
+      <tr>
+        <th>事件（Event）</th>
+        <th>目标（Target）</th>
+        <th>说明（Description）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>open</td>
+        <td>可排序列表<span>&lt;div class="list-block sortable"&gt;</span></td>
+        <td>当开启排序功能时触发</td>
+      </tr>
+      <tr>
+        <td>close</td>
+        <td>可排序列表<span>&lt;div class="list-block sortable"&gt;</span></td>
+        <td>当关闭排序功能时触发</td>
+      </tr>
+      <tr>
+        <td>sort</td>
+        <td>列表项目<span>&lt;li&gt;</span></td>
+        <td>当用户释放正在排序的列表项目（&lt;li&gt;）且该项目的顺序改变时触发</td>
+      </tr>
+    </tbody>
+  </table>
 
 </article>

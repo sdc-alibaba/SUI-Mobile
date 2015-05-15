@@ -13,9 +13,10 @@
 
 <!-- Google Web Fonts -->
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,500,700%7COpen+Sans:400,300">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1431676360_347254.css">
 
-<link rel="stylesheet" href="/dist/css/sm.min.css">
-<link rel="stylesheet" href="/assets/css/docs.min.css">
+<link rel="stylesheet" href="/dist/css/sm.css">
+<link rel="stylesheet" href="/assets/css/docs.css">
 
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/img/apple-touch-icon-114x114.png">
 <script src="/assets/js/zepto.js"></script>
@@ -77,9 +78,9 @@
   <div class="container">
     <div class="column units-2">
       <span class="docs-jump-menu pull-left js-jump-menu">
-  <span class="icon icon-list"></span>
+  <span class="icon icon-menu"></span>
   组件
-  <span class="icon icon-caret"></span>
+  <span class="icon icon-caret-down"></span>
 </span>
 
 <div class="docs-component-group js-component-group">
@@ -93,6 +94,8 @@
   <a class="docs-component-item" href="#list" data-ignore="push">列表</a>
   <a class="docs-component-item" href="#accordion" data-ignore="push">手风琴</a>
   <a class="docs-component-item" href="#cards" data-ignore="push">卡片</a>
+  <a class="docs-component-item" href="#swiper" data-ignore="push">幻灯片</a>
+  <a class="docs-component-item" href="#browser" data-ignore="push">图片浏览器</a>
   <a class="docs-component-item" href="#push" data-ignore="push">push.js</a>
   <a class="docs-component-item" href="#scroller" data-ignore="push">滚动条</a>
   <a class="docs-component-item" href="#ratchicons" data-ignore="push">图标</a>
@@ -171,6 +174,7 @@
 
 
 
+<<<<<<< HEAD
   <article class="component active" id="bars">
     <h3 class="component-title">Title bar</h3>
     <p class="component-description">Title bars are full width and docked to the top of the viewport.</p>
@@ -187,6 +191,28 @@
     <h3 class="component-title">Title bar with buttons</h3>
     <p class="component-description">Buttons in a title bar are left or right aligned and should be used for actions. Use the <code>.pull-right</code> or <code>.pull-left</code> utility classes to float the buttons. Also, be sure to place any floated elements before the title.</p>
     <div class="component-example component-example-fullbleed">
+=======
+        <article class="component active" id="bars">
+        <h3 class="component-title">标题栏</h3>
+        <p class="component-description">标题栏放在页面顶部</p>
+
+        <div class="component-example component-example-fullbleed">
+          <header class="bar bar-nav">
+            <h1 class="title">标题</h1>
+          </header>
+        </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>标题<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span></code></pre></div>
+
+    </article>
+
+    <article class="component">
+      <h3 class="component-title">带按钮的标题栏</h3>
+
+      <div class="component-example component-example-fullbleed">
+>>>>>>> dev
         <header class="bar bar-nav">
             <button class="button pull-left">
                 Left
@@ -203,6 +229,7 @@
         <span class="nt">&lt;/button&gt;</span>
         <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button pull-right"</span><span class="nt">&gt;</span>
             Right
+<<<<<<< HEAD
         <span class="nt">&lt;/button&gt;</span>
         <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/h1&gt;</span>
     <span class="nt">&lt;/header&gt;</span></code></pre></div>
@@ -253,6 +280,80 @@
     <h3 class="component-title">Title bar with segmented control</h3>
     <p class="component-description">Title bars can also house segmented controls. Feel free to add accompanying buttons too. The control will automatically layout itself out correctly.</p>
     <div class="component-example component-example-fullbleed">
+=======
+          </button>
+          <h1 class="title">Title</h1>
+        </header>
+      </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button pull-left"</span><span class="nt">&gt;</span>
+    按钮
+  <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button pull-right"</span><span class="nt">&gt;</span>
+    按钮
+  <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>标题<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span></code></pre></div>
+
+    </article>
+
+    <article class="component">
+      <h3 class="component-title">带图标的标题栏</h3>
+
+      <div class="component-example component-example-fullbleed">
+        <header class="bar bar-nav">
+          <a class="icon icon-left pull-left"></a>
+          <a class="icon icon-edit pull-right"></a>
+          <h1 class="title">标题</h1>
+        </header>
+      </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-left pull-left"</span><span class="nt">&gt;&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-edit pull-right"</span><span class="nt">&gt;&lt;/a&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>标题<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span></code></pre></div>
+
+    </article>
+
+    <article class="component">
+      <h3 class="component-title">带链接和图标</h3>
+      <p class="component-description">Link buttons can be used in tool bars to remove the outline. Use these in conjuction with icons to recreate the nav feel from iOS7. Note the use of <code>.button-nav</code> to bring the buttons a little bit closer to the edge of the viewport.</p>
+
+      <div class="component-example component-example-fullbleed">
+        <header class="bar bar-nav">
+          <button class="button button-link button-nav pull-left">
+            <span class="icon icon-left"></span>
+            返回
+          </button>
+          <button class="button button-link button-nav pull-right">
+            下一步
+            <span class="icon icon-right"></span>
+          </button>
+          <h1 class="title">标题</h1>
+        </header>
+      </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-link button-nav pull-left"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-left"</span><span class="nt">&gt;&lt;/span&gt;</span>
+    返回
+  <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-link button-nav pull-right"</span><span class="nt">&gt;</span>
+    下一步
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-right"</span><span class="nt">&gt;&lt;/span&gt;</span>
+  <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>标题<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span></code></pre></div>
+
+    </article>
+
+    <article class="component">
+      <h3 class="component-title">带标签页</h3>
+
+      <div class="component-example component-example-fullbleed">
+>>>>>>> dev
         <header class="bar bar-nav">
             <button class="button pull-left">
                 Left
@@ -273,6 +374,7 @@
         <span class="nt">&lt;/button&gt;</span>
         <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button pull-right"</span><span class="nt">&gt;</span>
             Right
+<<<<<<< HEAD
         <span class="nt">&lt;/button&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;</span>
             <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab1"</span> <span class="na">class=</span><span class="s">"tab-link active button"</span><span class="nt">&gt;</span>Tab 1<span class="nt">&lt;/a&gt;</span>
@@ -331,6 +433,84 @@
             <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Settings<span class="nt">&lt;/span&gt;</span>
         <span class="nt">&lt;/a&gt;</span>
     <span class="nt">&lt;/nav&gt;</span></code></pre></div>
+=======
+          </button>
+          <div class="buttons-row">
+            <a href="#tab1" class="tab-link active button">Tab 1</a>
+            <a href="#tab2" class="tab-link button">Tab 2</a>
+            <a href="#tab3" class="tab-link button">Tab 3</a>
+          </div>
+        </header>
+      </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button pull-left"</span><span class="nt">&gt;</span>
+    Left
+  <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button pull-right"</span><span class="nt">&gt;</span>
+    Right
+  <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab1"</span> <span class="na">class=</span><span class="s">"tab-link active button"</span><span class="nt">&gt;</span>Tab 1<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab2"</span> <span class="na">class=</span><span class="s">"tab-link button"</span><span class="nt">&gt;</span>Tab 2<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab3"</span> <span class="na">class=</span><span class="s">"tab-link button"</span><span class="nt">&gt;</span>Tab 3<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/header&gt;</span></code></pre></div>
+
+    </article>
+
+    <article class="component">
+      <h3 class="component-title">工具栏</h3>
+
+      <div class="component-example component-example-fullbleed">
+        <nav class="bar bar-tab">
+          <a class="tab-item active" href="#">
+            <span class="icon icon-home"></span>
+            <span class="tab-label">Label</span>
+          </a>
+          <a class="tab-item" href="#">
+            <span class="icon icon-me"></span>
+            <span class="tab-label">Label</span>
+          </a>
+          <a class="tab-item" href="#">
+            <span class="icon icon-star"></span>
+            <span class="tab-label">Label</span>
+          </a>
+          <a class="tab-item" href="#">
+            <span class="icon icon-cart"></span>
+            <span class="tab-label">Label</span>
+          </a>
+          <a class="tab-item" href="#">
+            <span class="icon icon-settings"></span>
+            <span class="tab-label">Label</span>
+          </a>
+        </nav>
+      </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"bar bar-tab"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-home"</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Label<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-me"</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Label<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-star"</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Label<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-cart"</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Label<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-settings"</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>Label<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/nav&gt;</span></code></pre></div>
+
+>>>>>>> dev
     <p class="component-note touch-only"><strong>Note:</strong> Use push.js to actually change content.</p>
 </article>
 <article class="component">
@@ -378,6 +558,7 @@
         <div class="bar bar-standard bar-header-secondary">
             <button class="button button-block">Block level button</button>
         </div>
+<<<<<<< HEAD
     </div>
     <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Segmented control in standard bar fixed to top --&gt;</span>
     <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"bar bar-standard"</span><span class="nt">&gt;</span>
@@ -401,6 +582,37 @@
         <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-gear pull-right"</span><span class="nt">&gt;&lt;/a&gt;</span>
     <span class="nt">&lt;/div&gt;</span></code></pre></div>
 </article>
+=======
+      </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Segmented control in standard bar fixed to top --&gt;</span>
+<span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"bar bar-standard"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab1"</span> <span class="na">class=</span><span class="s">"tab-link active button"</span><span class="nt">&gt;</span>Tab 1<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab2"</span> <span class="na">class=</span><span class="s">"tab-link button"</span><span class="nt">&gt;</span>Tab 2<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab3"</span> <span class="na">class=</span><span class="s">"tab-link button"</span><span class="nt">&gt;</span>Tab 3<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/nav&gt;</span>
+
+<span class="c">&lt;!-- Block button in standard bar fixed below top bar --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bar bar-standard bar-header-secondary"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-block"</span><span class="nt">&gt;</span>Block level button<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="c">&lt;!-- Block button in standard bar fixed above the footer --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bar bar-standard bar-footer-secondary"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-block"</span><span class="nt">&gt;</span>Block level button<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="c">&lt;!-- Icons in standard bar fixed to the bottom of the screen --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bar bar-standard bar-footer"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-edit pull-left"</span><span class="nt">&gt;&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-settings pull-right"</span><span class="nt">&gt;&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+  </article>
+
+>>>>>>> dev
 
   <article class="component active" id="buttons">
   <h3 class="component-title">按钮</h3>
@@ -663,6 +875,17 @@
               </div>
             </div>
           </li>
+          <li class="align-top">
+            <div class="item-content">
+              <div class="item-media"><i class="icon icon-form-comment"></i></div>
+              <div class="item-inner">
+                <div class="item-title label">Textarea</div>
+                <div class="item-input">
+                  <textarea></textarea>
+                </div>
+              </div>
+            </div>
+          </li>
         </ul>
       </div>
       <div class="content-block">
@@ -763,6 +986,17 @@
                 <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
                 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;&lt;/div&gt;</span>
               <span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"align-top"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-form-comment"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-title label"</span><span class="nt">&gt;</span>Textarea<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;textarea&gt;&lt;/textarea&gt;</span>
             <span class="nt">&lt;/div&gt;</span>
           <span class="nt">&lt;/div&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
@@ -2181,7 +2415,14 @@
 
   <article class="component" id="list">
   <h3 class="component-title">列表</h3>
-  <p class="component-description">列表</p>
+  <p class="component-description">常在iOS应用中看到的列表，是种多功能且强大的交互组件。列表将数据展现在一个可滚动的多行的列表中，可以将数据划分成不同的片段/组（sections/groups）。</p>
+  <p class="component-description">列表有以下用途：</p>
+  <ul>
+    <li>让用户可以浏览结构化的多级数据</li>
+    <li>展现一个索引列表</li>
+    <li>在可视化的不同分组中，显示详细信息和控件</li>
+    <li>展现一个可以选择的列表</li>
+  </ul>
 
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
@@ -2291,11 +2532,25 @@
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
+  <p class="component-description">其中：</p>
+  <ul>
+    <li><code>item-content</code> - <code>item-media</code>和<code>item-inner</code>的主要弹性(flex)容器。<strong>必选</strong>元素。</li>
+    <li><code>item-media</code> - 媒体元素（如图标，图片等）的容器。<strong>可选</strong>元素。</li>
+    <li><code>item-inner</code> - <code>item-title</code>和<code>item-after</code>的主要弹性(flex)容器。<strong>必选</strong>元素。</li>
+    <li><code>item-title</code> - 单行列表项目标题。<strong>必选</strong>元素。</li>
+    <li><code>item-after</code> - 列表项目标签。可以包含任意额外的html元素（例如标签文本、徽章、switch/toggle、按钮等等）。<strong>可选</strong>元素。</li>
+  </ul>
+
 </article>
 
 <article class="component active">
-  <h3 class="component-title">联系人列表</h3>
-  <p class="component-description">联系人列表 <code><div class="list-block"></code></p>
+  <h3 class="component-title">联系人列表（Contacts List）</h3>
+  <p class="component-description">联系人列表用来展示个人的联系方式。</p>
+  <p>联系人列表是<a href="#list">分组列表（Grouped Lists）</a>的一个特殊的类型，主要有2点不同：</p>
+  <ul>
+    <li>列表区域元素（“list-block”）需要带上额外的“contacts-block”类</li>
+    <li>页面内容元素（“page-content”）需要带上额外的“contacts-content”类</li>
+  </ul>
 
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
@@ -2666,8 +2921,9 @@
 </article>
 
 <article class="component active">
-  <h3 class="component-title">多媒体列表</h3>
-  <p class="component-description">多媒体列表 <code><div class="list-block"></code></p>
+  <h3 class="component-title">多媒体列表（Media List View）</h3>
+  <p class="component-description">多媒体列表是<a href="#list">列表（list view）</a>的扩展，它是为了展示更复杂的数据比如产品，服务，用户等等。</p>
+  <p class="component-description">当然，它的布局更为复杂：</p>
 
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
@@ -2817,11 +3073,23 @@
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
+  <p class="component-description">其中：</p>
+  <ul>
+    <li><code>item-media</code>和<code>item-inner</code>的主要弹性(flex)容器。<strong>必选</strong>元素。</li>
+    <li><code>item-media</code> - 媒体元素（如图标，图片等）的容器. <strong>可选</strong>元素。</li>
+    <li><code>item-inner</code> - <code>item-title</code>和<code>item-after</code>的主要弹性(flex)容器。<strong>必选</strong>元素。</li>
+    <li><code>item-title-row</code> - <code>item-title</code> 和 <code>item-after</code>的主要弹性(flex)容器。<strong>必选</strong>元素。</li>
+    <li><code>item-title</code> - 单行列表项目标题。<strong>可选</strong>元素。</li>
+    <li><code>item-after</code> - 列表项目标签。可以包含任意额外的html元素（例如标签文本、徽章、switch/toggle、按钮等等）。<strong>可选</strong>元素。</li>
+    <li><code>item-subtitle</code> - 额外的单行标题。<strong>可选</strong>元素。</li>
+    <li><code>item-text</code> - 额外的两行布局的容器，用来放置细节描述。<strong>可选</strong>元素。</li>
+  </ul>
+
 </article>
 
 <article class="component active">
-  <h3 class="component-title">可排序列表</h3>
-  <p class="component-description">可排序列表 <code><div class="list-block"></code></p>
+  <h3 class="component-title">可排序列表（Sortable List）</h3>
+  <p class="component-description">可排序列表是<a href="#list">列表</a>的扩展，可以对列表进行排序。</p>
 
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
@@ -2900,6 +3168,63 @@
       <span class="nt">&lt;/ul&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+  <p class="component-description">其中：</p>
+  <ul>
+    <li><code>sortable-handler</code> - 可拖拽元素（"draggable" element）（默认隐藏），允许你通过它来调整列表顺序</li>
+  </ul>
+  <p class="component-description">使列表变成可排序列表视图十分简单，只需要给列表区加上“sortable”类，并在列表元素<li>中加入“sortable-handler”元素作为其直接子元素</p>
+
+  <h3 class="component-title">通过JavaScript控制</h3>
+  <p class="component-description"><code>$.sortableOpen(sortableContainer)</code> - 在指定的可排序列表开启排序功能</p>
+  <ul>
+    <li><code>sortableContainer</code> - 可排序列表的HTML元素或CSS选择器，可选的。如果没有指定，Framework7默认将第一个&lt;div class="list-block sortable"&gt;元素作为该方法目标。</li>
+  </ul>
+  <p class="component-description"><code>$.sortableClose(sortableContainer)</code> - 在指定的可排序列表关闭排序功能</p>
+  <ul>
+    <li><code>sortableContainer</code> - 可排序列表的HTML元素或CSS选择器，可选的。如果没有指定，Framework7默认将第一个&lt;div class="list-block sortable"&gt;元素作为该方法目标。</li>
+  </ul>
+  <p class="component-description"><code>$.sortableToggle(sortableContainer)</code> - 在指定的可排序列表切换（开启／关闭）排序功能</p>
+  <ul>
+    <li><code>sortableContainer</code> - 可排序列表的HTML元素或CSS选择器，可选的。如果没有指定，Framework7默认将第一个&lt;div class="list-block sortable"&gt;元素作为该方法目标。</li>
+  </ul>
+  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'.open'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">sortableOpen</span><span class="p">(</span><span class="s1">'.sortable'</span><span class="p">);</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'.close'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">sortableClose</span><span class="p">(</span><span class="s1">'.sortable'</span><span class="p">);</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'.toggle'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">sortableToggle</span><span class="p">(</span><span class="s1">'.sortable'</span><span class="p">);</span>
+  <span class="p">});</span></code></pre></div> 
+
+  <h3 class="component-title">事件</h3>
+  <table class="params-table">
+    <thead>
+      <tr>
+        <th>事件（Event）</th>
+        <th>目标（Target）</th>
+        <th>说明（Description）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>open</td>
+        <td>可排序列表<span>&lt;div class="list-block sortable"&gt;</span></td>
+        <td>当开启排序功能时触发</td>
+      </tr>
+      <tr>
+        <td>close</td>
+        <td>可排序列表<span>&lt;div class="list-block sortable"&gt;</span></td>
+        <td>当关闭排序功能时触发</td>
+      </tr>
+      <tr>
+        <td>sort</td>
+        <td>列表项目<span>&lt;li&gt;</span></td>
+        <td>当用户释放正在排序的列表项目（&lt;li&gt;）且该项目的顺序改变时触发</td>
+      </tr>
+    </tbody>
+  </table>
 
 </article>
 
@@ -3040,8 +3365,8 @@
 </article>
 
   <article class="component" id="accordion">
-  <h3 class="component-title">手风琴列表视图</h3>
-  <p class="component-description">手风琴列表视图</p>
+  <h3 class="component-title">手风琴布局（Accordion）</h3>
+  <p class="component-description">通常，手风琴布局可以这样实现:</p>
 
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
@@ -3209,11 +3534,77 @@
     <span class="nt">&lt;/div&gt;</span>  
   <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
+  <p>上面的代码:</p>
+  <ul>
+    <li><code>accordion-list</code> - 多个手风琴元素的列表. 可选
+    <li><code>accordion-item</code> - 单个手风琴元素. 必选
+    <li><code>accordion-item-toggle</code> - 用来展开／折叠手风琴元素内容的开关. 必选</li>
+    <li><code>accordion-item-content</code> - 隐藏的手风琴元素的内容. 必选</li>
+    </li>
+    <li><code>accordion-item-expanded</code> - 展开的手风琴元素</li>
+    </li>
+  </ul>
+
+  <h3 class="component-title">JavaScript API</h3>
+  <p>手风琴组件有JavaScript API，你可以在JS中控制打开和关闭。方法说明如下：</p>
+  <p class="component-description"><code>$.accordionOpen(item)</code> - 打开指定的条目</p>
+  <ul>
+    <li>item - HTMLElement or string (想要操作的条目的CSS选择器 (&lt;div class="accordion-item"&gt;). 必须。</li>
+  </ul>
+  <p class="component-description"><code>$.accordionClose(item)</code> - 关闭指定条目</p>
+  <ul>
+    <li>item - HTMLElement or string (想要操作的条目的CSS选择器 (&lt;div class="accordion-item"&gt;). 必须</li>
+  </ul>
+  <p class="component-description"><code>$.accordionToggle(item)</code> - toggle 指定条目</p>
+  <ul>
+    <li>item - HTMLElement or string (想要操作的条目的CSS选择器 (&lt;div class="accordion-item"&gt;). Required</li>
+  </ul>
+
+  <h3 class="component-title">事件</h3>
+  <p class="component-description">手风琴有这些事件:</p>
+  <table class="params-table">
+    <thead>
+      <tr>
+        <th width="15%">事件名称</th>
+        <th>Target</th>
+        <th>说明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>open</td>
+        <td>Accordion item<span>&lt;div class="accordion-item"&gt;</span></td>
+        <td>某一条目开始执行打开动画的时候会触发</td>
+      </tr>
+      <tr>
+        <td>opened</td>
+        <td>Accordion item<span>&lt;div class="accordion-item"&gt;</span></td>
+        <td>某一条目完成打开动画后触发</td>
+      </tr>
+      <tr>
+        <td>close</td>
+        <td>Accordion item<span>&lt;div class="accordion-item"&gt;</span></td>
+        <td>某一条目开始执行关闭动画的时候会触发</td>
+      </tr>
+      <tr>
+        <td>closed</td>
+        <td>Accordion item<span>&lt;div class="accordion-item"&gt;</span></td>
+        <td>某一条目完成关闭动画后触发</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'opened'</span><span class="p">,</span> <span class="s1">'.accordion-item'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Accordion item opened'</span><span class="p">);</span>
+  <span class="p">});</span> 
+   
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'closed'</span><span class="p">,</span> <span class="s1">'.accordion-item'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Accordion item closed'</span><span class="p">);</span>
+  <span class="p">});</span></code></pre></div>     
 </article>
 
   <article class="component" id="cards">
-  <h3 class="component-title">Cards</h3>
-  <p class="component-description">Cards, along with List View, is a one more great way to contain and orginize your information. Cards contains unique related data, for example, a photo, text, and link all about a single subject. Cards are typically an entry point to more complex and detailed information.</p>
+  <h3 class="component-title">卡片（Cards）</h3>
+  <p class="component-description">伴随着列表视图，卡片是一种很好的方法来控制和组织你的信息。卡片含有独特的相关数据，例如，照片，文字和所有关于一个主题的链接。卡片通常是更复杂的和详细的信息的一个切入点。</p>
 
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
@@ -3268,8 +3659,8 @@
 </article>
 
 <article class="component active">
-  <h3 class="component-title">List View With Cards</h3>
-  <p class="component-description">It could be useful to use Cards as elements of List View, in this case it would be possible to use Seearch Bar, Virtual List and other List View features with Cards. In this case we need to add additional cards-list class to <code><div class="list-block"></code></p>
+  <h3 class="component-title">卡片列表视图</h3>
+  <p class="component-description">可以用卡片在<a href="#list">列表视图</a>中有用的元素，在这种情况下就可以使用搜索栏，虚拟列表和列表视图功能卡片。在这种情况下我们需要添加额外的卡片列表类<code>&lt;div class="list-block"&gt;</code></p>
 
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
@@ -3337,6 +3728,7 @@
 
 </article>
 
+<<<<<<< HEAD
   <article class="component" id="push">
     <h3 class="component-title">Push</h3>
     <p class="component-description">Push.js is the engine that connects Ratchet pages together with AJAX and the history api. Push.js is listening to all clicks on a page, so just make sure it's included and link something in your Ratchet project up.</p>
@@ -3348,6 +3740,253 @@
     <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span> <span class="na">data-transition=</span><span class="s">"fade"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
     <p class="component-description">A working version of push:</p>
     <div class="component-example component-example-fullbleed">
+=======
+  <article class="component active" id="swiper">
+  <h3 class="component-title">幻灯片</h3>
+  <p class="component-description">幻灯片</p>
+
+  <div class="component-example component-example-fullbleed">
+    <header class="bar bar-nav">
+      <h1 class="title">幻灯片</h1>
+    </header>
+    <div class="content">
+      <!-- Slider -->
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+    <script>
+      $(function() {
+        $(".swiper-container").swiper();
+      });
+    </script>
+  </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>幻灯片<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Slider --&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"swiper-container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"swiper-wrapper"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"swiper-slide"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"swiper-slide"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"swiper-slide"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"swiper-pagination"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s2">".swiper-container"</span><span class="p">).</span><span class="nx">swiper</span><span class="p">();</span>
+<span class="p">});</span></code></pre></div>
+</article>
+
+  <article class="component active" id="browser">
+  <h3 class="component-title">图片浏览器</h3>
+  <p class="component-description">图片浏览器</p>
+
+  <div class="component-example component-example-fullbleed">
+    <header class="bar bar-nav">
+      <h1 class="title">图片浏览器</h1>
+    </header>
+    <div class="content">
+      <div class="content-block row">
+        <div class="col-50"><a href="#" class="button pb-standalone">Standalone</a></div>
+        <div class="col-50"><a href="#" class="button pb-popup">Popup</a></div>
+      </div>
+      <div class="content-block"><a href="#" class="button pb-standalone-captions">With Captions</a></div>
+      <div class="content-block"><a href="#" class="button pb-standalone-video">With Video</a></div>
+    </div>
+    <script>
+      $(function(){
+        /*=== 默认为 standalone ===*/
+        $.photoBrowser.prototype.defaults.container = '#iwindow';
+        var myPhotoBrowserStandalone = $.photoBrowser({
+            photos : [
+                '//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg',
+                '//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg',
+                '//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg',
+            ]
+        });
+        //点击时打开图片浏览器
+        $(document).on('click','.pb-standalone',function () {
+          myPhotoBrowserStandalone.open();
+        });
+         
+        /*=== Popup ===*/
+        var myPhotoBrowserPopup = $.photoBrowser({
+            photos : [
+                '//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg',
+                '//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg',
+                '//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg',
+            ],
+            type: 'popup'
+        });
+        $(document).on('click','.pb-popup',function () {
+          myPhotoBrowserPopup.open();
+        });
+         
+         
+        /*=== 有标题 ===*/
+        var myPhotoBrowserCaptions = $.photoBrowser({
+            photos : [
+                {
+                    url: '//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg',
+                    caption: 'Caption 1 Text'
+                },
+                {
+                    url: '//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg',
+                    caption: 'Second Caption Text'
+                },
+                // 这个没有标题
+                {
+                    url: '//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg',
+                },
+            ],
+            theme: 'dark',
+            type: 'standalone'
+        });
+        $(document).on('click','.pb-standalone-captions',function () {
+          myPhotoBrowserCaptions.open();
+        });
+         
+        /*=== 有视频 ===*/
+        var myPhotoBrowserVideo = $.photoBrowser({
+            photos : [
+                {
+                    html: '<iframe src="//www.youtube.com/embed/lmc21V-zBq0?list=PLpj0FBQgLGEr3mtZ5BTwtmSwF1dkPrPRM" frameborder="0" allowfullscreen></iframe>',
+                    caption: 'Woodkid - Run Boy Run (Official HD Video)'
+                },
+                {
+                    url: 'http://lorempixel.com/1024/1024/sports/2/',
+                    caption: 'Second Caption Text'
+                },
+                {
+                    url: 'http://lorempixel.com/1024/1024/sports/3/',
+                },
+            ],
+            theme: 'dark',
+            type: 'standalone'
+        });
+        $(document).on('click','.pb-standalone-video',function () {
+          myPhotoBrowserVideo.open();
+        });
+      })
+    </script>
+  </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>图片浏览器<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-50"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button pb-standalone"</span><span class="nt">&gt;</span>Standalone<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-50"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button pb-popup"</span><span class="nt">&gt;</span>Popup<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button pb-standalone-captions"</span><span class="nt">&gt;</span>With Captions<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button pb-standalone-video"</span><span class="nt">&gt;</span>With Video<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="cm">/*=== 默认为 standalone ===*/</span>
+<span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="cm">/*=== 默认为 standalone ===*/</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">photoBrowser</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">container</span> <span class="o">=</span> <span class="s1">'#iwindow'</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">myPhotoBrowserStandalone</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">photoBrowser</span><span class="p">({</span>
+      <span class="na">photos</span> <span class="p">:</span> <span class="p">[</span>
+          <span class="s1">'//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
+          <span class="s1">'//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
+          <span class="s1">'//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
+      <span class="p">]</span>
+  <span class="p">});</span>
+  <span class="c1">//点击时打开图片浏览器</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.pb-standalone'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">myPhotoBrowserStandalone</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+  <span class="p">});</span>
+   
+  <span class="cm">/*=== Popup ===*/</span>
+  <span class="kd">var</span> <span class="nx">myPhotoBrowserPopup</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">photoBrowser</span><span class="p">({</span>
+      <span class="na">photos</span> <span class="p">:</span> <span class="p">[</span>
+          <span class="s1">'//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
+          <span class="s1">'//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
+          <span class="s1">'//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
+      <span class="p">],</span>
+      <span class="na">type</span><span class="p">:</span> <span class="s1">'popup'</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.pb-popup'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">myPhotoBrowserPopup</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="cm">/*=== 有标题 ===*/</span>
+  <span class="kd">var</span> <span class="nx">myPhotoBrowserCaptions</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">photoBrowser</span><span class="p">({</span>
+      <span class="na">photos</span> <span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+              <span class="na">url</span><span class="p">:</span> <span class="s1">'//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
+              <span class="na">caption</span><span class="p">:</span> <span class="s1">'Caption 1 Text'</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+              <span class="na">url</span><span class="p">:</span> <span class="s1">'//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
+              <span class="na">caption</span><span class="p">:</span> <span class="s1">'Second Caption Text'</span>
+          <span class="p">},</span>
+          <span class="c1">// 这个没有标题</span>
+          <span class="p">{</span>
+              <span class="na">url</span><span class="p">:</span> <span class="s1">'//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
+          <span class="p">},</span>
+      <span class="p">],</span>
+      <span class="na">theme</span><span class="p">:</span> <span class="s1">'dark'</span><span class="p">,</span>
+      <span class="na">type</span><span class="p">:</span> <span class="s1">'standalone'</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.pb-standalone-captions'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">myPhotoBrowserCaptions</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+  <span class="p">});</span>
+   
+  <span class="cm">/*=== 有视频 ===*/</span>
+  <span class="kd">var</span> <span class="nx">myPhotoBrowserVideo</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">photoBrowser</span><span class="p">({</span>
+      <span class="na">photos</span> <span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+              <span class="na">html</span><span class="p">:</span> <span class="s1">'&lt;iframe src="//www.youtube.com/embed/lmc21V-zBq0?list=PLpj0FBQgLGEr3mtZ5BTwtmSwF1dkPrPRM" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;'</span><span class="p">,</span>
+              <span class="na">caption</span><span class="p">:</span> <span class="s1">'Woodkid - Run Boy Run (Official HD Video)'</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+              <span class="na">url</span><span class="p">:</span> <span class="s1">'http://lorempixel.com/1024/1024/sports/2/'</span><span class="p">,</span>
+              <span class="na">caption</span><span class="p">:</span> <span class="s1">'Second Caption Text'</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+              <span class="na">url</span><span class="p">:</span> <span class="s1">'http://lorempixel.com/1024/1024/sports/3/'</span><span class="p">,</span>
+          <span class="p">},</span>
+      <span class="p">],</span>
+      <span class="na">theme</span><span class="p">:</span> <span class="s1">'dark'</span><span class="p">,</span>
+      <span class="na">type</span><span class="p">:</span> <span class="s1">'standalone'</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.pb-standalone-video'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">myPhotoBrowserVideo</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="p">})</span></code></pre></div>
+</article>
+
+      <article class="component" id="push">
+      <h3 class="component-title">Push</h3>
+      <p class="component-description">Push.js is the engine that connects Ratchet pages together with AJAX and the history api. Push.js is listening to all clicks on a page, so just make sure it's included and link something in your Ratchet project up.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- A one.html link --&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
+
+      <p class="component-note">This will use push to replace everything in the .content div with the .content of two.html. Also, it will either update or remove .bar-nav and .bar-tab according to their presences in two.html.</p>
+
+      <p class="component-description">Now that pages are being loaded through push, it's easy to specify transitions for animations between pages. There are three different transitions to chose from: <code>fade</code>, <code>slide-in</code>, or <code>slide-out</code>.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- An one.html link that animates to two.html --&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span> <span class="na">data-transition=</span><span class="s">"fade"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
+
+      <p class="component-description">A working version of push:</p>
+
+      <div class="component-example component-example-fullbleed">
+>>>>>>> dev
         <header class="bar bar-nav">
             <h1 class="title">Push</h1>
         </header>
@@ -3405,131 +4044,48 @@
 
       <div class="component-example">
         <div class="content-padded">
-        
-          <span class="icon icon-back"></span>
-        
-          <span class="icon icon-bars"></span>
-        
-          <span class="icon icon-caret"></span>
-        
+          <span class="icon icon-app"></span>
+          <span class="icon icon-browser"></span>
+          <span class="icon icon-card"></span>
+          <span class="icon icon-cart"></span>
           <span class="icon icon-check"></span>
-        
-          <span class="icon icon-close"></span>
-        
           <span class="icon icon-code"></span>
-        
-          <span class="icon icon-compose"></span>
-        
+          <span class="icon icon-remove"></span>
           <span class="icon icon-download"></span>
-        
           <span class="icon icon-edit"></span>
-        
-          <span class="icon icon-forward"></span>
-        
-          <span class="icon icon-gear"></span>
-        
-          <span class="icon icon-home"></span>
-        
-          <span class="icon icon-info"></span>
-        
-          <span class="icon icon-list"></span>
-        
-          <span class="icon icon-more-vertical"></span>
-        
-          <span class="icon icon-more"></span>
-        
-          <span class="icon icon-pages"></span>
-        
-          <span class="icon icon-pause"></span>
-        
-          <span class="icon icon-person"></span>
-        
-          <span class="icon icon-play"></span>
-        
-          <span class="icon icon-plus"></span>
-        
-          <span class="icon icon-refresh"></span>
-        
-          <span class="icon icon-search"></span>
-        
-          <span class="icon icon-share"></span>
-        
-          <span class="icon icon-sound"></span>
-        
-          <span class="icon icon-sound2"></span>
-        
-          <span class="icon icon-sound3"></span>
-        
-          <span class="icon icon-sound4"></span>
-        
-          <span class="icon icon-star-filled"></span>
-        
           <span class="icon icon-star"></span>
-        
-          <span class="icon icon-stop"></span>
-        
-          <span class="icon icon-trash"></span>
-        
-          <span class="icon icon-up-nav"></span>
-        
-          <span class="icon icon-up"></span>
-        
-          <span class="icon icon-right-nav"></span>
-        
-          <span class="icon icon-right"></span>
-        
-          <span class="icon icon-down-nav"></span>
-        
-          <span class="icon icon-down"></span>
-        
-          <span class="icon icon-left-nav"></span>
-        
+          <span class="icon icon-friends"></span>
+          <span class="icon icon-phone"></span>
+          <span class="icon icon-home"></span>
           <span class="icon icon-left"></span>
-        
+          <span class="icon icon-me"></span>
+          <span class="icon icon-right"></span>
+          <span class="icon icon-settings"></span>
+          <span class="icon icon-caret-down"></span>
+          <span class="icon icon-menu"></span>
         </div>
       </div>
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-padded"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-back"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-bars"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-caret"</span><span class="nt">&gt;&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-app"</span><span class="nt">&gt;&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-browser"</span><span class="nt">&gt;&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-card"</span><span class="nt">&gt;&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-cart"</span><span class="nt">&gt;&lt;/span&gt;</span>
   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-check"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-close"</span><span class="nt">&gt;&lt;/span&gt;</span>
   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-code"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-compose"</span><span class="nt">&gt;&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-remove"</span><span class="nt">&gt;&lt;/span&gt;</span>
   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-download"</span><span class="nt">&gt;&lt;/span&gt;</span>
   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-edit"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-forward"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-gear"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-home"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-info"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-list"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-more-vertical"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-more"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-pages"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-pause"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-person"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-play"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-plus"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-refresh"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-search"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-share"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-sound"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-sound2"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-sound3"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-sound4"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-star-filled"</span><span class="nt">&gt;&lt;/span&gt;</span>
   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-star"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-stop"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-trash"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-up-nav"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-up"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-right-nav"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-right"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-down-nav"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-down"</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-left-nav"</span><span class="nt">&gt;&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-friends"</span><span class="nt">&gt;&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-phone"</span><span class="nt">&gt;&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-home"</span><span class="nt">&gt;&lt;/span&gt;</span>
   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-left"</span><span class="nt">&gt;&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-me"</span><span class="nt">&gt;&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-right"</span><span class="nt">&gt;&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-settings"</span><span class="nt">&gt;&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-caret-down"</span><span class="nt">&gt;&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-menu"</span><span class="nt">&gt;&lt;/span&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
     </article>

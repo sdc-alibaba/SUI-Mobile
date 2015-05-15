@@ -139,15 +139,17 @@ $(function () {
     }
 
     if ((device.initialTop - currentTop) <= device.dockingOffset) {
+      var top = device.dockingOffset < -70 ? -70 : device.dockingOffset;
       device[0].className = 'device device-fixed';
-      device.css({ top: device.dockingOffset });
+      device.css({ top: top });
     } else {
       device[0].className = 'device';
       device[0].setAttribute('style', '');
     }
 
     function updateContent(content) {
-      $('#iwindow').html(content);
+      var $page = $('#iwindow').html(content);
+      $.initPageSwiper($page);
     }
 
     // Injection of components into device
