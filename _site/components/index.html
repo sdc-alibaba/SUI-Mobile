@@ -2220,7 +2220,14 @@
 
   <article class="component" id="list">
   <h3 class="component-title">列表</h3>
-  <p class="component-description">列表</p>
+  <p class="component-description">常在iOS应用中看到的列表，是种多功能且强大的交互组件。列表将数据展现在一个可滚动的多行的列表中，可以将数据划分成不同的片段/组（sections/groups）。</p>
+  <p class="component-description">列表有以下用途：</p>
+  <ul>
+    <li>让用户可以浏览结构化的多级数据</li>
+    <li>展现一个索引列表</li>
+    <li>在可视化的不同分组中，显示详细信息和控件</li>
+    <li>展现一个可以选择的列表</li>
+  </ul>
 
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
@@ -2330,11 +2337,25 @@
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
+  <p class="component-description">其中：</p>
+  <ul>
+    <li><code>item-content</code> - <code>item-media</code>和<code>item-inner</code>的主要弹性(flex)容器。<strong>必选</strong>元素。</li>
+    <li><code>item-media</code> - 媒体元素（如图标，图片等）的容器。<strong>可选</strong>元素。</li>
+    <li><code>item-inner</code> - <code>item-title</code>和<code>item-after</code>的主要弹性(flex)容器。<strong>必选</strong>元素。</li>
+    <li><code>item-title</code> - 单行列表项目标题。<strong>必选</strong>元素。</li>
+    <li><code>item-after</code> - 列表项目标签。可以包含任意额外的html元素（例如标签文本、徽章、switch/toggle、按钮等等）。<strong>可选</strong>元素。</li>
+  </ul>
+
 </article>
 
 <article class="component active">
-  <h3 class="component-title">联系人列表</h3>
-  <p class="component-description">联系人列表 <code><div class="list-block"></code></p>
+  <h3 class="component-title">联系人列表（Contacts List）</h3>
+  <p class="component-description">联系人列表用来展示个人的联系方式。</p>
+  <p>联系人列表是<a href="#list">分组列表（Grouped Lists）</a>的一个特殊的类型，主要有2点不同：</p>
+  <ul>
+    <li>列表区域元素（“list-block”）需要带上额外的“contacts-block”类</li>
+    <li>页面内容元素（“page-content”）需要带上额外的“contacts-content”类</li>
+  </ul>
 
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
@@ -2705,8 +2726,9 @@
 </article>
 
 <article class="component active">
-  <h3 class="component-title">多媒体列表</h3>
-  <p class="component-description">多媒体列表 <code><div class="list-block"></code></p>
+  <h3 class="component-title">多媒体列表（Media List View）</h3>
+  <p class="component-description">多媒体列表是<a href="#list">列表（list view）</a>的扩展，它是为了展示更复杂的数据比如产品，服务，用户等等。</p>
+  <p class="component-description">当然，它的布局更为复杂：</p>
 
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
@@ -2856,11 +2878,23 @@
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
+  <p class="component-description">其中：</p>
+  <ul>
+    <li><code>item-media</code>和<code>item-inner</code>的主要弹性(flex)容器。<strong>必选</strong>元素。</li>
+    <li><code>item-media</code> - 媒体元素（如图标，图片等）的容器. <strong>可选</strong>元素。</li>
+    <li><code>item-inner</code> - <code>item-title</code>和<code>item-after</code>的主要弹性(flex)容器。<strong>必选</strong>元素。</li>
+    <li><code>item-title-row</code> - <code>item-title</code> 和 <code>item-after</code>的主要弹性(flex)容器。<strong>必选</strong>元素。</li>
+    <li><code>item-title</code> - 单行列表项目标题。<strong>可选</strong>元素。</li>
+    <li><code>item-after</code> - 列表项目标签。可以包含任意额外的html元素（例如标签文本、徽章、switch/toggle、按钮等等）。<strong>可选</strong>元素。</li>
+    <li><code>item-subtitle</code> - 额外的单行标题。<strong>可选</strong>元素。</li>
+    <li><code>item-text</code> - 额外的两行布局的容器，用来放置细节描述。<strong>可选</strong>元素。</li>
+  </ul>
+
 </article>
 
 <article class="component active">
-  <h3 class="component-title">可排序列表</h3>
-  <p class="component-description">可排序列表 <code><div class="list-block"></code></p>
+  <h3 class="component-title">可排序列表（Sortable List）</h3>
+  <p class="component-description">可排序列表是<a href="#list">列表</a>的扩展，可以对列表进行排序。</p>
 
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
@@ -2940,11 +2974,68 @@
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
+  <p class="component-description">其中：</p>
+  <ul>
+    <li><code>sortable-handler</code> - 可拖拽元素（"draggable" element）（默认隐藏），允许你通过它来调整列表顺序</li>
+  </ul>
+  <p class="component-description">使列表变成可排序列表视图十分简单，只需要给列表区加上“sortable”类，并在列表元素<li>中加入“sortable-handler”元素作为其直接子元素</p>
+
+  <h3 class="component-title">通过JavaScript控制</h3>
+  <p class="component-description"><code>$.sortableOpen(sortableContainer)</code> - 在指定的可排序列表开启排序功能</p>
+  <ul>
+    <li><code>sortableContainer</code> - 可排序列表的HTML元素或CSS选择器，可选的。如果没有指定，Framework7默认将第一个&lt;div class="list-block sortable"&gt;元素作为该方法目标。</li>
+  </ul>
+  <p class="component-description"><code>$.sortableClose(sortableContainer)</code> - 在指定的可排序列表关闭排序功能</p>
+  <ul>
+    <li><code>sortableContainer</code> - 可排序列表的HTML元素或CSS选择器，可选的。如果没有指定，Framework7默认将第一个&lt;div class="list-block sortable"&gt;元素作为该方法目标。</li>
+  </ul>
+  <p class="component-description"><code>$.sortableToggle(sortableContainer)</code> - 在指定的可排序列表切换（开启／关闭）排序功能</p>
+  <ul>
+    <li><code>sortableContainer</code> - 可排序列表的HTML元素或CSS选择器，可选的。如果没有指定，Framework7默认将第一个&lt;div class="list-block sortable"&gt;元素作为该方法目标。</li>
+  </ul>
+  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'.open'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">sortableOpen</span><span class="p">(</span><span class="s1">'.sortable'</span><span class="p">);</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'.close'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">sortableClose</span><span class="p">(</span><span class="s1">'.sortable'</span><span class="p">);</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'.toggle'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">sortableToggle</span><span class="p">(</span><span class="s1">'.sortable'</span><span class="p">);</span>
+  <span class="p">});</span></code></pre></div> 
+
+  <h3 class="component-title">事件</h3>
+  <table class="params-table">
+    <thead>
+      <tr>
+        <th>事件（Event）</th>
+        <th>目标（Target）</th>
+        <th>说明（Description）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>open</td>
+        <td>可排序列表<span>&lt;div class="list-block sortable"&gt;</span></td>
+        <td>当开启排序功能时触发</td>
+      </tr>
+      <tr>
+        <td>close</td>
+        <td>可排序列表<span>&lt;div class="list-block sortable"&gt;</span></td>
+        <td>当关闭排序功能时触发</td>
+      </tr>
+      <tr>
+        <td>sort</td>
+        <td>列表项目<span>&lt;li&gt;</span></td>
+        <td>当用户释放正在排序的列表项目（&lt;li&gt;）且该项目的顺序改变时触发</td>
+      </tr>
+    </tbody>
+  </table>
+
 </article>
 
   <article class="component" id="accordion">
-  <h3 class="component-title">手风琴列表视图</h3>
-  <p class="component-description">手风琴列表视图</p>
+  <h3 class="component-title">手风琴布局（Accordion）</h3>
+  <p class="component-description">通常，手风琴布局可以这样实现:</p>
 
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
@@ -3112,11 +3203,77 @@
     <span class="nt">&lt;/div&gt;</span>  
   <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
+  <p>上面的代码:</p>
+  <ul>
+    <li><code>accordion-list</code> - 多个手风琴元素的列表. 可选
+    <li><code>accordion-item</code> - 单个手风琴元素. 必选
+    <li><code>accordion-item-toggle</code> - 用来展开／折叠手风琴元素内容的开关. 必选</li>
+    <li><code>accordion-item-content</code> - 隐藏的手风琴元素的内容. 必选</li>
+    </li>
+    <li><code>accordion-item-expanded</code> - 展开的手风琴元素</li>
+    </li>
+  </ul>
+
+  <h3 class="component-title">JavaScript API</h3>
+  <p>手风琴组件有JavaScript API，你可以在JS中控制打开和关闭。方法说明如下：</p>
+  <p class="component-description"><code>$.accordionOpen(item)</code> - 打开指定的条目</p>
+  <ul>
+    <li>item - HTMLElement or string (想要操作的条目的CSS选择器 (&lt;div class="accordion-item"&gt;). 必须。</li>
+  </ul>
+  <p class="component-description"><code>$.accordionClose(item)</code> - 关闭指定条目</p>
+  <ul>
+    <li>item - HTMLElement or string (想要操作的条目的CSS选择器 (&lt;div class="accordion-item"&gt;). 必须</li>
+  </ul>
+  <p class="component-description"><code>$.accordionToggle(item)</code> - toggle 指定条目</p>
+  <ul>
+    <li>item - HTMLElement or string (想要操作的条目的CSS选择器 (&lt;div class="accordion-item"&gt;). Required</li>
+  </ul>
+
+  <h3 class="component-title">事件</h3>
+  <p class="component-description">手风琴有这些事件:</p>
+  <table class="params-table">
+    <thead>
+      <tr>
+        <th width="15%">事件名称</th>
+        <th>Target</th>
+        <th>说明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>open</td>
+        <td>Accordion item<span>&lt;div class="accordion-item"&gt;</span></td>
+        <td>某一条目开始执行打开动画的时候会触发</td>
+      </tr>
+      <tr>
+        <td>opened</td>
+        <td>Accordion item<span>&lt;div class="accordion-item"&gt;</span></td>
+        <td>某一条目完成打开动画后触发</td>
+      </tr>
+      <tr>
+        <td>close</td>
+        <td>Accordion item<span>&lt;div class="accordion-item"&gt;</span></td>
+        <td>某一条目开始执行关闭动画的时候会触发</td>
+      </tr>
+      <tr>
+        <td>closed</td>
+        <td>Accordion item<span>&lt;div class="accordion-item"&gt;</span></td>
+        <td>某一条目完成关闭动画后触发</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'opened'</span><span class="p">,</span> <span class="s1">'.accordion-item'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Accordion item opened'</span><span class="p">);</span>
+  <span class="p">});</span> 
+   
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'closed'</span><span class="p">,</span> <span class="s1">'.accordion-item'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Accordion item closed'</span><span class="p">);</span>
+  <span class="p">});</span></code></pre></div>     
 </article>
 
   <article class="component" id="cards">
-  <h3 class="component-title">Cards</h3>
-  <p class="component-description">Cards, along with List View, is a one more great way to contain and orginize your information. Cards contains unique related data, for example, a photo, text, and link all about a single subject. Cards are typically an entry point to more complex and detailed information.</p>
+  <h3 class="component-title">卡片（Cards）</h3>
+  <p class="component-description">伴随着列表视图，卡片是一种很好的方法来控制和组织你的信息。卡片含有独特的相关数据，例如，照片，文字和所有关于一个主题的链接。卡片通常是更复杂的和详细的信息的一个切入点。</p>
 
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
@@ -3171,8 +3328,8 @@
 </article>
 
 <article class="component active">
-  <h3 class="component-title">List View With Cards</h3>
-  <p class="component-description">It could be useful to use Cards as elements of List View, in this case it would be possible to use Seearch Bar, Virtual List and other List View features with Cards. In this case we need to add additional cards-list class to <code><div class="list-block"></code></p>
+  <h3 class="component-title">卡片列表视图</h3>
+  <p class="component-description">可以用卡片在<a href="#list">列表视图</a>中有用的元素，在这种情况下就可以使用搜索栏，虚拟列表和列表视图功能卡片。在这种情况下我们需要添加额外的卡片列表类<code>&lt;div class="list-block"&gt;</code></p>
 
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">

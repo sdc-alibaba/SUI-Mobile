@@ -4,11 +4,11 @@
         cursor: pointer;
         transition-duration: 300ms;
         .item-inner {
-            padding-right: 35px;
+            padding-right: 1.75rem;
             background: no-repeat -webkit-calc(~"100% - 15px") center;
             background: no-repeat calc(~"100% - 15px") center;
             .encoded-svg-background("<svg viewBox='0 0 60 120' xmlns='http://www.w3.org/2000/svg'><path d='m60 61.5-38.25 38.25-9.75-9.75 29.25-28.5-29.25-28.5 9.75-9.75z' fill='#c7c7cc'/></svg>");
-            background-size: 10px 20px;
+            background-size: 0.5rem 1rem;
             
         }
         html:not(.watch-active-state) &:active, &.active-state {
@@ -32,7 +32,7 @@
     .accordion-item-expanded {
         .accordion-item-toggle .item-inner, > .item-link .item-inner {
             .encoded-svg-background("<svg viewBox='0 0 60 120' xmlns='http://www.w3.org/2000/svg'><path d='m60 61.5-38.25 38.25-9.75-9.75 29.25-28.5-29.25-28.5 9.75-9.75z' transform='translate(115, 30) rotate(90)' fill='#c7c7cc'/></svg>");
-            background-size: 20px 20px;
+            background-size: 1rem 1rem;
             .hairline-color(bottom, transparent);
         }
     }
@@ -50,7 +50,7 @@
     position: relative;
     overflow: hidden;
     height: 0;
-    font-size: 14px;
+    font-size: 0.7rem;
     transition-duration: 300ms;
     transform: translate3d(0,0,0);
     .accordion-item-expanded > &{
@@ -64,19 +64,19 @@
     padding-left: 0;
     padding-right: 0;
     .accordion-item-toggle {
-        padding: 0px 15px;
-        height: 44px;
-        line-height: 44px;
-        font-size: 17px;
+        padding: 0 0.75rem;
+        height: 2.2rem;
+        line-height: 2.2rem;
+        font-size: 0.85rem;
         color: #000;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+        border-bottom: 0.05rem solid rgba(0, 0, 0, 0.15);
         cursor: pointer;
         &:active {
             background: rgba(0, 0, 0, 0.15);
         }
         span {
             display: inline-block;
-            margin-left: 15px;
+            margin-left: 0.75rem;
         }
     }
     .accordion-item{
@@ -89,11 +89,11 @@
     .icon-plus,
     .icon-minus {
         display: inline-block;
-        width: 22px;
-        height: 22px;
-        border: 1px solid #000;
+        width: 1.1rem;
+        height: 1.1rem;
+        border: 0.05rem solid #000;
         border-radius: 100%;
-        line-height: 20px;
+        line-height: 1rem;
         text-align: center;
         &:before{
             content: "";
@@ -111,6 +111,6 @@
         }
     }
     .accordion-item-content {
-        padding: 0px 15px;
+        padding: 0 0.75rem;
     }
 }
