@@ -97,6 +97,7 @@
   <a class="docs-component-item" href="#swiper" data-ignore="push">幻灯片</a>
   <a class="docs-component-item" href="#browser" data-ignore="push">图片浏览器</a>
   <a class="docs-component-item" href="#push" data-ignore="push">push.js</a>
+  <a class="docs-component-item" href="#scroller" data-ignore="push">滚动条</a>
   <a class="docs-component-item" href="#ratchicons" data-ignore="push">图标</a>
 </div>
 
@@ -194,16 +195,15 @@
 
       <div class="component-example component-example-fullbleed">
         <header class="bar bar-nav">
-          <button class="button pull-left">
-            Left
-          </button>
-          <button class="button pull-right">
-            Right
-          </button>
-          <h1 class="title">Title</h1>
+            <button class="button pull-left">
+                Left
+            </button>
+            <button class="button pull-right">
+                Right
+            </button>
+            <h1 class="title">Title</h1>
         </header>
-      </div>
-
+    </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button pull-left"</span><span class="nt">&gt;</span>
     按钮
@@ -272,19 +272,19 @@
 
       <div class="component-example component-example-fullbleed">
         <header class="bar bar-nav">
-          <button class="button pull-left">
-            Left
-          </button>
-          <button class="button pull-right">
-            Right
-          </button>
-          <div class="buttons-row">
-            <a href="#tab1" class="tab-link active button">Tab 1</a>
-            <a href="#tab2" class="tab-link button">Tab 2</a>
-            <a href="#tab3" class="tab-link button">Tab 3</a>
-          </div>
+            <button class="button pull-left">
+                Left
+            </button>
+            <button class="button pull-right">
+                Right
+            </button>
+            <div class="buttons-row">
+                <a href="#tab1" class="tab-link active button">Tab 1</a>
+                <a href="#tab2" class="tab-link button">Tab 2</a>
+                <a href="#tab3" class="tab-link button">Tab 3</a>
+            </div>
         </header>
-      </div>
+    </div>
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button pull-left"</span><span class="nt">&gt;</span>
@@ -307,28 +307,28 @@
 
       <div class="component-example component-example-fullbleed">
         <nav class="bar bar-tab">
-          <a class="tab-item active" href="#">
-            <span class="icon icon-home"></span>
-            <span class="tab-label">Label</span>
-          </a>
-          <a class="tab-item" href="#">
-            <span class="icon icon-me"></span>
-            <span class="tab-label">Label</span>
-          </a>
-          <a class="tab-item" href="#">
-            <span class="icon icon-star"></span>
-            <span class="tab-label">Label</span>
-          </a>
-          <a class="tab-item" href="#">
-            <span class="icon icon-cart"></span>
-            <span class="tab-label">Label</span>
-          </a>
-          <a class="tab-item" href="#">
-            <span class="icon icon-settings"></span>
-            <span class="tab-label">Label</span>
-          </a>
+            <a class="tab-item active" href="#">
+                <span class="icon icon-home"></span>
+                <span class="tab-label">Label</span>
+            </a>
+            <a class="tab-item" href="#">
+                <span class="icon icon-person"></span>
+                <span class="tab-label">Label</span>
+            </a>
+            <a class="tab-item" href="#">
+                <span class="icon icon-star-filled"></span>
+                <span class="tab-label">Label</span>
+            </a>
+            <a class="tab-item" href="#">
+                <span class="icon icon-search"></span>
+                <span class="tab-label">Label</span>
+            </a>
+            <a class="tab-item" href="#">
+                <span class="icon icon-gear"></span>
+                <span class="tab-label">Label</span>
+            </a>
         </nav>
-      </div>
+    </div>
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"bar bar-tab"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
@@ -354,60 +354,53 @@
 <span class="nt">&lt;/nav&gt;</span></code></pre></div>
 
     <p class="component-note touch-only"><strong>Note:</strong> Use push.js to actually change content.</p>
-  </article>
-
-  <article class="component">
-      <h3 class="component-title">Tab bar (labels only)</h3>
-      <p class="component-description">If you don't want to use icons, that's okay too. The text will appear larger to use the additional space.</p>
-
-      <div class="component-example component-example-fullbleed">
+</article>
+<article class="component">
+    <h3 class="component-title">Tab bar (labels only)</h3>
+    <p class="component-description">If you don't want to use icons, that's okay too. The text will appear larger to use the additional space.</p>
+    <div class="component-example component-example-fullbleed">
         <nav class="bar bar-tab">
-          <a class="tab-item active" href="#">
+            <a class="tab-item active" href="#">
             Label
           </a>
-          <a class="tab-item" href="#">
+            <a class="tab-item" href="#">
             Label
           </a>
-          <a class="tab-item" href="#">
+            <a class="tab-item" href="#">
             Label
           </a>
         </nav>
-      </div>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"bar bar-tab"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
-    Label
-  <span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
-    Label
-  <span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
-    Label
-  <span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/nav&gt;</span></code></pre></div>
-
+    </div>
+  <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"bar bar-tab"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+  Label
+<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+  Label
+<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+  Label
+<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/nav&gt;</span></code></pre></div>
     <p class="component-note touch-only"><strong>Note:</strong> Use push.js to actually change content.</p>
-  </article>
-
-  <article class="component">
-      <h3 class="component-title">Standard bars</h3>
-      <p class="component-description">Standard bars are basic fixed elements that can be positioned in four places. These can be used to house buttons, icons, or segmented controls (see following examples).</p>
-
-      <div class="component-example component-example-fullbleed">
+</article>
+<article class="component">
+    <h3 class="component-title">Standard bars</h3>
+    <p class="component-description">Standard bars are basic fixed elements that can be positioned in four places. These can be used to house buttons, icons, or segmented controls (see following examples).</p>
+    <div class="component-example component-example-fullbleed">
         <!-- Segmented control in standard bar fixed to top -->
         <nav class="bar bar-standard">
-          <div class="buttons-row">
-            <a href="#tab1" class="tab-link active button">Tab 1</a>
-            <a href="#tab2" class="tab-link button">Tab 2</a>
-            <a href="#tab3" class="tab-link button">Tab 3</a>
-          </div>
+            <div class="buttons-row">
+                <a href="#tab1" class="tab-link active button">Tab 1</a>
+                <a href="#tab2" class="tab-link button">Tab 2</a>
+                <a href="#tab3" class="tab-link button">Tab 3</a>
+            </div>
         </nav>
-
         <!-- Block button in standard bar fixed below top bar -->
         <div class="bar bar-standard bar-header-secondary">
-          <button class="button button-block">Block level button</button>
+            <button class="button button-block">Block level button</button>
         </div>
-      </div>
+    </div>
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Segmented control in standard bar fixed to top --&gt;</span>
 <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"bar bar-standard"</span><span class="nt">&gt;</span>
@@ -435,7 +428,6 @@
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   </article>
-
 
   <article class="component active" id="buttons">
   <h3 class="component-title">按钮</h3>
@@ -3051,6 +3043,175 @@
 
 </article>
 
+  <article class="component active " id="scroller">
+    <h3 class="component-title">滚动条</h3>
+    <p class="component-description">在auto的模式下对于版本号小于4.4.0的Android 版本 和 版本号小于6.0.0的ios使用大名鼎鼎的iscroll.js作为js滚动的引擎。当然也可以通过配置来决定全部使用js滚动或者native的滚动。</p>
+    <p class="component-description">
+        js的滚动条的事件和zepto接口（scrollTop,scrollLeft）保持和native的一样，唯一不同的是js的滚动条需要手动初始化和当滚动容器高度发生变化时需要人工refresh一下。
+    </p>
+    <div class="component-example component-example-fullbleed">
+        <header class="bar bar-nav">
+            <h1 class="title">滚动条</h1>
+        </header>
+        <div class="content" id="scroller-demo">
+            <div class="card">
+                <div class="card-header">滚动方式</div>
+                <div class="card-content">
+                    <div class="card-content-inner">
+                        <h3>滚动具有三种模式：</h3>
+                        <ul>
+                            <li>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）</li>
+                            <li>2. js模式: 使用js滚动</li>
+                            <li>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">滚动方式</div>
+                <div class="card-content">
+                    <div class="card-content-inner">
+                        <h3>滚动具有三种模式：</h3>
+                        <ul>
+                            <li>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）</li>
+                            <li>2. js模式: 使用js滚动</li>
+                            <li>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">滚动方式</div>
+                <div class="card-content">
+                    <div class="card-content-inner">
+                        <h3>滚动具有三种模式：</h3>
+                        <ul>
+                            <li>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）</li>
+                            <li>2. js模式: 使用js滚动</li>
+                            <li>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+        $(function() {
+            ///$("#scroller-demo").scroller();
+        });
+        </script>
+    </div>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>滚动条<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;/header&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>滚动方式<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-content"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-content-inner"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;h3&gt;</span>滚动具有三种模式：<span class="nt">&lt;/h3&gt;</span>
+                    <span class="nt">&lt;ul&gt;</span>
+                        <span class="nt">&lt;li&gt;</span>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）<span class="nt">&lt;/li&gt;</span>
+                        <span class="nt">&lt;li&gt;</span>2. js模式: 使用js滚动<span class="nt">&lt;/li&gt;</span>
+                        <span class="nt">&lt;li&gt;</span>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了<span class="nt">&lt;/li&gt;</span>
+                    <span class="nt">&lt;/ul&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>滚动方式<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-content"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-content-inner"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;h3&gt;</span>滚动具有三种模式：<span class="nt">&lt;/h3&gt;</span>
+                    <span class="nt">&lt;ul&gt;</span>
+                        <span class="nt">&lt;li&gt;</span>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）<span class="nt">&lt;/li&gt;</span>
+                        <span class="nt">&lt;li&gt;</span>2. js模式: 使用js滚动<span class="nt">&lt;/li&gt;</span>
+                        <span class="nt">&lt;li&gt;</span>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了<span class="nt">&lt;/li&gt;</span>
+                    <span class="nt">&lt;/ul&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>滚动方式<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-content"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-content-inner"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;h3&gt;</span>滚动具有三种模式：<span class="nt">&lt;/h3&gt;</span>
+                    <span class="nt">&lt;ul&gt;</span>
+                        <span class="nt">&lt;li&gt;</span>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）<span class="nt">&lt;/li&gt;</span>
+                        <span class="nt">&lt;li&gt;</span>2. js模式: 使用js滚动<span class="nt">&lt;/li&gt;</span>
+                        <span class="nt">&lt;li&gt;</span>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了<span class="nt">&lt;/li&gt;</span>
+                    <span class="nt">&lt;/ul&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span></code></pre></div>
+    <h3 class="component-title">滚动条初始化</h3>
+    <p class="component-description">
+        初始化方法：
+    </p>
+    <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">".content"</span><span class="p">).</span><span class="nx">scroller</span><span class="p">({</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s1">'js'</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
+
+    <p class="component-description">
+        滚动的方式可以通过配置项 type 来进行配置：
+        <ul>
+            <li>1. auto: ios版本小于6.0.0和android版本小于4.4.0使用js滚动，其他使用native的滚动条</li>
+            <li>2. js: 都使用js的滚动条</li>
+            <li>3. native: 直接使用native的滚动条</li>
+        </ul>
+    </p>
+    <p class="component-description">
+        上边demo使用的是javascript接口的调用方式，scroller.js 同时提供data-api的模式。通过添加标签属性
+        <code>data-toggle="scroller"</code>。 滚动类型通过：<code>data-type="auto"</code>来配置。
+    </p> 
+    <p class="component-description">
+        注意： scroller 插件会页面载入完成后，默认初始化带有class<code>.content</code>或者属性<code>data-toggle="scroller"</code>的元素为auto模式的滚动条。如果想要<code>.content</code>的元素全部初始为js的模式，需要在.content 标签加上属性<code>data-type="js"</code>
+    </p>
+    <h3 class="component-title">重置滚动</h3>
+     <p class="component-description">在js模式下，滚动区域高度发生变化时，需要对滚动条进行刷新，scroller 提供两种方式来进行刷新：</p>
+     <p class="component-description">1. 局部刷新，只针对某个容器的刷新</p>
+        <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">".content"</span><span class="p">).</span><span class="nx">scroller</span><span class="p">(</span><span class="s1">'refresh'</span><span class="p">);</span>
+<span class="p">});</span></code></pre></div>
+    <p class="component-description">2. 全局刷新，会刷新页面上所有的滚动条</p>
+        <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">refreshScroller</span><span class="p">();</span>
+<span class="p">});</span></code></pre></div>
+    
+    <h3 class="component-title">滚动接口</h3>
+    <p class="component-description">scroller插件重置的了zepto的滚动方法，无论在js模式下或者native模式下都是一样的调用方式：</p>
+        <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'.content'</span><span class="p">).</span><span class="nx">scrollTop</span><span class="p">();</span> <span class="c1">//==&gt; number</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'.content'</span><span class="p">).</span><span class="nx">scrollTop</span><span class="p">(</span><span class="nx">number</span><span class="p">);</span> <span class="c1">// ==&gt;self</span>
+     <span class="nx">$</span><span class="p">(</span><span class="s1">'.content'</span><span class="p">).</span><span class="nx">scrollLeft</span><span class="p">();</span> <span class="c1">//==&gt; number</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'.content'</span><span class="p">).</span><span class="nx">scrollLeft</span><span class="p">(</span><span class="nx">number</span><span class="p">);</span> <span class="c1">// ==&gt;self</span>
+<span class="p">});</span></code></pre></div>
+<h3 class="component-title">滚动事件</h3>
+    <div class="component-description">
+        滚动条提供三个事件：
+        <ul>
+          <li>1. <code>scrollStart</code>: 滚动开始时触发（目前只能在js模式下，才会触发）</li>
+          <li>2. <code>scroll</code>: 滚动中触发</li>
+          <li>3. <code>scrollEnd</code>: 滚动结束后触发（目前只能在js模式下，才会触发）</li>
+        </ul>
+
+    </div>
+    <p class="component-description">
+        直接通过下边的方式进行监听
+    </p>
+    <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">".content"</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'scrollStart'</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+     <span class="c1">//dosomething</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>   
+
+</article>
+
+
+
+
   <article class="component" id="accordion">
   <h3 class="component-title">手风琴布局（Accordion）</h3>
   <p class="component-description">通常，手风琴布局可以这样实现:</p>
@@ -3643,58 +3804,49 @@
 <span class="p">})</span></code></pre></div>
 </article>
 
-      <article class="component" id="push">
-      <h3 class="component-title">Push</h3>
-      <p class="component-description">Push.js is the engine that connects Ratchet pages together with AJAX and the history api. Push.js is listening to all clicks on a page, so just make sure it's included and link something in your Ratchet project up.</p>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- A one.html link --&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
-
-      <p class="component-note">This will use push to replace everything in the .content div with the .content of two.html. Also, it will either update or remove .bar-nav and .bar-tab according to their presences in two.html.</p>
-
-      <p class="component-description">Now that pages are being loaded through push, it's easy to specify transitions for animations between pages. There are three different transitions to chose from: <code>fade</code>, <code>slide-in</code>, or <code>slide-out</code>.</p>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- An one.html link that animates to two.html --&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span> <span class="na">data-transition=</span><span class="s">"fade"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
-
-      <p class="component-description">A working version of push:</p>
-
-      <div class="component-example component-example-fullbleed">
+  <article class="component" id="push">
+    <h3 class="component-title">Push</h3>
+    <p class="component-description">Push.js is the engine that connects Ratchet pages together with AJAX and the history api. Push.js is listening to all clicks on a page, so just make sure it's included and link something in your Ratchet project up.</p>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- A one.html link --&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
+    <p class="component-note">This will use push to replace everything in the .content div with the .content of two.html. Also, it will either update or remove .bar-nav and .bar-tab according to their presences in two.html.</p>
+    <p class="component-description">Now that pages are being loaded through push, it's easy to specify transitions for animations between pages. There are three different transitions to chose from: <code>fade</code>, <code>slide-in</code>, or <code>slide-out</code>.</p>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- An one.html link that animates to two.html --&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span> <span class="na">data-transition=</span><span class="s">"fade"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
+    <p class="component-description">A working version of push:</p>
+    <div class="component-example component-example-fullbleed">
         <header class="bar bar-nav">
-          <h1 class="title">Push</h1>
+            <h1 class="title">Push</h1>
         </header>
         <div class="content">
-          <div class="card">
-            <ul class="table-view">
-              <li class="table-view-cell">
-                <a class="navigate-right" href="/two.html" data-transition="slide-in">
+            <div class="card">
+                <ul class="table-view">
+                    <li class="table-view-cell">
+                        <a class="navigate-right" href="/two.html" data-transition="slide-in">
                   Load new page with push
                 </a>
-              </li>
-            </ul>
-          </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Push<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;/header&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"table-view"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"table-view-cell"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navigate-right"</span> <span class="na">href=</span><span class="s">"../two.html"</span> <span class="na">data-transition=</span><span class="s">"slide-in"</span><span class="nt">&gt;</span>
+    </div>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Push<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;/header&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"table-view"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"table-view-cell"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navigate-right"</span> <span class="na">href=</span><span class="s">"../two.html"</span> <span class="na">data-transition=</span><span class="s">"slide-in"</span><span class="nt">&gt;</span>
           Load new page with push
         <span class="nt">&lt;/a&gt;</span>
-      <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;/ul&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></div>
-
-        <p class="component-description">Have a link you don't want to intercepted by push? Try this:</p>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Use data-ignore="push" to prevent the push.js interception --&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://www.google.com"</span> <span class="na">data-ignore=</span><span class="s">"push"</span><span class="nt">&gt;</span>Google<span class="nt">&lt;a&gt;</span></code></pre></div>
+                <span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;/ul&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span></code></pre></div>
+    <p class="component-description">Have a link you don't want to intercepted by push? Try this:</p>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Use data-ignore="push" to prevent the push.js interception --&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://www.google.com"</span> <span class="na">data-ignore=</span><span class="s">"push"</span><span class="nt">&gt;</span>Google<span class="nt">&lt;a&gt;</span></code></pre></div>
 
         <p class="component-description">Push.js binds an event to the document that returns a detail object and can be used to fire a callback.</p>
 

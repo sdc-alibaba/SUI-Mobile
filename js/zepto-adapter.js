@@ -47,6 +47,25 @@
             return dataset;
         } else return undefined;
     };
+    $.fn.data = function(key, value) {
+        if (typeof value === 'undefined') {
+            // Get value
+            if (this[0] && this[0].getAttribute) {
+                var dataKey = this[0].getAttribute('data-' + key);
+                if (dataKey) return dataKey;
+                else if (this[0].smElementDataStorage && (key in this[0].smElementDataStorage)) return this[0].smElementDataStorage[key];
+                else return undefined;
+            } else return undefined;
+        } else {
+            // Set value
+            for (var i = 0; i < this.length; i++) {
+                var el = this[i];
+                if (!el.smElementDataStorage) el.smElementDataStorage = {};
+                el.smElementDataStorage[key] = value;
+            }
+            return this;
+        }
+    };
     $.fn.animationEnd = function(callback) {
         var events = ['webkitAnimationEnd', 'OAnimationEnd', 'MSAnimationEnd', 'animationend'],
             i, dom = this;

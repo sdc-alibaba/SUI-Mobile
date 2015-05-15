@@ -1,62 +1,51 @@
-    <article class="component" id="push">
-      <h3 class="component-title">Push</h3>
-      <p class="component-description">Push.js is the engine that connects Ratchet pages together with AJAX and the history api. Push.js is listening to all clicks on a page, so just make sure it's included and link something in your Ratchet project up.</p>
-
-{% highlight html %}
-<!-- A one.html link -->
-<a href="two.html">Two</a>
-{% endhighlight %}
-
-      <p class="component-note">This will use push to replace everything in the .content div with the .content of two.html. Also, it will either update or remove .bar-nav and .bar-tab according to their presences in two.html.</p>
-
-      <p class="component-description">Now that pages are being loaded through push, it's easy to specify transitions for animations between pages. There are three different transitions to chose from: <code>fade</code>, <code>slide-in</code>, or <code>slide-out</code>.</p>
-
-{% highlight html %}
-<!-- An one.html link that animates to two.html -->
-<a href="two.html" data-transition="fade">Two</a>
-{% endhighlight %}
-
-      <p class="component-description">A working version of push:</p>
-
-      <div class="component-example component-example-fullbleed">
+<article class="component" id="push">
+    <h3 class="component-title">Push</h3>
+    <p class="component-description">Push.js is the engine that connects Ratchet pages together with AJAX and the history api. Push.js is listening to all clicks on a page, so just make sure it's included and link something in your Ratchet project up.</p>
+    {% highlight html %}
+    <!-- A one.html link -->
+    <a href="two.html">Two</a> {% endhighlight %}
+    <p class="component-note">This will use push to replace everything in the .content div with the .content of two.html. Also, it will either update or remove .bar-nav and .bar-tab according to their presences in two.html.</p>
+    <p class="component-description">Now that pages are being loaded through push, it's easy to specify transitions for animations between pages. There are three different transitions to chose from: <code>fade</code>, <code>slide-in</code>, or <code>slide-out</code>.</p>
+    {% highlight html %}
+    <!-- An one.html link that animates to two.html -->
+    <a href="two.html" data-transition="fade">Two</a> {% endhighlight %}
+    <p class="component-description">A working version of push:</p>
+    <div class="component-example component-example-fullbleed">
         <header class="bar bar-nav">
-          <h1 class="title">Push</h1>
+            <h1 class="title">Push</h1>
         </header>
         <div class="content">
-          <div class="card">
-            <ul class="table-view">
-              <li class="table-view-cell">
-                <a class="navigate-right" href="/two.html" data-transition="slide-in">
+            <div class="card">
+                <ul class="table-view">
+                    <li class="table-view-cell">
+                        <a class="navigate-right" href="/two.html" data-transition="slide-in">
                   Load new page with push
                 </a>
-              </li>
-            </ul>
-          </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
-
-{% highlight html %}
-<header class="bar bar-nav">
-  <h1 class="title">Push</h1>
-</header>
-<div class="content">
-  <div class="card">
-    <ul class="table-view">
-      <li class="table-view-cell">
-        <a class="navigate-right" href="../two.html" data-transition="slide-in">
+    </div>
+    {% highlight html %}
+    <header class="bar bar-nav">
+        <h1 class="title">Push</h1>
+    </header>
+    <div class="content">
+        <div class="card">
+            <ul class="table-view">
+                <li class="table-view-cell">
+                    <a class="navigate-right" href="../two.html" data-transition="slide-in">
           Load new page with push
         </a>
-      </li>
-    </ul>
-  </div>
-</div>
-{% endhighlight %}
-
-        <p class="component-description">Have a link you don't want to intercepted by push? Try this:</p>
-
-{% highlight html %}
-<!-- Use data-ignore="push" to prevent the push.js interception -->
-<a href="http://www.google.com" data-ignore="push">Google<a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    {% endhighlight %}
+    <p class="component-description">Have a link you don't want to intercepted by push? Try this:</p>
+    {% highlight html %}
+    <!-- Use data-ignore="push" to prevent the push.js interception -->
+    <a href="http://www.google.com" data-ignore="push">Google<a>
 {% endhighlight %}
 
         <p class="component-description">Push.js binds an event to the document that returns a detail object and can be used to fire a callback.</p>
