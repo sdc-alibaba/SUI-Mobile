@@ -1,10 +1,10 @@
 /*======================================================
 ************   Photo Browser   ************
 ======================================================*/
+/* global Zepto:true */
 +function($){
+    'use strict';
     var PhotoBrowser = function (params) {
-
-        'use strict';
 
         var pb = this, i;
 
@@ -19,30 +19,13 @@
 
         pb.params = params;
 
-        var iconColor = pb.params.theme === 'dark' ? 'color-white' : '';
-
         var navbarTemplate = pb.params.navbarTemplate ||
-                            // '<div class="navbar">' +
-                            //     '<div class="navbar-inner">' +
-                            //         '<div class="left sliding"><a href="#" class="link ' + (pb.params.type === 'page' && 'back') + ' close-popup photo-browser-close-link" data-popup=".photo-browser-popup"><i class="icon icon-back ' + iconColor + '"></i><span>' + pb.params.backLinkText + '</span></a></div>' +
-                            //         '<div class="center sliding"><span class="photo-browser-current"></span> <span class="photo-browser-of">' + pb.params.ofText + '</span> <span class="photo-browser-total"></span></div>' +
-                            //         '<div class="right"></div>' +
-                            //     '</div>' +
-                            // '</div>';
                             '<header class="bar bar-nav">' + 
                               '<a class="icon icon-left-nav pull-left photo-browser-close-link"></a>' + 
-                              // <a class="icon icon-compose pull-right"></a> 
                               '<h1 class="title"><div class="center sliding"><span class="photo-browser-current"></span> <span class="photo-browser-of">' + pb.params.ofText + '</span> <span class="photo-browser-total"></span></div></h1>' +
                             '</header>';
 
         var toolbarTemplate = pb.params.toolbarTemplate ||
-                            // '<div class="toolbar tabbar">' +
-                            //     '<div class="toolbar-inner">' +
-                            //         '<a href="#" class="link photo-browser-prev"><i class="icon icon-prev ' + iconColor + '"></i></a>' +
-                            //         '<a href="#" class="link photo-browser-next"><i class="icon icon-next ' + iconColor + '"></i></a>' +
-                            //     '</div>' +
-                            // '</div>';
-
                             '<nav class="bar bar-tab">' +
                               '<a class="tab-item photo-browser-prev" href="#">' +
                                 '<i class="icon icon-prev"></i>' +
@@ -179,7 +162,7 @@
             pb.swiper = pb.swiperContainer = pb.swiperWrapper = pb.slides = gestureSlide = gestureImg = gestureImgWrap = undefined;
         };
 
-        pb.onPopupClose = function (e) {
+        pb.onPopupClose = function () {
             pb.close();
             $(pb.popup).off('pageBeforeInit', pb.onPopupClose);
         };
@@ -331,9 +314,6 @@
             pb.container.find('.photo-browser-close-link')[action]('click', pb.close);
         };
 
-        var isTouched, isMoved, touchesStart = {}, touchesCurrent = {}, touchStartTime, isScrolling, animating = false, currentTranslate;
-        var allowClick = true;
-
         // Expose
         pb.exposed = false;
         pb.toggleExposition = function () {
@@ -354,7 +334,7 @@
         
         // Gestures
         var gestureSlide, gestureImg, gestureImgWrap, scale = 1, currentScale = 1, isScaling = false;
-        pb.onSlideGestureStart = function (e) {
+        pb.onSlideGestureStart = function () {
             if (!gestureSlide) {
                 gestureSlide = $(this);
                 gestureImg = gestureSlide.find('img, svg, canvas');
@@ -378,7 +358,7 @@
             }
             gestureImg.transform('translate3d(0,0,0) scale(' + scale + ')');
         };
-        pb.onSlideGestureEnd = function (e) {
+        pb.onSlideGestureEnd = function () {
             if (!gestureImg || gestureImg.length === 0) return;
             scale = Math.max(Math.min(scale, pb.params.maxZoom), pb.params.minZoom);
             gestureImg.transition(pb.params.speed).transform('translate3d(0,0,0) scale(' + scale + ')');
@@ -484,7 +464,7 @@
 
             gestureImgWrap.transform('translate3d(' + imageCurrentX + 'px, ' + imageCurrentY + 'px,0)');
         };
-        pb.onSlideTouchEnd = function (e) {
+        pb.onSlideTouchEnd = function () {
             if (!gestureImg || gestureImg.length === 0) return;
             if (!imageIsTouched || !imageIsMoved) {
                 imageIsTouched = false;
@@ -525,7 +505,7 @@
         var swipeToCloseIsTouched = false;
         var allowSwipeToClose = true;
         var swipeToCloseDiff, swipeToCloseStart, swipeToCloseCurrent, swipeToCloseStarted = false, swipeToCloseActiveSlide, swipeToCloseTimeStart;
-        pb.swipeCloseTouchStart = function (swiper, e) {
+        pb.swipeCloseTouchStart = function () {
             if (!allowSwipeToClose) return;
             swipeToCloseIsTouched = true;
         };
@@ -544,7 +524,7 @@
             swipeToCloseActiveSlide.transform('translate3d(0,' + (-swipeToCloseDiff) + 'px,0)');
             pb.swiper.container.css('opacity', opacity).transition(0);
         };
-        pb.swipeCloseTouchEnd = function (swiper, e) {
+        pb.swipeCloseTouchEnd = function () {
             swipeToCloseIsTouched = false;
             if (!swipeToCloseStarted) {
                 swipeToCloseStarted = false;
@@ -622,7 +602,7 @@
             onSwipeToClose(pb)
             */
         }
-    }
+    };
 
     $.photoBrowser = function (params) {
         $.extend(params, $.photoBrowser.prototype.defaults);
@@ -631,6 +611,6 @@
 
     $.photoBrowser.prototype = {
         defaults: {}
-    }
+    };
 
 }(Zepto);

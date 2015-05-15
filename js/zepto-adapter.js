@@ -1,4 +1,7 @@
 /* global Zepto:true */
+/* global i:true */
+/* global j:true */
+/* global dom:true */
 (function($) {
     "use strict";
 
@@ -48,7 +51,7 @@
         } else return undefined;
     };
     $.fn.animationEnd = function(callback) {
-        var events = ['webkitAnimationEnd', 'OAnimationEnd', 'MSAnimationEnd', 'animationend'],
+        var events = ['webkitAnimationEnd', 'OAnimationEnd', 'MSAnimationEnd', 'animationend'];
             i, j, dom = this;
 
         function fireCallBack(e) {

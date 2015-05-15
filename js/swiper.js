@@ -1,7 +1,12 @@
 /*===========================
 Swiper
 ===========================*/
+/* global Zepto:true */
+/* global WebKitCSSMatrix:true */
+/* global Modernizr:true */
+/* global DocumentTouch:true */
 +function($){
+    "use strict";
     var Swiper = function (container, params) {
         // if (!(this instanceof Swiper)) return new Swiper(container, params);
         var defaults = this.defaults;
@@ -254,7 +259,7 @@ Swiper
             s.emit('onAutoplayStart', s);
             autoplay();
         };
-        s.stopAutoplay = function (internal) {
+        s.stopAutoplay = function () {
             if (!s.autoplayTimeoutId) return;
             if (s.autoplayTimeoutId) clearTimeout(s.autoplayTimeoutId);
             s.autoplaying = false;
@@ -475,9 +480,6 @@ Swiper
             if (s.rtl) offsetCenter = s.params.centeredSlides ? translate - s.size / 2 : translate;
         
             // Visible Slides
-            var containerBox = s.container[0].getBoundingClientRect();
-            var sideBefore = isH() ? 'left' : 'top';
-            var sideAfter = isH() ? 'right' : 'bottom';
             s.slides.removeClass(s.params.slideVisibleClass);
             for (var i = 0; i < s.slides.length; i++) {
                 var slide = s.slides[i];
@@ -771,7 +773,7 @@ Swiper
             // Prevent Links Clicks
             if (s.params.preventClicks || s.params.preventClicksPropagation) touchEventsTarget[action]('click', s.preventClicks, true);
         };
-        s.attachEvents = function (detach) {
+        s.attachEvents = function () {
             s.initEvents();
         };
         s.detachEvents = function () {
@@ -1352,7 +1354,6 @@ Swiper
                 return false;
             }
             s.onTransitionStart(runCallbacks);
-            var translateX = isH() ? translate : 0, translateY = isH() ? 0 : translate;
             if (speed === 0) {
                 s.setWrapperTransition(0);
                 s.setWrapperTranslate(translate);
@@ -1403,7 +1404,6 @@ Swiper
             if (s.params.loop) {
                 if (s.animating) return false;
                 s.fixLoop();
-                var clientLeft = s.container[0].clientLeft;
                 return s.slideTo(s.activeIndex + s.params.slidesPerGroup, speed, runCallbacks, internal);
             }
             else return s.slideTo(s.activeIndex + s.params.slidesPerGroup, speed, runCallbacks, internal);
@@ -1415,7 +1415,6 @@ Swiper
             if (s.params.loop) {
                 if (s.animating) return false;
                 s.fixLoop();
-                var clientLeft = s.container[0].clientLeft;
                 return s.slideTo(s.activeIndex - 1, speed, runCallbacks, internal);
             }
             else return s.slideTo(s.activeIndex - 1, speed, runCallbacks, internal);
@@ -1423,7 +1422,7 @@ Swiper
         s._slidePrev = function (speed) {
             return s.slidePrev(true, speed, true);
         };
-        s.slideReset = function (runCallbacks, speed, internal) {
+        s.slideReset = function (runCallbacks, speed) {
             return s.slideTo(s.activeIndex, speed, runCallbacks);
         };
         
@@ -1819,7 +1818,6 @@ Swiper
                                 shadowAfter = $('<div class="swiper-slide-shadow-' + (isH() ? 'right' : 'bottom') + '"></div>');
                                 slide.append(shadowAfter);
                             }
-                            var shadowOpacity = slide[0].progress;
                             if (shadowBefore.length) shadowBefore[0].style.opacity = -slide[0].progress;
                             if (shadowAfter.length) shadowAfter[0].style.opacity = slide[0].progress;
                         }
@@ -2027,9 +2025,7 @@ Swiper
             },
             setTranslate: function () {
                 if (!s.params.scrollbar) return;
-                var diff;
                 var sb = s.scrollbar;
-                var translate = s.translate || 0;
                 var newPos;
                 
                 var newSize = sb.dragSize;
@@ -2204,8 +2200,10 @@ Swiper
           ===========================*/
         s._plugins = [];
         for (var plugin in s.plugins) {
-            var p = s.plugins[plugin](s, s.params[plugin]);
-            if (p) s._plugins.push(p);
+            if(s.plugins.hasOwnProperty(plugin)){
+                var p = s.plugins[plugin](s, s.params[plugin]);
+                if (p) s._plugins.push(p);
+            }
         }
         // Method to call all plugins event/method
         s.callPlugins = function (eventName) {
@@ -2668,7 +2666,6 @@ Swiper
             var ua = navigator.userAgent;
             var android = ua.match(/(Android);?[\s\/]+([\d.]+)?/);
             var ipad = ua.match(/(iPad).*OS\s([\d_]+)/);
-            var ipod = ua.match(/(iPod)(.*OS\s([\d_]+))?/);
             var iphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/);
             return {
                 ios: ipad || iphone || ipad,

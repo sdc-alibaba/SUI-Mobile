@@ -1,8 +1,9 @@
 /*===========================
 Framework7 Swiper Additions
 ===========================*/
+/* global Zepto:true */
 +function($){
-
+    'use strict';
     $.swiper = function (container, params) {
         return new $.Swiper(container, params);
     };
