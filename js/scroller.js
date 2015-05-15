@@ -101,21 +101,6 @@
         _defaults: {
             type: 'auto',
         },
-        _scrollTop: function(top, dur) {
-            if (this.scroller) {
-                if (top !== undefined) {
-                    this.scroller.scrollTo(0, -1 * top, dur);
-                } else {
-                    return this.scroller.getComputedPosition().y * -1;
-                }
-            } else {
-                return this.$pageContent.scrollTop(top, dur);
-            }
-            return this;
-        },
-        _scrollLeft: function() {
-
-        },
         _bindEventToDomWhenJs: function() {
             //"scrollStart", //the scroll started.
             //"scroll", //the content is scrolling. Available only in scroll-probe.js edition. See onScroll event.
@@ -133,7 +118,6 @@
                 });
             } else {
                 //TODO: 实现native的scrollStart和scrollEnd
-
             }
         },
         refresh: function() {
