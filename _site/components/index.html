@@ -3096,16 +3096,14 @@
         </div>
         <script type="text/javascript">
         $(function() {
-            $(".content").scroller({
-                type: 'js'
-            });
+            ///$("#scroller-demo").scroller();
         });
         </script>
     </div>
     <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>滚动条<span class="nt">&lt;/h1&gt;</span>
     <span class="nt">&lt;/header&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span> <span class="na">id=</span><span class="s">"scroller-demo"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>滚动方式<span class="nt">&lt;/div&gt;</span>
             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-content"</span><span class="nt">&gt;</span>
@@ -3145,15 +3143,17 @@
                 <span class="nt">&lt;/div&gt;</span>
             <span class="nt">&lt;/div&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
-    <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s2">"#scroller-demo"</span><span class="p">).</span><span class="nx">scroller</span><span class="p">({</span>
-            <span class="na">type</span><span class="p">:</span> <span class="s1">'js'</span>
-        <span class="p">});</span>
-        
+    <span class="nt">&lt;/div&gt;</span></code></pre></div>
+    <h3 class="component-title">滚动条初始化</h3>
+    <p class="component-description">
+        初始化方法：
+    </p>
+    <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">".content"</span><span class="p">).</span><span class="nx">scroller</span><span class="p">({</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s1">'js'</span>
     <span class="p">});</span>
-    <span class="nt">&lt;/script&gt;</span></code></pre></div>
+<span class="p">});</span></code></pre></div>
+
     <p class="component-description">
         滚动的方式可以通过配置项 type 来进行配置：
         <ul>
@@ -3163,21 +3163,54 @@
         </ul>
     </p>
     <p class="component-description">
-        上边demo使用的是js接口的调用方式，scroller.js 同时提供data-api的模式。通过添加标签属性
-        <code>data-toggle="scroller"</code>。 滚动类型通过：<code>data-scroller-type="auto"</code>
-    </p> 来配置。
-</article>
-<article class="component active">
-    <h3 class="component-title">滚动事件</h3>
+        上边demo使用的是javascript接口的调用方式，scroller.js 同时提供data-api的模式。通过添加标签属性
+        <code>data-toggle="scroller"</code>。 滚动类型通过：<code>data-type="auto"</code>来配置。
+    </p> 
+    <p class="component-description">
+        注意： scroller 插件会页面载入完成后，默认初始化带有class<code>.content</code>或者属性<code>data-toggle="scroller"</code>的元素为auto模式的滚动条。如果想要<code>.content</code>的元素全部初始为js的模式，需要在.content 标签加上属性<code>data-type="js"</code>
+    </p>
+    <h3 class="component-title">重置滚动</h3>
+     <p class="component-description">在js模式下，滚动区域高度发生变化时，需要对滚动条进行刷新，scroller 提供两种方式来进行刷新：</p>
+     <p class="component-description">1. 局部刷新，只针对某个容器的刷新</p>
+        <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">".content"</span><span class="p">).</span><span class="nx">scroller</span><span class="p">(</span><span class="s1">'refresh'</span><span class="p">);</span>
+<span class="p">});</span></code></pre></div>
+    <p class="component-description">2. 全局刷新，会刷新页面上所有的滚动条</p>
+        <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">refreshScroller</span><span class="p">();</span>
+<span class="p">});</span></code></pre></div>
+    
+    <h3 class="component-title">滚动接口</h3>
+    <p class="component-description">scroller插件重置的了zepto的滚动方法，无论在js模式下或者native模式下都是一样的调用方式：</p>
+        <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'.content'</span><span class="p">).</span><span class="nx">scrollTop</span><span class="p">();</span> <span class="c1">//==&gt; number</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'.content'</span><span class="p">).</span><span class="nx">scrollTop</span><span class="p">(</span><span class="nx">number</span><span class="p">);</span> <span class="c1">// ==&gt;self</span>
+     <span class="nx">$</span><span class="p">(</span><span class="s1">'.content'</span><span class="p">).</span><span class="nx">scrollLeft</span><span class="p">();</span> <span class="c1">//==&gt; number</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'.content'</span><span class="p">).</span><span class="nx">scrollLeft</span><span class="p">(</span><span class="nx">number</span><span class="p">);</span> <span class="c1">// ==&gt;self</span>
+<span class="p">});</span></code></pre></div>
+<h3 class="component-title">滚动事件</h3>
     <div class="component-description">
         滚动条提供三个事件：
         <ul>
-          <li>1. <code>scrollStart</code>: 滚动开始时触发</li>
+          <li>1. <code>scrollStart</code>: 滚动开始时触发（目前只能在js模式下，才会触发）</li>
           <li>2. <code>scroll</code>: 滚动中触发</li>
-          <li>3. <code>scrollEnd</code>: 滚动结束后触发</li>
+          <li>3. <code>scrollEnd</code>: 滚动结束后触发（目前只能在js模式下，才会触发）</li>
         </ul>
+
     </div>
+    <p class="component-description">
+        直接通过下边的方式进行监听
+    </p>
+    <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">".content"</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'scrollStart'</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+     <span class="c1">//dosomething</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>   
+
 </article>
+
+
+
 
   <article class="component" id="accordion">
   <h3 class="component-title">手风琴布局（Accordion）</h3>
