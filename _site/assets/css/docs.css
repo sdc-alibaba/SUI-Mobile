@@ -1074,3 +1074,16 @@ code {
 pre code {
   color: #333;
 }
+table {
+  border: 1px solid #ddd;
+  border-left: none;
+  border-radius: 2px;
+}
+table td,
+table th {
+  padding: 0 8px;
+  border-left: 1px solid #ddd;
+}
+table td {
+  border-top: 1px solid #ddd;
+}
