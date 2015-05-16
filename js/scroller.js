@@ -149,8 +149,8 @@
             var $pageContentInner = $this.find('.scroller-content-inner');
             //如果滚动内容没有被包裹，自动添加wrap
             if (!$pageContentInner[0]) {
-               // $this.html('<div class="scroller-content-inner">' + $this.html() + '</div>');
-                $this.children().wrapAll('<div class="scroller-content-inner"></div>'); 
+                // $this.html('<div class="scroller-content-inner">' + $this.html() + '</div>');
+                $this.children().wrapAll('<div class="scroller-content-inner"></div>');
             }
 
             if ($this.hasClass('pull-to-refresh-content')) {
@@ -203,13 +203,21 @@
     });
 
     //统一的接口,带有 .javascript-scroll 的content 进行刷新
-    $.refreshScroller = function(){
+    $.refreshScroller = function() {
         $('.javascript-scroll').scroller('refresh');
     };
     //全局初始化方法，会对页面上的 [data-toggle="scroller"]，.content. 进行滚动条初始化
-    $.initScroller =  function(option){
+    $.initScroller = function(option) {
         this.options = $.extend({}, typeof option === 'object' && option);
         $('[data-toggle="scroller"],.content').scroller(option);
+    };
+    //获取scroller对象
+    $.getScroller = function(content) {
+        if (content) {
+            return $(content).data('scroller')&&$(content).data('scroller').scroller;
+        } else {
+            return $('.content.javascript-scroll').data('scroller')&&$$('.content.javascript-scroll').data('scroller').scroller;
+        }
     };
 
 }(Zepto);
