@@ -98,6 +98,8 @@
   <a class="docs-component-item" href="#browser" data-ignore="push">图片浏览器</a>
   <a class="docs-component-item" href="#push" data-ignore="push">push.js</a>
   <a class="docs-component-item" href="#scroller" data-ignore="push">滚动条</a>
+  <a class="docs-component-item" href="#pulltorefresh" data-ignore="push">下拉刷新</a>
+  <a class="docs-component-item" href="#infinitescroll" data-ignore="push">下拉刷新</a>
   <a class="docs-component-item" href="#ratchicons" data-ignore="push">图标</a>
 </div>
 
@@ -3211,6 +3213,142 @@
 
 
 
+
+  <article class="component active" id="pulltorefresh">
+  <h3 class="component-title">下拉刷新</h3>
+  <p class="component-description">下拉刷新是一个特别的组件，可以用来初始化页面内容的刷新。</p>
+  <h3 class="component-title">下拉刷新的demo</h3>
+
+  <div class="component-example component-example-fullbleed">
+      <header class="bar bar-nav">
+          <h1 class='title'>下拉刷新</h1>
+      </header>
+      <div class="content">
+          <!-- Page content应该拥有"pull-to-refresh-content"类 -->
+          <div class="page-content pull-to-refresh-content" data-ptr-distance="55">
+              <!-- 默认的下拉刷新层 -->
+              <div class="pull-to-refresh-layer">
+                  <div class="preloader"></div>
+                  <div class="pull-to-refresh-arrow"></div>
+              </div>
+              <!-- 下面是正文 -->
+              <div class="card">
+                  <div class="card-header">card</div>
+                  <div class="card-content">
+                      <div class="card-content-inner">
+                          这里是第1个card，下拉刷新会出现第2个card。
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">'title'</span><span class="nt">&gt;</span>下拉刷新<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="c">&lt;!-- content应该拥有"pull-to-refresh-content"类,表示启用下拉刷新 --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content pull-to-refresh-content"</span> <span class="na">data-ptr-distance=</span><span class="s">"55"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- 默认的下拉刷新层 --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pull-to-refresh-layer"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"preloader"</span><span class="nt">&gt;&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pull-to-refresh-arrow"</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="c">&lt;!-- 下面是正文 --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-container"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>card<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-content"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-content-inner"</span><span class="nt">&gt;</span>
+                    这里是第1个card，下拉刷新会出现第2个card。
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+<span class="c1">// 下拉刷新页面</span>
+<span class="kd">var</span> <span class="nx">ptrContent</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'.pull-to-refresh-content'</span><span class="p">);</span>
+<span class="c1">// 添加'refresh'监听器</span>
+<span class="nx">ptrContent</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'refresh'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 模拟2s的加载过程</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">cardNumber</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.card'</span><span class="p">).</span><span class="nx">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">cardHTML</span> <span class="o">=</span> <span class="s1">'&lt;div class="card"&gt;'</span> <span class="o">+</span>
+                          <span class="s1">'&lt;div class="card-header"&gt;card'</span><span class="o">+</span><span class="nx">cardNumber</span><span class="o">+</span><span class="s1">'&lt;/div&gt;'</span> <span class="o">+</span>
+                          <span class="s1">'&lt;div class="card-content"&gt;'</span> <span class="o">+</span>
+                            <span class="s1">'&lt;div class="card-content-inner"&gt;'</span> <span class="o">+</span>
+                                <span class="s1">'这里是第'</span> <span class="o">+</span> <span class="nx">cardNumber</span> <span class="o">+</span> <span class="s1">'个card，下拉刷新会出现第'</span> <span class="o">+</span> <span class="p">(</span><span class="nx">cardNumber</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'个card。'</span> <span class="o">+</span>
+                            <span class="s1">'&lt;/div&gt;'</span> <span class="o">+</span>
+                          <span class="s1">'&lt;/div&gt;'</span> <span class="o">+</span>
+                      <span class="s1">'&lt;/div&gt;'</span><span class="p">;</span>
+
+        <span class="nx">ptrContent</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.card-container'</span><span class="p">).</span><span class="nx">prepend</span><span class="p">(</span><span class="nx">cardHTML</span><span class="p">);</span>
+        <span class="c1">// 加载完毕需要重置</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">pullToRefreshDone</span><span class="p">(</span><span class="s1">'.pull-to-refresh-content'</span><span class="p">);</span>
+    <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span></code></pre></div>
+
+
+ <p class="component-description">其中</p>
+ <ul>
+   <li><code>page-content</code>需要额外添加<code>pull-to-refresh-content</code>类，它会开启下拉刷新。</li>
+   <li><code>pull-to-refresh-layer</code>平时隐藏的布局块，包含下拉刷新的可视元素：加载提示符和上/下箭头。</li>
+   <li><code>data-ptr-distance="55"</code>可以配置下拉刷新的下拉距离. 默认是 44px.</li>
+ </ul>
+
+<h3 class="component-title">下拉刷新的行为顺序</h3>
+<p class="component-description">当用户开始下拉的时候， <code>pull-to-refresh-layer</code>会增加一个额外的 <code>pull-down</code> 类。</p>
+<p class="component-description">当用户下拉使<code>pull-to-refresh-content</code>元素下降超过44px时(即<code>pull-to-refresh-layer</code>元素完全可视)，<code>pull-to-refresh-layer</code>元素将自动添加"<code>pull-up</code>"类，使箭头转向180度，以提醒用户界面将在他松开手指时刷新。</p>
+<p class="component-description">当用户在“pull-up”状态释放下拉区块使页面刷新时，<code>pull-to-refresh-layer</code>区块将会添加一个"<code>refreshing</code>"类。在“refreshing”状态，箭头将会隐藏，同时会展现一个加载提示符。这个时候你通常需要进行Ajax异步请求并刷新页面内容。</p>
+<h3 class="component-title">下拉刷新事件</h3>
+<p class="component-description">以下是下拉刷新的特殊事件，用以帮助我们识别需要刷新界面的时机：</p>
+<table class="params-table">
+    <thead>
+      <tr>
+        <th>事件（Event）</th>
+        <th>对象（Target）</th>
+        <th>描述（Description）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>refresh</td>
+        <td>拥有下拉刷新功能的界面
+<code><div class="pull-to-refresh-content"></code></td>
+        <td>事件会在下拉刷新进入“refreshing”状态时触发</td>
+      </tr> 
+    </tbody>
+  </table>
+
+
+
+<h3 class="component-title">重置下拉刷新</h3>
+<p class="component-description">在我们刷新页面内容之后，需要重置下拉刷新组件，以使用户可以再次下拉：</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html">myApp.pullToRefreshDone(ptrContent) // 重置特定的下拉刷新界面
+
+//ptrContent  我们想要重置的下拉刷新页面的HTML元素或CSS选择器</code></pre></div>
+
+<h3 class="component-title">JS触发下拉刷新</h3>
+<p class="component-description">我们也可以通过下面的方法手工触发下拉刷新:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html">myApp.pullToRefreshTrigger(ptrContent) //触发特定界面的下拉刷新
+
+ptrContent //我们想要触发的下拉刷新页面的HTML元素或CSS选择器</code></pre></div>
+
+
+<h3 class="component-title">销毁/禁用下拉刷新</h3>
+<p class="component-description">有的时候你可能需要禁用下拉刷新。我们可以通过这个方法来做到:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html">myApp.destroyPullToRefresh(ptrContent) //销毁/禁用 下拉刷新
+
+ptrContent // HTMLElement or string (CSS 选择器) 我们需要销毁/禁用的下拉刷新</code></pre></div>
+
+<p class="component-description">我们可以再次初始化/启用它：</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html">myApp.initPullToRefresh(ptrContent) - 初始化/启用下拉刷新
+
+ptrContent - HTMLElement or string (with CSS Selector) 需要启用的下拉刷新</code></pre></div>
+
+</article>
 
   <article class="component" id="accordion">
   <h3 class="component-title">手风琴布局（Accordion）</h3>

@@ -10,9 +10,10 @@
         }
         if (!eventsTarget || eventsTarget.length === 0) return;
 
-        var page = eventsTarget.hasClass('page') ? eventsTarget : eventsTarget.parents('.page');
-        var scroller = app.getScroller(page.find('.page-content')[0]);
+        var page = eventsTarget.hasClass('.content') ? eventsTarget : eventsTarget.parents('.content');
+        var scroller = $.getScroller(page[0]);
         var hasNavbar = false;
+        if(!scroller) return;
         if (page.find('.navbar').length > 0 || page.parents('.navbar-fixed, .navbar-through').length > 0 || page.hasClass('navbar-fixed') || page.hasClass('navbar-through')) hasNavbar = true;
         if (page.hasClass('no-navbar')) hasNavbar = false;
         if (!hasNavbar) eventsTarget.addClass('pull-to-refresh-no-navbar');
@@ -34,7 +35,7 @@
             container.addClass('refreshing');
             container.trigger('refresh', {
                 done: function() {
-                    app.pullToRefreshDone(container);
+                    $.pullToRefreshDone(container);
                 }
             });
             refreshTime = +new Date();
@@ -66,7 +67,7 @@
         if (container.length === 0) return;
         var interval = (+new Date()) - refreshTime;
         var timeOut = interval > 1000 ? 0 : 1000 - interval; //long than bounce time
-        var scroller = app.getScroller(container);
+        var scroller = $.getScroller(container);
         setTimeout(function() {
             scroller.refresh();
             container.removeClass('refreshing');
@@ -77,7 +78,7 @@
         if (container.length === 0) container = $('.pull-to-refresh-content');
         if (container.hasClass('refreshing')) return;
         container.addClass('refreshing');
-        var scroller = app.getScroller(container);
+        var scroller = $.getScroller(container);
         scroller.scrollTop(44 + 1, 200);
         container.trigger('refresh', {
             done: function() {
@@ -93,4 +94,10 @@
         if (pullToRefreshContent[0].f7DestroyPullToRefresh) pullToRefreshContent[0].f7DestroyPullToRefresh();
     };
 
-}(Zepto);
+    $._pullToRefreshJSScroll = {
+        "initPullToRefresh": initPullToRefreshJS,
+        "pullToRefreshDone": pullToRefreshDoneJS, 
+        "pullToRefreshTrigger": pullToRefreshTriggerJS, 
+        "destroyPullToRefresh": destroyPullToRefreshJS, 
+    };
+}(Zepto); // jshint ignore:line

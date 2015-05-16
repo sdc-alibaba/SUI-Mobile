@@ -1,6 +1,7 @@
 + function($) {
     'use strict';
-    // 使用原生滚动条的版本
+
+
     var initPullToRefresh = function(pageContainer) {
         var eventsTarget = $(pageContainer);
         if (!eventsTarget.hasClass('pull-to-refresh-content')) {
@@ -132,17 +133,17 @@
         }
 
         // Attach Events
-        eventsTarget.on($.touchEvents.start, handleTouchStart);
-        eventsTarget.on($.touchEvents.move, handleTouchMove);
-        eventsTarget.on($.touchEvents.end, handleTouchEnd);
+        eventsTarget.on('touchstart', handleTouchStart);
+        eventsTarget.on('touchmove', handleTouchMove);
+        eventsTarget.on('touchend', handleTouchEnd);
 
         // Detach Events on page remove
         if (page.length === 0) return;
 
         function destroyPullToRefresh() {
-            eventsTarget.off($.touchEvents.start, handleTouchStart);
-            eventsTarget.off($.touchEvents.move, handleTouchMove);
-            eventsTarget.off($.touchEvents.end, handleTouchEnd);
+            eventsTarget.off('touchstart', handleTouchStart);
+            eventsTarget.off('touchmove', handleTouchMove);
+            eventsTarget.off('touchend', handleTouchEnd);
         }
         eventsTarget[0].f7DestroyPullToRefresh = destroyPullToRefresh;
 
@@ -180,4 +181,53 @@
         if (pullToRefreshContent[0].f7DestroyPullToRefresh) pullToRefreshContent[0].f7DestroyPullToRefresh();
     };
 
-}(Zepto);
+
+    //这里是否需要写到 scroller 中去？
+    $.initPullToRefresh = function(pageContainer) {
+        var $pageContainer = $(pageContainer);
+        $pageContainer.each(function(index, item) {
+            if ($.detectScrollerType(item) === 'js') {
+                $._pullToRefreshJSScroll.initPullToRefresh(item);
+            } else {
+                initPullToRefresh(item);
+            }
+        });
+    };
+
+
+    $.pullToRefreshDone = function(pageContainer) {
+        var $pageContainer = $(pageContainer);
+        $pageContainer.each(function(index, item) {
+            if ($.detectScrollerType(item) === 'js') {
+                $._pullToRefreshJSScroll.pullToRefreshDone(item);
+            } else {
+                pullToRefreshDone(item);
+            }
+        });
+    };
+
+
+    $.pullToRefreshTrigger = function(pageContainer) {
+       var $pageContainer = $(pageContainer);
+        $pageContainer.each(function(index, item) {
+            if ($.detectScrollerType(item) === 'js') {
+                $._pullToRefreshJSScroll.pullToRefreshTrigger(item);
+            } else {
+                pullToRefreshTrigger(item);
+            }
+        });
+    };
+
+    $.destroyPullToRefresh = function(pageContainer) {
+        var $pageContainer = $(pageContainer);
+        $pageContainer.each(function(index, item) {
+            if ($.detectScrollerType(item) === 'js') {
+                $._pullToRefreshJSScroll.destroyPullToRefresh(item);
+            } else {
+                destroyPullToRefresh(item);
+            }
+        });
+    };
+
+
+}(Zepto); //jshint ignore:line

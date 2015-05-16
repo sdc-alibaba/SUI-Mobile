@@ -56,6 +56,8 @@ module.exports = function(grunt) {
                   'js/modal.js',
                   'js/iscroll.js',
                   'js/scroller.js',
+                  'js/pull-to-refresh-js-scroll.js',
+                  'js/pull-to-refresh.js',
                   'js/swiper-init.js',
                   'js/swipeout.js',
                   'js/swiper.js',

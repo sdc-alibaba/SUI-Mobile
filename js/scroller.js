@@ -30,32 +30,24 @@
     //重置scrollLeft和scrollRight
     (function() {
         $.extend($.fn, {
-            scrollTop: function(top) {
+            scrollTop: function(top, dur) {
                 if (!this.length) return;
                 var scroller = this.data('scroller');
                 if (scroller && scroller.scroller) { //js滚动
-                    if (top !== undefined) {
-                        scroller.scroller.scrollTo(0, -1 * top);
-                        return this;
-                    } else {
-                        return scroller.scroller.getComputedPosition().y * -1;
-                    }
+                    scroller.scrollTop(top, dur);
+                    return this;
                 } else {
                     return _zeptoMethodCache.scrollTop.apply(this, arguments);
                 }
             }
         });
         $.extend($.fn, {
-            scrollLeft: function(left) {
+            scrollLeft: function(left,dur) {
                 if (!this.length) return;
                 var scroller = this.data('scroller');
                 if (scroller && scroller.scroller) { //js滚动
-                    if (top !== undefined) {
-                        scroller.scroller.scrollTo(-1 * left, 0);
-                        return this;
-                    } else {
-                        return scroller.scroller.getComputedPosition().x * -1;
-                    }
+                   scroller.scrollLeft(left, dur);
+                   return this;
                 } else {
                     return _zeptoMethodCache.scrollLeft.apply(this, arguments);
                 }
@@ -120,6 +112,48 @@
                 //TODO: 实现native的scrollStart和scrollEnd
             }
         },
+        scrollTop: function(top, dur) {
+            if (this.scroller) {
+                if (top !== undefined) {
+                    this.scroller.scrollTo(0, -1 * top, dur);
+                } else {
+                    return this.scroller.getComputedPosition().y * -1;
+                }
+            } else {
+                return this.$pageContent.scrollTop(top, dur);
+            }
+            return this;
+        },
+        scrollLeft: function(left,dur) {
+            if (this.scroller) {
+                if (left !== undefined) {
+                    this.scroller.scrollTo(-1 * left, 0);
+                } else {
+                    return this.scroller.getComputedPosition().x * -1;
+                }
+            } else {
+                return this.$pageContent.scrollTop(left, dur);
+            }
+            return this;
+        },
+        on: function(event, callback) {
+            if (this.scroller) {
+                this.scroller.on(event, function() {
+                    callback.call(this.wrapper);
+                });
+            } else {
+                this.$pageContent.on(event, callback);
+            }
+            return this;
+        },
+        off: function(event, callback) {
+            if (this.scroller) {
+                this.scroller.off(event, callback);
+            } else {
+                this.$pageContent.off(event, callback);
+            }
+            return this;
+        },
         refresh: function() {
             if (this.scroller) this.scroller.refresh();
             return this;
@@ -155,7 +189,7 @@
 
             if ($this.hasClass('pull-to-refresh-content')) {
                 //因为iscroll 当页面高度不足 100% 时无法滑动，所以无法触发下拉动作，这里改动一下高度
-                $this.find('.page-content-inner').css('min-height', ($(window).height() + 20) + 'px');
+                $this.find('.scroller-content-inner').css('min-height', ($(window).height() + 20) + 'px');
             }
 
 
@@ -203,8 +237,13 @@
     });
 
     //统一的接口,带有 .javascript-scroll 的content 进行刷新
-    $.refreshScroller = function() {
-        $('.javascript-scroll').scroller('refresh');
+    $.refreshScroller = function(content) {
+        if (content) {
+            $(content).scroller('refresh');
+        } else {
+            $('.javascript-scroll').scroller('refresh');
+        }
+
     };
     //全局初始化方法，会对页面上的 [data-toggle="scroller"]，.content. 进行滚动条初始化
     $.initScroller = function(option) {
@@ -214,9 +253,21 @@
     //获取scroller对象
     $.getScroller = function(content) {
         if (content) {
-            return $(content).data('scroller')&&$(content).data('scroller').scroller;
+            return $(content).data('scroller');
         } else {
-            return $('.content.javascript-scroll').data('scroller')&&$$('.content.javascript-scroll').data('scroller').scroller;
+            return $('.content.javascript-scroll').data('scroller');
+        }
+    };
+    //检测滚动类型,
+    //‘js’: javascript 滚动条
+    //‘native’: 原生滚动条
+    $.detectScrollerType = function(content) {
+        if (content) {
+            if ($(content).data('scroller') && $(content).data('scroller').scroller) {
+                return 'js';
+            } else {
+                return 'native';
+            }
         }
     };
 
