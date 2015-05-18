@@ -29,33 +29,36 @@
     <span class="icon icon-left"></span>
     返回
   </a>
-  <h1 class="title">表单</h1>
+  <h1 class="title">标签页</h1>
 </header>
+<div class="bar bar-standard bar-footer">
+  <a class="icon icon-edit pull-left"></a>
+  <a class="icon icon-settings pull-right"></a>
+</div>
 <div class="content">
-  <div class="list-block">
-    <ul>
-      <li>
-        <a href="/demos/form/layout" class="item-link item-content" data-transition="slide-in">
-          <div class="item-inner">
-            <div class="item-title">基本布局和元素</div>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="/demos/form/label-input" class="item-link item-content" data-transition="slide-in">
-          <div class="item-inner">
-            <div class="item-title">只有文案和输入框</div>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="/demos/form/icon-input" class="item-link item-content" data-transition="slide-in">
-          <div class="item-inner">
-            <div class="item-title">只有图标和输入框</div>
-          </div>
-        </a>
-      </li>
-    </ul>
+  <div class="content-block">
+    <div class="buttons-row">
+      <a href="#tab1" class="tab-link active button">Tab 1</a>
+      <a href="#tab2" class="tab-link button">Tab 2</a>
+      <a href="#tab3" class="tab-link button">Tab 3</a>
+    </div>
+  </div>
+  <div class="tabs">
+    <div id="tab1" class="tab active">
+      <div class="content-block">
+        <p>This is tab 1 content</p>
+      </div>
+    </div>
+    <div id="tab2" class="tab">
+      <div class="content-block">
+        <p>This is tab 2 content</p>
+      </div>
+    </div>
+    <div id="tab3" class="tab">
+      <div class="content-block">
+        <p>This is tab 3 content</p>
+      </div>
+    </div>
   </div>
 </div>
 
