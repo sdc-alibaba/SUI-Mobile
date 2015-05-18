@@ -10,7 +10,7 @@
         }
         if (!eventsTarget || eventsTarget.length === 0) return;
 
-        var page = eventsTarget.hasClass('.content') ? eventsTarget : eventsTarget.parents('.content');
+        var page = eventsTarget.hasClass('content') ? eventsTarget : eventsTarget.parents('.content');
         var scroller = $.getScroller(page[0]);
         var hasNavbar = false;
         if(!scroller) return;

@@ -152,7 +152,8 @@ $(function () {
       $.initPageSwiper($page);
       //初始化滚动条
       $.initScroller({type:'js'});
-      $.initPullToRefresh('.pull-to-refresh-content');  
+      $.initPullToRefresh($page);
+      $.initInfiniteScroll($page);
     }
 
     // Injection of components into device

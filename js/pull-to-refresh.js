@@ -2,7 +2,7 @@
     'use strict';
 
 
-    var initPullToRefresh = function(pageContainer) {
+    $.initPullToRefresh = function(pageContainer) {
         var eventsTarget = $(pageContainer);
         if (!eventsTarget.hasClass('pull-to-refresh-content')) {
             eventsTarget = eventsTarget.find('.pull-to-refresh-content');
@@ -154,7 +154,7 @@
         page.on('pageBeforeRemove', detachEvents);
 
     };
-    var pullToRefreshDone = function(container) {
+    $.pullToRefreshDone = function(container) {
         container = $(container);
         if (container.length === 0) container = $('.pull-to-refresh-content.refreshing');
         container.removeClass('refreshing').addClass('transitioning');
@@ -162,7 +162,7 @@
             container.removeClass('transitioning pull-up pull-down');
         });
     };
-    var pullToRefreshTrigger = function(container) {
+    $.pullToRefreshTrigger = function(container) {
         container = $(container);
         if (container.length === 0) container = $('.pull-to-refresh-content');
         if (container.hasClass('refreshing')) return;
@@ -174,7 +174,7 @@
         });
     };
 
-    var destroyPullToRefresh = function(pageContainer) {
+    $.destroyPullToRefresh = function(pageContainer) {
         pageContainer = $(pageContainer);
         var pullToRefreshContent = pageContainer.hasClass('pull-to-refresh-content') ? pageContainer : pageContainer.find('.pull-to-refresh-content');
         if (pullToRefreshContent.length === 0) return;
@@ -183,7 +183,7 @@
 
 
     //这里是否需要写到 scroller 中去？
-    $.initPullToRefresh = function(pageContainer) {
+/*    $.initPullToRefresh = function(pageContainer) {
         var $pageContainer = $(pageContainer);
         $pageContainer.each(function(index, item) {
             if ($.detectScrollerType(item) === 'js') {
@@ -228,6 +228,6 @@
             }
         });
     };
-
+*/
 
 }(Zepto); //jshint ignore:line

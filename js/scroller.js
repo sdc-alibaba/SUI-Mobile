@@ -80,10 +80,10 @@
             this.scroller = new IScroll(pageContent, options); // jshint ignore:line
             //和native滚动统一起来
             this._bindEventToDomWhenJs();
-            /* app.initPullToRefresh = app.initPullToRefreshJS;
-             app.pullToRefreshDone = app.pullToRefreshDoneJS;
-             app.pullToRefreshTrigger = app.pullToRefreshTriggerJS;
-             app.destroyToRefresh = app.destroyToRefreshJS;*/
+             $.initPullToRefresh = $._pullToRefreshJSScroll.initPullToRefresh;
+             $.pullToRefreshDone = $._pullToRefreshJSScroll.pullToRefreshDone;
+             $.pullToRefreshTrigger = $._pullToRefreshJSScroll.pullToRefreshTrigger;
+             $.destroyToRefresh = $._pullToRefreshJSScroll.destroyToRefresh;
             $pageContent.addClass('javascript-scroll');
         } else {
             $pageContent.addClass('native-scroll');
@@ -184,7 +184,12 @@
             //如果滚动内容没有被包裹，自动添加wrap
             if (!$pageContentInner[0]) {
                 // $this.html('<div class="scroller-content-inner">' + $this.html() + '</div>');
-                $this.children().wrapAll('<div class="scroller-content-inner"></div>');
+                var children = $this.children();
+                if (children.length<1) {
+                    $this.children().wrapAll('<div class="scroller-content-inner"></div>');
+                } else{
+                    $this.html('<div class="scroller-content-inner">' + $this.html() + '</div>');
+                }
             }
 
             if ($this.hasClass('pull-to-refresh-content')) {
