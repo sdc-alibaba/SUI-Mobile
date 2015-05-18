@@ -507,9 +507,6 @@
   // Attach PUSH event handlers
   // ==========================
 
-  window.addEventListener('touchstart', function () { isScrolling = false; });
-  window.addEventListener('touchmove', function () { isScrolling = true; });
-  window.addEventListener('touchend', touchend);
   window.addEventListener('click', function (e) {
     //支持通过click触发
     var target = getTarget(e);
