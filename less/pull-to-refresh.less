@@ -34,8 +34,8 @@
 }
 .pull-to-refresh-content {
     transform: translate3d(0, 0, 0);
-    transition: transform 400ms; 
     &.transitioning, &.refreshing {
+      transition: transform 400ms; 
     }
     &:not(.refreshing) {
         .pull-to-refresh-layer .preloader {
