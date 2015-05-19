@@ -3420,7 +3420,7 @@ var lastIndex = 0;
 $(document).on('updateContent', '.infinite-scroll', function() {
     //预先加载20条
     addItems(itemsPerLoad, 0);
-    lastIndex = 0;
+    lastIndex = 20;
 });
 // 注册'infinite'事件处理函数
 $(document).on('infinite', '.infinite-scroll', function() {
