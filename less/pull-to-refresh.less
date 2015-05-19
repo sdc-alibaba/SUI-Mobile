@@ -33,7 +33,6 @@
     
 }
 .pull-to-refresh-content {
-    transform: translate3d(0,-40px,0);
     &.transitioning, &.refreshing {
         transition-duration: 400ms; 
     }
@@ -43,10 +42,10 @@
         }
     }
     &.refreshing {
-        transform: translate3d(0,44px,0);
+        transform: translate3d(0, 0, 0);
         .pull-to-refresh-arrow {
             visibility: hidden;
-            transition-duration:0ms;
+            transition-duration: 0ms;
         }
         .preloader {
             visibility: visible;
@@ -58,4 +57,18 @@
         }
     }
     
+}
+.pull-to-refresh-content {
+  top: -44px;
+  &.refreshing {
+    top: 0;
+  }
+}
+.bar-nav ~ .pull-to-refresh-content,
+.bar-footer ~ .pull-to-refresh-content,
+.bar-tab ~ .pull-to-refresh-content {
+  top: 0;
+  &.refreshing {
+    top: 44px;
+  }
 }
