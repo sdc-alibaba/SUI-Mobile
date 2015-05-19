@@ -704,7 +704,7 @@ code {
   margin-left: -15px;
 }
 .bar-nav ~ .content {
-  padding: 0;
+  margin: 0;
 }
 .highlight pre {
   padding: 15px;
@@ -1073,6 +1073,166 @@ code {
 }
 pre code {
   color: #333;
+}
+pre code .c {
+  color: #999;
+}
+pre code .err {
+  color: #a00;
+  background-color: #faa;
+}
+pre code .k {
+  color: #069;
+}
+pre code .o {
+  color: #555;
+}
+pre code .cm {
+  color: #999;
+}
+pre code .cp {
+  color: #099;
+}
+pre code .c1,
+pre code .cs {
+  color: #999;
+}
+pre code .gd {
+  background-color: #fcc;
+  border: 1px solid #c00;
+}
+pre code .ge {
+  font-style: italic;
+}
+pre code .gr {
+  color: red;
+}
+pre code .gh {
+  color: #030;
+}
+pre code .gi {
+  background-color: #cfc;
+  border: 1px solid #0c0;
+}
+pre code .go {
+  color: #aaa;
+}
+pre code .gp {
+  color: #009;
+}
+pre code .gu {
+  color: #030;
+}
+pre code .gt {
+  color: #9c6;
+}
+pre code .kc,
+pre code .kd,
+pre code .kn,
+pre code .kp,
+pre code .kr {
+  color: #069;
+}
+pre code .kt {
+  color: #078;
+}
+pre code .m {
+  color: #f60;
+}
+pre code .s {
+  color: #d44950;
+}
+pre code .na {
+  color: #4f9fcf;
+}
+pre code .nb {
+  color: #366;
+}
+pre code .nc {
+  color: #0a8;
+}
+pre code .no {
+  color: #360;
+}
+pre code .nd {
+  color: #99f;
+}
+pre code .ni {
+  color: #999;
+}
+pre code .ne {
+  color: #c00;
+}
+pre code .nf {
+  color: #c0f;
+}
+pre code .nl {
+  color: #99f;
+}
+pre code .nn {
+  color: #0cf;
+}
+pre code .nt {
+  color: #2f6f9f;
+}
+pre code .nv {
+  color: #033;
+}
+pre code .ow {
+  color: #000;
+}
+pre code .w {
+  color: #bbb;
+}
+pre code .mf,
+pre code .mh,
+pre code .mi,
+pre code .mo {
+  color: #f60;
+}
+pre code .sb,
+pre code .sc {
+  color: #c30;
+}
+pre code .sd {
+  font-style: italic;
+  color: #c30;
+}
+pre code .s2,
+pre code .se,
+pre code .sh {
+  color: #c30;
+}
+pre code .si {
+  color: #a00;
+}
+pre code .sx {
+  color: #c30;
+}
+pre code .sr {
+  color: #3aa;
+}
+pre code .s1 {
+  color: #c30;
+}
+pre code .ss {
+  color: #fc3;
+}
+pre code .bp {
+  color: #366;
+}
+pre code .vc,
+pre code .vg,
+pre code .vi {
+  color: #033;
+}
+pre code .il {
+  color: #f60;
+}
+pre code .css .nt + .nt,
+pre code .css .o,
+pre code .css .o + .nt {
+  color: #999;
 }
 table {
   border: 1px solid #ddd;
