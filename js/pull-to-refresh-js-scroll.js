@@ -29,7 +29,7 @@
         function handleRefresh() {
             if (container.hasClass('refreshing')) return;
             container.removeClass('pull-down pull-up');
-            container.addClass('refreshing');
+            container.addClass('refreshing transitioning');
             container.trigger('refresh', {
                 done: function() {
                     $.pullToRefreshDone(container);
@@ -59,6 +59,9 @@
         setTimeout(function() {
             scroller.refresh();
             container.removeClass('refreshing');
+            container.transitionEnd(function() {
+              container.removeClass("transitioning");
+            });
         }, timeOut);
     };
     var pullToRefreshTriggerJS = function(container) {
