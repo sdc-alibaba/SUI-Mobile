@@ -12,4 +12,22 @@
     //$.initPullToRefresh($content);
     //$.initInfiniteScroll($content);
   };
+
+  //全局配置
+
+  var defaults = $.extend({
+    autoInit: true
+  }, $.defaults);
+
+  if(defaults.autoInit) {
+    $(window).on("push", function() {
+      $.initPage();
+    });
+    $(function() {
+      $.initPage();
+    });
+  }
+
+
+
 }(Zepto);
