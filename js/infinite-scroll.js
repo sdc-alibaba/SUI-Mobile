@@ -41,7 +41,7 @@
 
     $.initInfiniteScroll = function(pageContainer) {
         pageContainer = $(pageContainer);
-        var infiniteContent = pageContainer.hasClass('.infinite-scroll')?pageContainer:pageContainer.find('.infinite-scroll');
+        var infiniteContent = pageContainer.hasClass('infinite-scroll')?pageContainer:pageContainer.find('.infinite-scroll');
         if (infiniteContent.length === 0) return;
         $.attachInfiniteScroll(infiniteContent);
 

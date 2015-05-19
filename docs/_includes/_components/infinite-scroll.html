@@ -47,64 +47,67 @@
         <li><code>data-distance</code> - 属性用来配置页面滚动到离底部多远时触发无限滚动事件，默认是50 (px)</li>
     </ul>
 <script type="text/javascript">
-// 加载flag
-var loading = false;
-// 最多可加载的条目
-var maxItems = 100;
+$(function() {
+    // 加载flag
+    var loading = false;
+    // 最多可加载的条目
+    var maxItems = 100;
 
-// 每次加载添加多少条目
-var itemsPerLoad = 20;
+    // 每次加载添加多少条目
+    var itemsPerLoad = 20;
 
-function addItems(number, lastIndex) {
-    // 生成新条目的HTML
-    var html = '';
-    for (var i = lastIndex + 1; i <= lastIndex + number; i++) {
-        html += '<li class="item-content"><div class="item-inner"><div class="item-title">Item ' + i + '</div></div></li>';
-    }
-    // 添加新条目
-    $('.infinite-scroll .list-container').append(html);
-}
-
-// 上次加载的序号
-
-var lastIndex = 0;
-//文档专用事件 updateContent
-$(document).on('updateContent', '.infinite-scroll', function() {
-    //预先加载20条
-    addItems(itemsPerLoad, 0);
-    lastIndex = 20;
-});
-// 注册'infinite'事件处理函数
-$(document).on('infinite', '.infinite-scroll', function() {
-
-    // 如果正在加载，则退出
-    if (loading) return;
-
-    // 设置flag
-    loading = true;
-
-    // 模拟1s的加载过程
-    setTimeout(function() {
-        // 重置加载flag
-        loading = false;
-
-        if (lastIndex >= maxItems) {
-            // 加载完毕，则注销无限加载事件，以防不必要的加载
-            $.detachInfiniteScroll($('.infinite-scroll'));
-            // 删除加载提示符
-            $('.infinite-scroll-preloader').remove();
-            return;
+    function addItems(number, lastIndex) {
+        // 生成新条目的HTML
+        var html = '';
+        for (var i = lastIndex + 1; i <= lastIndex + number; i++) {
+            html += '<li class="item-content"><div class="item-inner"><div class="item-title">Item ' + i + '</div></div></li>';
         }
-
         // 添加新条目
-        addItems(itemsPerLoad, lastIndex);
-        // 更新最后加载的序号
-        lastIndex = $('.list-container li').length;
-        //容器发生改变,如果是js滚动，需要刷新滚动
-        $.refreshScroller();
-    }, 1000);
+        $('.infinite-scroll .list-container').append(html);
+    }
+
+    // 上次加载的序号
+
+    var lastIndex = 0;
+    //文档专用事件 updateContent
+    $(document).on('updateContent', '.infinite-scroll', function() {
+        //预先加载20条
+        addItems(itemsPerLoad, 0);
+        lastIndex = 20;
+    });
+    // 注册'infinite'事件处理函数
+    $(document).on('infinite', '.infinite-scroll', function() {
+
+        // 如果正在加载，则退出
+        if (loading) return;
+
+        // 设置flag
+        loading = true;
+
+        // 模拟1s的加载过程
+        setTimeout(function() {
+            // 重置加载flag
+            loading = false;
+
+            if (lastIndex >= maxItems) {
+                // 加载完毕，则注销无限加载事件，以防不必要的加载
+                $.detachInfiniteScroll($('.infinite-scroll'));
+                // 删除加载提示符
+                $('.infinite-scroll-preloader').remove();
+                return;
+            }
+
+            // 添加新条目
+            addItems(itemsPerLoad, lastIndex);
+            // 更新最后加载的序号
+            lastIndex = $('.list-container li').length;
+            //容器发生改变,如果是js滚动，需要刷新滚动
+            $.refreshScroller();
+        }, 1000);
+    });
 });
 </script>
+
 
 <p class="component-description">javacript:</p>
 {% highlight js %}
