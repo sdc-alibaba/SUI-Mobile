@@ -149,11 +149,14 @@ $(function () {
 
     function updateContent(content) {
       var $page = $('#iwindow').html(content);
+      $page.find('.content').trigger('updateContent');
       $.initPageSwiper($page);
       //初始化滚动条
       $.initScroller({type:'js'});
       $.initPullToRefresh($page);
       $.initInfiniteScroll($page);
+
+
     }
 
     // Injection of components into device

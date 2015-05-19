@@ -3351,7 +3351,7 @@ ptrContent - HTMLElement or string (with CSS Selector) 需要启用的下拉刷�
   <article class="component" id="infinitescroll">
     <h3 class="component-title">无限滚动</h3>
     <p class="component-description">无限滚动用来在页面滚动到接近底部时加载新内容或进行其他操作。</p>
-    <h3 class="component-title">无限滚动HTML结构</h3>
+    <h3 class="component-title">无限滚动demo</h3>
     <p class="component-description">
         你只需在可滚动的容器上添加“infinite-scroll”类，一般是页面滚动区域 - <code>div.content</code>
     </p>
@@ -3363,30 +3363,166 @@ ptrContent - HTMLElement or string (with CSS Selector) 需要启用的下拉刷�
             ...
         </div>
     </div>
-    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+<span class="nc">.infinite-scroll-preloader</span> <span class="p">{</span>
+  <span class="nl">margin-top</span><span class="p">:</span><span class="m">-20px</span><span class="p">;</span>
+  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.infinite-scroll-preloader</span> <span class="nc">.preloader</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span><span class="m">34px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span><span class="m">34px</span><span class="p">;</span>
+<span class="p">}</span>      
+<span class="nt">&lt;/style&gt;</span>
+
+<span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>无限滚动<span class="nt">&lt;/h1&gt;</span>
 <span class="nt">&lt;/header&gt;</span>
+<span class="c">&lt;!-- 添加 class infinite-scroll 和 data-distaance --&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content infinite-scroll"</span> <span class="na">data-distance=</span><span class="s">"100"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-block"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-container"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="c">&lt;!-- 加载提示符 --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"infinite-scroll-preloader"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"preloader"</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
     <p class="component-description">其中：</p>
     <ul>
         <li><code>div class="page-content infinite-scroll"</code> -是我们无限滚动的容器</li>
-        <li><code>tem-media</code> - 属性用来配置页面滚动到离底部多远时触发无限滚动事件，默认是50 (px)</li>
+        <li><code>data-distance</code> - 属性用来配置页面滚动到离底部多远时触发无限滚动事件，默认是50 (px)</li>
     </ul>
-</article>
-<article class="component">
+<script type="text/javascript">
+// 加载flag
+var loading = false;
+// 最多可加载的条目
+var maxItems = 100;
+
+// 每次加载添加多少条目
+var itemsPerLoad = 20;
+
+function addItems(number, lastIndex) {
+    // 生成新条目的HTML
+    var html = '';
+    for (var i = lastIndex + 1; i <= lastIndex + number; i++) {
+        html += '<li class="item-content"><div class="item-inner"><div class="item-title">Item ' + i + '</div></div></li>';
+    }
+    // 添加新条目
+    $('.infinite-scroll .list-container').append(html);
+}
+
+// 上次加载的序号
+
+var lastIndex = 0;
+//文档专用事件 updateContent
+$(document).on('updateContent', '.infinite-scroll', function() {
+    //预先加载20条
+    addItems(itemsPerLoad, 0);
+    lastIndex = 0;
+});
+// 注册'infinite'事件处理函数
+$(document).on('infinite', '.infinite-scroll', function() {
+
+    // 如果正在加载，则退出
+    if (loading) return;
+
+    // 设置flag
+    loading = true;
+
+    // 模拟1s的加载过程
+    setTimeout(function() {
+        // 重置加载flag
+        loading = false;
+
+        if (lastIndex >= maxItems) {
+            // 加载完毕，则注销无限加载事件，以防不必要的加载
+            $.detachInfiniteScroll($('.infinite-scroll'));
+            // 删除加载提示符
+            $('.infinite-scroll-preloader').remove();
+            return;
+        }
+
+        // 添加新条目
+        addItems(itemsPerLoad, lastIndex);
+        // 更新最后加载的序号
+        lastIndex = $('.list-container li').length;
+        //容器发生改变,如果是js滚动，需要刷新滚动
+        $.refreshScroller();
+    }, 1000);
+});
+</script>
+
+<p class="component-description">javacript:</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 加载flag</span>
+    <span class="kd">var</span> <span class="nx">loading</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="c1">// 最多可加载的条目</span>
+    <span class="kd">var</span> <span class="nx">maxItems</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+
+    <span class="c1">// 每次加载添加多少条目</span>
+    <span class="kd">var</span> <span class="nx">itemsPerLoad</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">addItems</span><span class="p">(</span><span class="nx">number</span><span class="p">,</span> <span class="nx">lastIndex</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 生成新条目的HTML</span>
+            <span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">lastIndex</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="nx">lastIndex</span> <span class="o">+</span> <span class="nx">number</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">html</span> <span class="o">+=</span> <span class="s1">'&lt;li class="item-content"&gt;&lt;div class="item-inner"&gt;&lt;div class="item-title"&gt;Item '</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="s1">'&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;'</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="c1">// 添加新条目</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s1">'.list-container'</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">html</span><span class="p">);</span>
+
+        <span class="p">}</span>
+        <span class="c1">//预先加载20条</span>
+    <span class="nx">addItems</span><span class="p">(</span><span class="nx">itemsPerLoad</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+    <span class="c1">// 上次加载的序号</span>
+
+    <span class="kd">var</span> <span class="nx">lastIndex</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+
+    <span class="c1">// 注册'infinite'事件处理函数</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'infinite'</span><span class="p">,</span> <span class="s1">'.infinite-scroll'</span><span class="p">,</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+        <span class="c1">// 如果正在加载，则退出</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">loading</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+        <span class="c1">// 设置flag</span>
+        <span class="nx">loading</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+        <span class="c1">// 模拟1s的加载过程</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="c1">// 重置加载flag</span>
+            <span class="nx">loading</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nx">lastIndex</span> <span class="o">&gt;=</span> <span class="nx">maxItems</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// 加载完毕，则注销无限加载事件，以防不必要的加载</span>
+                <span class="nx">$</span><span class="p">.</span><span class="nx">detachInfiniteScroll</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">'.infinite-scroll'</span><span class="p">));</span>
+                <span class="c1">// 删除加载提示符</span>
+                <span class="nx">$</span><span class="p">(</span><span class="s1">'.infinite-scroll-preloader'</span><span class="p">).</span><span class="nx">remove</span><span class="p">();</span>
+                <span class="k">return</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="c1">// 添加新条目</span>
+            <span class="nx">addItems</span><span class="p">(</span><span class="nx">itemsPerLoad</span><span class="p">,</span> <span class="nx">lastIndex</span><span class="p">);</span>
+            <span class="c1">// 更新最后加载的序号</span>
+            <span class="nx">lastIndex</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'.list-container li'</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+            <span class="c1">//容器发生改变,如果是js滚动，需要刷新滚动</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">refreshScroller</span><span class="p">();</span>
+        <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+    <span class="p">});</span></code></pre></div>
+
     <h3 class="component-title">在顶部的无限滚动</h3>
     <p class="component-description">如果你需要向上滚动到顶部时进行无限滚动，那么需要在 “<code>page-content</code>”添加额外的class <code>infinite-scroll-top</code>
     </p>
-		<div class="component-example component-example-fullbleed">
-				<header class="bar bar-nav">
-				    <h1 class="title">在顶部的无限滚动</h1>
-				</header>
-				<div class="content infinite-scroll-top" data-distance="100">
-				    <div>...</div>
-				</div>
-		</div>
+    <div class="component-example component-example-fullbleed">
+            <header class="bar bar-nav">
+                <h1 class="title">在顶部的无限滚动</h1>
+            </header>
+            <div class="content infinite-scroll-top" data-distance="100">
+                <div>...</div>
+            </div>
+    </div>
+
 
 		<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>在顶部的无限滚动<span class="nt">&lt;/h1&gt;</span>
@@ -3394,10 +3530,7 @@ ptrContent - HTMLElement or string (with CSS Selector) 需要启用的下拉刷�
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content infinite-scroll-top"</span> <span class="na">data-distance=</span><span class="s">"100"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
-</article>
 
-
-<article class="component">
     <h3 class="component-title">无限滚动事件</h3>
     <table class="params-table">
         <thead>
@@ -3430,98 +3563,6 @@ ptrContent - HTMLElement or string (with CSS Selector) 需要启用的下拉刷�
     	注意，仅在你使用$.detachInfiniteScroll方法删除过事件监听器后，才可能需要使用
         $.attachInfiniteScroll方法，因为无限滚动组件的事件监听器会在“initPage”时被自动添加。
     </p>
-	<h3 class="component-title">示例</h3>
-    <p class="component-description">HTML:</p>
-	<div class="component-example component-example-fullbleed">
-	</div>
-		<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
-<span class="nc">.infinite-scroll-preloader</span> <span class="p">{</span>
-  <span class="nl">margin-top</span><span class="p">:</span><span class="m">-20px</span><span class="p">;</span>
-  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
-  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nc">.infinite-scroll-preloader</span> <span class="nc">.preloader</span> <span class="p">{</span>
-  <span class="nl">width</span><span class="p">:</span><span class="m">34px</span><span class="p">;</span>
-  <span class="nl">height</span><span class="p">:</span><span class="m">34px</span><span class="p">;</span>
-<span class="p">}</span>      
-<span class="nt">&lt;/style&gt;</span>
-
-<span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>无限滚动<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;/header&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content infinite-scroll"</span> <span class="na">data-distance=</span><span class="s">"100"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-block"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-container"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;/ul&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="c">&lt;!-- 加载提示符 --&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"infinite-scroll-preloader"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"preloader"</span><span class="nt">&gt;&lt;/div&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
-<span class="c1">// 加载flag</span>
-<span class="kd">var</span> <span class="nx">loading</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
- 
-
-<span class="c1">// 最多可加载的条目</span>
-<span class="kd">var</span> <span class="nx">maxItems</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
-
-<span class="c1">// 每次加载添加多少条目</span>
-<span class="kd">var</span> <span class="nx">itemsPerLoad</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
-
-<span class="kd">function</span> <span class="nx">addItems</span><span class="p">(</span><span class="nx">number</span><span class="p">,</span><span class="nx">lastIndex</span><span class="p">)</span> <span class="p">{</span>
-	<span class="c1">// 生成新条目的HTML</span>
-    <span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">lastIndex</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="nx">lastIndex</span> <span class="o">+</span> <span class="nx">number</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">html</span> <span class="o">+=</span> <span class="s1">'&lt;li class="item-content"&gt;&lt;div class="item-inner"&gt;&lt;div class="item-title"&gt;Item '</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="s1">'&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;'</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="c1">// 添加新条目</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">'.list-container'</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">html</span><span class="p">);</span>
-
-<span class="p">}</span>
-<span class="c1">//预先加载20条</span>
-<span class="nx">addItems</span><span class="p">(</span><span class="nx">itemsPerLoad</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
-
-<span class="c1">// 上次加载的序号</span>
-
-<span class="kd">var</span> <span class="nx">lastIndex</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
-
-<span class="c1">// 注册'infinite'事件处理函数</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">'.infinite-scroll'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'infinite'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-
-    <span class="c1">// 如果正在加载，则退出</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">loading</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-
-    <span class="c1">// 设置flag</span>
-    <span class="nx">loading</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-
-    <span class="c1">// 模拟1s的加载过程</span>
-    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="c1">// 重置加载flag</span>
-        <span class="nx">loading</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="nx">lastIndex</span> <span class="o">&gt;=</span> <span class="nx">maxItems</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// 加载完毕，则注销无限加载事件，以防不必要的加载</span>
-            <span class="nx">$</span><span class="p">.</span><span class="nx">detachInfiniteScroll</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">'.infinite-scroll'</span><span class="p">));</span>
-            <span class="c1">// 删除加载提示符</span>
-            <span class="nx">$</span><span class="p">(</span><span class="s1">'.infinite-scroll-preloader'</span><span class="p">).</span><span class="nx">remove</span><span class="p">();</span>
-            <span class="k">return</span><span class="p">;</span>
-        <span class="p">}</span>
-
-        <span class="c1">// 添加新条目</span>
-        <span class="nx">addItems</span><span class="p">(</span><span class="nx">itemsPerLoad</span><span class="p">,</span><span class="nx">lastIndex</span><span class="p">);</span>
-        <span class="c1">// 更新最后加载的序号</span>
-        <span class="nx">lastIndex</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'.list-container li'</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
-        <span class="c1">//容器发生改变,如果是js滚动，需要刷新滚动</span>
-        <span class="nx">$</span><span class="p">.</span><span class="nx">refreshScroller</span><span class="p">();</span>
-    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
-<span class="p">});</span>
-
-<span class="nt">&lt;/script&gt;</span></code></pre></div>	
-    <p class="component-description">javacript:</p>
-    <div class="highlight"><pre><code class="language-js" data-lang="js"></code></pre></div>
 </article>
 
 
