@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SUI Mobile Demo</title>
+    <meta name="description" content="Ratchet: Build mobile apps with simple HTML, CSS, and JS components.">
+    <meta name="author" content="Connor Sears">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Google Web Fonts -->
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1431676360_347254.css">
+
+    <link rel="stylesheet" href="/dist/css/sm.css">
+
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/img/apple-touch-icon-114x114.png">
+    <script src="/assets/js/zepto.js"></script>
+    <script src="/assets/js/zepto-extras.js"></script>
+    <script>
+      //ga
+    </script>
+  </head>
+  <body>
+    <header class="bar bar-nav">
+  <a class="button button-link button-nav pull-left" href="/demos/list" data-transition='slide-out'>
+    <span class="icon icon-left"></span>
+    返回
+  </a>
+  <h1 class="title">列表</h1>
+</header>
+<div class="content">
+  <div class="content-block">
+    <!-- 我们在data-sortable属性中指定目标可排序列表 -->
+    <p><a href="#" data-sortable=".sortable" class="open-sortable">Enable sortable</a></p>
+    <p><a href="#" data-sortable=".sortable" class="close-sortable">Disable sortable</a></p>
+    <p><a href="#" data-sortable=".sortable" class="toggle-sortable">Toggle sortable</a></p>
+  </div>
+  <!-- 可排序列表 -->
+  <div class="list-block sortable">
+    <ul>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-f7"></i></div>
+          <div class="item-inner">
+            <div class="item-title">Item 1</div>
+            <div class="item-after">$10</div>
+          </div>
+        </div>
+        <!-- 可排序句柄  -->
+        <div class="sortable-handler"></div>
+      </li>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-f7"></i></div>
+          <div class="item-inner">
+            <div class="item-title">Item 2</div>
+            <div class="item-after">$20</div>
+          </div>
+        </div>
+        <div class="sortable-handler"></div>
+      </li>
+    </ul>
+  </div> 
+</div>
+
+    <script src="/dist/js/sm.js"></script>
+    <script src="/assets/js/demos.js"></script>
+  </body>
+</html>

@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>/</loc>
-    <lastmod>2015-05-19T17:43:31+08:00</lastmod>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -10,7 +10,25 @@
   
   <url>
     <loc>/about/</loc>
-    <lastmod>2015-05-19T17:43:31+08:00</lastmod>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/bar/bar-multi/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/btns/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -19,7 +37,25 @@
   
   <url>
     <loc>/components/</loc>
-    <lastmod>2015-05-19T17:43:31+08:00</lastmod>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/list/contacts-list/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -28,7 +64,16 @@
   
   <url>
     <loc>/examples/</loc>
-    <lastmod>2015-05-19T17:43:31+08:00</lastmod>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/card/facebook-card/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -37,12 +82,201 @@
   
   <url>
     <loc>/getting-started/</loc>
-    <lastmod>2015-05-19T17:43:31+08:00</lastmod>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   
+  
+  <url>
+    <loc>/demos/form/icon-input/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/list/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/card/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  
+  
+  <url>
+    <loc>/demos/form/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/bar/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/form/label-input/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/form/layout/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/card/list-card/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/list/media-list/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/bar/nav-bar-labels/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/bar/nav-bar/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/push/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/card/simple-card/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/list/sortable-list/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/card/styled-card/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/tab/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/bar/title-bar-btns/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/bar/title-bar-links/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/bar/title-bar/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/card/view-card/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/demos/list/view-list/</loc>
+    <lastmod>2015-05-19T17:52:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
   
   
 </urlset>

@@ -1,0 +1,184 @@
+<article class="component active" id="browser">
+  <h3 class="component-title">图片浏览器</h3>
+  <p class="component-description">图片浏览器</p>
+
+  <div class="component-example component-example-fullbleed">
+    <header class="bar bar-nav">
+      <h1 class="title">图片浏览器</h1>
+    </header>
+    <div class="content">
+      <div class="content-block row">
+        <div class="col-50"><a href="#" class="button pb-standalone">Standalone</a></div>
+        <div class="col-50"><a href="#" class="button pb-popup">Popup</a></div>
+      </div>
+      <div class="content-block"><a href="#" class="button pb-standalone-captions">With Captions</a></div>
+      <div class="content-block"><a href="#" class="button pb-standalone-video">With Video</a></div>
+    </div>
+    <script>
+      $(function(){
+        /*=== 默认为 standalone ===*/
+        $.photoBrowser.prototype.defaults.container = '#iwindow';
+        var myPhotoBrowserStandalone = $.photoBrowser({
+            photos : [
+                '//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg',
+                '//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg',
+                '//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg',
+            ]
+        });
+        //点击时打开图片浏览器
+        $(document).on('click','.pb-standalone',function () {
+          myPhotoBrowserStandalone.open();
+        });
+         
+        /*=== Popup ===*/
+        var myPhotoBrowserPopup = $.photoBrowser({
+            photos : [
+                '//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg',
+                '//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg',
+                '//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg',
+            ],
+            type: 'popup'
+        });
+        $(document).on('click','.pb-popup',function () {
+          myPhotoBrowserPopup.open();
+        });
+         
+         
+        /*=== 有标题 ===*/
+        var myPhotoBrowserCaptions = $.photoBrowser({
+            photos : [
+                {
+                    url: '//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg',
+                    caption: 'Caption 1 Text'
+                },
+                {
+                    url: '//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg',
+                    caption: 'Second Caption Text'
+                },
+                // 这个没有标题
+                {
+                    url: '//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg',
+                },
+            ],
+            theme: 'dark',
+            type: 'standalone'
+        });
+        $(document).on('click','.pb-standalone-captions',function () {
+          myPhotoBrowserCaptions.open();
+        });
+         
+        /*=== 有视频 ===*/
+        var myPhotoBrowserVideo = $.photoBrowser({
+            photos : [
+                {
+                    html: '<iframe src="//www.youtube.com/embed/lmc21V-zBq0?list=PLpj0FBQgLGEr3mtZ5BTwtmSwF1dkPrPRM" frameborder="0" allowfullscreen></iframe>',
+                    caption: 'Woodkid - Run Boy Run (Official HD Video)'
+                },
+                {
+                    url: 'http://lorempixel.com/1024/1024/sports/2/',
+                    caption: 'Second Caption Text'
+                },
+                {
+                    url: 'http://lorempixel.com/1024/1024/sports/3/',
+                },
+            ],
+            theme: 'dark',
+            type: 'standalone'
+        });
+        $(document).on('click','.pb-standalone-video',function () {
+          myPhotoBrowserVideo.open();
+        });
+      })
+    </script>
+  </div>
+
+{% highlight html %}
+<header class="bar bar-nav">
+  <h1 class="title">图片浏览器</h1>
+</header>
+<div class="content">
+  <div class="content-block row">
+    <div class="col-50"><a href="#" class="button pb-standalone">Standalone</a></div>
+    <div class="col-50"><a href="#" class="button pb-popup">Popup</a></div>
+  </div>
+  <div class="content-block"><a href="#" class="button pb-standalone-captions">With Captions</a></div>
+  <div class="content-block"><a href="#" class="button pb-standalone-video">With Video</a></div>
+</div>
+{% endhighlight %}
+{% highlight js %}
+/*=== 默认为 standalone ===*/
+$(function(){
+  /*=== 默认为 standalone ===*/
+  $.photoBrowser.prototype.defaults.container = '#iwindow';
+  var myPhotoBrowserStandalone = $.photoBrowser({
+      photos : [
+          '//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg',
+          '//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg',
+          '//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg',
+      ]
+  });
+  //点击时打开图片浏览器
+  $(document).on('click','.pb-standalone',function () {
+    myPhotoBrowserStandalone.open();
+  });
+   
+  /*=== Popup ===*/
+  var myPhotoBrowserPopup = $.photoBrowser({
+      photos : [
+          '//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg',
+          '//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg',
+          '//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg',
+      ],
+      type: 'popup'
+  });
+  $(document).on('click','.pb-popup',function () {
+    myPhotoBrowserPopup.open();
+  });
+
+  /*=== 有标题 ===*/
+  var myPhotoBrowserCaptions = $.photoBrowser({
+      photos : [
+          {
+              url: '//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg',
+              caption: 'Caption 1 Text'
+          },
+          {
+              url: '//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg',
+              caption: 'Second Caption Text'
+          },
+          // 这个没有标题
+          {
+              url: '//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg',
+          },
+      ],
+      theme: 'dark',
+      type: 'standalone'
+  });
+  $(document).on('click','.pb-standalone-captions',function () {
+    myPhotoBrowserCaptions.open();
+  });
+   
+  /*=== 有视频 ===*/
+  var myPhotoBrowserVideo = $.photoBrowser({
+      photos : [
+          {
+              html: '<iframe src="//www.youtube.com/embed/lmc21V-zBq0?list=PLpj0FBQgLGEr3mtZ5BTwtmSwF1dkPrPRM" frameborder="0" allowfullscreen></iframe>',
+              caption: 'Woodkid - Run Boy Run (Official HD Video)'
+          },
+          {
+              url: 'http://lorempixel.com/1024/1024/sports/2/',
+              caption: 'Second Caption Text'
+          },
+          {
+              url: 'http://lorempixel.com/1024/1024/sports/3/',
+          },
+      ],
+      theme: 'dark',
+      type: 'standalone'
+  });
+  $(document).on('click','.pb-standalone-video',function () {
+    myPhotoBrowserVideo.open();
+  });
+})
+{% endhighlight %}
+</article>
