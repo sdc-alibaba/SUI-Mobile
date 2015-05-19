@@ -149,9 +149,7 @@ $(function () {
 
     function updateContent(content) {
       var $page = $('#iwindow').html(content);
-      $.initPageSwiper($page);
-      //初始化滚动条
-      $.initScroller({type:'js'});
+      $.initPage($page);
     }
 
     // Injection of components into device

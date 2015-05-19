@@ -10,7 +10,7 @@ Framework7 Swiper Additions
     $.fn.swiper = function (params) {
         return new $.Swiper(this, params);
     };
-    $.initPageSwiper = function (pageContainer) {
+    $.initSwiper = function (pageContainer) {
         var page = $(pageContainer);
         var swipers = page.find('.swiper-container');
         if (swipers.length === 0) return;
@@ -34,7 +34,7 @@ Framework7 Swiper Additions
             destroySwiperOnRemove(_slider);
         }
     };
-    $.reinitPageSwiper = function (pageContainer) {
+    $.reinitSwiper = function (pageContainer) {
         var page = $(pageContainer);
         var sliders = page.find('.swiper-container');
         if (sliders.length === 0) return;
