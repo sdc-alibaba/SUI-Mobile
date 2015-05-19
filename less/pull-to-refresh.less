@@ -1,8 +1,7 @@
 /* === Pull To Refresh === */
 .pull-to-refresh-layer {
-    position:absolute; 
     position: relative;
-    margin-top: -44px;
+    // margin-top: -44px;
     left:0; 
     top:0; 
     width:100%; 
@@ -34,15 +33,7 @@
     
 }
 .pull-to-refresh-content {
-    &.pull-to-refresh-no-navbar {
-        margin-top: -44px;
-        height: ~"-webkit-calc(100% + 44px)";
-        height: ~"-moz-calc(100% + 44px)";
-        height: ~"calc(100% + 44px)";
-        .pull-to-refresh-layer {
-            margin-top: 0;
-        }
-    }
+    transform: translate3d(0,-40px,0);
     &.transitioning, &.refreshing {
         transition-duration: 400ms; 
     }

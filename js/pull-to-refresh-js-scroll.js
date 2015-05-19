@@ -12,11 +12,8 @@
 
         var page = eventsTarget.hasClass('content') ? eventsTarget : eventsTarget.parents('.content');
         var scroller = $.getScroller(page[0]);
-        var hasNavbar = false;
         if(!scroller) return;
-        if (page.find('.navbar').length > 0 || page.parents('.navbar-fixed, .navbar-through').length > 0 || page.hasClass('navbar-fixed') || page.hasClass('navbar-through')) hasNavbar = true;
-        if (page.hasClass('no-navbar')) hasNavbar = false;
-        if (!hasNavbar) eventsTarget.addClass('pull-to-refresh-no-navbar');
+       
 
         var container = eventsTarget;
 
@@ -48,16 +45,7 @@
             scroller.off('scroll', handleScroll);
             scroller.scroller.off('ptr', handleRefresh);
         }
-        eventsTarget[0].f7DestroyPullToRefresh = destroyPullToRefresh;
-
-        // Detach Events on page remove
-        if (page.length === 0) return;
-
-        function detachEvents() {
-            destroyPullToRefresh();
-            page.off('pageBeforeRemove', detachEvents);
-        }
-        page.on('pageBeforeRemove', detachEvents);
+        eventsTarget[0].destroyPullToRefresh = destroyPullToRefresh;
 
     };
 
@@ -91,7 +79,7 @@
         pageContainer = $(pageContainer);
         var pullToRefreshContent = pageContainer.hasClass('pull-to-refresh-content') ? pageContainer : pageContainer.find('.pull-to-refresh-content');
         if (pullToRefreshContent.length === 0) return;
-        if (pullToRefreshContent[0].f7DestroyPullToRefresh) pullToRefreshContent[0].f7DestroyPullToRefresh();
+        if (pullToRefreshContent[0].destroyPullToRefresh) pullToRefreshContent[0].destroyPullToRefresh();
     };
 
     $._pullToRefreshJSScroll = {

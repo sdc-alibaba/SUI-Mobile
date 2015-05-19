@@ -75,23 +75,25 @@
     <h3 class="component-title">无限滚动API</h3>
     <p class="component-description">有2个App方法：</p>
 {% highlight js %}
-myApp.attachInfiniteScroll(container) - 为指定的HTML元素容器添加无限滚动事件监听器
+$.attachInfiniteScroll(container) - 为指定的HTML元素容器添加无限滚动事件监听器
 parameters - 表示无限滚动容器的HTML元素或CSS选择器。必选。 
 
 {% endhighlight %} 
 
 {% highlight js %}
-myApp.detachInfiniteScroll(container) - 从指定的HTML元素容器删除无限滚动事件监听器
+$.detachInfiniteScroll(container) - 从指定的HTML元素容器删除无限滚动事件监听器
 parameters - 表示无限滚动容器的HTML元素或CSS选择器。必选。
 
 {% endhighlight %}
 
     <p class="component-description attention">
-    	注意，仅在你使用myApp.detachInfiniteScroll方法删除过事件监听器后，才可能需要使用myApp.attachInfiniteScroll方法，因为无限滚动组件的事件监听器会在“pageInit”时被自动添加。
+    	注意，仅在你使用$.detachInfiniteScroll方法删除过事件监听器后，才可能需要使用
+        $.attachInfiniteScroll方法，因为无限滚动组件的事件监听器会在“initPage”时被自动添加。
     </p>
-		<h3 class="component-title">示例</h3>
-		<div class="component-example component-example-fullbleed">
-		</div>
+	<h3 class="component-title">示例</h3>
+    <p class="component-description">HTML:</p>
+	<div class="component-example component-example-fullbleed">
+	</div>
 		{% highlight html %}
 <style type="text/css">
 .infinite-scroll-preloader {
@@ -180,7 +182,10 @@ $('.infinite-scroll').on('infinite', function() {
 
 </script>
     {% endhighlight %}	
-
+    <p class="component-description">javacript:</p>
+    {% highlight js %}
+    
+    {% endhighlight %}
 </article>
 
 

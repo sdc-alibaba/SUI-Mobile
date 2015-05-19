@@ -1,6 +1,20 @@
 /* global Zepto:true */
 (function($) {
     "use strict";
+    //support
+
+    $.support = (function() {
+        var support = {
+            touch: !!(('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch)
+        };
+        return support;
+    })();
+    $.touchEvents = {
+        start: $.support.touch ? 'touchstart' : 'mousedown',
+        move: $.support.touch ? 'touchmove' : 'mousemove',
+        end: $.support.touch ? 'touchend' : 'mouseup'
+    };
+
 
     $.fn.transitionEnd = function(callback) {
         var events = ['webkitTransitionEnd', 'transitionend', 'oTransitionEnd', 'MSTransitionEnd', 'msTransitionEnd'],

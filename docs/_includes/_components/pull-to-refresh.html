@@ -2,6 +2,7 @@
   <h3 class="component-title">下拉刷新</h3>
   <p class="component-description">下拉刷新是一个特别的组件，可以用来初始化页面内容的刷新。</p>
   <h3 class="component-title">下拉刷新的demo</h3>
+<p class="component-description">HTML:</p>
 
   <div class="component-example component-example-fullbleed">
       <header class="bar bar-nav">
@@ -51,11 +52,11 @@
         </div>
     </div>
 </div>
+{% endhighlight %}
+
 <script type="text/javascript">
-// 下拉刷新页面
-var ptrContent = $('.pull-to-refresh-content');
 // 添加'refresh'监听器
-ptrContent.on('refresh', function(e) {
+$(document).on('refresh', '.pull-to-refresh-content',function(e) {
     // 模拟2s的加载过程
     setTimeout(function() {
         var cardNumber = $(e.target).find('.card').length + 1;
@@ -68,15 +69,34 @@ ptrContent.on('refresh', function(e) {
                           '</div>' +
                       '</div>';
 
-        ptrContent.find('.card-container').prepend(cardHTML);
+        $(e.target).find('.card-container').prepend(cardHTML);
         // 加载完毕需要重置
         $.pullToRefreshDone('.pull-to-refresh-content');
     }, 2000);
 });
 </script>
+<p class="component-description">javascript:</p>
+{% highlight js %}
+// 添加'refresh'监听器
+$(document).on('refresh', '.pull-to-refresh-content',function(e) {
+    // 模拟2s的加载过程
+    setTimeout(function() {
+        var cardNumber = $(e.target).find('.card').length + 1;
+        var cardHTML = '<div class="card">' +
+                          '<div class="card-header">card'+cardNumber+'</div>' +
+                          '<div class="card-content">' +
+                            '<div class="card-content-inner">' +
+                                '这里是第' + cardNumber + '个card，下拉刷新会出现第' + (cardNumber + 1) + '个card。' +
+                            '</div>' +
+                          '</div>' +
+                      '</div>';
+
+        $(e.target).find('.card-container').prepend(cardHTML);
+        // 加载完毕需要重置
+        $.pullToRefreshDone('.pull-to-refresh-content');
+    }, 2000);
+});
 {% endhighlight %}
-
-
  <p class="component-description">其中</p>
  <ul>
    <li><code>page-content</code>需要额外添加<code>pull-to-refresh-content</code>类，它会开启下拉刷新。</li>
@@ -113,7 +133,7 @@ ptrContent.on('refresh', function(e) {
 <h3 class="component-title">重置下拉刷新</h3>
 <p class="component-description">在我们刷新页面内容之后，需要重置下拉刷新组件，以使用户可以再次下拉：</p>
 {% highlight html %}
-myApp.pullToRefreshDone(ptrContent) // 重置特定的下拉刷新界面
+$.pullToRefreshDone(ptrContent) // 重置特定的下拉刷新界面
 
 //ptrContent  我们想要重置的下拉刷新页面的HTML元素或CSS选择器
 {% endhighlight %}
@@ -121,7 +141,7 @@ myApp.pullToRefreshDone(ptrContent) // 重置特定的下拉刷新界面
 <h3 class="component-title">JS触发下拉刷新</h3>
 <p class="component-description">我们也可以通过下面的方法手工触发下拉刷新:</p>
 {% highlight html %}
-myApp.pullToRefreshTrigger(ptrContent) //触发特定界面的下拉刷新
+$.pullToRefreshTrigger(ptrContent) //触发特定界面的下拉刷新
 
 ptrContent //我们想要触发的下拉刷新页面的HTML元素或CSS选择器
 {% endhighlight %}
@@ -130,14 +150,14 @@ ptrContent //我们想要触发的下拉刷新页面的HTML元素或CSS选择器
 <h3 class="component-title">销毁/禁用下拉刷新</h3>
 <p class="component-description">有的时候你可能需要禁用下拉刷新。我们可以通过这个方法来做到:</p>
 {% highlight html %}
-myApp.destroyPullToRefresh(ptrContent) //销毁/禁用 下拉刷新
+$.destroyPullToRefresh(ptrContent) //销毁/禁用 下拉刷新
 
 ptrContent // HTMLElement or string (CSS 选择器) 我们需要销毁/禁用的下拉刷新
 {% endhighlight %}
 
 <p class="component-description">我们可以再次初始化/启用它：</p>
 {% highlight html %}
-myApp.initPullToRefresh(ptrContent) - 初始化/启用下拉刷新
+$.initPullToRefresh(ptrContent) - 初始化/启用下拉刷新
 
 ptrContent - HTMLElement or string (with CSS Selector) 需要启用的下拉刷新
 {% endhighlight %}

@@ -3198,6 +3198,7 @@
   <h3 class="component-title">下拉刷新</h3>
   <p class="component-description">下拉刷新是一个特别的组件，可以用来初始化页面内容的刷新。</p>
   <h3 class="component-title">下拉刷新的demo</h3>
+<p class="component-description">HTML:</p>
 
   <div class="component-example component-example-fullbleed">
       <header class="bar bar-nav">
@@ -3245,12 +3246,32 @@
             <span class="nt">&lt;/div&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
-<span class="c1">// 下拉刷新页面</span>
-<span class="kd">var</span> <span class="nx">ptrContent</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'.pull-to-refresh-content'</span><span class="p">);</span>
-<span class="c1">// 添加'refresh'监听器</span>
-<span class="nx">ptrContent</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'refresh'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+<script type="text/javascript">
+// 添加'refresh'监听器
+$(document).on('refresh', '.pull-to-refresh-content',function(e) {
+    // 模拟2s的加载过程
+    setTimeout(function() {
+        var cardNumber = $(e.target).find('.card').length + 1;
+        var cardHTML = '<div class="card">' +
+                          '<div class="card-header">card'+cardNumber+'</div>' +
+                          '<div class="card-content">' +
+                            '<div class="card-content-inner">' +
+                                '这里是第' + cardNumber + '个card，下拉刷新会出现第' + (cardNumber + 1) + '个card。' +
+                            '</div>' +
+                          '</div>' +
+                      '</div>';
+
+        $(e.target).find('.card-container').prepend(cardHTML);
+        // 加载完毕需要重置
+        $.pullToRefreshDone('.pull-to-refresh-content');
+    }, 2000);
+});
+</script>
+<p class="component-description">javascript:</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 添加'refresh'监听器</span>
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'refresh'</span><span class="p">,</span> <span class="s1">'.pull-to-refresh-content'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// 模拟2s的加载过程</span>
     <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">cardNumber</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.card'</span><span class="p">).</span><span class="nx">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
@@ -3263,14 +3284,11 @@
                           <span class="s1">'&lt;/div&gt;'</span> <span class="o">+</span>
                       <span class="s1">'&lt;/div&gt;'</span><span class="p">;</span>
 
-        <span class="nx">ptrContent</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.card-container'</span><span class="p">).</span><span class="nx">prepend</span><span class="p">(</span><span class="nx">cardHTML</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.card-container'</span><span class="p">).</span><span class="nx">prepend</span><span class="p">(</span><span class="nx">cardHTML</span><span class="p">);</span>
         <span class="c1">// 加载完毕需要重置</span>
         <span class="nx">$</span><span class="p">.</span><span class="nx">pullToRefreshDone</span><span class="p">(</span><span class="s1">'.pull-to-refresh-content'</span><span class="p">);</span>
     <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
-<span class="p">});</span>
-<span class="nt">&lt;/script&gt;</span></code></pre></div>
-
-
+<span class="p">});</span></code></pre></div>
  <p class="component-description">其中</p>
  <ul>
    <li><code>page-content</code>需要额外添加<code>pull-to-refresh-content</code>类，它会开启下拉刷新。</li>
@@ -3306,25 +3324,25 @@
 
 <h3 class="component-title">重置下拉刷新</h3>
 <p class="component-description">在我们刷新页面内容之后，需要重置下拉刷新组件，以使用户可以再次下拉：</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html">myApp.pullToRefreshDone(ptrContent) // 重置特定的下拉刷新界面
+<div class="highlight"><pre><code class="language-html" data-lang="html">$.pullToRefreshDone(ptrContent) // 重置特定的下拉刷新界面
 
 //ptrContent  我们想要重置的下拉刷新页面的HTML元素或CSS选择器</code></pre></div>
 
 <h3 class="component-title">JS触发下拉刷新</h3>
 <p class="component-description">我们也可以通过下面的方法手工触发下拉刷新:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html">myApp.pullToRefreshTrigger(ptrContent) //触发特定界面的下拉刷新
+<div class="highlight"><pre><code class="language-html" data-lang="html">$.pullToRefreshTrigger(ptrContent) //触发特定界面的下拉刷新
 
 ptrContent //我们想要触发的下拉刷新页面的HTML元素或CSS选择器</code></pre></div>
 
 
 <h3 class="component-title">销毁/禁用下拉刷新</h3>
 <p class="component-description">有的时候你可能需要禁用下拉刷新。我们可以通过这个方法来做到:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html">myApp.destroyPullToRefresh(ptrContent) //销毁/禁用 下拉刷新
+<div class="highlight"><pre><code class="language-html" data-lang="html">$.destroyPullToRefresh(ptrContent) //销毁/禁用 下拉刷新
 
 ptrContent // HTMLElement or string (CSS 选择器) 我们需要销毁/禁用的下拉刷新</code></pre></div>
 
 <p class="component-description">我们可以再次初始化/启用它：</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html">myApp.initPullToRefresh(ptrContent) - 初始化/启用下拉刷新
+<div class="highlight"><pre><code class="language-html" data-lang="html">$.initPullToRefresh(ptrContent) - 初始化/启用下拉刷新
 
 ptrContent - HTMLElement or string (with CSS Selector) 需要启用的下拉刷新</code></pre></div>
 
@@ -3402,18 +3420,20 @@ ptrContent - HTMLElement or string (with CSS Selector) 需要启用的下拉刷�
 
     <h3 class="component-title">无限滚动API</h3>
     <p class="component-description">有2个App方法：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">myApp</span><span class="p">.</span><span class="nx">attachInfiniteScroll</span><span class="p">(</span><span class="nx">container</span><span class="p">)</span> <span class="o">-</span> <span class="err">为指定的</span><span class="nx">HTML</span><span class="err">元素容器添加无限滚动事件监听器</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">.</span><span class="nx">attachInfiniteScroll</span><span class="p">(</span><span class="nx">container</span><span class="p">)</span> <span class="o">-</span> <span class="err">为指定的</span><span class="nx">HTML</span><span class="err">元素容器添加无限滚动事件监听器</span>
 <span class="nx">parameters</span> <span class="o">-</span> <span class="err">表示无限滚动容器的</span><span class="nx">HTML</span><span class="err">元素或</span><span class="nx">CSS</span><span class="err">选择器。必选。</span></code></pre></div> 
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">myApp</span><span class="p">.</span><span class="nx">detachInfiniteScroll</span><span class="p">(</span><span class="nx">container</span><span class="p">)</span> <span class="o">-</span> <span class="err">从指定的</span><span class="nx">HTML</span><span class="err">元素容器删除无限滚动事件监听器</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">.</span><span class="nx">detachInfiniteScroll</span><span class="p">(</span><span class="nx">container</span><span class="p">)</span> <span class="o">-</span> <span class="err">从指定的</span><span class="nx">HTML</span><span class="err">元素容器删除无限滚动事件监听器</span>
 <span class="nx">parameters</span> <span class="o">-</span> <span class="err">表示无限滚动容器的</span><span class="nx">HTML</span><span class="err">元素或</span><span class="nx">CSS</span><span class="err">选择器。必选。</span></code></pre></div>
 
     <p class="component-description attention">
-    	注意，仅在你使用myApp.detachInfiniteScroll方法删除过事件监听器后，才可能需要使用myApp.attachInfiniteScroll方法，因为无限滚动组件的事件监听器会在“pageInit”时被自动添加。
+    	注意，仅在你使用$.detachInfiniteScroll方法删除过事件监听器后，才可能需要使用
+        $.attachInfiniteScroll方法，因为无限滚动组件的事件监听器会在“initPage”时被自动添加。
     </p>
-		<h3 class="component-title">示例</h3>
-		<div class="component-example component-example-fullbleed">
-		</div>
+	<h3 class="component-title">示例</h3>
+    <p class="component-description">HTML:</p>
+	<div class="component-example component-example-fullbleed">
+	</div>
 		<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
 <span class="nc">.infinite-scroll-preloader</span> <span class="p">{</span>
   <span class="nl">margin-top</span><span class="p">:</span><span class="m">-20px</span><span class="p">;</span>
@@ -3500,7 +3520,8 @@ ptrContent - HTMLElement or string (with CSS Selector) 需要启用的下拉刷�
 <span class="p">});</span>
 
 <span class="nt">&lt;/script&gt;</span></code></pre></div>	
-
+    <p class="component-description">javacript:</p>
+    <div class="highlight"><pre><code class="language-js" data-lang="js"></code></pre></div>
 </article>
 
 

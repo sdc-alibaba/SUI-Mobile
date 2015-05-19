@@ -14,12 +14,7 @@
             useTranslate = false,
             startTranslate = 0,
             translate, scrollTop, wasScrolled, triggerDistance, dynamicTriggerDistance;
-        var page = eventsTarget.hasClass('page') ? eventsTarget : eventsTarget.parents('.page');
-        var hasNavbar = false;
-        if (page.find('.navbar').length > 0 || page.parents('.navbar-fixed, .navbar-through').length > 0 || page.hasClass('navbar-fixed') || page.hasClass('navbar-through')) hasNavbar = true;
-        if (page.hasClass('no-navbar')) hasNavbar = false;
-        if (!hasNavbar) eventsTarget.addClass('pull-to-refresh-no-navbar');
-
+        
         container = eventsTarget;
 
         // Define trigger distance
@@ -31,7 +26,7 @@
 
         function handleTouchStart(e) {
             if (isTouched) {
-                if ($.device.os === 'android') {
+                if ($.os.android) {
                     if ('targetTouches' in e && e.targetTouches.length > 1) return;
                 } else return;
             }
@@ -73,7 +68,7 @@
                     if (triggerDistance.indexOf('%') >= 0) triggerDistance = container[0].offsetHeight * parseInt(triggerDistance, 10) / 100;
                 }
                 startTranslate = container.hasClass('refreshing') ? triggerDistance : 0;
-                if (container[0].scrollHeight === container[0].offsetHeight || $.device.os !== 'ios') {
+                if (container[0].scrollHeight === container[0].offsetHeight || !$.os.ios) {
                     useTranslate = true;
                 } else {
                     useTranslate = false;
@@ -85,7 +80,7 @@
 
             if (touchesDiff > 0 && scrollTop <= 0 || scrollTop < 0) {
                 // iOS 8 fix
-                if ($.device.os === 'ios' && parseInt($.device.osVersion.split('.')[0], 10) > 7 && scrollTop === 0 && !wasScrolled) useTranslate = true;
+                if ($.os.ios && parseInt($.os.version.split('.')[0], 10) > 7 && scrollTop === 0 && !wasScrolled) useTranslate = true;
 
                 if (useTranslate) {
                     e.preventDefault();
@@ -133,25 +128,17 @@
         }
 
         // Attach Events
-        eventsTarget.on('touchstart', handleTouchStart);
-        eventsTarget.on('touchmove', handleTouchMove);
-        eventsTarget.on('touchend', handleTouchEnd);
+        eventsTarget.on($.touchEvents.start, handleTouchStart);
+        eventsTarget.on($.touchEvents.move, handleTouchMove);
+        eventsTarget.on($.touchEvents.end, handleTouchEnd);
 
-        // Detach Events on page remove
-        if (page.length === 0) return;
 
         function destroyPullToRefresh() {
-            eventsTarget.off('touchstart', handleTouchStart);
-            eventsTarget.off('touchmove', handleTouchMove);
-            eventsTarget.off('touchend', handleTouchEnd);
+            eventsTarget.off($.touchEvents.start, handleTouchStart);
+            eventsTarget.off($.touchEvents.move, handleTouchMove);
+            eventsTarget.off($.touchEvents.end, handleTouchEnd);
         }
-        eventsTarget[0].f7DestroyPullToRefresh = destroyPullToRefresh;
-
-        function detachEvents() {
-            destroyPullToRefresh();
-            page.off('pageBeforeRemove', detachEvents);
-        }
-        page.on('pageBeforeRemove', detachEvents);
+        eventsTarget[0].destroyPullToRefresh = destroyPullToRefresh;
 
     };
     $.pullToRefreshDone = function(container) {
@@ -178,7 +165,7 @@
         pageContainer = $(pageContainer);
         var pullToRefreshContent = pageContainer.hasClass('pull-to-refresh-content') ? pageContainer : pageContainer.find('.pull-to-refresh-content');
         if (pullToRefreshContent.length === 0) return;
-        if (pullToRefreshContent[0].f7DestroyPullToRefresh) pullToRefreshContent[0].f7DestroyPullToRefresh();
+        if (pullToRefreshContent[0].destroyPullToRefresh) pullToRefreshContent[0].destroyPullToRefresh();
     };
 
 
