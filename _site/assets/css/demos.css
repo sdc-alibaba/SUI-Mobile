@@ -1,0 +1,9 @@
+.grid-demo .row {
+  text-align: center;
+}
+.grid-demo .row + .row {
+  margin-top: 15px;
+}
+.grid-demo .row > [class*=col-] {
+  border: 1px solid #ddd;
+}

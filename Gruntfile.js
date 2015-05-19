@@ -77,6 +77,10 @@ module.exports = function(grunt) {
             docs: {
                 src: 'less/docs.less',
                 dest: '<%= meta.doclessetsPath %>css/docs.css'
+            },
+            demos: {
+                src: 'less/demos.less',
+                dest: '<%= meta.doclessetsPath %>css/demos.css'
             }
         },
 
@@ -150,6 +154,9 @@ module.exports = function(grunt) {
             },
             docs: {
                 src: '<%= less.docs.dest %>'
+            },
+            demos: {
+                src: '<%= less.demos.dest %>'
             }
         },
 
