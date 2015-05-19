@@ -109,23 +109,6 @@
   // Main event handlers (touchend, popstate)
   // ==========================================
 
-  var touchend = function (e) {
-    var target = getTarget(e);
-
-    if (!target) {
-      return;
-    }
-
-    e.preventDefault();
-
-    PUSH({
-      url        : target.href,
-      hash       : target.hash,
-      timeout    : target.getAttribute('data-timeout'),
-      transition : target.getAttribute('data-transition')
-    });
-  };
-
   var popstate = function (e) {
     var key;
     var barElement;
