@@ -17,7 +17,7 @@
 
   var defaults = $.extend({
     autoInit: true
-  }, $.defaults);
+  }, $.config);
 
   if(defaults.autoInit) {
     $(window).on("push", function() {

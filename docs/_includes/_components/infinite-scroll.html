@@ -17,13 +17,7 @@
 <style type="text/css">
 .infinite-scroll-preloader {
   margin-top:-20px;
-  margin-bottom: 10px;
-  text-align: center;
 }
-.infinite-scroll-preloader .preloader {
-  width:34px;
-  height:34px;
-}      
 </style>
 
 <header class="bar bar-nav">
@@ -92,8 +86,8 @@ $(function() {
             if (lastIndex >= maxItems) {
                 // 加载完毕，则注销无限加载事件，以防不必要的加载
                 $.detachInfiniteScroll($('.infinite-scroll'));
-                // 删除加载提示符
-                $('.infinite-scroll-preloader').remove();
+                // 隐藏加载提示符
+                $('.infinite-scroll-preloader').hide();
                 return;
             }
 
