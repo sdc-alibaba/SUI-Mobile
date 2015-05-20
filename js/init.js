@@ -16,7 +16,8 @@
   //全局配置
 
   var defaults = $.extend({
-    autoInit: true
+    autoInit: true,
+    showPageLoadingIndicator: true
   }, $.config);
 
   if(defaults.autoInit) {
@@ -25,6 +26,15 @@
     });
     $(function() {
       $.initPage();
+    });
+  }
+
+  if(defaults.showPageLoadingIndicator) {
+    $(window).on("pushStart", function() {
+      $.showIndicator();
+    });
+    $(window).on("pushAnimationStart", function() {
+      $.hideIndicator();
     });
   }
 
