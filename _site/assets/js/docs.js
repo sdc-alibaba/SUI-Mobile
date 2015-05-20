@@ -149,7 +149,10 @@ $(function () {
 
     function updateContent(content) {
       var $page = $('#iwindow').html(content);
+      $page.find('.content').trigger('updateContent');
       $.initPage($page);
+
+
     }
 
     // Injection of components into device

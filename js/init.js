@@ -9,8 +9,8 @@
     var $content = $page.find(".content");
     $.initSwiper($content);
     $content.scroller();
-    //$.initPullToRefresh($content);
-    //$.initInfiniteScroll($content);
+    $.initPullToRefresh($content);
+    $.initInfiniteScroll($content);
   };
 
   //全局配置
