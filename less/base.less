@@ -63,26 +63,26 @@ a {
 // Pad top/bottom of content so it doesn't hide behind bars.
 // Note: For these to work, content must come after both bars in the markup
 .bar-nav ~ .content {
-  margin-top: @bar-base-height;
+  top: @bar-base-height;
 }
 .bar-header-secondary ~ .content {
-  margin-top: (@bar-base-height*2);
+  top: (@bar-base-height*2);
 }
 
 // Footer bar margin
 .bar-footer ~ .content {
-  margin-bottom: @bar-base-height;
+  bottom: @bar-base-height;
 }
 .bar-footer-secondary ~ .content {
-  margin-bottom: (@bar-base-height*2);
+  bottom: (@bar-base-height*2);
 }
 
 // Tab bar margin
 .bar-tab ~ .content {
-  margin-bottom: @bar-tab-height;
+  bottom: @bar-tab-height;
 }
 .bar-footer-secondary-tab ~ .content {
-  margin-bottom: (@bar-tab-height+@bar-base-height);
+  bottom: (@bar-tab-height+@bar-base-height);
 }
 
 // Utility classes

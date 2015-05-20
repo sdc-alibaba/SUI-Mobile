@@ -285,7 +285,7 @@
         this.scroller = $(this.wrapper).find('.scroller-content-inner')[0]; // jshint ignore:line
 
 
-        this.scrollerStyle = this.scroller.style; // cache style for better performance
+        this.scrollerStyle = this.scroller&&this.scroller.style; // cache style for better performance
 
         this.options = {
 
