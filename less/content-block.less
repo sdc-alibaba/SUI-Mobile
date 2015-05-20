@@ -3,8 +3,8 @@
 @contentBlockColor: #6d6d72;
 @contentBlockTitle: @contentBlockColor;
 .content-block {
-    margin: 35px 0;
-    padding: 0 15px;
+    margin: 1.75rem 0;
+    padding: 0 0.75px;
     color: @contentBlockTitle;
 
 }
@@ -14,19 +14,19 @@
     margin: 0;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-size: 14px;
+    font-size: 0.7rem;
     text-transform: uppercase;
     line-height: 1;
     color: @contentBlockColor;
-    margin: 35px 15px 10px;
+    margin: 1.75rem 0.75rem 0.5rem;
     + .list-block, + .content-block, +.card {
-        margin-top: 10px;
+        margin-top: 0.5rem;
     }
 }
 .content-block-inner {
     background: #fff;
-    padding: 10px 15px;
-    margin-left: -15px;
+    padding: 0.5rem 0.75rem;
+    margin-left: -0.75rem;
     width: 100%;
     position: relative;
     .hairline(top, @contentBlockBorderColor);
@@ -34,25 +34,25 @@
     color: #000;
 }
 .content-block.inset {
-    margin-left: 15px;
-    margin-right: 15px;
-    border-radius: 7px;
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+    border-radius: 0.35rem;
     .content-block-inner {
         .hairline-remove(top);
         .hairline-remove(bottom);
-        border-radius: 7px;
+        border-radius: 0.35rem;
     }
 }
 @media all and (min-width:768px) {
     .content-block.tablet-inset {
-        margin-left: 15px;
-        margin-right: 15px;
-        border-radius: 7px
+        margin-left: 0.75rem;
+        margin-right: 0.75rem;
+        border-radius: 0.35rem;
     }
     
     .content-block.tablet-inset .content-block-inner {
     	.hairline-remove(top);
         .hairline-remove(bottom);
-    	border-radius: 7px;
+    	border-radius: 0.35rem;
     }
 }

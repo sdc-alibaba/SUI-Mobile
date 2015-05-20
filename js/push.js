@@ -259,6 +259,7 @@
     if (xhr.readyState && !options.ignorePush) {
       cachePush();
     }
+    triggerStateChange("pushStart");
   };
 
   function cacheCurrentContent () {
@@ -326,6 +327,7 @@
     var enter;
     var containerDirection;
     var swapDirection;
+    triggerStateChange("pushAnimationStart");
 
     if (!transition) {
       if (container) {
@@ -357,6 +359,7 @@
       if (complete) {
         complete();
       }
+      triggerStateChange("pushAnimationComplete");
     }
 
     if (transition === 'fade') {
@@ -375,6 +378,7 @@
         if (complete) {
           complete();
         }
+        triggerStateChange("pushAnimationComplete");
       };
       container.addEventListener(window.RATCHET.getTransitionEnd, fadeContainerEnd);
 
@@ -389,6 +393,7 @@
         if (complete) {
           complete();
         }
+        triggerStateChange("pushAnimationComplete");
       };
 
       container.offsetWidth; // force reflow
@@ -400,8 +405,8 @@
     }
   };
 
-  var triggerStateChange = function () {
-    var e = new CustomEvent('push', {
+  var triggerStateChange = function (event) {
+    var e = new CustomEvent(event || 'push', {
       detail: { state: getCached(PUSH.id) },
       bubbles: true,
       cancelable: true

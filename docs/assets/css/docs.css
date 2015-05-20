@@ -338,7 +338,7 @@ body {
   }
   .docs-component-group .docs-component-item {
     display: block;
-    padding: 10px 20px;
+    padding: 5px 20px;
     color: #777;
   }
   .docs-component-group .docs-component-item:hover {

@@ -135,33 +135,29 @@
       <!-- Bars -->
   <!-- Typography -->
   <article class="component" id="typography">
-    <h3 class="component-title">Typography</h3>
-    <p class="component-description">Use headings and paragraphs to title and describe sections of your app. Apply or wrap elements with <code>.content-padded</code> to give the content space around the screen.</p>
+    <h3 class="component-title">文本样式</h3>
+    <p class="component-description">基础文本样式.</p>
 
     <div class="component-example component-example-fullbleed">
       <div class="content-padded">
-        <h1>h1. Heading</h1>
-        <h2>h2. Heading</h2>
-        <h3>h3. Heading</h3>
-        <h4>h4. Heading</h4>
-        <h5>h5. Heading</h5>
-        <h6>h6. Heading</h6>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco.</p>
+        <h1>标题一</h1>
+        <h2>标题二</h2>
+        <h3>标题三</h3>
+        <h4>标题四</h4>
+        <h5>标题五</h5>
+        <h6>标题六</h6>
+        <p>这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落</p>
       </div>
     </div>
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-padded"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;h1&gt;</span>h1. Heading<span class="nt">&lt;/h1&gt;</span>
-  <span class="nt">&lt;h2&gt;</span>h2. Heading<span class="nt">&lt;/h2&gt;</span>
-  <span class="nt">&lt;h3&gt;</span>h3. Heading<span class="nt">&lt;/h3&gt;</span>
-  <span class="nt">&lt;h4&gt;</span>h4. Heading<span class="nt">&lt;/h4&gt;</span>
-  <span class="nt">&lt;h5&gt;</span>h5. Heading<span class="nt">&lt;/h5&gt;</span>
-  <span class="nt">&lt;h6&gt;</span>h6. Heading<span class="nt">&lt;/h6&gt;</span>
-  <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-  quis nostrud exercitation ullamco.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>标题一<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;h2&gt;</span>标题二<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;h3&gt;</span>标题三<span class="nt">&lt;/h3&gt;</span>
+  <span class="nt">&lt;h4&gt;</span>标题四<span class="nt">&lt;/h4&gt;</span>
+  <span class="nt">&lt;h5&gt;</span>标题五<span class="nt">&lt;/h5&gt;</span>
+  <span class="nt">&lt;h6&gt;</span>标题六<span class="nt">&lt;/h6&gt;</span>
+  <span class="nt">&lt;p&gt;</span>这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落这是一个段落<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   </article>
@@ -3204,21 +3200,18 @@
       <header class="bar bar-nav">
           <h1 class='title'>下拉刷新</h1>
       </header>
-      <div class="content">
-          <!-- Page content应该拥有"pull-to-refresh-content"类 -->
-          <div class="page-content pull-to-refresh-content" data-ptr-distance="55">
-              <!-- 默认的下拉刷新层 -->
-              <div class="pull-to-refresh-layer">
-                  <div class="preloader"></div>
-                  <div class="pull-to-refresh-arrow"></div>
-              </div>
-              <!-- 下面是正文 -->
-              <div class="card">
-                  <div class="card-header">card</div>
-                  <div class="card-content">
-                      <div class="card-content-inner">
-                          这里是第1个card，下拉刷新会出现第2个card。
-                      </div>
+      <div class="content pull-to-refresh-content" data-ptr-distance="55">
+          <!-- 默认的下拉刷新层 -->
+          <div class="pull-to-refresh-layer">
+              <div class="preloader"></div>
+              <div class="pull-to-refresh-arrow"></div>
+          </div>
+          <!-- 下面是正文 -->
+          <div class="card">
+              <div class="card-header">card</div>
+              <div class="card-content">
+                  <div class="card-content-inner">
+                      这里是第1个card，下拉刷新会出现第2个card。
                   </div>
               </div>
           </div>
@@ -3253,7 +3246,7 @@
 $(document).on('refresh', '.pull-to-refresh-content',function(e) {
     // 模拟2s的加载过程
     setTimeout(function() {
-        var cardNumber = $(e.target).find('.card').length + 1;
+        var cardNumber = $(e.target).find('.ptr-demo').length + 1;
         var cardHTML = '<div class="card">' +
                           '<div class="card-header">card'+cardNumber+'</div>' +
                           '<div class="card-content">' +
@@ -3366,13 +3359,7 @@ ptrContent - HTMLElement or string (with CSS Selector) 需要启用的下拉刷�
     <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
 <span class="nc">.infinite-scroll-preloader</span> <span class="p">{</span>
   <span class="nl">margin-top</span><span class="p">:</span><span class="m">-20px</span><span class="p">;</span>
-  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
-  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nc">.infinite-scroll-preloader</span> <span class="nc">.preloader</span> <span class="p">{</span>
-  <span class="nl">width</span><span class="p">:</span><span class="m">34px</span><span class="p">;</span>
-  <span class="nl">height</span><span class="p">:</span><span class="m">34px</span><span class="p">;</span>
-<span class="p">}</span>      
 <span class="nt">&lt;/style&gt;</span>
 
 <span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
@@ -3440,8 +3427,8 @@ $(function() {
             if (lastIndex >= maxItems) {
                 // 加载完毕，则注销无限加载事件，以防不必要的加载
                 $.detachInfiniteScroll($('.infinite-scroll'));
-                // 删除加载提示符
-                $('.infinite-scroll-preloader').remove();
+                // 隐藏加载提示符
+                $('.infinite-scroll-preloader').hide();
                 return;
             }
 
@@ -4091,11 +4078,6 @@ $(function() {
         <div class="swiper-pagination"></div>
       </div>
     </div>
-    <script>
-      $(function() {
-        $(".swiper-container").swiper();
-      });
-    </script>
   </div>
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
@@ -4363,8 +4345,8 @@ $(function() {
 
     <!-- Ratchicons -->
     <article class="component no-border" id="ratchicons">
-      <h3 class="component-title">Ratchicons</h3>
-      <p class="component-description">Use Ratchicons in your application to help inform interactions.</p>
+      <h3 class="component-title">图标</h3>
+      <p class="component-description">使用iconfont的图标</p>
 
       <div class="component-example">
         <div class="content-padded">

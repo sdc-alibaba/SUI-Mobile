@@ -7,8 +7,8 @@
     var $page = $(page);
     if(!$page[0]) $page = $(document.body);
     var $content = $page.find(".content");
+    $content.scroller();  //注意滚动条一定要最先初始化
     $.initSwiper($content);
-    $content.scroller();
     $.initPullToRefresh($content);
     $.initInfiniteScroll($content);
   };
@@ -16,8 +16,9 @@
   //全局配置
 
   var defaults = $.extend({
-    autoInit: true
-  }, $.defaults);
+    autoInit: true,
+    showPageLoadingIndicator: true
+  }, $.config);
 
   if(defaults.autoInit) {
     $(window).on("push", function() {
@@ -25,6 +26,15 @@
     });
     $(function() {
       $.initPage();
+    });
+  }
+
+  if(defaults.showPageLoadingIndicator) {
+    $(window).on("pushStart", function() {
+      $.showIndicator();
+    });
+    $(window).on("pushAnimationStart", function() {
+      $.hideIndicator();
     });
   }
 
