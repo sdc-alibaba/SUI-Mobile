@@ -1,28 +1,28 @@
 //Buttons
 .button {
-    @btn-height: 29px;
-    @btn-big-height: 49px;
-    border: 1px solid @color-primary;
+    @btn-height: 1.45rem;
+    @btn-big-height: 2.45rem;
+    border: 0.05rem solid @color-primary;
     color: @color-primary;
     text-decoration: none;
     text-align: center;
     display: block;
-    border-radius: 5px;
-    line-height: (@btn-height - 2px);
+    border-radius: 0.25rem;
+    line-height: (@btn-height - 0.1rem);
     box-sizing: border-box;
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
     appearance: none;
     background: none;
-    padding: 0 10px;
+    padding: 0 0.5rem;
     margin: 0;
     height: @btn-height;
     white-space: nowrap;
     position: relative;
     overflow: hidden;
     text-overflow:ellipsis;
-    font-size: 14px;
+    font-size: 0.7rem;
     font-family: inherit;
     cursor: pointer;
     input[type="submit"]&, input[type="button"]&{
@@ -33,7 +33,7 @@
         background: rgba(red(@color-primary), green(@color-primary), blue(@color-primary), .15);
     }
     &.button-round {
-        border-radius: (@btn-height - 2px);
+        border-radius: (@btn-height - 0.1rem);
     }
     &.active {
       &, &:active {
@@ -42,9 +42,9 @@
       }
     }
     &.button-big {
-        font-size: 17px;
+        font-size: 0.85rem;
         height: @btn-big-height;
-        line-height: (@btn-big-height - 2px);
+        line-height: (@btn-big-height - 0.1rem);
     }
     &.button-fill {
         color:#fff;
@@ -59,18 +59,18 @@
         }
     }
     .button-link {
-      padding-top: 6px;
-      padding-bottom: 6px;
+      padding-top: 0.3rem;
+      padding-bottom: 0.3rem;
       color: @color-primary;
       background-color: transparent;
       border: 0;
     }
     i.icon {
         &:first-child {
-            margin-right: 10px;
+            margin-right: 0.5rem;
         }
         &:last-child {
-            margin-left: 10px;
+            margin-left: 0.5rem;
         }
         &:first-child:last-child {
             margin-left: 0;
@@ -111,25 +111,25 @@
     .flex-wrap(nowrap);
     .button {
         border-radius: 0 0 0 0;
-        margin-left: -1px;
+        margin-left: -0.05rem;
         width: 100%;
         -webkit-box-flex:1;
         -ms-flex:1;
     }
     .button:first-child {
-        border-radius: 5px 0 0 5px;
+        border-radius: 0.25rem 0 0 0.25rem;
         margin-left: 0;
-        border-left-width: 1px;
+        border-left-width: 0.05rem;
         border-left-style: solid;
     }
     .button:last-child {
-        border-radius: 0 5px 5px 0;
+        border-radius: 0 0.25rem 0.25rem 0;
     }
     .button.button-round:first-child {
-        border-radius: 27px 0 0 27px;
+        border-radius: 1.35rem 0 0 1.35rem;
     }
     .button.button-round:last-child {
-        border-radius: 0 27px 27px 0;
+        border-radius: 0 1.35rem 1.35rem 0;
     }
 }
 
