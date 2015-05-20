@@ -703,9 +703,6 @@ code {
   margin-right: -15px;
   margin-left: -15px;
 }
-.bar-nav ~ .content {
-  margin: 0;
-}
 .highlight pre {
   padding: 15px;
   margin-top: 15px;
@@ -898,12 +895,6 @@ code {
   .device .bar,
   .device .modal {
     position: absolute;
-  }
-  .device .content {
-    top: 44px;
-    right: 0;
-    bottom: 0;
-    left: 0;
   }
 }
 @media screen and (min-width: 1200px) {
