@@ -17,7 +17,7 @@
   var defaults = {
     autoInit: true,
     showPageLoadingIndicator: true
-  }
+  };
 
   var config = $.extend(defaults, $.config);
 
