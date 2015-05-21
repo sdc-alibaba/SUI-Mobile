@@ -14,13 +14,14 @@
   };
 
   //全局配置
-
-  var defaults = $.extend({
+  var defaults = {
     autoInit: true,
     showPageLoadingIndicator: true
-  }, $.config);
+  }
 
-  if(defaults.autoInit) {
+  var config = $.extend(defaults, $.config);
+
+  if(config.autoInit) {
     $(window).on("push", function() {
       $.initPage();
     });
@@ -29,7 +30,7 @@
     });
   }
 
-  if(defaults.showPageLoadingIndicator) {
+  if(config.showPageLoadingIndicator) {
     $(window).on("pushStart", function() {
       $.showIndicator();
     });

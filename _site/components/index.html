@@ -76,6 +76,7 @@
 </span>
 
 <div class="docs-component-group js-component-group">
+  <a class="docs-component-item" href="#init" data-ignore="push">初始化</a>
   <a class="docs-component-item" href="#typography" data-ignore="push">文本样式</a>
   <a class="docs-component-item" href="#bars" data-ignore="push">标题栏</a>
   <a class="docs-component-item" href="#buttons" data-ignore="push">按钮</a>
@@ -132,6 +133,62 @@
 
     <div class="column lg-units-7 docs-content">
       <!-- Bars -->
+  <article class="component active" id="init">
+  <h3 class="component-title">初始化</h3>
+  <p class="component-description">
+    <p>有一些JS组件是需要初始化才能使用的，比如幻灯片、滚动条等。</p>
+    <p>这些JS组件都有对应的初始化API可以调用。不过我们也提供了一个统一的方法可以自动初始化页面中的全部JS组件 <code>$.initPage(page)</code></p>
+    <p>你可以传入一个可选的page参数，如果没有，则默认是 <code>document.body</code></p>
+    <p>如果 <code>$.config.autoInit == true</code> （默认就是true），我们会在页面加载完之后以及push结束之后自动执行 <code>$.initPage</code>方法，这种情况下不需要你再次调用。但是如果你的页面内容是异步渲染的，在 <code>document.onload</code> 之后才异步加载页面内容，那么你应该设置 <code>$.config.autoInit = false</code>，并且在你加载完内容后调用 <code>$.initPage</code> 方法。</p>
+    <p>实际上， <code>initPage</code> 执行了如下操作:</p>
+  </p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">.</span><span class="nx">initPage</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">page</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">$page</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">page</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">$page</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="nx">$page</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">$content</span> <span class="o">=</span> <span class="nx">$page</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s2">".content"</span><span class="p">);</span>
+  <span class="nx">$content</span><span class="p">.</span><span class="nx">scroller</span><span class="p">();</span>  <span class="c1">//注意滚动条一定要最先初始化</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">initSwiper</span><span class="p">(</span><span class="nx">$content</span><span class="p">);</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">initPullToRefresh</span><span class="p">(</span><span class="nx">$content</span><span class="p">);</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">initInfiniteScroll</span><span class="p">(</span><span class="nx">$content</span><span class="p">);</span>
+<span class="p">};</span></code></pre></div>
+  
+  <h3 class="component-title">全局配置</h3>
+  <p class="component-description">
+    我们提供了一些全局配置，可以在初始化之前通过这些配置改变一些默认行为。
+    在引入JS之前通过一个 <code>$.config</code> 变量来改变默认配置：
+  </p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script&gt;</span>
+  <span class="c1">//关闭自动初始化页面的功能</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">autoInit</span><span class="p">:</span> <span class="kc">false</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'sm.min.js'</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
+
+  所有配置项如下：
+
+  <table>
+    <tr>
+      <th>参数名</th>
+      <th>默认值</th>
+      <th>说明</th>
+    </tr>
+    <tr>
+      <td>autoInit</td>
+      <td>true</td>
+      <td>在 <code>document.onload</code> 和 push 结束之后自动调用 <code>$.initPage</code> 方法。如果你的页面内容是异步加载的，应该关闭这个配置，并且在加载完成之后手动调用 <code>$.initPage</code></td>
+    </tr>
+    <tr>
+      <td>showPageLoadingIndicator</td>
+      <td>true</td>
+      <td>在push.js加载新页面过程中显示一个加载指示器。</td>
+    </tr>
+  </table>
+
+</article>
+
   <!-- Typography -->
   <article class="component" id="typography">
     <h3 class="component-title">文本样式</h3>
