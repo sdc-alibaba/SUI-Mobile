@@ -59,21 +59,34 @@ module.exports = function(grunt) {
                   'js/pull-to-refresh-js-scroll.js',
                   'js/pull-to-refresh.js',
                   'js/infinite-scroll.js',
-                  'js/swiper-init.js',
-                  'js/swiper.js',
-                  'js/photo-browser.js',
                   'js/modal.js',
                   'js/push.js',
                   'js/init.js'
               ],
-        dest: '<%= meta.distPath %>js/<%= pkg.name %>.js'
-      }
-    },
+              dest: '<%= meta.distPath %>js/<%= pkg.name %>.js'
+            },
+            extend: {
+              options: {
+                  banner: '<%= banner %>'
+              },
+              src: [
+                  'js/swiper-init.js',
+                  'js/swiper.js',
+                  'js/photo-browser.js'
+              ],
+              dest: '<%= meta.distPath %>js/<%= pkg.name %>-extend.js'
+            }
+        },
+
 
         less: {
             core: {
                 src: 'less/sm.less',
                 dest: '<%= meta.distPath %>css/<%= pkg.name %>.css'
+            },
+            extend: {
+                src: 'less/sm-extend.less',
+                dest: '<%= meta.distPath %>css/<%= pkg.name %>-extend.css'
             },
             docs: {
                 src: 'less/docs.less',
@@ -153,6 +166,9 @@ module.exports = function(grunt) {
             core: {
                 src: '<%= less.core.dest %>'
             },
+            extend: {
+                src: '<%= less.extend.dest %>'
+            },
             docs: {
                 src: '<%= less.docs.dest %>'
             },
@@ -168,6 +184,10 @@ module.exports = function(grunt) {
             sm: {
                 src: '<%= meta.distPath %>css/<%= pkg.name %>.css',
                 dest: '<%= meta.distPath %>css/<%= pkg.name %>.min.css'
+            },
+            extend: {
+                src: '<%= meta.distPath %>css/<%= pkg.name %>-extend.css',
+                dest: '<%= meta.distPath %>css/<%= pkg.name %>-extend.min.css'
             },
             docs: {
                 src: [
@@ -190,6 +210,10 @@ module.exports = function(grunt) {
             sm: {
                 src: '<%= concat.sm.dest %>',
                 dest: '<%= meta.distPath %>js/<%= pkg.name %>.min.js'
+            },
+            extend: {
+                src: '<%= concat.extend.dest %>',
+                dest: '<%= meta.distPath %>js/<%= pkg.name %>-extend.min.js'
             },
             docs: {
                 src: [
