@@ -1,4 +1,5 @@
-t
+/* global Zepto:true */
+(function($){
     ['width', 'height'].forEach(function(dimension) {
       var offset, Dimension = dimension.replace(/./, function(m) { return m[0].toUpperCase() });
       $.fn['outer' + Dimension] = function(margin) {
