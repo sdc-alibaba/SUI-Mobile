@@ -19,12 +19,13 @@
   //全局配置
   var defaults = {
     autoInit: true,
-    showPageLoadingIndicator: true
+    showPageLoadingIndicator: true,
+    pushAnimationDuration: 400
   };
 
-  var config = $.extend(defaults, $.config);
+  $.smConfig = $.extend(defaults, $.config);
 
-  if(config.autoInit) {
+  if($.smConfig.autoInit) {
     $(window).on("push", function() {
       $.initPage();
     });
@@ -33,7 +34,7 @@
     });
   }
 
-  if(config.showPageLoadingIndicator) {
+  if($.smConfig.showPageLoadingIndicator) {
     $(window).on("pushStart", function() {
       $.showIndicator();
     });

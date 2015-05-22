@@ -368,7 +368,11 @@
       var fadeContainerEnd = function () {
         container.removeEventListener(window.RATCHET.getTransitionEnd, fadeContainerEnd);
         swap.classList.add('in');
-        swap.addEventListener(window.RATCHET.getTransitionEnd, fadeSwapEnd);
+        if($.os.android && $.compareVersion("4.2.0", $.os.version)) {
+          setTimeout(fadeSwapEnd, $.smConfig.pushAnimationDuration);
+        } else {
+          swap.addEventListener(window.RATCHET.getTransitionEnd, fadeSwapEnd);
+        }
       };
       var fadeSwapEnd = function () {
         swap.removeEventListener(window.RATCHET.getTransitionEnd, fadeSwapEnd);
@@ -380,7 +384,11 @@
         }
         triggerStateChange("pushAnimationComplete");
       };
-      container.addEventListener(window.RATCHET.getTransitionEnd, fadeContainerEnd);
+      if($.os.android && $.compareVersion("4.2.0", $.os.version)) {
+        setTimeout(fadeContainerEnd, $.smConfig.pushAnimationDuration);
+      } else {
+        container.addEventListener(window.RATCHET.getTransitionEnd, fadeContainerEnd);
+      }
 
     }
 
@@ -401,7 +409,11 @@
       containerDirection = enter ? 'left' : 'right';
       container.classList.add(containerDirection);
       swap.classList.remove(swapDirection);
-      swap.addEventListener(window.RATCHET.getTransitionEnd, slideEnd);
+      if($.os.android && $.compareVersion("4.2.0", $.os.version)) {
+        setTimeout(slideEnd, $.smConfig.pushAnimationDuration);
+      } else {
+        swap.addEventListener(window.RATCHET.getTransitionEnd, slideEnd);
+      }
     }
   };
 
