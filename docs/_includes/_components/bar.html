@@ -67,7 +67,6 @@
 
     <article class="component">
       <h3 class="component-title">带链接和图标</h3>
-      <p class="component-description">Link buttons can be used in tool bars to remove the outline. Use these in conjuction with icons to recreate the nav feel from iOS7. Note the use of <code>.button-nav</code> to bring the buttons a little bit closer to the edge of the viewport.</p>
 
       <div class="component-example component-example-fullbleed">
         <header class="bar bar-nav">
@@ -143,23 +142,23 @@
         <nav class="bar bar-tab">
             <a class="tab-item active" href="#">
                 <span class="icon icon-home"></span>
-                <span class="tab-label">Label</span>
+                <span class="tab-label">文案</span>
             </a>
             <a class="tab-item" href="#">
                 <span class="icon icon-person"></span>
-                <span class="tab-label">Label</span>
+                <span class="tab-label">文案</span>
             </a>
             <a class="tab-item" href="#">
                 <span class="icon icon-star-filled"></span>
-                <span class="tab-label">Label</span>
+                <span class="tab-label">文案</span>
             </a>
             <a class="tab-item" href="#">
                 <span class="icon icon-search"></span>
-                <span class="tab-label">Label</span>
+                <span class="tab-label">文案</span>
             </a>
             <a class="tab-item" href="#">
                 <span class="icon icon-gear"></span>
-                <span class="tab-label">Label</span>
+                <span class="tab-label">文案</span>
             </a>
         </nav>
     </div>
@@ -168,63 +167,61 @@
 <nav class="bar bar-tab">
   <a class="tab-item active" href="#">
     <span class="icon icon-home"></span>
-    <span class="tab-label">Label</span>
+    <span class="tab-label">文案</span>
   </a>
   <a class="tab-item" href="#">
     <span class="icon icon-me"></span>
-    <span class="tab-label">Label</span>
+    <span class="tab-label">文案</span>
   </a>
   <a class="tab-item" href="#">
     <span class="icon icon-star"></span>
-    <span class="tab-label">Label</span>
+    <span class="tab-label">文案</span>
   </a>
   <a class="tab-item" href="#">
     <span class="icon icon-cart"></span>
-    <span class="tab-label">Label</span>
+    <span class="tab-label">文案</span>
   </a>
   <a class="tab-item" href="#">
     <span class="icon icon-settings"></span>
-    <span class="tab-label">Label</span>
+    <span class="tab-label">文案</span>
   </a>
 </nav>
 {% endhighlight %}
 
-    <p class="component-note touch-only"><strong>Note:</strong> Use push.js to actually change content.</p>
+    <p class="component-note touch-only"><strong>注意:</strong> 使用 push.js 加载新页面</p>
 </article>
 <article class="component">
-    <h3 class="component-title">Tab bar (labels only)</h3>
-    <p class="component-description">If you don't want to use icons, that's okay too. The text will appear larger to use the additional space.</p>
+    <h3 class="component-title">工具栏 (只有文案)</h3>
     <div class="component-example component-example-fullbleed">
         <nav class="bar bar-tab">
             <a class="tab-item active" href="#">
-            Label
+            文案
           </a>
             <a class="tab-item" href="#">
-            Label
+            文案
           </a>
             <a class="tab-item" href="#">
-            Label
+            文案
           </a>
         </nav>
     </div>
   {% highlight html %}
   <nav class="bar bar-tab">
       <a class="tab-item active" href="#">
-  Label
+  文案
 </a>
       <a class="tab-item" href="#">
-  Label
+  文案
 </a>
       <a class="tab-item" href="#">
-  Label
+  文案
 </a>
   </nav>
   {% endhighlight %}
-    <p class="component-note touch-only"><strong>Note:</strong> Use push.js to actually change content.</p>
+    <p class="component-note touch-only"><strong>注意:</strong> 使用 push.js 加载新页面.</p>
 </article>
 <article class="component">
-    <h3 class="component-title">Standard bars</h3>
-    <p class="component-description">Standard bars are basic fixed elements that can be positioned in four places. These can be used to house buttons, icons, or segmented controls (see following examples).</p>
+    <h3 class="component-title">二级标题栏</h3>
     <div class="component-example component-example-fullbleed">
         <!-- Segmented control in standard bar fixed to top -->
         <nav class="bar bar-standard">
@@ -236,7 +233,7 @@
         </nav>
         <!-- Block button in standard bar fixed below top bar -->
         <div class="bar bar-standard bar-header-secondary">
-            <button class="button button-block">Block level button</button>
+            <button class="button button-block">按钮</button>
         </div>
     </div>
 
@@ -252,12 +249,12 @@
 
 <!-- Block button in standard bar fixed below top bar -->
 <div class="bar bar-standard bar-header-secondary">
-  <button class="button button-block">Block level button</button>
+  <button class="button button-block">按钮</button>
 </div>
 
 <!-- Block button in standard bar fixed above the footer -->
 <div class="bar bar-standard bar-footer-secondary">
-  <button class="button button-block">Block level button</button>
+  <button class="button button-block">按钮</button>
 </div>
 
 <!-- Icons in standard bar fixed to the bottom of the screen -->
