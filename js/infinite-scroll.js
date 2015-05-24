@@ -1,6 +1,6 @@
 + function($) {
     'use strict';
-
+    /* global Zepto:true */ 
     function handleInfiniteScroll() {
         /*jshint validthis:true */
         var inf = $(this);
@@ -51,4 +51,4 @@
         }
         pageContainer.on('pageBeforeRemove', detachEvents);
     };
-}(Zepto); // jshint ignore: line
+}(Zepto); 
