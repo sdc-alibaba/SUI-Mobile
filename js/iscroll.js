@@ -45,10 +45,8 @@
         };
 
         me.extend = function(target, obj) {
-            for (var i in obj) {
-                if (obj.hasOwnProperty(i)) {
-                    target[i] = obj[i];
-                }
+            for (var i in obj) {  // jshint ignore:line
+                    target[i] = obj[i]; 
             }
         };
 
@@ -321,10 +319,7 @@
         };
 
         for (var i in options) {
-            if (options.hasOwnProperty(i)) {
                 this.options[i] = options[i];
-
-            }
         }
 
         // Normalize options
@@ -1479,11 +1474,8 @@
                 this.options.keyBindings = {};
             }
 
-            for (i in keys) {
-                if (keys.hasOwnProperty(i)) {
+            for (i in keys) { // jshint ignore:line
                     this.options.keyBindings[i] = this.options.keyBindings[i] || keys[i];
-
-                }
             }
 
             utils.addEvent(window, 'keydown', this);
@@ -1729,11 +1721,9 @@
             speedRatioY: 0
         };
 
-        for (var i in options) {
-            if (options.hasOwnProperty(i)) {
+        for (var i in options) { // jshint ignore:line
                 this.options[i] = options[i];
 
-            }
         }
 
         this.sizeRatioX = 1;

@@ -22,7 +22,9 @@
         }
         return 1;
     };
-    //重置zepto自带的滚动条
+
+
+        //重置zepto自带的滚动条
     var _zeptoMethodCache = {
         "scrollTop": $.fn.scrollTop,
         "scrollLeft": $.fn.scrollLeft
@@ -42,12 +44,12 @@
             }
         });
         $.extend($.fn, {
-            scrollLeft: function(left,dur) {
+            scrollLeft: function(left, dur) {
                 if (!this.length) return;
                 var scroller = this.data('scroller');
                 if (scroller && scroller.scroller) { //js滚动
-                   scroller.scrollLeft(left, dur);
-                   return this;
+                    scroller.scrollLeft(left, dur);
+                    return this;
                 } else {
                     return _zeptoMethodCache.scrollLeft.apply(this, arguments);
                 }
@@ -80,10 +82,10 @@
             this.scroller = new IScroll(pageContent, options); // jshint ignore:line
             //和native滚动统一起来
             this._bindEventToDomWhenJs();
-             $.initPullToRefresh = $._pullToRefreshJSScroll.initPullToRefresh;
-             $.pullToRefreshDone = $._pullToRefreshJSScroll.pullToRefreshDone;
-             $.pullToRefreshTrigger = $._pullToRefreshJSScroll.pullToRefreshTrigger;
-             $.destroyToRefresh = $._pullToRefreshJSScroll.destroyToRefresh;
+            $.initPullToRefresh = $._pullToRefreshJSScroll.initPullToRefresh;
+            $.pullToRefreshDone = $._pullToRefreshJSScroll.pullToRefreshDone;
+            $.pullToRefreshTrigger = $._pullToRefreshJSScroll.pullToRefreshTrigger;
+            $.destroyToRefresh = $._pullToRefreshJSScroll.destroyToRefresh;
             $pageContent.addClass('javascript-scroll');
         } else {
             $pageContent.addClass('native-scroll');
@@ -124,7 +126,7 @@
             }
             return this;
         },
-        scrollLeft: function(left,dur) {
+        scrollLeft: function(left, dur) {
             if (this.scroller) {
                 if (left !== undefined) {
                     this.scroller.scrollTo(-1 * left, 0);
@@ -175,6 +177,7 @@
         var args = Array.apply(null, arguments);
         args.shift();
         var internal_return;
+
         this.each(function() {
 
 
@@ -185,9 +188,9 @@
             if (!$pageContentInner[0]) {
                 // $this.html('<div class="scroller-content-inner">' + $this.html() + '</div>');
                 var children = $this.children();
-                if (children.length<1) {
+                if (children.length < 1) {
                     $this.children().wrapAll('<div class="scroller-content-inner"></div>');
-                } else{
+                } else {
                     $this.html('<div class="scroller-content-inner">' + $this.html() + '</div>');
                 }
             }
@@ -199,9 +202,9 @@
 
 
 
-            var data = $this.data('scroller');
             var options = $.extend({}, $this.dataset(), typeof option === 'object' && option);
 
+            var data = $this.data('scroller');
             //如果 scroller 没有被初始化，对scroller 进行初始化r
             if (!data) {
                 //获取data-api的
@@ -236,9 +239,9 @@
         $.fn.scroller = old;
         return this;
     };
-    //添加data-api，并且对.content进行初始化
+    //添加data-api
     $(function() {
-        $('[data-toggle="scroller"],.content').scroller();
+        $('[data-toggle="scroller"]').scroller();
     });
 
     //统一的接口,带有 .javascript-scroll 的content 进行刷新

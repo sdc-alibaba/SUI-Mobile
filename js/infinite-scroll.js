@@ -1,6 +1,7 @@
 + function($) {
     'use strict';
-    /* global Zepto:true */ 
+    /* global Zepto:true */
+   
     function handleInfiniteScroll() {
         /*jshint validthis:true */
         var inf = $(this);
