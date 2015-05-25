@@ -1,31 +1,32 @@
 /* === Pull To Refresh === */
+@layerHeight:  2.2rem;
 .pull-to-refresh-layer {
     position: relative;
     // margin-top: -44px;
     left:0; 
     top:0; 
     width:100%; 
-    height:44px; 
+    height:@layerHeight; 
     
     .preloader {
         position: absolute;
         left: 50%;
         top: 50%;
-        margin-left: -10px;
-        margin-top: -10px;
+        margin-left: -0.5rem;
+        margin-top: -0.5rem;
         visibility: hidden;
     }
     .pull-to-refresh-arrow {
-        width: 13px;
-        height: 20px;
+        width: 0.325rem;
+        height: 1rem;
         position: absolute;
         left: 50%;
         top: 50%;
-        margin-left: -6px;
-        margin-top: -10px;
+        margin-left: -0.15rem;
+        margin-top: -0.5rem;
         background: no-repeat center;
         .encoded-svg-background("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 40'><polygon points='9,22 9,0 17,0 17,22 26,22 13.5,40 0,22' fill='#8c8c8c'/></svg>");
-        background-size: 13px 20px;
+        background-size: 0.325rem  1rem;
         z-index: 10;
         transform: rotate(0deg) translate3d(0,0,0);
         transition-duration: 300ms;
@@ -59,9 +60,9 @@
     
 }
 .pull-to-refresh-content {
-  top: -44px;
+  top: -@layerHeight;
   &.refreshing {
-    transform: translate3d(0, 44px, 0);
+    transform: translate3d(0, @layerHeight, 0);
   }
 }
 .bar-nav ~ .pull-to-refresh-content,
@@ -69,6 +70,6 @@
 .bar-tab ~ .pull-to-refresh-content {
   top: 0;
   &.refreshing {
-    transform: translate3d(0, 44px, 0);
+    transform: translate3d(0, @layerHeight, 0);
   }
 }

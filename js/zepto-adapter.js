@@ -1,22 +1,29 @@
 /* global Zepto:true */
-(function($){
+(function($) {
+     "use strict";
     ['width', 'height'].forEach(function(dimension) {
-      var offset, Dimension = dimension.replace(/./, function(m) { return m[0].toUpperCase() });
-      $.fn['outer' + Dimension] = function(margin) {
-        var elem = this;
-        if (elem) {
-          var size = elem[dimension]();
-          var sides = {'width': ['left', 'right'], 'height': ['top', 'bottom']};
-          sides[dimension].forEach(function(side) {
-            if (margin) size += parseInt(elem.css('margin-' + side), 10);
-          });
-          return size;
-        } else {
-          return null;
-        }
-      };
+        var  Dimension = dimension.replace(/./, function(m) {
+            return m[0].toUpperCase();
+        });
+        $.fn['outer' + Dimension] = function(margin) {
+            var elem = this;
+            if (elem) {
+                var size = elem[dimension]();
+                var sides = {
+                    'width': ['left', 'right'],
+                    'height': ['top', 'bottom']
+                };
+                sides[dimension].forEach(function(side) {
+                    if (margin) size += parseInt(elem.css('margin-' + side), 10);
+                });
+                return size;
+            } else {
+                return null;
+            }
+        };
     });
 
+    
     //support
     $.support = (function() {
         var support = {
@@ -55,10 +62,9 @@
         if (el) {
             var dataset = {};
             if (el.dataset) {
-                for (var dataKey in el.dataset) {
-                    if (el.dataset.hasOwnProperty(dataKey)) {
-                        dataset[dataKey] = el.dataset[dataKey];
-                    }
+
+                for (var dataKey in el.dataset) { // jshint ignore:line
+                    dataset[dataKey] = el.dataset[dataKey];
                 }
             } else {
                 for (var i = 0; i < el.attributes.length; i++) {
@@ -81,10 +87,19 @@
             // Get value
             if (this[0] && this[0].getAttribute) {
                 var dataKey = this[0].getAttribute('data-' + key);
-                if (dataKey) return dataKey;
-                else if (this[0].smElementDataStorage && (key in this[0].smElementDataStorage)) return this[0].smElementDataStorage[key];
-                else return undefined;
+
+                if (dataKey) {
+                    return dataKey;
+                } else if (this[0].smElementDataStorage && (key in this[0].smElementDataStorage)) {
+                
+
+                    return this[0].smElementDataStorage[key];
+
+                } else {
+                    return undefined;
+                }
             } else return undefined;
+
         } else {
             // Set value
             for (var i = 0; i < this.length; i++) {
