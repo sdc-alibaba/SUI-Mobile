@@ -8,8 +8,9 @@
  * ======================================================================== */
 
 /* global _gaq: true */
+/* global Zepto: true */
 
-!(function () {
++ function ($) {
   'use strict';
 
   var noop = function () {};
@@ -529,4 +530,4 @@
   // TODO : Remove this line in the next major version
   window.PUSH = PUSH;
 
-}());
+}(Zepto);

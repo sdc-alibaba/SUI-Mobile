@@ -1,5 +1,7 @@
 /* global Zepto:true */
 + function($) {
+  "use strict";
+
   //比较一个字符串版本号
   //a > b === 1
   //a = b === 0
@@ -17,5 +19,6 @@
       if (x > y) return 1;
     }
     return 1;
-  }
+  };
+
 }(Zepto);
