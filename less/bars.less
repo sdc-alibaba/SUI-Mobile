@@ -11,7 +11,7 @@
   padding-right: @bar-side-spacing;
   padding-left: @bar-side-spacing;
   background-color: white;
-  border-bottom: @border-default;
+  .hairline(bottom, @border-default-color);
   -webkit-backface-visibility: hidden; // Make sure the bar is visible when a modal animates in.
           backface-visibility: hidden;
 }
@@ -40,8 +40,8 @@
 .bar-footer,
 .bar-footer-secondary,
 .bar-footer-secondary-tab {
-  border-top: @border-default;
-  border-bottom: 0;
+  .hairline(top, @border-default-color);
+  .hairline-remove(bottom);
 }
 
 
@@ -80,14 +80,13 @@
 
 // Bar docked to bottom and used for primary app navigation
 .bar-tab {
-  display: table;
   bottom: 0;
   width: 100%;
   height: @bar-tab-height;
   padding: 0;
   table-layout: fixed;
-  border-top: @border-default;
-  border-bottom: 0;
+  .hairline(top, @border-default-color);
+  .hairline-remove(bottom);
 
   // Navigational tab (Nested to be more specific for the icons in tab-items)
   .tab-item {
