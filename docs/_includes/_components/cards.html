@@ -3,152 +3,60 @@
   <p class="component-description">伴随着列表视图，卡片是一种很好的方法来控制和组织你的信息。卡片含有独特的相关数据，例如，照片，文字和所有关于一个主题的链接。卡片通常是更复杂的和详细的信息的一个切入点。</p>
 
   <div class="component-example component-example-fullbleed">
-    <header class="bar bar-nav">
-      <h1 class="title">Cards</h1>
-    </header>
-    <div class="content">
-      <div class="content-block-title">Simple Cards</div>
-      <div class="card">
-        <div class="card-content">
-          <div class="card-content-inner">This is simple card with plain text. But card could contain its own header, footer, list view, image, and any elements inside.</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">Card header</div>
-        <div class="card-content">
-          <div class="card-content-inner">Card with header and footer. Card header is used to display card title and footer for some additional information or for custom actions.</div>
-        </div>
-        <div class="card-footer">Card Footer</div>
-      </div>
-      <div class="card">
-        <div class="card-content">
-          <div class="card-content-inner">Another card. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse feugiat sem est, non tincidunt ligula volutpat sit amet. Mauris aliquet magna justo. </div>
-        </div>
-      </div>
-      <div class="content-block-title">Styled Cards</div>
-      <div class="card demo-card-header-pic">
-        <div style="background-image:url(http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg)" valign="bottom" class="card-header color-white no-border">Journey To Mountains</div>
-        <div class="card-content">
-          <div class="card-content-inner">
-            <p class="color-gray">Posted on January 21, 2015</p>
-            <p>Quisque eget vestibulum nulla...</p>
-          </div>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="link">Like</a>
-          <a href="#" class="link">Read more</a>
-        </div>
-      </div>
-      <div class="content-block-title">Facebook Cards</div>
-      <div class="card facebook-card">
-        <div class="card-header no-border">
-          <div class="facebook-avatar"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34"></div>
-          <div class="facebook-name">John Doe</div>
-          <div class="facebook-date">Monday at 3:47 PM</div>
-        </div>
-        <div class="card-content"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="100%"></div>
-        <div class="card-footer no-border">
-          <a href="#" class="link">Like</a>
-          <a href="#" class="link">Comment</a>
-          <a href="#" class="link">Share</a>
-        </div>
-      </div>
-      <div class="content-block-title">Cards With List View</div>
-      <div class="card">
-        <div class="card-content">
-          <div class="list-block">
-            <ul>
-              <li>
-                <a href="#" class="item-link item-content">
-                  <div class="item-media"><i class="icon icon-f7"></i></div>
-                  <div class="item-inner">
-                    <div class="item-title">Link 1</div>
-                  </div>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">New Releases:</div>
-        <div class="card-content">
-          <div class="list-block media-list">
-            <ul>
-              <li class="item-content">
-                <div class="item-media">
-                  <img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="44">
-                </div>
-                <div class="item-inner">
-                  <div class="item-title-row">
-                    <div class="item-title">Yellow Submarine</div>
-                  </div>
-                  <div class="item-subtitle">Beatles</div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="card-footer">
-          <span>January 20, 2015</span>
-          <span>5 comments</span>
-        </div>
-      </div>            
-    </div>
   </div>
 
 {% highlight html %}
 <header class="bar bar-nav">
-  <h1 class="title">Cards</h1>
+  <h1 class="title">卡片</h1>
 </header>
 <div class="content">
-  <div class="content-block-title">Simple Cards</div>
+  <div class="content-block-title">简单卡片</div>
   <div class="card">
     <div class="card-content">
-      <div class="card-content-inner">This is simple card with plain text. But card could contain its own header, footer, list view, image, and any elements inside.</div>
+      <div class="card-content-inner">这是一个用纯文本的简单卡片。但卡片可以包含自己的页头，页脚，列表视图，图像，和里面的任何元素。</div>
     </div>
   </div>
   <div class="card">
-    <div class="card-header">Card header</div>
+    <div class="card-header">卡头</div>
     <div class="card-content">
-      <div class="card-content-inner">Card with header and footer. Card header is used to display card title and footer for some additional information or for custom actions.</div>
+      <div class="card-content-inner">头和尾的卡片。卡头是用来显示一些额外的信息，或自定义操作卡标题和页脚。</div>
     </div>
-    <div class="card-footer">Card Footer</div>
+    <div class="card-footer">卡脚</div>
   </div>
   <div class="card">
     <div class="card-content">
-      <div class="card-content-inner">Another card. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse feugiat sem est, non tincidunt ligula volutpat sit amet. Mauris aliquet magna justo. </div>
+      <div class="card-content-inner">这是一个用纯文本的简单卡片。但卡片可以包含自己的页头，页脚，列表视图，图像，和里面的任何元素。</div>
     </div>
   </div>
-  <div class="content-block-title">Styled Cards</div>
+  <div class="content-block-title">风格卡片</div>
   <div class="card demo-card-header-pic">
-    <div style="background-image:url(http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg)" valign="bottom" class="card-header color-white no-border">Journey To Mountains</div>
+    <div style="background-image:url(http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg)" valign="bottom" class="card-header color-white no-border">旅途的山</div>
     <div class="card-content">
       <div class="card-content-inner">
-        <p class="color-gray">Posted on January 21, 2015</p>
-        <p>Quisque eget vestibulum nulla...</p>
+        <p class="color-gray">发表于 2015/01/15</p>
+        <p>此处是内容...</p>
       </div>
     </div>
     <div class="card-footer">
-      <a href="#" class="link">Like</a>
-      <a href="#" class="link">Read more</a>
+      <a href="#" class="link">赞</a>
+      <a href="#" class="link">更多</a>
     </div>
   </div>
-  <div class="content-block-title">Facebook Cards</div>
+  <div class="content-block-title">Facebook卡片</div>
   <div class="card facebook-card">
     <div class="card-header no-border">
       <div class="facebook-avatar"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34"></div>
-      <div class="facebook-name">John Doe</div>
-      <div class="facebook-date">Monday at 3:47 PM</div>
+      <div class="facebook-name">夜萧</div>
+      <div class="facebook-date">星期一 3:47pm</div>
     </div>
     <div class="card-content"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="100%"></div>
     <div class="card-footer no-border">
-      <a href="#" class="link">Like</a>
-      <a href="#" class="link">Comment</a>
-      <a href="#" class="link">Share</a>
+      <a href="#" class="link">赞</a>
+      <a href="#" class="link">评论</a>
+      <a href="#" class="link">分享</a>
     </div>
   </div>
-  <div class="content-block-title">Cards With List View</div>
+  <div class="content-block-title">列表视图卡片</div>
   <div class="card">
     <div class="card-content">
       <div class="list-block">
@@ -157,7 +65,7 @@
             <a href="#" class="item-link item-content">
               <div class="item-media"><i class="icon icon-f7"></i></div>
               <div class="item-inner">
-                <div class="item-title">Link 1</div>
+                <div class="item-title">链接 1</div>
               </div>
             </a>
           </li>
@@ -166,7 +74,7 @@
     </div>
   </div>
   <div class="card">
-    <div class="card-header">New Releases:</div>
+    <div class="card-header">新的公布:</div>
     <div class="card-content">
       <div class="list-block media-list">
         <ul>
@@ -176,17 +84,17 @@
             </div>
             <div class="item-inner">
               <div class="item-title-row">
-                <div class="item-title">Yellow Submarine</div>
+                <div class="item-title">标题</div>
               </div>
-              <div class="item-subtitle">Beatles</div>
+              <div class="item-subtitle">子标题</div>
             </div>
           </li>
         </ul>
       </div>
     </div>
     <div class="card-footer">
-      <span>January 20, 2015</span>
-      <span>5 comments</span>
+      <span>2015/01/15</span>
+      <span>5 评论</span>
     </div>
   </div>            
 </div>
@@ -199,65 +107,35 @@
   <p class="component-description">可以用卡片在<a href="#list">列表视图</a>中有用的元素，在这种情况下就可以使用搜索栏，虚拟列表和列表视图功能卡片。在这种情况下我们需要添加额外的卡片列表类<code>&lt;div class="list-block"&gt;</code></p>
 
   <div class="component-example component-example-fullbleed">
-    <header class="bar bar-nav">
-      <h1 class="title">Cards List View</h1>
-    </header>
-    <div class="content">
-      <div class="list-block cards-list">
-        <ul>
-          <li class="card">
-            <div class="card-header">Card Header</div>
-            <div class="card-content">
-              <div class="card-content-inner">Card content</div>
-            </div>
-            <div class="card-footer">Card footer</div>
-          </li>
-          <li class="card">
-            <div class="card-header">Card Header</div>
-            <div class="card-content">
-              <div class="card-content-inner">Card content</div>
-            </div>
-            <div class="card-footer">Card footer</div>
-          </li>
-          <li class="card">
-            <div class="card-header">Card Header</div>
-            <div class="card-content">
-              <div class="card-content-inner">Card content</div>
-            </div>
-            <div class="card-footer">Card footer</div>
-          </li>
-        </ul>
-      </div>
-    </div>
   </div>
 
   {% highlight html %}
   <header class="bar bar-nav">
-    <h1 class="title">Cards List View</h1>
+    <h1 class="title">列表卡片</h1>
   </header>
   <div class="content">
     <div class="list-block cards-list">
       <ul>
         <li class="card">
-          <div class="card-header">Card Header</div>
+          <div class="card-header">卡头</div>
           <div class="card-content">
-            <div class="card-content-inner">Card content</div>
+            <div class="card-content-inner">卡内容</div>
           </div>
-          <div class="card-footer">Card footer</div>
+          <div class="card-footer">卡脚</div>
         </li>
         <li class="card">
-          <div class="card-header">Card Header</div>
+          <div class="card-header">卡头</div>
           <div class="card-content">
-            <div class="card-content-inner">Card content</div>
+            <div class="card-content-inner">卡内容</div>
           </div>
-          <div class="card-footer">Card footer</div>
+          <div class="card-footer">卡脚</div>
         </li>
         <li class="card">
-          <div class="card-header">Card Header</div>
+          <div class="card-header">卡头</div>
           <div class="card-content">
-            <div class="card-content-inner">Card content</div>
+            <div class="card-content-inner">卡内容</div>
           </div>
-          <div class="card-footer">Card footer</div>
+          <div class="card-footer">卡脚</div>
         </li>
       </ul>
     </div>
