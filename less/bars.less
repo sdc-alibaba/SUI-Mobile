@@ -110,23 +110,23 @@
       vertical-align: top;
       position: absolute;
       left: 60%;
-      padding: 3px 6px;
+      padding: 0.15rem 0.3rem;
       top: 0;
       z-index: 100;
     }
 
     // Tab icon
     .icon {
-      top: 3px;
-      width: 24px;
-      height: 24px;
+      top: 0.15rem;
+      width: 1.2rem;
+      height: 1.2rem;
       padding-top: 0;
       padding-bottom: 0;
 
       // Make the text smaller if it's used with an icon '
       ~ .tab-label {
         display: block;
-        font-size: 11px;
+        font-size: 0.55rem;
       }
     }
   }
@@ -137,7 +137,7 @@
 
 .bar .button {
   position: relative;
-  top: 7px;
+  top: 0.35rem;
   z-index: 20; // Position the buttons on top of .title
   margin-top: 0;
   font-weight: @font-weight-light;
@@ -155,7 +155,7 @@
 .bar .button-link {
   top: 0;
   padding: 0;
-  font-size: 16px;
+  font-size: 0.8rem;
   line-height: @bar-base-height;
   height: @bar-base-height;
   color: @color-primary;
@@ -171,8 +171,8 @@
 //
 // Add proper padding
 .bar .button-block {
-  top: 7px;
-  font-size: 16px; // Scale down font size to fit in bar.
+  top: 0.35rem;
+  font-size: 0.8rem; // Scale down font size to fit in bar.
   width: 100%;
 }
 
@@ -181,17 +181,17 @@
 // Buttons inside bars that sit closer against the viewport.
 .bar .button-nav {
   &.pull-left {
-    margin-left: -5px;
+    margin-left: -0.25rem;
 
     .icon-left-nav {
-      margin-right: -3px;
+      margin-right: -0.15rem;
     }
   }
   &.pull-right {
-    margin-right: -5px;
+    margin-right: -0.25rem;
 
     .icon-right-nav {
-      margin-left: -3px;
+      margin-left: -0.15rem;
     }
   }
 }
@@ -204,15 +204,15 @@
   .icon {
     position: relative;
     z-index: 20; // Position the buttons on top of .title
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 24px;
-    line-height: 24px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
   }
 
   // Vertical center the larger icons in buttons.
   .button .icon {
-    top: 2px;
+    top: 0.1rem;
     padding: 0;
   }
 
@@ -222,8 +222,8 @@
 
     // Specific postioning of the caret icon within a title. Used with popover.js.
     &.icon-caret {
-      top: 4px;
-      margin-left: -5px;
+      top: 0.2rem;
+      margin-left: -0.25rem;
     }
   }
 }
@@ -234,6 +234,6 @@
 
 // Position/size search bar within the bar
 .bar input[type="search"] {
-  height: 29px;
-  margin: 6px 0;
+  height: 1.45rem;
+  margin: 0.3rem 0;
 }

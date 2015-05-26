@@ -650,8 +650,8 @@ code {
 }
 .component-example {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 17px;
-  line-height: 21px;
+  font-size: .85rem;
+  line-height: 1.05rem;
 }
 .component-example,
 .component-example .bar,
@@ -855,8 +855,8 @@ code {
 .device {
   display: none;
   font-family: "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 17px;
-  line-height: 21px;
+  font-size: .85rem;
+  line-height: 1.05rem;
 }
 @media screen and (min-width: 768px) {
   .device {
@@ -887,8 +887,8 @@ code {
     width: 321px;
     height: 569px;
     overflow: hidden;
-    font-size: 17px;
-    line-height: 21px;
+    font-size: .85rem;
+    line-height: 1.05rem;
     background-color: #fff;
   }
   .device .content,
