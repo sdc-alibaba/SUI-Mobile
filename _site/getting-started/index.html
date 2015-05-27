@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Getting started &middot; SUI Mobile</title>
+<title>开始使用 &middot; SUI Mobile</title>
 <meta name="description" content="Ratchet: Build mobile apps with simple HTML, CSS, and JS components.">
 <meta name="author" content="Connor Sears">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
@@ -61,8 +61,8 @@
 
   <div class="container">
     <div class="docs-sub-content">
-      <h2 class="page-title">Getting started</h2>
-      <p class="page-description">Once you've downloaded Ratchet, here's what to do next.</p>
+      <h2 class="page-title">开始使用</h2>
+      <p class="page-description">只需要如下几个简单的步骤，就可以在你的应用中使用SUI Mobile了.</p>
     </div>
     
   </div>
@@ -72,231 +72,123 @@
   <div class="column-group">
     <div class="column lg-units-8 docs-content">
       <div class="docs-section">
-        <h2>Quick start</h2>
-        <p class="lead">Quickly get up and running with a Ratchet app.</p>
+        <h2>创建页面</h2>
+        <p class="lead"></p>
 
-        <h3>1. Create your pages</h3>
-        <p>Use the <a href="/components" data-ignore="push">documentation</a> as a reference for all the available components and piece together the pages of your app. Be sure to look at the <a href="#pageLayout">basic page template</a> and <a href="/examples" data-ignore="push">example applications</a>. Make sure to add <code>ratchet-theme-ios.css</code> or <code>ratchet-theme-android.css</code> to your app's <code>&lt;head&gt;</code> if you have a specific platform in mind.</p>
+        <h3>1. 引用静态资源</h3>
+        <p>我们提供了CDN地址可以直接使用，并且强烈建议使用我们的CDN而不是下载到本地。</p>
+ 
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"//g.alicdn.com/sui-mobile/sm/0.0.1/css/sm.min.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span> <span class="na">src=</span><span class="s">'//g.alicdn.com/sj/lib/zepto/zepto.min.js'</span> <span class="na">charset=</span><span class="s">'utf-8'</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span> <span class="na">src=</span><span class="s">'//g.alicdn.com/sui-mobile/sm/0.0.1/js/sm.min.js'</span> <span class="na">charset=</span><span class="s">'utf-8'</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!--如果你用到了拓展包中的组件，还需要引用下面两个--&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"//g.alicdn.com/sui-mobile/sm/0.0.1/css/sm-extend.min.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span> <span class="na">src=</span><span class="s">'//g.alicdn.com/sui-mobile/sm/0.0.1/js/sm-extend.min.js'</span> <span class="na">charset=</span><span class="s">'utf-8'</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
 
-        <h3>2. Connect pages with push.js</h3>
-        <p>Read about <a href="/components/#push" data-ignore="push">push.js</a> then start connecting your pages. Push.js allows you to create a app that feels like a real app when you save it to your phone. Make sure that you have a server running, and that your browser is emulating touch events. <a href="https://developers.google.com/chrome-developer-tools/docs/mobile-emulation#emulate-touch-events" data-ignore="push">Check out this tutorial on emulating touch events in Chrome</a> (<a href="https://developer.mozilla.org/en-US/docs/Tools/Responsive_Design_View" data-ignore="push">or Firefox</a>) if you're not sure how to do that.</p>
+        <h3>2. 调试代码</h3>
+        <p>如果你希望在开发环境下可以调试代码，那么你可以这样引用未压缩的版本</p>
 
-        <h3>3. Save the app to your phone</h3>
-        <p>There are <a href="https://groups.google.com/forum/#!topic/goratchet/IboE6SCMAyw" data-ignore="push">a few ways to do this</a>, but the simplest is to run a local server on your computer, point Safari on your iPhone to your computer, then click the <span class="icon icon-share"></span> button and "Add to Home Screen". For Android, check out <a href="https://developer.chrome.com/multidevice/android/installtohomescreen" data-ignore="push">this guide</a>.</p>
-      </div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"//g.alicdn.com/sui-mobile/sm/0.0.1/css/sm.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span> <span class="na">src=</span><span class="s">'//g.alicdn.com/sj/lib/zepto/zepto.js'</span> <span class="na">charset=</span><span class="s">'utf-8'</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span> <span class="na">src=</span><span class="s">'//g.alicdn.com/sui-mobile/sm/0.0.1/js/sm.js'</span> <span class="na">charset=</span><span class="s">'utf-8'</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!--如果你用到了拓展包中的组件，还需要引用下面两个--&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"//g.alicdn.com/sui-mobile/sm/0.0.1/css/sm-extend.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span> <span class="na">src=</span><span class="s">'//g.alicdn.com/sui-mobile/sm/0.0.1/js/sm-extend.js'</span> <span class="na">charset=</span><span class="s">'utf-8'</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
 
-      <div class="docs-section">
-        <h2>What's included</h2>
-        <p class="lead">Ratchet is downloadable in two forms, within which you'll find the following directories and files, logically grouping common resources and providing both compiled and minified variations.</p>
+        <h3>完整的页面模板</h3>
+        <p>你可以直接用下面的模板来创建你的页面：</p>
 
-        <h3>Precompiled Ratchet</h3>
-        <p>Once downloaded, unzip the compressed folder to see the structure of (the compiled) Ratchet. You'll see something like this:</p>
-<!-- NOTE: This info is intentionally duplicated in the README.
-Copy any changes made here over to the README too. -->
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">ratchet/
-├── css/
-│   ├── ratchet.css
-│   ├── ratchet.min.css
-│   ├── ratchet-theme-android.css
-│   ├── ratchet-theme-android.min.css
-│   ├── ratchet-theme-ios.css
-│   └── ratchet-theme-ios.min.css
-├── js/
-│   ├── ratchet.js
-│   └── ratchet.min.js
-└── fonts/
-    ├── ratchicons.eot
-    ├── ratchicons.svg
-    ├── ratchicons.ttf
-    └── ratchicons.woff</code></pre></div>
-
-        <p>This is the most basic form of Ratchet: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>ratchet.*</code>), as well as compiled and minified CSS and JS (<code>ratchet.min.*</code>). The Ratchicon fonts are included, as are the Android and iOS platform themes.</p>
-
-        <h3>Ratchet source code</h3>
-        <p>The Ratchet source code download includes the precompiled CSS, JavaScript, and font assets, along with source Sass, JavaScript, and documentation. More specifically, it includes the following and more:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">ratchet/
-├── sass/
-├── js/
-├── fonts/
-├── dist/
-│   ├── css/
-│   ├── js/
-│   └── fonts/
-└── docs/
-    └── examples/</code></pre></div>
-
-        <p>The <code>sass/</code>, <code>js/</code>, and <code>fonts/</code> are the source code for our CSS, JS, and icon fonts (respectively). The <code>dist/</code> folder includes everything listed in the precompiled download section above. The <code>docs/</code> folder includes the source code for our documentation, and <code>examples/</code> of Ratchet usage. Beyond that, any other included file provides support for packages, license information, and development.</p>
-      </div>
-
-
-
-      <div class="docs-section">
-        <h2>Page setup</h2>
-        <p class="lead">Three simple rules for structuring your Ratchet pages</p>
-        <h3>1. Fixed bars come first</h3>
-        <p>All fixed bars (<code>.bar</code>) should always be the first thing in the <code>&lt;body&gt;</code> of the page. This is really important!</p>
-
-        <h3>2. Everything else goes in <code>.content</code></h3>
-        <p>Anything that's not a <code>.bar</code> should be put in a div with the class <code>.content</code>. Put this div after the bars in the <code>&lt;body&gt;</code> tag. The <code>.content</code> div is what actually scrolls in a Ratchet prototype.</p>
-
-        <h3>3. Don't forget your meta tags</h3>
-        <p>They're included in the template.html page included in the download, but make sure they stay in the page. They are important for Ratchet to work just right.</p>
-      </div>
-
-
-
-      <div class="docs-section">
-        <h2 id="pageLayout">Basic template</h2>
-        <p class="lead">Use this basic template to get your app started.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
   <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;title&gt;</span>Ratchet template page<span class="nt">&lt;/title&gt;</span>
-
-    <span class="c">&lt;!-- Sets initial viewport load and disables zooming  --&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>开始使用 <span class="ni">&amp;middot;</span> SUI Mobile<span class="nt">&lt;/title&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"initial-scale=1, maximum-scale=1"</span><span class="nt">&gt;</span>
-
-    <span class="c">&lt;!-- Makes your prototype chrome-less once bookmarked to your phone's home screen --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"shortcut icon"</span> <span class="na">href=</span><span class="s">"/favicon.ico"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"apple-mobile-web-app-capable"</span> <span class="na">content=</span><span class="s">"yes"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"apple-mobile-web-app-status-bar-style"</span> <span class="na">content=</span><span class="s">"black"</span><span class="nt">&gt;</span>
 
-    <span class="c">&lt;!-- Include the compiled Ratchet CSS --&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"ratchet.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"//g.alicdn.com/sui-mobile/sm/0.0.1/css/sm.min.css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"//g.alicdn.com/sui-mobile/sm/0.0.1/css/sm-extend.min.css"</span><span class="nt">&gt;</span>
 
-    <span class="c">&lt;!-- Include the compiled Ratchet JS --&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"ratchet.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/your-css-file.css"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
   <span class="nt">&lt;body&gt;</span>
+    <span class="c">&lt;!-- 你的html代码 --&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span> <span class="na">src=</span><span class="s">'//g.alicdn.com/sj/lib/zepto/zepto.min.js'</span> <span class="na">charset=</span><span class="s">'utf-8'</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span> <span class="na">src=</span><span class="s">'//g.alicdn.com/sui-mobile/sm/0.0.1/js/sm.min.js'</span> <span class="na">charset=</span><span class="s">'utf-8'</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span> <span class="na">src=</span><span class="s">'//g.alicdn.com/sui-mobile/sm/0.0.1/js/sm-extend.min.js'</span> <span class="na">charset=</span><span class="s">'utf-8'</span><span class="nt">&gt;&lt;/script&gt;</span>
 
-    <span class="c">&lt;!-- Make sure all your bars are the first things in your &lt;body&gt; --&gt;</span>
-    <span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Ratchet<span class="nt">&lt;/h1&gt;</span>
-    <span class="nt">&lt;/header&gt;</span>
-
-    <span class="c">&lt;!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) --&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"content-padded"</span><span class="nt">&gt;</span>Thanks for downloading Ratchet. This is an example HTML page that's linked up to compiled Ratchet CSS and JS, has the proper meta tags and the HTML structure. Need some more help before you start filling this with your own content? Check out some Ratchet resources:<span class="nt">&lt;/p&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"table-view"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"table-view-cell"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"push-right"</span> <span class="na">href=</span><span class="s">"http://goratchet.com"</span><span class="nt">&gt;</span>
-              <span class="nt">&lt;strong&gt;</span>Ratchet documentation<span class="nt">&lt;/strong&gt;</span>
-            <span class="nt">&lt;/a&gt;</span>
-          <span class="nt">&lt;/li&gt;</span>
-          <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"table-view-cell"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"push-right"</span> <span class="na">href=</span><span class="s">"https://github.com/twbs/ratchet/"</span><span class="nt">&gt;</span>
-              <span class="nt">&lt;strong&gt;</span>Ratchet on Github<span class="nt">&lt;/strong&gt;</span>
-            <span class="nt">&lt;/a&gt;</span>
-          <span class="nt">&lt;/li&gt;</span>
-          <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"table-view-cell"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"push-right"</span> <span class="na">href=</span><span class="s">"https://groups.google.com/forum/#!forum/goratchet"</span><span class="nt">&gt;</span>
-              <span class="nt">&lt;strong&gt;</span>Ratchet Google group<span class="nt">&lt;/strong&gt;</span>
-            <span class="nt">&lt;/a&gt;</span>
-          <span class="nt">&lt;/li&gt;</span>
-          <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"table-view-cell"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"push-right"</span> <span class="na">href=</span><span class="s">"https://twitter.com/goratchet"</span><span class="nt">&gt;</span>
-              <span class="nt">&lt;strong&gt;</span>Ratchet on Twitter<span class="nt">&lt;/strong&gt;</span>
-            <span class="nt">&lt;/a&gt;</span>
-          <span class="nt">&lt;/li&gt;</span>
-        <span class="nt">&lt;/ul&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/your-js-file.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></div>
+
+          <h2>使用组件</h2>
+          <p class="lead">上面已经有了页面的基本结构，下一步就是把你需要的组件塞进去，这里我们以一个卡片形式的页面为例。我们主要会用到导航栏和卡片两个组件。</p>
+          <p>首先，我们需要一个标题栏和工具栏。</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"button button-link button-nav pull-left"</span> <span class="na">href=</span><span class="s">"/demos/card"</span> <span class="na">data-transition=</span><span class="s">'slide-out'</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-left"</span><span class="nt">&gt;&lt;/span&gt;</span>
+    返回
+  <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>我的生活<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"bar bar-tab"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-home"</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>首页<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-me"</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>我<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-star"</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>收藏<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-settings"</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>设置<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/nav&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- 这里是页面内容区 --&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+          <p>然后我们在内容区中填上几个卡片</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"page-index"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"background-image:url(//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg)"</span> <span class="na">valign=</span><span class="s">"bottom"</span> <span class="na">class=</span><span class="s">"card-header color-white no-border"</span><span class="nt">&gt;</span>旅途的山<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-content"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-content-inner"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"color-gray"</span><span class="nt">&gt;</span>发表于 2015/01/15<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;p&gt;</span>此处是内容...<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-footer"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"link"</span><span class="nt">&gt;</span>赞<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"link"</span><span class="nt">&gt;</span>更多<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"background-image:url(//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg)"</span> <span class="na">valign=</span><span class="s">"bottom"</span> <span class="na">class=</span><span class="s">"card-header color-white no-border"</span><span class="nt">&gt;</span>旅途的山<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-content"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-content-inner"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"color-gray"</span><span class="nt">&gt;</span>发表于 2015/01/15<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;p&gt;</span>此处是内容...<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-footer"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"link"</span><span class="nt">&gt;</span>赞<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"link"</span><span class="nt">&gt;</span>更多<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  ... 可以多放几张卡片
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
       </div>
-
-
-
-      <div class="docs-section">
-        <h2>Community</h2>
-        <p class="lead">Stay up to date on the development of Ratchet and reach out to the community with these helpful resources.</p>
-        <ol>
-          <li>
-            <p>Read and subscribe to <a href="http://blog.getbootstrap.com/">The Official Bootstrap Blog</a> (which includes Ratchet releases and news).</p>
-          </li>
-          <li>
-            <p>For help using Ratchet, ask on <a href="http://stackoverflow.com/questions/tagged/ratchet-2">StackOverflow using the tag <code>ratchet-2</code></a>.</p>
-          </li>
-          <li>
-            <p>Start a discussion on the <a href="https://groups.google.com/forum/#!forum/goratchet">Ratchet Google group</a>.</p>
-          </li>
-        </ol>
-        <p>You can also follow <a href="https://twitter.com/goratchet">@goratchet</a> on Twitter for the latest news.</p>
-      </div>
-
-      <div class="docs-section">
-        <h2>Browser and OS support</h2>
-        <table class="browser-support-table">
-          <thead>
-            <tr>
-              <th scope="col">OS</th>
-              <th scope="col">Browser</th>
-              <th scope="col" class="text-center">Supported?</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Android (minimum version To Be Decided)</td>
-              <td>Android stock Browser</td>
-              <td class="text-center browser-support-yes"><span class="icon icon-check"></span></td>
-            </tr>
-            <tr>
-              <td>Android (minimum version To Be Decided)</td>
-              <td>Chrome</td>
-              <td class="text-center browser-support-yes"><span class="icon icon-check"></span></td>
-            </tr>
-            <tr>
-              <td>Android (minimum version To Be Decided)</td>
-              <td>Firefox</td>
-              <td class="text-center browser-support-maybe">To Be Decided</td>
-            </tr>
-            <tr>
-              <td>iOS v7.1+</td>
-              <td>Safari</td>
-              <td class="text-center browser-support-yes"><span class="icon icon-check"></span></td>
-            </tr>
-            <tr>
-              <td>iOS v7.1+</td>
-              <td>Chrome</td>
-              <td class="text-center browser-support-maybe">To Be Decided</td>
-            </tr>
-            <tr>
-              <td>Windows Phone</td>
-              <td>IE Mobile</td>
-              <td class="text-center browser-support-maybe">To Be Decided</td>
-            </tr>
-            <tr>
-              <td>&mdash;</td>
-              <td>Opera Mini</td>
-              <td class="text-center browser-support-maybe">To Be Decided</td>
-            </tr>
-            <tr>
-              <td>&mdash;</td>
-              <td>Opera Mobile</td>
-              <td class="text-center browser-support-maybe">To Be Decided</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="column lg-units-4">
-      <div class="docs-module">
-  <h4 class="docs-module-title">Ratchet</h4>
-  <p>Compiled and minified CSS, JavaScript, and fonts. No docs or original source files are included.</p>
-  <a href="https://github.com/twbs/ratchet/releases/download/v2.0.2/ratchet-2.0.2-dist.zip" class="btn btn-block btn-primary" data-ignore="push" onClick="_gaq.push(['_trackEvent', 'Downloads', 'V2.0.2-dist']);">Download Ratchet</a>
-  <p class="version">Currently v2.0.2</p>
-</div>
-
-<div class="docs-module">
-  <h4 class="docs-module-title">Source code</h4>
-  <p>If you haven't already, download the source code for Ratchet.</p>
-  <a href="https://github.com/twbs/ratchet/archive/v2.0.2.zip" class="btn btn-block btn-primary" data-ignore="push" onClick="_gaq.push(['_trackEvent', 'Downloads', 'V2.0.2']);">Download source</a>
-</div>
-
-    </div>
   </div>
 
   <div class="column">
