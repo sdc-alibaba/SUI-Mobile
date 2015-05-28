@@ -1,7 +1,7 @@
 {
   "name": "sm",
   "description": "Build mobile apps with simple HTML, CSS, and JS components.",
-  "version": "2.0.2",
+  "version": "0.0.1",
   "keywords": [
     "css",
     "fonts",
@@ -10,8 +10,7 @@
     "mobile",
     "prototype"
   ],
-  "homepage": "http://goratchet.com",
-  "author": "Connor Sears",
+  "homepage": "http://m.sui.taobao.org/",
   "style": "dist/css/sm.css",
   "less": "less/sm.less",
   "repository": {
