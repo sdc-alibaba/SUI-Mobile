@@ -13,7 +13,8 @@ module.exports = function(grunt) {
         return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&');
     };
 
-  var dist = grunt.option('buildTo') ? (grunt.option('buildTo') + '/') : 'dist/';
+    var buildTo = grunt.option('buildTo');
+  var dist = buildTo ? (buildTo + '/') : 'dist/';
 
     // Project configuration.
     grunt.initConfig({
@@ -295,9 +296,15 @@ module.exports = function(grunt) {
   grunt.registerTask('dist', ['clean', 'dist-css', 'dist-js', 'copy']);
   grunt.registerTask('validate-html', ['jekyll']);
   grunt.registerTask('build', ['dist']);
-  grunt.registerTask('default', ['test', 'dist']);
   grunt.registerTask('test', ['dist', 'jshint', 'qunit', 'validate-html']);
   grunt.registerTask('server', ['dist', 'jekyll', 'connect', 'watch']);
+  if(buildTo) {
+    //CDN发布环境
+    grunt.registerTask('default', ['dist-js', 'dist-css']);
+  } else {
+    //开发环境
+    grunt.registerTask('default', ['test', 'dist']);
+  }
 
   // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
