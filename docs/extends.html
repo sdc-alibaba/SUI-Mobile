@@ -1,0 +1,42 @@
+---
+layout: default
+title: 拓展组件 &middot; SUI Mobile
+---
+
+<div class="docs-sub-header">
+  {% include masthead.html %}
+  <div class="container">
+    <div class="docs-sub-content">
+      <h2 class="page-title">拓展组件</h2>
+      <p class="page-description">使用这里的组件，你需要额外引入 <code>sm-extend.js</code> 和 <code>sui-extend.css</code>，请参考 <a href="/getting-started" data-ignore='push'>入门教程</a></p>
+    </div>
+    {% include ad.html %}
+  </div>
+  {% include toolbar-extends.html %}
+</div>
+
+<div class="container">
+  <!-- Components -->
+  <div class="docs-components column-group">
+    <div class="device-column column lg-units-5 pull-right">
+      <!-- In phone examples -->
+      <div class="device js-device">
+        <div class="device-content">
+          <div id="iwindow">
+            <header class="bar bar-nav">
+              <h1 class="title">Title</h1>
+            </header>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="column lg-units-7 docs-content">
+      <!-- Bars -->
+      {% include _components/swiper.html %}
+      {% include _components/photo-browser.html %}
+      <!-- Footer -->
+      {% include footer.html %}
+    </div>
+  </div>
+</div>

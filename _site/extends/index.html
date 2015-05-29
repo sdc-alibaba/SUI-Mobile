@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>拓展组件 &middot; SUI Mobile</title>
+<meta name="description" content="Ratchet: Build mobile apps with simple HTML, CSS, and JS components.">
+<meta name="author" content="Connor Sears">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<!-- Google Web Fonts -->
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,500,700%7COpen+Sans:400,300">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1431676360_347254.css">
+
+<link rel="stylesheet" href="/dist/css/sm.css">
+<link rel="stylesheet" href="/dist/css/sm-extend.css">
+<link rel="stylesheet" href="/assets/css/docs.css">
+
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/img/apple-touch-icon-114x114.png">
+<script src="/assets/js/zepto.js"></script>
+<script>
+  //ga
+</script>
+
+  </head>
+  <body ontouchstart="">
+    <!--[if lt IE 9]>
+  <div class="bs-callout bs-callout-danger">
+    <h4>Attention!</h4>
+    <p>
+      Looks like your current browser is old and doesn't support many features used in this page.
+      Please take a second to <a href="http://browsehappy.com/">upgrade to a more modern browser</a>.
+    </p>
+  </div>
+<![endif]-->
+
+    <div class="docs-sub-header">
+  <header class="docs-masthead clearfix">
+  <div class="container">
+    <div class="column">
+      <h1 class="docs-title">
+        <a href="/" data-ignore="push">SUI Mobile</a>
+      </h1>
+      <nav class="docs-nav clearfix">
+        <a class="docs-nav-trigger icon icon-bars pull-right js-docs-nav-trigger" href="#"></a>
+        <div class="docs-nav-group">
+          <a class="docs-nav-item" href="/" data-ignore="push">首页</a>
+          <a class="docs-nav-item" href="/getting-started" data-ignore="push">开始使用</a>
+          <a class="docs-nav-item" href="/components" data-ignore="push">基础组件</a>
+          <a class="docs-nav-item" href="/extends" data-ignore="push">拓展组件</a>
+          <a class="docs-nav-item" href="/demos" data-ignore="push">示例</a>
+          <a class="docs-nav-item" href="/about" data-ignore="push">关于</a>
+          <a class="docs-nav-item" href="https://github.com/sdc-alibaba/SUI-Mobile" target="_blank" data-ignore="push">github</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+  <div class="container">
+    <div class="docs-sub-content">
+      <h2 class="page-title">拓展组件</h2>
+      <p class="page-description">使用这里的组件，你需要额外引入 <code>sm-extend.js</code> 和 <code>sui-extend.css</code>，请参考 <a href="/getting-started" data-ignore='push'>入门教程</a></p>
+    </div>
+    
+  </div>
+  <div class="docs-component-toolbar js-docs-component-toolbar">
+  <div class="container">
+    <div class="column units-2">
+      <span class="docs-jump-menu pull-left js-jump-menu">
+  <span class="icon icon-menu"></span>
+  组件
+  <span class="icon icon-caret-down"></span>
+</span>
+
+<div class="docs-component-group js-component-group">
+  <a class="docs-component-item" href="#swiper" data-ignore="push">幻灯片</a>
+  <a class="docs-component-item" href="#browser" data-ignore="push">图片浏览器</a>
+</div>
+
+
+      <!-- 以后切换皮肤用这个
+      <div class="segmented-control">
+        <a  class="platform-switch control-item active" data-platform="">
+          Base
+        </a>
+        <a class="platform-switch control-item" data-platform="platform-ios">
+          iOS
+        </a>
+        <a class="platform-switch control-item" data-platform="platform-android">
+          Android
+        </a>
+      </div>
+      -->
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="container">
+  <!-- Components -->
+  <div class="docs-components column-group">
+    <div class="device-column column lg-units-5 pull-right">
+      <!-- In phone examples -->
+      <div class="device js-device">
+        <div class="device-content">
+          <div id="iwindow">
+            <header class="bar bar-nav">
+              <h1 class="title">Title</h1>
+            </header>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="column lg-units-7 docs-content">
+      <!-- Bars -->
+      <article class="component active" id="swiper">
+  <h3 class="component-title">幻灯片</h3>
+  <p class="component-description">幻灯片</p>
+
+  <div class="component-example component-example-fullbleed">
+    <header class="bar bar-nav">
+      <h1 class="title">幻灯片</h1>
+    </header>
+    <div class="content">
+      <!-- Slider -->
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>幻灯片<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Slider --&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"swiper-container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"swiper-wrapper"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"swiper-slide"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"swiper-slide"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"swiper-slide"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"swiper-pagination"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s2">".swiper-container"</span><span class="p">).</span><span class="nx">swiper</span><span class="p">();</span>
+<span class="p">});</span></code></pre></div>
+</article>
+
+      <article class="component active" id="browser">
+  <h3 class="component-title">图片浏览器</h3>
+  <p class="component-description">图片浏览器</p>
+
+  <div class="component-example component-example-fullbleed">
+    <header class="bar bar-nav">
+      <h1 class="title">图片浏览器</h1>
+    </header>
+    <div class="content">
+      <div class="content-block row">
+        <div class="col-50"><a href="#" class="button pb-standalone">Standalone</a></div>
+        <div class="col-50"><a href="#" class="button pb-popup">Popup</a></div>
+      </div>
+      <div class="content-block"><a href="#" class="button pb-standalone-captions">With Captions</a></div>
+      <div class="content-block"><a href="#" class="button pb-standalone-video">With Video</a></div>
+    </div>
+    <script>
+      $(function(){
+        /*=== 默认为 standalone ===*/
+        $.photoBrowser.prototype.defaults.container = '#iwindow';
+        var myPhotoBrowserStandalone = $.photoBrowser({
+            photos : [
+                '//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg',
+                '//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg',
+                '//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg',
+            ]
+        });
+        //点击时打开图片浏览器
+        $(document).on('click','.pb-standalone',function () {
+          myPhotoBrowserStandalone.open();
+        });
+         
+        /*=== Popup ===*/
+        var myPhotoBrowserPopup = $.photoBrowser({
+            photos : [
+                '//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg',
+                '//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg',
+                '//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg',
+            ],
+            type: 'popup'
+        });
+        $(document).on('click','.pb-popup',function () {
+          myPhotoBrowserPopup.open();
+        });
+         
+         
+        /*=== 有标题 ===*/
+        var myPhotoBrowserCaptions = $.photoBrowser({
+            photos : [
+                {
+                    url: '//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg',
+                    caption: 'Caption 1 Text'
+                },
+                {
+                    url: '//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg',
+                    caption: 'Second Caption Text'
+                },
+                // 这个没有标题
+                {
+                    url: '//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg',
+                },
+            ],
+            theme: 'dark',
+            type: 'standalone'
+        });
+        $(document).on('click','.pb-standalone-captions',function () {
+          myPhotoBrowserCaptions.open();
+        });
+         
+        /*=== 有视频 ===*/
+        var myPhotoBrowserVideo = $.photoBrowser({
+            photos : [
+                {
+                    html: '<iframe src="//www.youtube.com/embed/lmc21V-zBq0?list=PLpj0FBQgLGEr3mtZ5BTwtmSwF1dkPrPRM" frameborder="0" allowfullscreen></iframe>',
+                    caption: 'Woodkid - Run Boy Run (Official HD Video)'
+                },
+                {
+                    url: 'http://lorempixel.com/1024/1024/sports/2/',
+                    caption: 'Second Caption Text'
+                },
+                {
+                    url: 'http://lorempixel.com/1024/1024/sports/3/',
+                },
+            ],
+            theme: 'dark',
+            type: 'standalone'
+        });
+        $(document).on('click','.pb-standalone-video',function () {
+          myPhotoBrowserVideo.open();
+        });
+      })
+    </script>
+  </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>图片浏览器<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-50"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button pb-standalone"</span><span class="nt">&gt;</span>Standalone<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-50"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button pb-popup"</span><span class="nt">&gt;</span>Popup<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button pb-standalone-captions"</span><span class="nt">&gt;</span>With Captions<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button pb-standalone-video"</span><span class="nt">&gt;</span>With Video<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="cm">/*=== 默认为 standalone ===*/</span>
+<span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="cm">/*=== 默认为 standalone ===*/</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">photoBrowser</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">container</span> <span class="o">=</span> <span class="s1">'#iwindow'</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">myPhotoBrowserStandalone</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">photoBrowser</span><span class="p">({</span>
+      <span class="na">photos</span> <span class="p">:</span> <span class="p">[</span>
+          <span class="s1">'//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
+          <span class="s1">'//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
+          <span class="s1">'//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
+      <span class="p">]</span>
+  <span class="p">});</span>
+  <span class="c1">//点击时打开图片浏览器</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.pb-standalone'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">myPhotoBrowserStandalone</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+  <span class="p">});</span>
+   
+  <span class="cm">/*=== Popup ===*/</span>
+  <span class="kd">var</span> <span class="nx">myPhotoBrowserPopup</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">photoBrowser</span><span class="p">({</span>
+      <span class="na">photos</span> <span class="p">:</span> <span class="p">[</span>
+          <span class="s1">'//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
+          <span class="s1">'//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
+          <span class="s1">'//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
+      <span class="p">],</span>
+      <span class="na">type</span><span class="p">:</span> <span class="s1">'popup'</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.pb-popup'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">myPhotoBrowserPopup</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="cm">/*=== 有标题 ===*/</span>
+  <span class="kd">var</span> <span class="nx">myPhotoBrowserCaptions</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">photoBrowser</span><span class="p">({</span>
+      <span class="na">photos</span> <span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+              <span class="na">url</span><span class="p">:</span> <span class="s1">'//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
+              <span class="na">caption</span><span class="p">:</span> <span class="s1">'Caption 1 Text'</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+              <span class="na">url</span><span class="p">:</span> <span class="s1">'//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
+              <span class="na">caption</span><span class="p">:</span> <span class="s1">'Second Caption Text'</span>
+          <span class="p">},</span>
+          <span class="c1">// 这个没有标题</span>
+          <span class="p">{</span>
+              <span class="na">url</span><span class="p">:</span> <span class="s1">'//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg'</span><span class="p">,</span>
+          <span class="p">},</span>
+      <span class="p">],</span>
+      <span class="na">theme</span><span class="p">:</span> <span class="s1">'dark'</span><span class="p">,</span>
+      <span class="na">type</span><span class="p">:</span> <span class="s1">'standalone'</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.pb-standalone-captions'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">myPhotoBrowserCaptions</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+  <span class="p">});</span>
+   
+  <span class="cm">/*=== 有视频 ===*/</span>
+  <span class="kd">var</span> <span class="nx">myPhotoBrowserVideo</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">photoBrowser</span><span class="p">({</span>
+      <span class="na">photos</span> <span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+              <span class="na">html</span><span class="p">:</span> <span class="s1">'&lt;iframe src="//www.youtube.com/embed/lmc21V-zBq0?list=PLpj0FBQgLGEr3mtZ5BTwtmSwF1dkPrPRM" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;'</span><span class="p">,</span>
+              <span class="na">caption</span><span class="p">:</span> <span class="s1">'Woodkid - Run Boy Run (Official HD Video)'</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+              <span class="na">url</span><span class="p">:</span> <span class="s1">'http://lorempixel.com/1024/1024/sports/2/'</span><span class="p">,</span>
+              <span class="na">caption</span><span class="p">:</span> <span class="s1">'Second Caption Text'</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+              <span class="na">url</span><span class="p">:</span> <span class="s1">'http://lorempixel.com/1024/1024/sports/3/'</span><span class="p">,</span>
+          <span class="p">},</span>
+      <span class="p">],</span>
+      <span class="na">theme</span><span class="p">:</span> <span class="s1">'dark'</span><span class="p">,</span>
+      <span class="na">type</span><span class="p">:</span> <span class="s1">'standalone'</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.pb-standalone-video'</span><span class="p">,</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">myPhotoBrowserVideo</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="p">})</span></code></pre></div>
+</article>
+
+      <!-- Footer -->
+      <div class="docs-footer">
+  <!-- Social links -->
+
+  <p class="docs-footer-text">Code licensed under the <a href="https://github.com/twbs/ratchet/blob/master/LICENSE" data-ignore="push">MIT License</a> and the docs are licensed under <a href="https://github.com/twbs/ratchet/blob/master/docs/LICENSE" data-ignore="push">CC BY 3.0</a>. Ratchet was lovingly crafted by <a href="https://twitter.com/connors" data-ignore="push">Connor Sears</a>.</p>
+
+  <ul class="docs-footer-links">
+    <!--<li>Currently v2.0.2</li>
+    <li>&middot;</li>
+    <li><a href="https://github.com/twbs/ratchet/issues" data-ignore="push">Issues</a></li>
+    <li>&middot;</li>
+    <li><a href="https://github.com/twbs/ratchet/releases" data-ignore="push">Releases</a></li>
+    <li>&middot;</li>
+    <li><a href="http://goratchet.com/1.0.2/" data-ignore="push">Legacy v1.0.2 Docs</a></li>-->
+  </ul>
+</div>
+
+
+
+
+<script src="/dist/js/sm.js"></script>
+<script src="/dist/js/sm-extend.js"></script>
+<script src="/assets/js/docs.js"></script>
+
+    </div>
+  </div>
+</div>
+
+  </body>
+</html>
