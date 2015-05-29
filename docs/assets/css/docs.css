@@ -889,7 +889,7 @@ code {
     overflow: hidden;
     font-size: .85rem;
     line-height: 1.05rem;
-    background-color: #fff;
+    background: #efeff4;
   }
   .device .content,
   .device .bar,

@@ -10,7 +10,7 @@
   height: @bar-base-height;
   padding-right: @bar-side-spacing;
   padding-left: @bar-side-spacing;
-  background-color: white;
+  background-color: #f7f7f8;
   .hairline(bottom, @border-default-color);
   -webkit-backface-visibility: hidden; // Make sure the bar is visible when a modal animates in.
           backface-visibility: hidden;
@@ -126,6 +126,8 @@
       ~ .tab-label {
         display: block;
         font-size: 0.55rem;
+        position: relative;
+        top: 0.15rem;
       }
     }
   }
