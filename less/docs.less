@@ -63,10 +63,21 @@ body {
 
 // Jumbotron
 // --------------------------------------------------
-.docs-header,
+
+.docs-header {
+  position: relative;
+  background-color: #571c94;
+  background-image: url(http://sui.taobao.org/sui/docs/assets/imgs/grid.png), -webkit-gradient(linear, left bottom, right top, color-stop(0%, #571c94), color-stop(100%, #e609cf));
+  background-image: url(http://sui.taobao.org/sui/docs/assets/imgs/grid.png), -webkit-linear-gradient(135deg, #571c94 0%, #e609cf 100%);
+  background-image: url(http://sui.taobao.org/sui/docs/assets/imgs/grid.png), -o-linear-gradient(135deg, #571c94 0%, #e609cf 100%);
+  background-image: url(http://sui.taobao.org/sui/docs/assets/imgs/grid.png), -webkit-linear-gradient(315deg, #571c94 0%, #e609cf 100%);
+  background-image: url(http://sui.taobao.org/sui/docs/assets/imgs/grid.png), -o-linear-gradient(315deg, #571c94 0%, #e609cf 100%);
+  background-repeat: no-repeat;
+  background-position: 50% 40%;
+}
 .docs-sub-header {
   position: relative;
-  .directional-gradient(#0a1855, #da0024)
+  .directional-gradient(#571c94, #e609cf, 135deg);
 }
 .docs-header {
   height: 100vh;

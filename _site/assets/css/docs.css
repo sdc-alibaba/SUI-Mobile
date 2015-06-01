@@ -122,14 +122,26 @@ body {
   font-size: 1.1em;
   color: #777;
 }
-.docs-header,
+.docs-header {
+  position: relative;
+  background-color: #571c94;
+  background-image: url(http://sui.taobao.org/sui/docs/assets/imgs/grid.png), -webkit-gradient(linear, left bottom, right top, color-stop(0%, #571c94), color-stop(100%, #e609cf));
+  background-image: url(http://sui.taobao.org/sui/docs/assets/imgs/grid.png), -webkit-linear-gradient(135deg, #571c94 0%, #e609cf 100%);
+  background-image: url(http://sui.taobao.org/sui/docs/assets/imgs/grid.png), -o-linear-gradient(135deg, #571c94 0%, #e609cf 100%);
+  background-image: url(http://sui.taobao.org/sui/docs/assets/imgs/grid.png), -webkit-linear-gradient(315deg, #571c94 0%, #e609cf 100%);
+  background-image: url(http://sui.taobao.org/sui/docs/assets/imgs/grid.png), -o-linear-gradient(315deg, #571c94 0%, #e609cf 100%);
+  background-repeat: no-repeat;
+  background-position: 50% 40%;
+}
 .docs-sub-header {
   position: relative;
-  background-color: #0a1855;
-  background-image: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #0a1855), color-stop(100%, #da0024));
-  background-image: -webkit-linear-gradient(45deg, #0a1855 0%, #da0024 100%);
-  background-image:      -o-linear-gradient(45deg, #0a1855 0%, #da0024 100%);
-  background-image:         linear-gradient(45deg, #0a1855 0%, #da0024 100%);
+  background-color: #571c94;
+  background-image: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #571c94), color-stop(100%, #e609cf));
+  background-image: -webkit-linear-gradient(135deg, #571c94 0%, #e609cf 100%);
+  background-image:      -o-linear-gradient(135deg, #571c94 0%, #e609cf 100%);
+  background-image: -webkit-linear-gradient(315deg, #571c94 0%, #e609cf 100%);
+  background-image:      -o-linear-gradient(315deg, #571c94 0%, #e609cf 100%);
+  background-image:         linear-gradient(135deg, #571c94 0%, #e609cf 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{@color-from}', endColorstr='#{@color-to}', GradientType=1);
 }
 .docs-header {
