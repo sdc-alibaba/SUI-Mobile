@@ -26,6 +26,7 @@
   bottom: 0;
 }
 
+
 // Modifier class to dock any bar above a standard bar
 .bar-footer-secondary {
   bottom: @bar-base-height;
@@ -119,6 +120,8 @@
       top: 0.15rem;
       width: 1.2rem;
       height: 1.2rem;
+      font-size: 1.2rem;
+      line-height: 1.2rem;
       padding-top: 0;
       padding-bottom: 0;
 
@@ -207,13 +210,12 @@
     z-index: 20; // Position the buttons on top of .title
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    font-size: 1.2rem;
-    line-height: 1.2rem;
+    font-size: 1rem;
+    line-height: 1rem;
   }
 
   // Vertical center the larger icons in buttons.
   .button .icon {
-    top: 0.1rem;
     padding: 0;
   }
 
@@ -229,6 +231,10 @@
   }
 }
 
+.bar-footer .icon {
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+}
 
 // Bars for search forms
 // --------------------------------------------------
