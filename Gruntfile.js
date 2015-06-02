@@ -300,7 +300,7 @@ module.exports = function(grunt) {
   grunt.registerTask('server', ['dist', 'jekyll', 'connect', 'watch']);
   if(buildTo) {
     //CDN发布环境
-    grunt.registerTask('default', ['dist-js', 'dist-css']);
+    grunt.registerTask('default', ['dist-js', 'dist-css', 'copy']);
   } else {
     //开发环境
     grunt.registerTask('default', ['test', 'dist']);
