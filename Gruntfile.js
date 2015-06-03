@@ -47,12 +47,12 @@ module.exports = function(grunt) {
                   banner: '<%= banner %>'
               },
               src: [
+                  'js/intro.js',
                   'js/util.js',
                   'js/detect.js',
                   'js/zepto-adapter.js',
                   'js/fastclick.js',
                   'js/template7.js',
-                  'js/common.js',
                   'js/tabs.js',
                   'js/push.js',
                   'js/modal.js',

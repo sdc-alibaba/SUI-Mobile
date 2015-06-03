@@ -1,15 +1,17 @@
 <article class="component" id="push">
     <h3 class="component-title">Push</h3>
-    <p class="component-description">Push.js is the engine that connects Ratchet pages together with AJAX and the history api. Push.js is listening to all clicks on a page, so just make sure it's included and link something in your Ratchet project up.</p>
-    {% highlight html %}
-    <!-- A one.html link -->
-    <a href="two.html">Two</a> {% endhighlight %}
-    <p class="component-note">This will use push to replace everything in the .content div with the .content of two.html. Also, it will either update or remove .bar-nav and .bar-tab according to their presences in two.html.</p>
-    <p class="component-description">Now that pages are being loaded through push, it's easy to specify transitions for animations between pages. There are three different transitions to chose from: <code>fade</code>, <code>slide-in</code>, or <code>slide-out</code>.</p>
-    {% highlight html %}
-    <!-- An one.html link that animates to two.html -->
-    <a href="two.html" data-transition="fade">Two</a> {% endhighlight %}
-    <p class="component-description">A working version of push:</p>
+    <p class="component-description">push.js 是一个很轻量的页面加载和历史管理组件。他会监听所有的链接click事件，并自动使用ajax加载新页面。</p>
+{% highlight html %}
+<!-- A one.html link -->
+<a href="two.html">Two</a>
+{% endhighlight %}
+    <p class="component-note">他会自动通过AJAX加载链接上的href地址，并把加载到的内容中的 .content 替换到当前页面，同样如果有 .bar-nav 或者 .bar-tab 也会被替换掉。</p>
+    <p class="component-description">你可以通过 <code>data-transition</code> 来指定加载动画，有三个可选值： <code>fade</code>, <code>slide-in</code>, or <code>slide-out</code>.</p>
+{% highlight html %}
+<!-- An one.html link that animates to two.html -->
+<a href="two.html" data-transition="fade">Two</a>
+{% endhighlight %}
+    <p class="component-description">比如:</p>
     <div class="component-example component-example-fullbleed">
         <header class="bar bar-nav">
             <h1 class="title">Push</h1>
@@ -19,47 +21,50 @@
                 <ul class="table-view">
                     <li class="table-view-cell">
                         <a class="navigate-right" href="/two.html" data-transition="slide-in">
-                  Load new page with push
+                          加载新页面
                 </a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
-    {% highlight html %}
-    <header class="bar bar-nav">
-        <h1 class="title">Push</h1>
-    </header>
-    <div class="content">
-        <div class="card">
-            <ul class="table-view">
-                <li class="table-view-cell">
-                    <a class="navigate-right" href="../two.html" data-transition="slide-in">
-          Load new page with push
-        </a>
-                </li>
-            </ul>
-        </div>
+{% highlight html %}
+<header class="bar bar-nav">
+    <h1 class="title">Push</h1>
+</header>
+<div class="content">
+    <div class="card">
+        <ul class="table-view">
+            <li class="table-view-cell">
+                <a class="navigate-right" href="../two.html" data-transition="slide-in">
+                  加载新页面
+                </a>
+            </li>
+        </ul>
     </div>
-    {% endhighlight %}
-    <p class="component-description">Have a link you don't want to intercepted by push? Try this:</p>
+</div>
+{% endhighlight %}
+    <p class="component-description">如果你不希望一个链接被push.js管理，那么只需要增加一个 <code>data-ignore="push"</code> 属性即可：</p>
     {% highlight html %}
     <!-- Use data-ignore="push" to prevent the push.js interception -->
-    <a href="http://www.google.com" data-ignore="push">Google<a>
+    <a href="http://www.baidu.com" data-ignore="push">直接访问baidu</a>
 {% endhighlight %}
 
-        <p class="component-description">Push.js binds an event to the document that returns a detail object and can be used to fire a callback.</p>
+        <p class="component-description">push.js 加载完成新页面之后，会在document上触发一个 <code>push</code> 事件：</p>
 
 {% highlight js %}
 // Only needed if you want to fire a callback
 window.addEventListener('push', myFunction);
 {% endhighlight %}
 
-        <p class="component-description">Push.js can be triggered manually by using the PUSH(options) function. When passing options, url is required, container, transition and timeout are optional. As of version 2.1.0 Ratchet has its own namespace and can also be called with RATCHET.push(options).</p>
+        <p class="component-description">你也可以调用 <code>$.push</code> 方法来手动加载一个新页面.</p>
 
 {% highlight js %}
-PUSH({url: "/signin"});
-RATCHET.push({url: "/signin"});
+$.push({url: "/signin"});
+$.push({
+  url: "/signin",
+  transition: "slide-in"
+});
 {% endhighlight %}
 
-      </article>
+</article>

@@ -158,9 +158,14 @@
       <td>在 <code>document.onload</code> 和 push 结束之后自动调用 <code>$.initPage</code> 方法。如果你的页面内容是异步加载的，应该关闭这个配置，并且在加载完成之后手动调用 <code>$.initPage</code></td>
     </tr>
     <tr>
+      <td>pushjs</td>
+      <td>true</td>
+      <td>使用push.js加载页面，如果设置为true，那么默认所有的链接都会被push.js拦截，并通过ajax加载新页面。</td>
+    </tr>
+    <tr>
       <td>showPageLoadingIndicator</td>
       <td>true</td>
-      <td>在push.js加载新页面过程中显示一个加载指示器。</td>
+      <td>在push.js加载新页面过程中显示一个加载指示器。只有 <code>pushjs</code> 为true时这个设置才有效</td>
     </tr>
   </table>
 
@@ -3273,14 +3278,14 @@ $(function() {
 
   <article class="component" id="push">
     <h3 class="component-title">Push</h3>
-    <p class="component-description">Push.js is the engine that connects Ratchet pages together with AJAX and the history api. Push.js is listening to all clicks on a page, so just make sure it's included and link something in your Ratchet project up.</p>
-    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- A one.html link --&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
-    <p class="component-note">This will use push to replace everything in the .content div with the .content of two.html. Also, it will either update or remove .bar-nav and .bar-tab according to their presences in two.html.</p>
-    <p class="component-description">Now that pages are being loaded through push, it's easy to specify transitions for animations between pages. There are three different transitions to chose from: <code>fade</code>, <code>slide-in</code>, or <code>slide-out</code>.</p>
-    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- An one.html link that animates to two.html --&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span> <span class="na">data-transition=</span><span class="s">"fade"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
-    <p class="component-description">A working version of push:</p>
+    <p class="component-description">push.js 是一个很轻量的页面加载和历史管理组件。他会监听所有的链接click事件，并自动使用ajax加载新页面。</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- A one.html link --&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
+    <p class="component-note">他会自动通过AJAX加载链接上的href地址，并把加载到的内容中的 .content 替换到当前页面，同样如果有 .bar-nav 或者 .bar-tab 也会被替换掉。</p>
+    <p class="component-description">你可以通过 <code>data-transition</code> 来指定加载动画，有三个可选值： <code>fade</code>, <code>slide-in</code>, or <code>slide-out</code>.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- An one.html link that animates to two.html --&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span> <span class="na">data-transition=</span><span class="s">"fade"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
+    <p class="component-description">比如:</p>
     <div class="component-example component-example-fullbleed">
         <header class="bar bar-nav">
             <h1 class="title">Push</h1>
@@ -3290,42 +3295,45 @@ $(function() {
                 <ul class="table-view">
                     <li class="table-view-cell">
                         <a class="navigate-right" href="/two.html" data-transition="slide-in">
-                  Load new page with push
+                          加载新页面
                 </a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Push<span class="nt">&lt;/h1&gt;</span>
-    <span class="nt">&lt;/header&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"table-view"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"table-view-cell"</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navigate-right"</span> <span class="na">href=</span><span class="s">"../two.html"</span> <span class="na">data-transition=</span><span class="s">"slide-in"</span><span class="nt">&gt;</span>
-          Load new page with push
-        <span class="nt">&lt;/a&gt;</span>
-                <span class="nt">&lt;/li&gt;</span>
-            <span class="nt">&lt;/ul&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/div&gt;</span></code></pre></div>
-    <p class="component-description">Have a link you don't want to intercepted by push? Try this:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Push<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"table-view"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"table-view-cell"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navigate-right"</span> <span class="na">href=</span><span class="s">"../two.html"</span> <span class="na">data-transition=</span><span class="s">"slide-in"</span><span class="nt">&gt;</span>
+                  加载新页面
+                <span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+    <p class="component-description">如果你不希望一个链接被push.js管理，那么只需要增加一个 <code>data-ignore="push"</code> 属性即可：</p>
     <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Use data-ignore="push" to prevent the push.js interception --&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://www.google.com"</span> <span class="na">data-ignore=</span><span class="s">"push"</span><span class="nt">&gt;</span>Google<span class="nt">&lt;a&gt;</span></code></pre></div>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://www.baidu.com"</span> <span class="na">data-ignore=</span><span class="s">"push"</span><span class="nt">&gt;</span>直接访问baidu<span class="nt">&lt;/a&gt;</span></code></pre></div>
 
-        <p class="component-description">Push.js binds an event to the document that returns a detail object and can be used to fire a callback.</p>
+        <p class="component-description">push.js 加载完成新页面之后，会在document上触发一个 <code>push</code> 事件：</p>
 
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Only needed if you want to fire a callback</span>
 <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'push'</span><span class="p">,</span> <span class="nx">myFunction</span><span class="p">);</span></code></pre></div>
 
-        <p class="component-description">Push.js can be triggered manually by using the PUSH(options) function. When passing options, url is required, container, transition and timeout are optional. As of version 2.1.0 Ratchet has its own namespace and can also be called with RATCHET.push(options).</p>
+        <p class="component-description">你也可以调用 <code>$.push</code> 方法来手动加载一个新页面.</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">PUSH</span><span class="p">({</span><span class="na">url</span><span class="p">:</span> <span class="s2">"/signin"</span><span class="p">});</span>
-<span class="nx">RATCHET</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="na">url</span><span class="p">:</span> <span class="s2">"/signin"</span><span class="p">});</span></code></pre></div>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="na">url</span><span class="p">:</span> <span class="s2">"/signin"</span><span class="p">});</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"/signin"</span><span class="p">,</span>
+  <span class="na">transition</span><span class="p">:</span> <span class="s2">"slide-in"</span>
+<span class="p">});</span></code></pre></div>
 
-      </article>
+</article>
 
     <!-- Table views -->
 

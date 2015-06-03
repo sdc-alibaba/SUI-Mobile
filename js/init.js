@@ -16,15 +16,6 @@
     if($.initSwiper) $.initSwiper($content);
   };
 
-  //全局配置
-  var defaults = {
-    autoInit: true,
-    showPageLoadingIndicator: true,
-    pushAnimationDuration: 400
-  };
-
-  $.smConfig = $.extend(defaults, $.config);
-
   if($.smConfig.autoInit) {
     $(window).on("push", function() {
       $.initPage();
@@ -42,7 +33,5 @@
       $.hideIndicator();
     });
   }
-
-
 
 }(Zepto);

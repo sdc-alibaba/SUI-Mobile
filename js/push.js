@@ -15,7 +15,31 @@
 
   var noop = function () {};
 
+  var getTransitionEnd = (function () {
+    var el = document.createElement('ratchet');
+    var transEndEventNames = {
+      WebkitTransition : 'webkitTransitionEnd',
+      MozTransition : 'transitionend',
+      OTransition : 'oTransitionEnd otransitionend',
+      transition : 'transitionend'
+    };
 
+    for (var name in transEndEventNames) {
+      if (el.style[name] !== undefined) {
+        return transEndEventNames[name];
+      }
+    }
+
+    return transEndEventNames.transition;
+  })();
+
+  if (!window.CustomEvent) {
+    window.CustomEvent = function (type, config) {
+      var e = document.createEvent('CustomEvent');
+      e.initCustomEvent(type, config.bubbles, config.cancelable, config.detail);
+      return e;
+    };
+  }
   // Pushstate caching
   // ==================
 
@@ -367,16 +391,16 @@
       container.offsetWidth; // force reflow
       container.classList.remove('in');
       var fadeContainerEnd = function () {
-        container.removeEventListener(window.RATCHET.getTransitionEnd, fadeContainerEnd);
+        container.removeEventListener(getTransitionEnd, fadeContainerEnd);
         swap.classList.add('in');
         if($.os.android && $.compareVersion("4.2.0", $.os.version)) {
           setTimeout(fadeSwapEnd, $.smConfig.pushAnimationDuration);
         } else {
-          swap.addEventListener(window.RATCHET.getTransitionEnd, fadeSwapEnd);
+          swap.addEventListener(getTransitionEnd, fadeSwapEnd);
         }
       };
       var fadeSwapEnd = function () {
-        swap.removeEventListener(window.RATCHET.getTransitionEnd, fadeSwapEnd);
+        swap.removeEventListener(getTransitionEnd, fadeSwapEnd);
         container.parentNode.removeChild(container);
         swap.classList.remove('fade');
         swap.classList.remove('in');
@@ -388,14 +412,14 @@
       if($.os.android && $.compareVersion("4.2.0", $.os.version)) {
         setTimeout(fadeContainerEnd, $.smConfig.pushAnimationDuration);
       } else {
-        container.addEventListener(window.RATCHET.getTransitionEnd, fadeContainerEnd);
+        container.addEventListener(getTransitionEnd, fadeContainerEnd);
       }
 
     }
 
     if (/slide/.test(transition)) {
       var slideEnd = function () {
-        swap.removeEventListener(window.RATCHET.getTransitionEnd, slideEnd);
+        swap.removeEventListener(getTransitionEnd, slideEnd);
         swap.classList.remove('sliding', 'sliding-in');
         swap.classList.remove(swapDirection);
         container.parentNode.removeChild(container);
@@ -413,7 +437,7 @@
       if($.os.android && $.compareVersion("4.2.0", $.os.version)) {
         setTimeout(slideEnd, $.smConfig.pushAnimationDuration);
       } else {
-        swap.addEventListener(window.RATCHET.getTransitionEnd, slideEnd);
+        swap.addEventListener(getTransitionEnd, slideEnd);
       }
     }
   };
@@ -508,26 +532,27 @@
   // Attach PUSH event handlers
   // ==========================
 
-  window.addEventListener('click', function (e) {
-    //支持通过click触发
-    var target = getTarget(e);
+  if($.smConfig.pushjs) {
+    window.addEventListener('click', function (e) {
+      //支持通过click触发
+      var target = getTarget(e);
 
-    if (!target) {
-      return;
-    }
+      if (!target) {
+        return;
+      }
 
-    e.preventDefault();
+      e.preventDefault();
 
-    PUSH({
-      url        : target.href,
-      hash       : target.hash,
-      timeout    : target.getAttribute('data-timeout'),
-      transition : target.getAttribute('data-transition')
+      PUSH({
+        url        : target.href,
+        hash       : target.hash,
+        timeout    : target.getAttribute('data-timeout'),
+        transition : target.getAttribute('data-transition')
+      });
     });
-  });
+  }
   window.addEventListener('popstate', popstate);
 
-  // TODO : Remove this line in the next major version
-  window.PUSH = PUSH;
+  $.push = PUSH;
 
 }(Zepto);
