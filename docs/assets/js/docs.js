@@ -179,12 +179,19 @@ $(function () {
         contentSectionItem = $(contentSection[l]);
         contentSectionItem.addClass('active');
         var id;
+        menu.find(".active").removeClass("active");
         if (id = contentSectionItem.attr('id')) {
           device.attr('id', id + 'InDevice');
-          menu.find(".active").removeClass("active");
           var menuItem = menu.find("a[href='#"+id+"']").parents("li").addClass("active");
         } else {
           device.attr('id', '');
+
+          //找到之前最近一个有id的
+          var prev = contentSectionItem.prev();
+          while(prev[0] && !prev.attr("id")) prev = prev.prev();
+          if(prev[0]) {
+            var menuItem = menu.find("a[href='#"+prev.attr("id")+"']").parents("li").addClass("active");
+          }
         }
         if (!contentSectionItem.hasClass('informational')) {
           updateContent(contentSectionItem.find('.component-example+.highlight .language-html').text());
