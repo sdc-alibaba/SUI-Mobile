@@ -6,6 +6,7 @@ $(function () {
 
   var doc;
   var device;
+  var menu;
   var windowWidth;
   var windowHeight;
   var pageHeight;
@@ -30,6 +31,7 @@ $(function () {
     doc                    = $(document);
     bod                    = $(document.body);
     device                 = device || $('.js-device');
+    menu                   = menu || $('.docs-side-menu');
     navComponentLinks      = $('.js-jump-menu');
     componentsList         = $('.js-component-group');
     componentLinks         = $('.component-example a');
@@ -47,11 +49,16 @@ $(function () {
       device.initialLeft   = device.offset().left;
       device.initialTop    = device.initialTop || device.offset().top;
       device.dockingOffset = ($(window).height() - device.height()) / 2;
+      device.dockingOffset = (device.dockingOffset < -100 ? -100 : device.dockingOffset);
+
+      menu.initialLeft   = menu.offset().left;
+      menu.initialTop    = menu.initialTop || menu.offset().top;
+
+
     }
 
     checkDesktopContent();
     calculateScroll();
-    calculateToggle();
 
     if (!eventListeners) {
       addEventListeners();
@@ -110,7 +117,6 @@ $(function () {
     });
 
     win.on('scroll', calculateScroll);
-    win.on('scroll', calculateToggle);
   };
 
   var checkDesktopContent = function () {
@@ -139,7 +145,7 @@ $(function () {
     }
 
     if ((device.initialTop - currentTop) <= device.dockingOffset) {
-      var top = device.dockingOffset < -70 ? -70 : device.dockingOffset;
+      var top = device.dockingOffset;
       device[0].className = 'device device-fixed';
       device.css({ top: top });
     } else {
@@ -147,12 +153,19 @@ $(function () {
       device[0].setAttribute('style', '');
     }
 
+    if ((menu.initialTop - currentTop) <= 30) {
+      var top = 30;
+      menu[0].className = 'docs-side-menu menu-fixed';
+      menu.css({ top: top });
+    } else {
+      menu[0].className = 'docs-side-menu';
+      menu[0].setAttribute('style', '');
+    }
+
     function updateContent(content) {
       var $page = $('#iwindow').html(content);
       $page.find('.content').trigger('updateContent');
       $.initPage($page);
-
-
     }
 
     // Injection of components into device
@@ -165,8 +178,11 @@ $(function () {
         bod.find('.component.active').removeClass('active');
         contentSectionItem = $(contentSection[l]);
         contentSectionItem.addClass('active');
-        if (contentSectionItem.attr('id')) {
-          device.attr('id', contentSectionItem.attr('id') + 'InDevice');
+        var id;
+        if (id = contentSectionItem.attr('id')) {
+          device.attr('id', id + 'InDevice');
+          menu.find(".active").removeClass("active");
+          var menuItem = menu.find("a[href='#"+id+"']").parents("li").addClass("active");
         } else {
           device.attr('id', '');
         }
@@ -179,18 +195,6 @@ $(function () {
 
   };
 
-  // Toolbar toggle
-  var calculateToggle = function () {
-    var currentTop   = win.scrollTop();
-    var headerHeight = $('.docs-sub-header').outerHeight();
-
-    if (currentTop >= headerHeight) {
-      toolbarToggle.addClass('visible');
-    } else if (currentTop <= headerHeight) {
-      toolbarToggle.removeClass('visible');
-      componentsList.removeClass('active');
-    }
-  };
 
   $(window).on('load resize', initialize);
   $(window).on('load', function () {

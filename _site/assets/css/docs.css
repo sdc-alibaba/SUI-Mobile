@@ -485,7 +485,6 @@ body {
 }
 @media screen and (min-width: 768px) {
   .docs-sub-content {
-    margin-right: 380px;
     text-align: left;
   }
 }
@@ -909,11 +908,6 @@ code {
     position: absolute;
   }
 }
-@media screen and (min-width: 1200px) {
-  .device {
-    margin-left: 39px;
-  }
-}
 hr {
   height: 0;
   margin: 10px 0 30px;
@@ -931,8 +925,9 @@ hr {
 }
 .container {
   position: relative;
-  padding-right: 0;
-  padding-left: 0;
+  max-width: 1400px;
+  padding-right: 20px;
+  padding-left: 20px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -953,9 +948,8 @@ hr {
   margin-left: -15px;
 }
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 940px;
-    padding: 0;
+  .lg-units-3 {
+    width: 25%;
   }
   .lg-units-4 {
     width: 33.333%;
@@ -963,16 +957,29 @@ hr {
   .lg-units-5 {
     width: 41.666%;
   }
+  .lg-units-6 {
+    width: 50%;
+  }
   .lg-units-7 {
     width: 58.333%;
   }
   .lg-units-8 {
     width: 66.666%;
   }
-}
-@media screen and (min-width: 1200px) {
-  .container {
-    max-width: 1170px;
+  .docs-side-menu {
+    position: relative;
+    top: 50px;
+    float: left;
+    width: 100px;
+  }
+  .docs-column {
+    float: none;
+    width: auto;
+    margin: 0 400px 0 120px;
+  }
+  .device-column {
+    width: 400px;
+    margin-left: 20px;
   }
 }
 @-webkit-keyframes fadeintext {
@@ -1249,4 +1256,25 @@ table th {
 }
 table td {
   border-top: 1px solid #ddd;
+}
+.docs-side-menu {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.5;
+}
+.docs-side-menu li {
+  display: block;
+  padding: 5px 0;
+}
+.docs-side-menu a {
+  color: #666;
+}
+.docs-side-menu a:hover {
+  color: #007aff;
+}
+.docs-side-menu .active a {
+  color: #007aff;
+}
+.docs-side-menu.menu-fixed {
+  position: fixed;
 }

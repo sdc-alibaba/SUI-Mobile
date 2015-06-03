@@ -433,7 +433,6 @@ body {
 // Desktop: Left align the text
 @media screen and (min-width: 768px) {
   .docs-sub-content {
-    margin-right: 380px;
     text-align: left;
   }
 }
@@ -940,11 +939,6 @@ code {
     position: absolute;
   }
 }
-@media screen and (min-width: 1200px) {
-  .device {
-    margin-left: 39px;
-  }
-}
 
 
 // Misc
@@ -970,8 +964,9 @@ hr {
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 1400px;
 }
 .column-group {
   width: auto;
@@ -997,28 +992,31 @@ hr {
 // --------------------------------------------------
 
  @media screen and (min-width: 768px) {
-  .container {
-    padding: 0;
-    max-width: 940px;
-  }
 
   // Twelve column fluid grid
+  .lg-units-3  { width: 25%; }
   .lg-units-4  { width: 33.333%; }
   .lg-units-5  { width: 41.666%; }
+  .lg-units-6  { width: 50%; }
   .lg-units-7  { width: 58.333%; }
   .lg-units-8  { width: 66.666%; }
-}
 
-
-// Standard sized screens to large screens
-// --------------------------------------------------
-
-@media screen and (min-width: 1200px) {
-  .container {
-    max-width: 1170px;
+  .docs-side-menu {
+    float: left;
+    width: 100px;
+    position: relative;
+    top: 50px;
+  }
+  .docs-column {
+    width: auto;
+    margin: 0 400px 0 120px;
+    float: none;
+  }
+  .device-column {
+    width: 400px;
+    margin-left: 20px;
   }
 }
-
 
 // Example platform styles
 // --------------------------------------------------
@@ -1351,5 +1349,30 @@ table {
   }
   td {
     border-top: 1px solid #ddd;
+  }
+}
+
+.docs-side-menu {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.5;
+  li {
+    display: block;
+    padding: 5px 0;
+  }
+
+  a {
+    color: #666;
+    &:hover {
+      color: @color-primary;
+    }
+  }
+  
+  .active a {
+    color: @color-primary;
+  }
+
+  &.menu-fixed {
+    position: fixed;
   }
 }
