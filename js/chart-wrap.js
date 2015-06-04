@@ -2,6 +2,26 @@
 + function($) {
   "use strict";
 
+
+  //获取由 data-json / data-ajax / data-jsonp 指定的数据
+  var getData = function(dom, success) {
+    var $this = $(dom);
+    var d = $this.data('json');
+    if(d && (typeof d == typeof 'a')) {
+      success(JSON.parse(d));
+      return;
+    }
+    if(!d) {
+      var ajax = $this.data("ajax");
+      if(ajax) {
+        $.getJSON(ajax, function(d) {
+          success($.smConfig.ajaxDataParser(d));
+        });
+      }
+    } else {
+      success(d);
+    }
+  }
   
 
   //pie chart
@@ -59,18 +79,9 @@
         return;
       }
       $this.data("chart", chart = new Chart($this[0].getContext("2d")));
-      var d = data || $this.data('json');
-      if(d && (typeof d == typeof 'a')) d = JSON.parse(d);
-      if(!d) {
-        var url = $this.data("url");
-        if(url) {
-          $.getJSON(url, function(d) {
-            chart.Pie(format($.smConfig.ajaxDataParser(d)), options);
-          });
-        }
-      } else {
+      getData($this, function(d) {
         chart.Pie(format(d), options);
-      }
+      });
     });
   };
 
