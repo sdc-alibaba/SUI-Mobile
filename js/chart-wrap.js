@@ -24,8 +24,7 @@
   }
   
 
-  //pie chart
-  $.fn.pie = function(data, options) {
+  var pie = function($this, data, options, donut) {
 
     var colors = [
       {
@@ -72,24 +71,39 @@
       options = data;
     }
 
-    this.each(function() {
-      var $this = $(this);
-      var chart = $this.data("chart");
-      if(chart) {
-        return;
-      }
-      $this.data("chart", chart = new Chart($this[0].getContext("2d")));
-      getData($this, function(d) {
+
+    var chart = $this.data("chart");
+    if(chart) {
+      return;
+    }
+    $this.data("chart", chart = new Chart($this[0].getContext("2d")));
+    getData($this, function(d) {
+      if(donut) {
+        chart.Doughnut(format(d), options);
+      } else {
         chart.Pie(format(d), options);
-      });
+      }
     });
   };
+
+  $.fn.pie = function(data, options) {
+    this.each(function() {
+      pie($(this), data, options);
+    });
+  }
+
+  $.fn.donut = function(data, options) {
+    this.each(function() {
+      pie($(this), data, options, true);
+    });
+  }
 
 
   //初始化页面中的所有chart
   $.initChart = function(page) {
     var $page = $(page || ".content");
     $page.find("[data-toggle='pie']").pie();
+    $page.find("[data-toggle='donut']").donut();
   };
 
   $(function() {
