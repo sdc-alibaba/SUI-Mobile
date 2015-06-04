@@ -74,7 +74,9 @@ module.exports = function(grunt) {
               src: [
                   'js/swiper-init.js',
                   'js/swiper.js',
-                  'js/photo-browser.js'
+                  'js/photo-browser.js',
+                  'js/chart.js',
+                  'js/chart-wrap.js'
               ],
               dest: '<%= meta.distPath %>js/<%= pkg.name %>-extend.js'
             }

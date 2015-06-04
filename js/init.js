@@ -14,6 +14,7 @@
 
     //extend
     if($.initSwiper) $.initSwiper($content);
+    if($.initChart) $.initChart($content);
   };
 
   if($.smConfig.autoInit) {

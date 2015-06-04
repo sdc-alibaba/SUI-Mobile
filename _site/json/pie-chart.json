@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "value": 200,
+      "label": "Red"
+    },
+    {
+      "value": 150,
+      "label": "Green"
+    },
+    {
+      "value": 100,
+      "label": "Yellow"
+    }
+  ]
+}
