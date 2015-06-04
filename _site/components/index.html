@@ -79,10 +79,12 @@
   <div class="docs-components column-group">
     <div class="docs-side-menu">
   <li><a href="#init" data-ignore="push">初始化</a></li>
+  <li><a href="#content" data-ignore="push">内容区</a></li>
   <li><a href="#typography" data-ignore="push">文本样式</a></li>
   <li><a href="#bars" data-ignore="push">标题栏</a></li>
   <li><a href="#buttons" data-ignore="push">按钮</a></li>
   <li><a href="#forms" data-ignore="push">表单</a></li>
+  <li><a href="#searchbar" data-ignore="push">搜索栏 <span class="new">新</span></a></li>
   <li><a href="#tabs" data-ignore="push">标签页</a></li>
   <li><a href="#grid" data-ignore="push">栅格</a></li>
   <li><a href="#modal" data-ignore="push">对话框</a></li>
@@ -170,6 +172,23 @@
   </table>
 
 </article>
+
+  <article class="component" id="content">
+  <h3 class="component-title">内容区</h3>
+  <p class="component-description">如果你希望页面内容所有两边有间距，可以把内容放在 <code>.content-padded</code> 容器中</p>
+
+  <div class="component-example">
+    <div class="content-padded">
+      <p>我的左右两边有留白,我的左右两边有留白,我的左右两边有留白,我的左右两边有留白,我的左右两边有留白,我的左右两边有留白,我的左右两边有留白,我的左右两边有留白,我的左右两边有留白,我的左右两边有留白,我的左右两边有留白</p>
+    </div>
+  </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-padded"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;</span>我的左右两边有留白,我的左右两边有留白,我的左右两边有留白,我的左右两边有留白,我的左右两边有留白,我的左右两边有留白,我的左右两边有留白,我的左右两边有留白,我的左右两边有留白,我的左右两边有留白,我的左右两边有留白<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+</article>
+
+
 
   <!-- Typography -->
   <article class="component" id="typography">
@@ -1025,6 +1044,65 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 </article>
+
+  <article class="component" id="searchbar">
+  <h3 class="component-title">搜索栏</h3>
+  <p class="component-description">搜索栏只是一个CSS组件，不提供任何JS功能。</p>
+  <p>搜索栏的布局是通过栅格来实现的。所以可以非常灵活调整宽度以及组合任何你需要的组件。</p>
+  <p>你也可以单独使用 <code>.search-input</code></p>
+
+  <div class="component-example">
+    <div class="content-padded">
+      <div class="searchbar">
+        <div class="search-input">
+          <label class="icon icon-search" for="search"></label>
+          <input type="search" id='search' placeholder='输入关键字...'/>
+        </div>
+      </div>
+
+      <div class="searchbar row">
+        <div class="search-input col-80">
+          <label class="icon icon-search" for="search"></label>
+          <input type="search" id='search' placeholder='输入关键字...'/>
+        </div>
+        <a class="button button-fill button-primary col-20">搜索</a>
+      </div>
+
+      <div class="searchbar row">
+        <div class="search-input col-85">
+          <input type="search" id='search' placeholder='输入关键字...'/>
+        </div>
+        <a class="button button-fill button-primary col-15"><span class="icon icon-search"></span></a>
+      </div>
+    </div>
+  </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-padded"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"searchbar"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-input"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"icon icon-search"</span> <span class="na">for=</span><span class="s">"search"</span><span class="nt">&gt;&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"search"</span> <span class="na">id=</span><span class="s">'search'</span> <span class="na">placeholder=</span><span class="s">'输入关键字...'</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"searchbar row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-input col-80"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"icon icon-search"</span> <span class="na">for=</span><span class="s">"search"</span><span class="nt">&gt;&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"search"</span> <span class="na">id=</span><span class="s">'search'</span> <span class="na">placeholder=</span><span class="s">'输入关键字...'</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"button button-fill button-primary col-20"</span><span class="nt">&gt;</span>搜索<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"searchbar row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-input col-85"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"search"</span> <span class="na">id=</span><span class="s">'search'</span> <span class="na">placeholder=</span><span class="s">'输入关键字...'</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"button button-fill button-primary col-15"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-search"</span><span class="nt">&gt;&lt;/span&gt;&lt;/a&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+</article>
+
+
 
   <article class="component active" id="tabs">
   <h3 class="component-title">标签页</h3>
@@ -2744,7 +2822,7 @@
     <h3 class="component-title">滚动条</h3>
     <p class="component-description">在auto的模式下对于版本号小于4.4.0的Android 版本 和 版本号小于6.0.0的ios使用大名鼎鼎的iscroll.js作为js滚动的引擎。当然也可以通过配置来决定全部使用js滚动或者native的滚动。</p>
     <p class="component-description">
-        js的滚动条的事件和zepto接口（scrollTop,scrollLeft）保持和native的一样，唯一不同的是js的滚动条需要手动初始化和当滚动容器高度发生变化时需要人工refresh一下。
+        js的滚动条的事件和zepto接口（scrollTop,scrollLeft）保持和native的一样，唯一不同的是js的滚动条需要手动初始化和当滚动容器高度发生变化时需要手动调用 <code>$.refreshScroller()</code>。
     </p>
     <div class="component-example component-example-fullbleed">
         <header class="bar bar-nav">
@@ -2759,7 +2837,7 @@
                         <ul>
                             <li>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）</li>
                             <li>2. js模式: 使用js滚动</li>
-                            <li>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了</li>
+                            <li>3. native模式： 总是使用原生滚动条</li>
                         </ul>
                     </div>
                 </div>
@@ -2772,7 +2850,7 @@
                         <ul>
                             <li>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）</li>
                             <li>2. js模式: 使用js滚动</li>
-                            <li>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了</li>
+                            <li>3. native模式： 总是使用原生滚动条</li>
                         </ul>
                     </div>
                 </div>
@@ -2785,7 +2863,7 @@
                         <ul>
                             <li>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）</li>
                             <li>2. js模式: 使用js滚动</li>
-                            <li>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了</li>
+                            <li>3. native模式： 总是使用原生滚动条</li>
                         </ul>
                     </div>
                 </div>
@@ -2808,8 +2886,8 @@
                     <span class="nt">&lt;h3&gt;</span>滚动具有三种模式：<span class="nt">&lt;/h3&gt;</span>
                     <span class="nt">&lt;ul&gt;</span>
                         <span class="nt">&lt;li&gt;</span>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）<span class="nt">&lt;/li&gt;</span>
-                        <span class="nt">&lt;li&gt;</span>2. js模式: 使用js滚动<span class="nt">&lt;/li&gt;</span>
-                        <span class="nt">&lt;li&gt;</span>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了<span class="nt">&lt;/li&gt;</span>
+                        <span class="nt">&lt;li&gt;</span>2. js模式: 总是使用js滚动（即IScroll）<span class="nt">&lt;/li&gt;</span>
+                        <span class="nt">&lt;li&gt;</span>3. native模式： 总是使用原生滚动条<span class="nt">&lt;/li&gt;</span>
                     <span class="nt">&lt;/ul&gt;</span>
                 <span class="nt">&lt;/div&gt;</span>
             <span class="nt">&lt;/div&gt;</span>
@@ -2822,7 +2900,7 @@
                     <span class="nt">&lt;ul&gt;</span>
                         <span class="nt">&lt;li&gt;</span>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）<span class="nt">&lt;/li&gt;</span>
                         <span class="nt">&lt;li&gt;</span>2. js模式: 使用js滚动<span class="nt">&lt;/li&gt;</span>
-                        <span class="nt">&lt;li&gt;</span>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了<span class="nt">&lt;/li&gt;</span>
+                        <span class="nt">&lt;li&gt;</span>3. native模式： 总是使用原生滚动条<span class="nt">&lt;/li&gt;</span>
                     <span class="nt">&lt;/ul&gt;</span>
                 <span class="nt">&lt;/div&gt;</span>
             <span class="nt">&lt;/div&gt;</span>
@@ -2835,7 +2913,7 @@
                     <span class="nt">&lt;ul&gt;</span>
                         <span class="nt">&lt;li&gt;</span>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）<span class="nt">&lt;/li&gt;</span>
                         <span class="nt">&lt;li&gt;</span>2. js模式: 使用js滚动<span class="nt">&lt;/li&gt;</span>
-                        <span class="nt">&lt;li&gt;</span>3. native模式： 如果你对你的用户的移动设备足够信任话，scoller.js就根本没有必要启用了<span class="nt">&lt;/li&gt;</span>
+                        <span class="nt">&lt;li&gt;</span>3. native模式：总是使用原生滚动条<span class="nt">&lt;/li&gt;</span>
                     <span class="nt">&lt;/ul&gt;</span>
                 <span class="nt">&lt;/div&gt;</span>
             <span class="nt">&lt;/div&gt;</span>
@@ -2855,8 +2933,8 @@
         滚动的方式可以通过配置项 type 来进行配置：
         <ul>
             <li>1. auto: ios版本小于6.0.0和android版本小于4.4.0使用js滚动，其他使用native的滚动条</li>
-            <li>2. js: 都使用js的滚动条</li>
-            <li>3. native: 直接使用native的滚动条</li>
+            <li>2. js: 都使用js的滚动条，不建议选择此选项</li>
+            <li>3. native: 直接使用native的滚动条，如果页面没有复杂的布局（比如 position: absolute或者 translate3D）那么可以选择此类型</li>
         </ul>
     </p>
     <p class="component-description">
@@ -3370,6 +3448,8 @@ $(function() {
       <span class="icon icon-right"></span>
       <span class="icon icon-left"></span>
       <span class="icon icon-check"></span>
+      <span class="icon icon-search"></span>
+      <span class="icon icon-new"></span>
     </div>
   </div>
 
@@ -3403,6 +3483,8 @@ $(function() {
   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-right"</span><span class="nt">&gt;&lt;/span&gt;</span>
   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-left"</span><span class="nt">&gt;&lt;/span&gt;</span>
   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-check"</span><span class="nt">&gt;&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-search"</span><span class="nt">&gt;&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-new"</span><span class="nt">&gt;&lt;/span&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 </article>
 

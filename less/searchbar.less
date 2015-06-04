@@ -1,0 +1,44 @@
+/* === Search Bar === */
+@searchbarBorderColor: #b4b4b4;
+@searchbarSize: 2.2rem;
+.searchbar {
+  padding: 8px 0;
+  height: @searchbarSize;
+  .align-items(center);
+}
+
+.search-input {
+  position: relative;
+  input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 1.4rem;
+    display: block;
+    border: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    font-family: inherit;
+    color:#000;
+    font-size: 0.7rem;
+    font-weight: normal;
+    padding: 0 0.5rem;
+    background-color: #fff;
+    border: 1px solid @searchbarBorderColor;
+    &::-webkit-input-placeholder {
+      color: #939398;
+      opacity: 1;
+    }
+  }
+  label {
+    position: absolute;
+    font-size: 0.9rem;
+    color: @searchbarBorderColor;
+    top: 50%;
+    left: 0.3rem;
+    transform: translate3D(0,-50%,0);
+  }
+
+  label + input {
+    padding-left: 1.4rem;
+  }
+}

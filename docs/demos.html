@@ -4,10 +4,10 @@ title: SUI Mobile Demo
 ---
 
 <header class="bar bar-nav">
-  <button class="button button-link button-nav pull-right">
+  <a class="button button-link button-nav pull-right open-popup" data-popup=".popup-about">
     关于
     <span class="icon icon-menu"></span>
-  </button>
+  </a>
   <h1 class="title">SUI Mobile</h1>
 </header>
 <div class="bar bar-standard bar-footer">
@@ -36,6 +36,13 @@ title: SUI Mobile Demo
         <a href="/demos/form" class="item-link item-content" data-transition="slide-in">
           <div class="item-inner">
             <div class="item-title">表单</div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="/demos/searchbar" class="item-link item-content" data-transition="slide-in">
+          <div class="item-inner">
+            <div class="item-title">搜索栏</div>
           </div>
         </a>
       </li>
@@ -124,5 +131,25 @@ title: SUI Mobile Demo
         </a>
       </li>
     </ul>
+  </div>
+</div>
+<div class="popup popup-about">
+  <header class="bar bar-nav">
+    <a class="button button-link button-nav pull-right close-popup">
+      关闭
+    </a>
+    <h1 class="title">关于SUI Mobile</h1>
+  </header>
+  <div class="content">
+    <div class="content-block">
+      <p>SUI Mobile 是阿里巴巴共享业务事业部SDC团队（UED）提供的一套手机UI库。</p>
+      <p>我们的目的是为手机千牛、百川以及任何手机端的H5页面提供标准的设计规范和前端实现。</p>
+      <p>SUI Mobile并没有重新发明轮子，我们主要参考了 <a href='http://goratchet.com' data-ignore="push" target='_blank'>ratchet</a> 和 <a href='http://framework7.taobao.org/' data-ignore="push" target='_blank'>Framework7</a></p>
+      <p>这里只是一个官方示例，详细文档请参考：<a href='http://m.sui.taobao.org/' data-ignore="push" target='_blank'>http://m.sui.taobao.org/</a></p>
+      <p>官方旺旺群：1278550944</p>
+      <p>或者旺旺联系 @任行</p>
+      <p></p>
+      <p><a href="#" class="button close-popup">确定</a></p>
+    </div>
   </div>
 </div>

@@ -761,11 +761,9 @@ code {
   width: 50px;
   height: 50px;
   margin: 3px;
-  font-size: 24px;
+  font-size: 27px;
   line-height: 50px;
   text-align: center;
-  background-color: #fff;
-  border: 1px solid #ddd;
   border-radius: 25px;
 }
 #modals .modal {
@@ -1277,4 +1275,18 @@ table td {
 }
 .docs-side-menu.menu-fixed {
   position: fixed;
+}
+.docs-side-menu .new {
+  position: relative;
+  top: -1px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  color: white;
+  text-align: center;
+  background-color: red;
+  border-radius: 100%;
 }

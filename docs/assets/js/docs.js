@@ -25,7 +25,7 @@ $(function () {
 
 
   var initialize = function () {
-    currentActive          = 0;
+    currentActive          = -1;
     topCache               = [];
     win                    = $(window);
     doc                    = $(document);
