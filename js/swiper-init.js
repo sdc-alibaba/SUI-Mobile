@@ -4,6 +4,8 @@ Framework7 Swiper Additions
 /* global Zepto:true */
 +function($){
     'use strict';
+    $.Swiper.prototype.defaults.pagination = '.swiper-pagination';
+
     $.swiper = function (container, params) {
         return new $.Swiper(container, params);
     };
@@ -45,5 +47,5 @@ Framework7 Swiper Additions
             }
         }
     };
-    
+
 }(Zepto);
