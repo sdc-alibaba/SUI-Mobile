@@ -1,0 +1,45 @@
+.page-login .signup {
+  font-size: 0.7rem;
+}
+.page-login .leader {
+  position: relative;
+  text-align: center;
+  margin: 5rem 0 1rem 0;
+}
+.page-login .leader:before,
+.page-login .leader:after {
+  content: " ";
+  position: absolute;
+  width: 3rem;
+  height: 1px;
+  background: #aaa;
+  top: 0.6rem;
+  left: 1rem;
+}
+.page-login .leader:after {
+  left: auto;
+  right: 1rem;
+}
+
+.page-login .others a {
+  margin: 0 1rem;
+}
+.page-login .others .iconfont {
+  font-size: 2rem;
+  color: #aaa;
+}
+
+.page-goods .swiper-container {
+  height: 10rem;
+}
+.page-goods .swiper-slide img {
+  width: 100%;
+}
+
+
+.page-detail .swiper-container {
+  height: 10rem;
+}
+.page-detail .swiper-slide img {
+  width: 100%;
+}

@@ -87,8 +87,15 @@
     border-radius: 0.1rem 0.1rem 0 0;
     font-size: 0.85rem;
     .hairline(bottom, #e1e1e1);
+    .card-cover {
+      width: 100%;
+      display: block;
+    }
     &.no-border {
         .hairline-remove(bottom);
+    }
+    &.no-padding {
+      padding: 0;
     }
 }
 .card-footer {

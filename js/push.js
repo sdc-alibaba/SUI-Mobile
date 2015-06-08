@@ -47,6 +47,7 @@
   var maxCacheLength = 20;
   var cacheMapping   = sessionStorage;
   var domCache       = {};
+  var scrollCache    = {};
   // Change these to unquoted camelcase in the next major version bump
   var transitionMap  = {
     'slide-in'  : 'slide-out',
@@ -203,6 +204,7 @@
       document.querySelector('.content'),
       transition, function () {
         triggerStateChange();
+        $(".content").scrollTop(scrollCache[id]);
       }
     );
 
@@ -289,6 +291,7 @@
 
   function cacheCurrentContent () {
     domCache[PUSH.id] = document.body.cloneNode(true);
+    scrollCache[PUSH.id] = $(".content").scrollTop();
   }
 
 
@@ -552,6 +555,10 @@
     });
   }
   window.addEventListener('popstate', popstate);
+
+  $(document).on("click", ".back", function() {
+    history.back();
+  });
 
   $.push = PUSH;
 
