@@ -26,6 +26,9 @@
 
   var pie = function($this, data, options, donut) {
 
+    var $this = $($this);
+    if($this.hasClass("loading")) return;
+
     var colors = [
       {
         color:"#F7464A",
@@ -49,7 +52,8 @@
       }
     ];
 
-    function format(data) {
+    var format = function (data) {
+      var result = [];
       for(var i=0;i<data.length;i++) {
         var c = colors[i];
         var d = data[i];
@@ -63,39 +67,56 @@
           d.color = d.color || c.color;
           d.highlight = d.highlight || c.highlight;
         }
+        result.push(d); //不直接改data，因为有可能是值类型。
       }
-      return data;
+      return result;
     }
 
-    if(!options) {
-      options = data;
+    var render = function(d) {
+      if(donut) {
+        $this.data("chart", _chart.Doughnut(format(d), options));
+      } else {
+        $this.data("chart", _chart.Pie(format(d), options));
+      }
+      $this.removeClass("loading");
+      $this.data("last", data);
+      $this.trigger("complete");
     }
 
 
     var chart = $this.data("chart");
-    if(chart) {
-      return;
+    if(chart && (typeof data == typeof 'a')) {
+      //已经有一个chart，要对其进行一些操作
+      return chart[data](options);
     }
-    $this.data("chart", chart = new Chart($this[0].getContext("2d")));
-    getData($this, function(d) {
-      if(donut) {
-        chart.Doughnut(format(d), options);
-      } else {
-        chart.Pie(format(d), options);
-      }
-    });
+    //传入一个数据，重新render
+    chart && chart.destroy();
+    var _chart = new Chart($this[0].getContext("2d"));
+    $this.addClass("loading");
+    if(data) {
+      render(data, options);
+    } else {
+      getData($this, render);
+    }
   };
 
   $.fn.pie = function(data, options) {
+    var r;
     this.each(function() {
-      pie($(this), data, options);
+      r = r || pie($(this), data, options);
     });
+    if(r) return r;
+    return this;
   }
 
   $.fn.donut = function(data, options) {
+    $.fn.pie = function(data, options) {
+    var r;
     this.each(function() {
-      pie($(this), data, options, true);
+      r = r || pie($(this), data, options, true);
     });
+    if(r) return r;
+    return this;
   }
 
 
@@ -106,7 +127,4 @@
     $page.find("[data-toggle='donut']").donut();
   };
 
-  $(function() {
-    $.initChart();
-  });
 }(Zepto);
