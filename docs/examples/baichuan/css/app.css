@@ -43,3 +43,55 @@
 .page-detail .swiper-slide img {
   width: 100%;
 }
+
+.page-detail .goods-card {
+}
+.page-detail .goods-card h3 {
+  font-size: 0.8rem;
+}
+.page-detail .goods-card del {
+  font-size: 0.6rem;
+  color: gray;
+}
+.page-detail .goods-card .row {
+  font-size: 0.7rem;
+}
+
+.page-settings .person-card {
+  margin: .6rem 0;
+}
+.page-settings .row {
+  border: 1px solid #ccc;
+  background: white;
+  border-left: 0;
+  border-right: 0;
+}
+.page-settings .row h4 {
+  margin: 0.3rem 0;
+}
+.page-settings .row .color-gray {
+  margin: 0.3rem 0;
+  font-size: 0.7rem;
+}
+
+.page-settings .col-25 + .col-25 {
+  border-left: 1px solid #ccc;
+}
+
+.page-settings .person-card img {
+  border-radius: 100%;
+}
+
+.page-settings .person-card ul{
+  background: transparent;
+}
+.page-settings .person-card .item-text {
+  height: auto;
+}
+.page-settings .person-card ul:before,
+.page-settings .person-card ul:after {
+  display: none;
+}
+.page-settings .list .icon {
+  font-size: 1rem;
+}
