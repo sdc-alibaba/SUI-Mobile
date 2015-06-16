@@ -24,7 +24,7 @@ $(function() {
     if(loading) return;
     loading = true;
     setTimeout(function() {
-      $("ul").append($("ul").html());
+      $(".page-goods ul").append($(".page-goods ul").html());
       loading = false;
     }, 2000);
   });
