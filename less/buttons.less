@@ -29,15 +29,16 @@
     }
 
     &:active {
-        background: rgba(red(@color-primary), green(@color-primary), blue(@color-primary), .15);
+      color: @color-primary-active;
+      border-color: @color-primary-active;
     }
     &.button-round {
         border-radius: (@btn-height - 0.1rem);
     }
     &.active {
       &, &:active {
-        background: @color-primary;
-        color: #fff;
+        color: @color-primary-active;
+        border-color: @color-primary-active;
       }
     }
     &.button-big {
@@ -78,21 +79,29 @@
     }
 }
 
-.button-variant(@color, @color-hover) {
+.button-variant(@color, @color-active) {
     border-color: @color;
     color: @color;
     &:active {
-        background: rgba(red(@color), green(@color), blue(@color), .15);
+        border-color: @color-active;
+        color: @color-active;
     }
     &.button-fill {
       color: white;
       background-color: @color;
       &:active {
-        background-color: @color-hover;
+        background-color: @color-active;
       }
     }
 }
 .button {
+  &.button-light {
+    .button-variant(@button-light-color, @color-primary-active);
+    color: @button-color;
+  }
+  &.button-dark {
+    .button-variant(@button-dark-color, @color-primary-active);
+  }
   &.button-success {
     .button-variant(@color-success, @color-success-active);
   }
@@ -103,17 +112,42 @@
     .button-variant(@color-warning, @color-warning-active);
   }
 }
+.button {
+  &,
+  &.button-primary,
+  &.button-success,
+  &.button-danger,
+  &.button-warning {
+    &.disabled {
+      .button-variant(#c8c9cb, #c8c9cb);
+      cursor: not-allowed;
+    }
+  }
+}
 
-.buttons-row {
+.buttons-row,
+.buttons-tab {
     .align-self(center);
     .flexbox();
     .flex-wrap(nowrap);
+}
+
+.buttons-row {
     .button {
         border-radius: 0 0 0 0;
         margin-left: -1px;
         width: 100%;
         -webkit-box-flex:1;
         -ms-flex:1;
+        border-color: @button-light-color;
+        color: @button-color;
+        &.active {
+          border-color: @color-primary-active;
+          color: @color-primary-active;
+          z-index: 100;
+        }
+        &:active {
+        }
     }
     .button:first-child {
         border-radius: 0.25rem 0 0 0.25rem;
@@ -132,4 +166,26 @@
     }
 }
 
+.buttons-tab {
+  background: white;
+  position: relative;
+  .hairline(bottom, #d0d0d0);
+  .button {
+    color: @button-color;
+    font-size: 0.8rem;
+    width: 100%;
+    height: 2rem;
+    line-height: 2rem;
+    -webkit-box-flex:1;
+    -ms-flex:1;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
 
+    &.active {
+      color: @color-primary;
+      border-color: @color-primary;
+      z-index: 100;
+    }
+  }
+}

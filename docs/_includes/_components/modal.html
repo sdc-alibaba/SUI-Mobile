@@ -5,7 +5,7 @@
 
   <h3 class="component-title">预定义的 Modals</h3>
   <ul>
-    <li>1.注意，如果你没有指定预定义的modal标题，它讲使用默认的标题("Framework7")，这个可以在App 初始化时，通过传递 modalTitle 参数改变。</li>
+    <li>1.注意，如果你没有指定预定义的modal标题，它讲使用默认的标题，这个可以在App 初始化时，通过传递 modalTitle 参数改变。</li>
     <li>2.预定义modals的按钮文本(如 "Ok" 和 "Cancel") 也可以在 App 初始化时，通过传递 modalButtonOk 和 modalButtonCancel 参数改变。</li>
   </ul>
   <p class="component-description">首先，让我们看看已经预定义的最常用的modal:</p>
@@ -311,108 +311,6 @@
 </article>
 
 
-
-<article class="component active">
-  <h3 class="component-title">预加载 Modal (Preloader Modal)</h3>
-  <p class="component-description">预加载 Modal 用来提示一些后台活动（像Ajax请求）和阻止在这个活动期间的任何用户操作。 打开预加载 modal 我们也需要调用适当的App方法: myApp.show预加载(<code>[title]</code>)- 显示 预加载 modal</p>
-  <ul>
-    <li><code>title  - string. Optional</code>. 预加载 modal 标题. 默认（没有指定）的时候，它等同于 "Loading...". 你可以在App初始化时通过 modal预加载Title 参数改变默认的 预加载 标题。</li>
-  </ul>
-  <p class="component-description">该方法返回动态创建的modal的HTML元素。</p>
-  <p class="component-description">myApp.hide预加载() - 隐藏/关闭 预加载 modal. 因为 预加载 modal 没有任何按钮, 它应该用 JavaScript 来关闭</p>
-  <div class="component-example component-example-fullbleed">
-    <div class="">
-      <div class="content-block">
-        <p><a href="#" class="open-preloader">Open Preloader</a></p>
-        <p><a href="#" class="open-preloader-title">Open Preloader with custom title</a></p>
-      </div>
-      <script type="text/javascript">
-        $(document).on('click', '.open-preloader', function () {
-            $.showPreloader();
-            setTimeout(function () {
-                $.hidePreloader();
-            }, 2000);
-        });
-        $(document).on('click','.open-preloader-title', function () {
-            $.showPreloader('Custom Title')
-            setTimeout(function () {
-                $.hidePreloader();
-            }, 2000);
-        }); 
-      </script>    
-    </div>
-  </div>
-  {% highlight html %}  
-  <header class="bar bar-nav">
-    <h1 class="title">预加载 Modal (Preloader Modal)</h1>
-  </header>
-  ...
-  <div class="content">
-    <div class="content-block">
-      <p><a href="#" class="open-preloader">Open Preloader</a></p>
-      <p><a href="#" class="open-preloader-title">Open Preloader with custom title</a></p>
-    </div>
-  </div>  
-  ...   
-  {% endhighlight %}
-  {% highlight js %} 
-  $(document).on('click', '.open-preloader', function () {
-    $.showPreloader();
-    setTimeout(function () {
-        $.hidePreloader();
-    }, 2000);
-  });
-  $(document).on('click','.open-preloader-title', function () {
-    $.showPreloader('Custom Title')
-    setTimeout(function () {
-        $.hidePreloader();
-    }, 2000);
-  });  
-  {% endhighlight %}
-</article>
-
-<article class="component active">
-  <h3 class="component-title">指示器(indicator)</h3>
-  <p class="component-description">如果你不需要用像预加载Modal这样如此大的modal 窗口去指示活动, 你可以使用简单并且小的指示器modal: </p>
-  <p class="component-description">myApp.showIndicator() - 显示指示器 modal </p>
-  <p class="component-description">myApp.hideIndicator() - 隐藏/关闭指示器 modal. 因为指示器modal没有任何按钮, 它需要用JavaScript来关闭 </p>
-  <div class="component-example component-example-fullbleed">
-    <div class="">
-      <div class="content-block">
-        <p><a href="#" class="open-indicator">Open Indicator</a></p>
-      </div>
-      <script type="text/javascript">
-        $(document).on('click','.open-indicator', function () {
-            $.showIndicator();
-            setTimeout(function () {
-                $.hideIndicator();
-            }, 2000);
-        });
-        
-      </script>    
-    </div>
-  </div>
-  {% highlight html %}  
-  <header class="bar bar-nav">
-      <h1 class="title">指示器(indicator)</h1>
-  </header>
-  ...
-  <div class="content">
-    <div class="content-block">
-      <p><a href="#" class="open-indicator">Open Indicator</a></p>
-    </div>
-  </div>
-  ...     
-  {% endhighlight %}
-  {% highlight js %}  
-  $(document).on('click','.open-indicator', function () {
-      $.showIndicator();
-      setTimeout(function () {
-          $.hideIndicator();
-      }, 2000);
-  });
-  {% endhighlight %}
-</article>
 
 <article class="component active">
   <h3 class="component-title">自定义Modals</h3>
@@ -771,7 +669,110 @@
   {% endhighlight %}
 </article>
 
+<article class="component active" id='preloader'>
+  <h3 class="component-title">预加载 Modal (Preloader Modal)</h3>
+  <p class="component-description">预加载 Modal 用来提示一些后台活动（像Ajax请求）和阻止在这个活动期间的任何用户操作。 打开预加载 modal 我们也需要调用适当的App方法: myApp.show预加载(<code>[title]</code>)- 显示 预加载 modal</p>
+  <ul>
+    <li><code>title  - string. Optional</code>. 预加载 modal 标题. 默认（没有指定）的时候，它等同于 "Loading...". 你可以在App初始化时通过 modal预加载Title 参数改变默认的 预加载 标题。</li>
+  </ul>
+  <p class="component-description">该方法返回动态创建的modal的HTML元素。</p>
+  <p class="component-description">myApp.hide预加载() - 隐藏/关闭 预加载 modal. 因为 预加载 modal 没有任何按钮, 它应该用 JavaScript 来关闭</p>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content-block">
+        <p><a href="#" class="open-preloader">Open Preloader</a></p>
+        <p><a href="#" class="open-preloader-title">Open Preloader with custom title</a></p>
+      </div>
+      <script type="text/javascript">
+        $(document).on('click', '.open-preloader', function () {
+            $.showPreloader();
+            setTimeout(function () {
+                $.hidePreloader();
+            }, 2000);
+        });
+        $(document).on('click','.open-preloader-title', function () {
+            $.showPreloader('Custom Title')
+            setTimeout(function () {
+                $.hidePreloader();
+            }, 2000);
+        }); 
+      </script>    
+    </div>
+  </div>
+  {% highlight html %}  
+  <header class="bar bar-nav">
+    <h1 class="title">预加载 Modal (Preloader Modal)</h1>
+  </header>
+  ...
+  <div class="content">
+    <div class="content-block">
+      <p><a href="#" class="open-preloader">Open Preloader</a></p>
+      <p><a href="#" class="open-preloader-title">Open Preloader with custom title</a></p>
+    </div>
+  </div>  
+  ...   
+  {% endhighlight %}
+  {% highlight js %} 
+  $(document).on('click', '.open-preloader', function () {
+    $.showPreloader();
+    setTimeout(function () {
+        $.hidePreloader();
+    }, 2000);
+  });
+  $(document).on('click','.open-preloader-title', function () {
+    $.showPreloader('Custom Title')
+    setTimeout(function () {
+        $.hidePreloader();
+    }, 2000);
+  });  
+  {% endhighlight %}
+</article>
+
 <article class="component active">
+  <h3 class="component-title">指示器(indicator)</h3>
+  <p class="component-description">如果你不需要用像预加载Modal这样如此大的modal 窗口去指示活动, 你可以使用简单并且小的指示器modal: </p>
+  <p class="component-description">myApp.showIndicator() - 显示指示器 modal </p>
+  <p class="component-description">myApp.hideIndicator() - 隐藏/关闭指示器 modal. 因为指示器modal没有任何按钮, 它需要用JavaScript来关闭 </p>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content-block">
+        <p><a href="#" class="open-indicator">Open Indicator</a></p>
+      </div>
+      <script type="text/javascript">
+        $(document).on('click','.open-indicator', function () {
+            $.showIndicator();
+            setTimeout(function () {
+                $.hideIndicator();
+            }, 2000);
+        });
+        
+      </script>    
+    </div>
+  </div>
+  {% highlight html %}  
+  <header class="bar bar-nav">
+      <h1 class="title">指示器(indicator)</h1>
+  </header>
+  ...
+  <div class="content">
+    <div class="content-block">
+      <p><a href="#" class="open-indicator">Open Indicator</a></p>
+    </div>
+  </div>
+  ...     
+  {% endhighlight %}
+  {% highlight js %}  
+  $(document).on('click','.open-indicator', function () {
+      $.showIndicator();
+      setTimeout(function () {
+          $.hideIndicator();
+      }, 2000);
+  });
+  {% endhighlight %}
+</article>
+
+
+<article class="component active" id='popup'>
   <h3 class="component-title">Popup</h3>
   <p class="component-description">Popup 是一种可以包含任何Html内容的弹出窗口，从App的主内容区域上弹出。 Popup 和其他所有的遮罩图层一样，是所谓的“临时视图”的一部分。</p>
   <h3 class="component-title">Popup 布局</h3>
@@ -1070,7 +1071,7 @@
 
 <article class="component active">
   <h3 class="component-title">动态的 Popup</h3>
-  <p class="component-description">Framework7允许你调用相关的App方法时传递HTML内容来动态地创建Popup:</p>
+  <p class="component-description">允许你调用相关的App方法时传递HTML内容来动态地创建Popup:</p>
   <p class="component-description"><code>myApp.popup(popupHTML, removeOnClose)</code> - 打开 Popup</p>
   <ul>
     <li><code>popupHTML</code> - string. popup的HTML字符串</li>
@@ -1118,6 +1119,103 @@
                       '</div>'+
                     '</div>'
     $.popup(popupHTML);
+  }); 
+  {% endhighlight %}
+</article>
+
+<article class="component" id='actions'>
+  <h3 class="component-title">操作表</h3>
+  <p class="component-description">操作表可以让用户从多个可选的操作中选择一个</p>
+  <p class="component-description"><code>myApp.actions(buttons)</code> - 创建并弹出一个操作表</p>
+  <ul>
+    <li><code>buttons</code> - 显示的几个按钮，你也可以把按钮分组</li>
+  </ul>
+  <p>你可以通过 <code>color: "danger"</code> 来指定按钮的文案为红色</p>
+  <p>或者通过 <code>bg: "danger"</code> 来指定按钮的背景为红色</p>
+  <div class="component-example component-example-fullbleed">
+    <header class="bar bar-nav">
+        <h1 class="title">操作表</h1>
+    </header>
+    <div class="content">
+      <div class="content-block">
+        <!-- In data-popup attribute we specify CSS selector of popup we need to open -->
+        <p><a href="#" class="create-actions">选择操作</a></p>
+      </div>
+    </div>
+    <script>
+      $(document).on('click','.create-actions', function () {
+        var buttons1 = [
+          {
+            text: '请选择',
+            label: true
+          },
+          {
+            text: '卖出',
+            bold: true,
+            color: 'danger',
+            onClick: function() {
+              $.alert("你选择了“卖出“");
+            }
+          },
+          {
+            text: '买入',
+            onClick: function() {
+              $.alert("你选择了“买入“");
+            }
+          }
+        ];
+        var buttons2 = [
+          {
+            text: '取消',
+            bg: 'danger'
+          }
+        ];
+        var groups = [buttons1, buttons2];
+        $.actions(groups);
+      }); 
+  </script>
+  </div>
+  {% highlight html %}  
+  <header class="bar bar-nav">
+      <h1 class="title">操作表</h1>
+  </header>
+  <div class="content">
+    <div class="content-block">
+      <!-- In data-popup attribute we specify CSS selector of popup we need to open -->
+      <p><a href="#" class="create-actions">选择操作</a></p>
+    </div>
+  </div>
+  {% endhighlight %}
+  {% highlight js %}  
+  $(document).on('click','.create-actions', function () {
+      var buttons1 = [
+        {
+          text: '请选择',
+          label: true
+        },
+        {
+          text: '卖出',
+          bold: true,
+          color: 'danger',
+          onClick: function() {
+            $.alert("你选择了“卖出“");
+          }
+        },
+        {
+          text: '买入',
+          onClick: function() {
+            $.alert("你选择了“买入“");
+          }
+        }
+      ];
+      var buttons2 = [
+        {
+          text: '取消',
+          bg: 'danger'
+        }
+      ];
+      var groups = [buttons1, buttons2];
+      $.actions(groups);
   }); 
   {% endhighlight %}
 </article>

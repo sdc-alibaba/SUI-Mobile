@@ -88,6 +88,8 @@
   <li><a href="#tabs" data-ignore="push">标签页</a></li>
   <li><a href="#grid" data-ignore="push">栅格</a></li>
   <li><a href="#modal" data-ignore="push">对话框</a></li>
+  <li><a href="#preloader" data-ignore="push">加载指示器</a></li>
+  <li><a href="#popup" data-ignore="push">popup</a></li>
   <li><a href="#list" data-ignore="push">列表</a></li>
   <li><a href="#cards" data-ignore="push">卡片</a></li>
   <li><a href="#scroller" data-ignore="push">滚动条</a></li>
@@ -484,9 +486,12 @@
     <div class="content">
       <div class="content-block">
         <p><a href="#" class="button">Usual Button 1</a></p>
+        <p><a href="#" class="button button-light">light button</a></p>
+        <p><a href="#" class="button button-dark">dark button</a></p>
         <p><a href="#" class="button button-success">success button</a></p>
         <p><a href="#" class="button button-danger">danger button</a></p>
         <p><a href="#" class="button button-warning">warning button</a></p>
+        <p><a href="#" class="button disabled">disabled button</a></p>
       </div>
       <div class="content-block">
         <p><a href="#" class="button button-round">Round Button 1</a></p>
@@ -503,9 +508,12 @@
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Usual Button 1<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-light"</span><span class="nt">&gt;</span>light button<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-dark"</span><span class="nt">&gt;</span>dark button<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
     <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-success"</span><span class="nt">&gt;</span>success button<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
     <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-danger"</span><span class="nt">&gt;</span>danger button<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
     <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-warning"</span><span class="nt">&gt;</span>warning button<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button disabled"</span><span class="nt">&gt;</span>disabled button<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round"</span><span class="nt">&gt;</span>Round Button 1<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
@@ -526,6 +534,7 @@
       <div class="content-block">
         <p class="buttons-row"><a href="#" class="button">Button 1</a><a href="#" class="button">Button 2</a><a href="#" class="button">Button 3</a></p>
         <p class="buttons-row"><a href="#" class="button active">Button 1</a><a href="#" class="button">Button 2</a><a href="#" class="button">Button 3</a></p>
+        <p class="buttons-row"><a href="#" class="button">Button 1</a><a href="#" class="button active">Button 2</a><a href="#" class="button">Button 3</a></p>
         <p class="buttons-row"><a href="#" class="button button-round">Button 1</a><a href="#" class="button button-round">Button 2</a></p>
         <p class="buttons-row"><a href="#" class="button button-round">Button 1</a><a href="#" class="button button-round active">Button 2</a></p>
       </div>
@@ -539,6 +548,7 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 1<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 2<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 3<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
     <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button active"</span><span class="nt">&gt;</span>Button 1<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 2<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 3<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 1<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button active"</span><span class="nt">&gt;</span>Button 2<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button 3<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
     <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round"</span><span class="nt">&gt;</span>Button 1<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round"</span><span class="nt">&gt;</span>Button 2<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
     <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round"</span><span class="nt">&gt;</span>Button 1<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-round active"</span><span class="nt">&gt;</span>Button 2<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
@@ -1106,7 +1116,75 @@
 
   <article class="component active" id="tabs">
   <h3 class="component-title">标签页</h3>
-  <p class="component-description">标签页</p>
+  <p class="component-description">一级标签页</p>
+
+  <div class="component-example component-example-fullbleed">
+    <header class="bar bar-nav">
+      <h1 class='title'>标签页</h1>
+    </header>
+    <div class="content">
+      <div class="buttons-tab">
+        <a href="#tab1" class="tab-link active button">全部</a>
+        <a href="#tab2" class="tab-link button">待付款</a>
+        <a href="#tab3" class="tab-link button">待发货</a>
+      </div>
+      <div class="content-block">
+        <div class="tabs">
+          <div id="tab1" class="tab active">
+            <div class="content-block">
+              <p>This is tab 1 content</p>
+            </div>
+          </div>
+          <div id="tab2" class="tab">
+            <div class="content-block">
+              <p>This is tab 2 content</p>
+            </div>
+          </div>
+          <div id="tab3" class="tab">
+            <div class="content-block">
+              <p>This is tab 3 content</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">'title'</span><span class="nt">&gt;</span>标签页<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"buttons-tab"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab1"</span> <span class="na">class=</span><span class="s">"tab-link active button"</span><span class="nt">&gt;</span>全部<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab2"</span> <span class="na">class=</span><span class="s">"tab-link button"</span><span class="nt">&gt;</span>待付款<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab3"</span> <span class="na">class=</span><span class="s">"tab-link button"</span><span class="nt">&gt;</span>待发货<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tabs"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"tab1"</span> <span class="na">class=</span><span class="s">"tab active"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;p&gt;</span>This is tab 1 content<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"tab2"</span> <span class="na">class=</span><span class="s">"tab"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;p&gt;</span>This is tab 2 content<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"tab3"</span> <span class="na">class=</span><span class="s">"tab"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;p&gt;</span>This is tab 3 content<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+</article>
+
+<article class="component active">
+  <h3 class="component-title">二级标签页</h3>
+  <p class="component-description">比一级标签页更轻量的标签页</p>
 
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
@@ -1171,6 +1249,8 @@
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
 </article>
+
+
 
   <article class="component active" id="grid">
   <h3 class="component-title">响应式栅格</h3>
@@ -1237,7 +1317,7 @@
 
   <h3 class="component-title">预定义的 Modals</h3>
   <ul>
-    <li>1.注意，如果你没有指定预定义的modal标题，它讲使用默认的标题("Framework7")，这个可以在App 初始化时，通过传递 modalTitle 参数改变。</li>
+    <li>1.注意，如果你没有指定预定义的modal标题，它讲使用默认的标题，这个可以在App 初始化时，通过传递 modalTitle 参数改变。</li>
     <li>2.预定义modals的按钮文本(如 "Ok" 和 "Cancel") 也可以在 App 初始化时，通过传递 modalButtonOk 和 modalButtonCancel 参数改变。</li>
   </ul>
   <p class="component-description">首先，让我们看看已经预定义的最常用的modal:</p>
@@ -1530,100 +1610,6 @@
 </article>
 
 
-
-<article class="component active">
-  <h3 class="component-title">预加载 Modal (Preloader Modal)</h3>
-  <p class="component-description">预加载 Modal 用来提示一些后台活动（像Ajax请求）和阻止在这个活动期间的任何用户操作。 打开预加载 modal 我们也需要调用适当的App方法: myApp.show预加载(<code>[title]</code>)- 显示 预加载 modal</p>
-  <ul>
-    <li><code>title  - string. Optional</code>. 预加载 modal 标题. 默认（没有指定）的时候，它等同于 "Loading...". 你可以在App初始化时通过 modal预加载Title 参数改变默认的 预加载 标题。</li>
-  </ul>
-  <p class="component-description">该方法返回动态创建的modal的HTML元素。</p>
-  <p class="component-description">myApp.hide预加载() - 隐藏/关闭 预加载 modal. 因为 预加载 modal 没有任何按钮, 它应该用 JavaScript 来关闭</p>
-  <div class="component-example component-example-fullbleed">
-    <div class="">
-      <div class="content-block">
-        <p><a href="#" class="open-preloader">Open Preloader</a></p>
-        <p><a href="#" class="open-preloader-title">Open Preloader with custom title</a></p>
-      </div>
-      <script type="text/javascript">
-        $(document).on('click', '.open-preloader', function () {
-            $.showPreloader();
-            setTimeout(function () {
-                $.hidePreloader();
-            }, 2000);
-        });
-        $(document).on('click','.open-preloader-title', function () {
-            $.showPreloader('Custom Title')
-            setTimeout(function () {
-                $.hidePreloader();
-            }, 2000);
-        }); 
-      </script>    
-    </div>
-  </div>
-  <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>预加载 Modal (Preloader Modal)<span class="nt">&lt;/h1&gt;</span>
-  <span class="nt">&lt;/header&gt;</span>
-  ...
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-preloader"</span><span class="nt">&gt;</span>Open Preloader<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-preloader-title"</span><span class="nt">&gt;</span>Open Preloader with custom title<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>  
-  ...</code></pre></div>
-  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'.open-preloader'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nx">$</span><span class="p">.</span><span class="nx">showPreloader</span><span class="p">();</span>
-    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">.</span><span class="nx">hidePreloader</span><span class="p">();</span>
-    <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
-  <span class="p">});</span>
-  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.open-preloader-title'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nx">$</span><span class="p">.</span><span class="nx">showPreloader</span><span class="p">(</span><span class="s1">'Custom Title'</span><span class="p">)</span>
-    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">.</span><span class="nx">hidePreloader</span><span class="p">();</span>
-    <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
-  <span class="p">});</span></code></pre></div>
-</article>
-
-<article class="component active">
-  <h3 class="component-title">指示器(indicator)</h3>
-  <p class="component-description">如果你不需要用像预加载Modal这样如此大的modal 窗口去指示活动, 你可以使用简单并且小的指示器modal: </p>
-  <p class="component-description">myApp.showIndicator() - 显示指示器 modal </p>
-  <p class="component-description">myApp.hideIndicator() - 隐藏/关闭指示器 modal. 因为指示器modal没有任何按钮, 它需要用JavaScript来关闭 </p>
-  <div class="component-example component-example-fullbleed">
-    <div class="">
-      <div class="content-block">
-        <p><a href="#" class="open-indicator">Open Indicator</a></p>
-      </div>
-      <script type="text/javascript">
-        $(document).on('click','.open-indicator', function () {
-            $.showIndicator();
-            setTimeout(function () {
-                $.hideIndicator();
-            }, 2000);
-        });
-        
-      </script>    
-    </div>
-  </div>
-  <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>指示器(indicator)<span class="nt">&lt;/h1&gt;</span>
-  <span class="nt">&lt;/header&gt;</span>
-  ...
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-indicator"</span><span class="nt">&gt;</span>Open Indicator<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-  ...</code></pre></div>
-  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.open-indicator'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-      <span class="nx">$</span><span class="p">.</span><span class="nx">showIndicator</span><span class="p">();</span>
-      <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-          <span class="nx">$</span><span class="p">.</span><span class="nx">hideIndicator</span><span class="p">();</span>
-      <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
-  <span class="p">});</span></code></pre></div>
-</article>
 
 <article class="component active">
   <h3 class="component-title">自定义Modals</h3>
@@ -1976,7 +1962,102 @@
   <span class="nt">&lt;/div&gt;</span></code></pre></div>
 </article>
 
+<article class="component active" id='preloader'>
+  <h3 class="component-title">预加载 Modal (Preloader Modal)</h3>
+  <p class="component-description">预加载 Modal 用来提示一些后台活动（像Ajax请求）和阻止在这个活动期间的任何用户操作。 打开预加载 modal 我们也需要调用适当的App方法: myApp.show预加载(<code>[title]</code>)- 显示 预加载 modal</p>
+  <ul>
+    <li><code>title  - string. Optional</code>. 预加载 modal 标题. 默认（没有指定）的时候，它等同于 "Loading...". 你可以在App初始化时通过 modal预加载Title 参数改变默认的 预加载 标题。</li>
+  </ul>
+  <p class="component-description">该方法返回动态创建的modal的HTML元素。</p>
+  <p class="component-description">myApp.hide预加载() - 隐藏/关闭 预加载 modal. 因为 预加载 modal 没有任何按钮, 它应该用 JavaScript 来关闭</p>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content-block">
+        <p><a href="#" class="open-preloader">Open Preloader</a></p>
+        <p><a href="#" class="open-preloader-title">Open Preloader with custom title</a></p>
+      </div>
+      <script type="text/javascript">
+        $(document).on('click', '.open-preloader', function () {
+            $.showPreloader();
+            setTimeout(function () {
+                $.hidePreloader();
+            }, 2000);
+        });
+        $(document).on('click','.open-preloader-title', function () {
+            $.showPreloader('Custom Title')
+            setTimeout(function () {
+                $.hidePreloader();
+            }, 2000);
+        }); 
+      </script>    
+    </div>
+  </div>
+  <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>预加载 Modal (Preloader Modal)<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/header&gt;</span>
+  ...
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-preloader"</span><span class="nt">&gt;</span>Open Preloader<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-preloader-title"</span><span class="nt">&gt;</span>Open Preloader with custom title<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>  
+  ...</code></pre></div>
+  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'.open-preloader'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">showPreloader</span><span class="p">();</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">hidePreloader</span><span class="p">();</span>
+    <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
+  <span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.open-preloader-title'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">showPreloader</span><span class="p">(</span><span class="s1">'Custom Title'</span><span class="p">)</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">hidePreloader</span><span class="p">();</span>
+    <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
+  <span class="p">});</span></code></pre></div>
+</article>
+
 <article class="component active">
+  <h3 class="component-title">指示器(indicator)</h3>
+  <p class="component-description">如果你不需要用像预加载Modal这样如此大的modal 窗口去指示活动, 你可以使用简单并且小的指示器modal: </p>
+  <p class="component-description">myApp.showIndicator() - 显示指示器 modal </p>
+  <p class="component-description">myApp.hideIndicator() - 隐藏/关闭指示器 modal. 因为指示器modal没有任何按钮, 它需要用JavaScript来关闭 </p>
+  <div class="component-example component-example-fullbleed">
+    <div class="">
+      <div class="content-block">
+        <p><a href="#" class="open-indicator">Open Indicator</a></p>
+      </div>
+      <script type="text/javascript">
+        $(document).on('click','.open-indicator', function () {
+            $.showIndicator();
+            setTimeout(function () {
+                $.hideIndicator();
+            }, 2000);
+        });
+        
+      </script>    
+    </div>
+  </div>
+  <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>指示器(indicator)<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/header&gt;</span>
+  ...
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"open-indicator"</span><span class="nt">&gt;</span>Open Indicator<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  ...</code></pre></div>
+  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.open-indicator'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">showIndicator</span><span class="p">();</span>
+      <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="nx">$</span><span class="p">.</span><span class="nx">hideIndicator</span><span class="p">();</span>
+      <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
+  <span class="p">});</span></code></pre></div>
+</article>
+
+
+<article class="component active" id='popup'>
   <h3 class="component-title">Popup</h3>
   <p class="component-description">Popup 是一种可以包含任何Html内容的弹出窗口，从App的主内容区域上弹出。 Popup 和其他所有的遮罩图层一样，是所谓的“临时视图”的一部分。</p>
   <h3 class="component-title">Popup 布局</h3>
@@ -2259,7 +2340,7 @@
 
 <article class="component active">
   <h3 class="component-title">动态的 Popup</h3>
-  <p class="component-description">Framework7允许你调用相关的App方法时传递HTML内容来动态地创建Popup:</p>
+  <p class="component-description">允许你调用相关的App方法时传递HTML内容来动态地创建Popup:</p>
   <p class="component-description"><code>myApp.popup(popupHTML, removeOnClose)</code> - 打开 Popup</p>
   <ul>
     <li><code>popupHTML</code> - string. popup的HTML字符串</li>
@@ -2304,6 +2385,99 @@
                       <span class="s1">'&lt;/div&gt;'</span><span class="o">+</span>
                     <span class="s1">'&lt;/div&gt;'</span>
     <span class="nx">$</span><span class="p">.</span><span class="nx">popup</span><span class="p">(</span><span class="nx">popupHTML</span><span class="p">);</span>
+  <span class="p">});</span></code></pre></div>
+</article>
+
+<article class="component" id='actions'>
+  <h3 class="component-title">操作表</h3>
+  <p class="component-description">操作表可以让用户从多个可选的操作中选择一个</p>
+  <p class="component-description"><code>myApp.actions(buttons)</code> - 创建并弹出一个操作表</p>
+  <ul>
+    <li><code>buttons</code> - 显示的几个按钮，你也可以把按钮分组</li>
+  </ul>
+  <p>你可以通过 <code>color: "danger"</code> 来指定按钮的文案为红色</p>
+  <p>或者通过 <code>bg: "danger"</code> 来指定按钮的背景为红色</p>
+  <div class="component-example component-example-fullbleed">
+    <header class="bar bar-nav">
+        <h1 class="title">操作表</h1>
+    </header>
+    <div class="content">
+      <div class="content-block">
+        <!-- In data-popup attribute we specify CSS selector of popup we need to open -->
+        <p><a href="#" class="create-actions">选择操作</a></p>
+      </div>
+    </div>
+    <script>
+      $(document).on('click','.create-actions', function () {
+        var buttons1 = [
+          {
+            text: '请选择',
+            label: true
+          },
+          {
+            text: '卖出',
+            bold: true,
+            color: 'danger',
+            onClick: function() {
+              $.alert("你选择了“卖出“");
+            }
+          },
+          {
+            text: '买入',
+            onClick: function() {
+              $.alert("你选择了“买入“");
+            }
+          }
+        ];
+        var buttons2 = [
+          {
+            text: '取消',
+            bg: 'danger'
+          }
+        ];
+        var groups = [buttons1, buttons2];
+        $.actions(groups);
+      }); 
+  </script>
+  </div>
+  <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>操作表<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/header&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- In data-popup attribute we specify CSS selector of popup we need to open --&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"create-actions"</span><span class="nt">&gt;</span>选择操作<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span></code></pre></div>
+  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.create-actions'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">buttons1</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="na">text</span><span class="p">:</span> <span class="s1">'请选择'</span><span class="p">,</span>
+          <span class="na">label</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">text</span><span class="p">:</span> <span class="s1">'卖出'</span><span class="p">,</span>
+          <span class="na">bold</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="na">color</span><span class="p">:</span> <span class="s1">'danger'</span><span class="p">,</span>
+          <span class="na">onClick</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s2">"你选择了“卖出“"</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">text</span><span class="p">:</span> <span class="s1">'买入'</span><span class="p">,</span>
+          <span class="na">onClick</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s2">"你选择了“买入“"</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">];</span>
+      <span class="kd">var</span> <span class="nx">buttons2</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="na">text</span><span class="p">:</span> <span class="s1">'取消'</span><span class="p">,</span>
+          <span class="na">bg</span><span class="p">:</span> <span class="s1">'danger'</span>
+        <span class="p">}</span>
+      <span class="p">];</span>
+      <span class="kd">var</span> <span class="nx">groups</span> <span class="o">=</span> <span class="p">[</span><span class="nx">buttons1</span><span class="p">,</span> <span class="nx">buttons2</span><span class="p">];</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">actions</span><span class="p">(</span><span class="nx">groups</span><span class="p">);</span>
   <span class="p">});</span></code></pre></div>
 </article>
 

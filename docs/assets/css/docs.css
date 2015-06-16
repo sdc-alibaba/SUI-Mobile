@@ -295,7 +295,7 @@ body {
             transition: opacity .2 linear;
   }
   .docs-jump-menu:hover {
-    color: #007aff;
+    color: #0894ec;
   }
   .docs-jump-menu:active {
     opacity: .5;
@@ -355,7 +355,7 @@ body {
   }
   .docs-component-group .docs-component-item:hover {
     color: #fff;
-    background-color: #007aff;
+    background-color: #0894ec;
   }
 }
 .docs-header-content {
@@ -969,6 +969,8 @@ hr {
     top: 50px;
     float: left;
     width: 100px;
+    max-height: 100vh;
+    overflow: auto;
   }
   .docs-column {
     float: none;
@@ -1074,7 +1076,7 @@ hr {
   background-color: #4cd964;
 }
 .browser-support-no {
-  background-color: #ff3b30;
+  background-color: #f6383a;
 }
 code {
   color: #c30;
@@ -1268,10 +1270,10 @@ table td {
   color: #666;
 }
 .docs-side-menu a:hover {
-  color: #007aff;
+  color: #0894ec;
 }
 .docs-side-menu .active a {
-  color: #007aff;
+  color: #0894ec;
 }
 .docs-side-menu.menu-fixed {
   position: fixed;
