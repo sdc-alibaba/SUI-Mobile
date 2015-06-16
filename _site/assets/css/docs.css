@@ -970,6 +970,7 @@ hr {
     float: left;
     width: 100px;
     max-height: 100vh;
+    padding-bottom: 50px;
     overflow: auto;
   }
   .docs-column {
