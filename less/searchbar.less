@@ -5,6 +5,40 @@
   padding: 8px 0;
   height: @searchbarSize;
   .align-items(center);
+
+  .searchbar-cancel {
+    margin-right: -3rem;
+    width: 2.2rem;  //注意，这里比 2.5rem 要小，因为如果位置刚好一样，可能在动画的过程中出现抖动
+    float: right;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    text-align: center;
+    transition: all .3s;
+    opacity: 0;
+    transform: translate3d(0,0,0);
+  }
+
+  .search-input {
+    transform: translate3d(0,0,0);
+    margin-right: 0;
+    transition: all .3s;
+
+    input {
+      margin: 0;
+      height: 1.4rem;
+    }
+  }
+
+  &.searchbar-active {
+    .searchbar-cancel {
+      margin-right: 0;
+      opacity: 1;
+      
+      + .search-input {
+        margin-right: 2.5rem;
+      }
+    }
+  }
 }
 
 .search-input {
@@ -29,7 +63,7 @@
       opacity: 1;
     }
   }
-  label {
+  .icon {
     position: absolute;
     font-size: 0.9rem;
     color: @searchbarBorderColor;
@@ -41,4 +75,11 @@
   label + input {
     padding-left: 1.4rem;
   }
+
+}
+
+.bar .searchbar {
+  margin: 0 -0.5rem;
+  padding: 0.4rem 0.5rem;
+  background: rgba(0, 0, 0, .1);
 }

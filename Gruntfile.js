@@ -62,6 +62,7 @@ module.exports = function(grunt) {
                   'js/pull-to-refresh.js',
                   'js/infinite-scroll.js',
                   'js/modal.js',
+                  'js/searchbar.js',
                   'js/push.js',
                   'js/init.js'
               ],
