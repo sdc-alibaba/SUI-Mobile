@@ -131,6 +131,7 @@ $(function () {
     });
   });
 
+  //操作表
   $(document).on("pageInit", "#page-actions", function(e, id, content) {
     $(content).on('click','.create-actions', function () {
       var buttons1 = [

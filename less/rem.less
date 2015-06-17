@@ -3,48 +3,26 @@
 // --------------------------------------------------
 
 // Vertical screen
+
+//375屏幕为 20px，以此为基础计算出每一种宽度的字体大小
+
+@baseWidth: 375px;
+@baseFont: 20px;
+
 html {
-    font-size : 20px; 
-}
-@media only screen and (min-width: 360px){
-    html {
-        font-size: 22.5px !important;
-    }
-}
-@media only screen and (min-width: 375px){
-    html {
-        font-size: 23.44px !important;
-    }
-}
-@media only screen and (min-width: 400px){
-    html {
-        font-size: 25px !important;
-    }
-}
-@media only screen and (min-width: 414px){
-    html {
-        font-size: 25.8px !important;
-    }
-}
-@media only screen and (min-width: 480px){
-    html {
-        font-size: 30px !important;
-    }
+  font-size: 320px/@baseWidth*@baseFont;  //默认当做320px宽度的屏幕来处理
 }
 
-// Horizontal screen
-@media only screen and (min-width: 568px){
+@bps: 320px, 360px, 375px, 400px, 414px, 480px;
+
+.loop(@i: 1) when (@i <= length(@bps)) {  //注意less数组是从1开始的
+  @bp: extract(@bps, @i);
+  @font: @bp/@baseWidth*@baseFont;  
+  @media only screen and (min-width: @bp){
     html {
-        font-size: 35px !important;
+      font-size: @font !important;
     }
-}
-@media only screen and (min-width: 667px){
-    html {
-        font-size: 40px !important;
-    }
-}
-@media only screen and (min-width: 736px){
-    html {
-        font-size: 45px !important;
-    }
-}
+  }
+  .loop((@i + 1));
+};
+.loop;

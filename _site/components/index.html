@@ -1326,7 +1326,7 @@
   <p class="component-description">首先，让我们看看已经预定义的最常用的modal:</p>
 
   <h3 class="component-title">Alert</h3>
-  <p class="component-description">我们需要调用以下任一一种App方法来打开Alert modal ：<code>myApp.alert(text, [title, callbackOk])</code> </br>或者</br> <code>myApp.alert(text, [callbackOk])</code></p>
+  <p class="component-description">我们需要调用以下任一一种App方法来打开Alert modal ：<code>$.alert(text, [title, callbackOk])</code> </br>或者</br> <code>$.alert(text, [callbackOk])</code></p>
 
   <ul>
     <li><code>text</code> - string. Alert文本</li>
@@ -1412,8 +1412,8 @@
 
 <article class="component active">
   <h3 class="component-title">Confirm</h3>
-  <p class="component-description">Confirm modal 经常在需要确认一些行为时被使用. 打开Alert modal同样也需要调用以下任一一种App方法：<code>myApp.confirm(text, [title, callbackOk, callbackCancel])</code></br>或者 </br>
- <code>myApp.confirm(text, [callbackOk, callbackCancel])</code></p>
+  <p class="component-description">Confirm modal 经常在需要确认一些行为时被使用. 打开Alert modal同样也需要调用以下任一一种App方法：<code>$.confirm(text, [title, callbackOk, callbackCancel])</code></br>或者 </br>
+ <code>$.confirm(text, [callbackOk, callbackCancel])</code></p>
   <ul>
     <li><code>text  - string. Confirm 文本</code></li>
     <li><code>title - string. Optional</code>. Confirm modal 标题</li>
@@ -1513,8 +1513,8 @@
 
 <article class="component active">
   <h3 class="component-title">Prompt</h3>
-  <p class="component-description">Prompt modal 经常在需要从用户那里得到一些数据/答案时使用。打开 Prompt modal同样也需要调用以下任一一种App方法：<code>myApp.prompt(text, [title, callbackOk, callbackCancel])</code></br>或者</br>
- <code>myApp.prompt(text, [callbackOk, callbackCancel])</code></p>
+  <p class="component-description">Prompt modal 经常在需要从用户那里得到一些数据/答案时使用。打开 Prompt modal同样也需要调用以下任一一种App方法：<code>$.prompt(text, [title, callbackOk, callbackCancel])</code></br>或者</br>
+ <code>$.prompt(text, [callbackOk, callbackCancel])</code></p>
   <ul>
     <li><code>text - string</code>. Prompt 文本/问题</li>
     <li><code>title  - string</code>. Optional. Prompt modal 标题</li>
@@ -1617,7 +1617,7 @@
 <article class="component active">
   <h3 class="component-title">自定义Modals</h3>
   <p class="component-description">Ok, 所有的预定义modals都只是一些适用于特定的场景的方法. 让我们看看如何创建自定义的 modals: </p>
-  <p class="component-description"><code>myApp.modal(parameters)</code> - 显示 custom modal </p>
+  <p class="component-description"><code>$.modal(parameters)</code> - 显示 custom modal </p>
   <ul>
     <li><code>parameters - object</code>. Modal 的 parameters/options对象</li>
   </ul>
@@ -1936,7 +1936,7 @@
     <span class="p">});</span></code></pre></div>
     <h3 class="component-title">用 JavaScript 关闭 Modals</h3>
     <p class="component-description">任何 Modal 可以用 JavaScript 来关闭，不仅仅是通过点击按钮。因此我们需要看看相关App方法：</p>
-    <p class="component-description"><code>myApp.closeModal(modal)</code> - 关闭任意 modal</p>
+    <p class="component-description"><code>$.closeModal(modal)</code> - 关闭任意 modal</p>
     <ul>
       <li><code>modal - HTMLElement or string ( CSS 选择器)</code>. 可选. 除了指定的，任何被打开modal都将被关闭。</li>
     </ul> 
@@ -1966,13 +1966,13 @@
 </article>
 
 <article class="component active" id='preloader'>
-  <h2 class="component-title">预加载 Modal (Preloader Modal)</h2>
-  <p class="component-description">预加载 Modal 用来提示一些后台活动（像Ajax请求）和阻止在这个活动期间的任何用户操作。 打开预加载 modal 我们也需要调用适当的App方法: myApp.show预加载(<code>[title]</code>)- 显示 预加载 modal</p>
+  <h2 class="component-title">带标题的加载指示器</h2>
+  <p class="component-description">预加载 Modal 用来提示一些后台活动（像Ajax请求）和阻止在这个活动期间的任何用户操作。 打开预加载 modal 我们也需要调用适当的App方法: $.show预加载(<code>[title]</code>)- 显示 预加载 modal</p>
   <ul>
     <li><code>title  - string. Optional</code>. 预加载 modal 标题. 默认（没有指定）的时候，它等同于 "Loading...". 你可以在App初始化时通过 modal预加载Title 参数改变默认的 预加载 标题。</li>
   </ul>
   <p class="component-description">该方法返回动态创建的modal的HTML元素。</p>
-  <p class="component-description">myApp.hide预加载() - 隐藏/关闭 预加载 modal. 因为 预加载 modal 没有任何按钮, 它应该用 JavaScript 来关闭</p>
+  <p class="component-description">$.hide预加载() - 隐藏/关闭 预加载 modal. 因为 预加载 modal 没有任何按钮, 它应该用 JavaScript 来关闭</p>
   <div class="component-example component-example-fullbleed">
     <div class="">
       <div class="content-block">
@@ -2021,10 +2021,10 @@
 </article>
 
 <article class="component active">
-  <h3 class="component-title">指示器(indicator)</h3>
+  <h3 class="component-title">迷你指示器</h3>
   <p class="component-description">如果你不需要用像预加载Modal这样如此大的modal 窗口去指示活动, 你可以使用简单并且小的指示器modal: </p>
-  <p class="component-description">myApp.showIndicator() - 显示指示器 modal </p>
-  <p class="component-description">myApp.hideIndicator() - 隐藏/关闭指示器 modal. 因为指示器modal没有任何按钮, 它需要用JavaScript来关闭 </p>
+  <p class="component-description">$.showIndicator() - 显示指示器 modal </p>
+  <p class="component-description">$.hideIndicator() - 隐藏/关闭指示器 modal. 因为指示器modal没有任何按钮, 它需要用JavaScript来关闭 </p>
   <div class="component-example component-example-fullbleed">
     <div class="">
       <div class="content-block">
@@ -2146,11 +2146,11 @@
 <article class="component active">
   <h4 class="component-title">使用 JavaScript</h4>
   <p class="component-description">我们也可以用使用JavaScript来打开和关闭Popups ，因此我们需要看一下相关的App方法：</p>
-  <p class="component-description"><code>myApp.popup(popup)</code> - 打开 Popup</p>
+  <p class="component-description"><code>$.popup(popup)</code> - 打开 Popup</p>
   <ul>
     <li><code>popup - HTML元素 或者 字符串 (需要打开的popup的 CSS 选择器) </code>. 必需</li>
   </ul>
-  <p class="component-description"><code>myApp.closeModal(popup)</code> - 关闭 Popup</p>
+  <p class="component-description"><code>$.closeModal(popup)</code> - 关闭 Popup</p>
   <ul>
     <li><code>popup - HTML元素 或者 字符串 (需要打开的popup的 CSS 选择器)</code>. 可选. 如果没有设置这个值，任何打开着的Popup/Modal 都将被关闭</li>
   </ul>
@@ -2344,7 +2344,7 @@
 <article class="component active">
   <h3 class="component-title">动态的 Popup</h3>
   <p class="component-description">允许你调用相关的App方法时传递HTML内容来动态地创建Popup:</p>
-  <p class="component-description"><code>myApp.popup(popupHTML, removeOnClose)</code> - 打开 Popup</p>
+  <p class="component-description"><code>$.popup(popupHTML, removeOnClose)</code> - 打开 Popup</p>
   <ul>
     <li><code>popupHTML</code> - string. popup的HTML字符串</li>
     <li><code>removeOnClose</code> - boolean. 可选, 默认 - true. 如果是 true， 那么 Popup 在关闭时将从DOM中移除</li>
@@ -2394,7 +2394,7 @@
 <article class="component" id='actions'>
   <h2 class="component-title">操作表</h2>
   <p class="component-description">操作表可以让用户从多个可选的操作中选择一个</p>
-  <p class="component-description"><code>myApp.actions(buttons)</code> - 创建并弹出一个操作表</p>
+  <p class="component-description"><code>$.actions(buttons)</code> - 创建并弹出一个操作表</p>
   <ul>
     <li><code>buttons</code> - 显示的几个按钮，你也可以把按钮分组</li>
   </ul>

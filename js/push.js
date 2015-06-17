@@ -393,7 +393,7 @@
         triggerStateChange("push");
         $(swap).trigger("pageInit", [swap.id, swap]);
       }
-    }
+    };
 
     if (!transition) {
       triggerComplete();
