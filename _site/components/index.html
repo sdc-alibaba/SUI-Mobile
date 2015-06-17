@@ -90,14 +90,14 @@
   <li><a href="#modal" data-ignore="push">对话框</a></li>
   <li><a href="#preloader" data-ignore="push">加载指示器</a></li>
   <li><a href="#popup" data-ignore="push">popup</a></li>
-  <li><a href="#actions" data-ignore="push">操作表</a></li>
+  <li><a href="#actions" data-ignore="push">操作表 <span class='new'>新</span></a></li>
   <li><a href="#list" data-ignore="push">列表</a></li>
   <li><a href="#cards" data-ignore="push">卡片</a></li>
   <li><a href="#scroller" data-ignore="push">滚动条</a></li>
   <li><a href="#pulltorefresh" data-ignore="push">下拉刷新</a></li>
   <li><a href="#infinitescroll" data-ignore="push">无限滚动</a></li>
-  <li><a href="#push" data-ignore="push">push.js</a></li>
   <li><a href="#ratchicons" data-ignore="push">图标</a></li>
+  <li><a href="#push" data-ignore="push">push.js <span class='beta'>测试</span></a></li>
 </div>
 
     <div class="device-column column pull-right">
@@ -116,7 +116,7 @@
     <div class="column docs-content docs-column">
       <!-- Bars -->
   <article class="component active" id="init">
-  <h3 class="component-title">初始化</h3>
+  <h2 class="component-title">初始化</h2>
   <p class="component-description">
     <p>有一些JS组件是需要初始化才能使用的，比如幻灯片、滚动条等。</p>
     <p>这些JS组件都有对应的初始化API可以调用。不过我们也提供了一个统一的方法可以自动初始化页面中的全部JS组件 <code>$.initPage(page)</code></p>
@@ -177,7 +177,7 @@
 </article>
 
   <article class="component" id="content">
-  <h3 class="component-title">内容区</h3>
+  <h2 class="component-title">内容区</h2>
   <p class="component-description">如果你希望页面内容所有两边有间距，可以把内容放在 <code>.content-padded</code> 容器中</p>
 
   <div class="component-example">
@@ -195,7 +195,7 @@
 
   <!-- Typography -->
   <article class="component" id="typography">
-    <h3 class="component-title">文本样式</h3>
+    <h2 class="component-title">文本样式</h2>
     <p class="component-description">基础文本样式.</p>
 
     <div class="component-example component-example-fullbleed">
@@ -224,15 +224,15 @@
 
 
 
-        <article class="component active" id="bars">
-        <h3 class="component-title">标题栏</h3>
-        <p class="component-description">标题栏放在页面顶部</p>
+  <article class="component active" id="bars">
+  <h2 class="component-title">标题栏</h2>
+  <p class="component-description">标题栏放在页面顶部</p>
 
-        <div class="component-example component-example-fullbleed">
-          <header class="bar bar-nav">
-            <h1 class="title">标题</h1>
-          </header>
-        </div>
+  <div class="component-example component-example-fullbleed">
+    <header class="bar bar-nav">
+      <h1 class="title">标题</h1>
+    </header>
+  </div>
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>标题<span class="nt">&lt;/h1&gt;</span>
@@ -435,41 +435,43 @@
 <article class="component">
     <h3 class="component-title">二级标题栏</h3>
     <div class="component-example component-example-fullbleed">
-        <!-- Segmented control in standard bar fixed to top -->
-        <nav class="bar bar-standard">
-            <div class="buttons-row">
-                <a href="#tab1" class="tab-link active button">Tab 1</a>
-                <a href="#tab2" class="tab-link button">Tab 2</a>
-                <a href="#tab3" class="tab-link button">Tab 3</a>
-            </div>
-        </nav>
-        <!-- Block button in standard bar fixed below top bar -->
-        <div class="bar bar-standard bar-header-secondary">
-            <button class="button button-block">按钮</button>
-        </div>
+      <nav class="bar bar-nav bar-standard">
+        <h1 class="title">多级标题栏和工具栏</h1>
+      </nav>
+
+      <!-- Block button in standard bar fixed below top bar -->
+      <div class="bar bar-header-secondary">
+        <button class="button button-block">Block level button</button>
+      </div>
+
+      <!-- Block button in standard bar fixed above the footer -->
+      <div class="bar bar-footer-secondary">
+        <button class="button button-block">Block level button</button>
+      </div>
+
+      <!-- Icons in standard bar fixed to the bottom of the screen -->
+      <div class="bar bar-footer">
+        <a class="icon icon-edit pull-left"></a>
+        <a class="icon icon-settings pull-right"></a>
+      </div>
     </div>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Segmented control in standard bar fixed to top --&gt;</span>
-<span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"bar bar-standard"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"buttons-row"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab1"</span> <span class="na">class=</span><span class="s">"tab-link active button"</span><span class="nt">&gt;</span>Tab 1<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab2"</span> <span class="na">class=</span><span class="s">"tab-link button"</span><span class="nt">&gt;</span>Tab 2<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#tab3"</span> <span class="na">class=</span><span class="s">"tab-link button"</span><span class="nt">&gt;</span>Tab 3<span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"bar bar-nav bar-standard"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>多级标题栏和工具栏<span class="nt">&lt;/h1&gt;</span>
 <span class="nt">&lt;/nav&gt;</span>
 
 <span class="c">&lt;!-- Block button in standard bar fixed below top bar --&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bar bar-standard bar-header-secondary"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-block"</span><span class="nt">&gt;</span>按钮<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bar bar-header-secondary"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-block"</span><span class="nt">&gt;</span>Block level button<span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 
 <span class="c">&lt;!-- Block button in standard bar fixed above the footer --&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bar bar-standard bar-footer-secondary"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-block"</span><span class="nt">&gt;</span>按钮<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bar bar-footer-secondary"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"button button-block"</span><span class="nt">&gt;</span>Block level button<span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 
 <span class="c">&lt;!-- Icons in standard bar fixed to the bottom of the screen --&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bar bar-standard bar-footer"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bar bar-footer"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-edit pull-left"</span><span class="nt">&gt;&lt;/a&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-settings pull-right"</span><span class="nt">&gt;&lt;/a&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
@@ -477,7 +479,7 @@
   </article>
 
   <article class="component active" id="buttons">
-  <h3 class="component-title">按钮</h3>
+  <h2 class="component-title">按钮</h2>
   <p class="component-description">按钮</p>
 
   <div class="component-example component-example-fullbleed">
@@ -648,7 +650,7 @@
 </article>
 
   <article class="component active" id="forms">
-  <h3 class="component-title">表单</h3>
+  <h2 class="component-title">表单</h2>
   <p class="component-description">表单</p>
 
   <div class="component-example component-example-fullbleed">
@@ -1057,7 +1059,7 @@
 </article>
 
   <article class="component" id="searchbar">
-  <h3 class="component-title">搜索栏</h3>
+  <h2 class="component-title">搜索栏</h2>
   <p class="component-description">搜索栏只是一个CSS组件，不提供任何JS功能。</p>
   <p>搜索栏的布局是通过栅格来实现的。所以可以非常灵活调整宽度以及组合任何你需要的组件。</p>
   <p>你也可以单独使用 <code>.search-input</code></p>
@@ -1116,7 +1118,7 @@
 
 
   <article class="component active" id="tabs">
-  <h3 class="component-title">标签页</h3>
+  <h2 class="component-title">标签页</h2>
   <p class="component-description">一级标签页</p>
 
   <div class="component-example component-example-fullbleed">
@@ -1254,7 +1256,7 @@
 
 
   <article class="component active" id="grid">
-  <h3 class="component-title">响应式栅格</h3>
+  <h2 class="component-title">响应式栅格</h2>
   <p class="component-description"></p>
 
   <div class="component-example component-example-fullbleed">
@@ -1312,7 +1314,7 @@
 </article>
 
   <article class="component" id="modal">
-  <h3 class="component-title">Modal</h3>
+  <h2 class="component-title">Modal</h2>
   <p class="component-description">Modal 是从App的主要内容区域上弹出的一小块内容块. Modals经常被用来向用户询问信息，或通知或警告用户。 Modal和其他所有的遮罩图层一样，是所谓的“临时视图”的一部分。</p>
   <p class="component-description">Modals 可以只用JavaScript打开。所以让我们来看看使用modals的相关APP方法</p>
 
@@ -1964,7 +1966,7 @@
 </article>
 
 <article class="component active" id='preloader'>
-  <h3 class="component-title">预加载 Modal (Preloader Modal)</h3>
+  <h2 class="component-title">预加载 Modal (Preloader Modal)</h2>
   <p class="component-description">预加载 Modal 用来提示一些后台活动（像Ajax请求）和阻止在这个活动期间的任何用户操作。 打开预加载 modal 我们也需要调用适当的App方法: myApp.show预加载(<code>[title]</code>)- 显示 预加载 modal</p>
   <ul>
     <li><code>title  - string. Optional</code>. 预加载 modal 标题. 默认（没有指定）的时候，它等同于 "Loading...". 你可以在App初始化时通过 modal预加载Title 参数改变默认的 预加载 标题。</li>
@@ -2059,7 +2061,7 @@
 
 
 <article class="component active" id='popup'>
-  <h3 class="component-title">Popup</h3>
+  <h2 class="component-title">Popup</h2>
   <p class="component-description">Popup 是一种可以包含任何Html内容的弹出窗口，从App的主内容区域上弹出。 Popup 和其他所有的遮罩图层一样，是所谓的“临时视图”的一部分。</p>
   <h3 class="component-title">Popup 布局</h3>
   <p class="component-description">Popup 布局相当简单. 你所需要做的就是将 <div class="popup"> 任何需要展示的内容 </div> 放到 body 里正确的位置上:</p>
@@ -2390,7 +2392,7 @@
 </article>
 
 <article class="component" id='actions'>
-  <h3 class="component-title">操作表</h3>
+  <h2 class="component-title">操作表</h2>
   <p class="component-description">操作表可以让用户从多个可选的操作中选择一个</p>
   <p class="component-description"><code>myApp.actions(buttons)</code> - 创建并弹出一个操作表</p>
   <ul>
@@ -2483,7 +2485,7 @@
 </article>
 
   <article class="component" id="list">
-  <h3 class="component-title">列表</h3>
+  <h2 class="component-title">列表</h2>
   <p class="component-description">常在iOS应用中看到的列表，是种多功能且强大的交互组件。列表将数据展现在一个可滚动的多行的列表中，可以将数据划分成不同的片段/组（sections/groups）。</p>
   <p class="component-description">列表有以下用途：</p>
   <ul>
@@ -2852,7 +2854,7 @@
 </article>
 
   <article class="component" id="cards">
-  <h3 class="component-title">卡片（Cards）</h3>
+  <h2 class="component-title">卡片（Cards）</h2>
   <p class="component-description">伴随着列表视图，卡片是一种很好的方法来控制和组织你的信息。卡片含有独特的相关数据，例如，照片，文字和所有关于一个主题的链接。卡片通常是更复杂的和详细的信息的一个切入点。</p>
 
   <div class="component-example component-example-fullbleed">
@@ -2996,10 +2998,13 @@
 </article>
 
   <article class="component active " id="scroller">
-    <h3 class="component-title">滚动条</h3>
+    <h2 class="component-title">滚动条</h2>
     <p class="component-description">在auto的模式下对于版本号小于4.4.0的Android 版本 和 版本号小于6.0.0的ios使用大名鼎鼎的iscroll.js作为js滚动的引擎。当然也可以通过配置来决定全部使用js滚动或者native的滚动。</p>
     <p class="component-description">
         js的滚动条的事件和zepto接口（scrollTop,scrollLeft）保持和native的一样，唯一不同的是js的滚动条需要手动初始化和当滚动容器高度发生变化时需要手动调用 <code>$.refreshScroller()</code>。
+    </p>
+    <p class="component-description">
+      为了保证页面在任何滚动条模式下都能使用，强烈建议在任何导致页面高度变化的操作之后都要执行一次 <code>$.refreshScroller()</code> 操作。否则在js滚动条模式下可能会导致页面无法滚动。
     </p>
     <div class="component-example component-example-fullbleed">
         <header class="bar bar-nav">
@@ -3165,7 +3170,7 @@
 
 
   <article class="component active" id="pulltorefresh">
-  <h3 class="component-title">下拉刷新</h3>
+  <h2 class="component-title">下拉刷新</h2>
   <p class="component-description">下拉刷新是一个特别的组件，可以用来初始化页面内容的刷新。</p>
   <h3 class="component-title">下拉刷新的demo</h3>
 <p class="component-description">HTML:</p>
@@ -3316,7 +3321,7 @@ ptrContent - HTMLElement or string (with CSS Selector) 需要启用的下拉刷�
 </article>
 
   <article class="component" id="infinitescroll">
-    <h3 class="component-title">无限滚动</h3>
+    <h2 class="component-title">无限滚动</h2>
     <p class="component-description">无限滚动用来在页面滚动到接近底部时加载新内容或进行其他操作。</p>
     <h3 class="component-title">无限滚动demo</h3>
     <p class="component-description">
@@ -3531,67 +3536,8 @@ $(function() {
 
 
 
-  <article class="component" id="push">
-    <h3 class="component-title">Push</h3>
-    <p class="component-description">push.js 是一个很轻量的页面加载和历史管理组件。他会监听所有的链接click事件，并自动使用ajax加载新页面。</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- A one.html link --&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
-    <p class="component-note">他会自动通过AJAX加载链接上的href地址，并把加载到的内容中的 .content 替换到当前页面，同样如果有 .bar-nav 或者 .bar-tab 也会被替换掉。</p>
-    <p class="component-description">你可以通过 <code>data-transition</code> 来指定加载动画，有三个可选值： <code>fade</code>, <code>slide-in</code>, or <code>slide-out</code>.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- An one.html link that animates to two.html --&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span> <span class="na">data-transition=</span><span class="s">"fade"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
-    <p class="component-description">比如:</p>
-    <div class="component-example component-example-fullbleed">
-        <header class="bar bar-nav">
-            <h1 class="title">Push</h1>
-        </header>
-        <div class="content">
-            <div class="card">
-                <ul class="table-view">
-                    <li class="table-view-cell">
-                        <a class="navigate-right" href="/two.html" data-transition="slide-in">
-                          加载新页面
-                </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Push<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;/header&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"table-view"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"table-view-cell"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navigate-right"</span> <span class="na">href=</span><span class="s">"../two.html"</span> <span class="na">data-transition=</span><span class="s">"slide-in"</span><span class="nt">&gt;</span>
-                  加载新页面
-                <span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-        <span class="nt">&lt;/ul&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></div>
-    <p class="component-description">如果你不希望一个链接被push.js管理，那么只需要增加一个 <code>data-ignore="push"</code> 属性即可：</p>
-    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Use data-ignore="push" to prevent the push.js interception --&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://www.baidu.com"</span> <span class="na">data-ignore=</span><span class="s">"push"</span><span class="nt">&gt;</span>直接访问baidu<span class="nt">&lt;/a&gt;</span></code></pre></div>
-
-        <p class="component-description">push.js 加载完成新页面之后，会在document上触发一个 <code>push</code> 事件：</p>
-
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Only needed if you want to fire a callback</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'push'</span><span class="p">,</span> <span class="nx">myFunction</span><span class="p">);</span></code></pre></div>
-
-        <p class="component-description">你也可以调用 <code>$.push</code> 方法来手动加载一个新页面.</p>
-
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="na">url</span><span class="p">:</span> <span class="s2">"/signin"</span><span class="p">});</span>
-<span class="nx">$</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s2">"/signin"</span><span class="p">,</span>
-  <span class="na">transition</span><span class="p">:</span> <span class="s2">"slide-in"</span>
-<span class="p">});</span></code></pre></div>
-
-</article>
-
   <article class="component no-border" id="ratchicons">
-  <h3 class="component-title">图标</h3>
+  <h2 class="component-title">图标</h2>
   <p class="component-description">使用iconfont的图标</p>
 
   <div class="component-example">
@@ -3664,6 +3610,74 @@ $(function() {
 </article>
 
 
+
+  <article class="component" id="push">
+    <h2 class="component-title">Push</h2>
+    <p class="component-description">push.js 是一个很轻量的页面加载和历史管理组件。他会监听所有的链接click事件，并自动使用ajax加载新页面。</p>
+    <p>注意，push.js 仍处在测试阶段，这意味着他的api现在还不是稳定的，在后面的版本中随时会进行改动。如果你不希望使用push.js，那么你可以在初始化的时候通过传入一个 <code>pushjs: false</code> 参数来禁用 push.js。</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- A one.html link --&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
+    <p class="component-note">他会自动通过AJAX加载链接上的href地址，并把加载到的内容中的 .content 替换到当前页面，同样如果有 .bar-nav 或者 .bar-tab 也会被替换掉。</p>
+    <p class="component-description">你可以通过 <code>data-transition</code> 来指定加载动画，有三个可选值： <code>fade</code>, <code>slide-in</code>, or <code>slide-out</code>.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- An one.html link that animates to two.html --&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"two.html"</span> <span class="na">data-transition=</span><span class="s">"fade"</span><span class="nt">&gt;</span>Two<span class="nt">&lt;/a&gt;</span></code></pre></div>
+    <p class="component-description">比如:</p>
+    <div class="component-example component-example-fullbleed">
+        <header class="bar bar-nav">
+            <h1 class="title">Push</h1>
+        </header>
+        <div class="content">
+            <div class="card">
+                <ul class="table-view">
+                    <li class="table-view-cell">
+                        <a class="navigate-right" href="/two.html" data-transition="slide-in">
+                          加载新页面
+                </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Push<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"table-view"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"table-view-cell"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navigate-right"</span> <span class="na">href=</span><span class="s">"../two.html"</span> <span class="na">data-transition=</span><span class="s">"slide-in"</span><span class="nt">&gt;</span>
+                  加载新页面
+                <span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+    <p class="component-description">如果你不希望一个链接被push.js管理，那么只需要增加一个 <code>data-ignore="push"</code> 属性即可：</p>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Use data-ignore="push" to prevent the push.js interception --&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://www.baidu.com"</span> <span class="na">data-ignore=</span><span class="s">"push"</span><span class="nt">&gt;</span>直接访问baidu<span class="nt">&lt;/a&gt;</span></code></pre></div>
+
+        <p class="component-description">push.js 加载完成新页面之后，会在document上触发一个 <code>pageInit</code> 事件：</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'pageInit'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">content</span><span class="p">){});</span></code></pre></div>
+
+        <p class="component-description">你的每一个页面的 <code>.content</code> 容器上必须设置一个id，以保证 <code>pageInit</code>事件中你可以通过 id 参数来区分被加载的是哪一个页面</p>
+        <p class="component-description">使用 push.js 加载页面的情况下，你应该把所有页面的js都打包到一个文件中，并且在每一个页面都引用这个js文件。并且通过 <code>pageInit</code>事件来初始化不同的页面</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'pageInit'</span><span class="p">,</span> <span class="s1">'#page-index'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">content</span><span class="p">){</span>
+<span class="c1">//初始化 page-index</span>
+<span class="p">});</span>
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'pageInit'</span><span class="p">,</span> <span class="s1">'#page-detail'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">content</span><span class="p">){</span>
+<span class="c1">//初始化 page-detail</span>
+<span class="p">});</span></code></pre></div>
+        <p>你可以参考我们在 <a href='/demos' target="_blank" data-ignore='push'>demos</a> 中初始化每一个页面的方法。</p>
+        <p class="component-description">你也可以调用 <code>$.push</code> 方法来手动加载一个新页面.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="na">url</span><span class="p">:</span> <span class="s2">"/signin"</span><span class="p">});</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"/signin"</span><span class="p">,</span>
+  <span class="na">transition</span><span class="p">:</span> <span class="s2">"slide-in"</span>
+<span class="p">});</span></code></pre></div>
+
+</article>
 
 
 

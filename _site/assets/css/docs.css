@@ -106,8 +106,11 @@ body {
   color: #222;
 }
 .docs-content h2 {
+  padding: 15px 0;
   margin-bottom: .25em;
+  margin-bottom: 30px;
   font-size: 2em;
+  border-bottom: 1px solid #ccc;
 }
 .docs-content h3 {
   margin-bottom: .5em;
@@ -1279,17 +1282,20 @@ table td {
 .docs-side-menu.menu-fixed {
   position: fixed;
 }
-.docs-side-menu .new {
+.docs-side-menu .new,
+.docs-side-menu .beta {
   position: relative;
   top: -1px;
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  padding: 0 3px;
   margin-left: 10px;
   font-size: 14px;
   line-height: 20px;
   color: white;
   text-align: center;
   background-color: red;
-  border-radius: 100%;
+  border-radius: 10px;
+}
+.docs-side-menu .beta {
+  background: #ff9500;
 }

@@ -1,12 +1,12 @@
-      <article class="component active" id="bars">
-        <h3 class="component-title">标题栏</h3>
-        <p class="component-description">标题栏放在页面顶部</p>
+<article class="component active" id="bars">
+  <h2 class="component-title">标题栏</h2>
+  <p class="component-description">标题栏放在页面顶部</p>
 
-        <div class="component-example component-example-fullbleed">
-          <header class="bar bar-nav">
-            <h1 class="title">标题</h1>
-          </header>
-        </div>
+  <div class="component-example component-example-fullbleed">
+    <header class="bar bar-nav">
+      <h1 class="title">标题</h1>
+    </header>
+  </div>
 
 {% highlight html %}
 <header class="bar bar-nav">
@@ -223,42 +223,44 @@
 <article class="component">
     <h3 class="component-title">二级标题栏</h3>
     <div class="component-example component-example-fullbleed">
-        <!-- Segmented control in standard bar fixed to top -->
-        <nav class="bar bar-standard">
-            <div class="buttons-row">
-                <a href="#tab1" class="tab-link active button">Tab 1</a>
-                <a href="#tab2" class="tab-link button">Tab 2</a>
-                <a href="#tab3" class="tab-link button">Tab 3</a>
-            </div>
-        </nav>
-        <!-- Block button in standard bar fixed below top bar -->
-        <div class="bar bar-standard bar-header-secondary">
-            <button class="button button-block">按钮</button>
-        </div>
+      <nav class="bar bar-nav bar-standard">
+        <h1 class="title">多级标题栏和工具栏</h1>
+      </nav>
+
+      <!-- Block button in standard bar fixed below top bar -->
+      <div class="bar bar-header-secondary">
+        <button class="button button-block">Block level button</button>
+      </div>
+
+      <!-- Block button in standard bar fixed above the footer -->
+      <div class="bar bar-footer-secondary">
+        <button class="button button-block">Block level button</button>
+      </div>
+
+      <!-- Icons in standard bar fixed to the bottom of the screen -->
+      <div class="bar bar-footer">
+        <a class="icon icon-edit pull-left"></a>
+        <a class="icon icon-settings pull-right"></a>
+      </div>
     </div>
 
 {% highlight html %}
-<!-- Segmented control in standard bar fixed to top -->
-<nav class="bar bar-standard">
-  <div class="buttons-row">
-    <a href="#tab1" class="tab-link active button">Tab 1</a>
-    <a href="#tab2" class="tab-link button">Tab 2</a>
-    <a href="#tab3" class="tab-link button">Tab 3</a>
-  </div>
+<nav class="bar bar-nav bar-standard">
+  <h1 class="title">多级标题栏和工具栏</h1>
 </nav>
 
 <!-- Block button in standard bar fixed below top bar -->
-<div class="bar bar-standard bar-header-secondary">
-  <button class="button button-block">按钮</button>
+<div class="bar bar-header-secondary">
+  <button class="button button-block">Block level button</button>
 </div>
 
 <!-- Block button in standard bar fixed above the footer -->
-<div class="bar bar-standard bar-footer-secondary">
-  <button class="button button-block">按钮</button>
+<div class="bar bar-footer-secondary">
+  <button class="button button-block">Block level button</button>
 </div>
 
 <!-- Icons in standard bar fixed to the bottom of the screen -->
-<div class="bar bar-standard bar-footer">
+<div class="bar bar-footer">
   <a class="icon icon-edit pull-left"></a>
   <a class="icon icon-settings pull-right"></a>
 </div>

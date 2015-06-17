@@ -36,7 +36,7 @@
   if (!window.CustomEvent) {
     window.CustomEvent = function (type, config) {
       var e = document.createEvent('CustomEvent');
-      e.initCustomEvent(type, config.bubbles, config.cancelable, config.detail);
+      e.initCustomEvent(type, config.bubbles, config.cancelable, config.detail, config.id);
       return e;
     };
   }
@@ -59,7 +59,8 @@
     bartab             : '.bar-tab',
     barnav             : '.bar-nav',
     barfooter          : '.bar-footer',
-    barheadersecondary : '.bar-header-secondary'
+    barheadersecondary : '.bar-header-secondary',
+    barfootersecondary : '.bar-footer-secondary'
   };
 
   var cacheReplace = function (data, updates) {
@@ -202,10 +203,7 @@
     swapContent(
       (activeObj.contents || activeDom).cloneNode(true),
       document.querySelector('.content'),
-      transition, function () {
-        triggerStateChange();
-        $(".content").scrollTop(scrollCache[id]);
-      }
+      transition, undefined, true
     );
 
     PUSH.id = id;
@@ -291,7 +289,8 @@
 
   function cacheCurrentContent () {
     domCache[PUSH.id] = document.body.cloneNode(true);
-    scrollCache[PUSH.id] = $(".content").scrollTop();
+    var $content = $(".content");
+    scrollCache[$content[0].id] = $content.scrollTop();
   }
 
 
@@ -310,6 +309,7 @@
     if (data.title) {
       document.title = data.title;
     }
+    var id = options.id || +new Date();
 
     if (options.transition) {
       for (key in bars) {
@@ -326,14 +326,13 @@
 
     swapContent(data.contents, options.container, options.transition, function () {
       cacheReplace({
-        id         : options.id || +new Date(),
+        id         : id,
         url        : data.url,
         title      : data.title,
         timeout    : options.timeout,
         transition : options.transition
       }, options.id);
-      triggerStateChange();
-    });
+    }, true);
 
     if (!options.ignorePush && window._gaq) {
       _gaq.push(['_trackPageview']); // google analytics
@@ -351,7 +350,7 @@
   // PUSH helpers
   // ============
 
-  var swapContent = function (swap, container, transition, complete) {
+  var swapContent = function (swap, container, transition, complete, triggerPageInit) {
     var enter;
     var containerDirection;
     var swapDirection;
@@ -365,6 +364,7 @@
       } else {
         document.body.insertBefore(swap, document.querySelector('.content'));
       }
+      $(swap).scrollTop(scrollCache[swap.id]);
     } else {
       enter = /in$/.test(transition);
 
@@ -381,13 +381,22 @@
       }
 
       container.parentNode.insertBefore(swap, container);
+      $(swap).scrollTop(scrollCache[swap.id]);
     }
 
-    if (!transition) {
+    var triggerComplete = function() {
       if (complete) {
         complete();
       }
       triggerStateChange("pushAnimationComplete");
+      if(triggerPageInit) {
+        triggerStateChange("push");
+        $(swap).trigger("pageInit", [swap.id, swap]);
+      }
+    }
+
+    if (!transition) {
+      triggerComplete();
     }
 
     if (transition === 'fade') {
@@ -407,10 +416,7 @@
         container.parentNode.removeChild(container);
         swap.classList.remove('fade');
         swap.classList.remove('in');
-        if (complete) {
-          complete();
-        }
-        triggerStateChange("pushAnimationComplete");
+        triggerComplete();
       };
       if($.os.android && $.compareVersion("4.2.0", $.os.version)) {
         setTimeout(fadeContainerEnd, $.smConfig.pushAnimationDuration);
@@ -426,10 +432,7 @@
         swap.classList.remove('sliding', 'sliding-in');
         swap.classList.remove(swapDirection);
         container.parentNode.removeChild(container);
-        if (complete) {
-          complete();
-        }
-        triggerStateChange("pushAnimationComplete");
+        triggerComplete();
       };
 
       container.offsetWidth; // force reflow
@@ -445,10 +448,12 @@
     }
   };
 
-  var triggerStateChange = function (event) {
-    var e = new CustomEvent(event || 'push', {
+  var triggerStateChange = function (event, id) {
+    event = event || "push";
+    var e = new CustomEvent(event, {
       detail: { state: getCached(PUSH.id) },
       bubbles: true,
+      id: id,
       cancelable: true
     });
 
@@ -561,5 +566,15 @@
   });
 
   $.push = PUSH;
+
+  $(function() {
+    var $content = $(".content");
+    if(!$content[0]) return;
+    var id = $content[0].id;
+    triggerStateChange("push");
+    setTimeout(function() { //保证自己是后执行的
+      $content.trigger("pageInit", [id, $content]);
+    });
+  });
 
 }(Zepto);

@@ -1,8 +1,11 @@
 <article class="component active " id="scroller">
-    <h3 class="component-title">滚动条</h3>
+    <h2 class="component-title">滚动条</h2>
     <p class="component-description">在auto的模式下对于版本号小于4.4.0的Android 版本 和 版本号小于6.0.0的ios使用大名鼎鼎的iscroll.js作为js滚动的引擎。当然也可以通过配置来决定全部使用js滚动或者native的滚动。</p>
     <p class="component-description">
         js的滚动条的事件和zepto接口（scrollTop,scrollLeft）保持和native的一样，唯一不同的是js的滚动条需要手动初始化和当滚动容器高度发生变化时需要手动调用 <code>$.refreshScroller()</code>。
+    </p>
+    <p class="component-description">
+      为了保证页面在任何滚动条模式下都能使用，强烈建议在任何导致页面高度变化的操作之后都要执行一次 <code>$.refreshScroller()</code> 操作。否则在js滚动条模式下可能会导致页面无法滚动。
     </p>
     <div class="component-example component-example-fullbleed">
         <header class="bar bar-nav">

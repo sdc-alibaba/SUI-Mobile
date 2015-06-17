@@ -1,6 +1,7 @@
 <article class="component" id="push">
-    <h3 class="component-title">Push</h3>
+    <h2 class="component-title">Push</h2>
     <p class="component-description">push.js 是一个很轻量的页面加载和历史管理组件。他会监听所有的链接click事件，并自动使用ajax加载新页面。</p>
+    <p>注意，push.js 仍处在测试阶段，这意味着他的api现在还不是稳定的，在后面的版本中随时会进行改动。如果你不希望使用push.js，那么你可以在初始化的时候通过传入一个 <code>pushjs: false</code> 参数来禁用 push.js。</p>
 {% highlight html %}
 <!-- A one.html link -->
 <a href="two.html">Two</a>
@@ -50,13 +51,23 @@
     <a href="http://www.baidu.com" data-ignore="push">直接访问baidu</a>
 {% endhighlight %}
 
-        <p class="component-description">push.js 加载完成新页面之后，会在document上触发一个 <code>push</code> 事件：</p>
+        <p class="component-description">push.js 加载完成新页面之后，会在document上触发一个 <code>pageInit</code> 事件：</p>
 
 {% highlight js %}
-// Only needed if you want to fire a callback
-window.addEventListener('push', myFunction);
+$(document).on('pageInit', function(e, id, content){});
 {% endhighlight %}
 
+        <p class="component-description">你的每一个页面的 <code>.content</code> 容器上必须设置一个id，以保证 <code>pageInit</code>事件中你可以通过 id 参数来区分被加载的是哪一个页面</p>
+        <p class="component-description">使用 push.js 加载页面的情况下，你应该把所有页面的js都打包到一个文件中，并且在每一个页面都引用这个js文件。并且通过 <code>pageInit</code>事件来初始化不同的页面</p>
+{% highlight js %}
+$(document).on('pageInit', '#page-index', function(e, id, content){
+//初始化 page-index
+});
+$(document).on('pageInit', '#page-detail', function(e, id, content){
+//初始化 page-detail
+});
+{% endhighlight %}
+        <p>你可以参考我们在 <a href='/demos' target="_blank" data-ignore='push'>demos</a> 中初始化每一个页面的方法。</p>
         <p class="component-description">你也可以调用 <code>$.push</code> 方法来手动加载一个新页面.</p>
 
 {% highlight js %}
