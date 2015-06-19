@@ -1,0 +1,45 @@
+---
+layout: default
+title: 更新日志 &middot; SUI Mobile
+---
+
+<div class="docs-sub-header">
+  {% include masthead.html %}
+  <div class="container">
+    <div class="docs-sub-content">
+      <h2 class="page-title">更新日志</h2>
+      <p class="page-description">SUI Mobile 采用增量更新，每次发布到线上的版本永远不会再变化。这里记录了每一个版本更新的内容。</p>
+    </div>
+    {% include ad.html %}
+  </div>
+</div>
+
+<div class="container">
+  <div class="column-group">
+    <div class="column docs-content">
+      <div class="docs-section">
+        <h2>版本号说明</h2>
+        <p>SUI Mobile 版本号由x.y.z三位组成，符合 <a href='http://semver.org/lang/zh-CN/' target="_blank">语义化版本号</a> 规范：</p>
+        <ul>
+          <li>主版本号：当做了不兼容的API 修改</li>
+          <li>次版本号：当做了向下兼容的功能性新增</li>
+          <li>修订号：当做了向下兼容的问题修正</li>
+        </ul>
+        <p>CND 地址中的三位数字就表示当前的版本号。比如你引用 <code>g.alicdn.com/sui-mobile/sm/0.0.5/css/sm.min.css</code>，那么版本号就是 <code>0.0.5</code>。</p>
+
+        <h2>更新日志</h2>
+
+        <h3>V0.0.6</h3>
+        <ul>
+          <li>修复了 <code>$.pageInit</code> 会执行两次的bug，这样会导致部分组件如下拉刷新会在一次操作中触发两次回调。</li>
+          <li>搜索栏中增加了一个 <a href='/components/#searchbar' target="_blank" data-ignore='push'>苹果风格的样式</a></li>
+        </ul>
+        
+      </div>
+  </div>
+
+  <div class="column">
+    <!-- Footer -->
+    {% include footer.html %}
+  </div>
+</div>

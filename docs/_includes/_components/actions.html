@@ -1,0 +1,96 @@
+<article class="component" id='actions'>
+  <h2 class="component-title">操作表</h2>
+  <p class="component-description">操作表可以让用户从多个可选的操作中选择一个</p>
+  <p class="component-description"><code>$.actions(buttons)</code> - 创建并弹出一个操作表</p>
+  <ul>
+    <li><code>buttons</code> - 显示的几个按钮，你也可以把按钮分组</li>
+  </ul>
+  <p>你可以通过 <code>color: "danger"</code> 来指定按钮的文案为红色</p>
+  <p>或者通过 <code>bg: "danger"</code> 来指定按钮的背景为红色</p>
+  <div class="component-example component-example-fullbleed">
+    <header class="bar bar-nav">
+        <h1 class="title">操作表</h1>
+    </header>
+    <div class="content">
+      <div class="content-block">
+        <!-- In data-popup attribute we specify CSS selector of popup we need to open -->
+        <p><a href="#" class="create-actions">选择操作</a></p>
+      </div>
+    </div>
+    <script>
+      $(document).on('click','.create-actions', function () {
+        var buttons1 = [
+          {
+            text: '请选择',
+            label: true
+          },
+          {
+            text: '卖出',
+            bold: true,
+            color: 'danger',
+            onClick: function() {
+              $.alert("你选择了“卖出“");
+            }
+          },
+          {
+            text: '买入',
+            onClick: function() {
+              $.alert("你选择了“买入“");
+            }
+          }
+        ];
+        var buttons2 = [
+          {
+            text: '取消',
+            bg: 'danger'
+          }
+        ];
+        var groups = [buttons1, buttons2];
+        $.actions(groups);
+      }); 
+  </script>
+  </div>
+  {% highlight html %}  
+  <header class="bar bar-nav">
+      <h1 class="title">操作表</h1>
+  </header>
+  <div class="content">
+    <div class="content-block">
+      <!-- In data-popup attribute we specify CSS selector of popup we need to open -->
+      <p><a href="#" class="create-actions">选择操作</a></p>
+    </div>
+  </div>
+  {% endhighlight %}
+  {% highlight js %}  
+  $(document).on('click','.create-actions', function () {
+      var buttons1 = [
+        {
+          text: '请选择',
+          label: true
+        },
+        {
+          text: '卖出',
+          bold: true,
+          color: 'danger',
+          onClick: function() {
+            $.alert("你选择了“卖出“");
+          }
+        },
+        {
+          text: '买入',
+          onClick: function() {
+            $.alert("你选择了“买入“");
+          }
+        }
+      ];
+      var buttons2 = [
+        {
+          text: '取消',
+          bg: 'danger'
+        }
+      ];
+      var groups = [buttons1, buttons2];
+      $.actions(groups);
+  }); 
+  {% endhighlight %}
+</article>

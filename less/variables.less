@@ -21,7 +21,7 @@
 // 主色
 @color-primary: #0894ec;
 @color-danger: #f6383a;
-@color-warning: #ff9500;
+@color-warning: #f60;
 @color-success: #4cd964;
 
 @color-primary-active: #0a8ddf;
@@ -29,39 +29,16 @@
 @color-warning-active: darken(@color-warning, 10%);
 @color-success-active: darken(@color-success, 10%);
 
+@color-split: #e7e7e7;  //分割线的颜色
+@color-bg: #eee;
+@color-text: #3d4145; //文案色
+@color-text-secondary: #5f646e; //次级文案
+@color-text-gray: #999; //灰色文案
+@color-text-gray-light: #ccc; //更灰色文案
+
 //链接色
 @color-link: @color-primary; //链接色有可能不同于主色
 @color-link-active: @color-primary-active; //链接色有可能不同于主色
-
-//文本色
-@color-text: #333;
-
-//背景色
-@color-bg: #efeff4;
-
-//这里是F7 的颜色定义，供参考，全部要改成上面的定义
-/*
-@blue:#007aff;
-@red: #ff3b30;
-@white: #ffffff;
-@black: #000000;
-@lightblue: #5ac8fa;
-@yellow: #ffcc00;
-@orange: #ff9500;
-@pink: #ff2d55;
-@green: #4cd964;
-@gray: #8e8e93;
-*/
-
-//这里是原 ratchet 定义，供参考
-// Action colors
-/*
-@default-color:  #fff;
-@positive-color: #5cb85c;
-@negative-color: #d9534f;
-*/
-
-
 
 // Bars
 // --------------------------------------------------
@@ -80,10 +57,7 @@
 // Buttons
 // --------------------------------------------------
 
-@button-color: #6e727b;
 @button-font-size: 0.6rem;
-@button-dark-color: #6e727b;
-@button-light-color: #ccc;
 
 
 // Transitions
@@ -96,6 +70,6 @@
 // --------------------------------------------------
 
 @border-default-width: 1px;
-@border-default-color: #ddd;
+@border-default-color: @color-split;
 @border-default: @border-default-width solid @border-default-color;
 @border-radius: 0.3rem;

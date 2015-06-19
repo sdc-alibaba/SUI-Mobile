@@ -1,27 +1,10 @@
 /*!
  * =====================================================
- * SUI Mobile v0.0.1 (http://m.sui.taobao.org/)
+ * SUI Mobile - http://m.sui.taobao.org/
  *
  * =====================================================
  */
 
-/*
-@blue:#007aff;
-@red: #ff3b30;
-@white: #ffffff;
-@black: #000000;
-@lightblue: #5ac8fa;
-@yellow: #ffcc00;
-@orange: #ff9500;
-@pink: #ff2d55;
-@green: #4cd964;
-@gray: #8e8e93;
-*/
-/*
-@default-color:  #fff;
-@positive-color: #5cb85c;
-@negative-color: #d9534f;
-*/
 /*.transition(@d) {
     -webkit-transition-duration: @d;
     transition-duration: @d;
@@ -82,7 +65,7 @@ body {
 body {
   position: relative !important;
   font: 400 14px/1.5 "Open Sans", sans-serif;
-  color: #333;
+  color: #3d4145;
   -webkit-text-size-adjust: 100%;
   background-color: #fff;
 
@@ -507,7 +490,7 @@ body {
 .docs-module {
   padding: 20px;
   margin-top: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #e7e7e7;
   border-radius: 3px;
 }
 .docs-module .btn-block {
@@ -621,7 +604,7 @@ body {
   width: 100%;
   padding: 3px;
   overflow: hidden;
-  border: 1px solid #ddd;
+  border: 1px solid #e7e7e7;
   border-radius: 3px;
 }
 .example-wrap .example-title {
@@ -673,8 +656,8 @@ code {
   position: relative;
 }
 .component-example .bar {
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
 }
 .component-example .bar.bar-header-secondary {
   top: 0 !important;
@@ -901,7 +884,7 @@ code {
     overflow: hidden;
     font-size: .85rem;
     line-height: 1.05rem;
-    background: #efeff4;
+    background: #eee;
   }
   .device .content,
   .device .bar,

@@ -104,7 +104,7 @@ $(function () {
   
 
   //对话框
-  $(document).on("pageInit", "#page-photo-browser", function(e, id, content) {
+  $(document).on("pageInit", "#page-modal", function(e, id, content) {
     var $content = $(content);
     $content.on('click','.alert-text',function () {
       $.alert('这是一段提示消息');

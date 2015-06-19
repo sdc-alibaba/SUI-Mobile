@@ -32,7 +32,7 @@ module.exports = function(grunt) {
 
         banner: '/*!\n' +
             ' * =====================================================\n' +
-            ' * SUI Mobile v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
+            ' * SUI Mobile - http://m.sui.taobao.org/\n' +
             ' *\n' +
             ' * =====================================================\n' +
             ' */\n',
