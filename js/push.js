@@ -43,10 +43,16 @@
   // Pushstate caching
   // ==================
 
-  var isScrolling;
+  var isScrolling;  //这个是没用的变量！
   var maxCacheLength = 20;
+  //cacheMap 存储了三种数据
+  //1. 每一次的历史记录对象 id: {id,url,title,...}
+  //2. 前进的历史 cacheForwardStack ，里面存储的也是每一个
+  //3. 后退的历史 cacheBackStack
   var cacheMapping   = sessionStorage;
+  //缓存页面的DOM元素
   var domCache       = {};
+  //记录滚动位置
   var scrollCache    = {};
   // Change these to unquoted camelcase in the next major version bump
   var transitionMap  = {
@@ -55,6 +61,7 @@
     fade     : 'fade'
   };
 
+  //需要交换的几种bar
   var bars = {
     bartab             : '.bar-tab',
     barnav             : '.bar-nav',
@@ -63,15 +70,22 @@
     barfootersecondary : '.bar-footer-secondary'
   };
 
+  //需要插入的其他内容，这些内容直接插入到页面中，不用交换
+  var inserts = {
+    popup: '.popup'
+  };
+
+  //替换掉当前最新的一个历史记录
   var cacheReplace = function (data, updates) {
     PUSH.id = data.id;
     if (updates) {
       data = getCached(data.id);
     }
     cacheMapping[data.id] = JSON.stringify(data);
-    window.history.replaceState(data.id, data.title, data.url);
+    window.history.replaceState(data.id, data.title, data.url); //注意这里存的id
   };
 
+  //浏览历史上的前进(点击了浏览器的前进按钮)
   var cachePush = function () {
     var id = PUSH.id;
 
@@ -95,6 +109,7 @@
     cacheMapping.cacheBackStack    = JSON.stringify(cacheBackStack);
   };
 
+  //浏览历史上的后退
   var cachePop = function (id, direction) {
     var forward           = direction === 'forward';
     var cacheForwardStack = JSON.parse(cacheMapping.cacheForwardStack || '[]');
@@ -115,6 +130,7 @@
     return JSON.parse(cacheMapping[id] || null) || {};
   };
 
+  //获取正确的A元素
   var getTarget = function (e) {
     var target = findTarget(e.target);
 
@@ -136,6 +152,12 @@
   // Main event handlers (touchend, popstate)
   // ==========================================
 
+  /*
+   * 当点击了浏览器的后退按钮之后执行此操作
+   * 1，从 cacheMapping 中根据id 取出对应的历史
+   * 2，因为id是时间戳，所以可以根据id和当前id的大小判断是前进还是后退
+   * 3，
+  */
   var popstate = function (e) {
     var key;
     var barElement;
@@ -144,24 +166,25 @@
     var direction;
     var transition;
     var transitionFrom;
-    var transitionFromObj;
-    var id = e.state;
+    var transitionFromObj; //应该叫 transitionToObj 比较合理，就是需要加载的那个页面的 历史对象 
+    var id = e.state; //上次通过 pushState 或者 replaceState 存的
 
     if (!id || !cacheMapping[id]) {
       return;
     }
 
-    direction = PUSH.id < id ? 'forward' : 'back';
+    direction = PUSH.id < id ? 'forward' : 'back';  //这里的id是时间戳，因此可以根据大小来判断用户是前进还是后退
 
     cachePop(id, direction);
 
-    activeObj = getCached(id);
-    activeDom = domCache[id];
+    activeObj = getCached(id);    //历史对象
+    activeDom = domCache[id]; //因为是后退，所以直接用缓存中的dom，而不重新加载。也有可能取不到，因为用户有可能执行过刷新操作。
 
     if (activeObj.title) {
       document.title = activeObj.title;
     }
 
+    //根据浏览方向（前进还是后退）来取对应的历史记录
     if (direction === 'back') {
       transitionFrom    = JSON.parse(direction === 'back' ? cacheMapping.cacheForwardStack : cacheMapping.cacheBackStack);
       transitionFromObj = getCached(transitionFrom[transitionFrom.length - 1]);
@@ -169,12 +192,15 @@
       transitionFromObj = activeObj;
     }
 
+    //不清楚这种情况是怎么发生的，点击了后退却没有取到后退历史
     if (direction === 'back' && !transitionFromObj.id) {
       return (PUSH.id = id);
     }
 
     transition = direction === 'back' ? transitionMap[transitionFromObj.transition] : transitionFromObj.transition;
 
+    //没有取到缓存的DOM，那么就通过ajax加载
+    //有两种情况会取不到：1，执行了前进操作。2，执行了后退，但是用户刷新了当前页面导致DOM缓存被清空
     if (!activeDom) {
       return PUSH({
         id         : activeObj.id,
@@ -186,6 +212,14 @@
       });
     }
 
+    /*
+     * 注意这里的逻辑
+     * 1, 如果有动画，把所有的DOM对象都挂到activeObj上，并且先调用 swapContent 切换bars
+     * 然后再切换contents
+     * 2，如果没有动画，就不存在 activeObj.contents，则直接整个body切换
+     *
+     * 为什么要分开切换 contents 和bars，是因为bars不会存在动画，而contents有可能有动画
+     */
     if (transitionFromObj.transition) {
       activeObj = extendWithDom(activeObj, '.content', activeDom.cloneNode(true));
       for (key in bars) {
@@ -200,13 +234,14 @@
       }
     }
 
+    //参考上面的注释，这里的 activeObj.contents 和 activeDom 不是等价的，activeDom 包含了 contents 和 bars，只有当没有动画的时候activeObj.contents 才会不存在
     swapContent(
-      (activeObj.contents || activeDom).cloneNode(true),
+      (activeObj.contents || activeDom).cloneNode(true),  //如果存在 activeObj.contents，那么必定是有上面的那几行代码生成的
       document.querySelector('.content'),
       transition, undefined, true
     );
 
-    PUSH.id = id;
+    PUSH.id = id; //这个全局id很坏
 
     document.body.offsetHeight; // force reflow to prevent scroll
   };
@@ -214,6 +249,13 @@
 
   // Core PUSH functionality
   // =======================
+  /*
+   * 加载一个指定的url页面到当前页面，他会通过ajax加载页面，然后取出其中的contents和bars，插入到当前页面，然后做一个动画，最后删除旧的页面
+   * 几个参数：
+   * url: 要加载的页面的地址
+   * container: 要替换的当前页面，默认直接取当前的 .content
+   * transition: 需要执行的动画
+   */
 
   var PUSH = function (options) {
     var key;
@@ -229,11 +271,13 @@
       }
     }
 
+    //如果有上一个没加载完，直接销毁
     if (xhr && xhr.readyState < 4) {
       xhr.onreadystatechange = noop;
       xhr.abort();
     }
 
+    //创建xhr来加载新页面
     xhr = new XMLHttpRequest();
     if (isFileProtocol) {
       xhr.open('GET', options.url, false);
@@ -255,6 +299,9 @@
       };
     }
 
+    //把当前页面作为一个历史记录存起来，因为如果是第一次进入页面，实际上当前页是没有存历史记录的
+    //只有当用户第一次打开页面，然后在打开下一个页面的时候才会出现这种情况
+    //也就是第一次调用PUSH的时候才会没有 PUSH.id 可以用
     if (!PUSH.id) {
       cacheReplace({
         id         : +new Date(),
@@ -265,7 +312,7 @@
       });
     }
 
-    cacheCurrentContent();
+    cacheCurrentContent();//缓存当前的DOM，其实就是整个body
 
     if (options.timeout) {
       options._timeout = setTimeout(function () {  xhr.abort('timeout'); }, options.timeout);
@@ -288,6 +335,7 @@
   };
 
   function cacheCurrentContent () {
+    //缓存当前的DOM
     domCache[PUSH.id] = document.body.cloneNode(true);
     var $content = $(".content");
     scrollCache[$content[0].id] = $content.scrollTop();
@@ -297,10 +345,15 @@
   // Main XHR handlers
   // =================
 
+  /*
+   * ajax加载新页面成功
+   * 此时取到了新页面的html字符串
+   * 然后只需要设置一下页面标题，再调用 swapContent 把新页面的内容换到当前页面就行了
+   */
   var success = function (xhr, options) {
     var key;
     var barElement;
-    var data = parseXHR(xhr, options);
+    var data = parseXHR(xhr, options);  //解析出其中的 contents，bars 以及 title
 
     if (!data.contents) {
       return locationReplace(options.url);
@@ -311,6 +364,8 @@
     }
     var id = options.id || +new Date();
 
+    //和前面的一模一样，如果有动画，那么会先不用动画切换bars，再用动画切换contents
+    //如果没有动画，直接切换body
     if (options.transition) {
       for (key in bars) {
         if (bars.hasOwnProperty(key)) {
@@ -324,7 +379,16 @@
       }
     }
 
+    for (key in inserts) {
+      if (inserts.hasOwnProperty(key)) {
+        if (data[key]) {
+          insertContent(data[key]);
+        }
+      }
+    }
+
     swapContent(data.contents, options.container, options.transition, function () {
+      //动画完成之后，会把当前页面存到历史记录中
       cacheReplace({
         id         : id,
         url        : data.url,
@@ -350,6 +414,10 @@
   // PUSH helpers
   // ============
 
+  /*
+   * 交换两个DOM元素，可以指定一个切换动画
+   * 用swap 替换 container 
+   */
   var swapContent = function (swap, container, transition, complete, triggerPageInit) {
     var enter;
     var containerDirection;
@@ -405,6 +473,7 @@
       var fadeContainerEnd = function () {
         container.removeEventListener(getTransitionEnd, fadeContainerEnd);
         swap.classList.add('in');
+        //注意，安卓 4.2.0 及以下版本，无法正确触发 transitionEnd 事件，这个时候通过 timeout 模拟
         if($.os.android && $.compareVersion("4.2.0", $.os.version)) {
           setTimeout(fadeSwapEnd, $.smConfig.pushAnimationDuration);
         } else {
@@ -448,6 +517,12 @@
     }
   };
 
+  //把DOM插入到当前页面
+  var insertContent = function(dom) {
+    document.body.appendChild(dom, document.querySelector('.content'));
+  };
+
+  //自定义事件
   var triggerStateChange = function (event, id) {
     event = event || "push";
     var e = new CustomEvent(event, {
@@ -478,6 +553,11 @@
     window.location.replace(url);
   };
 
+  /*
+   * 把一个历史记录对象上面加上它对应的DOM
+   * 本来一个历史对象只有 id, url, transition 等几个属性
+   * 这里会追加上它对应的dom，比如 contents, barfooter 等
+   */
   var extendWithDom = function (obj, fragment, dom) {
     var i;
     var result = {};
@@ -488,7 +568,7 @@
       }
     }
 
-    Object.keys(bars).forEach(function (key) {
+    Object.keys($.extend(bars, inserts)).forEach(function (key) {
       var el = dom.querySelector(bars[key]);
       if (el) {
         el.parentNode.removeChild(el);
@@ -501,6 +581,9 @@
     return result;
   };
 
+  /*
+   * 解析xhr的返回结果，从其中抽取出：contents,bars,title,url
+   */
   var parseXHR = function (xhr, options) {
     var head;
     var body;
@@ -558,8 +641,8 @@
         transition : target.getAttribute('data-transition')
       });
     });
+    window.addEventListener('popstate', popstate);
   }
-  window.addEventListener('popstate', popstate);
 
   $(document).on("click", ".back", function() {
     history.back();
