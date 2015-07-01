@@ -1282,3 +1282,195 @@ table td {
 .docs-side-menu .beta {
   background: #ff9500;
 }
+.page-baichuan {
+  color: #333;
+}
+.page-baichuan .header {
+  padding: 100px 0;
+  font-size: 32px;
+  color: white;
+  text-align: center;
+  background: rgba(0, 0, 0, .8);
+}
+.page-baichuan p {
+  margin: .5em 0;
+}
+.page-baichuan .sub-header {
+  padding: 26px 0;
+  font-size: 16px;
+  text-align: center;
+  background: #efefef;
+}
+.page-baichuan .sub-header h2 {
+  margin: 10px;
+  font-size: 30px;
+  font-weight: normal;
+}
+.page-baichuan article {
+  height: 508px;
+  overflow: hidden;
+}
+.page-baichuan article .article-inner {
+  width: 960px;
+  margin: auto;
+}
+.page-baichuan article:nth-child(even) {
+  background: rgba(0, 0, 0, .1);
+}
+.page-baichuan article:nth-child(even) .monitor {
+  float: right;
+}
+.page-baichuan article:nth-child(even) .phone {
+  margin-left: 100px;
+}
+.page-baichuan article:nth-child(even) .text {
+  padding-left: 50px;
+}
+.page-baichuan article .monitor,
+.page-baichuan article .text {
+  float: left;
+  width: 50%;
+  text-align: center;
+}
+.page-baichuan article .text {
+  padding: 115px 0;
+  font-size: 16px;
+  text-align: left;
+}
+.page-baichuan article .text h4 {
+  margin: 10px 0;
+  font-size: 20px;
+}
+.page-baichuan article .text .text-gray {
+  margin: 30px 0 15px;
+  font-size: 14px;
+}
+.page-baichuan article .phone {
+  width: 228px;
+  height: 399px;
+  margin-top: 110px;
+  background: url(http://gtms02.alicdn.com/tps/i2/TB1K9QvIpXXXXcsXXXX3b0v7pXX-228-399.png);
+}
+.page-baichuan article .code {
+  width: 150px;
+  -webkit-box-shadow: 0 0 3px 3px rgba(0, 0, 0, .1);
+          box-shadow: 0 0 3px 3px rgba(0, 0, 0, .1);
+}
+.page-baichuan .text-gray {
+  color: #999;
+}
+.page-baichuan .tabs {
+  max-width: 1400px;
+  margin: 0 auto;
+  list-style: none;
+}
+.page-baichuan .tabs li {
+  float: left;
+}
+.page-baichuan .tabs a {
+  display: inline-block;
+  height: 80px;
+  padding: 20px;
+  line-height: 40px;
+}
+.page-baichuan .tabs li.active a {
+  color: white;
+  background: #319af5;
+}
+.page-baichuan .footer-second {
+  padding: 50px;
+  overflow: hidden;
+  font-size: 18px;
+  color: white;
+  text-align: center;
+  background: #3f4a53;
+}
+.page-baichuan .footer-second .btn {
+  display: inline-block;
+  width: 120px;
+  height: 42px;
+  margin-top: 20px;
+  line-height: 42px;
+  color: white;
+  background: #0089cd;
+}
+.page-baichuan .design {
+  padding: 100px 0;
+  text-align: center;
+}
+.page-baichuan .design ul {
+  padding: 0;
+  margin: 0;
+  margin-left: -90px;
+  list-style: none;
+}
+.page-baichuan .design li {
+  position: relative;
+  display: inline-block;
+  margin-left: 90px;
+  border: 2px solid #ccc;
+}
+.page-baichuan .design a {
+  position: relative;
+  display: block;
+  width: 450px;
+  padding: 30px 50px;
+  margin: 0 auto;
+  color: #333;
+}
+.page-baichuan .design .icon {
+  position: absolute;
+  top: 50%;
+  left: 90px;
+  width: 84px;
+  height: 84px;
+  margin-top: -40px;
+  line-height: 84px;
+  border: 2px solid #ccc;
+  border-radius: 100%;
+}
+.page-baichuan .design .contents {
+  margin-left: 160px;
+  text-align: left;
+}
+.page-baichuan .design .contents h4 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: normal;
+}
+.page-baichuan .design h2 {
+  font-size: 30px;
+  font-weight: normal;
+}
+.page-baichuan .design p {
+  font-size: 14px;
+  color: #999;
+}
+.page-baichuan .design li:hover {
+  border-color: #0089cd;
+}
+.page-baichuan .design li:hover .icon {
+  color: #0089cd;
+  border-color: #0089cd;
+}
+.page-baichuan .footer {
+  padding: 10px 0;
+  overflow: hidden;
+  color: white;
+  text-align: center;
+  background: #3f4a53;
+}
+.page-baichuan .footer ul {
+  margin: 20px 0;
+  list-style: none;
+}
+.page-baichuan .footer li {
+  display: inline-block;
+  margin: 0 10px;
+}
+.page-baichuan .footer a {
+  color: white;
+}
+.page-baichuan .footer a:hover {
+  text-decoration: underline;
+}
