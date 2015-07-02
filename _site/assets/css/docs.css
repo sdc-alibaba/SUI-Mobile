@@ -1413,8 +1413,10 @@ table td {
 }
 .page-baichuan .tabs {
   max-width: 1400px;
+  height: 80px;
   margin: 0 auto;
   font-size: 20px;
+  font-weight: bold;
   list-style: none;
 }
 .page-baichuan .tabs li {
@@ -1425,6 +1427,7 @@ table td {
   height: 80px;
   padding: 20px;
   line-height: 40px;
+  color: #333;
 }
 .page-baichuan .tabs li.active a {
   color: white;
