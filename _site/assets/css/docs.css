@@ -1285,6 +1285,12 @@ table td {
 .page-baichuan {
   color: #333;
 }
+.page-baichuan a {
+  color: #0089cd;
+}
+.page-baichuan a:hover {
+  color: #f60;
+}
 .page-baichuan .header {
   position: relative;
   height: 300px;
