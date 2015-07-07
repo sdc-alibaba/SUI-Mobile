@@ -78,7 +78,9 @@
 
   //需要插入的其他内容，这些内容直接插入到页面中，不用交换
   var inserts = {
-    popup: '.popup'
+    popup: '.popup',
+    panel: '.panel',
+    panelOverlay: '.panel-overlay',
   };
 
   //替换掉当前最新的一个历史记录
@@ -533,7 +535,7 @@
 
   //把DOM插入到当前页面
   var insertContent = function(dom) {
-    getPage().appendChild(dom, document.querySelector('.content'));
+    document.body.appendChild(dom, getPage());
   };
 
   //自定义事件
