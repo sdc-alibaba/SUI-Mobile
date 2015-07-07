@@ -15,6 +15,12 @@
 
   var noop = function () {};
 
+  var getPage = function() {
+    var page = $(".page")[0];
+    if(!page) page = document.body;
+    return page;
+  };
+
   var getTransitionEnd = (function () {
     var el = document.createElement('ratchet');
     var transEndEventNames = {
@@ -424,13 +430,17 @@
     var swapDirection;
     triggerStateChange("pushAnimationStart");
 
+    //现在会增加一个 .page 容器，目的是为了方便做整页动画。
+    var page = getPage();
+
+
     if (!transition) {
       if (container) {
         container.innerHTML = swap.innerHTML;
       } else if (swap.classList.contains('content')) {
-        document.body.appendChild(swap);
+        page.appendChild(swap);
       } else {
-        document.body.insertBefore(swap, document.querySelector('.content'));
+        page.insertBefore(swap, document.querySelector('.content'));
       }
       $(swap).scrollTop(scrollCache[swap.id]);
     } else {
@@ -523,7 +533,7 @@
 
   //把DOM插入到当前页面
   var insertContent = function(dom) {
-    document.body.appendChild(dom, document.querySelector('.content'));
+    getPage().appendChild(dom, document.querySelector('.content'));
   };
 
   //自定义事件

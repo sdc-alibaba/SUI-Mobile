@@ -1,0 +1,100 @@
+/* === Panels === */
+@panelWidth: 12rem;
+@panelsDuration: 400ms;
+.panel-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0);
+  opacity: 0;
+  z-index: 5999;
+  display: none;
+}
+.panel {
+  z-index: 1000;
+  display: none;
+  background: #111;
+  box-sizing: border-box;
+  .scrollable();
+  position: absolute;
+  width: @panelWidth;
+  top: 0;
+  height: 100%;
+  transform: translate3d(0, 0, 0);
+  transition: transform @panelsDuration;
+
+  &.panel-left {
+    &.panel-cover {
+      z-index: 6000;
+      left: -@panelWidth;
+    }
+    &.panel-reveal {
+      left: 0;
+    }
+  }
+  &.panel-right {
+    &.panel-cover {
+      z-index: 6000;
+      right: -@panelWidth;
+    }
+    &.panel-reveal {
+      right: 0;
+    }
+  }
+}
+body.with-panel-left-cover, body.with-panel-right-cover {
+  .page {
+    transform: translate3d(0, 0, 0);
+    transition: transform @panelsDuration;
+  }
+  .panel-overlay {
+    display: block;
+  }
+}
+body.with-panel-left-reveal, body.with-panel-right-reveal {
+  .page {
+    transition: @panelsDuration;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    transition-property: transform;
+  }
+  .panel-overlay {
+    display: block;
+  }
+}
+body.with-panel-left-reveal {
+  .page {
+    transform: translate3d(@panelWidth, 0, 0);
+  }
+  .panel-overlay {
+    margin-left: @panelWidth;
+  }
+}
+body.with-panel-left-cover {
+  .panel-left {
+    transform: translate3d(@panelWidth, 0, 0);
+  }
+}
+body.with-panel-right-reveal {
+  .page {
+    transform: translate3d(-@panelWidth, 0, 0);
+  }
+  .panel-overlay {
+    margin-left: -@panelWidth;
+  }
+}
+body.with-panel-right-cover {
+  .panel-right {
+    transform: translate3d(-@panelWidth, 0, 0);
+  }
+}
+body.panel-closing {
+  .page {
+    transition: @panelsDuration;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    transition-property: transform;
+  }
+}
