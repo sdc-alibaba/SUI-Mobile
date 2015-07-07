@@ -4,6 +4,7 @@
 $.allowPanelOpen = true;
 $.openPanel = function (panel) {
     if (!$.allowPanelOpen) return false;
+    if(panel == 'left' || panel == 'right') panel = ".panel-" + panel;  //可以传入一个方向
     var panel = panel ? $(panel) : $(".panel").eq(0);
     var direction = panel.hasClass("panel-right") ? "right" : "left";
     if (panel.length === 0 || panel.hasClass('active')) return false;
@@ -17,26 +18,26 @@ $.openPanel = function (panel) {
     var clientLeft = panel[0].clientLeft;
     
     // Transition End;
-    var transitionEndTarget = effect === 'reveal' ? $('.page') : panel;
+    var transitionEndTarget = effect === 'reveal' ? $($.getCurrentPage()) : panel;
     var openedTriggered = false;
     
     function panelTransitionEnd() {
         transitionEndTarget.transitionEnd(function (e) {
-            if (e.target == transitionEndTarget) {
+            if (e.target == transitionEndTarget[0]) {
                 if (panel.hasClass('active')) {
                     panel.trigger('opened');
                 }
                 else {
                     panel.trigger('closed');
                 }
-                app.allowPanelOpen = true;
+                $.allowPanelOpen = true;
             }
             else panelTransitionEnd();
         });
     }
     panelTransitionEnd();
 
-    $('body').addClass('with-panel-' + direction + '-' + effect);
+    $(document.body).addClass('with-panel-' + direction + '-' + effect);
     return true;
 };
 $.closePanel = function () {
@@ -64,56 +65,53 @@ $(document).on("click", ".open-panel", function(e) {
   var panel = $(e.target).data(panel);
   $.openPanel(panel);
 });
-$(document).on("click", ".close-panel", function(e) {
+$(document).on("click", ".close-panel, .panel-overlay", function(e) {
   $.closePanel();
 });
 /*======================================================
 ************   Swipe panels   ************
 ======================================================*/
-/*$.initSwipePanels = function () {
+$.initSwipePanels = function () {
     var panel, side;
-    if (app.params.swipePanel) {
-        panel = $('.panel.panel-' + app.params.swipePanel);
-        side = app.params.swipePanel;
-        if (panel.length === 0) return;
-    }
-    else {
-        if (app.params.swipePanelOnlyClose) {
-            if ($('.panel').length === 0) return;
-        }
-        else return;
-    }
-    
+    var swipePanel = $.smConfig.swipePanel;
+    var swipePanelOnlyClose = $.smConfig.swipePanelOnlyClose;
+    var swipePanelCloseOpposite = true;
+    var swipePanelActiveArea = false;
+    var swipePanelThreshold = 2;
+    var swipePanelNoFollow = false;
+
+    if(!(swipePanel || swipePanelOnlyClose)) return;
+
     var panelOverlay = $('.panel-overlay');
     var isTouched, isMoved, isScrolling, touchesStart = {}, touchStartTime, touchesDiff, translate, opened, panelWidth, effect, direction;
-    var views = $('.' + app.params.viewsClass);
+    var views = $('.page');
 
     function handleTouchStart(e) {
-        if (!app.allowPanelOpen || (!app.params.swipePanel && !app.params.swipePanelOnlyClose) || isTouched) return;
+        if (!$.allowPanelOpen || (!swipePanel && !swipePanelOnlyClose) || isTouched) return;
         if ($('.modal-in, .photo-browser-in').length > 0) return;
-        if (!(app.params.swipePanelCloseOpposite || app.params.swipePanelOnlyClose)) {
+        if (!(swipePanelCloseOpposite || swipePanelOnlyClose)) {
             if ($('.panel.active').length > 0 && !panel.hasClass('active')) return;
         }
         touchesStart.x = e.type === 'touchstart' ? e.targetTouches[0].pageX : e.pageX;
         touchesStart.y = e.type === 'touchstart' ? e.targetTouches[0].pageY : e.pageY;
-        if (app.params.swipePanelCloseOpposite || app.params.swipePanelOnlyClose) {
+        if (swipePanelCloseOpposite || swipePanelOnlyClose) {
             if ($('.panel.active').length > 0) {
                 side = $('.panel.active').hasClass('panel-left') ? 'left' : 'right';
             }
             else {
-                if (app.params.swipePanelOnlyClose) return;
-                side = app.params.swipePanel;
+                if (swipePanelOnlyClose) return;
+                side = swipePanel;
             }
             if (!side) return;
         }
         panel = $('.panel.panel-' + side);
         opened = panel.hasClass('active');
-        if (app.params.swipePanelActiveArea && !opened) {
+        if (swipePanelActiveArea && !opened) {
             if (side === 'left') {
-                if (touchesStart.x > app.params.swipePanelActiveArea) return;
+                if (touchesStart.x > swipePanelActiveArea) return;
             }
             if (side === 'right') {
-                if (touchesStart.x < window.innerWidth - app.params.swipePanelActiveArea) return;
+                if (touchesStart.x < window.innerWidth - swipePanelActiveArea) return;
             }
         }
         isMoved = false;
@@ -132,6 +130,7 @@ $(document).on("click", ".close-panel", function(e) {
             isScrolling = !!(isScrolling || Math.abs(pageY - touchesStart.y) > Math.abs(pageX - touchesStart.x));
         }
         if (isScrolling) {
+          console.log(1);
             isTouched = false;
             return;
         }
@@ -155,23 +154,25 @@ $(document).on("click", ".close-panel", function(e) {
             )
             {
                 isTouched = false;
+          console.log(2);
                 return;
             }
         }
 
-        if (app.params.swipePanelNoFollow) {
+        if (swipePanelNoFollow) {
             var timeDiff = (new Date()).getTime() - touchStartTime;
             if (timeDiff < 300) {
                 if (direction === 'to-left') {
-                    if (side === 'right') app.openPanel(side);
-                    if (side === 'left' && panel.hasClass('active')) app.closePanel();
+                    if (side === 'right') $.openPanel(side);
+                    if (side === 'left' && panel.hasClass('active')) $.closePanel();
                 }
                 if (direction === 'to-right') {
-                    if (side === 'left') app.openPanel(side);
-                    if (side === 'right' && panel.hasClass('active')) app.closePanel();
+                    if (side === 'left') $.openPanel(side);
+                    if (side === 'right' && panel.hasClass('active')) $.closePanel();
                 }
             }
             isTouched = false;
+          console.log(3);
             isMoved = false;
             return;
         }
@@ -184,15 +185,17 @@ $(document).on("click", ".close-panel", function(e) {
             }
             panelWidth = panel[0].offsetWidth;
             panel.transition(0);
+            /*
             if (panel.find('.' + app.params.viewClass).length > 0) {
                 if (app.sizeNavbars) app.sizeNavbars(panel.find('.' + app.params.viewClass)[0]);
             }
+            */
         }
 
         isMoved = true;
 
         e.preventDefault();
-        var threshold = opened ? 0 : -app.params.swipePanelThreshold;
+        var threshold = opened ? 0 : -swipePanelThreshold;
         if (side === 'right') threshold = -threshold;
         
         touchesDiff = pageX - touchesStart.x + threshold;
@@ -214,11 +217,11 @@ $(document).on("click", ".close-panel", function(e) {
         if (effect === 'reveal') {
             views.transform('translate3d(' + translate + 'px,0,0)').transition(0);
             panelOverlay.transform('translate3d(' + translate + 'px,0,0)');
-            app.pluginHook('swipePanelSetTransform', views[0], panel[0], Math.abs(translate / panelWidth));
+            //app.pluginHook('swipePanelSetTransform', views[0], panel[0], Math.abs(translate / panelWidth));
         }
         else {
             panel.transform('translate3d(' + translate + 'px,0,0)').transition(0);
-            app.pluginHook('swipePanelSetTransform', views[0], panel[0], Math.abs(translate / panelWidth));
+            //app.pluginHook('swipePanelSetTransform', views[0], panel[0], Math.abs(translate / panelWidth));
         }
     }
     function handleTouchEnd(e) {
@@ -263,35 +266,35 @@ $(document).on("click", ".close-panel", function(e) {
             }
         }
         if (action === 'swap') {
-            app.allowPanelOpen = true;
+            $.allowPanelOpen = true;
             if (opened) {
-                app.closePanel();
+                $.closePanel();
                 if (edge) {
                     panel.css({display: ''});
                     $('body').removeClass('panel-closing');
                 }
             }
             else {
-                app.openPanel(side);
+                $.openPanel(side);
             }
-            if (edge) app.allowPanelOpen = true;
+            if (edge) $.allowPanelOpen = true;
         }
         if (action === 'reset') {
             if (opened) {
-                app.allowPanelOpen = true;
-                app.openPanel(side);
+                $.allowPanelOpen = true;
+                $.openPanel(side);
             }
             else {
-                app.closePanel();
+                $.closePanel();
                 if (edge) {
-                    app.allowPanelOpen = true;
+                    $.allowPanelOpen = true;
                     panel.css({display: ''});
                 }
                 else {
                     var target = effect === 'reveal' ? views : panel;
                     $('body').addClass('panel-closing');
                     target.transitionEnd(function () {
-                        app.allowPanelOpen = true;
+                        $.allowPanelOpen = true;
                         panel.css({display: ''});
                         $('body').removeClass('panel-closing');
                     });
@@ -305,7 +308,9 @@ $(document).on("click", ".close-panel", function(e) {
         panel.transition('').transform('');
         panelOverlay.css({display: ''}).transform('');
     }
-    $(document).on(app.touchEvents.start, handleTouchStart);
-    $(document).on(app.touchEvents.move, handleTouchMove);
-    $(document).on(app.touchEvents.end, handleTouchEnd);
-};*/
+    $(document).on($.touchEvents.start, handleTouchStart);
+    $(document).on($.touchEvents.move, handleTouchMove);
+    $(document).on($.touchEvents.end, handleTouchEnd);
+};
+
+$.initSwipePanels();

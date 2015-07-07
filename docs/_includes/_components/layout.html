@@ -1,0 +1,52 @@
+<article class="component" id="layout">
+  <h2 class="component-title">页面基本结构</h2>
+  <p class="component-description">我们对页面的基本结构是有要求的，否则可能会出现样式错误或者无法正确加载页面等问题。</p>
+  <p>基本的页面布局如下：</p>
+
+  <div class="component-example component-example-fullbleed">
+  </div>
+{% highlight html %}
+<!-- page 容器 -->
+<div class="page">
+  <!-- 标题栏 -->
+  <header class="bar bar-nav">
+    <a class="icon icon-me pull-left open-panel"></a>
+    <h1 class="title">标题</h1>
+  </header>
+
+  <!-- 工具栏 -->
+  <nav class="bar bar-tab">
+    <a class="tab-item active" href="#">
+      <span class="icon icon-home"></span>
+      <span class="tab-label">首页</span>
+    </a>
+    <a class="tab-item" href="#">
+      <span class="icon icon-star"></span>
+      <span class="tab-label">收藏</span>
+    </a>
+    <a class="tab-item" href="#">
+      <span class="icon icon-settings"></span>
+      <span class="tab-label">设置</span>
+    </a>
+  </nav>
+
+  <!-- 这里是页面内容区 -->
+  <div class="content">
+    <div class="content-block">这里是content</div>
+  </div>
+</div>
+
+<!-- popup, panel 等放在这里 -->
+<div class="panel-overlay"></div>
+<!-- Left Panel with Reveal effect -->
+<div class="panel panel-left panel-reveal">
+  <div class="content-block">
+    <p>这是一个侧栏</p>
+    <p></p>
+    <!-- Click on link with "close-panel" class will close panel -->
+    <p><a href="#" class="close-panel">关闭</a></p>
+  </div>
+</div>
+{% endhighlight %}
+<p>注意！从 v0.0.7 版本之后，我们增加了一个 <code>.page</code> 容器。如果你的页面中没有这个容器，很可能导致如侧栏之类的组件无法正常工作。</p>
+</article>

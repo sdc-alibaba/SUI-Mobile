@@ -79,6 +79,8 @@
   <!-- Components -->
   <div class="docs-components column-group">
     <div class="docs-side-menu">
+  <li><a href="#layout" data-ignore="push">基本结构 <span class="new">新</span></a></li>
+  <li><a href="#rem" data-ignore="push">使用rem <span class="new">新</span></a></li>
   <li><a href="#init" data-ignore="push">初始化</a></li>
   <li><a href="#content" data-ignore="push">内容区</a></li>
   <li><a href="#typography" data-ignore="push">文本样式</a></li>
@@ -86,6 +88,7 @@
   <li><a href="#toolbar" data-ignore="push">工具栏</a></li>
   <li><a href="#buttons" data-ignore="push">按钮</a></li>
   <li><a href="#forms" data-ignore="push">表单</a></li>
+  <li><a href="#panel" data-ignore="push">侧栏 <span class="new">新</span></a></li>
   <li><a href="#searchbar" data-ignore="push">搜索栏 <span class="new">新</span></a></li>
   <li><a href="#tabs" data-ignore="push">标签页</a></li>
   <li><a href="#grid" data-ignore="push">栅格</a></li>
@@ -117,6 +120,71 @@
 
     <div class="column docs-content docs-column">
       <!-- Bars -->
+  <article class="component" id="layout">
+  <h2 class="component-title">页面基本结构</h2>
+  <p class="component-description">我们对页面的基本结构是有要求的，否则可能会出现样式错误或者无法正确加载页面等问题。</p>
+  <p>基本的页面布局如下：</p>
+
+  <div class="component-example component-example-fullbleed">
+  </div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- page 容器 --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"page"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- 标题栏 --&gt;</span>
+  <span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"icon icon-me pull-left open-panel"</span><span class="nt">&gt;&lt;/a&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>标题<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/header&gt;</span>
+
+  <span class="c">&lt;!-- 工具栏 --&gt;</span>
+  <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"bar bar-tab"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-home"</span><span class="nt">&gt;&lt;/span&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>首页<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-star"</span><span class="nt">&gt;&lt;/span&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>收藏<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon icon-settings"</span><span class="nt">&gt;&lt;/span&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tab-label"</span><span class="nt">&gt;</span>设置<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/nav&gt;</span>
+
+  <span class="c">&lt;!-- 这里是页面内容区 --&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>这里是content<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="c">&lt;!-- popup, panel 等放在这里 --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel-overlay"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="c">&lt;!-- Left Panel with Reveal effect --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel panel-left panel-reveal"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>这是一个侧栏<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;/p&gt;</span>
+    <span class="c">&lt;!-- Click on link with "close-panel" class will close panel --&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"close-panel"</span><span class="nt">&gt;</span>关闭<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+<p>注意！从 v0.0.7 版本之后，我们增加了一个 <code>.page</code> 容器。如果你的页面中没有这个容器，很可能导致如侧栏之类的组件无法正常工作。</p>
+</article>
+
+  <article class="component" id="rem">
+  <h2 class="component-title">rem</h2>
+  <p>rem 是相对于 <code>html</code> 元素的 <code>font-size</code> 的一个单位。如果 html 上定义了 <code>font-size: 20px;</code>，则无论在任何地方都是 <code>1rem = 20px</code> 这个大小不会受到父元素的影响。</p>
+  <p class="component-description">我们统一使用rem对页面进行整体缩放。强烈建议大家对需要适应页面大小的任何元素都使用 rem 为单位来定义。</p>
+  <p>事实上，除了 <code>border-width</code> 之外，MSUI中已经没有用到px单位的地方。</p>
+
+  <p>我们在 iphone6 上使用 <code>1rem = 20px</code> 来换算。小于 375px 的设备上不做缩小处理，对 大于 375px 宽度的设备进行等比缩放。</p>
+
+  <p>关于 rem 可以参考 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length" target="_blank">MDN 上的定义</a></p>
+
+  <p></p>
+
+</article>
+
   <article class="component active" id="init">
   <h2 class="component-title">初始化</h2>
   <p class="component-description">
@@ -173,6 +241,16 @@
       <td>showPageLoadingIndicator</td>
       <td>true</td>
       <td>在push.js加载新页面过程中显示一个加载指示器。只有 <code>pushjs</code> 为true时这个设置才有效</td>
+    </tr>
+    <tr>
+      <td>swipePanel</td>
+      <td>"left"</td>
+      <td>是否可以通过左右滑动打开侧栏，一次只能指定一个方向。</td>
+    </tr>
+    <tr>
+      <td>swipePanelOnlyClose</td>
+      <td>true</td>
+      <td>只允许滑动关闭侧栏，不允许滑动打开。</td>
     </tr>
   </table>
 
@@ -1058,6 +1136,174 @@
     <span class="nt">&lt;/ul&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
+</article>
+
+  <article class="component" id="panel">
+  <h2 class="component-title">侧栏</h2>
+  <p class="component-description">可以从左侧或者右侧滑出的面板。</p>
+
+  <h3>使用侧栏</h3>
+  <p>在任何元素上增加 <code>.open-panel</code> 类都可以使它能点击打开侧栏。如果有多个侧栏，你可以通过 <code>data-panel='{panel的选择}'</code>来指定具体打开哪一个侧栏</p>
+  <p>在任何元素上增加 <code>.close-panel</code> 类都可以使他点击关闭侧栏，因为侧栏只能同时打开一个，所以关闭的时候你不用指定是哪一个侧栏。</p>
+  <p>可以通过 <code>.panel-left</code> 或者 <code>.panel-right</code> 来指定侧栏是从左边还是右边出现。</p>
+  <p>可以通过 <code>.panel-cover</code> 或者 <code>.panel-reveal</code> 指定侧栏是覆盖在页面上还是推开页面。</p>
+
+  <h3>配置</h3>
+  <p>默认配置下，侧栏可以通过滑动手势打开，但是不能通过滑动手势关闭。</p>
+  <p>你可以通过 <code>$.config.swipePanel</code>， <code>$.config.swipePanelOnlyClose</code>等参数来配置。具体配置请参见 <a href='#init'>初始化参数</a></p>
+  <div class="component-example component-example-fullbleed">
+  </div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"page"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">'title'</span><span class="nt">&gt;</span>侧栏<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/header&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-fill open-panel"</span> <span class="na">data-panel=</span><span class="s">'#panel-left-demo'</span><span class="nt">&gt;</span>打开左侧栏<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel-overlay"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="c">&lt;!-- Left Panel with Reveal effect --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel panel-left panel-reveal theme-dark"</span> <span class="na">id=</span><span class="s">'panel-left-demo'</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>这是一个侧栏<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;</span>你可以在这里放用户设置页面<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"close-panel"</span><span class="nt">&gt;</span>关闭<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+      <span class="c">&lt;!-- Text inputs --&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-form-gender"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;select&gt;</span>
+                <span class="nt">&lt;option&gt;</span>Male<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option&gt;</span>Female<span class="nt">&lt;/option&gt;</span>
+              <span class="nt">&lt;/select&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="c">&lt;!-- Date --&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-form-calendar"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"date"</span> <span class="na">placeholder=</span><span class="s">"Birth day"</span> <span class="na">value=</span><span class="s">"2014-04-30"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="c">&lt;!-- Switch (Checkbox) --&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-form-toggle"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"label-switch"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;&lt;/div&gt;</span>
+              <span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel panel-right panel-reveal"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>这是一个侧栏<span class="nt">&lt;/p&gt;</span>
+    <span class="c">&lt;!-- Click on link with "close-panel" class will close panel --&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"close-panel"</span><span class="nt">&gt;</span>关闭<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+<p>使用侧栏的时候请注意，务必用 <code>.page</code> 容器把 <code>.bar</code> 和 <code>.content</code> 包裹起来。</p>
+</article>
+
+<article class="component">
+  <h3 class="component-title">使用JS操作侧栏</h3>
+  <p class="component-description">除了使用 <code>.open-panel</code> 和 <code>.close-panel</code>之外。你可以直接调用 <code>$.openPanel(panel)</code> 和 <code>$.closePanel()</code> 来打开和关闭侧栏</p>
+
+  <ul>
+    <li>
+      <code>$.openPanel(panel)</code>: 打开一个指定的panel, 其中 panel 是你需要打开的panel，可以是选择器或者DOM或者Zepto对象。如果没有传panel参数则会自动打开第一个panel。返回bool值表示是否打开成功。
+    </li>
+    <li>
+      <code>$.closePanel()</code>: 关闭打开的panel。返回bool值表示是否关闭成功。
+    </li>
+  </ul>
+  <div class="component-example component-example-fullbleed">
+    <script>
+      $(document).on("click", ".my-btn", function() {
+        $.openPanel("#panel-js-demo");
+      });
+    </script>
+  </div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"page"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">'title'</span><span class="nt">&gt;</span>侧栏<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/header&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"button button-fill my-btn"</span><span class="nt">&gt;</span>JS打开侧栏<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel-overlay"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="c">&lt;!-- Left Panel with Reveal effect --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel panel-right panel-cover theme-dark"</span> <span class="na">id=</span><span class="s">'panel-js-demo'</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>我是从右边出现的<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;</span>并且我是覆盖在页面上而不是推开页面<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;/p&gt;</span>
+    <span class="c">&lt;!-- Click on link with "close-panel" class will close panel --&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"close-panel"</span><span class="nt">&gt;</span>关闭<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel panel-right panel-reveal"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>这是一个侧栏<span class="nt">&lt;/p&gt;</span>
+    <span class="c">&lt;!-- Click on link with "close-panel" class will close panel --&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"close-panel"</span><span class="nt">&gt;</span>关闭<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="s2">".my-btn"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">openPanel</span><span class="p">(</span><span class="s2">"#panel-js-demo"</span><span class="p">);</span>
+<span class="p">});</span></code></pre></div>
+
+  <h3>事件</h3>
+  <p>侧栏打开或者关闭的时候，会在 <code>.panel</code> 上触发对应的事件。</p>
+  <table class="params-table">
+    <thead>
+      <tr>
+        <th>事件</th>
+        <th>说明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>open</td>
+        <td>打开动画开始之前触发。</td>
+      </tr>
+      <tr>
+        <td>opened</td>
+        <td>打开动画结束之后 触发。</td>
+      </tr>
+      <tr>
+        <td>close</td>
+        <td>关闭动画开始之前触发。</td>
+      </tr>
+      <tr>
+        <td>closed</td>
+        <td>关闭动画结束之后 触发。</td>
+      </tr>
+    </tbody>
+  </table>
 </article>
 
   <article class="component" id="searchbar">

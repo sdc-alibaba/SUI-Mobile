@@ -1,0 +1,173 @@
+<article class="component" id="panel">
+  <h2 class="component-title">侧栏</h2>
+  <p class="component-description">可以从左侧或者右侧滑出的面板。</p>
+
+  <h3>使用侧栏</h3>
+  <p>在任何元素上增加 <code>.open-panel</code> 类都可以使它能点击打开侧栏。如果有多个侧栏，你可以通过 <code>data-panel='{panel的选择}'</code>来指定具体打开哪一个侧栏</p>
+  <p>在任何元素上增加 <code>.close-panel</code> 类都可以使他点击关闭侧栏，因为侧栏只能同时打开一个，所以关闭的时候你不用指定是哪一个侧栏。</p>
+  <p>可以通过 <code>.panel-left</code> 或者 <code>.panel-right</code> 来指定侧栏是从左边还是右边出现。</p>
+  <p>可以通过 <code>.panel-cover</code> 或者 <code>.panel-reveal</code> 指定侧栏是覆盖在页面上还是推开页面。</p>
+
+  <h3>配置</h3>
+  <p>默认配置下，侧栏可以通过滑动手势打开，但是不能通过滑动手势关闭。</p>
+  <p>你可以通过 <code>$.config.swipePanel</code>， <code>$.config.swipePanelOnlyClose</code>等参数来配置。具体配置请参见 <a href='#init'>初始化参数</a></p>
+  <div class="component-example component-example-fullbleed">
+  </div>
+{% highlight html %}
+<div class="page">
+  <header class="bar bar-nav">
+    <h1 class='title'>侧栏</h1>
+  </header>
+  <div class="content">
+    <div class="content-block">
+      <p><a href="#" class="button button-fill open-panel" data-panel='#panel-left-demo'>打开左侧栏</a></p>
+    </div>
+  </div>
+</div>
+<div class="panel-overlay"></div>
+<!-- Left Panel with Reveal effect -->
+<div class="panel panel-left panel-reveal theme-dark" id='panel-left-demo'>
+  <div class="content-block">
+    <p>这是一个侧栏</p>
+    <p>你可以在这里放用户设置页面</p>
+    <p><a href="#" class="close-panel">关闭</a></p>
+  </div>
+  <div class="list-block">
+    <ul>
+      <!-- Text inputs -->
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-gender"></i></div>
+          <div class="item-inner">
+            <div class="item-input">
+              <select>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </li>
+      <!-- Date -->
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+          <div class="item-inner">
+            <div class="item-input">
+              <input type="date" placeholder="Birth day" value="2014-04-30">
+            </div>
+          </div>
+        </div>
+      </li>
+      <!-- Switch (Checkbox) -->
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-toggle"></i></div>
+          <div class="item-inner">
+            <div class="item-input">
+              <label class="label-switch">
+                <input type="checkbox">
+                <div class="checkbox"></div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="panel panel-right panel-reveal">
+  <div class="content-block">
+    <p>这是一个侧栏</p>
+    <!-- Click on link with "close-panel" class will close panel -->
+    <p><a href="#" class="close-panel">关闭</a></p>
+  </div>
+</div>
+{% endhighlight %}
+<p>使用侧栏的时候请注意，务必用 <code>.page</code> 容器把 <code>.bar</code> 和 <code>.content</code> 包裹起来。</p>
+</article>
+
+<article class="component">
+  <h3 class="component-title">使用JS操作侧栏</h3>
+  <p class="component-description">除了使用 <code>.open-panel</code> 和 <code>.close-panel</code>之外。你可以直接调用 <code>$.openPanel(panel)</code> 和 <code>$.closePanel()</code> 来打开和关闭侧栏</p>
+
+  <ul>
+    <li>
+      <code>$.openPanel(panel)</code>: 打开一个指定的panel, 其中 panel 是你需要打开的panel，可以是选择器或者DOM或者Zepto对象。如果没有传panel参数则会自动打开第一个panel。返回bool值表示是否打开成功。
+    </li>
+    <li>
+      <code>$.closePanel()</code>: 关闭打开的panel。返回bool值表示是否关闭成功。
+    </li>
+  </ul>
+  <div class="component-example component-example-fullbleed">
+    <script>
+      $(document).on("click", ".my-btn", function() {
+        $.openPanel("#panel-js-demo");
+      });
+    </script>
+  </div>
+{% highlight html %}
+<div class="page">
+  <header class="bar bar-nav">
+    <h1 class='title'>侧栏</h1>
+  </header>
+  <div class="content">
+    <div class="content-block">
+      <p><a href="#" class="button button-fill my-btn">JS打开侧栏</a></p>
+    </div>
+  </div>
+</div>
+<div class="panel-overlay"></div>
+<!-- Left Panel with Reveal effect -->
+<div class="panel panel-right panel-cover theme-dark" id='panel-js-demo'>
+  <div class="content-block">
+    <p>我是从右边出现的</p>
+    <p>并且我是覆盖在页面上而不是推开页面</p>
+    <p></p>
+    <!-- Click on link with "close-panel" class will close panel -->
+    <p><a href="#" class="close-panel">关闭</a></p>
+  </div>
+</div>
+<div class="panel panel-right panel-reveal">
+  <div class="content-block">
+    <p>这是一个侧栏</p>
+    <!-- Click on link with "close-panel" class will close panel -->
+    <p><a href="#" class="close-panel">关闭</a></p>
+  </div>
+</div>
+{% endhighlight %}
+{% highlight js %}
+$(document).on("click", ".my-btn", function() {
+  $.openPanel("#panel-js-demo");
+});
+{% endhighlight %}
+
+  <h3>事件</h3>
+  <p>侧栏打开或者关闭的时候，会在 <code>.panel</code> 上触发对应的事件。</p>
+  <table class="params-table">
+    <thead>
+      <tr>
+        <th>事件</th>
+        <th>说明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>open</td>
+        <td>打开动画开始之前触发。</td>
+      </tr>
+      <tr>
+        <td>opened</td>
+        <td>打开动画结束之后 触发。</td>
+      </tr>
+      <tr>
+        <td>close</td>
+        <td>关闭动画开始之前触发。</td>
+      </tr>
+      <tr>
+        <td>closed</td>
+        <td>关闭动画结束之后 触发。</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
