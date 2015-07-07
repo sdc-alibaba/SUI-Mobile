@@ -459,7 +459,11 @@
       triggerStateChange("pushAnimationComplete");
       if(triggerPageInit) {
         triggerStateChange("push");
-        $(swap).trigger("pageInit", [swap.id, swap]);
+        if(!transition) {
+          $('.content').trigger("pageInit", [swap.id, swap]);
+        } else {
+          $(swap).trigger("pageInit", [swap.id, swap]);
+        }
       }
     };
 
