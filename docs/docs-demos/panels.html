@@ -1,0 +1,66 @@
+---
+layout: demo
+title: SUI Mobile Demo
+---
+<div class="page">
+  <header class="bar bar-nav">
+    <h1 class='title'>侧栏</h1>
+  </header>
+  <div class="content">
+    <div class="content-block">
+      <p><a href="#" class="button button-fill open-panel" data-panel='#panel-left-demo'>打开左侧栏</a></p>
+    </div>
+  </div>
+</div>
+<div class="panel-overlay"></div>
+<!-- Left Panel with Reveal effect -->
+<div class="panel panel-left panel-reveal theme-dark" id='panel-left-demo'>
+  <div class="content-block">
+    <p>这是一个侧栏</p>
+    <p>你可以在这里放用户设置页面</p>
+    <p><a href="#" class="close-panel">点击关闭</a> 或者你可以滑动关闭哦</p>
+  </div>
+  <div class="list-block">
+    <ul>
+      <!-- Text inputs -->
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-gender"></i></div>
+          <div class="item-inner">
+            <div class="item-input">
+              <select>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </li>
+      <!-- Date -->
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+          <div class="item-inner">
+            <div class="item-input">
+              <input type="date" placeholder="Birth day" value="2014-04-30">
+            </div>
+          </div>
+        </div>
+      </li>
+      <!-- Switch (Checkbox) -->
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-toggle"></i></div>
+          <div class="item-inner">
+            <div class="item-input">
+              <label class="label-switch">
+                <input type="checkbox">
+                <div class="checkbox"></div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
