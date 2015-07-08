@@ -749,89 +749,6 @@ code {
     border-radius: 3px;
   }
 }
-#ratchicons .icon,
-#ratchiconsInDevice .icon {
-  width: 50px;
-  height: 50px;
-  margin: 3px;
-  font-size: 27px;
-  line-height: 50px;
-  text-align: center;
-  border-radius: 25px;
-}
-#modals .modal {
-  left: 0;
-  z-index: 50;
-}
-#push .component-example {
-  height: 150px;
-  overflow: hidden;
-}
-#buttonsInDevice .btn,
-#buttonsBadgesInDevice .btn,
-#buttonsWithIconsInDevice .btn {
-  margin-top: 10px;
-  margin-right: 100px;
-  margin-left: 10px;
-}
-#blockButtonsInDevice .btn-block {
-  width: 300px;
-  margin: 10px auto;
-}
-.grid-demo .row {
-  margin-bottom: 10px;
-  text-align: center;
-}
-.grid-demo .row > [class*=col-] {
-  border: 1px solid #ddd;
-}
-#segmentedControlsInDevice .segmented-control {
-  margin-top: 10px;
-  margin-right: 10px;
-  margin-left: 10px;
-}
-#segmentedControlsInDevice .card span {
-  padding: 10px;
-}
-#badgesInDevice {
-  text-align: center;
-}
-#badgesInDevice .badge {
-  margin-top: 10px;
-}
-#formsInDevice form {
-  margin: 10px;
-}
-#formsInDevice form.input-group {
-  margin: 0;
-}
-#togglesInDevice .toggle {
-  margin: 10px auto;
-}
-.toggle {
-  cursor: pointer;
-}
-#popoversInDevice #iwindow:before {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 11;
-  content: '';
-  background-color: rgba(0, 0, 0, .3);
-}
-@media screen and (min-width: 768px) {
-  .popover {
-    position: absolute;
-    top: 72px;
-    display: block;
-    opacity: 1;
-  }
-}
-#modalsInDevice #iwindow > .btn {
-  margin: 10px;
-}
 @media screen and (min-width: 768px) {
   .slider .slide {
     cursor: -webkit-grab;
@@ -900,6 +817,10 @@ code {
   }
   .device iframe {
     border: 0;
+  }
+  .docs-icons {
+    font-size: 1.5rem;
+    line-height: 1.5;
   }
 }
 hr {
