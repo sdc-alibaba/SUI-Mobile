@@ -195,7 +195,13 @@ $(function () {
           }
         }
         if (!contentSectionItem.hasClass('informational')) {
-          updateContent(contentSectionItem.find('.component-example+.highlight .language-html').text());
+          var url = contentSectionItem.data("url");
+          if(url) {
+            var $window = $("#iwindow");
+            $window.html("<iframe src='/docs-demos/"+url+"' width='320' height='569' frameBorder='0'></iframe>");
+          } else {
+            updateContent(contentSectionItem.find('.component-example+.highlight .language-html').text());
+          }
         }
         break;
       }

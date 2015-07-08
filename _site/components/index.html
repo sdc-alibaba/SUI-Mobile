@@ -50,7 +50,7 @@
         <a href="/" data-ignore="push">SUI Mobile</a>
       </h1>
       <nav class="docs-nav clearfix">
-        <a class="docs-nav-trigger icon icon-bars pull-right js-docs-nav-trigger" href="#"></a>
+        <a class="docs-nav-trigger icon icon-menu pull-right js-docs-nav-trigger" href="#"></a>
         <div class="docs-nav-group">
           <a class="docs-nav-item" href="/" data-ignore="push">首页</a>
           <a class="docs-nav-item" href="/getting-started" data-ignore="push">开始使用</a>
@@ -103,6 +103,7 @@
   <li><a href="#infinitescroll" data-ignore="push">无限滚动</a></li>
   <li><a href="#icons" data-ignore="push">图标</a></li>
   <li><a href="#push" data-ignore="push">push.js <span class='beta'>测试</span></a></li>
+  <li><a href="#themes" data-ignore="push">主题 <span class='beta'>测试</span></a></li>
 </div>
 
     <div class="device-column column pull-right">
@@ -435,29 +436,7 @@
       <h2 class="component-title">工具栏</h2>
 
       <div class="component-example component-example-fullbleed">
-        <nav class="bar bar-tab">
-            <a class="tab-item active" href="#">
-                <span class="icon icon-home"></span>
-                <span class="tab-label">文案</span>
-            </a>
-            <a class="tab-item" href="#">
-                <span class="icon icon-person"></span>
-                <span class="tab-label">文案</span>
-            </a>
-            <a class="tab-item" href="#">
-                <span class="icon icon-star-filled"></span>
-                <span class="tab-label">文案</span>
-            </a>
-            <a class="tab-item" href="#">
-                <span class="icon icon-search"></span>
-                <span class="tab-label">文案</span>
-            </a>
-            <a class="tab-item" href="#">
-                <span class="icon icon-gear"></span>
-                <span class="tab-label">文案</span>
-            </a>
-        </nav>
-    </div>
+      </div>
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"bar bar-tab"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"tab-item active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
@@ -1138,7 +1117,7 @@
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 </article>
 
-  <article class="component" id="panel">
+  <article class="component" id="panel" data-url='panels'>
   <h2 class="component-title">侧栏</h2>
   <p class="component-description">可以从左侧或者右侧滑出的面板。</p>
 
@@ -1172,47 +1151,7 @@
     <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"close-panel"</span><span class="nt">&gt;</span>关闭<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-block"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ul&gt;</span>
-      <span class="c">&lt;!-- Text inputs --&gt;</span>
-      <span class="nt">&lt;li&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-form-gender"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
-          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
-              <span class="nt">&lt;select&gt;</span>
-                <span class="nt">&lt;option&gt;</span>Male<span class="nt">&lt;/option&gt;</span>
-                <span class="nt">&lt;option&gt;</span>Female<span class="nt">&lt;/option&gt;</span>
-              <span class="nt">&lt;/select&gt;</span>
-            <span class="nt">&lt;/div&gt;</span>
-          <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;/li&gt;</span>
-      <span class="c">&lt;!-- Date --&gt;</span>
-      <span class="nt">&lt;li&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-form-calendar"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
-          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
-              <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"date"</span> <span class="na">placeholder=</span><span class="s">"Birth day"</span> <span class="na">value=</span><span class="s">"2014-04-30"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;/div&gt;</span>
-          <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;/li&gt;</span>
-      <span class="c">&lt;!-- Switch (Checkbox) --&gt;</span>
-      <span class="nt">&lt;li&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-form-toggle"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
-          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-input"</span><span class="nt">&gt;</span>
-              <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"label-switch"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;&lt;/div&gt;</span>
-              <span class="nt">&lt;/label&gt;</span>
-            <span class="nt">&lt;/div&gt;</span>
-          <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;/ul&gt;</span>
+    <span class="c">&lt;!-- .... --&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel panel-right panel-reveal"</span><span class="nt">&gt;</span>
@@ -3954,6 +3893,16 @@ $(function() {
 
 </article>
 
+  <article class="component" id="themes" data-url='theme-dark'>
+  <h2 class="component-title">主题</h2>
+  <p class="component-description">我们会提供不同的主题，并且后续会提供不同颜色的皮肤。</p>
+  <p class="component-description">现在我们提供一个深色的主题，你只需要在 <code>body</code> 或者 <code>.page</code> 或者 <code>.content</code> 上加上 <code>.theme-dark</code>。它和其中所有子元素都会变成黑色主题。</p>
+  <p>你也可以单独给 <code>.bar</code> 加上 <code>.theme-dark</code>，这样可以单独使标题栏或者工具栏变成深色主题。</p>
+
+  <p>深色主题还处在测试阶段，可能会有某些组件在深色主题下显示不正常。有任何问题都可以及时在旺旺群中反馈。</p>
+
+</article>
+
 
 
     <!-- Ratchicons -->
@@ -3961,21 +3910,13 @@ $(function() {
       <div class="docs-footer">
   <!-- Social links -->
 
-  <p class="docs-footer-text">Code licensed under the <a href="https://github.com/twbs/ratchet/blob/master/LICENSE" data-ignore="push">MIT License</a> and the docs are licensed under <a href="https://github.com/twbs/ratchet/blob/master/docs/LICENSE" data-ignore="push">CC BY 3.0</a>. Ratchet was lovingly crafted by <a href="https://twitter.com/connors" data-ignore="push">Connor Sears</a>.</p>
+  <p class="docs-footer-text">@author 阿里巴巴共享业务事业部UED团队</p>
 
   <ul class="docs-footer-links">
-    <!--<li>Currently v2.0.2</li>
-    <li>&middot;</li>
-    <li><a href="https://github.com/twbs/ratchet/issues" data-ignore="push">Issues</a></li>
-    <li>&middot;</li>
-    <li><a href="https://github.com/twbs/ratchet/releases" data-ignore="push">Releases</a></li>
-    <li>&middot;</li>
-    <li><a href="http://goratchet.com/1.0.2/" data-ignore="push">Legacy v1.0.2 Docs</a></li>-->
+    <li>友情链接</li>
+    <li><a href="http://sui.taobao.org" data-ignore="push">SUI PC 版</a></li>
   </ul>
 </div>
-
-
-
 
 <script src="/dist/js/sm.js"></script>
 <script src="/dist/js/sm-extend.js"></script>

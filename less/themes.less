@@ -22,15 +22,30 @@ Framework7 Layouts Themes
     @searchbarBorder: #333;
     @swipeoutButton: #444;
     @checkboxBorder: @blockBorder;
-    .navbar, .navbar&, .subnavbar, .subnavbar& {
+    background-color: @pageBg;
+    .bar, .bar& {
         .hairline-color(bottom, @barsBorder);
         background-color: @barsBg;
         color:@barsText;
+
     }
-    .toolbar, .toolbar& {
+    .title {
+      color: @barsText;
+    }
+    .bar-nav, .bar-tab,
+    .bar-nav&, .bar-tab& {
         .hairline-color(top, @barsBorder);
         background-color: @barsBg;
-        color:@barsText;
+        color: @tabBarText;
+    }
+    .bar-tab .tab-item,
+    .bar-nav .tab-item,
+    .bar-nav& .tab-item,
+    .bar-tab& .tab-item {
+      color: @tabBarText;
+      &.active {
+        color: @color-primary;
+      }
     }
     // Picker
     .picker-calendar-week-days {
@@ -82,7 +97,7 @@ Framework7 Layouts Themes
     .tabbar a:not(.active) {
         color:@tabBarText;
     }
-    .page, .login-screen-content, .page&, .panel, .panel& {
+    .page, .login-screen-content, .page&, .panel, .panel&, .content {
         background-color: @pageBg;
         color:@text;
     }

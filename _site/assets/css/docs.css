@@ -182,6 +182,9 @@ body {
   padding-bottom: 15px;
   border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
+.docs-masthead .container {
+  height: 1rem;
+}
 .docs-title {
   position: absolute;
   left: 50%;
@@ -197,6 +200,10 @@ body {
           transform: translateX(-50%);
 }
 .docs-nav .docs-nav-trigger {
+  position: absolute;
+  top: -.5rem;
+  right: 1.5rem;
+  font-size: 28px;
   color: #fff;
   opacity: .7;
 }
@@ -890,6 +897,9 @@ code {
   .device .bar,
   .device .modal {
     position: absolute;
+  }
+  .device iframe {
+    border: 0;
   }
 }
 hr {

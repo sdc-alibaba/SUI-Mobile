@@ -442,7 +442,7 @@
       } else if (swap.classList.contains('content')) {
         page.appendChild(swap);
       } else {
-        page.insertBefore(swap, document.querySelector('.content'));
+        $(swap).insertBefore(document.querySelector('.content'));
       }
       $(swap).scrollTop(scrollCache[swap.id]);
     } else {

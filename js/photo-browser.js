@@ -37,15 +37,13 @@
 
         var template = pb.params.template ||
                         '<div class="photo-browser photo-browser-' + pb.params.theme + '">' +
-                            '<div class="view navbar-fixed toolbar-fixed">' +
-                                '{{navbar}}' +
-                                '<div data-page="photo-browser-slides" class="page no-toolbar {{noNavbar}} toolbar-fixed navbar-fixed">' +
-                                    '{{toolbar}}' +
-                                    '{{captions}}' +
-                                    '<div class="photo-browser-swiper-container swiper-container">' +
-                                        '<div class="photo-browser-swiper-wrapper swiper-wrapper">' +
-                                            '{{photos}}' +
-                                        '</div>' +
+                            '{{navbar}}' +
+                            '{{toolbar}}' +
+                            '<div data-page="photo-browser-slides" class="content">' +
+                                '{{captions}}' +
+                                '<div class="photo-browser-swiper-container swiper-container">' +
+                                    '<div class="photo-browser-swiper-wrapper swiper-wrapper">' +
+                                        '{{photos}}' +
                                     '</div>' +
                                 '</div>' +
                             '</div>' +
