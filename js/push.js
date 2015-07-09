@@ -242,6 +242,15 @@
       }
     }
 
+    var _data = extendWithDom(activeObj, '.content', activeDom.cloneNode(true))
+    for (key in inserts) {
+      if (inserts.hasOwnProperty(key)) {
+        if (_data[key]) {
+          insertContent(data[key]);
+        }
+      }
+    }
+
     //参考上面的注释，这里的 activeObj.contents 和 activeDom 不是等价的，activeDom 包含了 contents 和 bars，只有当没有动画的时候activeObj.contents 才会不存在
     swapContent(
       (activeObj.contents || activeDom).cloneNode(true),  //如果存在 activeObj.contents，那么必定是有上面的那几行代码生成的
@@ -547,7 +556,7 @@
 
   //把DOM插入到当前页面
   var insertContent = function(dom) {
-    document.body.appendChild(dom, getPage());
+    $(dom).appendTo(document.body);
   };
 
   //自定义事件
