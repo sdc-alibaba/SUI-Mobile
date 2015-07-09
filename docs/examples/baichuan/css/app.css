@@ -17,6 +17,17 @@
   text-align: center;
 }
 
+.page-login i.icon-form-name {
+  background: url(http://gtms01.alicdn.com/tps/i1/TB1pN89IFXXXXaPXpXX8wnlGFXX-42-46.png) no-repeat;
+  background-size: 21px 23px;
+  background-position: 5px 7px;
+}
+.page-login i.icon-form-email {
+  background: url(http://gtms04.alicdn.com/tps/i4/TB1An8TIFXXXXapXVXXlg00GFXX-38-46.png) no-repeat;
+  background-size: 19px 23px;
+  background-position: 6px 1px;
+}
+
 .page-goods .swiper-container {
   height: 10rem;
 }
