@@ -10,18 +10,13 @@
 
     <link rel="stylesheet" href="/dist/css/sm.css">
     <link rel="stylesheet" href="/dist/css/sm-extend.css">
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon-114x114.png">
 
     <link rel="stylesheet" href="//at.alicdn.com/t/font_1433748561_0232708.css">
     <link rel="stylesheet" href="/examples/baichuan/css/app.css">
   </head>
   <body>
-    <style>
-  .card-header {
-    height: 12rem;
-    overflow: hidden;
-  }
-</style>
-<div class="page">
+    <div class="page">
   <header class="bar bar-nav">
     <a class="button button-link button-nav pull-right open-popup" data-popup=".popup-about">
       关于
@@ -31,7 +26,7 @@
   </header>
   <nav class="bar bar-tab">
     <a class="tab-item active" href="#">
-      <span class="icon icon-star"></span>
+      <span class="icon icon-home"></span>
       <span class="tab-label">首页</span>
     </a>
     <a class="tab-item" href="/examples/baichuan/goods" data-transition='slide-in'>
@@ -44,6 +39,12 @@
     </a>
   </nav>
   <div class="content pull-to-refresh-content page-home infinite-scroll" id='home-page'>
+    <style>
+      .card-header {
+        height: 10rem;
+        overflow: hidden;
+      }
+    </style>
     <div class="pull-to-refresh-layer">
       <div class="preloader"></div>
       <div class="pull-to-refresh-arrow"></div>

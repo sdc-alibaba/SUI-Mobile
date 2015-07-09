@@ -2,12 +2,7 @@
 layout: examples
 title: SUI Mobile Demo
 ---
-<style>
-  .card-header {
-    height: 12rem;
-    overflow: hidden;
-  }
-</style>
+
 <div class="page">
   <header class="bar bar-nav">
     <a class="button button-link button-nav pull-right open-popup" data-popup=".popup-about">
@@ -18,7 +13,7 @@ title: SUI Mobile Demo
   </header>
   <nav class="bar bar-tab">
     <a class="tab-item active" href="#">
-      <span class="icon icon-star"></span>
+      <span class="icon icon-home"></span>
       <span class="tab-label">首页</span>
     </a>
     <a class="tab-item" href="/examples/baichuan/goods" data-transition='slide-in'>
@@ -31,6 +26,12 @@ title: SUI Mobile Demo
     </a>
   </nav>
   <div class="content pull-to-refresh-content page-home infinite-scroll" id='home-page'>
+    <style>
+      .card-header {
+        height: 10rem;
+        overflow: hidden;
+      }
+    </style>
     <div class="pull-to-refresh-layer">
       <div class="preloader"></div>
       <div class="pull-to-refresh-arrow"></div>
