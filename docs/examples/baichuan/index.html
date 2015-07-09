@@ -7,7 +7,7 @@ title: SUI Mobile Demo
 </header>
 <div class="content">
   <div class="page-login">
-    <div class="list-block">
+    <div class="list-block inset">
       <ul>
         <!-- Text inputs -->
         <li>
@@ -33,15 +33,35 @@ title: SUI Mobile Demo
       </ul>
     </div>
     <div class="content-block">
-      <p><a class="button" href='home' data-transition='fade'>登录</a></p>
+      <p><a class="button button-big button-fill" href='home' data-transition='fade'>登录</a></p>
       <p class='text-center signup'>
-        没有账号? <a href="#">马上注册</a>
+        <a href="#" class='pull-left'>免费注册</a>
+        <a href="#" class='pull-right'>忘记密码？</a>
       </p>
-      <div class="leader">社交账号登录</div>
-      <div class="others text-center">
-        <a href=""><span class="iconfont icon-weibo"></span></a>
-        <a href=""><span class="iconfont icon-weixin"></span></a>
+      <div class="leader">其他账号登录</div>
+      <div class="row others">
+        <a class="col-33"> <img src="http://gtms04.alicdn.com/tps/i4/TB1n75bIFXXXXaMXXXXgYS7HVXX-96-144.png" alt="" width='60'></a>
+        <a class="col-33"> <img src="http://gtms03.alicdn.com/tps/i3/TB1fN1XIFXXXXbEXXXX8oekJXXX-98-149.png" alt="" width='61'></a>
+        <a class="col-33"> <img src="http://gtms02.alicdn.com/tps/i2/TB16fh8IFXXXXXdXpXXEs40ZFXX-105-147.png" alt="" width='64'></a>
       </div>
     </div>
   </div>
+  <style>
+    .content {
+      color: #999;
+    }
+    .button.button-fill.button-big {
+      line-height: 2.0rem;
+      height: 2.0rem;
+    }
+    .list-block {
+      margin: .75rem;
+    }
+    .content-block {
+      margin: .75rem 0;
+    }
+    .signup a {
+      color: #999;
+    }
+  </style>
 </div>
