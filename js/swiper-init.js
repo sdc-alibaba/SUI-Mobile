@@ -13,7 +13,7 @@ Framework7 Swiper Additions
         return new $.Swiper(this, params);
     };
     $.initSwiper = function (pageContainer) {
-        var page = $(pageContainer);
+        var page = $(pageContainer || document.body);
         var swipers = page.find('.swiper-container');
         if (swipers.length === 0) return;
         function destroySwiperOnRemove(slider) {
@@ -27,7 +27,8 @@ Framework7 Swiper Additions
             var swiper = swipers.eq(i);
             var params;
             if (swiper.data('swiper')) {
-                params = JSON.parse(swiper.data('swiper'));
+                swiper.data("swiper").update(true);
+                continue;
             }
             else {
                 params = swiper.dataset();

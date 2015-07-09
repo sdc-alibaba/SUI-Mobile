@@ -7,7 +7,6 @@
     var $page = $(page);
     if(!$page[0]) $page = $(document.body);
     var $content = $page.hasClass("content") ? $page : $page.find(".content");
-    if($content.hasClass("inited")) return;
     $content.scroller();  //注意滚动条一定要最先初始化
 
     $.initPullToRefresh($content);
@@ -15,17 +14,14 @@
 
     //extend
     if($.initSwiper) $.initSwiper($content);
-
-    $content.addClass("inited");
   };
 
   if($.smConfig.autoInit) {
     $(document).on("pageInit", function() {
       $.initPage();
     });
-    $(function() {
-      $.initPage();
-    });
+  } else {
+    initPage();
   }
 
   if($.smConfig.showPageLoadingIndicator) {

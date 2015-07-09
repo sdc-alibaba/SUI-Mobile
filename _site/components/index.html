@@ -3840,7 +3840,7 @@ $(function() {
 
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'pageInit'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">content</span><span class="p">){});</span></code></pre></div>
 
-        <p class="component-description">你的每一个页面的 <code>.content</code> 容器上必须设置一个id，以保证 <code>pageInit</code>事件中你可以通过 id 参数来区分被加载的是哪一个页面</p>
+        <p class="component-description">你的每一个页面的 <code>.content</code> 容器上必须设置一个id，以保证 <code>pageInit</code>事件中你可以通过 id 参数来区分被加载的是哪一个页面。而且 push.js 会根据页面的id来记录每个页面的滚动位置，如果没有设置id则无法记住滚动位置。</p>
         <p class="component-description">使用 push.js 加载页面的情况下，你应该把所有页面的js都打包到一个文件中，并且在每一个页面都引用这个js文件。并且通过 <code>pageInit</code>事件来初始化不同的页面</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'pageInit'</span><span class="p">,</span> <span class="s1">'#page-index'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">content</span><span class="p">){</span>
 <span class="c1">//初始化 page-index</span>

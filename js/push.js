@@ -346,7 +346,19 @@
     //缓存当前的DOM
     domCache[PUSH.id] = document.body.cloneNode(true);
     var $content = $(".content");
-    scrollCache[$content[0].id] = $content.scrollTop();
+    var id = $content[0].id;
+    if(id) {
+      scrollCache[id] = $content.scrollTop();
+    }
+  }
+
+  //恢复滚动位置
+  function revertScroll(content) {
+    var $content = $(content);
+    var id = $content[0].id;
+    if(id) {
+      $content.scrollTop(scrollCache[id]);
+    }
   }
 
 
@@ -444,7 +456,7 @@
       } else {
         $(swap).insertBefore(document.querySelector('.content'));
       }
-      $(swap).scrollTop(scrollCache[swap.id]);
+      revertScroll(swap);
     } else {
       enter = /in$/.test(transition);
 
@@ -461,7 +473,7 @@
       }
 
       container.parentNode.insertBefore(swap, container);
-      $(swap).scrollTop(scrollCache[swap.id]);
+      revertScroll(swap);
     }
 
     var triggerComplete = function() {
