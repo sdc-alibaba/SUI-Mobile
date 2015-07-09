@@ -242,11 +242,11 @@
       }
     }
 
-    var _data = extendWithDom(activeObj, '.content', activeDom.cloneNode(true))
+    var _data = extendWithDom(activeObj, '.content', activeDom.cloneNode(true));
     for (key in inserts) {
       if (inserts.hasOwnProperty(key)) {
         if (_data[key]) {
-          insertContent(data[key]);
+          insertContent(_data[key]);
         }
       }
     }

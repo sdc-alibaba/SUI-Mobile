@@ -7,5 +7,5 @@
   
   $.getCurrentPage = function() {
     return $(".page")[0] || document.body;
-  }
+  };
 }(Zepto);

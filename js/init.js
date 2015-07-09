@@ -21,7 +21,7 @@
       $.initPage();
     });
   } else {
-    initPage();
+    $.initPage();
   }
 
   if($.smConfig.showPageLoadingIndicator) {
