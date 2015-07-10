@@ -109,6 +109,7 @@
               if (!side) return;
           }
           panel = $('.panel.panel-' + side);
+          if(!panel[0]) return;
           opened = panel.hasClass('active');
           if (swipePanelActiveArea && !opened) {
               if (side === 'left') {
@@ -127,6 +128,7 @@
       }
       function handleTouchMove(e) {
           if (!isTouched) return;
+          if(!panel[0]) return;
           if (e.f7PreventPanelSwipe) return;
           var pageX = e.type === 'touchmove' ? e.targetTouches[0].pageX : e.pageX;
           var pageY = e.type === 'touchmove' ? e.targetTouches[0].pageY : e.pageY;
@@ -134,7 +136,6 @@
               isScrolling = !!(isScrolling || Math.abs(pageY - touchesStart.y) > Math.abs(pageX - touchesStart.x));
           }
           if (isScrolling) {
-            console.log(1);
               isTouched = false;
               return;
           }
@@ -158,7 +159,6 @@
               )
               {
                   isTouched = false;
-            console.log(2);
                   return;
               }
           }

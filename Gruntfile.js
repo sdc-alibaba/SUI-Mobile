@@ -48,6 +48,7 @@ module.exports = function(grunt) {
               },
               src: [
                   'js/intro.js',
+                  'js/device.js',
                   'js/util.js',
                   'js/detect.js',
                   'js/zepto-adapter.js',
@@ -56,6 +57,7 @@ module.exports = function(grunt) {
                   'js/page.js',
                   'js/tabs.js',
                   'js/modal.js',
+                  'js/calendar.js',
                   'js/iscroll.js',
                   'js/scroller.js',
                   'js/pull-to-refresh-js-scroll.js',
