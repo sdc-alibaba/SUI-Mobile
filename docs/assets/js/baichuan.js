@@ -1,6 +1,7 @@
 $(function() {
 
   //固定banner
+  /*
   var $f = $(".footer-second");
   var offset = $f.offset();
   var update = function() {
@@ -13,6 +14,7 @@ $(function() {
   $(window).scroll(update);
   $(window).resize(update);
   update();
+  */
 
 
   //计算indicator

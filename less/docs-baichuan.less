@@ -60,7 +60,7 @@
   }
   article {
     overflow: hidden;
-    height: 515px;
+    height: 510px;
 
     .article-inner {
       width: 960px;
@@ -104,13 +104,27 @@
 
     .phone {
       margin-top: 110px;
-      background: url(//gtms02.alicdn.com/tps/i2/TB12EQFIpXXXXbiXpXXAalr7pXX-228-407.png);
-      height: 399px;
       width: 228px;
+      height: 401px;
       position: relative;
+      border: 1px solid #999;
+      border-radius: 28px 28px 0 0;
+      background: white;
+      &:after {
+        content: " ";
+        background: url(//gtms01.alicdn.com/tps/i1/TB1MT84IFXXXXaBXVXXG_XNJXXX-79-33.png) no-repeat;
+        width: 79px;
+        height: 33px;
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        margin-left: -36px;
+      }
       img {
         width: 198px;
-        margin-top: 54px;
+        margin-top: 50px;
+        border: 1px solid #aaa;
+        border-bottom: 0;
       }
       .indicator {
         background: rgba(5, 200, 200, .3);

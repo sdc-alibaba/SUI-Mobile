@@ -630,7 +630,7 @@ code {
   border-radius: 3px;
 }
 .component {
-  padding: 50px 15px;
+  padding: 20px 15px 70px 15px;
   margin-right: -15px;
   margin-left: -15px;
   border-bottom: 1px solid #ddd;
@@ -885,7 +885,7 @@ hr {
     position: relative;
     top: 50px;
     float: left;
-    width: 120px;
+    width: 150px;
     max-height: 100vh;
     padding-bottom: 50px;
     overflow: auto;
@@ -893,7 +893,7 @@ hr {
   .docs-column {
     float: none;
     width: auto;
-    margin: 0 400px 0 150px;
+    margin: 0 400px 0 170px;
   }
   .device-column {
     width: 400px;
@@ -1275,7 +1275,7 @@ table td {
   font-weight: normal;
 }
 .page-baichuan article {
-  height: 515px;
+  height: 510px;
   overflow: hidden;
 }
 .page-baichuan article .article-inner {
@@ -1316,13 +1316,27 @@ table td {
 .page-baichuan article .phone {
   position: relative;
   width: 228px;
-  height: 399px;
+  height: 401px;
   margin-top: 110px;
-  background: url(//gtms02.alicdn.com/tps/i2/TB12EQFIpXXXXbiXpXXAalr7pXX-228-407.png);
+  background: white;
+  border: 1px solid #999;
+  border-radius: 28px 28px 0 0;
+}
+.page-baichuan article .phone:after {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 79px;
+  height: 33px;
+  margin-left: -36px;
+  content: " ";
+  background: url(//gtms01.alicdn.com/tps/i1/TB1MT84IFXXXXaBXVXXG_XNJXXX-79-33.png) no-repeat;
 }
 .page-baichuan article .phone img {
   width: 198px;
-  margin-top: 54px;
+  margin-top: 50px;
+  border: 1px solid #aaa;
+  border-bottom: 0;
 }
 .page-baichuan article .phone .indicator {
   position: absolute;

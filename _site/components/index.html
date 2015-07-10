@@ -103,7 +103,8 @@
   <li><a href="#infinitescroll" data-ignore="push">无限滚动</a></li>
   <li><a href="#icons" data-ignore="push">图标</a></li>
   <li><a href="#push" data-ignore="push">push.js <span class='beta'>测试</span></a></li>
-  <li><a href="#themes" data-ignore="push">主题 <span class='beta'>测试</span></a></li>
+  <li><a href="#themes" data-ignore="push">夜间模式<span class='beta'>测试</span></a></li>
+  <li><a href="#colors" data-ignore="push">颜色主题<span class='beta'>测试</span></a></li>
 </div>
 
     <div class="device-column column pull-right">
@@ -3860,12 +3861,32 @@ $(function() {
 </article>
 
   <article class="component" id="themes" data-url='theme-dark'>
-  <h2 class="component-title">主题</h2>
-  <p class="component-description">我们会提供不同的主题，并且后续会提供不同颜色的皮肤。</p>
-  <p class="component-description">现在我们提供一个深色的主题，你只需要在 <code>body</code> 或者 <code>.page</code> 或者 <code>.content</code> 上加上 <code>.theme-dark</code>。它和其中所有子元素都会变成黑色主题。</p>
-  <p>你也可以单独给 <code>.bar</code> 加上 <code>.theme-dark</code>，这样可以单独使标题栏或者工具栏变成深色主题。</p>
+  <h2 class="component-title">夜间模式</h2>
+  <p class="component-description">现在我们提供一个夜间模式，你只需要在 <code>body</code> 或者 <code>.page</code> 或者 <code>.content</code> 上加上 <code>.theme-dark</code>。它和其中所有子元素都会变成夜间模式。</p>
+  <p>你也可以单独给 <code>.bar</code> 加上 <code>.theme-dark</code>，这样可以单独使标题栏或者工具栏变成夜间模式。</p>
+  <p>夜间模式最大的区别是他的背景变成了黑色，而前景色变成了白色。</p>
 
-  <p>深色主题还处在测试阶段，可能会有某些组件在深色主题下显示不正常。有任何问题都可以及时在旺旺群中反馈。</p>
+  <p>夜间模式还处在测试阶段，可能会有某些组件在夜间模式下显示不正常。有任何问题都可以及时在旺旺群中反馈。</p>
+
+  <p>下一节是介绍颜色主题的用法，颜色主题主要是改变前景色，可以和 <code>.theme-dark</code> 结合使用以在夜间模式下实现不同的颜色。</p>
+</article>
+
+<article class="component" id="colors" data-url='colors'>
+  <h2 class="component-title">颜色主题</h2>
+  <p class="component-description">不同于夜间模式，颜色主题只改变组件的“主色”。你只需要在<code>body</code> 或者 <code>.page</code> 或者 <code>.content</code> 上加上 <code>theme-{color}</code> 就可以使它的所有子元素的主色改变。 </p>
+  <p>现在有如下几种颜色可用: </p>
+
+  <ul>
+    <li> <code>.theme-pink</code> 粉色主题</li>
+    <li> <code>.theme-green</code> 绿色主题</li>
+    <li> <code>.theme-yellow</code> 黄色主题</li>
+  </ul>
+
+  <p>你可以在右侧的示例中点击按钮来切换不同的颜色主题。</p>
+
+  <p>注意颜色主题并不会影响所有的颜色，他只会影响组件的主色。因此有些组件没有使用到主色，因此对他们没有影响。</p>
+
+  <p>颜色主题还处在测试阶段，可能会有某些组件在颜色主题下显示不正常。有任何问题都可以及时在旺旺群中反馈。</p>
 
 </article>
 
