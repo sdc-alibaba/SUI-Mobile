@@ -1,7 +1,10 @@
 /*===========================
 Device/OS Detection
 ===========================*/
-$.device = (function () {
+/* global Zepto:true */
+/* global $:true */
+$.device = (function ($) {
+    "use strict";
     var device = {};
     var ua = navigator.userAgent;
 
@@ -100,4 +103,4 @@ $.device = (function () {
 
     // Export object
     return device;
-})();
+})(Zepto);

@@ -2,6 +2,7 @@
 ************   Calendar   ************
 ======================================================*/
 /* global Zepto:true */
+/*jshint unused: false*/
 +function ($) {
   "use strict";
   var rtl = false;
@@ -849,7 +850,7 @@
       }
       return new Calendar(
         $.extend(p, params)
-      )
+      );
   };
 
   $.initCalendar = function(content) {
