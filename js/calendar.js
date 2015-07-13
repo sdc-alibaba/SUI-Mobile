@@ -27,7 +27,7 @@
           monthPickerTemplate: 
               '<div class="picker-calendar-month-picker">' +
                   '<a href="#" class="link icon-only picker-calendar-prev-month"><i class="icon icon-prev"></i></a>' +
-                  '<span class="current-month-value"></span>' +
+                  '<div class="current-month-value"></div>' +
                   '<a href="#" class="link icon-only picker-calendar-next-month"><i class="icon icon-next"></i></a>' +
               '</div>',
           yearPicker: true,

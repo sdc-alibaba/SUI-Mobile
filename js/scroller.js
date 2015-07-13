@@ -254,7 +254,9 @@
         if (content) {
             $(content).scroller('refresh');
         } else {
-            $('.javascript-scroll').scroller('refresh');
+            $('.javascript-scroll').each(function() {
+              $(this).scroller('refresh');
+            });
         }
 
     };

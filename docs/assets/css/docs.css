@@ -64,6 +64,7 @@ body {
 }
 body {
   position: relative !important;
+  overflow: auto;
   font: 400 14px/1.5 "Open Sans", sans-serif;
   color: #3d4145;
   -webkit-text-size-adjust: 100%;

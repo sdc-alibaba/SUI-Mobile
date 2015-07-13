@@ -401,6 +401,7 @@
         modal = $(modal);
         if (modal.length === 0) return false;
         modal.show();
+        modal.find(".content").scroller("refresh");
         if (modal.find('.' + defaults.viewClass).length > 0) {
             $.sizeNavbars(modal.find('.' + defaults.viewClass)[0]);
         }

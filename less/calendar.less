@@ -154,7 +154,26 @@
 
 //修复toolbar
 .picker-modal .toolbar-inner {
-  height: 44px;
+  height: 2.2rem;
   .flexbox();
   text-align: center;
+}
+
+//修复Android 4.1 上 toolbar元素宽度错误
+//因为它不能对 inline 的元素设置宽度
+.picker-calendar-month-picker, .picker-calendar-year-picker {
+  display: block;
+  line-height: 2.2rem;
+
+  a.icon-only {
+    float: left;
+    width: 25%;
+    height: 2.2rem;
+    line-height: 2rem;  //不知道为什么 2.2rem 无法上下对齐；
+  }
+  .current-month-value, .current-year-value {
+    float: left;
+    width: 50%;
+    height: 2.2rem;
+  }
 }
