@@ -1,9 +1,13 @@
 ---
-layout: docs-demos
+layout: demo
 title: SUI Mobile Demo
 ---
 <div class="page">
   <header class="bar bar-nav">
+    <a class="button button-link button-nav pull-left" href="/demos" data-transition='slide-out'>
+      <span class="icon icon-left"></span>
+      返回
+    </a>
     <h1 class='title'>日历</h1>
   </header>
   <div class="content">
@@ -16,7 +20,7 @@ title: SUI Mobile Demo
               <div class="item-inner">
                 <div class="item-title label">生日</div>
                 <div class="item-input">
-                  <input type="text" placeholder="Your name" id='birthday' />
+                  <input type="text" placeholder="Your name" id='birthday' data-toggle='date'/>
                 </div>
               </div>
             </div>
@@ -26,5 +30,3 @@ title: SUI Mobile Demo
     </div>
   </div>
 </div>
-
-<script src='/docs-demos/js/calendar.js'></script>

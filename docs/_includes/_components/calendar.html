@@ -1,8 +1,72 @@
 <article class="component" id="calendar" data-url='calendar'>
   <h2 class="component-title">日历</h2>
-  <p class="component-description">日历</p>
+  <p class="component-description">日历组件用来选择年月日，可以代替系统原生的日历组件，提供更统一的视觉和交互以及更好的兼容性。</p>
+  <p>日历组件需要初始化才能使用，最简单的方式是通过一下JS代码来初始化，绑定到一个input元素上：</p>
 
 {% highlight js %}
 $("#my-input").calendar();
+{% endhighlight %}
+
+  <p>当你点击input元素后，会自动弹出一个JS生成的日历组件。当用户选择日期之后，input的值会被设置为用户选择的日期。</p>
+  <p>如果你不想写js，可以通过以下方式来自动初始化：</p>
+{% highlight html%}
+<input type="text" data-toggle='date' />
+{% endhighlight %}
+
+  <h2>参数</h2>
+  <p>你可以在初始化的时候指定如下参数：</p>
+
+  <table>
+    <tr>
+      <th>参数名</th>
+      <th>默认值</th>
+      <th>说明</th>
+    </tr>
+    <tr>
+      <td>inputReadOnly</td>
+      <td>true</td>
+      <td>是否在input上增加一个 <code>readonly</code> 属性使用户无法自己输入</td>
+    </tr>
+    <tr>
+      <td>dateFormat</td>
+      <td>'yyyy-mm-dd'</td>
+      <td>格式化日期</td>
+    </tr>
+    <tr>
+      <td>minDate</td>
+      <td>undefined</td>
+      <td>最小可选日期，比如 <code>2015-06-01</code></td>
+    </tr>
+    <tr>
+      <td>maxDate</td>
+      <td>undefined</td>
+      <td>最大可选日期，比如 <code>2015-08-01</code></td>
+    </tr>
+    <tr>
+      <td>onChange</td>
+      <td>function(p, values, displayValues){}</td>
+      <td>当用户选择日期时触发</td>
+    </tr>
+    <tr>
+      <td>onOpen</td>
+      <td>function(p){}</td>
+      <td>日历弹层打开时触发</td>
+    </tr>
+    <tr>
+      <td>onClose</td>
+      <td>function(p){}</td>
+      <td>日历弹层关闭时触发</td>
+    </tr>
+  </table>
+
+  <p>当用户选择完日期之后，会在 input 上触发 <code>change</code> 事件，你可以监听此事件。</p>
+
+</article>
+
+<article class="component" data-url='calendar-inline'>
+  <h2 class="component-title">内联日历</h2>
+  <p>日历插件是非常智能的，如果在一个非 <code>input</code> 元素上初始化，它会自动变成内联形式。</p>
+{% highlight html%}
+<div data-toggle='date' />
 {% endhighlight %}
 </article>

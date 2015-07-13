@@ -36,8 +36,7 @@
                 if (!this.length) return;
                 var scroller = this.data('scroller');
                 if (scroller && scroller.scroller) { //js滚动
-                    scroller.scrollTop(top, dur);
-                    return this;
+                    return scroller.scrollTop(top, dur);
                 } else {
                     return _zeptoMethodCache.scrollTop.apply(this, arguments);
                 }
@@ -48,8 +47,7 @@
                 if (!this.length) return;
                 var scroller = this.data('scroller');
                 if (scroller && scroller.scroller) { //js滚动
-                    scroller.scrollLeft(left, dur);
-                    return this;
+                    return scroller.scrollLeft(left, dur);
                 } else {
                     return _zeptoMethodCache.scrollLeft.apply(this, arguments);
                 }
@@ -87,6 +85,13 @@
             $.pullToRefreshTrigger = $._pullToRefreshJSScroll.pullToRefreshTrigger;
             $.destroyToRefresh = $._pullToRefreshJSScroll.destroyToRefresh;
             $pageContent.addClass('javascript-scroll');
+            
+            //如果页面本身已经进行了原生滚动，那么把这个滚动换成JS的滚动
+            var nativeScrollTop = this.$pageContent[0].scrollTop;
+            if(nativeScrollTop) {
+              this.$pageContent[0].scrollTop = 0;
+              this.scrollTop(nativeScrollTop);
+            }
         } else {
             $pageContent.addClass('native-scroll');
         }

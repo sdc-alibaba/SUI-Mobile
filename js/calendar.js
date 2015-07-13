@@ -8,10 +8,10 @@
   var Calendar = function (params) {
       var p = this;
       var defaults = {
-          monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August' , 'September' , 'October', 'November', 'December'],
-          monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-          dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-          dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+          monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月' , '九月' , '十月', '十一月', '十二月'],
+          monthNamesShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月' , '九月' , '十月', '十一月', '十二月'],
+          dayNames: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+          dayNamesShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
           firstDay: 1, // First day of the week, Monday
           weekendDays: [0, 6], // Sunday and Saturday
           multiple: false,
@@ -21,7 +21,7 @@
           maxDate: null,
           touchMove: true,
           animate: true,
-          closeOnSelect: false,
+          closeOnSelect: true,
           monthPicker: true,
           monthPickerTemplate: 
               '<div class="picker-calendar-month-picker">' +
@@ -162,7 +162,7 @@
               p.wrapper.find('.picker-calendar-day[data-date="' + valueDate.getFullYear() + '-' + valueDate.getMonth() + '-' + valueDate.getDate() + '"]').addClass('picker-calendar-day-selected');
           }
           if (p.params.onChange) {
-              p.params.onChange(p, p.value);
+              p.params.onChange(p, p.value, p.value.map(formatDate));
           }
           if (p.input && p.input.length > 0) {
               if (p.params.formatValue) inputValue = p.params.formatValue(p, p.value);
@@ -841,10 +841,21 @@
       return p;
   };
   $.fn.calendar = function (params) {
+      var p = {};
+      if(this[0].tagName.toUpperCase() === "INPUT") {
+        p.input = this;
+      } else {
+        p.container = this;
+      }
       return new Calendar(
-        $.extend({
-          input: this
-        }, params)
+        $.extend(p, params)
       )
+  };
+
+  $.initCalendar = function(content) {
+    var $content = content ? $(content) : $(document.body);
+    $content.find("[data-toggle='date']").each(function() {
+      $(this).calendar();
+    });
   };
 }(Zepto);

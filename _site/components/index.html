@@ -95,7 +95,7 @@
   <li><a href="#modal" data-ignore="push">对话框</a></li>
   <li><a href="#preloader" data-ignore="push">加载指示器</a></li>
   <li><a href="#popup" data-ignore="push">popup</a></li>
-  <li><a href="#calendar" data-ignore="push">日历</a></li>
+  <li><a href="#calendar" data-ignore="push">日历 <span class='new'>新</span></a></li>
   <li><a href="#actions" data-ignore="push">操作表 <span class='new'>新</span></a></li>
   <li><a href="#list" data-ignore="push">列表</a></li>
   <li><a href="#cards" data-ignore="push">卡片</a></li>
@@ -2606,9 +2606,69 @@
 
   <article class="component" id="calendar" data-url='calendar'>
   <h2 class="component-title">日历</h2>
-  <p class="component-description">日历</p>
+  <p class="component-description">日历组件用来选择年月日，可以代替系统原生的日历组件，提供更统一的视觉和交互以及更好的兼容性。</p>
+  <p>日历组件需要初始化才能使用，最简单的方式是通过一下JS代码来初始化，绑定到一个input元素上：</p>
 
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s2">"#my-input"</span><span class="p">).</span><span class="nx">calendar</span><span class="p">();</span></code></pre></div>
+
+  <p>当你点击input元素后，会自动弹出一个JS生成的日历组件。当用户选择日期之后，input的值会被设置为用户选择的日期。</p>
+  <p>如果你不想写js，可以通过以下方式来自动初始化：</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">data-toggle=</span><span class="s">'date'</span> <span class="nt">/&gt;</span></code></pre></div>
+
+  <h2>参数</h2>
+  <p>你可以在初始化的时候指定如下参数：</p>
+
+  <table>
+    <tr>
+      <th>参数名</th>
+      <th>默认值</th>
+      <th>说明</th>
+    </tr>
+    <tr>
+      <td>inputReadOnly</td>
+      <td>true</td>
+      <td>是否在input上增加一个 <code>readonly</code> 属性使用户无法自己输入</td>
+    </tr>
+    <tr>
+      <td>dateFormat</td>
+      <td>'yyyy-mm-dd'</td>
+      <td>格式化日期</td>
+    </tr>
+    <tr>
+      <td>minDate</td>
+      <td>undefined</td>
+      <td>最小可选日期，比如 <code>2015-06-01</code></td>
+    </tr>
+    <tr>
+      <td>maxDate</td>
+      <td>undefined</td>
+      <td>最大可选日期，比如 <code>2015-08-01</code></td>
+    </tr>
+    <tr>
+      <td>onChange</td>
+      <td>function(p, values, displayValues){}</td>
+      <td>当用户选择日期时触发</td>
+    </tr>
+    <tr>
+      <td>onOpen</td>
+      <td>function(p){}</td>
+      <td>日历弹层打开时触发</td>
+    </tr>
+    <tr>
+      <td>onClose</td>
+      <td>function(p){}</td>
+      <td>日历弹层关闭时触发</td>
+    </tr>
+  </table>
+
+  <p>当用户选择完日期之后，会在 input 上触发 <code>change</code> 事件，你可以监听此事件。</p>
+
+</article>
+
+<article class="component" data-url='calendar-inline'>
+  <h2 class="component-title">内联日历</h2>
+  <p>日历插件是非常智能的，如果在一个非 <code>input</code> 元素上初始化，它会自动变成内联形式。</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-toggle=</span><span class="s">'date'</span> <span class="nt">/&gt;</span></code></pre></div>
 </article>
 
   <article class="component" id='actions'>
@@ -3346,6 +3406,7 @@
         上边demo使用的是javascript接口的调用方式，scroller.js 同时提供data-api的模式。通过添加标签属性
         <code>data-toggle="scroller"</code>。 滚动类型通过：<code>data-type="auto"</code>来配置。
     </p> 
+    <p>你可以在 <code>.content</code> 容器上通过 <code>data-type='native'</code> 指定在当前页面使用原生滚动条。</p>
     <p class="component-description">
         注意： scroller 插件会页面载入完成后，默认初始化带有class<code>.content</code>或者属性<code>data-toggle="scroller"</code>的元素为auto模式的滚动条。如果想要<code>.content</code>的元素全部初始为js的模式，需要在.content 标签加上属性<code>data-type="js"</code>
     </p>

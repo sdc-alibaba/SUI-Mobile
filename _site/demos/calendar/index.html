@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="/dist/css/sm.css">
     <link rel="stylesheet" href="/dist/css/sm-extend.css">
+    <link rel="stylesheet" href="/assets/css/demos.css">
 
     <link rel="apple-touch-icon-precomposed" href="/assets/img/apple-touch-icon-114x114.png">
     <script src="/assets/js/zepto.js"></script>
@@ -25,6 +26,10 @@
   <body>
     <div class="page">
   <header class="bar bar-nav">
+    <a class="button button-link button-nav pull-left" href="/demos" data-transition='slide-out'>
+      <span class="icon icon-left"></span>
+      返回
+    </a>
     <h1 class='title'>日历</h1>
   </header>
   <div class="content">
@@ -37,7 +42,7 @@
               <div class="item-inner">
                 <div class="item-title label">生日</div>
                 <div class="item-input">
-                  <input type="text" placeholder="Your name" id='birthday' />
+                  <input type="text" placeholder="Your name" id='birthday' data-toggle='date'/>
                 </div>
               </div>
             </div>
@@ -48,9 +53,8 @@
   </div>
 </div>
 
-<script src='/docs-demos/js/calendar.js'></script>
-
     <script src="/dist/js/sm.js"></script>
     <script src="/dist/js/sm-extend.js"></script>
+    <script src="/assets/js/demos.js"></script>
   </body>
 </html>
