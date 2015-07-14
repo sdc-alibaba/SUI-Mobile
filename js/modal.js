@@ -443,7 +443,7 @@
       setTimeout(function() {
         $.closeModal($toast);
       }, 2000);
-    }
+    };
     $.openModal = function (modal) {
         modal = $(modal);
         var isModal = modal.hasClass('modal');

@@ -41,7 +41,7 @@
     var id = $content[0].id;
     $.initPage();
     $content.trigger("pageInit", [id, $content]);
-  }
+  };
 
   $(function() {
     if($.smConfig.autoInit) {
