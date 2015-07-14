@@ -1,12 +1,7 @@
-<article class="component" id="layout" data-url='structure'>
-  <h2 class="component-title">页面基本结构</h2>
-  <p class="component-description">我们对页面的基本结构是有要求的，否则可能会出现样式错误或者无法正确加载页面等问题。</p>
-  <p>基本的页面布局如下：</p>
-
-  <div class="component-example component-example-fullbleed">
-  </div>
-{% highlight html %}
-<!-- page 容器 -->
+---
+layout: demo
+title: SUI Mobile Demo
+---
 <div class="page">
   <!-- 标题栏 -->
   <header class="bar bar-nav">
@@ -47,6 +42,3 @@
     <p><a href="#" class="close-panel">关闭</a></p>
   </div>
 </div>
-{% endhighlight %}
-<p>注意！从 v0.0.7 版本之后，我们增加了一个 <code>.page</code> 容器。如果你的页面中没有这个容器，很可能导致如侧栏之类的组件无法正常工作。</p>
-</article>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SUI Mobile Demo</title>
+    <meta name="description" content="Ratchet: Build mobile apps with simple HTML, CSS, and JS components.">
+    <meta name="author" content="Connor Sears">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Google Web Fonts -->
+
+    <link rel="stylesheet" href="/dist/css/sm.css">
+    <link rel="stylesheet" href="/dist/css/sm-extend.css">
+    <link rel="stylesheet" href="/assets/css/demos.css">
+
+    <link rel="apple-touch-icon-precomposed" href="/assets/img/apple-touch-icon-114x114.png">
+    <script src="/assets/js/zepto.js"></script>
+    <script>
+      //ga
+    </script>
+  </head>
+  <body>
+    <div class="page">
+  <!-- 标题栏 -->
+  <header class="bar bar-nav">
+    <a class="icon icon-me pull-left open-panel"></a>
+    <h1 class="title">标题</h1>
+  </header>
+
+  <!-- 工具栏 -->
+  <nav class="bar bar-tab">
+    <a class="tab-item active" href="#">
+      <span class="icon icon-home"></span>
+      <span class="tab-label">首页</span>
+    </a>
+    <a class="tab-item" href="#">
+      <span class="icon icon-star"></span>
+      <span class="tab-label">收藏</span>
+    </a>
+    <a class="tab-item" href="#">
+      <span class="icon icon-settings"></span>
+      <span class="tab-label">设置</span>
+    </a>
+  </nav>
+
+  <!-- 这里是页面内容区 -->
+  <div class="content">
+    <div class="content-block">这里是content</div>
+  </div>
+</div>
+
+<!-- popup, panel 等放在这里 -->
+<div class="panel-overlay"></div>
+<!-- Left Panel with Reveal effect -->
+<div class="panel panel-left panel-reveal">
+  <div class="content-block">
+    <p>这是一个侧栏</p>
+    <p></p>
+    <!-- Click on link with "close-panel" class will close panel -->
+    <p><a href="#" class="close-panel">关闭</a></p>
+  </div>
+</div>
+
+    <script src="/dist/js/sm.js"></script>
+    <script src="/dist/js/sm-extend.js"></script>
+    <script src="/assets/js/demos.js"></script>
+  </body>
+</html>
