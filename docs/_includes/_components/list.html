@@ -1,4 +1,4 @@
-<article class="component" id="list">
+<article class="component" id="list" data-url='list'>
   <h2 class="component-title">列表</h2>
   <p class="component-description">常在iOS应用中看到的列表，是种多功能且强大的交互组件。列表将数据展现在一个可滚动的多行的列表中，可以将数据划分成不同的片段/组（sections/groups）。</p>
   <p class="component-description">列表有以下用途：</p>
@@ -8,9 +8,6 @@
     <li>在可视化的不同分组中，显示详细信息和控件</li>
     <li>展现一个可以选择的列表</li>
   </ul>
-
-  <div class="component-example component-example-fullbleed">
-  </div>
 
   {% highlight html %}
   <header class="bar bar-nav">
@@ -34,13 +31,6 @@
             <div class="item-after">极致超薄型</div>
           </div>
         </li>
-        <li class="item-content">
-          <div class="item-media"><i class="icon icon-f7"></i></div>
-          <div class="item-inner">
-            <div class="item-title">库存</div>
-            <div class="item-after">123件</div>
-          </div>
-        </li>
       </ul>
     </div>
     <div class="content-block-title">标题和副标题</div>
@@ -58,10 +48,23 @@
             <div class="item-after">极致超薄型</div>
           </div>
         </li>
-        <li class="item-content">
+      </ul>
+    </div>
+    <div class="content-block-title">带箭头</div>
+    <div class="list-block">
+      <ul>
+        <li class="item-content item-link">
+          <div class="item-media"><i class="icon icon-f7"></i></div>
           <div class="item-inner">
-            <div class="item-title">库存</div>
-            <div class="item-after">123件</div>
+            <div class="item-title">商品名称</div>
+            <div class="item-after">杜蕾斯</div>
+          </div>
+        </li>
+        <li class="item-content item-link">
+          <div class="item-media"><i class="icon icon-f7"></i></div>
+          <div class="item-inner">
+            <div class="item-title">型号</div>
+            <div class="item-after">极致超薄型</div>
           </div>
         </li>
       </ul>
@@ -77,6 +80,8 @@
     <li><code>item-title</code> - 单行列表项目标题。<strong>必选</strong>元素。</li>
     <li><code>item-after</code> - 列表项目标签。可以包含任意额外的html元素（例如标签文本、徽章、switch/toggle、按钮等等）。<strong>可选</strong>元素。</li>
   </ul>
+
+  <p>在 <code>.item-content</code> 上加上 <code>.item-link</code> 会增加一个向右的箭头。</p>
 
 </article>
 

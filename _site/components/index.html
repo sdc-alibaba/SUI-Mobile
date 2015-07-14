@@ -2787,7 +2787,7 @@
   <span class="p">});</span></code></pre></div>
 </article>
 
-  <article class="component" id="list">
+  <article class="component" id="list" data-url='list'>
   <h2 class="component-title">列表</h2>
   <p class="component-description">常在iOS应用中看到的列表，是种多功能且强大的交互组件。列表将数据展现在一个可滚动的多行的列表中，可以将数据划分成不同的片段/组（sections/groups）。</p>
   <p class="component-description">列表有以下用途：</p>
@@ -2797,9 +2797,6 @@
     <li>在可视化的不同分组中，显示详细信息和控件</li>
     <li>展现一个可以选择的列表</li>
   </ul>
-
-  <div class="component-example component-example-fullbleed">
-  </div>
 
   <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>视图列表<span class="nt">&lt;/h1&gt;</span>
@@ -2822,13 +2819,6 @@
             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-after"</span><span class="nt">&gt;</span>极致超薄型<span class="nt">&lt;/div&gt;</span>
           <span class="nt">&lt;/div&gt;</span>
         <span class="nt">&lt;/li&gt;</span>
-        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-f7"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
-          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-title"</span><span class="nt">&gt;</span>库存<span class="nt">&lt;/div&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-after"</span><span class="nt">&gt;</span>123件<span class="nt">&lt;/div&gt;</span>
-          <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;/li&gt;</span>
       <span class="nt">&lt;/ul&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block-title"</span><span class="nt">&gt;</span>标题和副标题<span class="nt">&lt;/div&gt;</span>
@@ -2846,10 +2836,23 @@
             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-after"</span><span class="nt">&gt;</span>极致超薄型<span class="nt">&lt;/div&gt;</span>
           <span class="nt">&lt;/div&gt;</span>
         <span class="nt">&lt;/li&gt;</span>
-        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"item-content"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content-block-title"</span><span class="nt">&gt;</span>带箭头<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ul&gt;</span>
+        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"item-content item-link"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-f7"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
           <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-title"</span><span class="nt">&gt;</span>库存<span class="nt">&lt;/div&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-after"</span><span class="nt">&gt;</span>123件<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-title"</span><span class="nt">&gt;</span>商品名称<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-after"</span><span class="nt">&gt;</span>杜蕾斯<span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"item-content item-link"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-media"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-f7"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-inner"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-title"</span><span class="nt">&gt;</span>型号<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"item-after"</span><span class="nt">&gt;</span>极致超薄型<span class="nt">&lt;/div&gt;</span>
           <span class="nt">&lt;/div&gt;</span>
         <span class="nt">&lt;/li&gt;</span>
       <span class="nt">&lt;/ul&gt;</span>
@@ -2864,6 +2867,8 @@
     <li><code>item-title</code> - 单行列表项目标题。<strong>必选</strong>元素。</li>
     <li><code>item-after</code> - 列表项目标签。可以包含任意额外的html元素（例如标签文本、徽章、switch/toggle、按钮等等）。<strong>可选</strong>元素。</li>
   </ul>
+
+  <p>在 <code>.item-content</code> 上加上 <code>.item-link</code> 会增加一个向右的箭头。</p>
 
 </article>
 
