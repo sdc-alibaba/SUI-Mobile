@@ -79,3 +79,27 @@ $.push({
 {% endhighlight %}
 
 </article>
+
+<article class="component">
+    <h3 class="component-title">pageAnimationStart</h3>
+    <p class="component-description">除了 pageInit 之外，当新页面被插入到当前DOM中，即将开始执行动画的时候，会触发 <code>pageAnimationStart</code> 事件，用法和 <code>pageInit</code> 完全一样:</p>
+{% highlight js %}
+$(document).on('pageAnimationStart', '#page-index', function(e, id, content){
+//此时初始化页面
+});
+{% endhighlight %}
+
+    <p>使用 <code>pageAnimationStart</code> 初始化页面会比 <code>pageInit</code> 更早，因为 pageInit 事件是在动画结束的时候才触发的。</p>
+</article>
+
+<article class="component">
+    <h2 class="component-title">pageLoadStart</h2>
+    <p> <code>pageLoadStart</code> 事件会在开始发送xhr请求的时候就触发，用法如下：</p>
+{% highlight js %}
+$(document).on("pageLoadStart", function(e,d){
+console.log(d.url);
+});
+{% endhighlight %}
+
+    <p>如果你的页面是异步加载数据的，你可以在 <code>pageLoadStart</code> 的时候就开始加载数据，然后在 <code>pageAnimationStart</code> 的时候渲染页面。</p>
+</article>

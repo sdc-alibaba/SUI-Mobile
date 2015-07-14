@@ -188,4 +188,7 @@ $(function () {
     b.parent().find(".active").removeClass("active");
     b.addClass("active");
   });
+
+
+  $.init();
 });

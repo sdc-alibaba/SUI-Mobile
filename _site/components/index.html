@@ -94,6 +94,7 @@
   <li><a href="#grid" data-ignore="push">栅格</a></li>
   <li><a href="#modal" data-ignore="push">对话框</a></li>
   <li><a href="#preloader" data-ignore="push">加载指示器</a></li>
+  <li><a href="#toast" data-ignore="push">toast <span class='new'>新</span></a></li>
   <li><a href="#popup" data-ignore="push">popup</a></li>
   <li><a href="#calendar" data-ignore="push">日历 <span class='new'>新</span></a></li>
   <li><a href="#actions" data-ignore="push">操作表 <span class='new'>新</span></a></li>
@@ -191,10 +192,22 @@
   <article class="component active" id="init">
   <h2 class="component-title">初始化</h2>
   <p class="component-description">
+    <p>注意，从 v0.2.1 开始，初始化方法变成了 <code>$.init()</code>， <code>$.config.autoInit = false;</code>，也就是默认不会调用 <code>$.init</code> 方法。现在需要自己手动调用 <code>$.init</code>，他会调用 $.initPage 方法初始化页面组件，并且触发一个 <code>pageInit</code> 事件，所以请确保在所有的 <code>pageInit</code> 事件绑定之后再调用 <code>$.init()</code> 方法。</p>
+    <p>下面是 <code>$.init</code> 方法的实现：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">.</span><span class="nx">init</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">$content</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">".content"</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">$content</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">return</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">$content</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">id</span><span class="p">;</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">initPage</span><span class="p">();</span>
+  <span class="nx">$content</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s2">"pageInit"</span><span class="p">,</span> <span class="p">[</span><span class="nx">id</span><span class="p">,</span> <span class="nx">$content</span><span class="p">]);</span>
+<span class="p">}</span></code></pre></div>
+
+    <p>如果设置了 <code>$.config.autoInit = true;</code>，那么在 document.onload的时候就会执行 <code>$.init</code>方法，从而触发 <code>pageInit</code>事件，如果在这之后监听了 pageInit 事件是无法被执行的。</p>
+
+    <p>原有的 <code>$.initPage</code> 方法依然不变。</p>
     <p>有一些JS组件是需要初始化才能使用的，比如幻灯片、滚动条等。</p>
-    <p>这些JS组件都有对应的初始化API可以调用。不过我们也提供了一个统一的方法可以自动初始化页面中的全部JS组件 <code>$.initPage(page)</code></p>
+    <p>这些JS组件都有对应的初始化API可以调用。我们也提供了一个统一的方法可以自动初始化页面中的全部JS组件 <code>$.initPage(page)</code></p>
     <p>你可以传入一个可选的page参数，如果没有，则默认是 <code>document.body</code></p>
-    <p>如果 <code>$.config.autoInit == true</code> （默认就是true），我们会在页面加载完之后以及push结束之后自动执行 <code>$.initPage</code>方法，这种情况下不需要你再次调用。但是如果你的页面内容是异步渲染的，在 <code>document.onload</code> 之后才异步加载页面内容，那么你应该设置 <code>$.config.autoInit = false</code>，并且在你加载完内容后调用 <code>$.initPage</code> 方法。</p>
     <p>实际上， <code>initPage</code> 执行了如下操作:</p>
   </p>
 
@@ -207,17 +220,18 @@
   <span class="nx">$</span><span class="p">.</span><span class="nx">initPullToRefresh</span><span class="p">(</span><span class="nx">$content</span><span class="p">);</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">initInfiniteScroll</span><span class="p">(</span><span class="nx">$content</span><span class="p">);</span>
 <span class="p">};</span></code></pre></div>
-  
+
   <h3 class="component-title">全局配置</h3>
   <p class="component-description">
     我们提供了一些全局配置，可以在初始化之前通过这些配置改变一些默认行为。
     在引入JS之前通过一个 <code>$.config</code> 变量来改变默认配置：
   </p>
+  <p>从 v0.2.1 版本开始， <code>autoInit</code> 默认为 false</p>
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script&gt;</span>
-  <span class="c1">//关闭自动初始化页面的功能</span>
+  <span class="c1">//打开自动初始化页面的功能</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="na">autoInit</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="na">autoInit</span><span class="p">:</span> <span class="kc">true</span>
   <span class="p">}</span>
 <span class="nt">&lt;/script&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'sm.min.js'</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
@@ -232,7 +246,7 @@
     </tr>
     <tr>
       <td>autoInit</td>
-      <td>true</td>
+      <td>false</td>
       <td>在 <code>document.onload</code> 和 push 结束之后自动调用 <code>$.initPage</code> 方法。如果你的页面内容是异步加载的，应该关闭这个配置，并且在加载完成之后手动调用 <code>$.initPage</code></td>
     </tr>
     <tr>
@@ -2281,6 +2295,15 @@
   <span class="p">});</span></code></pre></div>
 </article>
 
+<article class="component active" id='toast' data-url='toast'>
+  <h2 class="component-title">toast</h2>
+  <p class="component-description">toast是一种轻量的提示，在页面中间显示，并且会在2秒之后自动消失。</p>
+  <p>可以用来显示一些不会打断用户操作的提示。</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">.</span><span class="nx">toast</span><span class="p">(</span><span class="s2">"操作失败"</span><span class="p">);</span></code></pre></div>
+  <p>toast 组件后续会支持不同的情景，包括操作成功、操作失败等，显示出不同的颜色</p>
+</article>
+
   <article class="component active" id='popup'>
   <h2 class="component-title">Popup</h2>
   <p class="component-description">Popup 是一种可以包含任何Html内容的弹出窗口，从App的主内容区域上弹出。 Popup 和其他所有的遮罩图层一样，是所谓的“临时视图”的一部分。</p>
@@ -3289,55 +3312,6 @@
       为了保证页面在任何滚动条模式下都能使用，强烈建议在任何导致页面高度变化的操作之后都要执行一次 <code>$.refreshScroller()</code> 操作。否则在js滚动条模式下可能会导致页面无法滚动。
     </p>
     <div class="component-example component-example-fullbleed">
-        <header class="bar bar-nav">
-            <h1 class="title">滚动条</h1>
-        </header>
-        <div class="content" id="scroller-demo">
-            <div class="card">
-                <div class="card-header">滚动方式</div>
-                <div class="card-content">
-                    <div class="card-content-inner">
-                        <h3>滚动具有三种模式：</h3>
-                        <ul>
-                            <li>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）</li>
-                            <li>2. js模式: 使用js滚动</li>
-                            <li>3. native模式： 总是使用原生滚动条</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">滚动方式</div>
-                <div class="card-content">
-                    <div class="card-content-inner">
-                        <h3>滚动具有三种模式：</h3>
-                        <ul>
-                            <li>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）</li>
-                            <li>2. js模式: 使用js滚动</li>
-                            <li>3. native模式： 总是使用原生滚动条</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">滚动方式</div>
-                <div class="card-content">
-                    <div class="card-content-inner">
-                        <h3>滚动具有三种模式：</h3>
-                        <ul>
-                            <li>1. auto模式: scroller.js 根据系统版本号来决定什么时候使用js的滚动（默认）</li>
-                            <li>2. js模式: 使用js滚动</li>
-                            <li>3. native模式： 总是使用原生滚动条</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-        $(function() {
-            ///$("#scroller-demo").scroller();
-        });
-        </script>
     </div>
     <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"bar bar-nav"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>滚动条<span class="nt">&lt;/h1&gt;</span>
@@ -3927,6 +3901,26 @@ $(function() {
   <span class="na">transition</span><span class="p">:</span> <span class="s2">"slide-in"</span>
 <span class="p">});</span></code></pre></div>
 
+</article>
+
+<article class="component">
+    <h3 class="component-title">pageAnimationStart</h3>
+    <p class="component-description">除了 pageInit 之外，当新页面被插入到当前DOM中，即将开始执行动画的时候，会触发 <code>pageAnimationStart</code> 事件，用法和 <code>pageInit</code> 完全一样:</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'pageAnimationStart'</span><span class="p">,</span> <span class="s1">'#page-index'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">content</span><span class="p">){</span>
+<span class="c1">//此时初始化页面</span>
+<span class="p">});</span></code></pre></div>
+
+    <p>使用 <code>pageAnimationStart</code> 初始化页面会比 <code>pageInit</code> 更早，因为 pageInit 事件是在动画结束的时候才触发的。</p>
+</article>
+
+<article class="component">
+    <h2 class="component-title">pageLoadStart</h2>
+    <p> <code>pageLoadStart</code> 事件会在开始发送xhr请求的时候就触发，用法如下：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s2">"pageLoadStart"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span><span class="nx">d</span><span class="p">){</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+<span class="p">});</span></code></pre></div>
+
+    <p>如果你的页面是异步加载数据的，你可以在 <code>pageLoadStart</code> 的时候就开始加载数据，然后在 <code>pageAnimationStart</code> 的时候渲染页面。</p>
 </article>
 
   <article class="component" id="themes" data-url='theme-dark'>

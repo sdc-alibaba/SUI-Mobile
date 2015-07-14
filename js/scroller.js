@@ -188,21 +188,21 @@
 
             var $this = $(this);
 
-            var $pageContentInner = $this.find('.scroller-content-inner');
+            var $pageContentInner = $this.find('.content-inner');
             //如果滚动内容没有被包裹，自动添加wrap
             if (!$pageContentInner[0]) {
-                // $this.html('<div class="scroller-content-inner">' + $this.html() + '</div>');
+                // $this.html('<div class="content-inner">' + $this.html() + '</div>');
                 var children = $this.children();
                 if (children.length < 1) {
-                    $this.children().wrapAll('<div class="scroller-content-inner"></div>');
+                    $this.children().wrapAll('<div class="content-inner"></div>');
                 } else {
-                    $this.html('<div class="scroller-content-inner">' + $this.html() + '</div>');
+                    $this.html('<div class="content-inner">' + $this.html() + '</div>');
                 }
             }
 
             if ($this.hasClass('pull-to-refresh-content')) {
                 //因为iscroll 当页面高度不足 100% 时无法滑动，所以无法触发下拉动作，这里改动一下高度
-                $this.find('.scroller-content-inner').css('min-height', ($(window).height() + 20) + 'px');
+                $this.find('.content-inner').css('min-height', ($(window).height() + 20) + 'px');
             }
 
 

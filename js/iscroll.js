@@ -280,7 +280,7 @@
 
     function IScroll(el, options) {
         this.wrapper = typeof el === 'string' ? document.querySelector(el) : el;
-        this.scroller = $(this.wrapper).find('.scroller-content-inner')[0]; // jshint ignore:line
+        this.scroller = $(this.wrapper).find('.content-inner')[0]; // jshint ignore:line
 
 
         this.scrollerStyle = this.scroller&&this.scroller.style; // cache style for better performance

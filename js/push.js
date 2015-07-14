@@ -292,6 +292,7 @@
     if (xhr && xhr.readyState < 4) {
       xhr.onreadystatechange = noop;
       xhr.abort();
+      triggerStateChange("pushCancel");
     }
 
     //创建xhr来加载新页面
@@ -332,7 +333,10 @@
     cacheCurrentContent();//缓存当前的DOM，其实就是整个body
 
     if (options.timeout) {
-      options._timeout = setTimeout(function () {  xhr.abort('timeout'); }, options.timeout);
+      options._timeout = setTimeout(function () {
+        xhr.abort('timeout');
+        triggerStateChange("pushCancel");
+      }, options.timeout);
     }
 
     xhr.send();
@@ -349,6 +353,7 @@
       cachePush();
     }
     triggerStateChange("pushStart");
+    $(document).trigger("pageLoadStart", {url: options.url});
   };
 
   function cacheCurrentContent () {
@@ -436,6 +441,7 @@
   };
 
   var failure = function (url) {
+    triggerStateChange("pushFail");
     throw new Error('Could not get: ' + url);
   };
 
@@ -455,6 +461,7 @@
 
     //现在会增加一个 .page 容器，目的是为了方便做整页动画。
     var page = getPage();
+
 
 
     if (!transition) {
@@ -485,6 +492,15 @@
       revertScroll(swap);
     }
 
+
+    if(triggerPageInit) {
+      if(!transition) {
+        $('.content').trigger("pageAnimationStart", [swap.id, swap]);
+      } else {
+        $(swap).trigger("pageAnimationStart", [swap.id, swap]);
+      }
+    }
+
     var triggerComplete = function() {
       if (complete) {
         complete();
@@ -493,9 +509,9 @@
       if(triggerPageInit) {
         triggerStateChange("push");
         if(!transition) {
-          $('.content').trigger("pageInit", [swap.id, swap]);
+          $.initPage($('.content').trigger("pageInit", [swap.id, swap]));
         } else {
-          $(swap).trigger("pageInit", [swap.id, swap]);
+          $.initPage($(swap).trigger("pageInit", [swap.id, swap]));
         }
       }
     };
@@ -686,15 +702,5 @@
   });
 
   $.push = PUSH;
-
-  $(function() {
-    var $content = $(".content");
-    if(!$content[0]) return;
-    var id = $content[0].id;
-    triggerStateChange("push");
-    setTimeout(function() { //保证自己是后执行的
-      $content.trigger("pageInit", [id, $content]);
-    });
-  });
 
 }(Zepto);

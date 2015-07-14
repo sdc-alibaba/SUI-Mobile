@@ -17,21 +17,36 @@
     if($.initSwiper) $.initSwiper($content);
   };
 
-  if($.smConfig.autoInit) {
-    $(document).on("pageInit", function() {
-      $.initPage();
-    });
-  } else {
-    $.initPage();
-  }
 
   if($.smConfig.showPageLoadingIndicator) {
+    //这里的 以 push 开头的是私有事件，不要用
     $(window).on("pushStart", function() {
       $.showIndicator();
     });
     $(window).on("pushAnimationStart", function() {
       $.hideIndicator();
     });
+    $(window).on("pushCancel", function() {
+      $.hideIndicator();
+    });
+    $(window).on("pushFail", function() {
+      $.hideIndicator();
+      $.toast("加载失败");
+    });
   }
+
+  $.init = function() {
+    var $content = $(".content");
+    if(!$content[0]) return;
+    var id = $content[0].id;
+    $.initPage();
+    $content.trigger("pageInit", [id, $content]);
+  }
+
+  $(function() {
+    if($.smConfig.autoInit) {
+      $.init();
+    }
+  });
 
 }(Zepto);

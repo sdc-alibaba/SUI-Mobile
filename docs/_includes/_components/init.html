@@ -1,10 +1,24 @@
 <article class="component active" id="init">
   <h2 class="component-title">初始化</h2>
   <p class="component-description">
+    <p>注意，从 v0.2.1 开始，初始化方法变成了 <code>$.init()</code>， <code>$.config.autoInit = false;</code>，也就是默认不会调用 <code>$.init</code> 方法。现在需要自己手动调用 <code>$.init</code>，他会调用 $.initPage 方法初始化页面组件，并且触发一个 <code>pageInit</code> 事件，所以请确保在所有的 <code>pageInit</code> 事件绑定之后再调用 <code>$.init()</code> 方法。</p>
+    <p>下面是 <code>$.init</code> 方法的实现：</p>
+{% highlight js %}
+$.init = function() {
+  var $content = $(".content");
+  if(!$content[0]) return;
+  var id = $content[0].id;
+  $.initPage();
+  $content.trigger("pageInit", [id, $content]);
+}
+{% endhighlight %}
+
+    <p>如果设置了 <code>$.config.autoInit = true;</code>，那么在 document.onload的时候就会执行 <code>$.init</code>方法，从而触发 <code>pageInit</code>事件，如果在这之后监听了 pageInit 事件是无法被执行的。</p>
+
+    <p>原有的 <code>$.initPage</code> 方法依然不变。</p>
     <p>有一些JS组件是需要初始化才能使用的，比如幻灯片、滚动条等。</p>
-    <p>这些JS组件都有对应的初始化API可以调用。不过我们也提供了一个统一的方法可以自动初始化页面中的全部JS组件 <code>$.initPage(page)</code></p>
+    <p>这些JS组件都有对应的初始化API可以调用。我们也提供了一个统一的方法可以自动初始化页面中的全部JS组件 <code>$.initPage(page)</code></p>
     <p>你可以传入一个可选的page参数，如果没有，则默认是 <code>document.body</code></p>
-    <p>如果 <code>$.config.autoInit == true</code> （默认就是true），我们会在页面加载完之后以及push结束之后自动执行 <code>$.initPage</code>方法，这种情况下不需要你再次调用。但是如果你的页面内容是异步渲染的，在 <code>document.onload</code> 之后才异步加载页面内容，那么你应该设置 <code>$.config.autoInit = false</code>，并且在你加载完内容后调用 <code>$.initPage</code> 方法。</p>
     <p>实际上， <code>initPage</code> 执行了如下操作:</p>
   </p>
 
@@ -19,18 +33,19 @@ $.initPage = function(page) {
   $.initInfiniteScroll($content);
 };
 {% endhighlight %}
-  
+
   <h3 class="component-title">全局配置</h3>
   <p class="component-description">
     我们提供了一些全局配置，可以在初始化之前通过这些配置改变一些默认行为。
     在引入JS之前通过一个 <code>$.config</code> 变量来改变默认配置：
   </p>
+  <p>从 v0.2.1 版本开始， <code>autoInit</code> 默认为 false</p>
 
 {% highlight html %}
 <script>
-  //关闭自动初始化页面的功能
+  //打开自动初始化页面的功能
   $.config = {
-    autoInit: false
+    autoInit: true
   }
 </script>
 <script src='sm.min.js'></script>
@@ -47,7 +62,7 @@ $.initPage = function(page) {
     </tr>
     <tr>
       <td>autoInit</td>
-      <td>true</td>
+      <td>false</td>
       <td>在 <code>document.onload</code> 和 push 结束之后自动调用 <code>$.initPage</code> 方法。如果你的页面内容是异步加载的，应该关闭这个配置，并且在加载完成之后手动调用 <code>$.initPage</code></td>
     </tr>
     <tr>

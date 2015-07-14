@@ -436,6 +436,14 @@
         $.openModal(modal);
         return modal[0];
     };
+    //显示一个消息，会在2秒钟后自动消失
+    $.toast = function(msg) {
+      var $toast = $("<div class='modal toast'>"+msg+"</div>").appendTo(document.body);
+      $.openModal($toast);
+      setTimeout(function() {
+        $.closeModal($toast);
+      }, 2000);
+    }
     $.openModal = function (modal) {
         modal = $(modal);
         var isModal = modal.hasClass('modal');
@@ -449,15 +457,21 @@
         var isPopup = modal.hasClass('popup');
         var isLoginScreen = modal.hasClass('login-screen');
         var isPickerModal = modal.hasClass('picker-modal');
+        var isToast = modal.hasClass('toast');
         if (isModal) {
             modal.show();
             modal.css({
                 marginTop: - Math.round(modal.outerHeight() / 2) + 'px'
             });
         }
+        if (isToast) {
+            modal.css({
+                marginLeft: - Math.round(modal.outerWidth() / 2) + 'px'
+            });
+        }
 
         var overlay;
-        if (!isLoginScreen && !isPickerModal) {
+        if (!isLoginScreen && !isPickerModal && !isToast) {
             if ($('.modal-overlay').length === 0 && !isPopup) {
                 $(defaults.modalContainer).append('<div class="modal-overlay"></div>');
             }
@@ -479,7 +493,7 @@
         }
 
         // Classes for transition in
-        if (!isLoginScreen && !isPickerModal) overlay.addClass('modal-overlay-visible');
+        if (!isLoginScreen && !isPickerModal && !isToast) overlay.addClass('modal-overlay-visible');
         modal.removeClass('modal-out').addClass('modal-in').transitionEnd(function (e) {
             if (modal.hasClass('modal-out')) modal.trigger('closed');
             else modal.trigger('opened');
