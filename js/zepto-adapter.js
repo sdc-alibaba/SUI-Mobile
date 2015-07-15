@@ -31,10 +31,73 @@
         };
         return support;
     })();
+
     $.touchEvents = {
         start: $.support.touch ? 'touchstart' : 'mousedown',
         move: $.support.touch ? 'touchmove' : 'mousemove',
         end: $.support.touch ? 'touchend' : 'mouseup'
+    };
+
+    $.getTranslate = function (el, axis) {
+      var matrix, curTransform, curStyle, transformMatrix;
+
+      // automatic axis detection
+      if (typeof axis === 'undefined') {
+        axis = 'x';
+      }
+
+      curStyle = window.getComputedStyle(el, null);
+      if (window.WebKitCSSMatrix) {
+        // Some old versions of Webkit choke when 'none' is passed; pass
+        // empty string instead in this case
+        transformMatrix = new WebKitCSSMatrix(curStyle.webkitTransform === 'none' ? '' : curStyle.webkitTransform);
+      }
+      else {
+        transformMatrix = curStyle.MozTransform || curStyle.OTransform || curStyle.MsTransform || curStyle.msTransform  || curStyle.transform || curStyle.getPropertyValue('transform').replace('translate(', 'matrix(1, 0, 0, 1,');
+        matrix = transformMatrix.toString().split(',');
+      }
+
+      if (axis === 'x') {
+        //Latest Chrome and webkits Fix
+        if (window.WebKitCSSMatrix)
+          curTransform = transformMatrix.m41;
+        //Crazy IE10 Matrix
+        else if (matrix.length === 16)
+          curTransform = parseFloat(matrix[12]);
+        //Normal Browsers
+        else
+          curTransform = parseFloat(matrix[4]);
+      }
+      if (axis === 'y') {
+        //Latest Chrome and webkits Fix
+        if (window.WebKitCSSMatrix)
+          curTransform = transformMatrix.m42;
+        //Crazy IE10 Matrix
+        else if (matrix.length === 16)
+          curTransform = parseFloat(matrix[13]);
+        //Normal Browsers
+        else
+          curTransform = parseFloat(matrix[5]);
+      }
+
+      return curTransform || 0;
+    };
+    $.requestAnimationFrame = function (callback) {
+      if (window.requestAnimationFrame) return window.requestAnimationFrame(callback);
+      else if (window.webkitRequestAnimationFrame) return window.webkitRequestAnimationFrame(callback);
+      else if (window.mozRequestAnimationFrame) return window.mozRequestAnimationFrame(callback);
+      else {
+        return window.setTimeout(callback, 1000 / 60);
+      }
+    };
+
+    $.cancelAnimationFrame = function (id) {
+      if (window.cancelAnimationFrame) return window.cancelAnimationFrame(id);
+      else if (window.webkitCancelAnimationFrame) return window.webkitCancelAnimationFrame(id);
+      else if (window.mozCancelAnimationFrame) return window.mozCancelAnimationFrame(id);
+      else {
+        return window.clearTimeout(id);
+      }  
     };
 
 
@@ -143,5 +206,33 @@
             elStyle.webkitTransform = elStyle.MsTransform = elStyle.msTransform = elStyle.MozTransform = elStyle.OTransform = elStyle.transform = transform;
         }
         return this;
+    };
+    $.fn.prevAll = function (selector) {
+      var prevEls = [];
+      var el = this[0];
+      if (!el) return $([]);
+      while (el.previousElementSibling) {
+        var prev = el.previousElementSibling;
+        if (selector) {
+          if($(prev).is(selector)) prevEls.push(prev);
+        }
+        else prevEls.push(prev);
+        el = prev;
+      }
+      return $(prevEls);
+    };
+    $.fn.nextAll = function (selector) {
+      var nextEls = [];
+      var el = this[0];
+      if (!el) return $([]);
+      while (el.nextElementSibling) {
+        var next = el.nextElementSibling;
+        if (selector) {
+          if($(next).is(selector)) nextEls.push(next);
+        }
+        else nextEls.push(next);
+        el = next;
+      }
+      return $(nextEls);
     };
 })(Zepto);
