@@ -509,9 +509,11 @@
       if(triggerPageInit) {
         triggerStateChange("push");
         if(!transition) {
-          $.initPage($('.content').trigger("pageInit", [swap.id, swap]));
+          $.initPage($('.content'));
+          $(".content").trigger("pageInit", [swap.id, swap]);
         } else {
-          $.initPage($(swap).trigger("pageInit", [swap.id, swap]));
+          $.initPage($(swap));
+          $(swap).trigger("pageInit", [swap.id, swap]);
         }
       }
     };
