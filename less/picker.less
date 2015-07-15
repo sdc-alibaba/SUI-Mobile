@@ -39,7 +39,7 @@
         text-align: right;
     }
     &.picker-items-col-divider {
-        color:#000;
+        color: @color-text;
         .flexbox();
         .align-items(center);
     }
@@ -58,7 +58,7 @@
     position: relative;
     overflow: hidden;
     text-overflow: ellipsis;
-    color:#707274;
+    color: @color-text-gray;
     left: 0;
     top: 0;
     width: 100%;
@@ -71,7 +71,7 @@
         pointer-events: none;
     }
     &.picker-selected {
-        color: #000;
+        color: @color-text;
         transform: translate3d(0,0,0);
         transform: rotateX(0deg);
     }

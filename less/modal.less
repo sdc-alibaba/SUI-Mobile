@@ -42,7 +42,7 @@
     opacity: 0;
     transform: translate3d(0,0,0) scale(1.185);
     transition-property: transform, opacity;
-    color: #000;
+    color: @color-text;
     display: none;
     &.modal-in {
         opacity: 1;
@@ -219,7 +219,7 @@
     line-height: 1.3;
     min-height: 2.2rem;
     padding: 0.4rem 0.5rem;
-    color: #8a8a8a;
+    color: @color-text-secondary;
     .flexbox();
     .justify-content(center);
     .align-items(center);
@@ -366,7 +366,7 @@ input.modal-text-input {
 }
 .actions-popover-label {
     padding: 0.4rem 0.5rem;
-    color:#8a8a8a;
+    color: @color-text-secondary;
     font-size: 0.65rem;
     line-height: 1.3;
     text-align: center;
@@ -484,7 +484,7 @@ html.with-statusbar-overlay {
         position: relative;
     }
     .toolbar {
-        .hairline(top, #929499);
+        .hairline(top, @color-text-gray);
         position: relative;
         width: 100%;
         + .picker-modal-inner {
@@ -501,7 +501,7 @@ html.with-statusbar-overlay {
         transform: translate3d(0,0,0);
         .toolbar {
             .hairline-remove(top);
-            .hairline(bottom, #929499);
+            .hairline(bottom, @color-text-gray);
         }
     }
     .popover & {
