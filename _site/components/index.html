@@ -2791,8 +2791,57 @@
   <article class="component" id="picker" data-url='picker'>
   <h2 class="component-title">picker</h2>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s2">"#picker"</span><span class="p">).</span><span class="nx">picker</span><span class="p">({</span>
+  <p class="component-description">picker是一个JS实现的类似select的组件，他可以代替原生的select组件，并且功能更加强大、样式更加统一。</p>
+
+  <p>picker 需要初始化才能使用，你可以在一个 <code>input </code> 元素上初始化picker，当用户点击input的时候会弹出picker的弹层</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">'picker'</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">"#picker"</span><span class="p">).</span><span class="nx">picker</span><span class="p">({</span>
+  <span class="na">toolbarTemplate</span><span class="p">:</span> <span class="s1">'&lt;header class="bar bar-nav"&gt;\
+  &lt;button class="button button-link pull-left"&gt;按钮&lt;/button&gt;\
+  &lt;button class="button button-link pull-right close-picker"&gt;确定&lt;/button&gt;\
+  &lt;h1 class="title"&gt;标题&lt;/h1&gt;\
+  &lt;/header&gt;'</span><span class="p">,</span>
+  <span class="na">cols</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">textAlign</span><span class="p">:</span> <span class="s1">'center'</span><span class="p">,</span>
+      <span class="na">values</span><span class="p">:</span> <span class="p">[</span><span class="s1">'iPhone 4'</span><span class="p">,</span> <span class="s1">'iPhone 4S'</span><span class="p">,</span> <span class="s1">'iPhone 5'</span><span class="p">,</span> <span class="s1">'iPhone 5S'</span><span class="p">,</span> <span class="s1">'iPhone 6'</span><span class="p">,</span> <span class="s1">'iPhone 6 Plus'</span><span class="p">,</span> <span class="s1">'iPad 2'</span><span class="p">,</span> <span class="s1">'iPad Retina'</span><span class="p">,</span> <span class="s1">'iPad Air'</span><span class="p">,</span> <span class="s1">'iPad mini'</span><span class="p">,</span> <span class="s1">'iPad mini 2'</span><span class="p">,</span> <span class="s1">'iPad mini 3'</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span></code></pre></div>
+
+  <h3>关闭picker</h3>
+
+  <p>在任何元素上加上一个 <code>.close-picker</code> 类，点击它就会关闭 picker。</p>
+  <p>你也可以通过调用 <code>$.closeModal(".picker-modal.modal-in")</code> 来关闭。</p>
+
+  <h3 class="component-title">picker参数</h3>
+
+  <p class="component-description">你可以通过设置 <code>toolbarTemplate</code> 参数来自定义工具栏模板。在 <code>cols</code> 参数中可以传入多列值。</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s2">"#picker-name"</span><span class="p">).</span><span class="nx">picker</span><span class="p">({</span>
+  <span class="na">toolbarTemplate</span><span class="p">:</span> <span class="s1">'&lt;header class="bar bar-nav"&gt;\
+  &lt;button class="button button-link pull-right close-picker"&gt;确定&lt;/button&gt;\
+  &lt;h1 class="title"&gt;请选择称呼&lt;/h1&gt;\
+  &lt;/header&gt;'</span><span class="p">,</span>
+  <span class="na">cols</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">textAlign</span><span class="p">:</span> <span class="s1">'center'</span><span class="p">,</span>
+      <span class="na">values</span><span class="p">:</span> <span class="p">[</span><span class="s1">'赵'</span><span class="p">,</span> <span class="s1">'钱'</span><span class="p">,</span> <span class="s1">'孙'</span><span class="p">,</span> <span class="s1">'李'</span><span class="p">,</span> <span class="s1">'周'</span><span class="p">,</span> <span class="s1">'吴'</span><span class="p">,</span> <span class="s1">'郑'</span><span class="p">,</span> <span class="s1">'王'</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">textAlign</span><span class="p">:</span> <span class="s1">'center'</span><span class="p">,</span>
+      <span class="na">values</span><span class="p">:</span> <span class="p">[</span><span class="s1">'杰伦'</span><span class="p">,</span> <span class="s1">'磊'</span><span class="p">,</span> <span class="s1">'明'</span><span class="p">,</span> <span class="s1">'小鹏'</span><span class="p">,</span> <span class="s1">'燕姿'</span><span class="p">,</span> <span class="s1">'菲菲'</span><span class="p">,</span> <span class="s1">'Baby'</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">textAlign</span><span class="p">:</span> <span class="s1">'center'</span><span class="p">,</span>
+      <span class="na">values</span><span class="p">:</span> <span class="p">[</span><span class="s1">'先生'</span><span class="p">,</span> <span class="s1">'小姐'</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
 <span class="p">});</span></code></pre></div>
+
 </article>
 
   <article class="component" id="list" data-url='list'>

@@ -18,16 +18,11 @@
           convertToPopover: true,
           onlyInPopover: false,
           toolbar: true,
-          toolbarCloseText: 'Done',
-          toolbarTemplate: 
-              '<div class="toolbar">' +
-                  '<div class="toolbar-inner">' +
-                      '<div class="left"></div>' +
-                      '<div class="right">' +
-                          '<a href="#" class="link close-picker">{{closeText}}</a>' +
-                      '</div>' +
-                  '</div>' +
-              '</div>'
+          toolbarCloseText: '确定',
+          toolbarTemplate: '<header class="bar bar-nav">\
+          <button class="button button-link pull-right close-picker">确定</button>\
+          <h1 class="title"></h1>\
+          </header>',
       };
       params = params || {};
       for (var def in defaults) {
@@ -606,8 +601,10 @@
 
   $.fn.picker = function(params) {
     return this.each(function() {
+      if(!this) return;
       var p = $.extend({input: this}, params);
       new Picker(p);
     });
   }
+
 }(Zepto);

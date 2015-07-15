@@ -842,15 +842,17 @@
       return p;
   };
   $.fn.calendar = function (params) {
-      var p = {};
-      if(this[0].tagName.toUpperCase() === "INPUT") {
-        p.input = this;
-      } else {
-        p.container = this;
-      }
-      return new Calendar(
-        $.extend(p, params)
-      );
+      return this.each(function() {
+        var $this = $(this);
+        if(!$this[0]) return;
+        var p = {};
+        if($this[0].tagName.toUpperCase() === "INPUT") {
+          p.input = $this;
+        } else {
+          p.container = $this;
+        }
+        new Calendar($.extend(p, params));
+      });
   };
 
   $.initCalendar = function(content) {
