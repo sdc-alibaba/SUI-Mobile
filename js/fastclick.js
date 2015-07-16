@@ -225,6 +225,13 @@
 	 * @returns {boolean} Returns true if the element needs a native click
 	 */
 	FastClick.prototype.needsClick = function(target) {
+
+    //修复bug: 如果父元素中有 label
+    var parent = target;
+    while(parent && !(parent.tagName.toUpperCase() === "BODY")) {
+      if(parent.tagName.toUpperCase() === "LABEL") return true;
+      parent = parent.parentNode;
+    }
 		switch (target.nodeName.toLowerCase()) {
 
 		// Don't send a synthetic click to disabled inputs (issue #62)
