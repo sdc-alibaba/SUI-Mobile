@@ -43,6 +43,7 @@ $("#picker-name").picker({
     {
       textAlign: 'center',
       values: ['赵', '钱', '孙', '李', '周', '吴', '郑', '王']
+      //如果你希望显示文案和实际值不同，可以在这里加一个displayValues: [.....]
     },
     {
       textAlign: 'center',
@@ -56,4 +57,31 @@ $("#picker-name").picker({
 });
 {% endhighlight %}
 
+</article>
+
+<article class="component" id="datetime-picker" data-url='datetime-picker'>
+  <h2 class="component-title">日期时间选择器</h2>
+
+  <p class="component-description">日期时间选择器是一个定制的picker，因此他的用法和picker完全一致。</p>
+  <p>datetime-picker 定制了 onChange 和 cols 参数，请不要设置这两个参数。</p>
+
+
+{% highlight html %}
+<input type="text" id='picker'/>
+<script>
+$("#picker").picker({
+  toolbarTemplate: '<header class="bar bar-nav">\
+  <button class="button button-link pull-left">按钮</button>\
+  <button class="button button-link pull-right close-picker">确定</button>\
+  <h1 class="title">标题</h1>\
+  </header>',
+  cols: [
+    {
+      textAlign: 'center',
+      values: ['iPhone 4', 'iPhone 4S', 'iPhone 5', 'iPhone 5S', 'iPhone 6', 'iPhone 6 Plus', 'iPad 2', 'iPad Retina', 'iPad Air', 'iPad mini', 'iPad mini 2', 'iPad mini 3']
+    }
+  ]
+});
+</script>
+{% endhighlight %}
 </article>

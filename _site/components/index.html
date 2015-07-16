@@ -2831,6 +2831,7 @@
     <span class="p">{</span>
       <span class="na">textAlign</span><span class="p">:</span> <span class="s1">'center'</span><span class="p">,</span>
       <span class="na">values</span><span class="p">:</span> <span class="p">[</span><span class="s1">'赵'</span><span class="p">,</span> <span class="s1">'钱'</span><span class="p">,</span> <span class="s1">'孙'</span><span class="p">,</span> <span class="s1">'李'</span><span class="p">,</span> <span class="s1">'周'</span><span class="p">,</span> <span class="s1">'吴'</span><span class="p">,</span> <span class="s1">'郑'</span><span class="p">,</span> <span class="s1">'王'</span><span class="p">]</span>
+      <span class="c1">//如果你希望显示文案和实际值不同，可以在这里加一个displayValues: [.....]</span>
     <span class="p">},</span>
     <span class="p">{</span>
       <span class="na">textAlign</span><span class="p">:</span> <span class="s1">'center'</span><span class="p">,</span>
@@ -2843,6 +2844,31 @@
   <span class="p">]</span>
 <span class="p">});</span></code></pre></div>
 
+</article>
+
+<article class="component" id="datetime-picker" data-url='datetime-picker'>
+  <h2 class="component-title">日期时间选择器</h2>
+
+  <p class="component-description">日期时间选择器是一个定制的picker，因此他的用法和picker完全一致。</p>
+  <p>datetime-picker 定制了 onChange 和 cols 参数，请不要设置这两个参数。</p>
+
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">'picker'</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">"#picker"</span><span class="p">).</span><span class="nx">picker</span><span class="p">({</span>
+  <span class="na">toolbarTemplate</span><span class="p">:</span> <span class="s1">'&lt;header class="bar bar-nav"&gt;\
+  &lt;button class="button button-link pull-left"&gt;按钮&lt;/button&gt;\
+  &lt;button class="button button-link pull-right close-picker"&gt;确定&lt;/button&gt;\
+  &lt;h1 class="title"&gt;标题&lt;/h1&gt;\
+  &lt;/header&gt;'</span><span class="p">,</span>
+  <span class="na">cols</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">textAlign</span><span class="p">:</span> <span class="s1">'center'</span><span class="p">,</span>
+      <span class="na">values</span><span class="p">:</span> <span class="p">[</span><span class="s1">'iPhone 4'</span><span class="p">,</span> <span class="s1">'iPhone 4S'</span><span class="p">,</span> <span class="s1">'iPhone 5'</span><span class="p">,</span> <span class="s1">'iPhone 5S'</span><span class="p">,</span> <span class="s1">'iPhone 6'</span><span class="p">,</span> <span class="s1">'iPhone 6 Plus'</span><span class="p">,</span> <span class="s1">'iPad 2'</span><span class="p">,</span> <span class="s1">'iPad Retina'</span><span class="p">,</span> <span class="s1">'iPad Air'</span><span class="p">,</span> <span class="s1">'iPad mini'</span><span class="p">,</span> <span class="s1">'iPad mini 2'</span><span class="p">,</span> <span class="s1">'iPad mini 3'</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span></code></pre></div>
 </article>
 
   <article class="component" id="list" data-url='list'>
