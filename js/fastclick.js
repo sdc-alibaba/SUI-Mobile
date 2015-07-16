@@ -228,7 +228,7 @@
 
     //修复bug: 如果父元素中有 label
     var parent = target;
-    while(parent && !(parent.tagName.toUpperCase() === "BODY")) {
+    while(parent && (parent.tagName.toUpperCase() !== "BODY")) {
       if(parent.tagName.toUpperCase() === "LABEL") return true;
       parent = parent.parentNode;
     }
