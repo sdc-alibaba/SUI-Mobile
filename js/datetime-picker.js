@@ -1,30 +1,41 @@
 /* global Zepto:true */
+/* jshint unused:false*/
 
 + function($) {
+  "use strict";
 
   var today = new Date();
 
   var getDays = function(max) {
-    var monthes = [];
+    var days = [];
     for(var i=1; i<= (max||31);i++) {
-      monthes.push(i < 10 ? "0"+i : i);
+      days.push(i < 10 ? "0"+i : i);
     }
-    return monthes;
-  }
+    return days;
+  };
 
   var getDaysByMonthAndYear = function(month, year) {
     var int_d = new Date(year, parseInt(month)+1-1, 1);
-    d = new Date(int_d - 1);
+    var d = new Date(int_d - 1);
     return getDays(d.getDate());
-  }
+  };
 
   var formatNumber = function (n) {
     return n < 10 ? "0" + n : n;
-  }
+  };
+
+  var initMonthes = ('01 02 03 04 05 06 07 08 09 10 11 12').split(' ');
+
+  var initYears = (function () {
+    var arr = [];
+    for (var i = 1950; i <= 2030; i++) { arr.push(i); }
+    return arr;
+  })();
+
 
   var defaults = {
 
-    rotateEffect: true,
+    rotateEffect: false,  //为了性能
 
     value: [today.getFullYear(), formatNumber(today.getMonth()), today.getDate(), today.getHours(), formatNumber(today.getMinutes())],
 
@@ -42,19 +53,15 @@
     cols: [
       // Years
       {
-        values: (function () {
-          var arr = [];
-          for (var i = 1950; i <= 2030; i++) { arr.push(i); }
-          return arr;
-        })(),
+        values: initYears
       },
       // Months
       {
-        values: ('01 02 03 04 05 06 07 08 09 10 11 12').split(' '),
+        values: initMonthes
       },
       // Days
       {
-        values: getDays(),
+        values: getDays()
       },
 
       // Space divider
@@ -84,10 +91,11 @@
         })(),
       }
     ]
-  }
+  };
    
   $.fn.datetimePicker = function(params) {
       var p = $.extend(defaults, params);
       $(this).picker(p);
-  }
+  };
+
 }(Zepto);

@@ -2844,6 +2844,44 @@
   <span class="p">]</span>
 <span class="p">});</span></code></pre></div>
 
+  <p>所有可用参数如下：</p>
+
+  <table>
+    <tr>
+      <th>参数名</th>
+      <th>默认值</th>
+      <th>说明</th>
+    </tr>
+    <tr>
+      <td>toolbarTemplate</td>
+      <td>
+        &lt;header class="bar bar-nav"&gt;
+          &lt;button class="button button-link pull-right close-picker"&gt;确定&lt;/button&gt;
+          &lt;h1 class="title"&gt;&lt;/h1&gt;
+        &lt;/header&gt;
+      </td>
+      <td>工具栏的模板，可以自己定义。</td>
+    </tr>
+
+    <tr>
+      <td>rotateEffect</td>
+      <td>false</td>
+      <td>是否启用3D效果，启用3D可能会影响性能</td>
+    </tr>
+    <tr>
+      <td>toolbar</td>
+      <td>true</td>
+      <td>是否显示工具栏</td>
+    </tr>
+    <tr>
+      <td>inputReadOnly</td>
+      <td>true</td>
+      <td>是否会在input上添加一个 readonly 属性</td>
+    </tr>
+
+  </table>
+
+
 </article>
 
 <article class="component" id="datetime-picker" data-url='datetime-picker'>
@@ -2855,19 +2893,12 @@
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">'picker'</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;script&gt;</span>
-<span class="nx">$</span><span class="p">(</span><span class="s2">"#picker"</span><span class="p">).</span><span class="nx">picker</span><span class="p">({</span>
-  <span class="na">toolbarTemplate</span><span class="p">:</span> <span class="s1">'&lt;header class="bar bar-nav"&gt;\
-  &lt;button class="button button-link pull-left"&gt;按钮&lt;/button&gt;\
-  &lt;button class="button button-link pull-right close-picker"&gt;确定&lt;/button&gt;\
-  &lt;h1 class="title"&gt;标题&lt;/h1&gt;\
-  &lt;/header&gt;'</span><span class="p">,</span>
-  <span class="na">cols</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="na">textAlign</span><span class="p">:</span> <span class="s1">'center'</span><span class="p">,</span>
-      <span class="na">values</span><span class="p">:</span> <span class="p">[</span><span class="s1">'iPhone 4'</span><span class="p">,</span> <span class="s1">'iPhone 4S'</span><span class="p">,</span> <span class="s1">'iPhone 5'</span><span class="p">,</span> <span class="s1">'iPhone 5S'</span><span class="p">,</span> <span class="s1">'iPhone 6'</span><span class="p">,</span> <span class="s1">'iPhone 6 Plus'</span><span class="p">,</span> <span class="s1">'iPad 2'</span><span class="p">,</span> <span class="s1">'iPad Retina'</span><span class="p">,</span> <span class="s1">'iPad Air'</span><span class="p">,</span> <span class="s1">'iPad mini'</span><span class="p">,</span> <span class="s1">'iPad mini 2'</span><span class="p">,</span> <span class="s1">'iPad mini 3'</span><span class="p">]</span>
-    <span class="p">}</span>
-  <span class="p">]</span>
-<span class="p">});</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s2">"#datetime-picker"</span><span class="p">).</span><span class="nx">datetimePicker</span><span class="p">({</span>
+    <span class="na">toolbarTemplate</span><span class="p">:</span> <span class="s1">'&lt;header class="bar bar-nav"&gt;\
+    &lt;button class="button button-link pull-right close-picker"&gt;确定&lt;/button&gt;\
+    &lt;h1 class="title"&gt;选择日期和时间&lt;/h1&gt;\
+    &lt;/header&gt;'</span>
+  <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span></code></pre></div>
 </article>
 

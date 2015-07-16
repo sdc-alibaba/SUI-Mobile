@@ -2,8 +2,10 @@
 ************   Picker   ************
 ======================================================*/
 /* global Zepto:true */
+/* jshint unused:false */
+/* jshint multistr:true */
 + function($) {
-
+  "use strict";
   var Picker = function (params) {
       var p = this;
       var defaults = {
@@ -605,6 +607,6 @@
       var p = $.extend({input: this}, params);
       new Picker(p);
     });
-  }
+  };
 
 }(Zepto);

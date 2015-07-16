@@ -1,4 +1,6 @@
 /* global Zepto:true */
+/* global WebKitCSSMatrix:true */
+
 (function($) {
      "use strict";
     ['width', 'height'].forEach(function(dimension) {

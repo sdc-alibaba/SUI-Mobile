@@ -57,6 +57,44 @@ $("#picker-name").picker({
 });
 {% endhighlight %}
 
+  <p>所有可用参数如下：</p>
+
+  <table>
+    <tr>
+      <th>参数名</th>
+      <th>默认值</th>
+      <th>说明</th>
+    </tr>
+    <tr>
+      <td>toolbarTemplate</td>
+      <td>
+        &lt;header class="bar bar-nav"&gt;
+          &lt;button class="button button-link pull-right close-picker"&gt;确定&lt;/button&gt;
+          &lt;h1 class="title"&gt;&lt;/h1&gt;
+        &lt;/header&gt;
+      </td>
+      <td>工具栏的模板，可以自己定义。</td>
+    </tr>
+
+    <tr>
+      <td>rotateEffect</td>
+      <td>false</td>
+      <td>是否启用3D效果，启用3D可能会影响性能</td>
+    </tr>
+    <tr>
+      <td>toolbar</td>
+      <td>true</td>
+      <td>是否显示工具栏</td>
+    </tr>
+    <tr>
+      <td>inputReadOnly</td>
+      <td>true</td>
+      <td>是否会在input上添加一个 readonly 属性</td>
+    </tr>
+
+  </table>
+
+
 </article>
 
 <article class="component" id="datetime-picker" data-url='datetime-picker'>
@@ -69,19 +107,12 @@ $("#picker-name").picker({
 {% highlight html %}
 <input type="text" id='picker'/>
 <script>
-$("#picker").picker({
-  toolbarTemplate: '<header class="bar bar-nav">\
-  <button class="button button-link pull-left">按钮</button>\
-  <button class="button button-link pull-right close-picker">确定</button>\
-  <h1 class="title">标题</h1>\
-  </header>',
-  cols: [
-    {
-      textAlign: 'center',
-      values: ['iPhone 4', 'iPhone 4S', 'iPhone 5', 'iPhone 5S', 'iPhone 6', 'iPhone 6 Plus', 'iPad 2', 'iPad Retina', 'iPad Air', 'iPad mini', 'iPad mini 2', 'iPad mini 3']
-    }
-  ]
-});
+  $("#datetime-picker").datetimePicker({
+    toolbarTemplate: '<header class="bar bar-nav">\
+    <button class="button button-link pull-right close-picker">确定</button>\
+    <h1 class="title">选择日期和时间</h1>\
+    </header>'
+  });
 </script>
 {% endhighlight %}
 </article>
