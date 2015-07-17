@@ -623,7 +623,7 @@
       }
     }
 
-    Object.keys($.extend(bars, inserts)).forEach(function (key) {
+    Object.keys($.extend({}, bars, inserts)).forEach(function (key) {
       var el = dom.querySelector(bars[key]);
       if (el) {
         el.parentNode.removeChild(el);
