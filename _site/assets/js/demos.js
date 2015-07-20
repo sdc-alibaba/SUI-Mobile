@@ -239,5 +239,9 @@ $(function () {
     });
   });
 
+  $(document).on("pageInit", "#page-city-picker", function(e, id, content) {
+    $("#city-picker").cityPicker({});
+  });
+
   $.init();
 });

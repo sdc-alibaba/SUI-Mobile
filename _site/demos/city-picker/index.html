@@ -26,11 +26,30 @@
   <body>
     <div class="page">
   <header class="bar bar-nav">
-    <h1 class='title'>push.js</h1>
+    <a class="button button-link button-nav pull-left" href="/demos" data-transition='slide-out'>
+      <span class="icon icon-left"></span>
+      返回
+    </a>
+    <h1 class='title'>省市区选择</h1>
   </header>
-  <div class="content">
+  <div class="content" id='page-city-picker'>
+    <div class="content-block-title">省市区</div>
     <div class="content-block">
-      <p><a href="/docs-demos/one" class="button button-fill button-danger" data-transition='slide-out'>返回到上一个页面</a></p>
+      <div class="list-block">
+        <ul>
+          <!-- Text inputs -->
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title label">省市区</div>
+                <div class="item-input">
+                  <input type="text" placeholder="" id='city-picker' />
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

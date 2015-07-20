@@ -82,6 +82,16 @@ module.exports = function(grunt) {
                   'js/photo-browser.js'
               ],
               dest: '<%= meta.distPath %>js/<%= pkg.name %>-extend.js'
+            },
+            cityPicker: {
+              options: {
+                  banner: '<%= banner %>'
+              },
+              src: [
+                  'js/city-data.js',
+                  'js/city-picker.js'
+              ],
+              dest: '<%= meta.distPath %>js/<%= pkg.name %>-city-picker.js'
             }
         },
 
@@ -222,6 +232,10 @@ module.exports = function(grunt) {
                 src: '<%= concat.extend.dest %>',
                 dest: '<%= meta.distPath %>js/<%= pkg.name %>-extend.min.js'
             },
+            cityPicker: {
+                src: '<%= concat.cityPicker.dest %>',
+                dest: '<%= meta.distPath %>js/<%= pkg.name %>-cityPicker.min.js'
+            },
             docs: {
                 src: [
                     '<%= meta.doclessetsPath %>js/docs.js',
@@ -247,6 +261,10 @@ module.exports = function(grunt) {
             js: {
                 files: '<%= meta.jsPath %>**/*.js',
                 tasks: ['dist-js', 'copy']
+            },
+            cityPicker: {
+                files: ['<%= meta.jsPath %>city-*.js'],
+                tasks: ['dist-js:cityPicker', 'copy']
             },
             css: {
                 files: '<%= meta.srcPath %>**/*.less',
