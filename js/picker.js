@@ -193,12 +193,20 @@
               if (activeIndex >= col.items.length) activeIndex = col.items.length - 1;
               var previousActiveIndex = col.activeIndex;
               col.activeIndex = activeIndex;
+              /*
               col.wrapper.find('.picker-selected, .picker-after-selected, .picker-before-selected').removeClass('picker-selected picker-after-selected picker-before-selected');
 
               col.items.transition(transition);
               var selectedItem = col.items.eq(activeIndex).addClass('picker-selected').transform('');
               var prevItems = selectedItem.prevAll().addClass('picker-before-selected');
               var nextItems = selectedItem.nextAll().addClass('picker-after-selected');
+              */
+              //去掉 .picker-after-selected, .picker-before-selected 以提高性能
+              col.wrapper.find('.picker-selected').removeClass('picker-selected');
+              if (p.params.rotateEffect) {
+                col.items.transition(transition);
+              }
+              var selectedItem = col.items.eq(activeIndex).addClass('picker-selected').transform('');
 
               if (valueCallbacks || typeof valueCallbacks === 'undefined') {
                   // Update values
