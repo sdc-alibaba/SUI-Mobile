@@ -94,8 +94,11 @@
   };
    
   $.fn.datetimePicker = function(params) {
+    return this.each(function() {
+      if(!this) return;
       var p = $.extend(defaults, params);
       $(this).picker(p);
+    });
   };
 
 }(Zepto);

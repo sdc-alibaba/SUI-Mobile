@@ -613,7 +613,7 @@
     return this.each(function() {
       if(!this) return;
       var p = $.extend({input: this}, params);
-      new Picker(p);
+      var picker = new Picker(p);
     });
   };
 

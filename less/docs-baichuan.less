@@ -174,8 +174,8 @@
   }
 
   .footer-second {
-    background: #3f4a53;
-    color: white;
+    //background: #3f4a53;
+    background: #efefef;
     overflow: hidden;
     padding: 50px;
     text-align: center;
@@ -205,22 +205,23 @@
   }
 
   .design {
-    padding: 100px 0;
-    text-align: center;
+    padding: 20px 0 70px 0;
+    text-align: left;
+    width: 960px;
+    margin: auto;
 
     ul {
       margin: 0;
-      margin-top: 50px;
       padding: 0;
       list-style: none;
-      margin-left: -90px;
     }
 
     li {
       border: 2px solid #ccc;
       display: inline-block;
       position: relative;
-      margin-left: 90px;
+      text-align: center;
+
     }
 
     a {
@@ -258,7 +259,7 @@
     }
 
     h2 {
-      font-size: 30px;
+      font-size: 20px;
       font-weight: normal;
     }
     p {
@@ -272,6 +273,87 @@
         border-color: @blue;
         color: @blue;
       }
+    }
+  }
+
+  .share {
+    padding: 40px 0 20px 0;
+    width: 960px;
+    margin: auto;
+
+    h2 {
+      margin: 20px 0;
+      font-size: 20px;
+    }
+
+    .img {
+      width: 224px;
+      height: 127px;
+      display: block;
+      border: 1px solid #ccc;
+      position: relative;
+    }
+
+    .overlay {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: none;
+      background: rgba(44, 120, 255, .8);
+
+      .download {
+        width: 100px;
+        height: 38px;
+        line-height: 38px;
+        text-align: center;
+        border: 1px solid white;
+        color: white;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -50px;
+        margin-top: -16px;
+        font-size: 16px;
+      }
+    }
+
+    .img:hover .overlay {
+      display: block;
+    }
+
+    img {
+      display: block;
+    }
+
+    ul {
+      font-size: 14px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    li {
+      text-align: center;
+      float: left;
+      width: 224px;
+      overflow: hidden;
+      + li {
+        margin-left: 21px;
+      }
+    }
+
+    h4 {
+      font-size: 14px;
+      margin-top: 10px;
+      margin-bottom: 0;
+      width: 300px;
+      margin-left: -38px;
+    }
+    p {
+      margin: 0;
     }
   }
 

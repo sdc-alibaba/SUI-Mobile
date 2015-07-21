@@ -101,6 +101,7 @@
   <li><a href="#actions" data-ignore="push">操作表 <span class='new'>新</span></a></li>
   <li><a href="#picker" data-ignore="push">picker <span class='beta'>测试</span></a></li>
   <li><a href="#datetime-picker" data-ignore="push">日期时间 <span class='beta'>测试</span></a></li>
+  <li><a href="#city-picker" data-ignore="push">省市区 <span class='beta'>测试</span></a></li>
   <li><a href="#list" data-ignore="push">列表</a></li>
   <li><a href="#cards" data-ignore="push">卡片</a></li>
   <li><a href="#scroller" data-ignore="push">滚动条</a></li>
@@ -2795,7 +2796,6 @@
   <article class="component" id="picker" data-url='picker'>
   <h2 class="component-title">picker</h2>
 
-  <p>因为性能问题，picker在安卓低端机型上非常卡，暂时不建议使用。后续会进行优化。</p>
   <p class="component-description">picker是一个JS实现的类似select的组件，他可以代替原生的select组件，并且功能更加强大、样式更加统一。</p>
 
   <p>picker 需要初始化才能使用，你可以在一个 <code>input </code> 元素上初始化picker，当用户点击input的时候会弹出picker的弹层</p>
@@ -2892,12 +2892,11 @@
 <article class="component" id="datetime-picker" data-url='datetime-picker'>
   <h2 class="component-title">日期时间选择器</h2>
 
-  <p>因为性能问题，picker在安卓低端机型上非常卡，暂时不建议使用。后续会进行优化。</p>
   <p class="component-description">日期时间选择器是一个定制的picker，因此他的用法和picker完全一致。</p>
   <p>datetime-picker 定制了 onChange 和 cols 参数，请不要设置这两个参数。</p>
 
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">'picker'</span><span class="nt">/&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">'datetime-picker'</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;script&gt;</span>
   <span class="nx">$</span><span class="p">(</span><span class="s2">"#datetime-picker"</span><span class="p">).</span><span class="nx">datetimePicker</span><span class="p">({</span>
     <span class="na">toolbarTemplate</span><span class="p">:</span> <span class="s1">'&lt;header class="bar bar-nav"&gt;\
@@ -2908,7 +2907,25 @@
 <span class="nt">&lt;/script&gt;</span></code></pre></div>
 
   <p>如果你只想选择日期，请使用 <a href='#calendar' data-ignore='push'>日历</a></p>
-  <p>基于 picker 实现的省市区选择组件即将在下一个版本推出，敬请期待。</p>
+</article>
+
+<article class="component" id="city-picker" data-url='city-picker'>
+  <h2 class="component-title">省市区选择器</h2>
+
+  <p class="component-description">省市区选择器也是一个定制的picker，因此他的用法和picker完全一致。</p>
+  <p>同样，在使用省市区组件的时候你不能定制 <code>onChange</code> 和 <code>cols</code> 参数。</p>
+
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">'city-picker'</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s2">"#city-picker"</span><span class="p">).</span><span class="nx">cityPicker</span><span class="p">({</span>
+    <span class="na">toolbarTemplate</span><span class="p">:</span> <span class="s1">'&lt;header class="bar bar-nav"&gt;\
+    &lt;button class="button button-link pull-right close-picker"&gt;确定&lt;/button&gt;\
+    &lt;h1 class="title"&gt;选择收货地址&lt;/h1&gt;\
+    &lt;/header&gt;'</span>
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span></code></pre></div>
+
 </article>
 
   <article class="component" id="list" data-url='list'>

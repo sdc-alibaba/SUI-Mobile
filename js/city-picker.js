@@ -49,7 +49,7 @@
   var currentProvince = provinces[0];
   var currentCity = initCities[0];
   var currentDistrict = initDistricts[0];
-
+  
   var defaults = {
 
     cssClass: "city-picker",
@@ -91,8 +91,24 @@
   };
    
   $.fn.cityPicker = function(params) {
+    return this.each(function() {
+      if(!this) return;
       var p = $.extend(defaults, params);
+      //计算value
+      var val = $(this).val();
+      if(val) {
+        p.value = val.split(" ");
+      }
+      if(p.value[0]) {
+        p.cols[1].values = getCities(p.value[0]);
+      }
+      if(p.value[1]) {
+        p.cols[2].values = getDistricts(p.value[0], p.value[1]);
+      } else {
+        p.cols[2].values = getDistricts(p.value[0], p.cols[1].values[0]);
+      }
       $(this).picker(p);
+    });
   };
 
 }(Zepto);

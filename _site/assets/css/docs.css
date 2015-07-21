@@ -1383,9 +1383,8 @@ table td {
   padding: 50px;
   overflow: hidden;
   font-size: 18px;
-  color: white;
   text-align: center;
-  background: #3f4a53;
+  background: #efefef;
 }
 .page-baichuan .footer-second .btn {
   display: inline-block;
@@ -1407,20 +1406,20 @@ table td {
   opacity: .8;
 }
 .page-baichuan .design {
-  padding: 100px 0;
-  text-align: center;
+  width: 960px;
+  padding: 20px 0 70px 0;
+  margin: auto;
+  text-align: left;
 }
 .page-baichuan .design ul {
   padding: 0;
   margin: 0;
-  margin-top: 50px;
-  margin-left: -90px;
   list-style: none;
 }
 .page-baichuan .design li {
   position: relative;
   display: inline-block;
-  margin-left: 90px;
+  text-align: center;
   border: 2px solid #ccc;
 }
 .page-baichuan .design a {
@@ -1454,7 +1453,7 @@ table td {
   font-weight: normal;
 }
 .page-baichuan .design h2 {
-  font-size: 30px;
+  font-size: 20px;
   font-weight: normal;
 }
 .page-baichuan .design p {
@@ -1467,6 +1466,77 @@ table td {
 .page-baichuan .design li:hover .icon {
   color: #0089cd;
   border-color: #0089cd;
+}
+.page-baichuan .share {
+  width: 960px;
+  padding: 40px 0 20px 0;
+  margin: auto;
+}
+.page-baichuan .share h2 {
+  margin: 20px 0;
+  font-size: 20px;
+}
+.page-baichuan .share .img {
+  position: relative;
+  display: block;
+  width: 224px;
+  height: 127px;
+  border: 1px solid #ccc;
+}
+.page-baichuan .share .overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  background: rgba(44, 120, 255, .8);
+}
+.page-baichuan .share .overlay .download {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 38px;
+  margin-top: -16px;
+  margin-left: -50px;
+  font-size: 16px;
+  line-height: 38px;
+  color: white;
+  text-align: center;
+  border: 1px solid white;
+}
+.page-baichuan .share .img:hover .overlay {
+  display: block;
+}
+.page-baichuan .share img {
+  display: block;
+}
+.page-baichuan .share ul {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-size: 14px;
+  list-style: none;
+}
+.page-baichuan .share li {
+  float: left;
+  width: 224px;
+  overflow: hidden;
+  text-align: center;
+}
+.page-baichuan .share li + li {
+  margin-left: 21px;
+}
+.page-baichuan .share h4 {
+  width: 300px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  margin-left: -38px;
+  font-size: 14px;
+}
+.page-baichuan .share p {
+  margin: 0;
 }
 .page-baichuan .footer {
   padding: 30px 0;
