@@ -61,16 +61,19 @@
       if(newProvince !== currentProvince) {
         var newCities = getCities(newProvince);
         var newCity = newCities[0];
+        var newDistricts = getDistricts(newProvince, newCity)
         picker.cols[1].replaceValues(newCities);
-        picker.cols[2].replaceValues(getDistricts(newProvince, newCity));
+        picker.cols[2].replaceValues(newDistricts);
         currentProvince = newProvince;
         currentCity = newCity;
+        picker.updateValue();
         return;
       }
       newCity = picker.cols[1].value;
       if(newCity !== currentCity) {
         picker.cols[2].replaceValues(getDistricts(newProvince, newCity));
         currentCity = newCity;
+        picker.updateValue();
       }
     },
 
@@ -98,14 +101,14 @@
       var val = $(this).val();
       if(val) {
         p.value = val.split(" ");
-      }
-      if(p.value[0]) {
-        p.cols[1].values = getCities(p.value[0]);
-      }
-      if(p.value[1]) {
-        p.cols[2].values = getDistricts(p.value[0], p.value[1]);
-      } else {
-        p.cols[2].values = getDistricts(p.value[0], p.cols[1].values[0]);
+        if(p.value[0]) {
+          p.cols[1].values = getCities(p.value[0]);
+        }
+        if(p.value[1]) {
+          p.cols[2].values = getDistricts(p.value[0], p.value[1]);
+        } else {
+          p.cols[2].values = getDistricts(p.value[0], p.cols[1].values[0]);
+        }
       }
       $(this).picker(p);
     });
