@@ -234,7 +234,7 @@ module.exports = function(grunt) {
             },
             cityPicker: {
                 src: '<%= concat.cityPicker.dest %>',
-                dest: '<%= meta.distPath %>js/<%= pkg.name %>-cityPicker.min.js'
+                dest: '<%= meta.distPath %>js/<%= pkg.name %>-city-picker.min.js'
             },
             docs: {
                 src: [
