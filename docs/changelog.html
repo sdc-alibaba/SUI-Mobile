@@ -8,7 +8,7 @@ title: 更新日志 &middot; SUI Mobile
   <div class="container">
     <div class="docs-sub-content">
       <h2 class="page-title">更新日志</h2>
-      <p class="page-description">SUI Mobile 采用增量更新，每次发布到线上的版本永远不会再变化。这里记录了每一个版本更新的内容。</p>
+      <p class='page-description'>当前最新版本为 V{{ site.version }}</p>
     </div>
     {% include ad.html %}
   </div>
@@ -25,14 +25,16 @@ title: 更新日志 &middot; SUI Mobile
           <li>次版本号：当做了向下兼容的功能性新增</li>
           <li>修订号：当做了向下兼容的问题修正</li>
         </ul>
-        <p>CND 地址中的三位数字就表示当前的版本号。比如你引用 <code>g.alicdn.com/sui-mobile/sm/0.0.5/css/sm.min.css</code>，那么版本号就是 <code>0.0.5</code>。</p>
+        <p>CND 地址中的三位数字就表示当前的版本号。比如你引用 <code>g.alicdn.com/sui-mobile/sm/{{ site.version }}/css/sm.min.css</code>，那么版本号就是 <code>{{ site.version }}</code>。</p>
+        <p>SUI Mobile 采用增量更新，每次发布到线上的版本永远不会再变化。这里记录了每一个版本更新的内容。</p>
 
         <h2>更新日志</h2>
 
         <h3>V0.3.1</h3>
         <ul>
           <li>优化了 <a href='/components/#picker' data-ignore='push'>picker</a> 在安卓机器上的性能问题</li>
-          <li>增加了一个新的可选的 <a href='/components/#city-picker' data-ignore='push'>省市区选择组件</a></li>
+          <li>增加了一个新的可选的 <a href='/extends/#city-picker' data-ignore='push'>省市区选择组件</a></li>
+          <li>优化滚动性能：从 v0.3.1开始 <a href='/components/#scroller' data-ignore='push'>滚动条</a> 默认设置为 <code>native</code> 模式，以解决auto模式下JS滚动条的性能问题。</li>
         </ul>
 
         <h3>V0.3.0</h3>

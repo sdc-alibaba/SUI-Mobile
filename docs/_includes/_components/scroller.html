@@ -1,11 +1,9 @@
 <article class="component active " id="scroller">
     <h2 class="component-title">滚动条</h2>
-    <p class="component-description">在auto的模式下对于版本号小于4.4.0的Android 版本 和 版本号小于6.0.0的ios使用大名鼎鼎的iscroll.js作为js滚动的引擎。当然也可以通过配置来决定全部使用js滚动或者native的滚动。</p>
+    <p>因为部分低版本安卓机型上，如果一个容器通过 <code>position: absolute;</code> 或者 <code>transform: translate3d(x,x,x);</code> 定位，那么在滚动的时候有可能会出现闪烁问题。</p>
+    <p>为了解决这种bug，我们实现了原生滚动和JS滚动条两种模式，并且可以自由切换。从 v0.3.1 版本开始，默认的滚动条类型就是 "native" ，即默认使用系统原生滚动条。</p>
     <p class="component-description">
-        js的滚动条的事件和zepto接口（scrollTop,scrollLeft）保持和native的一样，唯一不同的是js的滚动条需要手动初始化和当滚动容器高度发生变化时需要手动调用 <code>$.refreshScroller()</code>。
-    </p>
-    <p class="component-description">
-      为了保证页面在任何滚动条模式下都能使用，强烈建议在任何导致页面高度变化的操作之后都要执行一次 <code>$.refreshScroller()</code> 操作。否则在js滚动条模式下可能会导致页面无法滚动。
+      为了保证页面在任何滚动条模式下都能使用，强烈建议在任何导致页面高度变化的操作之后都要执行一次 <code>$.refreshScroller()</code> 操作。否则在js滚动条模式下可能会导致页面没有重现计算高度而无法滚动。
     </p>
     <div class="component-example component-example-fullbleed">
     </div>
@@ -56,10 +54,10 @@
         </div>
     </div>
     {% endhighlight %}
-    <p><code>js</code> 模式是为了解决一些原生滚动条下很难解决的问题。如果你的页面内容比较简单，没有用到幻灯片、滑动删除等复杂的组件，完全可以尝试 <code>native</code> 模式。</p>
+    <p><code>js</code> 模式是为了解决一些原生滚动条下很难解决的问题。如果你的页面内容比较简单，没有用到幻灯片、滑动删除等复杂的组件，完全不需要使用 <code>js</code> 模式。并且JS模式滚动性能是比原生滚动条差的。</p>
     <h3 class="component-title">滚动条初始化</h3>
     <p class="component-description">
-        初始化方法：
+        一般情况下你不需要自行初始化滚动条，因为 <code>$.init()</code>方法会自动初始化滚动条。如果你希望自行初始化，可以这样：
     </p>
     {% highlight js %} 
 $(function() {
@@ -106,7 +104,7 @@ $(function() {
 $(function() {
     $('.content').scrollTop(); //==> number
     $('.content').scrollTop(number); // ==>self
-     $('.content').scrollLeft(); //==> number
+    $('.content').scrollLeft(); //==> number
     $('.content').scrollLeft(number); // ==>self
 });   
     {% endhighlight %}

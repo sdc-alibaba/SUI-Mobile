@@ -27,7 +27,7 @@ $("#picker").picker({
   <h3>关闭picker</h3>
 
   <p>在任何元素上加上一个 <code>.close-picker</code> 类，点击它就会关闭 picker。</p>
-  <p>你也可以通过调用 <code>$.closeModal(".picker-modal.modal-in")</code> 来关闭。</p>
+  <p>你也可以通过调用 <code>$(".picker").picker("close")</code> 或者 <code>$.closeModal(".picker-modal.modal-in")</code> 来关闭。</p>
 
   <h3 class="component-title">picker参数</h3>
 
@@ -91,11 +91,50 @@ $("#picker-name").picker({
       <td>true</td>
       <td>是否会在input上添加一个 readonly 属性</td>
     </tr>
+    <tr>
+      <td>cssClass</td>
+      <td>undefined</td>
+      <td>为 picker 容器增加额外的类，可以用来自定义样式</td>
+    </tr>
 
   </table>
 
-  <p>因为性能问题，picker在安卓低端机型上非常卡，暂时不建议使用。后续会进行优化。</p>
+  <h3 class="component-title">picker方法</h3>
 
+  <p class="component-description">你可以通过 <code>$(".picker").picker("method", args1, args2...)</code> 的方式来调用相关的方法。</p>
+
+{% highlight js %}
+$("#picker-name").picker("open");
+$("#picker-name").picker("close");
+$("#picker-name").picker("setValue", ["2012", "12", "12"]);
+{% endhighlight %}
+
+  <p>所有可用方法如下：</p>
+
+  <table>
+    <tr>
+      <th>方法名</th>
+      <th>参数说明</th>
+      <th>方法说明</th>
+    </tr>
+    <tr>
+      <td>open</td>
+      <td>无</td>
+      <td>打开picker</td>
+    </tr>
+
+    <tr>
+      <td>close</td>
+      <td>无</td>
+      <td>关闭picker</td>
+    </tr>
+    <tr>
+      <td>setValue</td>
+      <td>一个字符串数组，其中每个字符串对应每一列</td>
+      <td>设置值</td>
+    </tr>
+
+  </table>
 </article>
 
 <article class="component" id="datetime-picker" data-url='datetime-picker'>
@@ -103,7 +142,6 @@ $("#picker-name").picker({
 
   <p class="component-description">日期时间选择器是一个定制的picker，因此他的用法和picker完全一致。</p>
   <p>datetime-picker 定制了 onChange 和 cols 参数，请不要设置这两个参数。</p>
-
 
 {% highlight html %}
 <input type="text" id='datetime-picker'/>
@@ -120,23 +158,3 @@ $("#picker-name").picker({
   <p>如果你只想选择日期，请使用 <a href='#calendar' data-ignore='push'>日历</a></p>
 </article>
 
-<article class="component" id="city-picker" data-url='city-picker'>
-  <h2 class="component-title">省市区选择器</h2>
-
-  <p class="component-description">省市区选择器也是一个定制的picker，因此他的用法和picker完全一致。</p>
-  <p>同样，在使用省市区组件的时候你不能定制 <code>onChange</code> 和 <code>cols</code> 参数。</p>
-
-
-{% highlight html %}
-<input type="text" id='city-picker'/>
-<script>
-  $("#city-picker").cityPicker({
-    toolbarTemplate: '<header class="bar bar-nav">\
-    <button class="button button-link pull-right close-picker">确定</button>\
-    <h1 class="title">选择收货地址</h1>\
-    </header>'
-  });
-</script>
-{% endhighlight %}
-
-</article>

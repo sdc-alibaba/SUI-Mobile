@@ -4,8 +4,8 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>拓展组件 &middot; SUI Mobile</title>
-<meta name="description" content="Ratchet: Build mobile apps with simple HTML, CSS, and JS components.">
-<meta name="author" content="Connor Sears">
+<meta name="description" content="MSUI: Build mobile apps with simple HTML, CSS, and JS components.">
+<meta name="author" content="任行">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <link rel="icon" href="">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -70,7 +70,7 @@
   <div class="container">
     <div class="docs-sub-content">
       <h2 class="page-title">拓展组件</h2>
-      <p class="page-description">使用这里的组件，你需要额外引入 <code>sm-extend.js</code> 和 <code>sm-extend.css</code>，请参考 <a href="/getting-started" data-ignore='push'>入门教程</a></p>
+      <p class="page-description">拓展组件是一些不常用的组件，使用这里的组件，你需要额外引入JS和CSS，具体请参见每一个组件的说明。</p>
     </div>
     
   </div>
@@ -82,6 +82,7 @@
     <div class="docs-side-menu">
   <li><a href="#swiper" data-ignore="push">幻灯片</a></li>
   <li><a href="#browser" data-ignore="push">图片浏览器</a></li>
+  <li><a href="#city-picker" data-ignore="push">省市区 <span class='new'>新</span></a></li>
 </div>
 
     <div class="device-column column pull-right">
@@ -101,8 +102,13 @@
       <!-- Bars -->
       <article class="component active" id="swiper">
   <h2 class="component-title">幻灯片</h2>
-  <p class="component-description">幻灯片</p>
+  <p class="component-description">使用幻灯片组件，你需要在 <code>sm.js</code> 和 <code>sm.css</code> 之后额外引入如下两个文件:</p>
 
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"//g.alicdn.com/sui-mobile/sm/0.3.1/css/sm-extend.min.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span> <span class="na">src=</span><span class="s">'//g.alicdn.com/sui-mobile/sm/0.3.1/js/sm-extend.min.js'</span> <span class="na">charset=</span><span class="s">'utf-8'</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
+
+  <p>幻灯片需要你手动初始化。</p>
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
       <h1 class="title">幻灯片</h1>
@@ -143,7 +149,11 @@
 
       <article class="component" id="browser" data-url='photo-browser'>
   <h2 class="component-title">图片浏览器</h2>
-  <p class="component-description">图片浏览器</p>
+
+  <p class="component-description">使用图片浏览器，你需要在 <code>sm.js</code> 和 <code>sm.css</code> 之后额外引入如下两个文件:</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"//g.alicdn.com/sui-mobile/sm/0.3.1/css/sm-extend.min.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span> <span class="na">src=</span><span class="s">'//g.alicdn.com/sui-mobile/sm/0.3.1/js/sm-extend.min.js'</span> <span class="na">charset=</span><span class="s">'utf-8'</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
 
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
@@ -320,6 +330,35 @@
     <span class="nx">myPhotoBrowserVideo</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
   <span class="p">});</span>
 <span class="p">})</span></code></pre></div>
+</article>
+
+      <article class="component" id="city-picker" data-url='city-picker'>
+  <h2 class="component-title">省市区选择器</h2>
+
+  <p class="component-description">使用省市区选择器，你需要在 <code>sm.js</code> 和 <code>sm.css</code> 之后额外引入如下两个文件:</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"//g.alicdn.com/sui-mobile/sm/0.3.1/css/sm-city-picker.min.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span> <span class="na">src=</span><span class="s">'//g.alicdn.com/sui-mobile/sm/0.3.1/js/sm-city-picker.min.js'</span> <span class="na">charset=</span><span class="s">'utf-8'</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
+
+
+  <p class="component-description">省市区选择器也是一个定制的picker，因此他的用法和picker完全一致，请参阅 <a href='/components#picker' data-ignore="push">picker文档</a>。</p>
+  <p>同样，在使用省市区组件的时候你不能定制 <code>onChange</code> 和 <code>cols</code> 参数。</p>
+
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">'city-picker'</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s2">"#city-picker"</span><span class="p">).</span><span class="nx">cityPicker</span><span class="p">({</span>
+    <span class="na">toolbarTemplate</span><span class="p">:</span> <span class="s1">'&lt;header class="bar bar-nav"&gt;\
+    &lt;button class="button button-link pull-right close-picker"&gt;确定&lt;/button&gt;\
+    &lt;h1 class="title"&gt;选择收货地址&lt;/h1&gt;\
+    &lt;/header&gt;'</span>
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span></code></pre></div>
+
+<p>如果你需要设置默认值，直接通过 input 的 <code>value</code> 属性来设置:</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">'city-picker'</span> <span class="na">value=</span><span class="s">"浙江 杭州 拱墅区"</span> <span class="nt">/&gt;</span></code></pre></div>
+
 </article>
 
       <!-- Footer -->

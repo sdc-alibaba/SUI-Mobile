@@ -98,7 +98,7 @@
     };
     Scroller.prototype = {
         _defaults: {
-            type: 'auto',
+            type: 'native',
         },
         _bindEventToDomWhenJs: function() {
             //"scrollStart", //the scroll started.

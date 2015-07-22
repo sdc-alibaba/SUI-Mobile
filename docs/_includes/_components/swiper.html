@@ -1,7 +1,14 @@
 <article class="component active" id="swiper">
   <h2 class="component-title">幻灯片</h2>
-  <p class="component-description">幻灯片</p>
+  <p class="component-description">使用幻灯片组件，你需要在 <code>sm.js</code> 和 <code>sm.css</code> 之后额外引入如下两个文件:</p>
 
+
+{% highlight html %}
+<link rel="stylesheet" href="//g.alicdn.com/sui-mobile/sm/{{ site.version }}/css/sm-extend.min.css">
+<script type='text/javascript' src='//g.alicdn.com/sui-mobile/sm/{{ site.version }}/js/sm-extend.min.js' charset='utf-8'></script>
+{% endhighlight %}
+
+  <p>幻灯片需要你手动初始化。</p>
   <div class="component-example component-example-fullbleed">
     <header class="bar bar-nav">
       <h1 class="title">幻灯片</h1>

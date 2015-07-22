@@ -239,24 +239,7 @@ label.label-checkbox {
         }
     }
 }
-label.label-radio {
-    cursor: pointer;
-    input[type="checkbox"], input[type="radio"] {
-        display: none;
-        ~ .item-inner {
-            padding-right: 1.75rem;
-        }
-        &:checked ~ .item-inner{
-            background: no-repeat center;
-            .encoded-svg-background("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 10'><polygon fill='#007aff' points='11.6,0 4.4,7.2 1.4,4.2 0,5.6 4.4,10 4.4,10 4.4,10 13,1.4 '/></svg>");
-            background-position: 90% center;
-            background-position: ~"-webkit-calc(100% - 0.75rem)" center;
-            background-position: ~"calc(100% - 0.75rem)" center;
-            background-size: 0.65rem 0.5rem;
-        }
-    }
-}
-label.label-checkbox, label.label-radio {
+label.label-checkbox {
     transition-duration: 300ms;
     html:not(.watch-active-state) &:active, &.active-state {
         transition: 0ms;

@@ -1,0 +1,35 @@
+<article class="component" id="city-picker" data-url='city-picker'>
+  <h2 class="component-title">省市区选择器</h2>
+
+  <p class="component-description">使用省市区选择器，你需要在 <code>sm.js</code> 和 <code>sm.css</code> 之后额外引入如下两个文件:</p>
+
+{% highlight html %}
+<link rel="stylesheet" href="//g.alicdn.com/sui-mobile/sm/{{ site.version }}/css/sm-city-picker.min.css">
+<script type='text/javascript' src='//g.alicdn.com/sui-mobile/sm/{{ site.version }}/js/sm-city-picker.min.js' charset='utf-8'></script>
+{% endhighlight %}
+
+
+  <p class="component-description">省市区选择器也是一个定制的picker，因此他的用法和picker完全一致，请参阅 <a href='/components#picker' data-ignore="push">picker文档</a>。</p>
+  <p>同样，在使用省市区组件的时候你不能定制 <code>onChange</code> 和 <code>cols</code> 参数。</p>
+
+
+{% highlight html %}
+<input type="text" id='city-picker'/>
+<script>
+  $("#city-picker").cityPicker({
+    toolbarTemplate: '<header class="bar bar-nav">\
+    <button class="button button-link pull-right close-picker">确定</button>\
+    <h1 class="title">选择收货地址</h1>\
+    </header>'
+  });
+</script>
+
+{% endhighlight %}
+
+<p>如果你需要设置默认值，直接通过 input 的 <code>value</code> 属性来设置:</p>
+
+{% highlight html %}
+<input type="text" id='city-picker' value="浙江 杭州 拱墅区" />
+{% endhighlight %}
+
+</article>

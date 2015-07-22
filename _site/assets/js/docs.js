@@ -195,10 +195,15 @@ $(function () {
           }
         }
         if (!contentSectionItem.hasClass('informational')) {
-          var url = contentSectionItem.data("url");
-          if(url) {
+          if(contentSectionItem.data("url")) {
+            var url = "/docs-demos/"+contentSectionItem.data("url");
             var $window = $("#iwindow");
-            $window.html("<iframe src='/docs-demos/"+url+"' width='320' height='569' frameBorder='0'></iframe>");
+            var iframe = $window.find("iframe")[0]
+            if(iframe && iframe.src.indexOf(url) !== -1) {
+              //已经是了
+            } else {
+              $window.html("<iframe src='" + url +"' width='320' height='569' frameBorder='0'></iframe>");
+            }
           } else {
             updateContent(contentSectionItem.find('.component-example+.highlight .language-html').text());
           }

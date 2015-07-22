@@ -610,11 +610,20 @@
   });
 
   $.fn.picker = function(params) {
+    var args = arguments;
     return this.each(function() {
       if(!this) return;
-      var p = $.extend({input: this}, params);
-      var picker = new Picker(p);
+      var $this = $(this);
+      
+      var picker = $this.data("picker");
+      if(!picker) {
+        var p = $.extend({input: this}, params);
+        picker = new Picker(p);
+        $this.data("picker", picker);
+      }
+      if(typeof params === typeof "a") {
+        picker[params].apply(picker, Array.prototype.slice.call(args, 1));
+      }
     });
   };
-
 }(Zepto);
