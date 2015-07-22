@@ -67,7 +67,7 @@ a {
 // Hack to force all relatively and absolutely positioned elements still render while scrolling
 // Note: This is a bug for "-webkit-overflow-scrolling: touch"
 .content > * {
-  transform: translateZ(0);
+  //transform: translateZ(0); //这一行会导致三星 S4 android 4.2 无法滚动
 }
 
 // Pad top/bottom of content so it doesn't hide behind bars.

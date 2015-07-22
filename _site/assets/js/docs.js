@@ -198,7 +198,7 @@ $(function () {
           if(contentSectionItem.data("url")) {
             var url = "/docs-demos/"+contentSectionItem.data("url");
             var $window = $("#iwindow");
-            var iframe = $window.find("iframe")[0]
+            var iframe = $window.find("iframe")[0];
             if(iframe && iframe.src.indexOf(url) !== -1) {
               //已经是了
             } else {

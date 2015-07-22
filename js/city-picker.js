@@ -14,30 +14,32 @@
     }
     if(result.length) return result;
     return [""];
-  }
+  };
+
   var sub = function(data) {
     if(!data.sub) return [""];
     return format(data.sub);
-  }
+  };
 
   var getCities = function(d) {
     for(var i=0;i< raw.length;i++) {
-      if(raw[i].name == d) return sub(raw[i]);
+      if(raw[i].name === d) return sub(raw[i]);
     }
     return [""];
-  }
+  };
+
   var getDistricts = function(p, c) {
     for(var i=0;i< raw.length;i++) {
-      if(raw[i].name == p) {
+      if(raw[i].name === p) {
         for(var j=0;j< raw[i].sub.length;j++) {
-          if(raw[i].sub[j].name == c) {
+          if(raw[i].sub[j].name === c) {
             return sub(raw[i].sub[j]);
           }
         }
       }
     }
     return [""];
-  }
+  };
 
   var raw = $.smConfig.rawCitiesData;
   var provinces = raw.map(function(d) {
@@ -60,8 +62,8 @@
       var newCity;
       if(newProvince !== currentProvince) {
         var newCities = getCities(newProvince);
-        var newCity = newCities[0];
-        var newDistricts = getDistricts(newProvince, newCity)
+        newCity = newCities[0];
+        var newDistricts = getDistricts(newProvince, newCity);
         picker.cols[1].replaceValues(newCities);
         picker.cols[2].replaceValues(newDistricts);
         currentProvince = newProvince;

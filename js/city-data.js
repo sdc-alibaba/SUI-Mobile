@@ -1,3 +1,4 @@
+// jshint ignore: start
 $.smConfig.rawCitiesData = [
     {
         "name":"北京",
@@ -13271,3 +13272,4 @@ $.smConfig.rawCitiesData = [
         "type":0
     }
 ];
+// jshint ignore: end
