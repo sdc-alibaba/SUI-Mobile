@@ -70,7 +70,7 @@
   <div class="container">
     <div class="docs-sub-content">
       <h2 class="page-title">更新日志</h2>
-      <p class='page-description'>当前最新版本为 V0.3.2</p>
+      <p class='page-description'>当前最新版本为 V0.3.3</p>
     </div>
     
   </div>
@@ -87,10 +87,17 @@
           <li>次版本号：当做了向下兼容的功能性新增</li>
           <li>修订号：当做了向下兼容的问题修正</li>
         </ul>
-        <p>CND 地址中的三位数字就表示当前的版本号。比如你引用 <code>g.alicdn.com/sui-mobile/sm/0.3.2/css/sm.min.css</code>，那么版本号就是 <code>0.3.2</code>。</p>
+        <p>CND 地址中的三位数字就表示当前的版本号。比如你引用 <code>g.alicdn.com/sui-mobile/sm/0.3.3/css/sm.min.css</code>，那么版本号就是 <code>0.3.3</code>。</p>
         <p>SUI Mobile 采用增量更新，每次发布到线上的版本永远不会再变化。这里记录了每一个版本更新的内容。</p>
 
         <h2>更新日志</h2>
+
+        <h3>V0.3.3</h3>
+        <ul>
+          <li>从 v0.3.3 版本开始，native 模式下的滚动条不会在强制在 <code>.content</code> 容器下 wrap 一个 <code>.content-inner</code> 容器。参见<a href='/components/#scroller' data-ignore='push'>滚动条</a>文档 </li>
+          <li>修复了有一些Zepto的版本中 <code>$.fn.show</code> 方法会影响动画执行导致对话框无法消失的bug。</li>
+          <li>更新了<a href='/components/#init' data-ignore='push'>初始化</a> 文档</li>
+        </ul>
 
         <h3>V0.3.2</h3>
         <ul>

@@ -1,7 +1,7 @@
 <article class="component active " id="scroller">
     <h2 class="component-title">滚动条</h2>
     <p>因为部分低版本安卓机型上，如果一个容器通过 <code>position: absolute;</code> 或者 <code>transform: translate3d(x,x,x);</code> 定位，那么在滚动的时候有可能会出现闪烁问题。</p>
-    <p>为了解决这种bug，我们实现了原生滚动和JS滚动条两种模式，并且可以自由切换。从 v0.3.1 版本开始，默认的滚动条类型就是 "native" ，即默认使用系统原生滚动条。</p>
+    <p>为了解决这种bug，我们实现了原生滚动和JS滚动条两种模式，并且可以自由切换。从 v0.3.1 版本开始，默认的滚动条类型就是 "native" ，即默认使用系统原生滚动条。只有当你发现页面存在滚动闪烁的问题无法解决时，才建议使用 js 滚动条。</p>
     <p class="component-description">
       为了保证页面在任何滚动条模式下都能使用，强烈建议在任何导致页面高度变化的操作之后都要执行一次 <code>$.refreshScroller()</code> 操作。否则在js滚动条模式下可能会导致页面没有重现计算高度而无法滚动。
     </p>
@@ -55,6 +55,7 @@
     </div>
     {% endhighlight %}
     <p><code>js</code> 模式是为了解决一些原生滚动条下很难解决的问题。如果你的页面内容比较简单，没有用到幻灯片、滑动删除等复杂的组件，完全不需要使用 <code>js</code> 模式。并且JS模式滚动性能是比原生滚动条差的。</p>
+    <p>注意，在 <code>js</code> 模式下，或者 <code>auto</code>模式自动切换到js模式下，如果你的 <code>.content</code> 中不存在 <code>.content-inner</code>，那么JS滚动条会自动增加一个 <code>.content-inner</code>容器用来滚动页面，这会导致 <code>.content</code> 中所有的元素都被重写一遍，这个重写操作是在 <code>pageInit</code> 事件触发之前就完成了。你可以自己在 <code>.content</code> 容器下面再套一层 <code>.content-inner</code>容器来防止重写html。</p>
     <h3 class="component-title">滚动条初始化</h3>
     <p class="component-description">
         一般情况下你不需要自行初始化滚动条，因为 <code>$.init()</code>方法会自动初始化滚动条。如果你希望自行初始化，可以这样：

@@ -237,4 +237,27 @@
       }
       return $(nextEls);
     };
+
+    //重置zepto的show方法，防止有些人引用的版本中 show 方法操作 opacity 属性影响动画执行
+    $.fn.show = function(){
+      var elementDisplay = {};
+      function defaultDisplay(nodeName) {
+        var element, display
+        if (!elementDisplay[nodeName]) {
+          element = document.createElement(nodeName)
+          document.body.appendChild(element)
+          display = getComputedStyle(element, '').getPropertyValue("display")
+          element.parentNode.removeChild(element)
+          display == "none" && (display = "block")
+          elementDisplay[nodeName] = display
+        }
+        return elementDisplay[nodeName]
+      }
+
+      return this.each(function(){
+        this.style.display == "none" && (this.style.display = '')
+        if (getComputedStyle(this, '').getPropertyValue("display") == "none")
+          this.style.display = defaultDisplay(this.nodeName)
+      })
+    }
 })(Zepto);

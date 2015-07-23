@@ -3,7 +3,7 @@ name:         MSUI
 authors:      任行
 description:  Build mobile apps with simple HTML, CSS, and JS components.
 favicon:      http://gtms04.alicdn.com/tps/i4/TB17MaDGpXXXXb7apXXAz6UFXXX-16-16.png
-version:      0.3.2
+version:      0.3.3
 
 # Dependencies
 highlighter:  rouge

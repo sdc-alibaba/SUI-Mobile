@@ -68,6 +68,24 @@
         var useJSScroller = (type === 'js') || (type === 'auto' && ($.os.android && compareVersion('4.4.0', $.os.version) > -1) || ($.os.ios && compareVersion('6.0.0', $.os.version) > -1));
 
         if (useJSScroller) {
+
+            var $pageContentInner = $pageContent.find('.content-inner');
+            //如果滚动内容没有被包裹，自动添加wrap
+            if (!$pageContentInner[0]) {
+                // $pageContent.html('<div class="content-inner">' + $pageContent.html() + '</div>');
+                var children = $pageContent.children();
+                if (children.length < 1) {
+                    $pageContent.children().wrapAll('<div class="content-inner"></div>');
+                } else {
+                    $pageContent.html('<div class="content-inner">' + $pageContent.html() + '</div>');
+                }
+            }
+
+            if ($pageContent.hasClass('pull-to-refresh-content')) {
+                //因为iscroll 当页面高度不足 100% 时无法滑动，所以无法触发下拉动作，这里改动一下高度
+                $pageContent.find('.content-inner').css('min-height', ($(window).height() + 20) + 'px');
+            }
+
             var ptr = $(pageContent).hasClass('pull-to-refresh-content');
             var options = {
                 probeType: 1,
@@ -98,7 +116,7 @@
     };
     Scroller.prototype = {
         _defaults: {
-            type: 'native',
+            type: 'js',
         },
         _bindEventToDomWhenJs: function() {
             //"scrollStart", //the scroll started.
@@ -187,25 +205,6 @@
 
 
             var $this = $(this);
-
-            var $pageContentInner = $this.find('.content-inner');
-            //如果滚动内容没有被包裹，自动添加wrap
-            if (!$pageContentInner[0]) {
-                // $this.html('<div class="content-inner">' + $this.html() + '</div>');
-                var children = $this.children();
-                if (children.length < 1) {
-                    $this.children().wrapAll('<div class="content-inner"></div>');
-                } else {
-                    $this.html('<div class="content-inner">' + $this.html() + '</div>');
-                }
-            }
-
-            if ($this.hasClass('pull-to-refresh-content')) {
-                //因为iscroll 当页面高度不足 100% 时无法滑动，所以无法触发下拉动作，这里改动一下高度
-                $this.find('.content-inner').css('min-height', ($(window).height() + 20) + 'px');
-            }
-
-
 
             var options = $.extend({}, $this.dataset(), typeof option === 'object' && option);
 
