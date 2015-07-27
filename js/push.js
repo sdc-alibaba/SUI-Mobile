@@ -220,24 +220,14 @@
       });
     }
 
-    /*
-     * 注意这里的逻辑
-     * 1, 如果有动画，把所有的DOM对象都挂到activeObj上，并且先调用 swapContent 切换bars
-     * 然后再切换contents
-     * 2，如果没有动画，就不存在 activeObj.contents，则直接整个body切换
-     *
-     * 为什么要分开切换 contents 和bars，是因为bars不会存在动画，而contents有可能有动画
-     */
-    if (transitionFromObj.transition) {
-      activeObj = extendWithDom(activeObj, '.content', activeDom.cloneNode(true));
-      for (key in bars) {
-        if (bars.hasOwnProperty(key)) {
-          barElement = document.querySelector(bars[key]);
-          if (activeObj[key]) {
-            swapContent(activeObj[key], barElement);
-          } else if (barElement) {
-            barElement.parentNode.removeChild(barElement);
-          }
+    activeObj = extendWithDom(activeObj, '.content', activeDom.cloneNode(true));
+    for (key in bars) {
+      if (bars.hasOwnProperty(key)) {
+        barElement = document.querySelector(bars[key]);
+        if (activeObj[key]) {
+          swapContent(activeObj[key], barElement);
+        } else if (barElement) {
+          barElement.parentNode.removeChild(barElement);
         }
       }
     }
@@ -251,9 +241,8 @@
       }
     }
 
-    //参考上面的注释，这里的 activeObj.contents 和 activeDom 不是等价的，activeDom 包含了 contents 和 bars，只有当没有动画的时候activeObj.contents 才会不存在
     swapContent(
-      (activeObj.contents || activeDom).cloneNode(true),  //如果存在 activeObj.contents，那么必定是有上面的那几行代码生成的
+      (activeObj.contents || activeDom).cloneNode(true),
       document.querySelector('.content'),
       transition, undefined, true
     );
@@ -398,17 +387,13 @@
     }
     var id = options.id || +new Date();
 
-    //和前面的一模一样，如果有动画，那么会先不用动画切换bars，再用动画切换contents
-    //如果没有动画，直接切换body
-    if (options.transition) {
-      for (key in bars) {
-        if (bars.hasOwnProperty(key)) {
-          barElement = document.querySelector(bars[key]);
-          if (data[key]) {
-            swapContent(data[key], barElement);
-          } else if (barElement) {
-            barElement.parentNode.removeChild(barElement);
-          }
+    for (key in bars) {
+      if (bars.hasOwnProperty(key)) {
+        barElement = document.querySelector(bars[key]);
+        if (data[key]) {
+          swapContent(data[key], barElement);
+        } else if (barElement) {
+          barElement.parentNode.removeChild(barElement);
         }
       }
     }
@@ -467,12 +452,16 @@
     if (!transition) {
       if (container) {
         container.innerHTML = swap.innerHTML;
+        container.className = swap.className;
+        container.id = swap.id;
+        revertScroll(container);
       } else if (swap.classList.contains('content')) {
         page.appendChild(swap);
+        revertScroll(swap);
       } else {
         $(swap).insertBefore(document.querySelector('.content'));
+        revertScroll(swap);
       }
-      revertScroll(swap);
     } else {
       enter = /in$/.test(transition);
 
