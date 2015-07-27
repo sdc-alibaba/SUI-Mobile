@@ -370,7 +370,7 @@
   function revertScroll(content) {
     var $content = $(content);
     var id = $content[0].id;
-    if(id) {
+    if(id && $content.data("remember-scroll") !== "false") {
       $content.scrollTop(scrollCache[id]);
     }
   }
