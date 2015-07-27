@@ -132,8 +132,7 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{@color-from}', endColorstr='#{@color-to}', GradientType=1);
 }
 .docs-header {
-  height: 100vh;
-  min-height: 750px;
+  height: 400px;
 }
 .docs-header .carbonad {
   position: relative !important;
@@ -158,7 +157,7 @@ body {
 }
 @media screen and (min-width: 768px) {
   .docs-header {
-    min-height: 870px;
+    height: 600px;
   }
   .docs-header .carbonad {
     left: 50% !important;
@@ -393,7 +392,7 @@ body {
 }
 @media screen and (min-width: 768px) {
   .docs-header-content {
-    top: 30%;
+    top: 40%;
     -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
          -o-transform: translateY(-50%);
@@ -1214,6 +1213,40 @@ table td {
 .docs-side-menu .beta {
   background: #ff9500;
 }
+
+.index-content {
+  padding: 20px;
+  margin: auto;
+  max-width: 1200px;
+  font-size: 20px;
+}
+
+.index-content .section {
+  margin-top: 60px;
+}
+.index-content .section .round {
+  width: 250px;
+  height: 250px;
+  border-radius: 125px;
+  overflow: hidden;
+  float: left;
+  margin-right: 60px;
+  box-shadow: 0 0 10px 5px rgba(0,0,0,.15);
+}
+.index-content .section .round img {
+  position: relative;
+  top: -200px;
+  width: 320px;
+}
+.index-content .section .left {
+  float: left;
+  margin-right: 60px;
+}
+.index-content .section .components-img {
+  text-align: center;
+}
+
+/*page for baichuan*/
 .page-baichuan {
   color: #333;
 }
