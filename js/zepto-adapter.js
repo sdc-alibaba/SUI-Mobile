@@ -242,22 +242,22 @@
     $.fn.show = function(){
       var elementDisplay = {};
       function defaultDisplay(nodeName) {
-        var element, display
+        var element, display;
         if (!elementDisplay[nodeName]) {
-          element = document.createElement(nodeName)
-          document.body.appendChild(element)
-          display = getComputedStyle(element, '').getPropertyValue("display")
-          element.parentNode.removeChild(element)
-          display == "none" && (display = "block")
-          elementDisplay[nodeName] = display
+          element = document.createElement(nodeName);
+          document.body.appendChild(element);
+          display = getComputedStyle(element, '').getPropertyValue("display");
+          element.parentNode.removeChild(element);
+          display === "none" && (display = "block");
+          elementDisplay[nodeName] = display;
         }
-        return elementDisplay[nodeName]
+        return elementDisplay[nodeName];
       }
 
       return this.each(function(){
-        this.style.display == "none" && (this.style.display = '')
-        if (getComputedStyle(this, '').getPropertyValue("display") == "none")
-          this.style.display = defaultDisplay(this.nodeName)
-      })
-    }
+        this.style.display === "none" && (this.style.display = '');
+        if (getComputedStyle(this, '').getPropertyValue("display") === "none");
+          this.style.display = defaultDisplay(this.nodeName);
+      });
+    };
 })(Zepto);
