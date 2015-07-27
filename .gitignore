@@ -5,5 +5,5 @@ dist/
 .package/
 .sass-cache/
 .DS_Store
-_site/sitemap.xml
+_site/*
 *.orig
