@@ -84,8 +84,7 @@ body {
   .directional-gradient(#571c94, #e609cf, 135deg);
 }
 .docs-header {
-  height: 100vh;
-  min-height: 750px;
+  height: 320px;
 
   // Ad on the homepage
   .carbonad {
@@ -109,7 +108,7 @@ body {
 // Desktop jumbotron
 @media screen and (min-width: 768px) {
   .docs-header {
-    min-height: 870px;
+    height: 600px;
 
     // Ads on the homepage
     .carbonad {
@@ -1299,6 +1298,39 @@ table {
   .beta {
     background: #ff9500;
   }
+}
+
+
+.index-content {
+  padding: 20px;
+  margin: auto;
+  max-width: 1200px;
+  font-size: 20px;
+}
+
+.index-content .section {
+  margin-top: 60px;
+}
+.index-content .section .round {
+  width: 250px;
+  height: 250px;
+  border-radius: 125px;
+  overflow: hidden;
+  float: left;
+  margin-right: 60px;
+  box-shadow: 0 0 10px 5px rgba(0,0,0,.15);
+}
+.index-content .section .round img {
+  position: relative;
+  top: -200px;
+  width: 320px;
+}
+.index-content .section .left {
+  float: left;
+  margin-right: 60px;
+}
+.index-content .section .components-img {
+  text-align: center;
 }
 
 @import "docs-baichuan.less";
