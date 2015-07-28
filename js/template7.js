@@ -201,7 +201,7 @@
           parts = name.split('../')[levelsUp].split('.');
         }
         else if (name.indexOf('@global') === 0) {
-          ctx = 'Template7.global';
+          ctx = '$.Template7.global';
           parts = name.split('@global.')[1].split('.');
         }
         else if (name.indexOf('@root') === 0) {
@@ -285,7 +285,7 @@
           if (block.type === 'helper') {
             if (block.helperName in t.helpers) {
               compiledArguments = getCompiledArguments(block.contextName, ctx);
-              resultString += 'r += (Template7.helpers.' + block.helperName + ').call(' + ctx + ', ' + (compiledArguments && (compiledArguments + ', ')) +'{hash:' + JSON.stringify(block.hash) + ', data: data || {}, fn: ' + getCompileFn(block, depth+1) + ', inverse: ' + getCompileInverse(block, depth+1) + ', root: ctx_1});';
+              resultString += 'r += ($.Template7.helpers.' + block.helperName + ').call(' + ctx + ', ' + (compiledArguments && (compiledArguments + ', ')) +'{hash:' + JSON.stringify(block.hash) + ', data: data || {}, fn: ' + getCompileFn(block, depth+1) + ', inverse: ' + getCompileInverse(block, depth+1) + ', root: ctx_1});';
             }
             else {
               if (block.contextName.length > 0) {
@@ -295,9 +295,9 @@
                 variable = getCompileVar(block.helperName, ctx);
                 resultString += 'if (' + variable + ') {';
                 resultString += 'if (isArray(' + variable + ')) {';
-                resultString += 'r += (Template7.helpers.each).call(' + ctx + ', ' + variable + ', {hash:' + JSON.stringify(block.hash) + ', data: data || {}, fn: ' + getCompileFn(block, depth+1) + ', inverse: ' + getCompileInverse(block, depth+1) + ', root: ctx_1});';
+                resultString += 'r += ($.Template7.helpers.each).call(' + ctx + ', ' + variable + ', {hash:' + JSON.stringify(block.hash) + ', data: data || {}, fn: ' + getCompileFn(block, depth+1) + ', inverse: ' + getCompileInverse(block, depth+1) + ', root: ctx_1});';
                 resultString += '}else {';
-                resultString += 'r += (Template7.helpers.with).call(' + ctx + ', ' + variable + ', {hash:' + JSON.stringify(block.hash) + ', data: data || {}, fn: ' + getCompileFn(block, depth+1) + ', inverse: ' + getCompileInverse(block, depth+1) + ', root: ctx_1});';
+                resultString += 'r += ($.Template7.helpers.with).call(' + ctx + ', ' + variable + ', {hash:' + JSON.stringify(block.hash) + ', data: data || {}, fn: ' + getCompileFn(block, depth+1) + ', inverse: ' + getCompileInverse(block, depth+1) + ', root: ctx_1});';
                 resultString += '}}';
               }
             }

@@ -74,8 +74,6 @@
   {% endhighlight %}
   {% highlight js %}  
   $(function(){
-     //只在本站例子中需要加这行改变容器，默认document.body
-     $.modal.prototype.defaults.modalContainer = ".device-content";
      $(document).on('click','.alert-text',function () {
         $.alert('Here goes alert text');
      });

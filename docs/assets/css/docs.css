@@ -392,7 +392,7 @@ body {
 }
 @media screen and (min-width: 768px) {
   .docs-header-content {
-    top: 30%;
+    top: 40%;
     -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
          -o-transform: translateY(-50%);
