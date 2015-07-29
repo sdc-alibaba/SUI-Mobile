@@ -122,6 +122,9 @@ Framework7 Layouts Themes
         &.notifications > ul {
             background: none;
         }
+        .item-title, .item-subtitle {
+          color: @lightText;
+        }
     }
     .card {
         background: @blockBg;
@@ -199,6 +202,14 @@ Framework7 Layouts Themes
     }
     .range-slider input[type="range"]:after {
         background: @blockBg;
+    }
+
+    .buttons-tab {
+      background: @barsBg;
+
+      .tab-link:not(.active) {
+        color: @text;
+      }
     }
 
 }
