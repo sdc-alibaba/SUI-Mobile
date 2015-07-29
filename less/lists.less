@@ -137,16 +137,14 @@
         display: block;
         color: inherit;
 
-        padding-right: 1.5rem;
-        background-image: url("@{imgBaseUrl}/i-list-chevron-right.png");
-        background-size: 0.5rem;
-        background-repeat: no-repeat;
-        background-position: 97% center;
-        background-position: -webkit-calc(~"100% - .5rem") center;
-        background-position: calc(~"100% - .5rem") center;
-
         .item-inner {
-          padding-right: 0;
+          padding-right: 1.5rem;
+          background-image: url("@{imgBaseUrl}/i-list-chevron-right.png");
+          background-size: 0.5rem;
+          background-repeat: no-repeat;
+          background-position: 97% center;
+          background-position: -webkit-calc(~"100% - .5rem") center;
+          background-position: calc(~"100% - .5rem") center;
         }
 
         html:not(.watch-active-state) &:active, &.active-state {
@@ -279,9 +277,6 @@
             padding-top: 0.5rem;
             padding-bottom: 0.45rem;
             .align-self(stretch);
-        }
-        .item-link .item-inner {
-            background: none;
         }
         .item-media {
             padding-top: 0.45rem;
