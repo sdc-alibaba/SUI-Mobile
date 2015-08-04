@@ -1,0 +1,103 @@
+/* === Pages === */
+
+// Pages animations
+@pageDuration: 400ms;
+
+.page {
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #efeff4;
+    display: none;
+
+    &.page-current,
+    &.page-from-center-to-left,
+    &.page-from-center-to-right,
+    &.page-from-right-to-center,
+    &.page-from-left-to-center {
+      display: block;
+    }
+}
+.page-left {
+    opacity: 0.5;
+    transform: translate3d(-20%);
+}
+.page-right {
+    transform: translate3d(100%);
+}
+
+//Class that will trigger transition during page custom transitions (like swipe-back)
+.page-transitioning {
+    &, .swipeback-page-shadow {
+        transition: @pageDuration;
+    }
+}
+.page-from-right-to-center, .page-from-center-to-right {
+    &:before {
+        .page-fake-shadow();
+    }
+}
+// From/to Right To/from Center animations
+.page-from-right-to-center {
+    animation: pageFromRightToCenter @pageDuration forwards;
+    z-index: 2002;
+}
+.page-from-center-to-right {
+    animation: pageFromCenterToRight @pageDuration forwards;
+}
+
+@keyframes pageFromRightToCenter {
+    from {
+        transform: translate3d(100%,0,0);
+        opacity: .5;
+    }
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1;
+    }
+}
+
+@keyframes pageFromCenterToRight {
+    from {
+        transform: translate3d(0,0,0);
+        opacity: 1;
+    }
+    to {
+        transform: translate3d(100%,0,0);
+        opacity: .5;
+    }
+}
+
+
+// From/to Center To/from Left animations
+.page-from-center-to-left {
+    animation: pageFromCenterToLeft @pageDuration forwards;
+}
+.page-from-left-to-center {
+    animation: pageFromLeftToCenter @pageDuration forwards;
+}
+
+@keyframes pageFromCenterToLeft {
+    from {
+        opacity: 1;
+        transform: translate3d(0,0,0);
+    }
+    to {
+        opacity: 0.5;
+        transform: translate3d(-20%,0,0);
+    }
+}
+
+@keyframes pageFromLeftToCenter {
+    from {
+        opacity: .5;
+        transform: translate3d(-20%,0,0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0,0,0);
+    }
+}

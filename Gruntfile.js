@@ -67,7 +67,7 @@ module.exports = function(grunt) {
                   'js/infinite-scroll.js',
                   'js/searchbar.js',
                   'js/panels.js',
-                  'js/push.js',
+                  'js/router.js',
                   'js/init.js'
               ],
               dest: '<%= meta.distPath %>js/<%= pkg.name %>.js'
