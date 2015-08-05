@@ -2,49 +2,51 @@
 layout: demo
 title: SUI Mobile Demo
 ---
-<div class="page">
-  <header class="bar bar-nav">
-    <a class="button button-link button-nav pull-left" href="/demos" data-transition='slide-out'>
-      <span class="icon icon-left"></span>
-      返回
-    </a>
-    <h1 class="title">picker</h1>
-  </header>
-  <div class="content" id='page-picker'>
-    <div class="content-block-title">单个选择</div>
-    <div class="content-block">
-      <div class="list-block">
-        <ul>
-          <!-- Text inputs -->
-          <li>
-            <div class="item-content">
-              <div class="item-inner">
-                <div class="item-title label">手机</div>
-                <div class="item-input">
-                  <input type="text" placeholder="选择手机" id='picker' />
+<div id="page-picker" class="page">
+  <div class="page">
+    <header class="bar bar-nav">
+      <a class="button button-link button-nav pull-left back" href="/demos">
+        <span class="icon icon-left"></span>
+        返回
+      </a>
+      <h1 class="title">picker</h1>
+    </header>
+    <div class="content">
+      <div class="content-block-title">单个选择</div>
+      <div class="content-block">
+        <div class="list-block">
+          <ul>
+            <!-- Text inputs -->
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">手机</div>
+                  <div class="item-input">
+                    <input type="text" placeholder="选择手机" id='picker' />
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="content-block-title">多列选择</div>
-    <div class="content-block">
-      <div class="list-block">
-        <ul>
-          <!-- Text inputs -->
-          <li>
-            <div class="item-content">
-              <div class="item-inner">
-                <div class="item-title label">称呼</div>
-                <div class="item-input">
-                  <input type="text" placeholder="选择称呼" id='picker-name' />
+      <div class="content-block-title">多列选择</div>
+      <div class="content-block">
+        <div class="list-block">
+          <ul>
+            <!-- Text inputs -->
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">称呼</div>
+                  <div class="item-input">
+                    <input type="text" placeholder="选择称呼" id='picker-name' />
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
