@@ -1,0 +1,136 @@
+<article class="component" id='router' data-url="router">
+  <h2 class="component-title">路由</h2>
+  <p class="component-description">现在有一个全新的路由代替了以前的 push.js。 这个路由支持在同一个html中内联多个页面，ajax加载新页面，前进和后退操作。</p>
+
+  <h3 class="component-title">内联页面</h3>
+  <p class="component-description">你可以在同一个HTML文件中内联编写多个页面。每一个页面都是一个 <code>.page</code> 容器，如果有多个页面，则需要用 <code>.page-current</code> 标记出第一次进入的时候应该显示的页面。</p>
+  <p>每一个 <code>.page</code> 容器都应该有一个全局唯一的id，路由器会使用这个id作为唯一标示，如果没有设置id，可能会导致路由出错。你只需要这样写一个链接就可以跳转到id对应的内联页面 <code>&lt;a href='#{page-id}'&gt;跳转&lt;/a&gt;</code>.</p>
+
+{% highlight html %}
+<div class="page page-current" id='router'>
+  <header class="bar bar-nav">
+    <h1 class='title'>路由</h1>
+  </header>
+  <div class="content">
+    <div class="content-block">
+      <ul>
+        <li><a href="/docs-demos/router2">ajax加载新页面</a></li>
+        <li><a href="#router3">内联的新页面</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="page" id='router3'>
+  <header class="bar bar-nav">
+    <a class="button button-link button-nav pull-left back" href="/docs-demos/router">
+      <span class="icon icon-left"></span>
+      返回
+    </a>
+    <h1 class='title'>路由</h1>
+  </header>
+  <div class="content">
+    <div class="content-block">
+      这是内联编写的页面，点击左上角的 <a href="#" class='back'>返回</a> 按钮返回上一页。
+    </div>
+  </div>
+</div>
+{% endhighlight %}
+
+<p>注意，内联页面只能在第一个页面编写，通过ajax加载的页面里面不能内联多个页面。</p>
+
+  <h3 class="component-title">ajax页面</h3>
+  <p class="component-description">除了内联编写多个页面以外，你还可以通过ajax来加载新页面。通过ajax加载新页面和普通的链接写法没有区别，路由器会自动拦截链接的点击事件，并通过ajax请求加载新的页面。</p>
+
+{% highlight html %}
+<!-- page 1 -->
+<div class="page page-current" id='router'>
+  <header class="bar bar-nav">
+    <h1 class='title'>路由</h1>
+  </header>
+  <div class="content">
+    <div class="content-block">
+      <ul>
+        <li><a href="/docs-demos/router2">ajax加载新页面</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endhighlight %}
+
+{% highlight html %}
+<!-- page 2 -->
+<div class="page" id='router2'>
+  <header class="bar bar-nav">
+    <a class="button button-link button-nav pull-left back" href="/docs-demos/router">
+      <span class="icon icon-left"></span>
+      返回
+    </a>
+    <h1 class='title'>路由</h1>
+  </header>
+  <div class="content">
+    <div class="content-block">
+      这是ajax 加载的新页面，点击左上角的 <a href="#" class='back'>返回</a> 按钮返回上一页。
+    </div>
+  </div>
+</div>
+{% endhighlight %}
+
+  <h3 class="component-title">后退</h3>
+  <p class="component-description">我们对后退操作进行了封装，你只需要在任意链接上增加一个 <code>.back</code> 类，点击就会自动返回到上一页。为了防止在某些情况下无法返回，最好同时设置 <code>href</code> 指定上一页的地址，这样当无法后退的时候，会直接加载指定的地址。</p>
+  <p class="component-description">或者你可以通过调用 <code>$.router.back(url)</code> 来执行返回上一页操作，同样为了确保能正常返回，最好把上一页的地址作为参数传入。</p>
+
+{% highlight html %}
+<a class="button button-link button-nav pull-left back" href="/docs-demos/router">返回上一页</a>
+{% endhighlight %}
+
+  <h3 class="component-title">事件</h3>
+  <p class="component-description">从一个页面准备开始加载，到执行完加载动画，会按顺序触发以下事件：</p>
+
+  <table>
+    <tr>
+      <th>事件</th>
+      <th>说明</th>
+    </tr>
+    <tr>
+      <td>pageLoadStart</td>
+      <td>发送Ajax之前触发</td>
+    </tr>
+    <tr>
+      <td>pageLoadCancel</td>
+      <td>取消了正在发送的ajax请求</td>
+    </tr>
+    <tr>
+      <td>pageLoadError</td>
+      <td>Ajax 请求失败</td>
+    </tr>
+    <tr>
+      <td>pageLoadComplete</td>
+      <td>Ajax 请求结束，无论是成功还是失败</td>
+    </tr>
+    <tr>
+      <td>pageAnimationStart</td>
+      <td>新页面的DOM插入当前页面之后，动画执行之前</td>
+    </tr>
+    <tr>
+      <td>pageAnimationEnd</td>
+      <td>新页面动画执行完毕</td>
+    </tr>
+    <tr>
+      <td>pageInit</td>
+      <td>新页面中的组件初始化完毕</td>
+    </tr>
+  </table>
+
+  <p>如果是内联页面，则没有前面的三个 pageLoad* 事件。</p>
+
+  <p>你可以这样监听事件：</p>
+
+{% highlight js %}
+$(document).on("click", "#page-index", function(pageId, $page) {});
+<!--或者-->
+$(document).on("click", function(pageId, $page) {
+  if(pageId == "pageIndex") {}
+});
+{% endhighlight %}
+</article>

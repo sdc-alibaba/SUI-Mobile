@@ -1,7 +1,6 @@
 /* global Zepto:true */
 /*
  * 路由器
- * 1. 为什么要自己记录历史，而不是通过 history.pushState 存？ 因为 DOM 无法通过 history.pushState 存
  */
 +function ($) {
   "use strict";
@@ -20,7 +19,7 @@
     this.state.setItem("currentStateID", this.state.getItem("stateid"));
     this.stack = sessionStorage;
     this.stack.setItem("back", "[]");  //返回栈, {url, pageid, stateid}
-    this.stack.setItem("forward", "[]");  //返回栈, {url, pageid, stateid}
+    this.stack.setItem("forward", "[]");  //前进栈, {url, pageid, stateid}
     this.init();
     this.xhr = null;
   }
@@ -44,16 +43,18 @@
       currentPage = newCurrentPage;
     }
 
-    //第一次打开的时候需要pushstate，这样会导致多次刷新出现很多重复历史，但是不这么做，刷新之后第一次加载新页面会无法后退
-    this.state.setItem("first-init", 1)
-    var id = this.genStateID();
-    this.pushState(location.href, id);
-    this.pushBack({
-      url: location.href,
-      pageid: currentPage[0].id,
-      id: id
-    });
-    this.setCurrentStateID(id);
+    //第一次打开的时候需要pushstate，不这么做，刷新之后第一次加载新页面会无法后退
+    var state = history.state;
+    if(!state) {
+      var id = this.genStateID();
+      this.pushState(location.href, id);
+      this.pushBack({
+        url: location.href,
+        pageid: currentPage[0].id,
+        id: id
+      });
+      this.setCurrentStateID(id);
+    }
 
     window.addEventListener('popstate', $.proxy(this.onpopstate, this));
   }
@@ -73,8 +74,11 @@
       //删除全部forward
       var forward = JSON.parse(this.state.getItem("forward") || "[]");
       for(var i=0;i<forward.length;i++) {
-        $(forward[i].pageid).remove();
-      page}
+        $(forward[i].pageid).each(function() {
+          var $page = $(this);
+          if($page.data("page-remote")) $page.remove();
+        });;
+      }
       this.state.setItem("forward", "[]");  //clearforward
 
       page.insertAfter($(".page")[0]);
@@ -204,6 +208,7 @@
       success: $.proxy(function(data, s, xhr) {
         var $page = this.parseXHR(xhr);
         if(!$page[0].id) $page[0].id = this.genRandomID();
+        $page.data("page-remote", 1);
         callback.apply(this, [$page]);
       }, this),
       error: function() {
@@ -278,7 +283,7 @@
   };
 
   $(function() {
-    var router = new Router();
+    var router = $.router = new Router();
     $(document).on("click", "a", function(e) {
       var $target = $(e.currentTarget);
       if($target.hasClass("external") ||
