@@ -29,7 +29,7 @@
     $(window).on("pageLoadStart", function() {
       $.showIndicator();
     });
-    $(window).on("pageAnimationStart", function() {
+    $(document).on("pageAnimationStart", function() {
       $.hideIndicator();
     });
     $(window).on("pageLoadCancel", function() {

@@ -96,9 +96,9 @@
 
   Router.prototype.animatePages = function (leftPage, rightPage, leftToRight) {
     var removeClasses = 'page-left page-right page-current page-from-center-to-left page-from-center-to-right page-from-right-to-center page-from-left-to-center';
-    this.dispatch("pageAnimationStart");
     var self = this;
     if (!leftToRight) {
+      rightPage.trigger("pageAnimationStart", [rightPage[0].id, rightPage]);
       leftPage.removeClass(removeClasses).addClass('page-from-center-to-left');
       rightPage.removeClass(removeClasses).addClass('page-from-right-to-center');
       leftPage.animationEnd(function() {
@@ -106,19 +106,20 @@
       });
       rightPage.animationEnd(function() {
         rightPage.removeClass(removeClasses).addClass("page-current");
-        self.dispatch("pageAnimationEnd");
+        rightPage.trigger("pageAnimationEnd", [rightPage[0].id, rightPage]);
         rightPage.trigger("pageInitInternal", [rightPage[0].id, rightPage]);
         rightPage.trigger("pageInit", [rightPage[0].id, rightPage]);
       });
     } else {
-      leftPage.removeClass(removeClasses).addClass('page-from-left-to-center');
-      rightPage.removeClass(removeClasses).addClass('page-from-center-to-right');
-      leftPage.animationEnd(function() {
-        leftPage.removeClass(removeClasses).addClass("page-current");
-        self.dispatch("pageAnimationEnd");
-        rightPage.trigger("pageInitInternal", [rightPage[0].id, rightPage]);
-        leftPage.trigger("pageInit", [leftPage[0].id, leftPage]);
-      });
+        leftPage.trigger("pageAnimationStart", [rightPage[0].id, rightPage]);
+        leftPage.removeClass(removeClasses).addClass('page-from-left-to-center');
+        rightPage.removeClass(removeClasses).addClass('page-from-center-to-right');
+        leftPage.animationEnd(function() {
+          leftPage.removeClass(removeClasses).addClass("page-current");
+          leftPage.trigger("pageAnimationEnd", [rightPage[0].id, rightPage]);
+          leftPage.trigger("pageInitInternal", [rightPage[0].id, rightPage]);
+          leftPage.trigger("pageInit", [leftPage[0].id, leftPage]);
+        });
       rightPage.animationEnd(function() {
         rightPage.removeClass(removeClasses);
       });
