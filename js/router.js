@@ -108,7 +108,6 @@
         rightPage.removeClass(removeClasses).addClass("page-current");
         rightPage.trigger("pageAnimationEnd", [rightPage[0].id, rightPage]);
         rightPage.trigger("pageInitInternal", [rightPage[0].id, rightPage]);
-        rightPage.trigger("pageInit", [rightPage[0].id, rightPage]);
       });
     } else {
         leftPage.trigger("pageAnimationStart", [rightPage[0].id, rightPage]);
@@ -116,9 +115,8 @@
         rightPage.removeClass(removeClasses).addClass('page-from-center-to-right');
         leftPage.animationEnd(function() {
           leftPage.removeClass(removeClasses).addClass("page-current");
-          leftPage.trigger("pageAnimationEnd", [rightPage[0].id, rightPage]);
-          leftPage.trigger("pageInitInternal", [rightPage[0].id, rightPage]);
-          leftPage.trigger("pageInit", [leftPage[0].id, leftPage]);
+          leftPage.trigger("pageAnimationEnd", [leftPage[0].id, leftPage]);
+          leftPage.trigger("pageReinit", [leftPage[0].id, leftPage]);
         });
       rightPage.animationEnd(function() {
         rightPage.removeClass(removeClasses);

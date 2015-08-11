@@ -120,6 +120,10 @@
       <td>pageInit</td>
       <td>新页面中的组件初始化完毕</td>
     </tr>
+    <tr>
+      <td>pageReinit</td>
+      <td>返回到上一个页面的时候触发</td>
+    </tr>
   </table>
 
   <p>其中 pageLoad* 事件是在 window 上触发，其他都是在 <code>.page</code> 元素上触发。为了性能考虑，最好通过 document 代理监听。如果是内联页面，则没有前面的三个 pageLoad* 事件。</p>
@@ -127,9 +131,9 @@
   <p>你可以这样监听事件：</p>
 
 {% highlight js %}
-$(document).on("pageInit", "#page-index", function(pageId, $page) {});
+$(document).on("pageInit", "#page-index", function(e, pageId, $page) {});
 <!--或者-->
-$(document).on("pageInit", function(pageId, $page) {
+$(document).on("pageInit", function(e, pageId, $page) {
   if(pageId == "pageIndex") {}
 });
 {% endhighlight %}
