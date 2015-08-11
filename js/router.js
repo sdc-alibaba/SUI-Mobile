@@ -175,8 +175,7 @@
   Router.prototype.onpopstate = function(d) {
     var state = d.state;
     if(!state) {//刷新再后退导致无法取到state
-      location.reload();
-      return false;
+      return;
     }
 
     if(state.id === this.getCurrentStateID()) {
@@ -190,7 +189,7 @@
 
   //根据url获取页面的DOM，如果是一个内联页面，则直接返回，否则用ajax加载
   Router.prototype.getPage = function(url, callback) {
-    if(url.startsWith("#")) return callback.apply(this, [$(url)]);
+    if(url[0] === "#") return callback.apply(this, [$(url)]);
 
     this.dispatch("pageLoadStart");
 
