@@ -2,8 +2,7 @@
 Device/OS Detection
 ===========================*/
 /* global Zepto:true */
-/* global $:true */
-$.device = (function ($) {
+;(function ($) {
     "use strict";
     var device = {};
     var ua = navigator.userAgent;
@@ -101,6 +100,5 @@ $.device = (function ($) {
     // Add html classes
     if (classNames.length > 0) $('html').addClass(classNames.join(' '));
 
-    // Export object
-    return device;
+    $.device = device;
 })(Zepto);
