@@ -1,4 +1,6 @@
 // jshint ignore: start
++function($){
+
 $.smConfig.rawCitiesData = [
     {
         "name":"北京",
@@ -13272,4 +13274,6 @@ $.smConfig.rawCitiesData = [
         "type":0
     }
 ];
+
+}(Zepto);
 // jshint ignore: end
