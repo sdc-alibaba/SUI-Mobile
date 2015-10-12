@@ -1,4 +1,5 @@
 /* global Zepto:true */
+/*jshint unused: false*/
 +function ($) {
   "use strict";
 
@@ -6,7 +7,7 @@
     var $page = $(".page-current");
     if(!$page[0]) $page = $(".page").addClass("page-current");
     return $page;
-  } 
+  };
 
   //初始化页面中的JS组件
   $.initPage = function(page) {

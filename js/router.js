@@ -1,4 +1,4 @@
-/* global Zepto:true */
+// jshint ignore: start
 /*
  * 路由器
  */
@@ -34,7 +34,7 @@
     if(currentPage[0] && !currentPage[0].id) currentPage[0].id = (hash ? hash.slice(1) : this.genRandomID());
 
     if(!currentPage[0]) throw new Error("can't find .page element");
-    var newCurrentPage = $(hash); 
+    var newCurrentPage = $(hash);
 
 
     if(newCurrentPage[0] && (!currentPage[0] || hash.slice(1) !== currentPage[0].id)) {
@@ -302,3 +302,4 @@
     })
   });
 }(Zepto);
+// jshint ignore: end
