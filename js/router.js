@@ -141,14 +141,21 @@
     var stack = JSON.parse(this.stack.getItem("back"));
     if(stack.length) {
       history.back();
-    } else {
+    } else if(url) {
       location.href = url;
+    } else {
+      console.warn('[router.back]: can not back')
     }
   }
 
   //后退
-  Router.prototype._back = function() {
+  Router.prototype._back = function(url) {
     var h = this.popBack();
+    // 如果是刷新的非入口页（比如一些xx/yy#step2形式的后续流程页）,h变量的值是null，也就没有下两行需要的h.pageid值
+    if (!h) {
+      location.href = url;
+      return;
+    }
     var currentPage = this.getCurrentPage();
     var newPage = $(h.pageid);
     if(!newPage[0]) return;
@@ -175,6 +182,7 @@
   Router.prototype.onpopstate = function(d) {
     var state = d.state;
     if(!state) {//刷新再后退导致无法取到state
+      this.back();
       return;
     }
 
@@ -183,7 +191,7 @@
     }
     var forward = state.id > this.getCurrentStateID();
     if(forward) this._forward();
-    else this._back();
+    else this._back(state.url);
   }
 
 
