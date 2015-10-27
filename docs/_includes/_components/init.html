@@ -40,17 +40,12 @@
     <tr>
       <td>autoInit</td>
       <td>false</td>
-      <td>在 <code>document.onload</code> 和 push 结束之后自动调用 <code>$.init</code> 方法。如果你的页面内容是异步加载的，应该关闭这个配置，并且在加载完成之后手动调用 <code>$.init</code></td>
-    </tr>
-    <tr>
-      <td>pushjs</td>
-      <td>true</td>
-      <td>使用push.js加载页面，如果设置为true，那么默认所有的链接都会被push.js拦截，并通过ajax加载新页面。</td>
+      <td>在 <code>document.onload</code> 之后自动调用 <code>$.init</code> 方法。如果你的页面内容是异步加载的，应该关闭这个配置，并且在加载完成之后手动调用 <code>$.init</code></td>
     </tr>
     <tr>
       <td>showPageLoadingIndicator</td>
       <td>true</td>
-      <td>在push.js加载新页面过程中显示一个加载指示器。只有 <code>pushjs</code> 为true时这个设置才有效</td>
+      <td>在加载新页面过程中显示一个加载指示器。只有 <code>pushjs</code> 为true时这个设置才有效</td>
     </tr>
     <tr>
       <td>swipePanel</td>
