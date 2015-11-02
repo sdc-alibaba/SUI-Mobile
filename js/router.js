@@ -28,8 +28,9 @@
   };
 
   Router.prototype.init = function() {
-    var currentPage = this.getCurrentPage();
-    if(!currentPage[0]) currentPage = $(".page").eq(0).addClass("page-current");
+    var currentPage = this.getCurrentPage(),
+      page1st = $(".page").eq(0);
+    if(!currentPage[0]) currentPage = page1st.addClass("page-current");
     var hash = location.hash;
     if(currentPage[0] && !currentPage[0].id) currentPage[0].id = (hash ? hash.slice(1) : this.genRandomID());
 
@@ -43,18 +44,19 @@
       currentPage = newCurrentPage;
     }
 
-    //第一次打开的时候需要pushstate，不这么做，刷新之后第一次加载新页面会无法后退
-    var state = history.state;
-    if(!state) {
-      var id = this.genStateID();
-      this.pushState(location.href, id);
-      this.pushBack({
-        url: location.href,
-        pageid: currentPage[0].id,
-        id: id
-      });
-      this.setCurrentStateID(id);
-    }
+    var id = this.genStateID(),
+      curUrl = location.href,
+      // 需要设置入口页的Url，方便用户在类似xx/yy#step2 的页面刷新加载后 点击后退可以回到入口页
+      entryUrl = curUrl.split('#')[0];
+
+    // 在页面加载时，可能会包含一个非空的状态对象history.state。这种情况是会发生的，例如，如果页面中使用pushState()或replaceState()方法设置了一个状态对象，然后用户重启了浏览器。https://developer.mozilla.org/en-US/docs/Web/API/History_API#Reading_the_current_state
+    history.replaceState({url: curUrl, id: id}, '', curUrl);
+    this.setCurrentStateID(id);
+    this.pushBack({
+      url: entryUrl,
+      pageid: '#' + page1st[0].id,
+      id: id
+    });
 
     window.addEventListener('popstate', $.proxy(this.onpopstate, this));
   }
@@ -67,13 +69,13 @@
       var pageid = this.getCurrentPage()[0].id;
       this.pushBack({
         url: url,
-        pageid: "#"+ pageid,
+        pageid: "#" + pageid,
         id: this.getCurrentStateID()
       });
 
       //删除全部forward
       var forward = JSON.parse(this.state.getItem("forward") || "[]");
-      for(var i=0;i<forward.length;i++) {
+      for(var i = 0; i < forward.length; i++) {
         $(forward[i].pageid).each(function() {
           var $page = $(this);
           if($page.data("page-remote")) $page.remove();
@@ -151,15 +153,10 @@
   //后退
   Router.prototype._back = function(url) {
     var h = this.popBack();
-    // 如果是刷新的非入口页（比如一些xx/yy#step2形式的后续流程页）,h变量的值是null，也就没有下两行需要的h.pageid值
-    if (!h) {
-      location.href = url;
-      return;
-    }
     var currentPage = this.getCurrentPage();
     var newPage = $(h.pageid);
     if(!newPage[0]) return;
-    this.pushForward({url: location.href, pageid: "#"+currentPage[0].id, id: this.getCurrentStateID()});
+    this.pushForward({url: location.href, pageid: "#" + currentPage[0].id, id: this.getCurrentStateID()});
     this.animatePages(newPage, currentPage, true);
     this.setCurrentStateID(h.id);
   }
@@ -170,7 +167,7 @@
     var currentPage = this.getCurrentPage();
     var newPage = $(h.pageid);
     if(!newPage[0]) return;
-    this.pushBack({url: location.href, pageid: "#"+currentPage[0].id, id: this.getCurrentStateID()});
+    this.pushBack({url: location.href, pageid: "#" + currentPage[0].id, id: this.getCurrentStateID()});
     this.animatePages(currentPage, newPage);
     this.setCurrentStateID(h.id);
   }
@@ -182,7 +179,6 @@
   Router.prototype.onpopstate = function(d) {
     var state = d.state;
     if(!state) {//刷新再后退导致无法取到state
-      this.back();
       return;
     }
 
