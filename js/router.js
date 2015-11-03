@@ -22,6 +22,8 @@
     this.stack.setItem("forward", "[]");  //前进栈, {url, pageid, stateid}
     this.init();
     this.xhr = null;
+    // 解决各个webview针对页面重新加载（包括后退造成的）时History State的处理差异，加此标志位
+    this.newLoaded = true;
   }
 
   Router.prototype.defaults = {
@@ -57,7 +59,6 @@
       pageid: '#' + page1st[0].id,
       id: id
     });
-
     window.addEventListener('popstate', $.proxy(this.onpopstate, this));
   }
 
@@ -178,7 +179,9 @@
 
   Router.prototype.onpopstate = function(d) {
     var state = d.state;
-    if(!state) {//刷新再后退导致无法取到state
+    // 刷新再后退导致无法取到state
+    if(!state || this.newLoaded) {
+      this.newLoaded = false;
       return;
     }
 
