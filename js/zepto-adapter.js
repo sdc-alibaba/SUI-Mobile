@@ -148,7 +148,7 @@
         } else return undefined;
     };
     $.fn.data = function(key, value) {
-		if (typeof key === 'undefined') {
+        if (typeof key === 'undefined') {
             var data = {};
             $.each(this[0].attributes, function (i, node) {
                 if (node.name.indexOf('data-') === 0) {
