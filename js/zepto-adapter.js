@@ -149,13 +149,7 @@
     };
     $.fn.data = function(key, value) {
         if (typeof key === 'undefined') {
-            var data = {};
-            $.each(this[0].attributes, function (i, node) {
-                if (node.name.indexOf('data-') === 0) {
-                    data[node.name.substring(5)] = node.nodeValue;
-                }
-            });
-            return data;
+            return $(this).dataset();
         }
         if (typeof value === 'undefined') {
             // Get value
