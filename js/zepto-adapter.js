@@ -25,7 +25,7 @@
         };
     });
 
-    
+
     //support
     $.support = (function() {
         var support = {
@@ -99,7 +99,7 @@
       else if (window.mozCancelAnimationFrame) return window.mozCancelAnimationFrame(id);
       else {
         return window.clearTimeout(id);
-      }  
+      }
     };
 
 
@@ -148,6 +148,15 @@
         } else return undefined;
     };
     $.fn.data = function(key, value) {
+        if (typeof key === 'undefined') {
+            var data = {};
+            $.each(this[0].attributes, function (i, node) {
+                if (node.name.indexOf('data-') === 0) {
+                    data[node.name.substring(5)] = node.nodeValue;
+                }
+            });
+            return data;
+        }
         if (typeof value === 'undefined') {
             // Get value
             if (this[0] && this[0].getAttribute) {
@@ -156,7 +165,7 @@
                 if (dataKey) {
                     return dataKey;
                 } else if (this[0].smElementDataStorage && (key in this[0].smElementDataStorage)) {
-                
+
 
                     return this[0].smElementDataStorage[key];
 
