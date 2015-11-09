@@ -25,24 +25,27 @@ title: 开始使用 &middot; SUI Mobile
         <p>我们提供了CDN地址可以直接使用，并且强烈建议使用我们的CDN而不是下载到本地。</p>
  
 {% highlight html %}
-<link rel="stylesheet" href="//g.alicdn.com/sui-mobile/sm/{{ site.version }}/css/sm.min.css">
+<link rel="stylesheet" href="//g.alicdn.com/msui/sm/{{ site.version }}/css/sm.min.css">
 <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
-<script type='text/javascript' src='//g.alicdn.com/sui-mobile/sm/{{ site.version }}/js/sm.min.js' charset='utf-8'></script>
-<!--如果你用到了拓展包中的组件，还需要引用下面两个-->
-<link rel="stylesheet" href="//g.alicdn.com/sui-mobile/sm/{{ site.version }}/css/sm-extend.min.css">
-<script type='text/javascript' src='//g.alicdn.com/sui-mobile/sm/{{ site.version }}/js/sm-extend.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/{{ site.version }}/js/sm.min.js' charset='utf-8'></script>
+{% endhighlight %}
+
+<p>如果你用到了拓展包中的组件，还需要引用extend扩展包，为减少请求数，可以使用阿里CDN的combo功能：</p>
+{% highlight html %}
+<link rel="stylesheet" href="//g.alicdn.com/msui/sm/{{ site.version }}/css/??sm.min.css,sm-extend.min.css">
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/{{ site.version }}/js/??sm.min.js,sm-extend.min.js' charset='utf-8'></script>
 {% endhighlight %}
 
         <h3>2. 调试代码</h3>
         <p>如果你希望在开发环境下可以调试代码，那么你可以这样引用未压缩的版本</p>
 
 {% highlight html %}
-<link rel="stylesheet" href="//g.alicdn.com/sui-mobile/sm/{{ site.version }}/css/sm.css">
+<link rel="stylesheet" href="//g.alicdn.com/msui/sm/{{ site.version }}/css/sm.css">
 <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.js' charset='utf-8'></script>
-<script type='text/javascript' src='//g.alicdn.com/sui-mobile/sm/{{ site.version }}/js/sm.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/{{ site.version }}/js/sm.js' charset='utf-8'></script>
 <!--如果你用到了拓展包中的组件，还需要引用下面两个-->
-<link rel="stylesheet" href="//g.alicdn.com/sui-mobile/sm/{{ site.version }}/css/sm-extend.css">
-<script type='text/javascript' src='//g.alicdn.com/sui-mobile/sm/{{ site.version }}/js/sm-extend.js' charset='utf-8'></script>
+<link rel="stylesheet" href="//g.alicdn.com/msui/sm/{{ site.version }}/css/sm-extend.css">
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/{{ site.version }}/js/sm-extend.js' charset='utf-8'></script>
 {% endhighlight %}
 
         <h3>完整的页面模板</h3>
@@ -60,16 +63,16 @@ title: 开始使用 &middot; SUI Mobile
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <link rel="stylesheet" href="//g.alicdn.com/sui-mobile/sm/{{ site.version }}/css/sm.min.css">
-    <link rel="stylesheet" href="//g.alicdn.com/sui-mobile/sm/{{ site.version }}/css/sm-extend.min.css">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/{{ site.version }}/css/sm.min.css">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/{{ site.version }}/css/sm-extend.min.css">
 
     <link rel="stylesheet" href="/your-css-file.css">
   </head>
   <body>
     <!-- 你的html代码 -->
     <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
-    <script type='text/javascript' src='//g.alicdn.com/sui-mobile/sm/{{ site.version }}/js/sm.min.js' charset='utf-8'></script>
-    <script type='text/javascript' src='//g.alicdn.com/sui-mobile/sm/{{ site.version }}/js/sm-extend.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='//g.alicdn.com/msui/sm/{{ site.version }}/js/sm.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='//g.alicdn.com/msui/sm/{{ site.version }}/js/sm-extend.min.js' charset='utf-8'></script>
 
     <script src="/your-js-file.js"></script>
   </body>

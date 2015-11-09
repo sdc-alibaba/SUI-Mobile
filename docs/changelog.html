@@ -25,16 +25,16 @@ title: 更新日志 &middot; SUI Mobile
           <li>次版本号：当做了向下兼容的功能性新增</li>
           <li>修订号：当做了向下兼容的问题修正</li>
         </ul>
-        <p>CND 地址中的三位数字就表示当前的版本号。比如你引用 <code>g.alicdn.com/sui-mobile/sm/{{ site.version }}/css/sm.min.css</code>，那么版本号就是 <code>{{ site.version }}</code>。</p>
+        <p>CND 地址中的三位数字就表示当前的版本号。比如你引用 <code>g.alicdn.com/msui/sm/{{ site.version }}/css/sm.min.css</code>，那么版本号就是 <code>{{ site.version }}</code>。</p>
         <p>SUI Mobile 采用增量更新，每次发布到线上的版本永远不会再变化。这里记录了每一个版本更新的内容。</p>
 
         <h2>更新日志</h2>
 
         <h3>V0.5.2</h3>
+        <p><b>重要变更：CDN资源路径前半部分由 g.alicdn.com/sui-mobile/ 变更为 g.alicdn.com/msui/</b>。比如<a href="//g.alicdn.com/msui/sm/0.5.2/css/sm.min.css" >g.alicdn.com/msui/sm/0.5.2/css/sm.min.css</a></p>
         <ul>
           <li>路由可以由用户选择是否开启。<a href="http://m.sui.taobao.org/components/#init">Router初始化控制参数</a></li>
           <li>解决各个webview针对页面重新加载（包括后退造成的）时History State的处理差异</li>
-          <li> $.fn.data()作为$.fn.dataset的快捷方式</li>
           <li>更新文档和Demo</li>
         </ul>
 
