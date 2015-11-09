@@ -21,7 +21,7 @@ $(function () {
     });
   });
 
-  //无线滚动
+  //无限滚动
   $(document).on("pageInit", "#page-infinite-scroll", function(e, id, page) {
     function addItems(number, lastIndex) {
       // 生成新条目的HTML
@@ -101,7 +101,7 @@ $(function () {
       myPhotoBrowserCaptions.open();
     });
   });
-  
+
 
   //对话框
   $(document).on("pageInit", "#page-modal", function(e, id, page) {
@@ -162,7 +162,7 @@ $(function () {
       ];
       var groups = [buttons1, buttons2];
       $.actions(groups);
-    }); 
+    });
   });
 
   //加载提示符

@@ -43,6 +43,11 @@
       <td>在 <code>document.onload</code> 之后自动调用 <code>$.init</code> 方法。如果你的页面内容是异步加载的，应该关闭这个配置，并且在加载完成之后手动调用 <code>$.init</code></td>
     </tr>
     <tr>
+      <td>router</td>
+      <td>true</td>
+      <td>默认启用MSUI内置的Router功能。如果想关闭此功能，在页面加载MSUI之前配置<code>$.config.router = false</code> 即可。</td>
+    </tr>
+    <tr>
       <td>showPageLoadingIndicator</td>
       <td>true</td>
       <td>在加载新页面过程中显示一个加载指示器。</td>

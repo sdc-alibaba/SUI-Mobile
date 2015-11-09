@@ -113,14 +113,14 @@
         rightPage.trigger("pageInitInternal", [rightPage[0].id, rightPage]);
       });
     } else {
-        leftPage.trigger("pageAnimationStart", [rightPage[0].id, rightPage]);
-        leftPage.removeClass(removeClasses).addClass('page-from-left-to-center');
-        rightPage.removeClass(removeClasses).addClass('page-from-center-to-right');
-        leftPage.animationEnd(function() {
-          leftPage.removeClass(removeClasses).addClass("page-current");
-          leftPage.trigger("pageAnimationEnd", [leftPage[0].id, leftPage]);
-          leftPage.trigger("pageReinit", [leftPage[0].id, leftPage]);
-        });
+      leftPage.trigger("pageAnimationStart", [rightPage[0].id, rightPage]);
+      leftPage.removeClass(removeClasses).addClass('page-from-left-to-center');
+      rightPage.removeClass(removeClasses).addClass('page-from-center-to-right');
+      leftPage.animationEnd(function() {
+        leftPage.removeClass(removeClasses).addClass("page-current");
+        leftPage.trigger("pageAnimationEnd", [leftPage[0].id, leftPage]);
+        leftPage.trigger("pageReinit", [leftPage[0].id, leftPage]);
+      });
       rightPage.animationEnd(function() {
         rightPage.removeClass(removeClasses);
       });
@@ -158,8 +158,8 @@
     var newPage = $(h.pageid);
     if(!newPage[0]) return;
     this.pushForward({url: location.href, pageid: "#" + currentPage[0].id, id: this.getCurrentStateID()});
-    this.animatePages(newPage, currentPage, true);
     this.setCurrentStateID(h.id);
+    this.animatePages(newPage, currentPage, true);
   }
 
   //前进
@@ -169,8 +169,8 @@
     var newPage = $(h.pageid);
     if(!newPage[0]) return;
     this.pushBack({url: location.href, pageid: "#" + currentPage[0].id, id: this.getCurrentStateID()});
-    this.animatePages(currentPage, newPage);
     this.setCurrentStateID(h.id);
+    this.animatePages(currentPage, newPage);
   }
 
   Router.prototype.pushState = function(url, id) {
@@ -201,8 +201,8 @@
     this.dispatch("pageLoadStart");
 
     if(this.xhr && this.xhr.readyState < 4) {
-      xhr.onreadystatechange = noop;
-      xhr.abort();
+      this.xhr.onreadystatechange = function(){};
+      this.xhr.abort();
       this.dispatch("pageLoadCancel");
     }
 
@@ -288,6 +288,8 @@
   };
 
   $(function() {
+    // 用户可选关闭router功能
+    if(!$.smConfig.router) return;
     var router = $.router = new Router();
     $(document).on("click", "a", function(e) {
       var $target = $(e.currentTarget);
