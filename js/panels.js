@@ -20,11 +20,11 @@
 
       // Trigger reLayout
       var clientLeft = panel[0].clientLeft;
-      
+
       // Transition End;
       var transitionEndTarget = effect === 'reveal' ? $($.getCurrentPage()) : panel;
       var openedTriggered = false;
-      
+
       function panelTransitionEnd() {
           transitionEndTarget.transitionEnd(function (e) {
               if (e.target === transitionEndTarget[0]) {
@@ -66,7 +66,7 @@
   };
 
   $(document).on("click", ".open-panel", function(e) {
-    var panel = $(e.target).data(panel);
+    var panel = $(e.target).data('panel');
     $.openPanel(panel);
   });
   $(document).on("click", ".close-panel, .panel-overlay", function(e) {
@@ -122,7 +122,7 @@
           isMoved = false;
           isTouched = true;
           isScrolling = undefined;
-          
+
           touchStartTime = (new Date()).getTime();
           direction = undefined;
       }
@@ -201,7 +201,7 @@
           e.preventDefault();
           var threshold = opened ? 0 : -swipePanelThreshold;
           if (side === 'right') threshold = -threshold;
-          
+
           touchesDiff = pageX - touchesStart.x + threshold;
 
           if (side === 'right') {
