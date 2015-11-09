@@ -65,6 +65,8 @@
   //加载一个页面,传入的参数是页面id或者url
   Router.prototype.loadPage = function(url) {
 
+    // android chrome 在移动端加载页面时不会触发一次‘popstate’事件
+    this.newLoaded && (this.newLoaded = false)
     this.getPage(url, function(page) {
 
       var pageid = this.getCurrentPage()[0].id;
