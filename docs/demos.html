@@ -4,7 +4,7 @@ title: SUI Mobile Demo
 ---
 <div class="page" id="page-index">
   <header class="bar bar-nav">
-    <a class="icon icon-me pull-left open-panel"></a>
+    <a class="icon icon-me pull-left open-panel" data-panel=".panel-left"></a>
     <a class="button button-link button-nav pull-right open-popup" data-popup=".popup-about">
       关于
       <span class="icon icon-menu"></span>
@@ -13,7 +13,7 @@ title: SUI Mobile Demo
   </header>
   <div class="bar bar-standard bar-footer">
     <a class="icon icon-edit pull-left"></a>
-    <a class="icon icon-settings pull-right"></a>
+    <a class="icon icon-settings pull-right open-panel" data-panel=".panel-right"></a>
   </div>
   <div class="content" id='page-index'>
     <div class="content-inner">
@@ -205,6 +205,14 @@ title: SUI Mobile Demo
 <div class="panel panel-left panel-reveal">
   <div class="content-block">
     <p>这是一个侧栏</p>
+    <p></p>
+    <!-- Click on link with "close-panel" class will close panel -->
+    <p><a href="#" class="close-panel">关闭</a></p>
+  </div>
+</div>
+<div class="panel panel-right panel-cover">
+  <div class="content-block">
+    <p>这是右侧栏，panel-cover模式</p>
     <p></p>
     <!-- Click on link with "close-panel" class will close panel -->
     <p><a href="#" class="close-panel">关闭</a></p>
