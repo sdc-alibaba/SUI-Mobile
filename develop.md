@@ -7,6 +7,11 @@ SUI Mobile
 如果你的系统中没有ruby，请先[安装ruby](https://www.ruby-lang.org/en/documentation/installation/)。然后再安装 `jekyll` 和 `rouge` （执行 `gem install jekyll` 和 `gem install rouge`）。
 如果发现 `gem install` 失败，可能是因为 gem 服务器被和谐，参考[淘宝gem镜像](https://ruby.taobao.org/)
 
+# 版本号升级
+
+每次升级发布，需要将 `package.json` 和 `_config.yml` 两个文件里的版本号字段更新升级一次。
+
+
 # 分支
 
 ***由于启用了服务器端编译，发布代码的时候会有比较长的编译时间，请耐心等待。***
