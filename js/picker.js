@@ -17,8 +17,6 @@
           // Common settings
           scrollToInput: true,
           inputReadOnly: true,
-          convertToPopover: true,
-          onlyInPopover: false,
           toolbar: true,
           toolbarCloseText: '确定',
           toolbarTemplate: '<header class="bar bar-nav">\
@@ -35,34 +33,12 @@
       p.params = params;
       p.cols = [];
       p.initialized = false;
-      
+
       // Inline flag
       p.inline = p.params.container ? true : false;
 
       // 3D Transforms origin bug, only on safari
       var originBug = $.device.ios || (navigator.userAgent.toLowerCase().indexOf('safari') >= 0 && navigator.userAgent.toLowerCase().indexOf('chrome') < 0) && !$.device.android;
-
-      // Should be converted to popover
-      function isPopover() {
-          var toPopover = false;
-          if (!p.params.convertToPopover && !p.params.onlyInPopover) return toPopover;
-          if (!p.inline && p.params.input) {
-              if (p.params.onlyInPopover) toPopover = true;
-              else {
-                  if ($.device.ios) {
-                      toPopover = $.device.ipad ? true : false;
-                  }
-                  else {
-                      if ($(window).width() >= 768) toPopover = true;
-                  }
-              }
-          } 
-          return toPopover; 
-      }
-      function inPopover() {
-          if (p.opened && p.container && p.container.length > 0 && p.container.parents('.popover').length > 0) return true;
-          else return false;
-      }
 
       // Value
       p.setValue = function (arrValues, transition) {
@@ -106,7 +82,7 @@
           col.container = colContainer;
           col.wrapper = col.container.find('.picker-items-col-wrapper');
           col.items = col.wrapper.find('.picker-item');
-          
+
           var i, j;
           var wrapperHeight, itemHeight, itemsHeight, minTranslate, maxTranslate;
           col.replaceValues = function (values, displayValues) {
@@ -132,7 +108,7 @@
               itemHeight = col.items[0].offsetHeight;
               itemsHeight = itemHeight * col.items.length;
               minTranslate = colHeight / 2 - itemsHeight + itemHeight / 2;
-              maxTranslate = colHeight / 2 - itemHeight / 2;    
+              maxTranslate = colHeight / 2 - itemHeight / 2;
               if (col.width) {
                   colWidth = col.width;
                   if (parseInt(colWidth, 10) === colWidth) colWidth = colWidth + 'px';
@@ -152,7 +128,7 @@
               }
           };
           col.calcSize();
-          
+
           col.wrapper.transform('translate3d(0,' + maxTranslate + 'px,0)').transition(0);
 
 
@@ -170,7 +146,7 @@
               // Update wrapper
               col.wrapper.transition(transition);
               col.wrapper.transform('translate3d(0,' + (newTranslate) + 'px,0)');
-                  
+
               // Watch items
               if (p.params.updateValuesOnMomentum && col.activeIndex && col.activeIndex !== newActiveIndex ) {
                   $.cancelAnimationFrame(animationFrameId);
@@ -220,13 +196,13 @@
                       p.updateValue();
                   }
               }
-                  
+
               // Set 3D rotate effect
               if (!p.params.rotateEffect) {
                   return;
               }
               var percentage = (translate - (Math.floor((translate - maxTranslate)/itemHeight) * itemHeight + maxTranslate)) / itemHeight;
-              
+
               col.items.each(function () {
                   var item = $(this);
                   var itemOffsetTop = item.index() * itemHeight;
@@ -235,7 +211,7 @@
                   var percentage = itemOffset / itemHeight;
 
                   var itemsFit = Math.ceil(col.height / itemHeight / 2) + 1;
-                  
+
                   var angle = (-18*percentage);
                   if (angle > 180) angle = 180;
                   if (angle < -180) angle = -180;
@@ -265,7 +241,7 @@
               isTouched = true;
               touchStartY = touchCurrentY = e.type === 'touchstart' ? e.targetTouches[0].pageY : e.pageY;
               touchStartTime = (new Date()).getTime();
-              
+
               allowItemClick = true;
               startTranslate = currentTranslate = $.getTranslate(col.wrapper[0], 'y');
           }
@@ -301,7 +277,7 @@
 
               // Update items
               col.updateItems(undefined, currentTranslate, 0, p.params.updateValuesOnTouchmove);
-              
+
               // Calc velocity
               velocityTranslate = currentTranslate - prevTranslate || currentTranslate;
               velocityTime = (new Date()).getTime();
@@ -435,8 +411,8 @@
                       '<div class="picker-center-highlight"></div>' +
                   '</div>' +
               '</div>';
-              
-          p.pickerHTML = pickerHTML;    
+
+          p.pickerHTML = pickerHTML;
       };
 
       // Input Events
@@ -444,7 +420,7 @@
           e.preventDefault();
           if (p.opened) return;
           p.open();
-          if (p.params.scrollToInput && !isPopover()) {
+          if (p.params.scrollToInput) {
               var pageContent = p.input.parents('.page-content');
               if (pageContent.length === 0) return;
 
@@ -468,12 +444,11 @@
           }
       }
       function closeOnHTMLClick(e) {
-          if (inPopover()) return;
           if (p.input && p.input.length > 0) {
               if (e.target !== p.input[0] && $(e.target).parents('.picker-modal').length === 0) p.close();
           }
           else {
-              if ($(e.target).parents('.picker-modal').length === 0) p.close();   
+              if ($(e.target).parents('.picker-modal').length === 0) p.close();
           }
       }
 
@@ -482,7 +457,7 @@
           if (p.input.length > 0) {
               if (p.params.inputReadOnly) p.input.prop('readOnly', true);
               if (!p.inline) {
-                  p.input.on('click', openOnInput);    
+                  p.input.on('click', openOnInput);
               }
               if (p.params.inputReadOnly) {
                   p.input.on('focus mousedown', function (e) {
@@ -490,9 +465,9 @@
                   });
               }
           }
-              
+
       }
-      
+
       if (!p.inline) $('html').on('click', closeOnHTMLClick);
 
       // Open
@@ -509,23 +484,13 @@
 
       p.opened = false;
       p.open = function () {
-          var toPopover = isPopover();
-
           if (!p.opened) {
 
               // Layout
               p.layout();
 
               // Append
-              if (toPopover) {
-                  p.pickerHTML = '<div class="popover popover-picker-columns"><div class="popover-inner">' + p.pickerHTML + '</div></div>';
-                  p.popover = $.popover(p.pickerHTML, p.params.input, true);
-                  p.container = $(p.popover).find('.picker-modal');
-                  $(p.popover).on('close', function () {
-                      onPickerClose();
-                  });
-              }
-              else if (p.inline) {
+              if (p.inline) {
                   p.container = $(p.pickerHTML);
                   p.container.addClass('picker-modal-inline');
                   $(p.params.container).append(p.container);
@@ -547,7 +512,7 @@
                   if ((!p.initialized && p.params.value) || (p.initialized && p.value)) updateItems = false;
                   p.initPickerCol(this, updateItems);
               });
-              
+
               // Set value
               if (!p.initialized) {
                   if (p.params.value) {
@@ -569,14 +534,8 @@
       // Close
       p.close = function () {
           if (!p.opened || p.inline) return;
-          if (inPopover()) {
-              $.closeModal(p.popover);
-              return;
-          }
-          else {
-              $.closeModal(p.container);
-              return;
-          }
+          $.closeModal(p.container);
+          return;
       };
 
       // Destroy
@@ -598,15 +557,7 @@
 
   $(document).on("click", ".close-picker", function() {
     var pickerToClose = $('.picker-modal.modal-in');
-    if (pickerToClose.length > 0) {
-      $.closeModal(pickerToClose);
-    }
-    else {
-      pickerToClose = $('.popover.modal-in .picker-modal');
-      if (pickerToClose.length > 0) {
-        $.closeModal(pickerToClose.parents('.popover'));
-      }
-    }
+    $.closeModal(pickerToClose);
   });
 
   $.fn.picker = function(params) {
@@ -614,7 +565,7 @@
     return this.each(function() {
       if(!this) return;
       var $this = $(this);
-      
+
       var picker = $this.data("picker");
       if(!picker) {
         var p = $.extend({input: this}, params);

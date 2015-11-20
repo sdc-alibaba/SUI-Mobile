@@ -24,14 +24,14 @@
           animate: true,
           closeOnSelect: true,
           monthPicker: true,
-          monthPickerTemplate: 
+          monthPickerTemplate:
               '<div class="picker-calendar-month-picker">' +
                   '<a href="#" class="link icon-only picker-calendar-prev-month"><i class="icon icon-prev"></i></a>' +
                   '<div class="current-month-value"></div>' +
                   '<a href="#" class="link icon-only picker-calendar-next-month"><i class="icon icon-next"></i></a>' +
               '</div>',
           yearPicker: true,
-          yearPickerTemplate: 
+          yearPickerTemplate:
               '<div class="picker-calendar-year-picker">' +
                   '<a href="#" class="link icon-only picker-calendar-prev-year"><i class="icon icon-prev"></i></a>' +
                   '<span class="current-year-value"></span>' +
@@ -41,11 +41,9 @@
           // Common settings
           scrollToInput: true,
           inputReadOnly: true,
-          convertToPopover: true,
-          onlyInPopover: false,
           toolbar: true,
           toolbarCloseText: 'Done',
-          toolbarTemplate: 
+          toolbarTemplate:
               '<div class="toolbar">' +
                   '<div class="toolbar-inner">' +
                       '{{monthPicker}}' +
@@ -83,28 +81,6 @@
 
       // Animating flag
       p.animating = false;
-
-      // Should be converted to popover
-      function isPopover() {
-          var toPopover = false;
-          if (!p.params.convertToPopover && !p.params.onlyInPopover) return toPopover;
-          if (!p.inline && p.params.input) {
-              if (p.params.onlyInPopover) toPopover = true;
-              else {
-                  if ($.device.ios) {
-                      toPopover = $.device.ipad ? true : false;
-                  }
-                  else {
-                      if ($(window).width() >= 768) toPopover = true;
-                  }
-              }
-          } 
-          return toPopover; 
-      }
-      function inPopover() {
-          if (p.opened && p.container && p.container.length > 0 && p.container.parents('.popover').length > 0) return true;
-          else return false;
-      }
 
       // Format date
       function formatDate(date) {
@@ -153,7 +129,7 @@
       };
       p.setValue = function (arrValues) {
           p.value = arrValues;
-          p.updateValue();   
+          p.updateValue();
       };
       p.updateValue = function () {
           p.wrapper.find('.picker-calendar-day-selected').removeClass('picker-calendar-day-selected');
@@ -173,7 +149,7 @@
                       inputValue.push(formatDate(p.value[i]));
                   }
                   inputValue = inputValue.join(', ');
-              } 
+              }
               $(p.input).val(inputValue);
               $(p.input).trigger('change');
           }
@@ -198,7 +174,7 @@
           }
           function handleTouchMove (e) {
               if (!isTouched) return;
-              
+
               touchCurrentX = e.type === 'touchmove' ? e.targetTouches[0].pageX : e.pageX;
               touchCurrentY = e.type === 'touchmove' ? e.targetTouches[0].pageY : e.pageY;
               if (typeof isScrolling === 'undefined') {
@@ -211,7 +187,7 @@
               e.preventDefault();
               if (p.animating) {
                   isTouched = false;
-                  return;   
+                  return;
               }
               allowItemClick = false;
               if (!isMoved) {
@@ -237,7 +213,7 @@
                   return;
               }
               isTouched = isMoved = false;
-              
+
               touchEndTime = new Date().getTime();
               if (touchEndTime - touchStartTime < 300) {
                   if (Math.abs(touchesDiff) < 10) {
@@ -249,7 +225,7 @@
                   }
                   else {
                       if (rtl) p.prevMonth();
-                      else p.nextMonth();   
+                      else p.nextMonth();
                   }
               }
               else {
@@ -303,7 +279,7 @@
               p.wrapper.on($.touchEvents.move, handleTouchMove);
               p.wrapper.on($.touchEvents.end, handleTouchEnd);
           }
-              
+
           p.container[0].f7DestroyCalendarEvents = function () {
               p.container.find('.picker-calendar-prev-month').off('click', p.prevMonth);
               p.container.find('.picker-calendar-next-month').off('click', p.nextMonth);
@@ -316,7 +292,7 @@
                   p.wrapper.off($.touchEvents.end, handleTouchEnd);
               }
           };
-          
+
 
       };
       p.destroyCalendarEvents = function (colContainer) {
@@ -349,11 +325,11 @@
               daysInMonth = p.daysInMonth(date),
               firstDayOfMonthIndex = new Date(date.getFullYear(), date.getMonth()).getDay();
           if (firstDayOfMonthIndex === 0) firstDayOfMonthIndex = 7;
-          
+
           var dayDate, currentValues = [], i, j,
               rows = 6, cols = 7,
               monthHTML = '',
-              dayIndex = 0 + (p.params.firstDay - 1),    
+              dayIndex = 0 + (p.params.firstDay - 1),
               today = new Date().setHours(0,0,0,0),
               minDate = p.params.minDate ? new Date(p.params.minDate).getTime() : null,
               maxDate = p.params.maxDate ? new Date(p.params.maxDate).getTime() : null;
@@ -363,7 +339,7 @@
                   currentValues.push(new Date(p.value[i]).setHours(0,0,0,0));
               }
           }
-              
+
           for (i = 1; i <= rows; i++) {
               var rowHTML = '';
               var row = i;
@@ -385,7 +361,7 @@
                           dayDate = new Date(month + 1 > 11 ? year + 1 : year, month + 1 > 11 ? 0 : month + 1, dayNumber).getTime();
                       }
                       else {
-                          dayDate = new Date(year, month, dayNumber).getTime();    
+                          dayDate = new Date(year, month, dayNumber).getTime();
                       }
                   }
                   // Today
@@ -398,7 +374,7 @@
                   }
                   // Disabled
                   if ((minDate && dayDate < minDate) || (maxDate && dayDate > maxDate)) {
-                      addClass += ' picker-calendar-day-disabled';   
+                      addClass += ' picker-calendar-day-disabled';
                   }
 
                   dayDate = new Date(dayDate);
@@ -415,7 +391,7 @@
       p.updateCurrentMonthYear = function (dir) {
           if (typeof dir === 'undefined') {
               p.currentMonth = parseInt(p.months.eq(1).attr('data-month'), 10);
-              p.currentYear = parseInt(p.months.eq(1).attr('data-year'), 10);   
+              p.currentYear = parseInt(p.months.eq(1).attr('data-year'), 10);
           }
           else {
               p.currentMonth = parseInt(p.months.eq(dir === 'next' ? (p.months.length - 1) : 0).attr('data-month'), 10);
@@ -423,7 +399,7 @@
           }
           p.container.find('.current-month-value').text(p.params.monthNames[p.currentMonth]);
           p.container.find('.current-year-value').text(p.currentYear);
-              
+
       };
       p.onMonthChangeStart = function (dir) {
           p.updateCurrentMonthYear(dir);
@@ -441,7 +417,7 @@
           p.animating = false;
           var nextMonthHTML, prevMonthHTML, newMonthHTML;
           p.wrapper.find('.picker-calendar-month:not(.picker-calendar-month-prev):not(.picker-calendar-month-current):not(.picker-calendar-month-next)').remove();
-          
+
           if (typeof dir === 'undefined') {
               dir = 'next';
               rebuildBoth = true;
@@ -617,7 +593,7 @@
           if (transitionEndCallback) {
              p.wrapper.transitionEnd(function () {
                   p.onMonthChangeEnd(dir, true);
-              }); 
+              });
           }
           if (!p.params.animate) {
               p.onMonthChangeEnd(dir);
@@ -629,14 +605,14 @@
       p.prevYear = function () {
           p.setYearMonth(p.currentYear - 1);
       };
-      
+
 
       // HTML Layout
       p.layout = function () {
           var pickerHTML = '';
           var pickerClass = '';
           var i;
-          
+
           var layoutDate = p.value && p.value.length ? p.value[0] : new Date().setHours(0,0,0,0);
           var prevMonthHTML = p.monthHTML(layoutDate, 'prev');
           var currentMonthHTML = p.monthHTML(layoutDate);
@@ -649,7 +625,7 @@
                   var weekDayIndex = (i + p.params.firstDay > 6) ? (i - 7 + p.params.firstDay) : (i + p.params.firstDay);
                   var dayName = p.params.dayNamesShort[weekDayIndex];
                   weekHeaderHTML += '<div class="picker-calendar-week-day ' + ((p.params.weekendDays.indexOf(weekDayIndex) >= 0) ? 'picker-calendar-week-day-weekend' : '') + '"> ' + dayName + '</div>';
-                  
+
               }
               weekHeaderHTML = '<div class="picker-calendar-week-days">' + weekHeaderHTML + '</div>';
           }
@@ -670,9 +646,9 @@
                       monthsHTML +
                   '</div>' +
               '</div>';
-              
-              
-          p.pickerHTML = pickerHTML;    
+
+
+          p.pickerHTML = pickerHTML;
       };
 
       // Input Events
@@ -680,7 +656,7 @@
           e.preventDefault();
           if (p.opened) return;
           p.open();
-          if (p.params.scrollToInput && !isPopover()) {
+          if (p.params.scrollToInput) {
               var pageContent = p.input.parents('.page-content');
               if (pageContent.length === 0) return;
 
@@ -705,12 +681,11 @@
           }
       }
       function closeOnHTMLClick(e) {
-          if (inPopover()) return;
           if (p.input && p.input.length > 0) {
               if (e.target !== p.input[0] && $(e.target).parents('.picker-modal').length === 0) p.close();
           }
           else {
-              if ($(e.target).parents('.picker-modal').length === 0) p.close();   
+              if ($(e.target).parents('.picker-modal').length === 0) p.close();
           }
       }
 
@@ -719,7 +694,7 @@
           if (p.input.length > 0) {
               if (p.params.inputReadOnly) p.input.prop('readOnly', true);
               if (!p.inline) {
-                  p.input.on('click', openOnInput);    
+                  p.input.on('click', openOnInput);
               }
               if (p.params.inputReadOnly) {
                   p.input.on('focus mousedown', function (e) {
@@ -727,9 +702,9 @@
                   });
               }
           }
-              
+
       }
-      
+
       if (!p.inline) $('html').on('click', closeOnHTMLClick);
 
       // Open
@@ -744,7 +719,6 @@
 
       p.opened = false;
       p.open = function () {
-          var toPopover = isPopover();
           var updateValue = false;
           if (!p.opened) {
               // Set date value
@@ -759,15 +733,7 @@
               p.layout();
 
               // Append
-              if (toPopover) {
-                  p.pickerHTML = '<div class="popover popover-picker-calendar"><div class="popover-inner">' + p.pickerHTML + '</div></div>';
-                  p.popover = $.popover(p.pickerHTML, p.params.input, true);
-                  p.container = $(p.popover).find('.picker-modal');
-                  $(p.popover).on('close', function () {
-                      onPickerClose();
-                  });
-              }
-              else if (p.inline) {
+              if (p.inline) {
                   p.container = $(p.pickerHTML);
                   p.container.addClass('picker-modal-inline');
                   $(p.params.container).append(p.container);
@@ -799,7 +765,7 @@
 
               // Update input value
               if (updateValue) p.updateValue();
-              
+
           }
 
           // Set flag
@@ -816,14 +782,8 @@
       // Close
       p.close = function () {
           if (!p.opened || p.inline) return;
-          if (inPopover()) {
-              $.closeModal(p.popover);
-              return;
-          }
-          else {
-              $.closeModal(p.container);
-              return;
-          }
+          $.closeModal(p.container);
+          return;
       };
 
       // Destroy

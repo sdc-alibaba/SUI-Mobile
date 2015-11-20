@@ -49,7 +49,7 @@ Framework7 Layouts Themes
         color:#fff;
         background-color: @barsBg;
     }
-    .popover .picker-modal, .picker-modal.picker-modal-inline {
+    .picker-modal.picker-modal-inline {
         .picker-center-highlight {
             .hairline-color(top, @barsBorder);
             .hairline-color(bottom, @barsBorder);
@@ -79,11 +79,6 @@ Framework7 Layouts Themes
             .hairline-color(top, @barsBorder);
         }
 
-    }
-    .popover .picker-modal {
-        .toolbar {
-            .hairline-color(bottom, @barsBorder);
-        }
     }
     // Photo Browser
     .photo-browser, .photo-browser&, .view[data-page="photo-browser-slides"], .view[data-page="photo-browser-slides"]& {
@@ -136,23 +131,14 @@ Framework7 Layouts Themes
         .hairline-color(top, @blockBorder);
         color:@lightText;
     }
-    .popover, .popover& {
-        background: rgba(0,0,0,0.8);
-        .popover-angle:after {
-            background: rgba(0,0,0,0.8);
-        }
-        .list-block ul {
-            background: none;
-        }    
 
-    }
-    .actions-popover .list-block ul {
-        .hairline-color(top, @blockBorder);
-        .hairline-color(bottom, @blockBorder);
-    }
-    .actions-popover .actions-popover-label {
-        .hairline-color(bottom, @blockBorder);
-    }
+   //.actions-popover .list-block ul {
+   //    .hairline-color(top, @blockBorder);
+   //    .hairline-color(bottom, @blockBorder);
+   //}
+   //.actions-popover .actions-popover-label {
+   //    .hairline-color(bottom, @blockBorder);
+   //}
     li.sorting {
         background-color: @activeLink;
     }
@@ -245,7 +231,7 @@ Framework7 Layouts Themes
         color:@barsText;
     }
     // Picker
-    .popover .picker-modal, .picker-modal.picker-modal-inline {
+    .picker-modal.picker-modal-inline {
         .picker-center-highlight {
             .hairline-color(top, @barsBorder);
             .hairline-color(bottom, @barsBorder);
@@ -255,11 +241,6 @@ Framework7 Layouts Themes
         }
         .toolbar ~ .picker-modal-inner .picker-calendar-months,  .picker-calendar-week-days ~ .picker-calendar-months {
             .hairline-color(top, @barsBorder);
-        }
-    }
-    .popover .picker-modal {
-        .toolbar {
-            .hairline-color(bottom, @barsBorder);
         }
     }
     // Photo Browser
@@ -299,9 +280,6 @@ Framework7 Layouts Themes
         &.notifications > ul {
             background: none;
         }
-    }
-    .popover-inner > .list-block ul {
-        background: none;
     }
     li.sorting {
         background-color: @activeLink;
