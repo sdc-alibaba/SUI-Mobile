@@ -19,3 +19,7 @@ SUI Mobile 是阿里巴巴国际UED团队基于 [Framework7](http://framework7.t
 #### Issue 注意
 
 移动端的特性，请一定写明 __系统、机型、浏览器的型号和版本__
+
+## Pull Request
+
+强烈欢迎大家提交PR一起完善，共建社区。简明开发文档在 [develop.md](https://github.com/sdc-alibaba/SUI-Mobile/blob/dev/develop.md)
