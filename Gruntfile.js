@@ -35,8 +35,8 @@ module.exports = function(grunt) {
             ' * SUI Mobile - http://m.sui.taobao.org/\n' +
             ' *\n' +
             ' * =====================================================\n' +
-            ' */\n' + 
-            '$.smVersion = "<%= pkg.version %>";\n',
+            ' */\n',
+            //,
 
         clean: {
             dist: ['<%= meta.distPath %>', '<%= meta.docsDistPath %>']
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
         concat: {
             sm: {
               options: {
-                  banner: '<%= banner %>'
+                  banner: '<%= banner %>;$.smVersion = "<%= pkg.version %>";'
               },
               src: [
                   'js/intro.js',
