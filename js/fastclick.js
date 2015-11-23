@@ -235,7 +235,7 @@
 	      parent = parent.parentNode;
 	    }
 	    */
-	    //  夏苒添加start，如果label上有needsclick这个类，则用原生的点击，继续上述的逻辑
+	    //  夏苒添加start，如果label上有needsclick这个类，则用原生的点击，否则，用模拟点击
 	    var parent = target;
 	    while(parent && (parent.tagName.toUpperCase() !== "BODY")) {
 	      if(parent.tagName.toUpperCase() === "LABEL" && (/\bneedsclick\b/).test(parent.className)) return true;
