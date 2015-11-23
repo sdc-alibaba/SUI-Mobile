@@ -226,12 +226,22 @@
 	 */
 	FastClick.prototype.needsClick = function(target) {
 
-    //修复bug: 如果父元素中有 label
-    var parent = target;
-    while(parent && (parent.tagName.toUpperCase() !== "BODY")) {
-      if(parent.tagName.toUpperCase() === "LABEL") return true;
-      parent = parent.parentNode;
-    }
+	    // 修复bug: 如果父元素中有 label 
+	    // 夏苒删除
+	    /*
+	    var parent = target;
+	    while(parent && (parent.tagName.toUpperCase() !== "BODY")) {
+	      if(parent.tagName.toUpperCase() === "LABEL") return true;
+	      parent = parent.parentNode;
+	    }
+	    */
+	    //  夏苒添加start，如果label上有needsclick这个类，则用原生的点击，继续上述的逻辑
+	    var parent = target;
+	    while(parent && (parent.tagName.toUpperCase() !== "BODY")) {
+	      if(parent.tagName.toUpperCase() === "LABEL" && (/\bneedsclick\b/).test(parent.className)) return true;
+	      parent = parent.parentNode;
+	    }
+	    //  夏苒添加end
 		switch (target.nodeName.toLowerCase()) {
 
 		// Don't send a synthetic click to disabled inputs (issue #62)
@@ -650,6 +660,25 @@
 			return true;
 		}
 
+		/**
+		 * 夏苒添加 start
+		 * 
+		 */
+		var isCompositeLabel = false; // 是否组合型label
+		var parent = this.targetElement;
+
+		// 判断父元素中是否有 label，如果有则为组合型label
+	    while(parent && (parent.tagName.toUpperCase() !== "BODY")) {
+	      if(parent.tagName.toUpperCase() === "LABEL") {
+	      	isCompositeLabel = true;
+	      }
+	      parent = parent.parentNode;
+	    }
+	    /**
+	     * 夏苒添加 end
+	     */
+
+
 		// Derive and check the target element to see whether the mouse event needs to be permitted;
 		// unless explicitly enabled, prevent non-touch click events from triggering actions,
 		// to prevent ghost/doubleclicks.
@@ -666,8 +695,12 @@
 
 			// Cancel the event
 			event.stopPropagation();
-			event.preventDefault();
-
+			// event.preventDefault(); 夏苒删除
+			// 允许组合型label冒泡，夏苒添加start
+			if (!isCompositeLabel) {
+				event.preventDefault();
+			}
+			// 允许组合型label冒泡，夏苒添加end
 			return false;
 		}
 
