@@ -15,18 +15,11 @@
 
   var Router = function() {
     this.state = sessionStorage;
-    // 刷新时获取当前的stateid跟currentStateID 不stateid+1，导致每次都是新的stateid、currentStateID
-    var stateid = this.state.getItem("stateid");
-    this.state.setItem("stateid", stateid || 1);
-    this.state.setItem("currentStateID", this.state.getItem("currentStateID") || stateid);
-
-    // 删除sessionStorage的back、forward
-   /* 
     this.state.setItem("stateid", parseInt(this.state.getItem("stateid") || 1)+1);
     this.state.setItem("currentStateID", this.state.getItem("stateid"));
     this.stack = sessionStorage;
     this.stack.setItem("back", "[]");  //返回栈, {url, pageid, stateid}
-    this.stack.setItem("forward", "[]");  //前进栈, {url, pageid, stateid}*/
+    this.stack.setItem("forward", "[]");  //前进栈, {url, pageid, stateid}
     this.init();
     this.xhr = null;
     // 解决各个webview针对页面重新加载（包括后退造成的）时History State的处理差异，加此标志位
@@ -61,12 +54,11 @@
     // 在页面加载时，可能会包含一个非空的状态对象history.state。这种情况是会发生的，例如，如果页面中使用pushState()或replaceState()方法设置了一个状态对象，然后用户重启了浏览器。https://developer.mozilla.org/en-US/docs/Web/API/History_API#Reading_the_current_state
     history.replaceState({url: curUrl, id: id}, '', curUrl);
     this.setCurrentStateID(id);
-    // 删除对sessionStorage的引用
-    /*this.pushBack({
+    this.pushBack({
       url: entryUrl,
       pageid: '#' + page1st[0].id,
       id: id
-    });*/
+    });
     window.addEventListener('popstate', $.proxy(this.onpopstate, this));
   }
 
@@ -76,14 +68,8 @@
     // android chrome 在移动端加载页面时不会触发一次‘popstate’事件
     this.newLoaded && (this.newLoaded = false)
     this.getPage(url, function(page) {
-      var currentPageList = this.getCurrentPage();
-      // 防止点击过快页面无法加载bug，主要出现在过场动画没跑完就继续点击加载页面
-      if(currentPageList.length == 0) {
-        this.dispatch("pageLoadCancel");
-        return;
-      }
 
-      /*var pageid = this.getCurrentPage()[0].id;
+      var pageid = this.getCurrentPage()[0].id;
       this.pushBack({
         url: url,
         pageid: "#" + pageid,
@@ -108,23 +94,7 @@
 
       this.pushState(url, id);
 
-      this.forwardStack  = [];  //clear forward stack*/
-      // 防止页面抖动
-      page.insertBefore($(".page")[0]);
-      
-     
-      var id = "1";
-      if(stateId) { //如果stateId存在，就说明是back or forward 的页面
-        id = stateId;
-      } else {  //新页面
-        id = this.genStateID();
-        this.pushState(url, id);
-      }
-
-      // 根据currentStateId跟stateId来判断back or forward
-      var currentStateId = this.state.getItem("currentStateID") || 1;
-      this.animatePages(currentPageList, page, (currentStateId > id)); 
-      this.setCurrentStateID(id);
+      this.forwardStack  = [];  //clear forward stack
 
     });
   }
@@ -132,52 +102,46 @@
   Router.prototype.animatePages = function (leftPage, rightPage, leftToRight) {
     var removeClasses = 'page-left page-right page-current page-from-center-to-left page-from-center-to-right page-from-right-to-center page-from-left-to-center';
     var self = this;
-    // 延迟触发动画效果，修复过场效果不起效的问题
-    // 删除旧页面，
-    setTimeout(function() {
-      if (!leftToRight) {
-        rightPage.trigger("pageAnimationStart", [rightPage[0].id, rightPage]);
-        leftPage.removeClass(removeClasses).addClass('page-from-center-to-left');
-        rightPage.removeClass(removeClasses).addClass('page-from-right-to-center');
-        leftPage.animationEnd(function() {
-          leftPage.remove();  //删除旧页面
-          leftPage.removeClass(removeClasses);
-        });
-        rightPage.animationEnd(function() {
-          rightPage.removeClass(removeClasses).addClass("page-current");
-          rightPage.trigger("pageAnimationEnd", [rightPage[0].id, rightPage]);
-          rightPage.trigger("pageInitInternal", [rightPage[0].id, rightPage]);
-        });
-      } else {
-        rightPage.trigger("pageAnimationStart", [leftPage[0].id, leftPage]);
-        rightPage.removeClass(removeClasses).addClass('page-from-left-to-center');
-        leftPage.removeClass(removeClasses).addClass('page-from-center-to-right');
-        rightPage.animationEnd(function() {
-          rightPage.removeClass(removeClasses).addClass("page-current");
-          rightPage.trigger("pageAnimationEnd", [rightPage[0].id, rightPage]);
-          rightPage.trigger("pageReinit", [rightPage[0].id, rightPage]);
-        });
-        leftPage.animationEnd(function() {
-          leftPage.remove();  //删除旧页面
-          leftPage.removeClass(removeClasses);
-        });
-      }
-    }, 0);
+    if (!leftToRight) {
+      rightPage.trigger("pageAnimationStart", [rightPage[0].id, rightPage]);
+      leftPage.removeClass(removeClasses).addClass('page-from-center-to-left');
+      rightPage.removeClass(removeClasses).addClass('page-from-right-to-center');
+      leftPage.animationEnd(function() {
+        leftPage.removeClass(removeClasses);
+      });
+      rightPage.animationEnd(function() {
+        rightPage.removeClass(removeClasses).addClass("page-current");
+        rightPage.trigger("pageAnimationEnd", [rightPage[0].id, rightPage]);
+        rightPage.trigger("pageInitInternal", [rightPage[0].id, rightPage]);
+      });
+    } else {
+      leftPage.trigger("pageAnimationStart", [rightPage[0].id, rightPage]);
+      leftPage.removeClass(removeClasses).addClass('page-from-left-to-center');
+      rightPage.removeClass(removeClasses).addClass('page-from-center-to-right');
+      leftPage.animationEnd(function() {
+        leftPage.removeClass(removeClasses).addClass("page-current");
+        leftPage.trigger("pageAnimationEnd", [leftPage[0].id, leftPage]);
+        leftPage.trigger("pageReinit", [leftPage[0].id, leftPage]);
+      });
+      rightPage.animationEnd(function() {
+        rightPage.removeClass(removeClasses);
+      });
+    }
 
   }
   Router.prototype.getCurrentPage = function () {
     return $(".page-current");
   }
   //如果无法前进，则加载对应的url
-  /*Router.prototype.forward = function(url) {
+  Router.prototype.forward = function(url) {
     var stack = JSON.parse(this.stack.getItem("forward"));
     if(stack.length) {
       history.forward();
     } else {
       location.href = url;
     }
-  }*/
-  /*//如果无法后退，则加载对应的url
+  }
+  //如果无法后退，则加载对应的url
   Router.prototype.back = function(url) {
     var stack = JSON.parse(this.stack.getItem("back"));
     if(stack.length) {
@@ -187,9 +151,9 @@
     } else {
       console.warn('[router.back]: can not back')
     }
-  }*/
+  }
 
- /* //后退
+  //后退
   Router.prototype._back = function(url) {
     var h = this.popBack();
     var currentPage = this.getCurrentPage();
@@ -198,9 +162,9 @@
     this.pushForward({url: location.href, pageid: "#" + currentPage[0].id, id: this.getCurrentStateID()});
     this.setCurrentStateID(h.id);
     this.animatePages(newPage, currentPage, true);
-  }*/
+  }
 
-  /*//前进
+  //前进
   Router.prototype._forward = function() {
     var h = this.popForward();
     var currentPage = this.getCurrentPage();
@@ -209,18 +173,10 @@
     this.pushBack({url: location.href, pageid: "#" + currentPage[0].id, id: this.getCurrentStateID()});
     this.setCurrentStateID(h.id);
     this.animatePages(currentPage, newPage);
-  }*/
+  }
 
   Router.prototype.pushState = function(url, id) {
-    // TODO：此方法没测试过IE兼容性
-    function getAbsoluteUrl(url) {  //将相对路径变成绝对路径
-        var a = document.createElement('A');
-        a.href = url;  // 设置相对路径给a, 此时不会发送出请求
-        url = a.href;  // 此时相对路径已经变成绝对路径
-        return url;
-    }
-    history.pushState({url: getAbsoluteUrl(url), id: id}, '', url);
-    /*history.pushState({url: url, id: id}, '', url);*/
+    history.pushState({url: url, id: id}, '', url);
   }
 
   Router.prototype.onpopstate = function(d) {
@@ -234,11 +190,9 @@
     if(state.id === this.getCurrentStateID()) {
       return false;
     }
-    // 直接加载新页面
-    this.loadPage(state.url, state.id);
-    /*var forward = state.id > this.getCurrentStateID();
+    var forward = state.id > this.getCurrentStateID();
     if(forward) this._forward();
-    else this._back(state.url);*/
+    else this._back(state.url);
   }
 
 
@@ -278,7 +232,7 @@
     if(!html) html = response;
     html = "<div>"+html+"</div>";
     var tmp = $(html);
-    // 此处会出现多次重复
+
     tmp.find(".popup, .panel, .panel-overlay").appendTo(document.body);
 
     var $page = tmp.find(".page");
@@ -301,7 +255,7 @@
     return "page-"+(+new Date());
   }
 
-  /*Router.prototype.popBack = function() {
+  Router.prototype.popBack = function() {
     var stack = JSON.parse(this.stack.getItem("back"));
     if(!stack.length) return null;
     var h = stack.splice(stack.length-1, 1)[0];
@@ -324,7 +278,7 @@
     var stack = JSON.parse(this.stack.getItem("forward"));
     stack.push(h);
     this.stack.setItem("forward", JSON.stringify(stack));
-  }*/
+  }
 
   Router.prototype.dispatch = function (event) {
     var e = new CustomEvent(event, {
