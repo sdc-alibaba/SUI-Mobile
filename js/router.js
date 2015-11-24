@@ -102,31 +102,34 @@
   Router.prototype.animatePages = function (leftPage, rightPage, leftToRight) {
     var removeClasses = 'page-left page-right page-current page-from-center-to-left page-from-center-to-right page-from-right-to-center page-from-left-to-center';
     var self = this;
-    if (!leftToRight) {
-      rightPage.trigger("pageAnimationStart", [rightPage[0].id, rightPage]);
-      leftPage.removeClass(removeClasses).addClass('page-from-center-to-left');
-      rightPage.removeClass(removeClasses).addClass('page-from-right-to-center');
-      leftPage.animationEnd(function() {
-        leftPage.removeClass(removeClasses);
-      });
-      rightPage.animationEnd(function() {
-        rightPage.removeClass(removeClasses).addClass("page-current");
-        rightPage.trigger("pageAnimationEnd", [rightPage[0].id, rightPage]);
-        rightPage.trigger("pageInitInternal", [rightPage[0].id, rightPage]);
-      });
-    } else {
-      leftPage.trigger("pageAnimationStart", [rightPage[0].id, rightPage]);
-      leftPage.removeClass(removeClasses).addClass('page-from-left-to-center');
-      rightPage.removeClass(removeClasses).addClass('page-from-center-to-right');
-      leftPage.animationEnd(function() {
-        leftPage.removeClass(removeClasses).addClass("page-current");
-        leftPage.trigger("pageAnimationEnd", [leftPage[0].id, leftPage]);
-        leftPage.trigger("pageReinit", [leftPage[0].id, leftPage]);
-      });
-      rightPage.animationEnd(function() {
-        rightPage.removeClass(removeClasses);
-      });
-    }
+    // 延迟触发动画效果，修复过场效果不起效的问题
+    setTimeout(function() {
+      if (!leftToRight) {
+        rightPage.trigger("pageAnimationStart", [rightPage[0].id, rightPage]);
+        leftPage.removeClass(removeClasses).addClass('page-from-center-to-left');
+        rightPage.removeClass(removeClasses).addClass('page-from-right-to-center');
+        leftPage.animationEnd(function() {
+          leftPage.removeClass(removeClasses);
+        });
+        rightPage.animationEnd(function() {
+          rightPage.removeClass(removeClasses).addClass("page-current");
+          rightPage.trigger("pageAnimationEnd", [rightPage[0].id, rightPage]);
+          rightPage.trigger("pageInitInternal", [rightPage[0].id, rightPage]);
+        });
+      } else {
+        leftPage.trigger("pageAnimationStart", [rightPage[0].id, rightPage]);
+        leftPage.removeClass(removeClasses).addClass('page-from-left-to-center');
+        rightPage.removeClass(removeClasses).addClass('page-from-center-to-right');
+        leftPage.animationEnd(function() {
+          leftPage.removeClass(removeClasses).addClass("page-current");
+          leftPage.trigger("pageAnimationEnd", [leftPage[0].id, leftPage]);
+          leftPage.trigger("pageReinit", [leftPage[0].id, leftPage]);
+        });
+        rightPage.animationEnd(function() {
+          rightPage.removeClass(removeClasses);
+        });
+      }
+    }, 0);
 
   }
   Router.prototype.getCurrentPage = function () {
