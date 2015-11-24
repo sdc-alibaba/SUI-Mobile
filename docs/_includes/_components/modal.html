@@ -771,11 +771,20 @@
 
 <article class="component active" id='toast' data-url='toast'>
   <h2 class="component-title">toast</h2>
-  <p class="component-description">toast是一种轻量的提示，在页面中间显示，并且会在2秒之后自动消失。</p>
+  <p class="component-description">toast是一种轻量的提示，在页面中间显示，并且会在2秒(默认值，可修改)之后自动消失。</p>
   <p>可以用来显示一些不会打断用户操作的提示。</p>
 
+{% highlight html%}  
+/* msg{string}: toast内容
+ * duration{number}：toast显示时间,默认2000
+ * extraclass{string}：给toast根节点附加class，高度自定义属性，方便用户自行控制不同场景的样式。
+ * 如果使用了第三个参数，请自行在业务css里添加extraclass对应的样式
+ * /
+{% endhighlight %}
 {% highlight js %}  
 $.toast("操作失败");
+
+$.toast('操作成功，正在跳转...', 2345, 'success top');
+
 {% endhighlight %}
-  <p>toast 组件后续会支持不同的情景，包括操作成功、操作失败等，显示出不同的颜色</p>
 </article>

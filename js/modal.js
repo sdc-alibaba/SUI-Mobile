@@ -268,12 +268,12 @@
         return modal[0];
     };
     //显示一个消息，会在2秒钟后自动消失
-    $.toast = function(msg) {
-      var $toast = $("<div class='modal toast'>"+msg+"</div>").appendTo(document.body);
+    $.toast = function(msg, duration, extraclass) {
+      var $toast = $('<div class="modal toast ' + (extraclass || '') + '">' + msg + '</div>').appendTo(document.body);
       $.openModal($toast);
       setTimeout(function() {
         $.closeModal($toast);
-      }, 2000);
+      }, duration || 2000);
     };
     $.openModal = function (modal) {
         modal = $(modal);

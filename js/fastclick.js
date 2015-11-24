@@ -220,8 +220,6 @@
 
 	/**
 	 * 判断是否组合型label
-	 * 夏苒添加
-	 * 
 	 * @type {Boolean}
 	 */
 	var isCompositeLabel = false;
@@ -234,16 +232,8 @@
 	 */
 	FastClick.prototype.needsClick = function(target) {
 
-	    // 修复bug: 如果父元素中有 label 
-	    // 夏苒删除
-	    /*
-	    var parent = target;
-	    while(parent && (parent.tagName.toUpperCase() !== "BODY")) {
-	      if(parent.tagName.toUpperCase() === "LABEL") return true;
-	      parent = parent.parentNode;
-	    }
-	    */
-	    //  夏苒添加start，如果label上有needsclick这个类，则用原生的点击，否则，用模拟点击
+	    // 修复bug: 如果父元素中有 label
+	    // 夏苒添加start，如果label上有needsclick这个类，则用原生的点击，否则，用模拟点击
 	    var parent = target;
 	    while(parent && (parent.tagName.toUpperCase() !== "BODY")) {
 	      if (parent.tagName.toUpperCase() === "LABEL") {
@@ -687,7 +677,6 @@
 
 			// Cancel the event
 			event.stopPropagation();
-			// event.preventDefault(); 夏苒删除
 			// 允许组合型label冒泡，夏苒添加start
 			if (!isCompositeLabel) {
 				event.preventDefault();
