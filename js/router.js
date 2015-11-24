@@ -91,8 +91,9 @@
         });;
       }
       this.state.setItem("forward", "[]");  //clearforward
-
-      page.insertAfter($(".page")[0]);
+      // 防止页面抖动
+      page.insertBefore($(".page")[0]);
+      // page.insertAfter($(".page")[0]);
       this.animatePages(this.getCurrentPage(), page);
 
       var id = this.genStateID();
