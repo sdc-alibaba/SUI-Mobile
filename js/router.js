@@ -69,6 +69,12 @@
     this.newLoaded && (this.newLoaded = false)
     this.getPage(url, function(page) {
 
+      // 防止点击过快页面无法加载bug，主要出现在过场动画没跑完就继续点击加载页面
+      if(this.getCurrentPage().length == 0) {
+        this.dispatch("pageLoadCancel");
+        return;
+      }
+
       var pageid = this.getCurrentPage()[0].id;
       this.pushBack({
         url: url,
