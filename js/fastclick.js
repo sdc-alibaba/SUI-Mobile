@@ -219,6 +219,14 @@
 	var deviceIsBlackBerry10 = navigator.userAgent.indexOf('BB10') > 0;
 
 	/**
+	 * 判断是否组合型label
+	 * 夏苒添加
+	 * 
+	 * @type {Boolean}
+	 */
+	var isCompositeLabel = false;
+
+	/**
 	 * Determine whether a given element requires a native click.
 	 *
 	 * @param {EventTarget|Element} target Target DOM element
@@ -238,7 +246,10 @@
 	    //  夏苒添加start，如果label上有needsclick这个类，则用原生的点击，否则，用模拟点击
 	    var parent = target;
 	    while(parent && (parent.tagName.toUpperCase() !== "BODY")) {
-	      if(parent.tagName.toUpperCase() === "LABEL" && (/\bneedsclick\b/).test(parent.className)) return true;
+	      if (parent.tagName.toUpperCase() === "LABEL") {
+	      	isCompositeLabel = true;
+	      	if ((/\bneedsclick\b/).test(parent.className)) return true;
+	      }
 	      parent = parent.parentNode;
 	    }
 	    //  夏苒添加end
@@ -659,25 +670,6 @@
 		if (!event.cancelable) {
 			return true;
 		}
-
-		/**
-		 * 夏苒添加 start
-		 * 
-		 */
-		var isCompositeLabel = false; // 是否组合型label
-		var parent = this.targetElement;
-
-		// 判断父元素中是否有 label，如果有则为组合型label
-	    while(parent && (parent.tagName.toUpperCase() !== "BODY")) {
-	      if(parent.tagName.toUpperCase() === "LABEL") {
-	      	isCompositeLabel = true;
-	      }
-	      parent = parent.parentNode;
-	    }
-	    /**
-	     * 夏苒添加 end
-	     */
-
 
 		// Derive and check the target element to see whether the mouse event needs to be permitted;
 		// unless explicitly enabled, prevent non-touch click events from triggering actions,
