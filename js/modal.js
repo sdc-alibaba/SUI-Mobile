@@ -270,17 +270,18 @@
     //显示一个消息，会在2秒钟后自动消失
     $.toast = function(msg, duration, extraclass) {
       var $toast = $('<div class="modal toast ' + (extraclass || '') + '">' + msg + '</div>').appendTo(document.body);
-      $.openModal($toast);
-      setTimeout(function() {
-        $.closeModal($toast);
-      }, duration || 2000);
+      $.openModal($toast, function(){
+        setTimeout(function() {
+          $.closeModal($toast);
+        }, duration || 2000);     
+      });
     };
-    $.openModal = function (modal) {
+    $.openModal = function (modal, cb) {
         modal = $(modal);
         var isModal = modal.hasClass('modal');
         if ($('.modal.modal-in:not(.modal-out)').length && defaults.modalStack && isModal) {
             $.modalStack.push(function () {
-                $.openModal(modal);
+                $.openModal(modal, cb);
             });
             return;
         }
@@ -328,6 +329,10 @@
             if (modal.hasClass('modal-out')) modal.trigger('closed');
             else modal.trigger('opened');
         });
+        // excute callback
+        if (typeof cb == 'function') {
+          cb.call(this)
+        }
         return true;
     };
     $.closeModal = function (modal) {
@@ -335,20 +340,19 @@
         if (typeof modal !== 'undefined' && modal.length === 0) {
             return;
         }
-        var isModal = modal.hasClass('modal');
-        var isPopup = modal.hasClass('popup');
-        var isLoginScreen = modal.hasClass('login-screen');
-        var isPickerModal = modal.hasClass('picker-modal');
-
-        var removeOnClose = modal.hasClass('remove-on-close');
-
-        var overlay = isPopup ? $('.popup-overlay') : $('.modal-overlay');
+        var isModal = modal.hasClass('modal'),
+            isPopup = modal.hasClass('popup'),
+            isToast = modal.hasClass('toast'),
+            isLoginScreen = modal.hasClass('login-screen'),
+            isPickerModal = modal.hasClass('picker-modal'),
+            removeOnClose = modal.hasClass('remove-on-close'),
+            overlay = isPopup ? $('.popup-overlay') : $('.modal-overlay');
         if (isPopup){
             if (modal.length === $('.popup.modal-in').length) {
                 overlay.removeClass('modal-overlay-visible');
             }
         }
-        else if (!isPickerModal) {
+        else if (!(isPickerModal || isToast)) {
             overlay.removeClass('modal-overlay-visible');
         }
 
@@ -428,6 +432,7 @@
     }
     $(document).on('click', ' .modal-overlay, .popup-overlay, .close-popup, .open-popup, .close-picker', handleClicks);
     var defaults =  $.modal.prototype.defaults  = {
+        modalStack: true,
         modalButtonOk: '确定',
         modalButtonCancel: '取消',
         modalPreloaderTitle: '加载中',
