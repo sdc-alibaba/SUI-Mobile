@@ -210,8 +210,7 @@ module.exports = function(grunt) {
             },
             docs: {
                 src: [
-                    '<%= meta.doclessetsPath %>css/docs.css',
-                    '<%= meta.doclessetsPath %>css/pygments-manni.css'
+                    '<%= meta.doclessetsPath %>css/docs.css'
                 ],
                 dest: '<%= meta.doclessetsPath %>css/docs.min.css'
             }
