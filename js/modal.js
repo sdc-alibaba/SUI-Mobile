@@ -273,7 +273,7 @@
       $.openModal($toast, function(){
         setTimeout(function() {
           $.closeModal($toast);
-        }, duration || 2000);     
+        }, duration || 2000);
       });
     };
     $.openModal = function (modal, cb) {
@@ -330,8 +330,8 @@
             else modal.trigger('opened');
         });
         // excute callback
-        if (typeof cb == 'function') {
-          cb.call(this)
+        if (typeof cb === 'function') {
+          cb.call(this);
         }
         return true;
     };

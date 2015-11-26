@@ -1,6 +1,7 @@
 // FINGERBLAST.js
 // --------------
 // Adapted from phantom limb by Brian Cartensen
+// Emulate touch event for desktop browsers
 
 /* jshint bitwise: false */
 /* global GLOBAL: true */
