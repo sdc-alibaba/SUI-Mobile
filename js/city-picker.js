@@ -81,14 +81,17 @@
 
     cols: [
       {
+        textAlign: 'center',
         values: provinces,
         cssClass: "col-province"
       },
       {
+        textAlign: 'center',
         values: initCities,
         cssClass: "col-city"
       },
       {
+        textAlign: 'center',
         values: initDistricts,
         cssClass: "col-district"
       }
