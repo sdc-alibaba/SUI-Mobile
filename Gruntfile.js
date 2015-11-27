@@ -27,7 +27,7 @@ module.exports = function(grunt) {
             docsDistPath: 'docs/dist/',
             docsPath: 'docs/',
             jsPath: 'js/',
-            srcPath: 'less/'
+            lessPath: 'less/'
         },
 
         banner: '/*!\n' +
@@ -35,8 +35,8 @@ module.exports = function(grunt) {
             ' * SUI Mobile - http://m.sui.taobao.org/\n' +
             ' *\n' +
             ' * =====================================================\n' +
-            ' */\n' + 
-            '$.smVersion = "<%= pkg.version %>";\n',
+            ' */\n',
+            //,
 
         clean: {
             dist: ['<%= meta.distPath %>', '<%= meta.docsDistPath %>']
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
         concat: {
             sm: {
               options: {
-                  banner: '<%= banner %>'
+                  banner: '<%= banner %>;$.smVersion = "<%= pkg.version %>";'
               },
               src: [
                   'js/intro.js',
@@ -54,7 +54,7 @@ module.exports = function(grunt) {
                   'js/detect.js',
                   'js/zepto-adapter.js',
                   'js/fastclick.js',
-                  'js/template7.js',
+                  //'js/template7.js',
                   'js/page.js',
                   'js/tabs.js',
                   'js/modal.js',
@@ -98,20 +98,24 @@ module.exports = function(grunt) {
 
 
         less: {
+            options: {
+                paths: ['./', '<%= meta.lessPath %>'],
+                ieCompat: false
+            },
             core: {
-                src: 'less/sm.less',
+                src: '<%= meta.lessPath %>sm.less',
                 dest: '<%= meta.distPath %>css/<%= pkg.name %>.css'
             },
             extend: {
-                src: 'less/sm-extend.less',
+                src: '<%= meta.lessPath %>sm-extend.less',
                 dest: '<%= meta.distPath %>css/<%= pkg.name %>-extend.css'
             },
             docs: {
-                src: 'less/docs.less',
+                src:  '<%= meta.doclessetsPath %>css/docs.less',
                 dest: '<%= meta.doclessetsPath %>css/docs.css'
             },
             demos: {
-                src: 'less/demos.less',
+                src:  '<%= meta.doclessetsPath %>css/demos.less',
                 dest: '<%= meta.doclessetsPath %>css/demos.css'
             }
         },
@@ -197,7 +201,8 @@ module.exports = function(grunt) {
 
         cssmin: {
             options: {
-                keepSpecialComments: '*' // keep all important comments
+                keepSpecialComments: '*' ,// keep all important comments
+                advanced: false
             },
             sm: {
                 src: '<%= meta.distPath %>css/<%= pkg.name %>.css',
@@ -268,7 +273,7 @@ module.exports = function(grunt) {
                 tasks: ['dist-js:cityPicker', 'copy']
             },
             css: {
-                files: '<%= meta.srcPath %>**/*.less',
+                files: '<%= meta.lessPath %>**/*.less',
                 tasks: ['dist-css', 'copy']
             },
             html: {

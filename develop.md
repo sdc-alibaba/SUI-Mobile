@@ -9,7 +9,7 @@ SUI Mobile
 
 # 版本号升级
 
-每次升级发布，需要将 `package.json` 和 `_config.yml` 两个文件里的版本号字段更新升级一次。
+每次升级发布，__需要同时__ 将 `package.json` 和 `_config.yml` 两个文件里的版本号字段更新升级一次。
 
 
 # 分支

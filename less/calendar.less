@@ -13,10 +13,6 @@
         overflow: hidden;
     }
 }
-.popover.popover-picker-calendar {
-    width: 320px;
-}
-
 .picker-calendar-week-days {
     height: 18px;
     background: #f7f7f8;
@@ -136,19 +132,6 @@
         position: relative;
         overflow: hidden;
         text-overflow: ellipsis;
-    }
-}
-// Inline and popover borders
-.popover .picker-calendar, .picker-calendar.picker-modal-inline {
-    .picker-calendar-week-days {
-        background: none;
-    }
-    .toolbar, .picker-calendar-week-days {
-        .hairline-remove(top);
-        .hairline-remove(bottom);
-    }
-    .toolbar ~ .picker-modal-inner .picker-calendar-months,  .picker-calendar-week-days ~ .picker-calendar-months {
-        .hairline(top, #c4c4c4);
     }
 }
 

@@ -4,7 +4,7 @@ Framework7 Swiper Additions
 /* global Zepto:true */
 +function($){
     'use strict';
-    $.Swiper.prototype.defaults.pagination = '.swiper-pagination';
+    $.Swiper.prototype.defaults.pagination = '.page-current .swiper-pagination';
 
     $.swiper = function (container, params) {
         return new $.Swiper(container, params);
