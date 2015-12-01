@@ -75,7 +75,11 @@ $("#picker-name").picker({
       </td>
       <td>工具栏的模板，可以自己定义。</td>
     </tr>
-
+    <tr>
+      <td>value</td>
+      <td>input元素的value属性。<br>多列默认值用空格隔开，如<code>&lt;input value="钱 明 小姐"&gt;</code>。如果任一列默认值本身含空格(如‘ipad mini 2’),那就只能用JS方法调用模式传入<code>value</code>参数</td>
+      <td>为 picker 添加默认值，数组里每一项对应每一列默认值，如<code>["钱", "明", "小姐"]</code></td>
+    </tr>
     <tr>
       <td>rotateEffect</td>
       <td>false</td>

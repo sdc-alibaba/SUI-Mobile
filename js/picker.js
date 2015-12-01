@@ -569,7 +569,10 @@
 
       var picker = $this.data("picker");
       if(!picker) {
-        var p = $.extend({input: this}, params);
+        var p = $.extend({
+          input: this,
+          value: $this.val() ? $this.val().split(' ') : ''
+        }, params);
         picker = new Picker(p);
         $this.data("picker", picker);
       }
