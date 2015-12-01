@@ -107,12 +107,17 @@
       if(val) {
         p.value = val.split(" ");
         if(p.value[0]) {
+          currentProvince = p.value[0];
           p.cols[1].values = getCities(p.value[0]);
         }
         if(p.value[1]) {
+          currentCity = p.value[1];
           p.cols[2].values = getDistricts(p.value[0], p.value[1]);
         } else {
           p.cols[2].values = getDistricts(p.value[0], p.cols[1].values[0]);
+        }
+        if(p.value[2]) {
+          currentDistrict = p.value[2];
         }
       }
       $(this).picker(p);
