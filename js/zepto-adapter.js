@@ -104,7 +104,7 @@
 
 
     $.fn.transitionEnd = function(callback) {
-        var events = ['webkitTransitionEnd', 'transitionend', 'oTransitionEnd', 'MSTransitionEnd', 'msTransitionEnd'],
+        var events = ['webkitTransitionEnd', 'transitionend'],
             i, dom = this;
 
         function fireCallBack(e) {
@@ -179,7 +179,7 @@
         }
     };
     $.fn.animationEnd = function(callback) {
-        var events = ['webkitAnimationEnd', 'OAnimationEnd', 'MSAnimationEnd', 'animationend'],
+        var events = ['webkitAnimationEnd', 'animationend'],
             i, dom = this;
 
         function fireCallBack(e) {
