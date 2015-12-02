@@ -52,7 +52,6 @@ module.exports = function(grunt) {
                   'js/util.js',
                   'js/zepto-adapter.js',
                   'js/device.js',
-                  'js/detect.js',
                   'js/fastclick.js',
                   'js/tabs.js',
                   'js/modal.js',
