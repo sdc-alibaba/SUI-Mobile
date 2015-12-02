@@ -51,7 +51,8 @@
   var currentProvince = provinces[0];
   var currentCity = initCities[0];
   var currentDistrict = initDistricts[0];
-  
+
+  var t;
   var defaults = {
 
     cssClass: "city-picker",
@@ -61,14 +62,19 @@
       var newProvince = picker.cols[0].value;
       var newCity;
       if(newProvince !== currentProvince) {
-        var newCities = getCities(newProvince);
-        newCity = newCities[0];
-        var newDistricts = getDistricts(newProvince, newCity);
-        picker.cols[1].replaceValues(newCities);
-        picker.cols[2].replaceValues(newDistricts);
-        currentProvince = newProvince;
-        currentCity = newCity;
-        picker.updateValue();
+        // 如果Province变化，节流以提高reRender性能
+        clearTimeout(t);
+
+        t = setTimeout(function(){
+          var newCities = getCities(newProvince);
+          newCity = newCities[0];
+          var newDistricts = getDistricts(newProvince, newCity);
+          picker.cols[1].replaceValues(newCities);
+          picker.cols[2].replaceValues(newDistricts);
+          currentProvince = newProvince;
+          currentCity = newCity;
+          picker.updateValue();
+        }, 200)
         return;
       }
       newCity = picker.cols[1].value;
@@ -97,7 +103,7 @@
       }
     ]
   };
-   
+
   $.fn.cityPicker = function(params) {
     return this.each(function() {
       if(!this) return;
