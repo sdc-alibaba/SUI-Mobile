@@ -27,7 +27,7 @@
     this.xhr = null;
     // 解决各个webview针对页面重新加载（包括后退造成的）时History State的处理差异，加此标志位
     this.newLoaded = true;
-  }
+  };
 
   Router.prototype.defaults = {
   };
@@ -63,13 +63,13 @@
       id: id
     });
     window.addEventListener('popstate', $.proxy(this.onpopstate, this));
-  }
+  };
 
   //加载一个页面,传入的参数是页面id或者url
   Router.prototype.loadPage = function(url) {
 
     // android chrome 在移动端加载页面时不会触发一次‘popstate’事件
-    this.newLoaded && (this.newLoaded = false)
+    this.newLoaded && (this.newLoaded = false);
     this.getPage(url, function(page) {
 
       var pageid = this.getCurrentPage()[0].id;
@@ -85,7 +85,7 @@
         $(forward[i].pageid).each(function() {
           var $page = $(this);
           if($page.data("page-remote")) $page.remove();
-        });;
+        });
       }
       this.state.setItem("forward", "[]");  //clearforward
 
@@ -100,7 +100,7 @@
       this.forwardStack  = [];  //clear forward stack
 
     });
-  }
+  };
 
   Router.prototype.animatePages = function (leftPage, rightPage, leftToRight) {
     var removeClasses = 'page-left page-right page-current page-from-center-to-left page-from-center-to-right page-from-right-to-center page-from-left-to-center';
@@ -131,10 +131,12 @@
       });
     }
 
-  }
+  };
+
   Router.prototype.getCurrentPage = function () {
     return $(".page-current");
-  }
+  };
+
   //如果无法前进，则加载对应的url
   Router.prototype.forward = function(url) {
     var stack = JSON.parse(this.stack.getItem("forward"));
@@ -143,7 +145,8 @@
     } else {
       location.href = url;
     }
-  }
+  };
+
   //如果无法后退，则加载对应的url
   Router.prototype.back = function(url) {
     var stack = JSON.parse(this.stack.getItem("back"));
@@ -154,7 +157,7 @@
     } else {
       console.warn('[router.back]: can not back')
     }
-  }
+  };
 
   //后退
   Router.prototype._back = function(url) {
@@ -165,7 +168,7 @@
     this.pushForward({url: location.href, pageid: "#" + currentPage[0].id, id: this.getCurrentStateID()});
     this.setCurrentStateID(h.id);
     this.animatePages(newPage, currentPage, true);
-  }
+  };
 
   //前进
   Router.prototype._forward = function() {
@@ -176,11 +179,11 @@
     this.pushBack({url: location.href, pageid: "#" + currentPage[0].id, id: this.getCurrentStateID()});
     this.setCurrentStateID(h.id);
     this.animatePages(currentPage, newPage);
-  }
+  };
 
   Router.prototype.pushState = function(url, id) {
     history.pushState({url: url, id: id}, '', url);
-  }
+  };
 
   Router.prototype.onpopstate = function(d) {
     var state = d.state;
@@ -196,8 +199,7 @@
     var forward = state.id > this.getCurrentStateID();
     if(forward) this._forward();
     else this._back(state.url);
-  }
-
+  };
 
   //根据url获取页面的DOM，如果是一个内联页面，则直接返回，否则用ajax加载
   Router.prototype.getPage = function(url, callback) {
@@ -228,7 +230,8 @@
         self.dispatch("pageLoadComplete");
       }
     });
-  }
+  };
+
   Router.prototype.parseXHR = function(xhr) {
     var response = xhr.responseText;
     var html  = response.match(/<body[^>]*>([\s\S.]*)<\/body>/i)[1];
@@ -241,22 +244,25 @@
     var $page = tmp.find(".page");
     if(!$page[0]) $page = tmp.addClass("page");
     return $page;
-  }
+  };
 
   Router.prototype.genStateID = function() {
     var id = parseInt(this.state.getItem("stateid")) + 1;
     this.state.setItem("stateid", id);
     return id;
-  }
+  };
+
   Router.prototype.getCurrentStateID = function() {
     return parseInt(this.state.getItem("currentStateID"));
-  }
+  };
+
   Router.prototype.setCurrentStateID = function(id) {
     this.state.setItem("currentStateID", id);
-  }
+  };
+
   Router.prototype.genRandomID = function() {
     return "page-"+(+new Date());
-  }
+  };
 
   Router.prototype.popBack = function() {
     var stack = JSON.parse(this.stack.getItem("back"));
@@ -264,24 +270,27 @@
     var h = stack.splice(stack.length-1, 1)[0];
     this.stack.setItem("back", JSON.stringify(stack));
     return h;
-  }
+  };
+
   Router.prototype.pushBack = function(h) {
     var stack = JSON.parse(this.stack.getItem("back"));
     stack.push(h);
     this.stack.setItem("back", JSON.stringify(stack));
-  }
+  };
+
   Router.prototype.popForward = function() {
     var stack = JSON.parse(this.stack.getItem("forward"));
     if(!stack.length) return null;
     var h = stack.splice(stack.length-1, 1)[0];
     this.stack.setItem("forward", JSON.stringify(stack));
     return h;
-  }
+  };
+
   Router.prototype.pushForward = function(h) {
     var stack = JSON.parse(this.stack.getItem("forward"));
     stack.push(h);
     this.stack.setItem("forward", JSON.stringify(stack));
-  }
+  };
 
   Router.prototype.dispatch = function (event) {
     var e = new CustomEvent(event, {
