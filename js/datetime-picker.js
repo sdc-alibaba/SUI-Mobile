@@ -98,6 +98,7 @@
       if(!this) return;
       var p = $.extend(defaults, params);
       $(this).picker(p);
+      if (params.value) $(this).val(p.formatValue(p, p.value, p.value))
     });
   };
 
