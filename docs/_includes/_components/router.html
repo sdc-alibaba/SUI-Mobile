@@ -40,7 +40,8 @@
 </div>
 {% endhighlight %}
 
-<p>注意，内联页面只能在第一个页面编写，通过ajax加载的页面里面不能内联多个页面。</p>
+<p class="notice">注意，内联页面只能在第一个页面编写，通过ajax加载的页面里面不能内联多个页面，且不要把一个 .page
+    的页面嵌在另一个 .page 的页面里。</p>
 
   <h3 class="component-title">ajax页面</h3>
   <p class="component-description">除了内联编写多个页面以外，你还可以通过ajax来加载新页面。通过ajax加载新页面和普通的链接写法没有区别，路由器会自动拦截链接的点击事件，并通过ajax请求加载新的页面。</p>
