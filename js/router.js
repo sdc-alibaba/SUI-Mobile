@@ -102,7 +102,7 @@
     };
 
     Router.prototype.animatePages = function(leftPage, rightPage, leftToRight) {
-        var removeClasses = 'page-left page-right page-current page-from-center-to-left page-from-center-to-right page-from-right-to-center page-from-left-to-center';
+        var removeClasses = 'page-current page-from-center-to-left page-from-center-to-right page-from-right-to-center page-from-left-to-center';
         var self = this;
         if (!leftToRight) {
             rightPage.trigger("pageAnimationStart", [rightPage[0].id, rightPage]);
