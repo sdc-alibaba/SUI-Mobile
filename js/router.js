@@ -7,10 +7,13 @@
 
   if (!window.CustomEvent) {
     window.CustomEvent = function (type, config) {
+      config = config || {bubbles: false, cancelable: false, detail: undefined};
       var e = document.createEvent('CustomEvent');
-      e.initCustomEvent(type, config.bubbles, config.cancelable, config.detail, config.id);
+      e.initCustomEvent(type, config.bubbles, config.cancelable, config.detail);
       return e;
     };
+
+    window.CustomEvent.prototype = window.Event.prototype;
   }
 
   var Router = function() {
