@@ -101,32 +101,51 @@
         });
     };
 
+    /**
+     * 页面转场效果
+     *
+     * 首先给要移入展示的页面添加上当前页面标识（page-current），要移出展示的移除当前页面标识；
+     * 然后给移入移除的页面添加上对应的动画 class，动画结束后清除动画 class 并发送对应事件。
+     *
+     * 注意，不能在动画后才给移入展示的页面添加当前页面标识，否则，在快速切换的时候将会因为没有 .page-current
+     * 的页面而报错（具体来说是找这类页面的 id 时报错，目前并没有确保 id 查找的健壮性）
+     *
+     * @param leftPage 从效果上看位于左侧的页面，jQuery/Zepto 对象
+     * @param rightPage 从效果上位于右侧的页面，jQuery/Zepto 对象
+     * @param {Boolean} leftToRight 是否是从左往右切换（代表是后退），默认是相当于 false
+     */
     Router.prototype.animatePages = function(leftPage, rightPage, leftToRight) {
-        var removeClasses = 'page-current page-from-center-to-left page-from-center-to-right page-from-right-to-center page-from-left-to-center';
-        var self = this;
+        var curPageClass = 'page-current';
+        var animPageClasses = [
+            'page-from-center-to-left',
+            'page-from-center-to-right',
+            'page-from-right-to-center',
+            'page-from-left-to-center'].join(' ');
+
         if (!leftToRight) {
+            // 新页面从右侧切入
             rightPage.trigger("pageAnimationStart", [rightPage[0].id, rightPage]);
-            leftPage.removeClass(removeClasses).addClass('page-from-center-to-left');
-            rightPage.removeClass(removeClasses).addClass('page-from-right-to-center');
+            leftPage.removeClass(animPageClasses).removeClass(curPageClass).addClass('page-from-center-to-left');
+            rightPage.removeClass(animPageClasses).addClass(curPageClass).addClass('page-from-right-to-center');
             leftPage.animationEnd(function() {
-                leftPage.removeClass(removeClasses);
+                leftPage.removeClass(animPageClasses);
             });
             rightPage.animationEnd(function() {
-                rightPage.removeClass(removeClasses).addClass("page-current");
+                rightPage.removeClass(animPageClasses);
                 rightPage.trigger("pageAnimationEnd", [rightPage[0].id, rightPage]);
                 rightPage.trigger("pageInitInternal", [rightPage[0].id, rightPage]);
             });
         } else {
             leftPage.trigger("pageAnimationStart", [rightPage[0].id, rightPage]);
-            leftPage.removeClass(removeClasses).addClass('page-from-left-to-center');
-            rightPage.removeClass(removeClasses).addClass('page-from-center-to-right');
+            leftPage.removeClass(animPageClasses).addClass(curPageClass).addClass('page-from-left-to-center');
+            rightPage.removeClass(animPageClasses).removeClass(curPageClass).addClass('page-from-center-to-right');
             leftPage.animationEnd(function() {
-                leftPage.removeClass(removeClasses).addClass("page-current");
+                leftPage.removeClass(animPageClasses);
                 leftPage.trigger("pageAnimationEnd", [leftPage[0].id, leftPage]);
                 leftPage.trigger("pageReinit", [leftPage[0].id, leftPage]);
             });
             rightPage.animationEnd(function() {
-                rightPage.removeClass(removeClasses);
+                rightPage.removeClass(animPageClasses);
             });
         }
 
