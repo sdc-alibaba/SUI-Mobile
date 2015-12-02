@@ -41,8 +41,9 @@
         if (!currentPage[0]) throw new Error("can't find .page element");
         var newCurrentPage = $(hash);
 
-
-        if (newCurrentPage[0] && (!currentPage[0] || hash.slice(1) !== currentPage[0].id)) {
+        // 确保是 page 时才切换显示，不然可能只是普通的 hash（#129）
+        if (newCurrentPage[0] && newCurrentPage.hasClass('page')
+            && (!currentPage[0] || hash.slice(1) !== currentPage[0].id)) {
             currentPage.removeClass("page-current");
             newCurrentPage.addClass("page-current");
             currentPage = newCurrentPage;
@@ -50,7 +51,7 @@
 
         var id = this.genStateID(),
             curUrl = location.href,
-        // 需要设置入口页的Url，方便用户在类似xx/yy#step2 的页面刷新加载后 点击后退可以回到入口页
+            // 需要设置入口页的Url，方便用户在类似xx/yy#step2 的页面刷新加载后 点击后退可以回到入口页
             entryUrl = curUrl.split('#')[0];
 
         // 在页面加载时，可能会包含一个非空的状态对象history.state。这种情况是会发生的，例如，如果页面中使用pushState()或replaceState()方法设置了一个状态对象，然后用户重启了浏览器。https://developer.mozilla.org/en-US/docs/Web/API/History_API#Reading_the_current_state
@@ -155,7 +156,7 @@
         return $(".page-current");
     };
 
-    //如果无法前进，则加载对应的url
+    // 其实没调用到，如果无法前进，则加载对应的url
     Router.prototype.forward = function(url) {
         var stack = JSON.parse(this.stack.getItem("forward"));
         if (stack.length) {
@@ -165,7 +166,7 @@
         }
     };
 
-    //如果无法后退，则加载对应的url
+    // 点击 .back 按钮，如果无法后退，则加载对应的url
     Router.prototype.back = function(url) {
         var stack = JSON.parse(this.stack.getItem("back"));
         if (stack.length) {
@@ -177,7 +178,7 @@
         }
     };
 
-    //后退
+    // popstate 后退
     Router.prototype._back = function(url) {
         var h = this.popBack();
         var currentPage = this.getCurrentPage();
@@ -188,7 +189,7 @@
         this.animatePages(newPage, currentPage, true);
     };
 
-    //前进
+    // popstate 前进
     Router.prototype._forward = function() {
         var h = this.popForward();
         var currentPage = this.getCurrentPage();
