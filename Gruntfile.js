@@ -172,13 +172,10 @@ module.exports = function(grunt) {
         autoprefixer: {
             options: {
                 browsers: [
-                    'Android 2.3',
                     'Android >= 4',
-                    'Chrome >= 20',
-                    'Firefox >= 24', // Firefox 24 is the latest ESR
-                    'Explorer >= 9',
+                    'Chrome >= 40',
+                    'last 6 Firefox versions',
                     'iOS >= 6',
-                    'Opera >= 12',
                     'Safari >= 6'
                 ]
             },

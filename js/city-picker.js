@@ -74,7 +74,7 @@
           currentProvince = newProvince;
           currentCity = newCity;
           picker.updateValue();
-        }, 200)
+        }, 200);
         return;
       }
       newCity = picker.cols[1].value;

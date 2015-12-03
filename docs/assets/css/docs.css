@@ -101,7 +101,6 @@ body {
   font-size: 1.25em;
 }
 .docs-content p {
-  margin-bottom: 1.5em;
   font-size: 1em;
   color: #555;
 }
@@ -114,7 +113,6 @@ body {
   background-color: #571c94;
   background-image: url(http://sui.taobao.org/sui/docs/assets/imgs/grid.png), -webkit-gradient(linear, left bottom, right top, color-stop(0%, #571c94), color-stop(100%, #e609cf));
   background-image: url(http://sui.taobao.org/sui/docs/assets/imgs/grid.png), -webkit-linear-gradient(135deg, #571c94 0%, #e609cf 100%);
-  background-image: url(http://sui.taobao.org/sui/docs/assets/imgs/grid.png), -o-linear-gradient(135deg, #571c94 0%, #e609cf 100%);
   background-image: url(http://sui.taobao.org/sui/docs/assets/imgs/grid.png), -webkit-linear-gradient(315deg, #571c94 0%, #e609cf 100%);
   background-image: url(http://sui.taobao.org/sui/docs/assets/imgs/grid.png), -o-linear-gradient(315deg, #571c94 0%, #e609cf 100%);
   background-repeat: no-repeat;
@@ -125,9 +123,7 @@ body {
   background-color: #571c94;
   background-image: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #571c94), color-stop(100%, #e609cf));
   background-image: -webkit-linear-gradient(135deg, #571c94 0%, #e609cf 100%);
-  background-image:      -o-linear-gradient(135deg, #571c94 0%, #e609cf 100%);
   background-image: -webkit-linear-gradient(315deg, #571c94 0%, #e609cf 100%);
-  background-image:      -o-linear-gradient(315deg, #571c94 0%, #e609cf 100%);
   background-image:         linear-gradient(135deg, #571c94 0%, #e609cf 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{@color-from}', endColorstr='#{@color-to}', GradientType=1);
 }
@@ -138,10 +134,8 @@ body {
   position: relative !important;
   margin-top: 0 !important;
   -webkit-animation-name: fadeintext;
-       -o-animation-name: fadeintext;
           animation-name: fadeintext;
   -webkit-animation-duration: 2s;
-       -o-animation-duration: 2s;
           animation-duration: 2s;
 }
 .docs-header .version {
@@ -171,8 +165,6 @@ body {
     right: 15px !important;
     margin-top: 0 !important;
     -webkit-transform: translateY(-50%) !important;
-        -ms-transform: translateY(-50%) !important;
-         -o-transform: translateY(-50%) !important;
             transform: translateY(-50%) !important;
   }
 }
@@ -195,8 +187,6 @@ body {
   font-weight: 400;
   line-height: 1;
   -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-       -o-transform: translateX(-50%);
           transform: translateX(-50%);
 }
 .docs-nav .docs-nav-trigger {
@@ -238,7 +228,6 @@ body {
 .docs-nav-item {
   color: #fff;
   -webkit-transition: opacity .2s linear;
-       -o-transition: opacity .2s linear;
           transition: opacity .2s linear;
 }
 .docs-title a:active,
@@ -254,8 +243,6 @@ body {
     float: left;
     font-weight: 300;
     -webkit-transform: translateX(0);
-        -ms-transform: translateX(0);
-         -o-transform: translateX(0);
             transform: translateX(0);
   }
   .docs-nav {
@@ -284,7 +271,6 @@ body {
     color: #777;
     cursor: pointer;
     -webkit-transition: opacity .2 linear;
-         -o-transition: opacity .2 linear;
             transition: opacity .2 linear;
   }
   .docs-jump-menu:hover {
@@ -309,12 +295,10 @@ body {
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: #fff;
-    -webkit-background-clip: padding-box;
-            background-clip: padding-box;
+    background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, .2);
     border-radius: 3px;
-    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .05);
-            box-shadow: 0 0 8px rgba(0, 0, 0, .05);
+    box-shadow: 0 0 8px rgba(0, 0, 0, .05);
   }
   .docs-component-group.active {
     display: block;
@@ -356,10 +340,8 @@ body {
   padding: 50px 10px;
   text-align: center;
   -webkit-animation-name: fadeintext;
-       -o-animation-name: fadeintext;
           animation-name: fadeintext;
   -webkit-animation-duration: 2s;
-       -o-animation-duration: 2s;
           animation-duration: 2s;
 }
 .docs-header-content .btn {
@@ -371,13 +353,11 @@ body {
   background-color: #fff;
   border: 0;
   -webkit-transition: all .2s linear;
-       -o-transition: all .2s linear;
           transition: all .2s linear;
 }
 .docs-header-content .btn:hover {
   background-color: #fff;
-  -webkit-box-shadow: 0 0 50px rgba(255, 255, 255, .3);
-          box-shadow: 0 0 50px rgba(255, 255, 255, .3);
+  box-shadow: 0 0 50px rgba(255, 255, 255, .3);
 }
 .docs-header-content .btn:active {
   opacity: .5;
@@ -394,8 +374,6 @@ body {
   .docs-header-content {
     top: 40%;
     -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-         -o-transform: translateY(-50%);
             transform: translateY(-50%);
   }
   .docs-header-content .btn {
@@ -584,7 +562,6 @@ body {
   background-color: #fff;
   border-bottom: 1px solid #ddd;
   -webkit-transition: -webkit-transform .5s;
-       -o-transition:      -o-transform .5s;
           transition:         transform .5s;
   -webkit-transform: translate3d(0, -55px, 0);
           transform: translate3d(0, -55px, 0);
@@ -734,7 +711,6 @@ code {
     padding-left: 0;
     opacity: .3;
     -webkit-transition: opacity .2s ease-in-out;
-         -o-transition: opacity .2s ease-in-out;
             transition: opacity .2s ease-in-out;
   }
   .component.active {
@@ -752,7 +728,6 @@ code {
 @media screen and (min-width: 768px) {
   .slider .slide {
     cursor: -webkit-grab;
-    cursor:    -moz-grab;
     cursor:         grab;
   }
   .slider .slide img {
@@ -789,10 +764,8 @@ code {
     background-image: url("../img/device-sprite.png");
     background-repeat: no-repeat;
     background-position: 0 0;
-    -webkit-background-size: 300% 300%;
-            background-size: 300%;
+    background-size: 300%;
     -webkit-transition: background-image .1s linear;
-         -o-transition: background-image .1s linear;
             transition: background-image .1s linear;
   }
   .device.device-fixed {
@@ -1229,8 +1202,7 @@ table td {
   margin-right: 60px;
   overflow: hidden;
   border-radius: 125px;
-  -webkit-box-shadow: 0 0 10px 5px rgba(0, 0, 0, .15);
-          box-shadow: 0 0 10px 5px rgba(0, 0, 0, .15);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, .15);
 }
 .index-content .section .round img {
   position: relative;
@@ -1276,7 +1248,6 @@ table td {
 .page-baichuan .header .overlay {
   z-index: 2;
   background: -webkit-radial-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .8));
-  background:      -o-radial-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .8));
   background:         radial-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .8));
 }
 .page-baichuan .header h2 {
@@ -1381,8 +1352,7 @@ table td {
 }
 .page-baichuan article .code {
   width: 150px;
-  -webkit-box-shadow: 0 0 3px 3px rgba(0, 0, 0, .1);
-          box-shadow: 0 0 3px 3px rgba(0, 0, 0, .1);
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, .1);
 }
 .page-baichuan .text-gray {
   color: #999;
@@ -1588,4 +1558,8 @@ table td {
 }
 .page-baichuan .footer a:hover {
   text-decoration: underline;
+}
+.changelog ul {
+  margin: 0;
+  font-size: .7rem;
 }
