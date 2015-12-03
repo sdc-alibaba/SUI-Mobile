@@ -132,22 +132,6 @@ module.exports = function(grunt) {
             }
         },
 
-        csscomb: {
-            options: {
-                config: 'less/.csscomb.json'
-            },
-            core: {
-                files: {
-                    '<%= less.core.dest %>': '<%= less.core.dest %>'
-                }
-            },
-            docs: {
-                files: {
-                    '<%= less.docs.dest %>': '<%= less.docs.dest %>'
-                }
-            }
-        },
-
         copy: {
             fonts: {
                 expand: true,
@@ -314,7 +298,7 @@ module.exports = function(grunt) {
     require('time-grunt')(grunt);
 
   // Default task(s).
-  grunt.registerTask('dist-css', ['less', 'autoprefixer', 'usebanner', 'csscomb', 'cssmin']);
+  grunt.registerTask('dist-css', ['less', 'autoprefixer', 'usebanner', 'cssmin']);
   grunt.registerTask('dist-js', ['concat', 'uglify']);
   grunt.registerTask('dist', ['clean', 'dist-css', 'dist-js', 'copy']);
   grunt.registerTask('validate-html', ['jekyll']);
