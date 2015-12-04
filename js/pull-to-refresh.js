@@ -14,7 +14,7 @@
             useTranslate = false,
             startTranslate = 0,
             translate, scrollTop, wasScrolled, triggerDistance, dynamicTriggerDistance;
-        
+
         container = eventsTarget;
 
         // Define trigger distance
@@ -26,7 +26,7 @@
 
         function handleTouchStart(e) {
             if (isTouched) {
-                if ($.os.android) {
+                if ($.device.android) {
                     if ('targetTouches' in e && e.targetTouches.length > 1) return;
                 } else return;
             }
@@ -68,7 +68,7 @@
                     if (triggerDistance.indexOf('%') >= 0) triggerDistance = container[0].offsetHeight * parseInt(triggerDistance, 10) / 100;
                 }
                 startTranslate = container.hasClass('refreshing') ? triggerDistance : 0;
-                if (container[0].scrollHeight === container[0].offsetHeight || !$.os.ios) {
+                if (container[0].scrollHeight === container[0].offsetHeight || !$.devices.ios) {
                     useTranslate = true;
                 } else {
                     useTranslate = false;
@@ -80,7 +80,7 @@
 
             if (touchesDiff > 0 && scrollTop <= 0 || scrollTop < 0) {
                 // iOS 8 fix
-                if ($.os.ios && parseInt($.os.version.split('.')[0], 10) > 7 && scrollTop === 0 && !wasScrolled) useTranslate = true;
+                if ($.devices.ios && parseInt($.devices.osVersion.split('.')[0], 10) > 7 && scrollTop === 0 && !wasScrolled) useTranslate = true;
 
                 if (useTranslate) {
                     e.preventDefault();

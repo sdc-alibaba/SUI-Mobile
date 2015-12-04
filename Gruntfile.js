@@ -44,32 +44,31 @@ module.exports = function(grunt) {
 
         concat: {
             sm: {
-                options: {
-                    banner: '<%= banner %>;$.smVersion = "<%= pkg.version %>";'
-                },
-                src: [
-                    'js/intro.js',
-                    'js/util.js',
-                    'js/zepto-adapter.js',
-                    'js/device.js',
-                    'js/detect.js',
-                    'js/fastclick.js',
-                    'js/tabs.js',
-                    'js/modal.js',
-                    'js/calendar.js',
-                    'js/picker.js',
-                    'js/datetime-picker.js',
-                    'js/iscroll.js',
-                    'js/scroller.js',
-                    'js/pull-to-refresh-js-scroll.js',
-                    'js/pull-to-refresh.js',
-                    'js/infinite-scroll.js',
-                    'js/searchbar.js',
-                    'js/panels.js',
-                    'js/router.js',
-                    'js/init.js'
-                ],
-                dest: '<%= meta.distPath %>js/<%= pkg.name %>.js'
+              options: {
+                  banner: '<%= banner %>;$.smVersion = "<%= pkg.version %>";'
+              },
+              src: [
+                  'js/intro.js',
+                  'js/util.js',
+                  'js/zepto-adapter.js',
+                  'js/device.js',
+                  'js/fastclick.js',
+                  'js/tabs.js',
+                  'js/modal.js',
+                  'js/calendar.js',
+                  'js/picker.js',
+                  'js/datetime-picker.js',
+                  'js/iscroll.js',
+                  'js/scroller.js',
+                  'js/pull-to-refresh-js-scroll.js',
+                  'js/pull-to-refresh.js',
+                  'js/infinite-scroll.js',
+                  'js/searchbar.js',
+                  'js/panels.js',
+                  'js/router.js',
+                  'js/init.js'
+              ],
+              dest: '<%= meta.distPath %>js/<%= pkg.name %>.js'
             },
             extend: {
                 options: {
@@ -133,22 +132,6 @@ module.exports = function(grunt) {
             }
         },
 
-        csscomb: {
-            options: {
-                config: 'less/.csscomb.json'
-            },
-            core: {
-                files: {
-                    '<%= less.core.dest %>': '<%= less.core.dest %>'
-                }
-            },
-            docs: {
-                files: {
-                    '<%= less.docs.dest %>': '<%= less.docs.dest %>'
-                }
-            }
-        },
-
         copy: {
             fonts: {
                 expand: true,
@@ -173,13 +156,10 @@ module.exports = function(grunt) {
         autoprefixer: {
             options: {
                 browsers: [
-                    'Android 2.3',
                     'Android >= 4',
-                    'Chrome >= 20',
-                    'Firefox >= 24', // Firefox 24 is the latest ESR
-                    'Explorer >= 9',
+                    'Chrome >= 40',
+                    'last 6 Firefox versions',
                     'iOS >= 6',
-                    'Opera >= 12',
                     'Safari >= 6'
                 ]
             },
@@ -314,7 +294,7 @@ module.exports = function(grunt) {
     require('time-grunt')(grunt);
 
     // Default task(s).
-    grunt.registerTask('dist-css', ['less', 'autoprefixer', 'usebanner', 'csscomb', 'cssmin']);
+    grunt.registerTask('dist-css', ['less', 'autoprefixer', 'usebanner', 'cssmin']);
     grunt.registerTask('build-css', ['dist-css', 'cssmin']);
     grunt.registerTask('dist-js', ['concat']);
     grunt.registerTask('build-js', ['dist-js', 'uglify']);
