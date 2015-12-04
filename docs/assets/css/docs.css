@@ -786,7 +786,7 @@ code {
     overflow: hidden;
     font-size: 0.85rem;
     line-height: 1.05rem;
-    background: #eee;
+    background: #eeeeee;
   }
   .device .content,
   .device .bar,
@@ -981,31 +981,31 @@ pre code {
   color: #333;
 }
 pre code .c {
-  color: #999;
+  color: #999999;
 }
 pre code .err {
   color: #A00;
-  background-color: #FAA;
+  background-color: #ffaaaa;
 }
 pre code .k {
-  color: #069;
+  color: #006699;
 }
 pre code .o {
-  color: #555;
+  color: #555555;
 }
 pre code .cm {
-  color: #999;
+  color: #999999;
 }
 pre code .cp {
-  color: #099;
+  color: #009999;
 }
 pre code .c1,
 pre code .cs {
-  color: #999;
+  color: #999999;
 }
 pre code .gd {
   background-color: #FCC;
-  border: 1px solid #C00;
+  border: 1px solid #cc0000;
 }
 pre code .ge {
   font-style: italic;
@@ -1014,36 +1014,36 @@ pre code .gr {
   color: red;
 }
 pre code .gh {
-  color: #030;
+  color: #003300;
 }
 pre code .gi {
   background-color: #CFC;
-  border: 1px solid #0C0;
+  border: 1px solid #00cc00;
 }
 pre code .go {
-  color: #AAA;
+  color: #aaaaaa;
 }
 pre code .gp {
-  color: #009;
+  color: #000099;
 }
 pre code .gu {
-  color: #030;
+  color: #003300;
 }
 pre code .gt {
-  color: #9C6;
+  color: #99cc66;
 }
 pre code .kc,
 pre code .kd,
 pre code .kn,
 pre code .kp,
 pre code .kr {
-  color: #069;
+  color: #006699;
 }
 pre code .kt {
-  color: #078;
+  color: #007788;
 }
 pre code .m {
-  color: #F60;
+  color: #ff6600;
 }
 pre code .s {
   color: #d44950;
@@ -1052,53 +1052,53 @@ pre code .na {
   color: #4f9fcf;
 }
 pre code .nb {
-  color: #366;
+  color: #336666;
 }
 pre code .nc {
-  color: #0A8;
+  color: #00aa88;
 }
 pre code .no {
-  color: #360;
+  color: #336600;
 }
 pre code .nd {
-  color: #99F;
+  color: #9999ff;
 }
 pre code .ni {
-  color: #999;
+  color: #999999;
 }
 pre code .ne {
-  color: #C00;
+  color: #cc0000;
 }
 pre code .nf {
-  color: #C0F;
+  color: #cc00ff;
 }
 pre code .nl {
-  color: #99F;
+  color: #9999ff;
 }
 pre code .nn {
-  color: #0CF;
+  color: #00ccff;
 }
 pre code .nt {
   color: #2f6f9f;
 }
 pre code .nv {
-  color: #033;
+  color: #003333;
 }
 pre code .ow {
-  color: #000;
+  color: #000000;
 }
 pre code .w {
-  color: #bbb;
+  color: #bbbbbb;
 }
 pre code .mf,
 pre code .mh,
 pre code .mi,
 pre code .mo {
-  color: #F60;
+  color: #ff6600;
 }
 pre code .sb,
 pre code .sc {
-  color: #C30;
+  color: #cc3300;
 }
 pre code .sd {
   color: #C30;
@@ -1107,38 +1107,38 @@ pre code .sd {
 pre code .s2,
 pre code .se,
 pre code .sh {
-  color: #C30;
+  color: #cc3300;
 }
 pre code .si {
-  color: #A00;
+  color: #aa0000;
 }
 pre code .sx {
-  color: #C30;
+  color: #cc3300;
 }
 pre code .sr {
-  color: #3AA;
+  color: #33aaaa;
 }
 pre code .s1 {
-  color: #C30;
+  color: #cc3300;
 }
 pre code .ss {
-  color: #FC3;
+  color: #ffcc33;
 }
 pre code .bp {
-  color: #366;
+  color: #336666;
 }
 pre code .vc,
 pre code .vg,
 pre code .vi {
-  color: #033;
+  color: #003333;
 }
 pre code .il {
-  color: #F60;
+  color: #ff6600;
 }
 pre code .css .nt + .nt,
 pre code .css .o,
 pre code .css .o + .nt {
-  color: #999;
+  color: #999999;
 }
 table {
   border: 1px solid #ddd;
