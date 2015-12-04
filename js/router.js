@@ -253,9 +253,14 @@
     };
 
     Router.prototype.parseXHR = function(xhr) {
+        var html = '';
         var response = xhr.responseText;
-        var html = response.match(/<body[^>]*>([\s\S.]*)<\/body>/i)[1];
-        if (!html) html = response;
+        var matches = response.match(/<body[^>]*>([\s\S.]*)<\/body>/i);
+        if(matches) {
+            html = matches[1];
+        } else {
+            html = response;
+        }
         html = "<div>" + html + "</div>";
         var tmp = $(html);
 
