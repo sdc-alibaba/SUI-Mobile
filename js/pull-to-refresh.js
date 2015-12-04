@@ -68,7 +68,7 @@
                     if (triggerDistance.indexOf('%') >= 0) triggerDistance = container[0].offsetHeight * parseInt(triggerDistance, 10) / 100;
                 }
                 startTranslate = container.hasClass('refreshing') ? triggerDistance : 0;
-                if (container[0].scrollHeight === container[0].offsetHeight || !$.devices.ios) {
+                if (container[0].scrollHeight === container[0].offsetHeight || !$.device.ios) {
                     useTranslate = true;
                 } else {
                     useTranslate = false;
@@ -80,7 +80,7 @@
 
             if (touchesDiff > 0 && scrollTop <= 0 || scrollTop < 0) {
                 // iOS 8 fix
-                if ($.devices.ios && parseInt($.devices.osVersion.split('.')[0], 10) > 7 && scrollTop === 0 && !wasScrolled) useTranslate = true;
+                if ($.device.ios && parseInt($.device.osVersion.split('.')[0], 10) > 7 && scrollTop === 0 && !wasScrolled) useTranslate = true;
 
                 if (useTranslate) {
                     e.preventDefault();
