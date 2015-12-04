@@ -14,7 +14,7 @@ module.exports = function(grunt) {
     };
 
     var buildTo = grunt.option('buildTo');
-  var dist = buildTo ? (buildTo + '/') : 'dist/';
+    var dist = buildTo ? (buildTo + '/') : 'dist/';
 
     // Project configuration.
     grunt.initConfig({
@@ -31,12 +31,12 @@ module.exports = function(grunt) {
         },
 
         banner: '/*!\n' +
-            ' * =====================================================\n' +
-            ' * SUI Mobile - http://m.sui.taobao.org/\n' +
-            ' *\n' +
-            ' * =====================================================\n' +
-            ' */\n',
-            //,
+        ' * =====================================================\n' +
+        ' * SUI Mobile - http://m.sui.taobao.org/\n' +
+        ' *\n' +
+        ' * =====================================================\n' +
+        ' */\n',
+        //,
 
         clean: {
             dist: ['<%= meta.distPath %>', '<%= meta.docsDistPath %>']
@@ -71,25 +71,25 @@ module.exports = function(grunt) {
               dest: '<%= meta.distPath %>js/<%= pkg.name %>.js'
             },
             extend: {
-              options: {
-                  banner: '<%= banner %>'
-              },
-              src: [
-                  'js/swiper.js',
-                  'js/swiper-init.js',
-                  'js/photo-browser.js'
-              ],
-              dest: '<%= meta.distPath %>js/<%= pkg.name %>-extend.js'
+                options: {
+                    banner: '<%= banner %>'
+                },
+                src: [
+                    'js/swiper.js',
+                    'js/swiper-init.js',
+                    'js/photo-browser.js'
+                ],
+                dest: '<%= meta.distPath %>js/<%= pkg.name %>-extend.js'
             },
             cityPicker: {
-              options: {
-                  banner: '<%= banner %>'
-              },
-              src: [
-                  'js/city-data.js',
-                  'js/city-picker.js'
-              ],
-              dest: '<%= meta.distPath %>js/<%= pkg.name %>-city-picker.js'
+                options: {
+                    banner: '<%= banner %>'
+                },
+                src: [
+                    'js/city-data.js',
+                    'js/city-picker.js'
+                ],
+                dest: '<%= meta.distPath %>js/<%= pkg.name %>-city-picker.js'
             }
         },
 
@@ -108,11 +108,11 @@ module.exports = function(grunt) {
                 dest: '<%= meta.distPath %>css/<%= pkg.name %>-extend.css'
             },
             docs: {
-                src:  '<%= meta.doclessetsPath %>css/docs.less',
+                src: '<%= meta.doclessetsPath %>css/docs.less',
                 dest: '<%= meta.doclessetsPath %>css/docs.css'
             },
             demos: {
-                src:  '<%= meta.doclessetsPath %>css/demos.less',
+                src: '<%= meta.doclessetsPath %>css/demos.less',
                 dest: '<%= meta.doclessetsPath %>css/demos.css'
             }
         },
@@ -179,7 +179,7 @@ module.exports = function(grunt) {
 
         cssmin: {
             options: {
-                keepSpecialComments: '*' ,// keep all important comments
+                keepSpecialComments: '*',// keep all important comments
                 advanced: false
             },
             sm: {
@@ -246,10 +246,6 @@ module.exports = function(grunt) {
                 files: '<%= meta.jsPath %>**/*.js',
                 tasks: ['dist-js', 'copy']
             },
-            cityPicker: {
-                files: ['<%= meta.jsPath %>city-*.js'],
-                tasks: ['dist-js:cityPicker', 'copy']
-            },
             css: {
                 files: '<%= meta.lessPath %>**/*.less',
                 tasks: ['dist-css', 'copy']
@@ -297,23 +293,25 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
     require('time-grunt')(grunt);
 
-  // Default task(s).
-  grunt.registerTask('dist-css', ['less', 'autoprefixer', 'usebanner', 'cssmin']);
-  grunt.registerTask('dist-js', ['concat', 'uglify']);
-  grunt.registerTask('dist', ['clean', 'dist-css', 'dist-js', 'copy']);
-  grunt.registerTask('validate-html', ['jekyll']);
-  grunt.registerTask('build', ['dist']);
-  grunt.registerTask('test', ['dist', 'jshint', 'qunit', 'validate-html']);
-  grunt.registerTask('server', ['dist', 'jekyll', 'connect', 'watch']);
-  if(buildTo) {
-    //CDN发布环境
-    grunt.registerTask('default', ['dist-js', 'dist-css', 'copy']);
-  } else {
-    //开发环境
-    grunt.registerTask('default', ['test', 'dist']);
-  }
+    // Default task(s).
+    grunt.registerTask('dist-css', ['less', 'autoprefixer', 'usebanner', 'cssmin']);
+    grunt.registerTask('build-css', ['dist-css', 'cssmin']);
+    grunt.registerTask('dist-js', ['concat']);
+    grunt.registerTask('build-js', ['dist-js', 'uglify']);
+    grunt.registerTask('dist', ['clean', 'build-css', 'build-js', 'copy']);
+    grunt.registerTask('validate-html', ['jekyll']);
+    grunt.registerTask('build', ['dist']);
+    grunt.registerTask('test', ['dist', 'jshint', 'qunit', 'validate-html']);
+    grunt.registerTask('server', ['dist', 'jekyll', 'connect', 'watch']);
+    if (buildTo) {
+        //CDN发布环境
+        grunt.registerTask('default', ['build-js', 'build-css', 'copy']);
+    } else {
+        //开发环境
+        grunt.registerTask('default', ['test', 'dist']);
+    }
 
-  // Version numbering task.
-  // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
-  // This can be overzealous, so its changes should always be manually reviewed!
+    // Version numbering task.
+    // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
+    // This can be overzealous, so its changes should always be manually reviewed!
 };
