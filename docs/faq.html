@@ -1,0 +1,36 @@
+---
+layout: default
+title: About &middot; Ratchet
+---
+
+<div class="docs-sub-header">
+  {% include masthead.html %}
+  <div class="container">
+    <div class="docs-sub-content">
+      <h2 class="page-title">FAQ</h2>
+      <p class="page-description">MSUI 常见问题</p>
+    </div>
+    {% include ad.html %}
+  </div>
+</div>
+
+<div class="container">
+  <div class="column-group">
+    <div class="column lg-units-8 docs-content">
+      <div class="docs-section">
+        <h2>路由（Router）</h2>
+
+        <h3>切换到的新页面中的 js 不执行</h3>
+        <p>由于浏览器安全性考虑的限制以及可能的 js 重复执行或覆盖的问题，目前是不支持运行 ajax 载入的页面里面的 js 的，参考 <a href="https://github.com/sdc-alibaba/SUI-Mobile/issues/120#issuecomment-160417276">#120</a>。</p>
+        <p>解决方法：所有页面都引用相同的 js，而这个 js 里面包含了所有的逻辑，事件部分使用委托来绑定。</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="column">
+    <!-- Footer -->
+    {% include footer.html %}
+  </div>
+</div>
+
