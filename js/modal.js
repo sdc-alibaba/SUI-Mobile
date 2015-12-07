@@ -152,6 +152,7 @@
         });
     };
     $.showPreloader = function (title) {
+        $.hidePreloader();
         return $.modal({
             title: title || defaults.modalPreloaderTitle,
             text: '<div class="preloader"></div>'
@@ -161,6 +162,7 @@
         $.closeModal('.modal.modal-in');
     };
     $.showIndicator = function () {
+        if ($('.preloader-indicator-modal')[0]) return;
         $(defaults.modalContainer).append('<div class="preloader-indicator-overlay"></div><div class="preloader-indicator-modal"><span class="preloader preloader-white"></span></div>');
     };
     $.hideIndicator = function () {
