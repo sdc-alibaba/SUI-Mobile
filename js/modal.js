@@ -278,8 +278,9 @@
     };
     $.openModal = function (modal, cb) {
         modal = $(modal);
-        var isModal = modal.hasClass('modal');
-        if ($('.modal.modal-in:not(.modal-out)').length && defaults.modalStack && isModal) {
+        var isModal = modal.hasClass('modal'),
+            isNotToast = !modal.hasClass('toast');
+        if ($('.modal.modal-in:not(.modal-out)').length && defaults.modalStack && isModal && isNotToast) {
             $.modalStack.push(function () {
                 $.openModal(modal, cb);
             });
