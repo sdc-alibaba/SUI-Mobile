@@ -13,7 +13,7 @@ Device/OS Detection
     var iphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/);
 
     device.ios = device.android = device.iphone = device.ipad = device.androidChrome = false;
-    
+
     // Android
     if (android) {
         device.os = 'android';
@@ -47,7 +47,7 @@ Device/OS Detection
 
     // Webview
     device.webView = (iphone || ipad || ipod) && ua.match(/.*AppleWebKit(?!.*Safari)/i);
-        
+
     // Minimal UI
     if (device.os && device.os === 'ios') {
         var osVersionArr = device.osVersion.split('.');
@@ -87,7 +87,7 @@ Device/OS Detection
                 classNames.push('ios-gt-' + i);
             }
         }
-        
+
     }
     // Status bar classes
     if (device.statusBar) {
@@ -99,6 +99,9 @@ Device/OS Detection
 
     // Add html classes
     if (classNames.length > 0) $('html').addClass(classNames.join(' '));
+
+    // keng..
+    device.isWeixin = /MicroMessenger/i.test(ua);
 
     $.device = device;
 })(Zepto);
