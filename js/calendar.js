@@ -654,6 +654,11 @@
       // Input Events
       function openOnInput(e) {
           e.preventDefault();
+            // 安卓微信webviewreadonly的input依然弹出软键盘问题修复
+            if ($.device.isWeixin && $.device.android && p.params.inputReadOnly) {
+                this.focus()
+                this.blur()
+            }
           if (p.opened) return;
           p.open();
           if (p.params.scrollToInput) {
@@ -695,11 +700,6 @@
               if (p.params.inputReadOnly) p.input.prop('readOnly', true);
               if (!p.inline) {
                   p.input.on('click', openOnInput);
-              }
-              if (p.params.inputReadOnly) {
-                  p.input.on('focus mousedown', function (e) {
-                      e.preventDefault();
-                  });
               }
           }
 
@@ -790,7 +790,7 @@
       p.destroy = function () {
           p.close();
           if (p.params.input && p.input.length > 0) {
-              p.input.off('click focus', openOnInput);
+              p.input.off('click', openOnInput);
           }
           $('html').off('click', closeOnHTMLClick);
       };
