@@ -421,8 +421,9 @@
             e.preventDefault();
             // 安卓微信webviewreadonly的input依然弹出软键盘问题修复
             if ($.device.isWeixin && $.device.android && p.params.inputReadOnly) {
-                this.focus()
-                this.blur()
+                /*jshint validthis:true */
+                this.focus();
+                this.blur();
             }
             if (p.opened) return;
             p.open();
