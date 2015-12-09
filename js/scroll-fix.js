@@ -41,7 +41,7 @@
 		var elem = document.getElementsByClassName("bar-" + item);
 		if (elem.length > 0) {
 			elem[0].addEventListener("touchmove", function (event) {
-				alert(1);
+				
 				event.preventDefault();
 			});
 		}

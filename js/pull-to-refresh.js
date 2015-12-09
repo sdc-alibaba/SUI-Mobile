@@ -142,6 +142,7 @@
 
     };
     $.pullToRefreshDone = function(container) {
+        $(window).scrollTop(0);
         container = $(container);
         if (container.length === 0) container = $('.pull-to-refresh-content.refreshing');
         container.removeClass('refreshing').addClass('transitioning');
