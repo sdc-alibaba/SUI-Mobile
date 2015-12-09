@@ -9,9 +9,9 @@
 /* ===============================================================================
 ************   ScrollFix   ************
 =============================================================================== */
-+ function($) {
++ function() {
 	"use strict";
-	var scrollFix = function(elem) {
+	var ScrollFix = function(elem) {
 		
 		// Variables to track inputs
 		var startY;
@@ -36,7 +36,7 @@
 		}, false);
 	};
 	var scrollable = document.getElementsByClassName("content")[0];
-	var pageContent = document.getElementsByClassName("page-current")[0];
+	
 	["nav", "footer"].forEach(function (item) {
 		var elem = document.getElementsByClassName("bar-" + item);
 		if (elem.length > 0) {
@@ -46,5 +46,5 @@
 			});
 		}
 	});
-	 new scrollFix(scrollable);
-}(Zepto);
+	 new ScrollFix(scrollable);
+}();

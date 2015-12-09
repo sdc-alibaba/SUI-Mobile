@@ -104,7 +104,7 @@
 
 
     $.fn.transitionEnd = function(callback) {
-        var events = ['webkitTransitionEnd', 'transitionend', 'oTransitionEnd', 'MSTransitionEnd', 'msTransitionEnd'],
+        var events = ['webkitTransitionEnd', 'transitionend'],
             i, dom = this;
 
         function fireCallBack(e) {
@@ -134,7 +134,7 @@
             } else {
                 for (var i = 0; i < el.attributes.length; i++) {
                     var attr = el.attributes[i];
-                    if (attr.name.indexOf('data-') >= 0) {
+                    if (/^data-/.test(attr.name)) {
                         dataset[$.toCamelCase(attr.name.split('data-')[1])] = attr.value;
                     }
                 }
@@ -179,7 +179,7 @@
         }
     };
     $.fn.animationEnd = function(callback) {
-        var events = ['webkitAnimationEnd', 'OAnimationEnd', 'MSAnimationEnd', 'animationend'],
+        var events = ['webkitAnimationEnd', 'animationend'],
             i, dom = this;
 
         function fireCallBack(e) {

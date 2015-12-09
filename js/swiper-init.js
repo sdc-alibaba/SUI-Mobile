@@ -1,10 +1,7 @@
-/*===========================
-Framework7 Swiper Additions
-===========================*/
 /* global Zepto:true */
 +function($){
     'use strict';
-    $.Swiper.prototype.defaults.pagination = '.swiper-pagination';
+    $.Swiper.prototype.defaults.pagination = '.page-current .swiper-pagination';
 
     $.swiper = function (container, params) {
         return new $.Swiper(container, params);
@@ -38,7 +35,7 @@ Framework7 Swiper Additions
         }
     };
     $.reinitSwiper = function (pageContainer) {
-        var page = $(pageContainer);
+        var page = $(pageContainer || '.page-current');
         var sliders = page.find('.swiper-container');
         if (sliders.length === 0) return;
         for (var i = 0; i < sliders.length; i++) {

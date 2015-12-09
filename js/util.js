@@ -18,7 +18,11 @@
       if (x < y) return -1;
       if (x > y) return 1;
     }
-    return 1;
+    return -1;
+  };
+
+  $.getCurrentPage = function() {
+    return $(".page-current")[0] || $(".page")[0] || document.body;
   };
 
 }(Zepto);

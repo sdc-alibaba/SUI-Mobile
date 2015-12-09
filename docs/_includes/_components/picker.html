@@ -75,7 +75,11 @@ $("#picker-name").picker({
       </td>
       <td>工具栏的模板，可以自己定义。</td>
     </tr>
-
+    <tr>
+      <td>value</td>
+      <td>input元素的value属性。<br>多列默认值用空格隔开，如<code>&lt;input value="钱 明 小姐"&gt;</code>。如果任一列默认值本身含空格(如‘ipad mini 2’),那就只能用JS方法调用模式传入<code>value</code>参数</td>
+      <td>为 picker 添加默认值，数组里每一项对应每一列默认值，如<code>["钱", "明", "小姐"]</code></td>
+    </tr>
     <tr>
       <td>rotateEffect</td>
       <td>false</td>
@@ -140,17 +144,14 @@ $("#picker-name").picker("setValue", ["2012", "12", "12"]);
 <article class="component" id="datetime-picker" data-url='datetime-picker'>
   <h2 class="component-title">日期时间选择器</h2>
 
-  <p class="component-description">日期时间选择器是一个定制的picker，因此他的用法和picker完全一致。</p>
+  <p class="component-description">日期时间选择器是一个定制的picker，因此他的用法和picker完全一致。打开picker的默认值是当前时间，可以通过<code>value</code>参数指定</p>
   <p>datetime-picker 定制了 onChange 和 cols 参数，请不要设置这两个参数。</p>
 
 {% highlight html %}
 <input type="text" id='datetime-picker'/>
 <script>
   $("#datetime-picker").datetimePicker({
-    toolbarTemplate: '<header class="bar bar-nav">\
-    <button class="button button-link pull-right close-picker">确定</button>\
-    <h1 class="title">选择日期和时间</h1>\
-    </header>'
+    value: ['1985', '12', '04', '9', '34']
   });
 </script>
 {% endhighlight %}

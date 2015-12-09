@@ -152,6 +152,7 @@
         });
     };
     $.showPreloader = function (title) {
+        $.hidePreloader();
         return $.modal({
             title: title || defaults.modalPreloaderTitle,
             text: '<div class="preloader"></div>'
@@ -161,6 +162,7 @@
         $.closeModal('.modal.modal-in');
     };
     $.showIndicator = function () {
+        if ($('.preloader-indicator-modal')[0]) return;
         $(defaults.modalContainer).append('<div class="preloader-indicator-overlay"></div><div class="preloader-indicator-modal"><span class="preloader preloader-white"></span></div>');
     };
     $.hideIndicator = function () {
@@ -268,19 +270,21 @@
         return modal[0];
     };
     //显示一个消息，会在2秒钟后自动消失
-    $.toast = function(msg) {
-      var $toast = $("<div class='modal toast'>"+msg+"</div>").appendTo(document.body);
-      $.openModal($toast);
-      setTimeout(function() {
-        $.closeModal($toast);
-      }, 2000);
+    $.toast = function(msg, duration, extraclass) {
+      var $toast = $('<div class="modal toast ' + (extraclass || '') + '">' + msg + '</div>').appendTo(document.body);
+      $.openModal($toast, function(){
+        setTimeout(function() {
+          $.closeModal($toast);
+        }, duration || 2000);
+      });
     };
-    $.openModal = function (modal) {
+    $.openModal = function (modal, cb) {
         modal = $(modal);
-        var isModal = modal.hasClass('modal');
-        if ($('.modal.modal-in:not(.modal-out)').length && defaults.modalStack && isModal) {
+        var isModal = modal.hasClass('modal'),
+            isNotToast = !modal.hasClass('toast');
+        if ($('.modal.modal-in:not(.modal-out)').length && defaults.modalStack && isModal && isNotToast) {
             $.modalStack.push(function () {
-                $.openModal(modal);
+                $.openModal(modal, cb);
             });
             return;
         }
@@ -328,6 +332,10 @@
             if (modal.hasClass('modal-out')) modal.trigger('closed');
             else modal.trigger('opened');
         });
+        // excute callback
+        if (typeof cb === 'function') {
+          cb.call(this);
+        }
         return true;
     };
     $.closeModal = function (modal) {
@@ -335,20 +343,20 @@
         if (typeof modal !== 'undefined' && modal.length === 0) {
             return;
         }
-        var isModal = modal.hasClass('modal');
-        var isPopup = modal.hasClass('popup');
-        var isLoginScreen = modal.hasClass('login-screen');
-        var isPickerModal = modal.hasClass('picker-modal');
 
-        var removeOnClose = modal.hasClass('remove-on-close');
-
-        var overlay = isPopup ? $('.popup-overlay') : $('.modal-overlay');
+        var isModal = modal.hasClass('modal'),
+            isPopup = modal.hasClass('popup'),
+            isToast = modal.hasClass('toast'),
+            isLoginScreen = modal.hasClass('login-screen'),
+            isPickerModal = modal.hasClass('picker-modal'),
+            removeOnClose = modal.hasClass('remove-on-close'),
+            overlay = isPopup ? $('.popup-overlay') : $('.modal-overlay');
         if (isPopup){
             if (modal.length === $('.popup.modal-in').length) {
                 overlay.removeClass('modal-overlay-visible');
             }
         }
-        else if (!isPickerModal) {
+        else if (!(isPickerModal || isToast)) {
             overlay.removeClass('modal-overlay-visible');
         }
 
@@ -428,6 +436,7 @@
     }
     $(document).on('click', ' .modal-overlay, .popup-overlay, .close-popup, .open-popup, .close-picker', handleClicks);
     var defaults =  $.modal.prototype.defaults  = {
+        modalStack: true,
         modalButtonOk: '确定',
         modalButtonCancel: '取消',
         modalPreloaderTitle: '加载中',

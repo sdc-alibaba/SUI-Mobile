@@ -219,6 +219,12 @@
 	var deviceIsBlackBerry10 = navigator.userAgent.indexOf('BB10') > 0;
 
 	/**
+	 * 判断是否组合型label
+	 * @type {Boolean}
+	 */
+	var isCompositeLabel = false;
+
+	/**
 	 * Determine whether a given element requires a native click.
 	 *
 	 * @param {EventTarget|Element} target Target DOM element
@@ -226,12 +232,17 @@
 	 */
 	FastClick.prototype.needsClick = function(target) {
 
-    //修复bug: 如果父元素中有 label
-    var parent = target;
-    while(parent && (parent.tagName.toUpperCase() !== "BODY")) {
-      if(parent.tagName.toUpperCase() === "LABEL") return true;
-      parent = parent.parentNode;
-    }
+	    // 修复bug: 如果父元素中有 label
+	    // 夏苒添加start，如果label上有needsclick这个类，则用原生的点击，否则，用模拟点击
+	    var parent = target;
+	    while(parent && (parent.tagName.toUpperCase() !== "BODY")) {
+	      if (parent.tagName.toUpperCase() === "LABEL") {
+	      	isCompositeLabel = true;
+	      	if ((/\bneedsclick\b/).test(parent.className)) return true;
+	      }
+	      parent = parent.parentNode;
+	    }
+	    //  夏苒添加end
 		switch (target.nodeName.toLowerCase()) {
 
 		// Don't send a synthetic click to disabled inputs (issue #62)
@@ -666,8 +677,11 @@
 
 			// Cancel the event
 			event.stopPropagation();
-			event.preventDefault();
-
+			// 允许组合型label冒泡，夏苒添加start
+			if (!isCompositeLabel) {
+				event.preventDefault();
+			}
+			// 允许组合型label冒泡，夏苒添加end
 			return false;
 		}
 

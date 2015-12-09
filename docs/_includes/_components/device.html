@@ -1,0 +1,35 @@
+<article class="component" id="device">
+  <h2 class="component-title">设备侦测工具</h2>
+  <p class="component-description"><code>$.device</code>提供了一些基本的设备侦测信息可供使用。举例如下：</p>
+
+{% highlight js %}
+console.log($.device)
+// --------
+{
+    android: true
+    androidChrome: false
+    ios: false
+    ipad: false
+    iphone: false
+    isWeixin: false
+    os: "android"
+    osVersion: "4.4.1"
+    pixelRatio: 3
+    statusBar: false
+    webView: null
+}
+{% endhighlight %}
+
+  <p class="component-description">同时提供<code>$.compareVersion</code>工具用以方便的进行版本号比较：</p>
+{% highlight js %}
+// arg1 > arg2, return 1; arg1 == arg2, return 0; arg1 < arg2, return -1
+$.compareVersion('8.0', '7.1.1')
+// return 1
+$.compareVersion('4.2', $.device.osVersion)
+// return -1
+$.compareVersion('5.0', '5.0')
+// return 0
+
+{% endhighlight %}
+</article>
+
