@@ -233,7 +233,7 @@
 	FastClick.prototype.needsClick = function(target) {
 
 	    // 修复bug: 如果父元素中有 label
-	    // 夏苒添加start，如果label上有needsclick这个类，则用原生的点击，否则，用模拟点击
+	    // 如果label上有needsclick这个类，则用原生的点击，否则，用模拟点击
 	    var parent = target;
 	    while(parent && (parent.tagName.toUpperCase() !== "BODY")) {
 	      if (parent.tagName.toUpperCase() === "LABEL") {
@@ -242,7 +242,7 @@
 	      }
 	      parent = parent.parentNode;
 	    }
-	    //  夏苒添加end
+
 		switch (target.nodeName.toLowerCase()) {
 
 		// Don't send a synthetic click to disabled inputs (issue #62)
@@ -344,7 +344,8 @@
 		var length;
 
 		// Issue #160: on iOS 7, some input elements (e.g. date datetime month) throw a vague TypeError on setSelectionRange. These elements don't have an integer value for the selectionStart and selectionEnd properties, but unfortunately that can't be used for detection because accessing the properties also throws a TypeError. Just check the type instead. Filed as Apple bug #15122724.
-		if (deviceIsIOS && targetElement.setSelectionRange && targetElement.type.indexOf('date') !== 0 && targetElement.type !== 'time' && targetElement.type !== 'month') {
+        var unsupportedType = ['date', 'time', 'month', 'number', 'email'];
+		if (deviceIsIOS && targetElement.setSelectionRange && unsupportedType.indexOf(targetElement.type) == -1) {
 			length = targetElement.value.length;
 			targetElement.setSelectionRange(length, length);
 		} else {
@@ -677,11 +678,11 @@
 
 			// Cancel the event
 			event.stopPropagation();
-			// 允许组合型label冒泡，夏苒添加start
+			// 允许组合型label冒泡
 			if (!isCompositeLabel) {
 				event.preventDefault();
 			}
-			// 允许组合型label冒泡，夏苒添加end
+			// 允许组合型label冒泡
 			return false;
 		}
 
