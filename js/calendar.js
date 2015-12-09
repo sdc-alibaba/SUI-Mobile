@@ -701,7 +701,6 @@
               if (p.params.inputReadOnly) p.input.prop('readOnly', true);
               if (!p.inline) {
                   p.input.on('click', openOnInput);
-
               }
           }
 

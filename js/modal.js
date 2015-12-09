@@ -343,7 +343,6 @@
         if (typeof modal !== 'undefined' && modal.length === 0) {
             return;
         }
-
         var isModal = modal.hasClass('modal'),
             isPopup = modal.hasClass('popup'),
             isToast = modal.hasClass('toast'),

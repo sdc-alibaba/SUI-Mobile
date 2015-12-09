@@ -181,7 +181,6 @@ module.exports = function(grunt) {
 
         cssmin: {
             options: {
-
                 keepSpecialComments: '*',// keep all important comments
                 advanced: false
             },

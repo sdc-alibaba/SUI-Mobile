@@ -142,7 +142,7 @@
 
     };
     $.pullToRefreshDone = function(container) {
-        $(window).scrollTop(0);
+        $(window).scrollTop(0);//解决微信下拉刷新顶部消失的问题
         container = $(container);
         if (container.length === 0) container = $('.pull-to-refresh-content.refreshing');
         container.removeClass('refreshing').addClass('transitioning');
