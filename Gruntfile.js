@@ -31,6 +31,7 @@ module.exports = function(grunt) {
         },
 
         banner: '/*!\n' +
+
         ' * =====================================================\n' +
         ' * SUI Mobile - http://m.sui.taobao.org/\n' +
         ' *\n' +
@@ -66,7 +67,8 @@ module.exports = function(grunt) {
                   'js/searchbar.js',
                   'js/panels.js',
                   'js/router.js',
-                  'js/init.js'
+                  'js/init.js',
+                  'js/scroll-fix.js'
               ],
               dest: '<%= meta.distPath %>js/<%= pkg.name %>.js'
             },
