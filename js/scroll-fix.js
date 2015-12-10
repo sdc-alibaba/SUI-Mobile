@@ -9,7 +9,9 @@
 /* ===============================================================================
 ************   ScrollFix   ************
 =============================================================================== */
-+ function() {
+
+/* global Zepto:true */
++ function($) {
 	"use strict";
 	var ScrollFix = function(elem) {
 		
@@ -35,16 +37,22 @@
 				elem.scrollTop = elem.scrollHeight - elem.offsetHeight - 1;
 		}, false);
 	};
-	var scrollable = document.getElementsByClassName("content")[0];
 	
-	["nav", "footer"].forEach(function (item) {
-		var elem = document.getElementsByClassName("bar-" + item);
-		if (elem.length > 0) {
-			elem[0].addEventListener("touchmove", function (event) {
-				
-				event.preventDefault();
+	function init () {
+		var prefix = $('.page-current').length > 0 ? '.page-current ' : '';
+		var scrollable = $(prefix + ".content");
+		["nav", "footer"].forEach(function (item) {
+			var elem = $(prefix + ".bar-" + item);
+			elem.off($.touchEvents.move);
+			elem.on($.touchEvents.move, function (event) {
+				if (event.type === 'touchmove') {
+					event.preventDefault();
+				}
 			});
-		}
-	});
-	 new ScrollFix(scrollable);
-}();
+		});
+		new ScrollFix(scrollable[0]);
+	}
+
+	window.addEventListener('pageLoadComplete', init);
+	init();
+}(Zepto);
