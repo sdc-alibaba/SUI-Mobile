@@ -1,8 +1,8 @@
-# SUI Mobile
+# SUI Mobile(MSUI)
 
 ## 轻量的UI库
 
-SUI Mobile 是阿里巴巴国际UED团队基于 [Framework7](http://framework7.taobao.org/) 开发的手机H5 UI库。
+[SUI Mobile](http://m.sui.taobao.org/) 是阿里巴巴国际UED团队借鉴 __Ratchet__ 、__Framework7__ 等开源框架 开发的移动端 UI库。
 
 它的特点是非常轻量，并且能很好兼容 iOS 6.0+ 和 Android 4.0+  的设备。
 
