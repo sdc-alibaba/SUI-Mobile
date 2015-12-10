@@ -1568,3 +1568,7 @@ table td {
   font-size: 0.7rem;
   margin: 0;
 }
+.faq h3 > a,
+.faq h2 > a {
+  color: #333;
+}

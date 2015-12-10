@@ -1,6 +1,6 @@
 ---
 layout: default
-title: About &middot; Ratchet
+title: FAQ-常见问题
 ---
 
 <div class="docs-sub-header">
@@ -17,12 +17,19 @@ title: About &middot; Ratchet
 <div class="container">
   <div class="column-group">
     <div class="column lg-units-8 docs-content">
-      <div class="docs-section">
+      <div class="docs-section faq">
         <h2>路由（Router）</h2>
 
-        <h3>切换到的新页面中的 js 不执行</h3>
+        <h3><a href="#router-js" id="router-js">切换到的新页面中的 js 不执行</a></h3>
         <p>由于浏览器安全性考虑的限制以及可能的 js 重复执行或覆盖的问题，目前是不支持运行 ajax 载入的页面里面的 js 的，参考 <a href="https://github.com/sdc-alibaba/SUI-Mobile/issues/120#issuecomment-160417276">#120</a>。</p>
         <p>解决方法：所有页面都引用相同的 js，而这个 js 里面包含了所有的逻辑，事件部分使用委托来绑定。</p>
+
+        <h2><a id="tpl" href="#tpl">前端模板引擎</a></h2>
+        <p>原来有内置模板引擎，不过因为众口难调，前端模板引擎从核心库里删去了，大家可以根据自己喜好在产品里自行引用、使用。</p>
+
+        <h2><a id="iconfont" href="#iconfont">iconfont 图标</a></h2>
+        <p>SUI-Mobile内置的iconfont图标并不多，毕竟千人千面，建议大家在<a href="http://iconfont.cn/" target="_blank">官方iconfont定制网站</a>按需选择、生成自己的iconfont库，那里会帮我们生成iconfont文件和对应css的在线地址，我们只要在应用里引入那一个css即可。<a href="http://iconfont.cn/help/platform.html" target="_blank">详见文档</p>
+
       </div>
     </div>
   </div>

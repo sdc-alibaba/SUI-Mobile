@@ -2,7 +2,9 @@
 
 ## 轻量的UI库
 
-[SUI Mobile](http://m.sui.taobao.org/) 是阿里巴巴国际UED团队借鉴 __Ratchet__ 、__Framework7__ 等开源框架 开发的移动端 UI库。
+[SUI Mobile](http://m.sui.taobao.org/) 是阿里巴巴国际UED前端团队出品的移动端  __UI库__。
+
+没有重复造轮子。主要借鉴 __Framework7__ 的形态并以此为基础，参考Ratchet、Ionic、Onsen的部分思路，强化功能，精简体积，并提供国内最稳定快速的CDN支持。此外还定制增强了一些工具类开源库。
 
 它的特点是非常轻量，并且能很好兼容 iOS 6.0+ 和 Android 4.0+  的设备。
 
@@ -10,15 +12,13 @@
 
 ## 问题反馈
 
-可以在旺旺群 1278550944 交流
+明确的问题更__推荐__直接提[issue反馈](https://github.com/sdc-alibaba/SUI-Mobile/issues)。
 
-### Issue
+也可以在旺旺群 1278550944 交流或邮件咨询 itaofe@gmail.com
 
-明确的问题更推荐直接提issue反馈。
+### Issue 注意
 
-#### Issue 注意
-
-移动端的特性，请一定写明 __系统、机型、浏览器的型号和版本__
+考虑到移动端的特性，请一定写明 __系统、机型、浏览器的型号和版本__
 
 ## Pull Request
 
