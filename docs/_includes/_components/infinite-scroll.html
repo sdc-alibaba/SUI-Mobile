@@ -37,7 +37,7 @@
     {% endhighlight %}
     <p class="component-description">其中：</p>
     <ul>
-        <li><code>div class="page-content infinite-scroll"</code> -是我们无限滚动的容器</li>
+        <li><code>div class="content infinite-scroll"</code> -是我们无限滚动的容器</li>
         <li><code>data-distance</code> - 属性用来配置页面滚动到离底部多远时触发无限滚动事件，默认是50 (px)</li>
     </ul>
 <script type="text/javascript">
@@ -163,7 +163,7 @@ $(function() {
 {% endhighlight %}
 
     <h3 class="component-title">在顶部的无限滚动</h3>
-    <p class="component-description">如果你需要向上滚动到顶部时进行无限滚动，那么需要在 “<code>page-content</code>”添加额外的class <code>infinite-scroll-top</code>
+    <p class="component-description">如果你需要向上滚动到顶部时进行无限滚动，那么需要在 “<code>content</code>”添加额外的class <code>infinite-scroll-top</code>
     </p>
     <div class="component-example component-example-fullbleed">
             <header class="bar bar-nav">
@@ -208,9 +208,9 @@ $(function() {
     <p class="component-description">有2个App方法：</p>
 {% highlight js %}
 $.attachInfiniteScroll(container) - 为指定的HTML元素容器添加无限滚动事件监听器
-parameters - 表示无限滚动容器的HTML元素或CSS选择器。必选。 
+parameters - 表示无限滚动容器的HTML元素或CSS选择器。必选。
 
-{% endhighlight %} 
+{% endhighlight %}
 
 {% highlight js %}
 $.detachInfiniteScroll(container) - 从指定的HTML元素容器删除无限滚动事件监听器

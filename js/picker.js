@@ -428,7 +428,7 @@
             if (p.opened) return;
             p.open();
             if (p.params.scrollToInput) {
-                var pageContent = p.input.parents('.page-content');
+                var pageContent = p.input.parents('.content');
                 if (pageContent.length === 0) return;
 
                 var paddingTop = parseInt(pageContent.css('padding-top'), 10),
@@ -474,7 +474,7 @@
         // Open
         function onPickerClose() {
             p.opened = false;
-            if (p.input && p.input.length > 0) p.input.parents('.page-content').css({'padding-bottom': ''});
+            if (p.input && p.input.length > 0) p.input.parents('.content').css({'padding-bottom': ''});
             if (p.params.onClose) p.params.onClose(p);
 
             // Destroy events

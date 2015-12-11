@@ -96,7 +96,7 @@ $(document).on('refresh', '.pull-to-refresh-content',function(e) {
 {% endhighlight %}
  <p class="component-description">其中</p>
  <ul>
-   <li><code>page-content</code>需要额外添加<code>pull-to-refresh-content</code>类，它会开启下拉刷新。</li>
+   <li><code>content</code>需要额外添加<code>pull-to-refresh-content</code>类，它会开启下拉刷新。</li>
    <li><code>pull-to-refresh-layer</code>平时隐藏的布局块，包含下拉刷新的可视元素：加载提示符和上/下箭头。</li>
    <li><code>data-ptr-distance="55"</code>可以配置下拉刷新的下拉距离. 默认是 44px.</li>
  </ul>
@@ -121,7 +121,7 @@ $(document).on('refresh', '.pull-to-refresh-content',function(e) {
         <td>拥有下拉刷新功能的界面
 <code><div class="pull-to-refresh-content"></code></td>
         <td>事件会在下拉刷新进入“refreshing”状态时触发</td>
-      </tr> 
+      </tr>
     </tbody>
   </table>
 
