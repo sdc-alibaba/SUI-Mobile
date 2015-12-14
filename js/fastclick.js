@@ -553,7 +553,11 @@
 		if ((event.timeStamp - this.trackingClickStart) > this.tapTimeout) {
 			return true;
 		}
-
+		//修复安卓微信下，input type="date" 的bug，经测试date,time,month已没问题
+		var unsupportedType = ['date', 'time', 'month'];
+		if(unsupportedType.indexOf(event.target.type) !== -1){
+	　　　　return false;
+	　　}
 		// Reset to prevent wrong click cancel on input (issue #156).
 		this.cancelNextClick = false;
 
