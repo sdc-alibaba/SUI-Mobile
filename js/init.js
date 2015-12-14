@@ -36,6 +36,9 @@
     $(window).on("pageLoadCancel", function() {
       $.hideIndicator();
     });
+    $(window).on("pageLoadComplete", function() {
+      $.hideIndicator();
+    });
     $(window).on("pageLoadError", function() {
       $.hideIndicator();
       $.toast("加载失败");

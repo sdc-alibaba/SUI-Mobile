@@ -3,7 +3,7 @@
 // Pages animations
 @pageDuration: 400ms;
 
-.page {
+.page, .router-view-inner {
     box-sizing: border-box;
     position: absolute;
     left: 0;
@@ -20,6 +20,10 @@
     &.page-from-left-to-center {
       display: block;
     }
+}
+
+.router-view-inner {
+  display: block;
 }
 
 //Class that will trigger transition during page custom transitions (like swipe-back)
