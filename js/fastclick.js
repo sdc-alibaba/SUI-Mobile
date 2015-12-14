@@ -549,7 +549,7 @@
 			this.cancelNextClick = true;
 			return true;
 		}
-
+		
 		if ((event.timeStamp - this.trackingClickStart) > this.tapTimeout) {
 			return true;
 		}

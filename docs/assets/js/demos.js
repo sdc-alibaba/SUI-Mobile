@@ -55,7 +55,6 @@ $(function () {
   
   //无限滚动
   $(document).on("pageInit", "#page-infinite-scroll-top", function(e, id, page) {
-    
     function addItems(number, lastIndex) {
       // 生成新条目的HTML
       var html = '';
