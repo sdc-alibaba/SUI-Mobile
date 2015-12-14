@@ -553,9 +553,9 @@
 		if ((event.timeStamp - this.trackingClickStart) > this.tapTimeout) {
 			return true;
 		}
-		//修复安卓微信下，input type="date" 的bug，经测试date,time,month已没问题，number还有问题，暂搁置，email没测
-		var unsupportedType = ['date', 'time', 'month', 'number', 'email'];
-		if(event.target.hasAttribute("type") && unsupportedType.indexOf(event.target.getAttribute("type")) !== -1){
+		//修复安卓微信下，input type="date" 的bug，经测试date,time,month已没问题
+		var unsupportedType = ['date', 'time', 'month'];
+		if(unsupportedType.indexOf(event.target.type) !== -1){
 	　　　　return false;
 	　　}
 		// Reset to prevent wrong click cancel on input (issue #156).
