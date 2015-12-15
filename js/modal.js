@@ -4,7 +4,7 @@
 /*jshint unused: false*/
 /* global Zepto:true */
 +function ($) {
-  "use strict";
+    "use strict";
     var _modalTemplateTempDiv = document.createElement('div');
 
     $.modalStack = [];

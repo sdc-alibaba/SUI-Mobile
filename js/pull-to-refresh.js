@@ -1,7 +1,5 @@
 + function($) {
     'use strict';
-
-
     $.initPullToRefresh = function(pageContainer) {
         var eventsTarget = $(pageContainer);
         if (!eventsTarget.hasClass('pull-to-refresh-content')) {
@@ -168,7 +166,6 @@
         if (pullToRefreshContent.length === 0) return;
         if (pullToRefreshContent[0].destroyPullToRefresh) pullToRefreshContent[0].destroyPullToRefresh();
     };
-
 
     //这里是否需要写到 scroller 中去？
 /*    $.initPullToRefresh = function(pageContainer) {
