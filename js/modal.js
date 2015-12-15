@@ -4,7 +4,7 @@
 /*jshint unused: false*/
 /* global Zepto:true */
 +function ($) {
-  "use strict";
+    "use strict";
     var _modalTemplateTempDiv = document.createElement('div');
 
     $.modalStack = [];
@@ -153,13 +153,15 @@
     };
     $.showPreloader = function (title) {
         $.hidePreloader();
-        return $.modal({
+        $.showPreloader.preloaderModal = $.modal({
             title: title || defaults.modalPreloaderTitle,
             text: '<div class="preloader"></div>'
         });
+
+        return $.showPreloader.preloaderModal;
     };
     $.hidePreloader = function () {
-        $.closeModal('.modal.modal-in');
+        $.closeModal($.showPreloader.preloaderModal);
     };
     $.showIndicator = function () {
         if ($('.preloader-indicator-modal')[0]) return;
@@ -271,12 +273,12 @@
     };
     //显示一个消息，会在2秒钟后自动消失
     $.toast = function(msg, duration, extraclass) {
-      var $toast = $('<div class="modal toast ' + (extraclass || '') + '">' + msg + '</div>').appendTo(document.body);
-      $.openModal($toast, function(){
-        setTimeout(function() {
-          $.closeModal($toast);
-        }, duration || 2000);
-      });
+        var $toast = $('<div class="modal toast ' + (extraclass || '') + '">' + msg + '</div>').appendTo(document.body);
+        $.openModal($toast, function(){
+            setTimeout(function() {
+                $.closeModal($toast);
+            }, duration || 2000);
+        });
     };
     $.openModal = function (modal, cb) {
         modal = $(modal);

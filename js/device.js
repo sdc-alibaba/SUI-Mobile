@@ -52,9 +52,9 @@ Device/OS Detection
     if (device.os && device.os === 'ios') {
         var osVersionArr = device.osVersion.split('.');
         device.minimalUi = !device.webView &&
-                            (ipod || iphone) &&
-                            (osVersionArr[0] * 1 === 7 ? osVersionArr[1] * 1 >= 1 : osVersionArr[0] * 1 > 7) &&
-                            $('meta[name="viewport"]').length > 0 && $('meta[name="viewport"]').attr('content').indexOf('minimal-ui') >= 0;
+            (ipod || iphone) &&
+            (osVersionArr[0] * 1 === 7 ? osVersionArr[1] * 1 >= 1 : osVersionArr[0] * 1 > 7) &&
+            $('meta[name="viewport"]').length > 0 && $('meta[name="viewport"]').attr('content').indexOf('minimal-ui') >= 0;
     }
 
     // Check for status bar and fullscreen app mode

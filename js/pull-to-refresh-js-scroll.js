@@ -13,7 +13,7 @@
         var page = eventsTarget.hasClass('content') ? eventsTarget : eventsTarget.parents('.content');
         var scroller = $.getScroller(page[0]);
         if(!scroller) return;
-       
+
 
         var container = eventsTarget;
 
@@ -60,7 +60,7 @@
             scroller.refresh();
             container.removeClass('refreshing');
             container.transitionEnd(function() {
-              container.removeClass("transitioning");
+                container.removeClass("transitioning");
             });
         }, timeOut);
     };
@@ -87,8 +87,8 @@
 
     $._pullToRefreshJSScroll = {
         "initPullToRefresh": initPullToRefreshJS,
-        "pullToRefreshDone": pullToRefreshDoneJS, 
-        "pullToRefreshTrigger": pullToRefreshTriggerJS, 
-        "destroyPullToRefresh": destroyPullToRefreshJS, 
+        "pullToRefreshDone": pullToRefreshDoneJS,
+        "pullToRefreshTrigger": pullToRefreshTriggerJS,
+        "destroyPullToRefresh": destroyPullToRefreshJS,
     };
 }(Zepto); // jshint ignore:line
