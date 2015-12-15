@@ -53,7 +53,7 @@ $(function () {
     });
   });
   
-  //无限滚动
+  //顶部无限滚动
   $(document).on("pageInit", "#page-infinite-scroll-top", function(e, id, page) {
     function addItems(number, lastIndex) {
       // 生成新条目的HTML
@@ -63,25 +63,29 @@ $(function () {
       }
       // 添加新条目
       $('.infinite-scroll .list-container').prepend(html);
-     
+
     }
     var timer = false;
     $(page).on('infinite', function() {
        var lastIndex = $('.list-block li').length;
+       var lastLi = $(".list-container li")[0];
        var scroller = $('.infinite-scroll-top');
        var scrollHeight = scroller[0].scrollHeight; // 获取当前滚动元素的高度
       // 如果正在加载，则退出
       if (timer) {
-        $(".infinite-scroll-preloader").show();
         clearTimeout(timer);
       }
 
       // 模拟1s的加载过程
       timer = setTimeout(function() {
-        $(".infinite-scroll-preloader").hide();
-        addItems(20,lastIndex);
-        $.refreshScroller();
 
+        addItems(20,lastIndex);
+       
+        $.refreshScroller();
+        //  lastLi.scrollIntoView({
+        //     behavior: "smooth",
+        //     block:    "start"
+        // });
         // 将滚动条的位置设置为最新滚动元素高度和之前的高度差
         scroller.scrollTop(scroller[0].scrollHeight - scrollHeight);
       }, 1000);

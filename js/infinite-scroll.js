@@ -46,9 +46,11 @@
         if (infiniteContent.length === 0) return;
         $.attachInfiniteScroll(infiniteContent);
         //如果是顶部无限刷新，要将滚动条初始化于最下端
-        if(pageContainer.hasClass('infinite-scroll-top')){
-            infiniteContent.scrollTop(infiniteContent[0].scrollHeight);
-        }
+        pageContainer.forEach(function(v){
+            if($(v).hasClass('infinite-scroll-top')){
+                $(v).scrollTop($(v)[0].scrollHeight);
+            }
+        });
         function detachEvents() {
             $.detachInfiniteScroll(infiniteContent);
             pageContainer.off('pageBeforeRemove', detachEvents);
