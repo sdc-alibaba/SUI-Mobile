@@ -70,6 +70,8 @@
             var options = {
                 probeType: 1,
                 mouseWheel: true,
+                //解决安卓js模式下，刷新滚动条后绑定的事件不响应
+                click:true
             };
             if (ptr) {
                 options.ptr = true;
