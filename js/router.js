@@ -392,15 +392,6 @@
 
         if (isPushState) {
             this._pushNewState(url, $visibleSection.attr('id'));
-            //var newState = {
-            //    id: this._getNextStateId(),
-            //    pageId: $visibleSection.attr('id'),
-            //    url: urlObj
-            //};
-            //
-            //theHistory.pushState(newState, '', url);
-            //this._saveAsCurrentState(newState);
-            //this._incMaxStateId();
         }
     };
 
