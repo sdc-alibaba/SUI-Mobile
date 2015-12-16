@@ -17,7 +17,7 @@ title: 更新日志 &middot; SUI Mobile
 <div class="container">
   <div class="column-group">
     <div class="column docs-content">
-      <div class="docs-section">
+      <div class="docs-section changelog">
         <h2>版本号说明</h2>
         <p>SUI Mobile 版本号由x.y.z三位组成，符合 <a href='http://semver.org/lang/zh-CN/' target="_blank">语义化版本号</a> 规范：</p>
         <ul>
@@ -29,6 +29,25 @@ title: 更新日志 &middot; SUI Mobile
         <p>SUI Mobile 采用增量更新，每次发布到线上的版本永远不会再变化。这里记录了每一个版本更新的内容。</p>
 
         <h2>更新日志</h2>
+
+        <h3>V0.5.7 <sub>2015.12.11</sub></h3>
+        <ul>
+            <li>修复下拉刷新后上拖页面，标题栏消失缩回的bug</li>
+            <li>toast改为非独占式类型，也即不会被阻塞在modal队列里</li>
+            <li>$.showPreloader, $.showIndicator逻辑更新,不会重复刷出</li>
+            <li>日历、picker在微信、qq环境触发组件时弹出软键盘问题修复（但微信webview本身有些bug）</li>
+            <li>android 5+下列表行间分割线优化</li>
+            <li>暴露<a href="http://m.sui.taobao.org//components/#device">$.device工具</a>，协助开发者设备侦测</li>
+            <li>delete几乎不用的换色模块，压缩后css体积精简17K</li>
+            <li>文档更新，FAQ丰富</li>
+        </ul>
+
+        <h3>V0.5.6 <sub>2015.12.4</sub></h3>
+        <ul>
+            <li>Picker:(包括日期和省市Picker)默认值逻辑增强，并提高reRender性能。fix #24 #29 #55 #109 #126</li>
+            <li>Router: 修复页面转场动画与快速切换导致的问题;解决ajax加载页面必须有body标签的不健壮问题;修复直接访问带 hash 的 url 时，可能的空白页面情况。fix #112 129</li>
+            <li>优化样式工程, 精简了10KB+的压缩体积</li>
+        </ul>
 
         <h3>V0.5.4 <sub>2015.11.27</sub></h3>
         <ul>
@@ -153,7 +172,7 @@ title: 更新日志 &middot; SUI Mobile
           <li>搜索栏中增加了一个 <a href='/components/#searchbar' target="_blank" data-ignore='push'>苹果风格的样式</a></li>
           <li>修复了push.js没有加载popup的bug</li>
         </ul>
-        
+
       </div>
   </div>
 

@@ -1,7 +1,7 @@
 $(function() {
   $(document).on("pageInit", function() {
     $("#birthday").calendar({
-      dateFormat: "yy-mm-dd",
+      value: ['2015-12-05'],
       onChange: function(p, v, d) {
         console.log(p, v, d);
       }

@@ -1,7 +1,7 @@
 + function($) {
     'use strict';
     /* global Zepto:true */
-   
+
     function handleInfiniteScroll() {
         /*jshint validthis:true */
         var inf = $(this);
@@ -45,11 +45,17 @@
         var infiniteContent = pageContainer.hasClass('infinite-scroll')?pageContainer:pageContainer.find('.infinite-scroll');
         if (infiniteContent.length === 0) return;
         $.attachInfiniteScroll(infiniteContent);
-
+        //如果是顶部无限刷新，要将滚动条初始化于最下端
+        pageContainer.forEach(function(v){
+            var $thisNode = $(v); 
+            if($thisNode.hasClass('infinite-scroll-top')){
+                $thisNode.scrollTop($thisNode[0].scrollHeight);
+            }
+        });
         function detachEvents() {
             $.detachInfiniteScroll(infiniteContent);
             pageContainer.off('pageBeforeRemove', detachEvents);
         }
         pageContainer.on('pageBeforeRemove', detachEvents);
     };
-}(Zepto); 
+}(Zepto);

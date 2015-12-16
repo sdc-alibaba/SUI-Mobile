@@ -7,7 +7,7 @@ $(function () {
       // 模拟2s的加载过程
       setTimeout(function() {
         var cardHTML = '<div class="card">' +
-          '<div class="card-header">标题</div>' +
+          '<div class="card-header">标题</div>' + 
           '<div class="card-content">' +
           '<div class="card-content-inner">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容' +
           '</div>' +
@@ -15,6 +15,7 @@ $(function () {
           '</div>';
 
         $content.find('.card-container').prepend(cardHTML);
+        // $(window).scrollTop(0);
         // 加载完毕需要重置
         $.pullToRefreshDone($content);
       }, 2000);
@@ -50,6 +51,46 @@ $(function () {
         $.refreshScroller();
       }, 1000);
     });
+  });
+  
+  //顶部无限滚动
+  $(document).on("pageInit", "#page-infinite-scroll-top", function(e, id, page) {
+    function addItems(number, lastIndex) {
+      // 生成新条目的HTML
+      var html = '';
+      for (var i = lastIndex+ number; i > lastIndex ; i--) {
+        html += '<li class="item-content"><div class="item-inner"><div class="item-title">条目'+i+'</div></div></li>';
+      }
+      // 添加新条目
+      $('.infinite-scroll .list-container').prepend(html);
+
+    }
+    var timer = false;
+    $(page).on('infinite', function() {
+       var lastIndex = $('.list-block li').length;
+       var lastLi = $(".list-container li")[0];
+       var scroller = $('.infinite-scroll-top');
+       var scrollHeight = scroller[0].scrollHeight; // 获取当前滚动元素的高度
+      // 如果正在加载，则退出
+      if (timer) {
+        clearTimeout(timer);
+      }
+
+      // 模拟1s的加载过程
+      timer = setTimeout(function() {
+
+        addItems(20,lastIndex);
+       
+        $.refreshScroller();
+        //  lastLi.scrollIntoView({
+        //     behavior: "smooth",
+        //     block:    "start"
+        // });
+        // 将滚动条的位置设置为最新滚动元素高度和之前的高度差
+        scroller.scrollTop(scroller[0].scrollHeight - scrollHeight);
+      }, 1000);
+    });
+
   });
 
 

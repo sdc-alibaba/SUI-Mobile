@@ -1,227 +1,334 @@
-<article class="component" id="infinitescroll">
-    <h2 class="component-title">无限滚动</h2>
+<article class="component active" id="infinitescroll">
+    <h2 class="component-title">底部无限滚动</h2>
     <p class="component-description">无限滚动用来在页面滚动到接近底部时加载新内容或进行其他操作。</p>
     <h3 class="component-title">无限滚动demo</h3>
     <p class="component-description">
         你只需在可滚动的容器上添加“infinite-scroll”类，一般是页面滚动区域 - <code>div.content</code>
     </p>
     <div class="component-example component-example-fullbleed">
-        <header class="bar bar-nav">
-            <h1 class="title">无限滚动</h1>
-        </header>
-        <div class="content infinite-scroll" data-distance="100">
-            ...
-        </div>
+        
     </div>
     {% highlight html %}
-<style type="text/css">
-.infinite-scroll-preloader {
-  margin-top:-20px;
-}
-</style>
+      <style type="text/css">
+      .infinite-scroll-preloader {
+        margin-top:-20px;
+      }
+      </style>
 
-<header class="bar bar-nav">
-    <h1 class="title">无限滚动</h1>
-</header>
-<!-- 添加 class infinite-scroll 和 data-distaance -->
-<div class="content infinite-scroll" data-distance="100">
-    <div class="list-block">
-        <ul class="list-container">
-        </ul>
-    </div>
-    <!-- 加载提示符 -->
-    <div class="infinite-scroll-preloader">
-        <div class="preloader"></div>
-    </div>
-</div>
+      <header class="bar bar-nav">
+          <h1 class="title">底部无限滚动</h1>
+      </header>
+      <!-- 添加 class infinite-scroll 和 data-distance  向下无限滚动可不加infinite-scroll-bottom类，这里加上是为了和下面的向上无限滚动区分-->
+      <div class="content infinite-scroll infinite-scroll-bottom" data-distance="100">
+          <div class="list-block">
+              <ul class="list-container">
+              </ul>
+          </div>
+          <!-- 加载提示符 -->
+          <div class="infinite-scroll-preloader">
+              <div class="preloader"></div>
+          </div>
+      </div>
     {% endhighlight %}
     <p class="component-description">其中：</p>
     <ul>
-        <li><code>div class="page-content infinite-scroll"</code> -是我们无限滚动的容器</li>
+        <li><code>div class="content infinite-scroll"</code> -是我们无限滚动的容器</li>
         <li><code>data-distance</code> - 属性用来配置页面滚动到离底部多远时触发无限滚动事件，默认是50 (px)</li>
     </ul>
-<script type="text/javascript">
-$(function() {
-    // 加载flag
-    var loading = false;
-    // 最多可加载的条目
-    var maxItems = 100;
+  <script type="text/javascript">
+  $(function() {
+      // 加载flag
+      var loading = false;
+      // 最多可加载的条目
+      var maxItems = 100;
 
-    // 每次加载添加多少条目
-    var itemsPerLoad = 20;
+      // 每次加载添加多少条目
+      var itemsPerLoad = 20;
 
-    function addItems(number, lastIndex) {
-        // 生成新条目的HTML
-        var html = '';
-        for (var i = lastIndex + 1; i <= lastIndex + number; i++) {
-            html += '<li class="item-content"><div class="item-inner"><div class="item-title">Item ' + i + '</div></div></li>';
-        }
-        // 添加新条目
-        $('.infinite-scroll .list-container').append(html);
-    }
+      function addItems(number, lastIndex) {
+          // 生成新条目的HTML
+          var html = '';
+          for (var i = lastIndex + 1; i <= lastIndex + number; i++) {
+              html += '<li class="item-content"><div class="item-inner"><div class="item-title">Item ' + i + '</div></div></li>';
+          }
+          // 添加新条目
+          $('.infinite-scroll-bottom .list-container').append(html);
+      }
 
-    // 上次加载的序号
+      // 上次加载的序号
 
-    var lastIndex = 0;
-    //文档专用事件 updateContent
-    $(document).on('updateContent', '.infinite-scroll', function() {
-        //预先加载20条
-        addItems(itemsPerLoad, 0);
-        lastIndex = 20;
-    });
-    // 注册'infinite'事件处理函数
-    $(document).on('infinite', '.infinite-scroll', function() {
+      var lastIndex = 0;
+      //文档专用事件 updateContent
+      $(document).on('updateContent', '.infinite-scroll-bottom', function() {
+          //预先加载20条
+          addItems(itemsPerLoad, 0);
+          lastIndex = 20;
+      });
+      // 注册'infinite'事件处理函数
+      $(document).on('infinite', '.infinite-scroll-bottom', function() {
 
-        // 如果正在加载，则退出
-        if (loading) return;
+          // 如果正在加载，则退出
+          if (loading) return;
 
-        // 设置flag
-        loading = true;
+          // 设置flag
+          loading = true;
 
-        // 模拟1s的加载过程
-        setTimeout(function() {
-            // 重置加载flag
-            loading = false;
+          // 模拟1s的加载过程
+          setTimeout(function() {
+              // 重置加载flag
+              loading = false;
 
-            if (lastIndex >= maxItems) {
-                // 加载完毕，则注销无限加载事件，以防不必要的加载
-                $.detachInfiniteScroll($('.infinite-scroll'));
-                // 隐藏加载提示符
-                $('.infinite-scroll-preloader').hide();
-                return;
-            }
+              if (lastIndex >= maxItems) {
+                  // 加载完毕，则注销无限加载事件，以防不必要的加载
+                  $.detachInfiniteScroll($('.infinite-scroll'));
+                  // 隐藏加载提示符
+                  $('.infinite-scroll-preloader').hide();
+                  return;
+              }
 
-            // 添加新条目
-            addItems(itemsPerLoad, lastIndex);
-            // 更新最后加载的序号
-            lastIndex = $('.list-container li').length;
-            //容器发生改变,如果是js滚动，需要刷新滚动
-            $.refreshScroller();
-        }, 1000);
-    });
-});
-</script>
-
-
-<p class="component-description">javacript:</p>
-{% highlight js %}
-    // 加载flag
-    var loading = false;
-    // 最多可加载的条目
-    var maxItems = 100;
-
-    // 每次加载添加多少条目
-    var itemsPerLoad = 20;
-
-    function addItems(number, lastIndex) {
-            // 生成新条目的HTML
-            var html = '';
-            for (var i = lastIndex + 1; i <= lastIndex + number; i++) {
-                html += '<li class="item-content"><div class="item-inner"><div class="item-title">Item ' + i + '</div></div></li>';
-            }
-            // 添加新条目
-            $('.list-container').append(html);
-
-        }
-        //预先加载20条
-    addItems(itemsPerLoad, 0);
-
-    // 上次加载的序号
-
-    var lastIndex = 20;
-
-    // 注册'infinite'事件处理函数
-    $(document).on('infinite', '.infinite-scroll',function() {
-
-        // 如果正在加载，则退出
-        if (loading) return;
-
-        // 设置flag
-        loading = true;
-
-        // 模拟1s的加载过程
-        setTimeout(function() {
-            // 重置加载flag
-            loading = false;
-
-            if (lastIndex >= maxItems) {
-                // 加载完毕，则注销无限加载事件，以防不必要的加载
-                $.detachInfiniteScroll($('.infinite-scroll'));
-                // 删除加载提示符
-                $('.infinite-scroll-preloader').remove();
-                return;
-            }
-
-            // 添加新条目
-            addItems(itemsPerLoad, lastIndex);
-            // 更新最后加载的序号
-            lastIndex = $('.list-container li').length;
-            //容器发生改变,如果是js滚动，需要刷新滚动
-            $.refreshScroller();
-        }, 1000);
-    });
-{% endhighlight %}
-
-    <h3 class="component-title">在顶部的无限滚动</h3>
-    <p class="component-description">如果你需要向上滚动到顶部时进行无限滚动，那么需要在 “<code>page-content</code>”添加额外的class <code>infinite-scroll-top</code>
-    </p>
-    <div class="component-example component-example-fullbleed">
-            <header class="bar bar-nav">
-                <h1 class="title">在顶部的无限滚动</h1>
-            </header>
-            <div class="content infinite-scroll-top" data-distance="100">
-                <div>...</div>
-            </div>
-    </div>
+              // 添加新条目
+              addItems(itemsPerLoad, lastIndex);
+              // 更新最后加载的序号
+              lastIndex = $('.list-container li').length;
+              //容器发生改变,如果是js滚动，需要刷新滚动
+              $.refreshScroller();
+          }, 1000);
+      });
+  });
+  </script>
 
 
-		{% highlight html %}
-<header class="bar bar-nav">
-    <h1 class="title">在顶部的无限滚动</h1>
-</header>
-<div class="content infinite-scroll-top" data-distance="100">
-    <div>...</div>
-</div>
-    {% endhighlight %}
+  <p class="component-description">javacript:</p>
+  {% highlight js %}
+      // 加载flag
+      var loading = false;
+      // 最多可加载的条目
+      var maxItems = 100;
 
-    <h3 class="component-title">无限滚动事件</h3>
-    <table class="params-table">
-        <thead>
-            <tr>
-                <th>事件（Event）</th>
-                <th>对象（Target）</th>
-                <th>描述（Description）</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>infinite</td>
-                <td>可无限滚动的容器
-                    <code> div.content.infinite-scroll"</code>
-                </td>
-                <td>事件会在页面滚动至距底部还有特定距离（可在<code>data-distance</code>中配置）时触发</td>
-            </tr>
-        </tbody>
-    </table>
+      // 每次加载添加多少条目
+      var itemsPerLoad = 20;
+
+      function addItems(number, lastIndex) {
+              // 生成新条目的HTML
+              var html = '';
+              for (var i = lastIndex + 1; i <= lastIndex + number; i++) {
+                  html += '<li class="item-content"><div class="item-inner"><div class="item-title">Item ' + i + '</div></div></li>';
+              }
+              // 添加新条目
+              $('.infinite-scroll-bottom .list-container').append(html);
+
+          }
+          //预先加载20条
+      addItems(itemsPerLoad, 0);
+
+      // 上次加载的序号
+
+      var lastIndex = 20;
+
+      // 注册'infinite'事件处理函数
+      $(document).on('infinite', '.infinite-scroll-bottom',function() {
+
+          // 如果正在加载，则退出
+          if (loading) return;
+
+          // 设置flag
+          loading = true;
+
+          // 模拟1s的加载过程
+          setTimeout(function() {
+              // 重置加载flag
+              loading = false;
+
+              if (lastIndex >= maxItems) {
+                  // 加载完毕，则注销无限加载事件，以防不必要的加载
+                  $.detachInfiniteScroll($('.infinite-scroll'));
+                  // 删除加载提示符
+                  $('.infinite-scroll-preloader').remove();
+                  return;
+              }
+
+              // 添加新条目
+              addItems(itemsPerLoad, lastIndex);
+              // 更新最后加载的序号
+              lastIndex = $('.list-container li').length;
+              //容器发生改变,如果是js滚动，需要刷新滚动
+              $.refreshScroller();
+          }, 1000);
+      });
+  {% endhighlight %}
+
+
+
+  <h3 class="component-title">无限滚动事件</h3>
+  <table class="params-table">
+      <thead>
+          <tr>
+              <th>事件（Event）</th>
+              <th>对象（Target）</th>
+              <th>描述（Description）</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>infinite</td>
+              <td>可无限滚动的容器
+                  <code> div.content.infinite-scroll"</code>
+              </td>
+              <td>事件会在页面滚动至距底部还有特定距离（可在<code>data-distance</code>中配置）时触发</td>
+          </tr>
+      </tbody>
+  </table>
 
     <h3 class="component-title">无限滚动API</h3>
     <p class="component-description">有2个App方法：</p>
-{% highlight js %}
-$.attachInfiniteScroll(container) - 为指定的HTML元素容器添加无限滚动事件监听器
-parameters - 表示无限滚动容器的HTML元素或CSS选择器。必选。 
+    {% highlight js %}
+      $.attachInfiniteScroll(container) - 为指定的HTML元素容器添加无限滚动事件监听器
+      parameters - 表示无限滚动容器的HTML元素或CSS选择器。必选。
 
-{% endhighlight %} 
+    {% endhighlight %}
 
-{% highlight js %}
-$.detachInfiniteScroll(container) - 从指定的HTML元素容器删除无限滚动事件监听器
-parameters - 表示无限滚动容器的HTML元素或CSS选择器。必选。
+    {% highlight js %}
+      $.detachInfiniteScroll(container) - 从指定的HTML元素容器删除无限滚动事件监听器
+      parameters - 表示无限滚动容器的HTML元素或CSS选择器。必选。
 
-{% endhighlight %}
+    {% endhighlight %}
 
     <p class="component-description attention">
     	注意，仅在你使用$.detachInfiniteScroll方法删除过事件监听器后，才可能需要使用
         $.attachInfiniteScroll方法，因为无限滚动组件的事件监听器会在“initPage”时被自动添加。
     </p>
 </article>
+<article class="component active">
+    <h3 class="component-title">在顶部的无限滚动</h3>
+    <p class="component-description">如果你需要向上滚动到顶部时进行无限滚动，那么需要在 “<code>content</code>”添加额外的class <code>infinite-scroll-top</code>
+    </p>
+    <div class="component-example component-example-fullbleed">
+        
+    </div>
 
+
+  {% highlight html %}
+    <header class="bar bar-nav">
+        <h1 class="title">在顶部的无限滚动</h1>
+    </header>
+    <div class="content infinite-scroll infinite-scroll-top" data-distance="50">
+        <div class="list-block">
+          <ul class="list-container">
+           
+          </ul>
+        </div>
+
+        <!-- 加载提示符 -->
+        <div class="infinite-scroll-preloader" >
+          <div class="preloader">
+          </div>
+        </div>
+    </div>      
+  {% endhighlight %}
+
+    <script type="text/javascript">
+      $(function() {
+          // 最多可加载的条目
+          var maxItems = 100;
+
+          // 每次加载添加多少条目
+          var itemsPerLoad = 20;
+
+          function addItemsTop(number, lastIndex) {
+            // 生成新条目的HTML
+            var html = '';
+            for (var i = lastIndex+ number; i > lastIndex ; i--) {
+              html += '<li class="item-content"><div class="item-inner"><div class="item-title">条目'+i+'</div></div></li>';
+            }
+            // 添加新条目
+            $('.infinite-scroll-top .list-container').prepend(html);
+
+          }
+          var timer = false;
+           //文档专用事件 updateContent
+          $(document).on('updateContent', '.infinite-scroll-top', function() {
+              //预先加载20条
+              addItemsTop(itemsPerLoad,0 );
+              lastIndex = 0;
+          });
+          $(document).on('infinite', '.infinite-scroll-top',function() {
+            var lastIndex = $('.infinite-scroll-top .list-block li').length;
+            var lastLi = $(".list-container li")[0];
+            var scroller = $('.infinite-scroll-top');
+            var scrollHeight = scroller[0].scrollHeight; // 获取当前滚动元素的高度
+            // 如果正在加载，则退出
+            if (timer) {
+              clearTimeout(timer);
+            }
+
+            // 模拟1s的加载过程
+            timer = setTimeout(function() {
+              if (lastIndex >= maxItems) {
+                  // 加载完毕，则注销无限加载事件，以防不必要的加载
+                  $.detachInfiniteScroll($('.infinite-scroll'));
+                  // 隐藏加载提示符
+                  $('.infinite-scroll-preloader').hide();
+                  return;
+              }
+
+              addItemsTop(itemsPerLoad,lastIndex);
+             
+              $.refreshScroller();
+              //使用scrollIntoView改善性能，体验稍欠
+              //  lastLi.scrollIntoView({
+              //     behavior: "smooth",
+              //     block:    "start"
+              // });
+              // 将滚动条的位置设置为最新滚动元素高度和之前的高度差
+              scroller.scrollTop(scroller[0].scrollHeight - scrollHeight);
+            }, 1000);
+          });
+      })
+
+    </script>
+     <p class="component-description">javacript:</p>
+  {% highlight js %}
+       $(function() {
+          // 最多可加载的条目
+          var maxItems = 100;
+
+          // 每次加载添加多少条目
+          var itemsPerLoad = 20;
+
+          function addItemsTop(number, lastIndex) {
+            // 生成新条目的HTML
+            var html = '';
+            for (var i = lastIndex+ number; i > lastIndex ; i--) {
+              html += '<li class="item-content"><div class="item-inner"><div class="item-title">条目'+i+'</div></div></li>';
+            }
+            // 添加新条目
+            $('.infinite-scroll .list-container').prepend(html);
+
+          }
+          var timer = false;
+          $(document).on('infinite', '.infinite-scroll-top',function() {
+            var lastIndex = $('.infinite-scroll-top .list-block li').length;
+            var lastLi = $(".list-container li")[0];
+            var scroller = $('.infinite-scroll-top');
+            var scrollHeight = scroller[0].scrollHeight; // 获取当前滚动元素的高度
+            // 如果正在加载，则退出
+            if (timer) {
+              clearTimeout(timer);
+            }
+
+            // 模拟1s的加载过程
+            timer = setTimeout(function() {
+
+              addItemsTop(itemsPerLoad,lastIndex);
+             
+              $.refreshScroller();
+             
+              // 将滚动条的位置设置为最新滚动元素高度和之前的高度差
+              scroller.scrollTop(scroller[0].scrollHeight - scrollHeight);
+            }, 1000);
+          });
+      })
+  {% endhighlight %}
+
+</article>
 

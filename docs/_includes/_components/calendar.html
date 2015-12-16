@@ -4,7 +4,9 @@
   <p>日历组件需要初始化才能使用，最简单的方式是通过一下JS代码来初始化，绑定到一个input元素上：</p>
 
 {% highlight js %}
-$("#my-input").calendar();
+$("#my-input").calendar({
+    value: ['2015-12-05']
+});
 {% endhighlight %}
 
   <p>当你点击input元素后，会自动弹出一个JS生成的日历组件。当用户选择日期之后，input的值会被设置为用户选择的日期。</p>
@@ -21,6 +23,11 @@ $("#my-input").calendar();
       <th>参数名</th>
       <th>默认值</th>
       <th>说明</th>
+    </tr>
+    <tr>
+      <td>value</td>
+      <td>undefined</td>
+      <td>初始化打开后默认选中的时间。格式是<code>value: ['2012-06-18']</code></td>
     </tr>
     <tr>
       <td>inputReadOnly</td>
@@ -61,7 +68,7 @@ $("#my-input").calendar();
 
   <p>当用户选择完日期之后，会在 input 上触发 <code>change</code> 事件，你可以监听此事件。</p>
 
-  <p>如果你只同时选择日期和时间，请使用 <a href='#datetime-picker' data-ignore='push'>日期时间选择器</a></p>
+  <p>如果你只同时选择日期和时间 , 请使用 <a href='#datetime-picker' data-ignore='push'>日期时间选择器</a></p>
 </article>
 
 <article class="component" data-url='calendar-inline'>
