@@ -52,7 +52,10 @@
         });
         new ScrollFix(scrollable[0]);
     }
-
-    window.addEventListener('pageLoadComplete', init);
-    init();
+    //安卓微信中使用scrollfix会有问题，因此只在ios中使用，安卓机器按照原来的逻辑
+    if($.device.ios){
+        window.addEventListener('pageLoadComplete', init);
+        init();
+    }
+    
 }(Zepto);
