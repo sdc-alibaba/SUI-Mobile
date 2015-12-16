@@ -46,6 +46,14 @@
         });
     }
 
+    $(window).on('pageAnimationStart', function() {
+        $.closePanel();
+        // 如果 panel 的 effect 是 reveal 时,似乎是 page 的动画或别的样式原因导致了 transitionEnd 时间不会触发
+        // 这里暂且处理一下
+        $('body').removeClass('panel-closing');
+        $.allowPanelOpen = true;
+    });
+
     $.init = function() {
         var $page = getPage();
         var id = $page[0].id;

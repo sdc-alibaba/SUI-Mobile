@@ -790,7 +790,8 @@
             'tab-link',
             'open-popup',
             'close-popup',
-            'open-panel'
+            'open-panel',
+            'close-panel'
         ];
 
         for (var i = classBlackList.length -1 ; i >=0; i--) {
@@ -799,12 +800,12 @@
             }
         }
 
+        //noinspection RedundantIfStatementJS
         if ($link.get(0).hasAttribute('external')) {
             return true;
         }
 
-        var url = $link.attr('href');
-        return !!(!url || url === '#');
+        return false;
     }
 
     $(function() {
@@ -833,16 +834,18 @@
                 return;
             }
 
+            e.preventDefault();
+
             var url = $target.attr('href');
+            if (!url || url === '#') {
+                return;
+            }
 
             if ($target.hasClass('back')) {
                 router.back(url);
             } else {
                 router.load(url);
             }
-
-            e.preventDefault();
-
         });
     });
 }(Zepto);
