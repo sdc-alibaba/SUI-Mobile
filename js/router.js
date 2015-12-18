@@ -257,6 +257,7 @@
         if (this._isTheSameDocument(location.href, url)) {
             this._switchToSection(Util.getUrlFragment(url));
         } else {
+            this._saveDocumentIntoCache($(document), location.href);
             this._switchToDocument(url);
         }
     };
@@ -316,6 +317,9 @@
      * - 否则,先把页面加载过来缓存,然后再切换
      *      - 如果解析失败,那么用 location.href 的方式来跳转
      *
+     * 注意: 不能在这里以及其之后用 location.href 来 **读取** 切换前的页面的 url,
+     *     因为如果是 popState 时的调用, 那么此时 location 已经是 pop 出来的 state 的了
+     *
      * @param {String} url 新的文档的 url
      * @param {Boolean=} isPushState 是否需要 pushState
      * @param {String=} direction 新文档切入的方向
@@ -365,7 +369,7 @@
 
         var urlObj = Util.toUrlObject(url);
         var $currentDoc = this.$view.find('.' + routerConfig.sectionGroupClass);
-        var $newDoc = this.cache[urlObj.base].$content;
+        var $newDoc = $($('<div></div>').append(this.cache[urlObj.base].$content).html());
 
         // 确定一个 document 展示 section 的顺序
         // 1. 与 hash 关联的 element
@@ -686,6 +690,7 @@
                 location.href = state.url.full;
             }
         } else {
+            this._saveDocumentIntoCache($(document), fromState.url.full);
             this._switchToDocument(state.url.full, false, DIRECTION.leftToRight);
             this._saveAsCurrentState(state);
         }
@@ -709,6 +714,7 @@
                 location.href = state.url.full;
             }
         } else {
+            this._saveDocumentIntoCache($(document), fromState.url.full);
             this._switchToDocument(state.url.full, false, DIRECTION.rightToLeft);
             this._saveAsCurrentState(state);
         }
