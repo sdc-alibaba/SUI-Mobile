@@ -50,7 +50,9 @@
             var $thisNode = $(v); 
             if($thisNode.hasClass('infinite-scroll-top')){
                 var height = $thisNode[0].scrollHeight-$thisNode.height();
-                $thisNode.scrollTop(height>0 ? height : 0);
+                $thisNode.scrollTop(height); 
+                
+               
             }
         });
         function detachEvents() {
