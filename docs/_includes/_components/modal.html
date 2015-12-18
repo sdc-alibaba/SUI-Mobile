@@ -4,11 +4,13 @@
   <p class="component-description">多个Modal类组件（包括toast）同时被呼起时，会按先后顺序被缓存在队列中，前一个modal关闭后，下一个modal才会打开</p>
   <p class="component-description">Modals 可以只用JavaScript打开。所以让我们来看看使用modals的相关APP方法</p>
 
+  <!-- 
   <h3 class="component-title">预定义的 Modals</h3>
   <ul>
     <li>1.注意，如果你没有指定预定义的modal标题，它讲使用默认的标题，这个可以在App 初始化时，通过传递 modalTitle 参数改变。</li>
     <li>2.预定义modals的按钮文本(如 "Ok" 和 "Cancel") 也可以在 App 初始化时，通过传递 modalButtonOk 和 modalButtonCancel 参数改变。</li>
   </ul>
+  -->
   <p class="component-description">首先，让我们看看已经预定义的最常用的modal:</p>
 
   <h3 class="component-title">Alert</h3>
@@ -28,37 +30,37 @@
         <p><a href="" class="alert-text-title-callback">Alert With Text and Title and Callback</a></p>
         <p><a href="" class="alert-text-callback">Alert With Text and Callback</a></p>
       </div>
-      <script type="text/javascript">     
+      <script type="text/javascript">
         $(function(){
           //只在本站例子中需要加这行改变容器，默认document.body
            $.modal.prototype.defaults.modalContainer = ".device-content";
            $(document).on('click','.alert-text',function () {
               $.alert('Here goes alert text haha');
            });
-           
+
           $(document).on('click','.alert-text-title', function () {
               $.alert('Here goes alert text', 'Custom Title!');
           });
-           
+
           $(document).on('click', '.alert-text-title-callback',function () {
               $.alert('Here goes alert text', 'Custom Title!', function () {
                   $.alert('Button clicked!')
               });
           });
-           
+
           $(document).on('click', '.alert-text-callback',function () {
               $.alert('Here goes alert text', function () {
                   $.alert('Button clicked!')
               });
           });
         })
-   
+
       </script>
-     
+
     </div>
   </div>
 
-  {% highlight html %}  
+  {% highlight html %}
   <header class="bar bar-nav">
     <h1 class="title">Alert</h1>
   </header>
@@ -70,32 +72,32 @@
       <p><a href="#" class="alert-text-title-callback">Alert With Text and Title and Callback</a></p>
       <p><a href="#" class="alert-text-callback">Alert With Text and Callback</a></p>
     </div>
-  </div> 
+  </div>
    ...
   {% endhighlight %}
-  {% highlight js %}  
+  {% highlight js %}
   $(function(){
      $(document).on('click','.alert-text',function () {
         $.alert('Here goes alert text');
      });
-     
+
     $(document).on('click','.alert-text-title', function () {
         $.alert('Here goes alert text', 'Custom Title!');
     });
-     
+
     $(document).on('click', '.alert-text-title-callback',function () {
         $.alert('Here goes alert text', 'Custom Title!', function () {
             $.alert('Button clicked!')
         });
     });
-     
+
     $(document).on('click', '.alert-text-callback',function () {
         $.alert('Here goes alert text', function () {
             $.alert('Button clicked!')
         });
     });
   })
-     
+
   {% endhighlight %}
 </article>
 
@@ -124,9 +126,9 @@
                 $.alert('You clicked Ok button');
             });
         });
-         
+
         $(document).on('click', '.confirm-ok-cancel',function () {
-            $.confirm('Are you sure?', 
+            $.confirm('Are you sure?',
               function () {
                 $.alert('You clicked Ok button');
               },
@@ -141,7 +143,7 @@
             });
         });
         $(document).on('click','.confirm-title-ok-cancel', function () {
-            $.confirm('Are you sure?', 'Custom Title', 
+            $.confirm('Are you sure?', 'Custom Title',
               function () {
                 $.alert('You clicked Ok button');
               },
@@ -149,12 +151,12 @@
                 $.alert('You clicked Cancel button');
               }
             );
-        });            
+        });
 
       </script>
     </div>
   </div>
-  {% highlight html %}  
+  {% highlight html %}
   <header class="bar bar-nav">
     <h1 class="title">Confirm</h1>
   </header>
@@ -169,15 +171,15 @@
   </div>
   ...
   {% endhighlight %}
-  {% highlight js %}  
+  {% highlight js %}
   $(document).on('click','.confirm-ok', function () {
       $.confirm('Are you sure?', function () {
           $.alert('You clicked Ok button');
       });
   });
-   
+
   $(document).on('click', '.confirm-ok-cancel',function () {
-      $.confirm('Are you sure?', 
+      $.confirm('Are you sure?',
         function () {
           $.alert('You clicked Ok button');
         },
@@ -192,7 +194,7 @@
       });
   });
   $(document).on('click','.confirm-title-ok-cancel', function () {
-      $.confirm('Are you sure?', 'Custom Title', 
+      $.confirm('Are you sure?', 'Custom Title',
         function () {
           $.alert('You clicked Ok button');
         },
@@ -200,7 +202,7 @@
           $.alert('You clicked Cancel button');
         }
       );
-  });    
+  });
   {% endhighlight %}
 </article>
 
@@ -229,9 +231,9 @@
                 $.alert('Your name is "' + value + '". You clicked Ok button');
             });
         });
-         
+
         $(document).on('click','.prompt-ok-cancel', function () {
-            $.prompt('What is your name?', 
+            $.prompt('What is your name?',
               function (value) {
                 $.alert('Your name is "' + value + '". You clicked Ok button');
               },
@@ -246,7 +248,7 @@
             });
         });
         $(document).on('click', '.prompt-title-ok-cancel',function () {
-            $.prompt('What is your name?', 'Custom Title', 
+            $.prompt('What is your name?', 'Custom Title',
               function (value) {
                 $.alert('Your name is "' + value + '". You clicked Ok button');
               },
@@ -254,12 +256,12 @@
                 $.alert('Your name is "' + value + '". You clicked Cancel button');
               }
             );
-        });              
+        });
 
       </script>
     </div>
   </div>
-  {% highlight html %}  
+  {% highlight html %}
   <header class="bar bar-nav">
     <h1 class="title">Prompt</h1>
   </header>
@@ -271,18 +273,18 @@
       <p><a href="#" class="prompt-title-ok">Prompt with text, title and Ok callback</a></p>
       <p><a href="#" class="prompt-title-ok-cancel">Prompt with text, title, Ok and Cancel callback</a></p>
     </div>
-  </div>  
-  ...  
+  </div>
+  ...
   {% endhighlight %}
-  {% highlight js %}  
+  {% highlight js %}
   $(document).on('click','.prompt-ok', function () {
       $.prompt('What is your name?', function (value) {
           $.alert('Your name is "' + value + '". You clicked Ok button');
       });
   });
-   
+
   $(document).on('click','.prompt-ok-cancel', function () {
-      $.prompt('What is your name?', 
+      $.prompt('What is your name?',
         function (value) {
           $.alert('Your name is "' + value + '". You clicked Ok button');
         },
@@ -297,7 +299,7 @@
       });
   });
   $(document).on('click', '.prompt-title-ok-cancel',function () {
-      $.prompt('What is your name?', 'Custom Title', 
+      $.prompt('What is your name?', 'Custom Title',
         function (value) {
           $.alert('Your name is "' + value + '". You clicked Ok button');
         },
@@ -305,7 +307,7 @@
           $.alert('Your name is "' + value + '". You clicked Cancel button');
         }
       );
-  });           
+  });
   {% endhighlight %}
 </article>
 
@@ -353,6 +355,12 @@
         <td>数组</td>
         <td></td>
         <td>可选. 按钮数组. 每个按钮应该被表示为带按钮参数的对象 (看下面)</td>
+      </tr>
+      <tr>
+        <td>extraClass</td>
+        <td>字符串</td>
+        <td></td>
+        <td>可选. 给modal的根节点<code>.modal</code>附加1或多个自定义class(如'bg-red','bg-blue share-type')，方便按需定制不同的modal样式。</td>
       </tr>
       <tr>
         <td>verticalButtons</td>
@@ -468,7 +476,7 @@
           })
           $.swiper($$(modal).find('.swiper-container'), {pagination: '.swiper-pagination'});
         });
-         
+
          $(document).on('click','.open-tabs-modal', function () {
           $.modal({
             title:  '<div class="buttons-row">'+
@@ -487,7 +495,7 @@
             ]
           })
         });
-         
+
         $(document).on('click','.open-vertical-modal', function () {
           $.modal({
             title:  'Vertical Buttons Layout',
@@ -514,11 +522,11 @@
               },
             ]
           })
-        });       
-      </script>    
+        });
+      </script>
     </div>
   </div>
-  {% highlight html %}  
+  {% highlight html %}
   <header class="bar bar-nav">
       <h1 class="title">自定义Modals</h1>
   </header>
@@ -531,9 +539,9 @@
       <p><a href="#" class="open-vertical-modal">Modal With Vertical Buttons</a></p>
     </div>
   </div>
-  ... 
+  ...
   {% endhighlight %}
-  {% highlight js %}  
+  {% highlight js %}
   $(document).on('click','.open-3-modal', function () {
     $.modal({
       title:  'Modal with 3 buttons',
@@ -640,32 +648,8 @@
     <p class="component-description"><code>$.closeModal(modal)</code> - 关闭任意 modal</p>
     <ul>
       <li><code>modal - HTMLElement or string ( CSS 选择器)</code>. 可选. 除了指定的，任何被打开modal都将被关闭。</li>
-    </ul> 
-     <h3 class="component-title">Modal 事件</h3>
-        <p class="component-description">如果你希望能自定义 modal 模板，你可在 初始化APP 的时候传入一个 modalTemplate 参数。这个参数的值是一个 Template7 模板，当编译该模板的时候会传入一个 groups 参数。</p>
-        <p class="component-description">这个模板可能是这样的：</p>
-  {% highlight html %}  
-  <div class="modal {{#unless buttons}}modal-no-buttons{{/unless}}">
-    <div class="modal-inner">
-      {{#if title}}
-       <div class="modal-title">{{title}}</div>
-      {{/if}}
-      {{#if text}}
-       <div class="modal-text">{{text}}</div>
-      {{/if}}
-      {{#if afterText}}
-      {{afterText}}
-      {{/if}}
-      </div>
-      {{#if buttons}}
-        <div class="modal-buttons">
-      {{#each buttons}}
-        <span class="modal-button {{#if bold}}modal-button-bold{{/if}}">{{text}}</span>
-      {{/each}}
-      </div>
-    {{/if}}
-  </div>  
-  {% endhighlight %}
+    </ul>
+
 </article>
 
 <article class="component active" id='preloader'>
@@ -694,11 +678,11 @@
             setTimeout(function () {
                 $.hidePreloader();
             }, 2000);
-        }); 
-      </script>    
+        });
+      </script>
     </div>
   </div>
-  {% highlight html %}  
+  {% highlight html %}
   <header class="bar bar-nav">
     <h1 class="title">预加载 Modal (Preloader Modal)</h1>
   </header>
@@ -708,10 +692,10 @@
       <p><a href="#" class="open-preloader">Open Preloader</a></p>
       <p><a href="#" class="open-preloader-title">Open Preloader with custom title</a></p>
     </div>
-  </div>  
-  ...   
+  </div>
+  ...
   {% endhighlight %}
-  {% highlight js %} 
+  {% highlight js %}
   $(document).on('click', '.open-preloader', function () {
     $.showPreloader();
     setTimeout(function () {
@@ -723,7 +707,7 @@
     setTimeout(function () {
         $.hidePreloader();
     }, 2000);
-  });  
+  });
   {% endhighlight %}
 </article>
 
@@ -744,11 +728,11 @@
                 $.hideIndicator();
             }, 2000);
         });
-        
-      </script>    
+
+      </script>
     </div>
   </div>
-  {% highlight html %}  
+  {% highlight html %}
   <header class="bar bar-nav">
       <h1 class="title">指示器(indicator)</h1>
   </header>
@@ -758,9 +742,9 @@
       <p><a href="#" class="open-indicator">Open Indicator</a></p>
     </div>
   </div>
-  ...     
+  ...
   {% endhighlight %}
-  {% highlight js %}  
+  {% highlight js %}
   $(document).on('click','.open-indicator', function () {
       $.showIndicator();
       setTimeout(function () {
@@ -775,14 +759,14 @@
   <p class="component-description">toast是一种轻量的提示，在页面中间显示，并且会在2秒(默认值，可修改)之后自动消失。</p>
   <p>可以用来显示一些不会打断用户操作的提示。</p>
 
-{% highlight html%}  
+{% highlight html%}
 /* msg{string}: toast内容
  * duration{number}：toast显示时间,默认2000
  * extraclass{string}：给toast根节点附加class，高度自定义属性，方便用户自行控制不同场景的样式。
  * 如果使用了第三个参数，请自行在业务css里添加extraclass对应的样式
  * /
 {% endhighlight %}
-{% highlight js %}  
+{% highlight js %}
 $.toast("操作失败");
 
 $.toast('操作成功，正在跳转...', 2345, 'success top');

@@ -23,12 +23,13 @@
                 buttonsHTML += '<span class="modal-button' + (params.buttons[i].bold ? ' modal-button-bold' : '') + '">' + params.buttons[i].text + '</span>';
             }
         }
+        var extraClass = params.extraClass || '';
         var titleHTML = params.title ? '<div class="modal-title">' + params.title + '</div>' : '';
         var textHTML = params.text ? '<div class="modal-text">' + params.text + '</div>' : '';
         var afterTextHTML = params.afterText ? params.afterText : '';
         var noButtons = !params.buttons || params.buttons.length === 0 ? 'modal-no-buttons' : '';
         var verticalButtons = params.verticalButtons ? 'modal-buttons-vertical' : '';
-        modalHTML = '<div class="modal ' + noButtons + '"><div class="modal-inner">' + (titleHTML + textHTML + afterTextHTML) + '</div><div class="modal-buttons ' + verticalButtons + '">' + buttonsHTML + '</div></div>';
+        modalHTML = '<div class="modal ' + extraClass + ' ' + noButtons + '"><div class="modal-inner">' + (titleHTML + textHTML + afterTextHTML) + '</div><div class="modal-buttons ' + verticalButtons + '">' + buttonsHTML + '</div></div>';
 
         _modalTemplateTempDiv.innerHTML = modalHTML;
 
