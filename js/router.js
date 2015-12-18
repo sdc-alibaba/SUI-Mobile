@@ -150,6 +150,10 @@
         sectionGroupClass: 'page-container',
         // 表示是当前 page 的 class
         curPageClass: 'page-current',
+        // 用来辅助切换时表示 page 是 visible 的,
+        // 之所以不用 curPageClass,是因为 page-current 已被赋予了「当前 page」这一含义而不仅仅是 display: block
+        // 并且,别的地方已经使用了,所以不方便做变更,故新增一个
+        visiblePageClass: 'page-visible',
         // 表示是 page 的 class，注意，仅是标志 class，而不是所有的 class
         pageClass: 'page'
     };
@@ -386,7 +390,9 @@
         $allSection.removeClass(routerConfig.curPageClass);
         $visibleSection.addClass(routerConfig.curPageClass);
 
-        this.$view.append($newDoc);
+        // prepend 而不 append 的目的是避免 append 进去新的 document 在后面,
+        // 其里面的默认展示的(.page-current) 的页面直接就覆盖了原显示的页面（因为都是 absolute）
+        this.$view.prepend($newDoc);
 
         this._animateDocument($currentDoc, $newDoc, $visibleSection, direction);
 
@@ -558,11 +564,15 @@
      */
     Router.prototype._animateDocument = function($from, $to, $visibleSection, direction) {
         var sectionId = $visibleSection.attr('id');
+        var $visibleSectionInFrom = $from.find('.' + routerConfig.curPageClass);
+        $visibleSectionInFrom.addClass(routerConfig.visiblePageClass).removeClass(routerConfig.curPageClass);
+
         $visibleSection.trigger('pageAnimationStart', [sectionId, $visibleSection]);
 
         this._animateElement($from, $to, direction);
 
         $from.animationEnd(function() {
+            $visibleSectionInFrom.removeClass(routerConfig.visiblePageClass);
             $from.remove();
         });
 
@@ -785,6 +795,8 @@
      * @returns {boolean}
      */
     function isInRouterBlackList($link) {
+        // todo: 考虑添加一个可外部自定义的 filter 函数,
+        // 在默认的规则后再使用该 filter 来判断
         var classBlackList = [
             'external',
             'tab-link',
