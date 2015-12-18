@@ -49,7 +49,7 @@
         pageContainer.forEach(function(v){
             var $thisNode = $(v); 
             if($thisNode.hasClass('infinite-scroll-top')){
-                var height = $thisNode[0].scrollHeight-$thisNode.height();
+                var height = $thisNode[0].scrollHeight-$thisNode[0].clientHeight;
                 $thisNode.scrollTop(height);     
             }
         });
