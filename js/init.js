@@ -47,6 +47,8 @@
     }
 
     $(window).on('pageAnimationStart', function() {
+        // 在路由切换页面动画开始前,为了把位于 .page 之外的 popup 等隐藏,此处做些处理
+        $.closeModal();
         $.closePanel();
         // 如果 panel 的 effect 是 reveal 时,似乎是 page 的动画或别的样式原因导致了 transitionEnd 时间不会触发
         // 这里暂且处理一下
