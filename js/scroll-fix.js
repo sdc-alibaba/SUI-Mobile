@@ -41,15 +41,15 @@
     function init () {
         var prefix = $('.page-current').length > 0 ? '.page-current ' : '';
         var scrollable = $(prefix + ".content");
-        ["nav", "footer"].forEach(function (item) {
-            var elem = $(prefix + ".bar-" + item);
-            elem.off($.touchEvents.move);
-            elem.on($.touchEvents.move, function (event) {
-                if (event.type === 'touchmove') {
-                    event.preventDefault();
-                }
-            });
+        var elem = $(prefix + ".bar");
+        //防止事件重复绑定
+        elem.off($.touchEvents.move);
+        elem.on($.touchEvents.move, function (event) {
+            if (event.type === 'touchmove') {
+                event.preventDefault();
+            }
         });
+       
         new ScrollFix(scrollable[0]);
     }
     //安卓微信中使用scrollfix会有问题，因此只在ios中使用，安卓机器按照原来的逻辑
