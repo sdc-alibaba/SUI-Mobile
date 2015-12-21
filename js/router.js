@@ -3,55 +3,56 @@
 /**
  * 路由
  *
- * 路由功能将接管页面的链接点击行为,最后达到动画切换的效果,具体如下:
- *  1. 链接对应的是另一个页面,那么则尝试 ajax 加载,然后把新页面里的符合约定的结构提取出来,然后做动画切换;如果没法 ajax 或结构不符合,那么则回退为普通的页面跳转
- *  2. 链接是当前页面的锚点,并且该锚点对应的元素存在且符合路由约定,那么则把该元素做动画切入
- *  3. 浏览器前进后退（history.forward/history.back）时,也使用动画效果
- *  4. 如果链接有 back 这个 class,那么则忽略一切,直接调用 history.back() 来后退
+ * 路由功能将接管页面的链接点击行为，最后达到动画切换的效果，具体如下：
+ *  1. 链接对应的是另一个页面，那么则尝试 ajax 加载，然后把新页面里的符合约定的结构提取出来，然后做动画切换；如果没法 ajax 或结构不符合，那么则回退为普通的页面跳转
+ *  2. 链接是当前页面的锚点，并且该锚点对应的元素存在且符合路由约定，那么则把该元素做动画切入
+ *  3. 浏览器前进后退（history.forward/history.back）时，也使用动画效果
+ *  4. 如果链接有 back 这个 class，那么则忽略一切，直接调用 history.back() 来后退
  *
- * 路由功能默认开启,如果需要关闭路由功能,那么在 zepto 之后,msui 脚本之前设置 $.config.router = false 即可（intro.js 中会 extend 到 $.smConfig 中）.
+ * 路由功能默认开启，如果需要关闭路由功能，那么在 zepto 之后，msui 脚本之前设置 $.config.router = false 即可（intro.js 中会 extend 到 $.smConfig 中）。
  *
- * ajax 载入新的文档时,并不会执行里面的 js.到目前为止,在开启路由功能时,建议的做法是,把所有页面的 js 都放到同一个脚本里,js 里面的事件绑定使用委托而不是直接的绑定在元素上（因为动态加载的页面元素还不存在）,然后所有页面都引用相同的 js 脚本.
+ * ajax 载入新的文档时，并不会执行里面的 js。到目前为止，在开启路由功能时，建议的做法是：
+ *  把所有页面的 js 都放到同一个脚本里，js 里面的事件绑定使用委托而不是直接的绑定在元素上（因为动态加载的页面元素还不存在），然后所有页面都引用相同的 js 脚本。非事件类可以通过监控 pageInit 事件，根据里面的 pageId 来做对应区别处理。
  *
  * 如果有需要
  *
- * 对外暴露的方法:
+ * 对外暴露的方法
  *  - load （原 loadPage 效果一致,但后者已标记为待移除）
  *  - forward
  *  - back
  *
- * 事件:
- * pageLoad* 系列在发生 ajax 加载时才会触发;当是块切换或已缓存的情况下,不会发送这些事件
+ * 事件
+ * pageLoad* 系列在发生 ajax 加载时才会触发；当是块切换或已缓存的情况下，不会发送这些事件
  *  - pageLoadCancel: 如果前一个还没加载完,那么取消并发送该事件
  *  - pageLoadStart: 开始加载
  *  - pageLodComplete: ajax complete 完成
  *  - pageLoadError: ajax 发生 error
- *  - pageAnimationStart: 执行动画切换前,实参是 event, sectionId 和 $section
- *  - pageAnimationEnd: 执行动画完毕,实参是 event, sectionId 和 $section
- *  - pageInitInternal: （经 init.js 处理后,对外是 pageInit）紧跟着动画完成的事件,实参是 event, sectionId 和 $section
+ *  - pageAnimationStart: 执行动画切换前，实参是 event，sectionId 和 $section
+ *  - pageAnimationEnd: 执行动画完毕，实参是 event，sectionId 和 $section
+ *  - pageInitInternal: （经 init.js 处理后，对外是 pageInit）紧跟着动画完成的事件，实参是 event，sectionId 和 $section
  *
- * 术语:
- *  - 文档（document）,不带 hash 的 url 关联着的应答 html 结构
- *  - 块（section）,一个文档内有指定块标识的元素
+ * 术语
+ *  - 文档（document），不带 hash 的 url 关联着的应答 html 结构
+ *  - 块（section），一个文档内有指定块标识的元素
  *
- * 路由实现约定:
- *  - 每个文档的需要展示的内容必需位于指定的标识（routerConfig.sectionGroupClass）的元素里面,默认是: div.page-container （注意,如果改变这个需要同时改变 less 中的命名）
- *  - 每个块必需带有指定的块标识（routerConfig.pageClass）,默认是 .page
+ * 路由实现约定
+ *  - 每个文档的需要展示的内容必需位于指定的标识（routerConfig.sectionGroupClass）的元素里面，默认是: div.page-container （注意,如果改变这个需要同时改变 less 中的命名）
+ *  - 每个块必需带有指定的块标识（routerConfig.pageClass），默认是 .page
  *
- *  即, 使用路由功能的每一个文档应当是下面这样的结构（省略 <body> 等）:
+ *  即，使用路由功能的每一个文档应当是下面这样的结构（省略 <body> 等）:
  *      <div class="page-container">
  *          <div class="page">xxx</div>
  *          <div class="page">yyy</div>
  *      </div>
  *
- * 另,每一个块都应当有一个唯一的 ID,这样才能通过 #the-id 的形式来切换定位.
- * 当一个块没有 id 时,如果是第一个的默认的需要展示的块,那么会给其添加一个随机的 id; 否则,没有 id 的块将不会被切换展示.
+ * 另，每一个块都应当有一个唯一的 ID，这样才能通过 #the-id 的形式来切换定位。
+ * 当一个块没有 id 时，如果是第一个的默认的需要展示的块，那么会给其添加一个随机的 id；否则，没有 id 的块将不会被切换展示。
  *
- * 通过 history.state/history.pushState 以及用 sessionStorage 来记录当前 state 以及最大的 state id 来辅助前进后退的切换效果,所以在不支持 sessionStorage 的情况下,将不开启路由功能.
+ * 通过 history.state/history.pushState 以及用 sessionStorage 来记录当前 state 以及最大的 state id 来辅助前进后退的切换效果，所以在不支持 sessionStorage 的情况下，将不开启路由功能。
  *
- * 为了解决 ajax 载入页面导致重复 ID 以及重复 popup 等功能,上面约定了使用路由功能的所有可展示内容都必需位于指定元素内.从而可以在进行文档间切换时可以进行两个文档的整体移动,切换完毕后再把前一个文档的内容从页面之间移除.
+ * 为了解决 ajax 载入页面导致重复 ID 以及重复 popup 等功能，上面约定了使用路由功能的所有可展示内容都必需位于指定元素内。从而可以在进行文档间切换时可以进行两个文档的整体移动，切换完毕后再把前一个文档的内容从页面之间移除。
  *
- * 注: 以 _ 开头的函数标明用于此处内部使用,可随时变更,不对外确保兼容性.
+ * 注: 以 _ 开头的函数标明用于此处内部使用，可根据需要随时重构变更，不对外确保兼容性。
  *
  */
 +function($) {
@@ -103,7 +104,7 @@
             return absoluteUrl;
         },
         /**
-         * 获取一个 url 的基本部分,即不包括 hash
+         * 获取一个 url 的基本部分，即不包括 hash
          *
          * @param {String} url url
          * @returns {String}
@@ -131,7 +132,7 @@
             };
         },
         /**
-         * 判断浏览器是否支持 sessionStorage,支持返回 true,否则返回 false
+         * 判断浏览器是否支持 sessionStorage，支持返回 true，否则返回 false
          * @returns {Boolean}
          */
         supportStorage: function() {
@@ -151,8 +152,8 @@
         // 表示是当前 page 的 class
         curPageClass: 'page-current',
         // 用来辅助切换时表示 page 是 visible 的,
-        // 之所以不用 curPageClass,是因为 page-current 已被赋予了「当前 page」这一含义而不仅仅是 display: block
-        // 并且,别的地方已经使用了,所以不方便做变更,故新增一个
+        // 之所以不用 curPageClass，是因为 page-current 已被赋予了「当前 page」这一含义而不仅仅是 display: block
+        // 并且，别的地方已经使用了，所以不方便做变更，故新增一个
         visiblePageClass: 'page-visible',
         // 表示是 page 的 class，注意，仅是标志 class，而不是所有的 class
         pageClass: 'page'
@@ -180,7 +181,7 @@
      * 初始化
      *
      * - 把当前文档内容缓存起来
-     * - 查找默认展示的块内容,查找顺序如下
+     * - 查找默认展示的块内容，查找顺序如下
      *      1. id 是 url 中的 fragment 的元素
      *      2. 有当前块 class 标识的第一个元素
      *      3. 第一个块
@@ -230,8 +231,8 @@
         curPageId = $visibleSection.attr('id');
 
 
-        // 新进入一个使用 history.state 相关技术的页面时,如果第一个 state 不 push/replace,
-        // 那么在后退回该页面时,将不触发 popState 事件
+        // 新进入一个使用 history.state 相关技术的页面时，如果第一个 state 不 push/replace,
+        // 那么在后退回该页面时，将不触发 popState 事件
         if (theHistory.state === null) {
             var curState = {
                 id: this._getNextStateId(),
@@ -248,7 +249,7 @@
     /**
      * 切换到 url 指定的块或文档
      *
-     * 如果 url 指向的是当前页面,那么认为是切换块;
+     * 如果 url 指向的是当前页面，那么认为是切换块；
      * 否则是切换文档
      *
      * @param {String} url url
@@ -285,10 +286,10 @@
     /**
      * 切换显示当前文档另一个块
      *
-     * 把新块从右边切入展示,同时会把新的块的记录用 history.pushState 来保存起来
+     * 把新块从右边切入展示，同时会把新的块的记录用 history.pushState 来保存起来
      *
-     * 如果已经是当前显示的块,那么不做任何处理;
-     * 如果没对应的块,那么忽略.
+     * 如果已经是当前显示的块，那么不做任何处理；
+     * 如果没对应的块，那么忽略。
      *
      * @param {String} sectionId 待切换显示的块的 id
      * @private
@@ -313,12 +314,12 @@
     /**
      * 载入显示一个新的文档
      *
-     * - 如果有缓存,那么直接利用缓存来切换
-     * - 否则,先把页面加载过来缓存,然后再切换
-     *      - 如果解析失败,那么用 location.href 的方式来跳转
+     * - 如果有缓存，那么直接利用缓存来切换
+     * - 否则，先把页面加载过来缓存，然后再切换
+     *      - 如果解析失败，那么用 location.href 的方式来跳转
      *
-     * 注意: 不能在这里以及其之后用 location.href 来 **读取** 切换前的页面的 url,
-     *     因为如果是 popState 时的调用, 那么此时 location 已经是 pop 出来的 state 的了
+     * 注意：不能在这里以及其之后用 location.href 来 **读取** 切换前的页面的 url，
+     *     因为如果是 popState 时的调用，那么此时 location 已经是 pop 出来的 state 的了
      *
      * @param {String} url 新的文档的 url
      * @param {Boolean=} isPushState 是否需要 pushState
@@ -355,11 +356,11 @@
      * - 确定待切入的文档的默认展示 section
      * - 把新文档 append 到 view 中
      * - 动画切换文档
-     * - 如果需要 pushState,那么把最新的状态 push 进去并把当前状态更新为该状态
+     * - 如果需要 pushState，那么把最新的状态 push 进去并把当前状态更新为该状态
      *
      * @param {String} url 待切换的文档的 url
-     * @param {Boolean} isPushState 加载页面后是否需要 pushState,默认是 true
-     * @param {String} direction 动画切换方向,默认是 DIRECTION.rightToLeft
+     * @param {Boolean} isPushState 加载页面后是否需要 pushState，默认是 true
+     * @param {String} direction 动画切换方向，默认是 DIRECTION.rightToLeft
      * @private
      */
     Router.prototype._doSwitchDocument = function(url, isPushState, direction) {
@@ -394,7 +395,7 @@
         $allSection.removeClass(routerConfig.curPageClass);
         $visibleSection.addClass(routerConfig.curPageClass);
 
-        // prepend 而不 append 的目的是避免 append 进去新的 document 在后面,
+        // prepend 而不 append 的目的是避免 append 进去新的 document 在后面，
         // 其里面的默认展示的(.page-current) 的页面直接就覆盖了原显示的页面（因为都是 absolute）
         this.$view.prepend($newDoc);
 
@@ -408,7 +409,7 @@
     /**
      * 判断两个 url 指向的页面是否是同一个
      *
-     * 判断方式: 如果两个 url 的 base 形式（不带 hash 的绝对形式）相同,那么认为是同一个页面
+     * 判断方式: 如果两个 url 的 base 形式（不带 hash 的绝对形式）相同，那么认为是同一个页面
      *
      * @param {String} url
      * @param {String} anotherUrl
@@ -422,7 +423,7 @@
     /**
      * ajax 加载 url 指定的页面内容
      *
-     * 加载过程中会发出以下事件:
+     * 加载过程中会发出以下事件
      *  pageLoadCancel: 如果前一个还没加载完,那么取消并发送该事件
      *  pageLoadStart: 开始加载
      *  pageLodComplete: ajax complete 完成
@@ -430,8 +431,8 @@
      *
      *
      * @param {String} url url
-     * @param {Object=} callback 回调函数配置,可选,可以配置 success\error 和 complete
-     *      所有回调函数的 this 都是 null,各自实参如下:
+     * @param {Object=} callback 回调函数配置，可选，可以配置 success\error 和 complete
+     *      所有回调函数的 this 都是 null，各自实参如下：
      *      success: $doc, status, xhr
      *      error: xhr, status, err
      *      complete: xhr, status
@@ -454,7 +455,7 @@
         this.xhr = $.ajax({
             url: url,
             success: $.proxy(function(data, status, xhr) {
-                // 给包一层 <html/>,从而可以拿到完整的结构
+                // 给包一层 <html/>，从而可以拿到完整的结构
                 var $doc = $('<html></html>');
                 $doc.append(data);
                 callback.success && callback.success.call(null, $doc, status, xhr);
@@ -471,10 +472,10 @@
     };
 
     /**
-     * 对于 ajax 加载进来的页面,把其缓存起来
+     * 对于 ajax 加载进来的页面，把其缓存起来
      *
      * @param {String} url url
-     * @param $doc ajax 载入的页面的 jq 对象,可以看做是该页面的 $(document)
+     * @param $doc ajax 载入的页面的 jq 对象，可以看做是该页面的 $(document)
      * @private
      */
     Router.prototype._parseDocument = function(url, $doc) {
@@ -509,7 +510,7 @@
     /**
      * 从 sessionStorage 中获取保存下来的「当前状态」
      *
-     * 如果解析失败,那么认为当前状态是 null
+     * 如果解析失败，那么认为当前状态是 null
      *
      * @returns {State|null}
      * @private
@@ -526,7 +527,7 @@
     };
 
     /**
-     * 把一个状态设为当前状态,保存仅 sessionStorage 中
+     * 把一个状态设为当前状态，保存仅 sessionStorage 中
      *
      * @param {State} state
      * @private
@@ -538,7 +539,7 @@
     /**
      * 获取下一个 state 的 id
      *
-     * 读取 sessionStorage 里的最后的状态的 id,然后 + 1;如果原没设置,那么返回 1
+     * 读取 sessionStorage 里的最后的状态的 id，然后 + 1；如果原没设置，那么返回 1
      *
      * @returns {number}
      * @private
@@ -612,7 +613,7 @@
     /**
      * 切换显示两个元素
      *
-     * 切换是通过更新 class 来实现的,而具体的切换动画则是 class 关联的 css 来实现
+     * 切换是通过更新 class 来实现的，而具体的切换动画则是 class 关联的 css 来实现
      *
      * @param $from 当前显示的元素
      * @param $to 待显示的元素
@@ -672,7 +673,7 @@
     /**
      * popState 事件关联着的后退处理
      *
-     * 判断两个 state 判断是否是属于同一个文档,然后做对应的 section 或文档切换;
+     * 判断两个 state 判断是否是属于同一个文档，然后做对应的 section 或文档切换；
      * 同时在切换后把新 state 设为当前 state
      *
      * @param {State} state 新 state
@@ -697,7 +698,7 @@
     };
 
     /**
-     * popState 事件关联着的前进处理,类似于 _back,不同的是切换方向
+     * popState 事件关联着的前进处理,类似于 _back，不同的是切换方向
      *
      * @param {State} state 新 state
      * @param {State} fromState 旧 state
@@ -756,7 +757,7 @@
     /**
      * 页面进入到一个新状态
      *
-     * 把新状态 push 进去,设置为当前的状态,然后把 maxState 的 id +1.
+     * 把新状态 push 进去，设置为当前的状态，然后把 maxState 的 id +1。
      *
      * @param {String} url 新状态的 url
      * @param {String} sectionId 新状态中显示的 section 元素的 id
@@ -801,7 +802,7 @@
      * @returns {boolean}
      */
     function isInRouterBlackList($link) {
-        // todo: 考虑添加一个可外部自定义的 filter 函数,
+        // todo: 考虑添加一个可外部自定义的 filter 函数，
         // 在默认的规则后再使用该 filter 来判断
         var classBlackList = [
             'external',
