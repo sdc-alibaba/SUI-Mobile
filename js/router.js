@@ -854,14 +854,14 @@
 
             e.preventDefault();
 
-            var url = $target.attr('href');
-            if (!url || url === '#') {
-                return;
-            }
-
             if ($target.hasClass('back')) {
-                router.back(url);
+                router.back();
             } else {
+                var url = $target.attr('href');
+                if (!url || url === '#') {
+                    return;
+                }
+
                 router.load(url);
             }
         });
