@@ -11,6 +11,8 @@
  *
  * 路由功能默认开启，如果需要关闭路由功能，那么在 zepto 之后，msui 脚本之前设置 $.config.router = false 即可（intro.js 中会 extend 到 $.smConfig 中）。
  *
+ * 可以设置 $.config.routerFilter 函数来设置当前点击链接是否使用路由功能，实参是 a 链接的 zepto 对象；返回 false 表示不使用 router 功能。
+ *
  * ajax 载入新的文档时，并不会执行里面的 js。到目前为止，在开启路由功能时，建议的做法是：
  *  把所有页面的 js 都放到同一个脚本里，js 里面的事件绑定使用委托而不是直接的绑定在元素上（因为动态加载的页面元素还不存在），然后所有页面都引用相同的 js 脚本。非事件类可以通过监控 pageInit 事件，根据里面的 pageId 来做对应区别处理。
  *
@@ -802,8 +804,6 @@
      * @returns {boolean}
      */
     function isInRouterBlackList($link) {
-        // todo: 考虑添加一个可外部自定义的 filter 函数，
-        // 在默认的规则后再使用该 filter 来判断
         var classBlackList = [
             'external',
             'tab-link',
@@ -827,6 +827,26 @@
         return false;
     }
 
+    /**
+     * 自定义是否执行路由功能的过滤器
+     *
+     * 可以在外部定义 $.config.routerFilter 函数，实参是点击链接的 Zepto 对象。
+     *
+     * @param $link 当前点击的链接的 Zepto 对象
+     * @returns {boolean} 返回 true 表示执行路由功能，否则不做路由处理
+     */
+    function customClickFilter($link) {
+        var customRouterFilter = $.smConfig.routerFilter;
+        if ($.isFunction(customRouterFilter)) {
+            var filterResult = customRouterFilter($link);
+            if (typeof filterResult === 'boolean') {
+                return filterResult;
+            }
+        }
+
+        return true;
+    }
+
     $(function() {
         // 用户可选关闭router功能
         if (!$.smConfig.router) {
@@ -848,6 +868,11 @@
 
         $(document).on('click', 'a', function(e) {
             var $target = $(e.currentTarget);
+
+            var filterResult = customClickFilter($target);
+            if (!filterResult) {
+                return;
+            }
 
             if (isInRouterBlackList($target)) {
                 return;

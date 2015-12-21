@@ -4,6 +4,22 @@
 
  <p>如果需要禁用路由功能,那么可以在 zepto 之后, msui 之前使用 script <code>$.config = {router: false}</code> 来禁用.</p>
 
+    <p>如果只需要对部分链接做禁用处理，那么可以使用自定义过滤器 <code>$.config.routerFilter = function($link) {}</code>，实参 <code>$link</code> 是当前点击的链接，返回 false 表示不使用路由功能，返回 true 表示进入路由处理，参考<a href="/components/#init">初始化</a>，示例如下：</p>
+
+    {% highlight js %}
+    $.config = {
+        // 路由功能开关过滤器，返回 false 表示当前点击链接不使用路由
+        routerFilter: function($link) {
+            // 某个区域的 a 链接不想使用路由功能
+            if ($link.is('.disable-router a')) {
+                return false;
+            }
+
+            return true;
+        }
+    };
+    {% endhighlight js %}
+
     <h3 class="component-title">路由功能前提</h3>
     <p class="component-description">
         如果需要使用路由功能,那么页面代码结构上需要满足下面两个条件:

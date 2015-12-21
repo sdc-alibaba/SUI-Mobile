@@ -7,24 +7,23 @@ title: router-2 SUI Mobile Demo
 
 <div class="page page-current" id='routers-step-2'>
     <header class="bar bar-nav">
-        <a class="button button-link button-nav pull-left back" href="/demos/routers/"
-           data-transition='slide-out'>
+        <a class="button button-link button-nav pull-left back">
             <span class="icon icon-left"></span>
             返回
         </a>
-        <h1 class="title">router-2</h1>
+        <h1 class="title">路由 Demo 页面 B</h1>
     </header>
     <div class="content">
         <div class="content-block">
-            <p><a href="/demos/routers/step3/">go to router step 3</a></p>
-            <p><a href="http://baidu.com" external>external baidu</a></p>
-            <p><a href="#routers-step-2-inner">router step 2 inner 1</a></p>
-            <p><a href="/demos/routers/">go to step 1(not back)</a></p>
+            <p><a href="/demos/routers/step3/">路由 Demo 页面 C</a></p>
+            <p><a href="#routers-step-2-inner">路由 Demo 页面 B 内联 page</a></p>
+            <p><a href="/demos/routers/">路由 Demo 页面 A（不带 .back, 只是普通跳转）</a></p>
+            <p><a href="http://baidu.com" external>站外页面（baidu）</a></p>
 
             <p><a href="javascript:;" class="open-panel" data-panel='#panel-left-demo'>打开左侧栏</a></p>
 
-            <p><a href="javascript:;" class="open-popup" data-popup=".popup-about">Open About Popup</a></p>
-            <p><a href="javascript:;" class="open-popup" data-popup=".popup-services">Open Services Popup</a></p>
+            <p><a href="javascript:;" class="open-popup" data-popup=".popup-about">打开 about 弹层</a></p>
+            <p><a href="javascript:;" class="open-popup" data-popup=".popup-services">打开 service 弹层</a></p>
         </div>
     </div>
 </div>
@@ -36,10 +35,10 @@ title: router-2 SUI Mobile Demo
             <span class="icon icon-left"></span>
             返回
         </a>
-        <h1 class="title">router-2-inner</h1>
+        <h1 class="title">路由 Demo 页面 B 内联 page</h1>
     </header>
     <div class="content">
-        router step 2 inner
+        路由 Demo 页面 B 内联 page
     </div>
 </div>
 
@@ -69,7 +68,7 @@ title: router-2 SUI Mobile Demo
     <div class="content-block">
         <p>这是一个侧栏</p>
         <p>你可以在这里放用户设置页面</p>
-        <p><a href="#routers-step-2-inner">router step 2 inner 1</a></p>
+        <p><a href="#routers-step-2-inner">路由 Demo 页面 B 内联 page</a></p>
         <p><a href="javascript:;" class="close-panel">关闭</a></p>
     </div>
 </div>
