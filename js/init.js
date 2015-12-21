@@ -56,6 +56,20 @@
         $.allowPanelOpen = true;
     });
 
+    // safari 在后退的时候会使用缓存技术，但实现上似乎存在些问题，
+    // 导致路由中绑定的点击事件不会正常如期的运行（log 和 debugger 都没法调试），
+    // 从而后续的跳转等完全乱了套。
+    // 所以，这里检测到是 safari 的 cache 的情况下，做一次 reload
+    // 测试路径(后缀 D 表示是 document，E 表示 external，不使用路由跳转）：
+    // 1. aD -> bDE
+    // 2. back
+    // 3. aD -> bD
+    window.addEventListener('pageshow', function(event) {
+        if (event.persisted) {
+            location.reload();
+        }
+    });
+
     $.init = function() {
         var $page = getPage();
         var id = $page[0].id;
