@@ -92,7 +92,7 @@ $(function () {
     });
 
   });
-
+  
 
   //图片浏览器
   $(document).on("pageInit", "#page-photo-browser", function(e, id, page) {

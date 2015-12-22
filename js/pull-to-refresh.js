@@ -112,6 +112,8 @@
             }
             container.transform('');
             if (refresh) {
+                //防止二次触发
+                if(container.hasClass('refreshing')) return;
                 container.addClass('refreshing');
                 container.trigger('refresh');
             } else {

@@ -7,3 +7,5 @@ dist/
 .DS_Store
 _site/*
 *.orig
+docs/demos/test.html
+docs/assets/js/test.js
