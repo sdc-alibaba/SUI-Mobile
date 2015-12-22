@@ -63,7 +63,12 @@
 
             if ($pageContent.hasClass('pull-to-refresh-content')) {
                 //因为iscroll 当页面高度不足 100% 时无法滑动，所以无法触发下拉动作，这里改动一下高度
-                $pageContent.find('.content-inner').css('min-height', ($(window).height() + 20) + 'px');
+                //区分是否有.bar容器，如有，则content的top:0，无则content的top:-2.2rem
+                if($pageContent.prev().hasClass(".bar")){
+                    $pageContent.find('.content-inner').css('min-height', ($(window).height() + 1 ) + 'px'); 
+                }else{
+                    $pageContent.find('.content-inner').css('min-height', ($(window).height() + (2.2 * parseFloat($("html").css("font-size")) +1) ) + 'px');
+                }
             }
 
             var ptr = $(pageContent).hasClass('pull-to-refresh-content');
