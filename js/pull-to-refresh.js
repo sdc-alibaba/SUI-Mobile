@@ -113,11 +113,7 @@
             container.transform('');
             if (refresh) {
                 container.addClass('refreshing');
-                container.trigger('refresh', {
-                    done: function() {
-                        $.pullToRefreshDone(container);
-                    }
-                });
+                container.trigger('refresh');
             } else {
                 container.removeClass('pull-down');
             }
@@ -153,11 +149,7 @@
         if (container.length === 0) container = $('.pull-to-refresh-content');
         if (container.hasClass('refreshing')) return;
         container.addClass('transitioning refreshing');
-        container.trigger('refresh', {
-            done: function() {
-                $.pullToRefreshDone(container);
-            }
-        });
+        container.trigger('refresh');
     };
 
     $.destroyPullToRefresh = function(pageContainer) {
