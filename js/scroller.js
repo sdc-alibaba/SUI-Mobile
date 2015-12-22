@@ -64,8 +64,7 @@
             if ($pageContent.hasClass('pull-to-refresh-content')) {
                 //因为iscroll 当页面高度不足 100% 时无法滑动，所以无法触发下拉动作，这里改动一下高度
                 //区分是否有.bar容器，如有，则content的top:0，无则content的top:-2.2rem,这里取2.2rem的最大值，近60
-                var minHeight = $(window).height() +1;
-                $pageContent.prev().hasClass(".bar") ? minHeight = minHeight : minHeight = minHeight + 60;
+                var minHeight = $(window).height() + ($pageContent.prev().hasClass(".bar") ? 1 : 61);
                 $pageContent.find('.content-inner').css('min-height', minHeight + 'px'); 
             }
 
