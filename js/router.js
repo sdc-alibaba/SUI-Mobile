@@ -31,6 +31,8 @@
  *  - pageLoadError: ajax 发生 error
  *  - pageAnimationStart: 执行动画切换前，实参是 event，sectionId 和 $section
  *  - pageAnimationEnd: 执行动画完毕，实参是 event，sectionId 和 $section
+ *  - beforePageRemove: 新 document 载入且动画切换完毕，旧的 document remove 之前在 window 上触发，实参是 event 和 $pageContainer
+ *  - pageRemoved: 新的 document 载入且动画切换完毕，旧的 document remove 之后在 window 上触发
  *  - pageInitInternal: （经 init.js 处理后，对外是 pageInit）紧跟着动画完成的事件，实参是 event，sectionId 和 $section
  *
  * 术语
@@ -580,7 +582,10 @@
 
         $from.animationEnd(function() {
             $visibleSectionInFrom.removeClass(routerConfig.visiblePageClass);
+            // 移除 document 前后，发送 beforePageRemove 和 pageRemoved 事件
+            $(window).trigger('beforePageRemove', [$from]);
             $from.remove();
+            $(window).trigger('pageRemoved');
         });
 
         $to.animationEnd(function() {

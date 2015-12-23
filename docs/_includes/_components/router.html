@@ -167,6 +167,14 @@ $.router.load("#about");  //加载内联页面
       <td>新页面动画执行完毕</td>
     </tr>
     <tr>
+      <td>beforePageRemove</td>
+      <td>加载新的页面，动画切换完成后，移除旧的 document 前发送，事件回调函数参数是<code>event, $pageContainer</code>，其中<code>$pageContainer</code> 是 <code>.page-container</code>（注：在 window 上触发，且内联 page 的切换不会触发此事件）</td>
+    </tr>
+      <tr>
+          <td>pageRemoved</td>
+          <td>加载新的页面，动画切换完成后，移除旧的 document 后发送（注：在 window 上触发，且内联 page 的切换不会触发此事件）</td>
+      </tr>
+    <tr>
       <td>pageInit</td>
       <td>新页面中的组件初始化完毕</td>
     </tr>
