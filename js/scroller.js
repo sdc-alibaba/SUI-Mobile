@@ -73,7 +73,9 @@
                 probeType: 1,
                 mouseWheel: true,
                 //解决安卓js模式下，刷新滚动条后绑定的事件不响应
-                click:true
+                click:true,
+                //js模式下允许滚动条横向滚动，但是需要注意，滚动容易宽度必须大于屏幕宽度滚动才生效
+                scrollX: true
             };
             if (ptr) {
                 options.ptr = true;
