@@ -30,11 +30,7 @@
             if (container.hasClass('refreshing')) return;
             container.removeClass('pull-down pull-up');
             container.addClass('refreshing transitioning');
-            container.trigger('refresh', {
-                done: function() {
-                    $.pullToRefreshDone(container);
-                }
-            });
+            container.trigger('refresh');
             refreshTime = +new Date();
         }
         scroller.on('scroll', handleScroll);
@@ -71,11 +67,7 @@
         container.addClass('refreshing');
         var scroller = $.getScroller(container);
         scroller.scrollTop(44 + 1, 200);
-        container.trigger('refresh', {
-            done: function() {
-                $.pullToRefreshDone(container);
-            }
-        });
+        container.trigger('refresh');
     };
 
     var destroyPullToRefreshJS = function(pageContainer) {

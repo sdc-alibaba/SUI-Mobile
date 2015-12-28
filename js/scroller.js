@@ -45,7 +45,7 @@
 
         var type = this.options.type;
         //auto的type,系统版本的小于4.4.0的安卓设备和系统版本小于6.0.0的ios设备，启用js版的iscoll
-        var useJSScroller = (type === 'js') || (type === 'auto' && ($.device.android && $.compareVersion('4.4.0', $.device.osVersion) > -1) || ($.device.ios && $.compareVersion('6.0.0', $.device.osVersion) > -1));
+        var useJSScroller = (type === 'js') || (type === 'auto' && ($.device.android && $.compareVersion('4.4.0', $.device.osVersion) > -1) || (type === 'auto' && ($.device.ios && $.compareVersion('6.0.0', $.device.osVersion) > -1)));
 
         if (useJSScroller) {
 
@@ -63,7 +63,9 @@
 
             if ($pageContent.hasClass('pull-to-refresh-content')) {
                 //因为iscroll 当页面高度不足 100% 时无法滑动，所以无法触发下拉动作，这里改动一下高度
-                $pageContent.find('.content-inner').css('min-height', ($(window).height() + 20) + 'px');
+                //区分是否有.bar容器，如有，则content的top:0，无则content的top:-2.2rem,这里取2.2rem的最大值，近60
+                var minHeight = $(window).height() + ($pageContent.prev().hasClass(".bar") ? 1 : 61);
+                $pageContent.find('.content-inner').css('min-height', minHeight + 'px'); 
             }
 
             var ptr = $(pageContent).hasClass('pull-to-refresh-content');
@@ -71,7 +73,9 @@
                 probeType: 1,
                 mouseWheel: true,
                 //解决安卓js模式下，刷新滚动条后绑定的事件不响应
-                click:true
+                click:true,
+                //js模式下允许滚动条横向滚动，但是需要注意，滚动容易宽度必须大于屏幕宽度滚动才生效
+                scrollX: true
             };
             if (ptr) {
                 options.ptr = true;
