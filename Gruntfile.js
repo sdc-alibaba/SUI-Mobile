@@ -61,6 +61,7 @@ module.exports = function(grunt) {
                   'js/iscroll.js',
                   'js/scroller.js',
                   'js/tabs.js',
+                  'js/fixed-tab.js',
                   'js/pull-to-refresh-js-scroll.js',
                   'js/pull-to-refresh.js',
                   'js/infinite-scroll.js',
