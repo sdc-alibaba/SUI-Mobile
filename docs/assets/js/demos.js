@@ -104,8 +104,8 @@ $(function () {
   });
   //test demo js
 
-  //fixedtab
-  $(document).on("pageInit", "#page-fixed-tab", function(e, id, page) {
+  //多个标签页下的无限滚动
+  $(document).on("pageInit", "#fixed-tab-infinite-scroll", function(e, id, page) {
     var loading = false;
     // 每次加载添加多少条目
     var itemsPerLoad = 20;
