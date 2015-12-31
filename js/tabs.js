@@ -74,6 +74,7 @@
         // Update links' classes
         if (tabLink && tabLink.length > 0) tabLink.addClass('active');
         if (oldTabLink && oldTabLink.length > 0) oldTabLink.removeClass('active');
+        tabLink.trigger('active');
 
         //app.refreshScroller();
 
@@ -87,11 +88,104 @@
         $.showTab = old;
         return this;
     };
-
-
+    //a标签上的click事件，在iscroll下响应有问题
     $(document).on("click", ".tab-link", function(e) {
         e.preventDefault();
         var clicked = $(this);
         showTab(clicked.data("tab") || clicked.attr('href'), clicked);
     });
+
+    var FixedTab = function(pageContent, _options) {
+        var $pageContent = this.$pageContent = $(pageContent);
+        var shadow = $pageContent.clone();
+        var fixedTop = pageContent.getBoundingClientRect().top;
+
+        shadow.css('visibility', 'hidden');
+        this.options = $.extend({}, this._defaults, {
+            fixedTop: fixedTop,
+            shadow: shadow,
+            offset: 0
+        }, _options);
+
+        this._bindEvents();
+    };
+
+    FixedTab.prototype = {
+        _defaults: {
+            offset: 0,
+        },
+        _bindEvents: function() {
+            this.$pageContent.parents('.content').on('scroll', this._scrollHandler.bind(this));
+            this.$pageContent.on('active', '.tab-link', this._tabLinkHandler.bind(this));
+        },
+        _tabLinkHandler: function(ev) {
+            var isFixed = $(ev.target).parents('.buttons-fixed').length > 0;
+            var fixedTop = this.options.fixedTop;
+            var offset = this.options.offset;
+            $.refreshScroller();
+            if (!isFixed) return;
+            this.$pageContent.parents('.content').scrollTop(fixedTop - offset);
+        },
+        // 滚动核心代码
+        _scrollHandler: function(ev) {
+            var $scroller = $(ev.target);
+            var $pageContent = this.$pageContent;
+            var shadow = this.options.shadow;
+            var offset = this.options.offset;
+            var fixedTop = this.options.fixedTop;
+            var scrollTop = $scroller.scrollTop();
+            var isFixed = scrollTop >= fixedTop - offset;
+
+            if (isFixed) {
+                shadow.insertAfter($pageContent);
+                $pageContent.addClass('buttons-fixed').css('top', offset);
+            } else {
+                shadow.remove();
+                $pageContent.removeClass('buttons-fixed').css('top', 0);
+            }
+        }
+    }
+
+    //FixedTab PLUGIN DEFINITION
+    // =======================
+
+    function Plugin(option) {
+        var args = Array.apply(null, arguments);
+        args.shift();
+        var internal_return;
+
+        this.each(function() {
+
+            var $this = $(this);
+
+            var options = $.extend({}, $this.dataset(), typeof option === 'object' && option);
+
+            var data = $this.data('fixedtab');
+            //如果 scroller 没有被初始化，对scroller 进行初始化r
+            if (!data) {
+                //获取data-api的
+                $this.data('fixedtab', (data = new FixedTab(this, options)));
+
+            }
+            if (typeof option === 'string' && typeof data[option] === 'function') {
+                internal_return = data[option].apply(data, args);
+                if (internal_return !== undefined)
+            return false;
+            }
+
+        });
+
+        if (internal_return !== undefined)
+            return internal_return;
+        else
+            return this;
+
+    };
+
+    var old = $.fn.fixedTab;
+
+    $.fn.fixedTab = Plugin;
+    $.fn.fixedTab.Constructor = FixedTab;
+
+
 }(Zepto);
