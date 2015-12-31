@@ -1,7 +1,7 @@
 <article class="component active" id="infinitescroll">
-    <h2 class="component-title">底部无限滚动</h2>
+    <h2 class="component-title">无限滚动</h2>
     <p class="component-description">无限滚动用来在页面滚动到接近底部时加载新内容或进行其他操作。</p>
-    <h3 class="component-title">无限滚动demo</h3>
+    <h3 class="component-title">在底部的无限滚动</h3>
     <p class="component-description">
         你只需在可滚动的容器上添加“infinite-scroll”类，一般是页面滚动区域 - <code>div.content</code>
     </p>
@@ -335,7 +335,7 @@
 <article class="component"  data-url='fixed-tab-infinite-scroll'>
   <h3 class="component-title">多个标签页下的无限滚动</h3>
 
-  <p class="component-description">一个页面的多个标签中可单独初始化infinite-scroll</p>
+  <p class="component-description">一个页面的多个标签中可单独初始化infinite-scroll，在需要无限滚动的tab上加<code>"infinite-scroll"</code>类</p>
   
 {% highlight html %}
   <div class="content" data-type="">
@@ -395,6 +395,7 @@
     </div>
   </div>
 {% endhighlight %}
+ <p class="component-description">javacript:</p>
 {% highlight js %}
   $(document).on("pageInit", function() {
       //多个标签页下的无限滚动
@@ -431,8 +432,7 @@
           // 重置加载flag
           loading = false;
           if (lastIndex >= maxItems) {
-            // 加载完毕，则注销无限加载事件，以防不必要的加载
-            //$.detachInfiniteScroll($('.infinite-scroll').eq(tabIndex));
+            // 加载完毕，则注销无限加载事件，以防不必要的加载:$.detachInfiniteScroll($('.infinite-scroll').eq(tabIndex));多个无线滚动请自行根据自己代码逻辑判断注销时机
             // 删除加载提示符
             $('.infinite-scroll-preloader').eq(tabIndex).hide();
             return;
