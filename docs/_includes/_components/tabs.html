@@ -138,4 +138,62 @@
 
 </article>
 
+<article class="component"  data-url='fixed-tab'>
+  <h3 class="component-title">fixed标签页</h3>
 
+  <p class="component-description">标签页滚动到顶部后固定在顶部，可以通过添加“fixed-tab”，如:</p>
+  <p><code>class="buttons-tab fixed-tab" </code></p>
+  <p>自动初始化调用fixedTab组件</p>
+  <p>固定位置的top默认值为0，可以通过在"fixed-tab"元素上添加<code>data-offset="44"</code>来调整高度</p>
+  <p>也可以直接调用js方法来手动初始化</p>
+{% highlight js %}
+  $(document).on("pageInit", function() {
+      $('.buttons-tab').fixedTab({offset:44});
+   });
+{% endhighlight %}
+<p>html标签初始化</p>
+{% highlight html %}
+ <div class="content">
+    <p>其他内容区域</p>
+    <p>其他内容区域</p>
+    <p>其他内容区域</p>
+    <p>其他内容区域</p>
+    <p>其他内容区域</p>
+    <div class="buttons-tab fixed-tab" data-offset="44">
+      <a href="#tab1" class="tab-link active button">全部</a>
+      <a href="#tab2" class="tab-link button">待付款</a>
+      <a href="#tab3" class="tab-link button">待发货</a>
+    </div>
+
+    <div class="tabs">
+      <div id="tab1" class="tab active">
+        <div class="content-block">
+          <div class="buttons-row">
+            <a href="#tab1-1" class="tab-link active button">Tab 1</a>
+            <a href="#tab1-2" class="tab-link button">Tab 2</a>
+            <a href="#tab1-3" class="tab-link button">Tab 3</a>
+          </div>
+          <div class="tabs">
+            <p class='tab active' id='tab1-1' style="height:600px">This is tab 1-1 content</p>
+            <p class='tab' id='tab1-2'>This is tab 1-2 content</p>
+            <p class='tab' id='tab1-3'>13855589778</p>
+          </div>
+        </div>
+      </div>
+      <div id="tab2" class="tab">
+        <div class="content-block">
+          <p style="height:600px">This is tab 2 content start</p>
+          <p >This is tab 2 content end</p>
+        </div>
+      </div>
+      <div id="tab3" class="tab">
+        <div class="content-block">
+          <p style="height:600px">This is tab 3 content start</p>
+          <p >This is tab 3 content end</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endhighlight %}
+
+</article>
