@@ -155,11 +155,8 @@
         var internal_return;
 
         this.each(function() {
-
             var $this = $(this);
-
             var options = $.extend({}, $this.dataset(), typeof option === 'object' && option);
-
             var data = $this.data('fixedtab');
             //如果 scroller 没有被初始化，对scroller 进行初始化r
             if (!data) {

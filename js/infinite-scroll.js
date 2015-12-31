@@ -45,7 +45,6 @@
         var infiniteContent = pageContainer.hasClass('infinite-scroll')?pageContainer:pageContainer.find('.infinite-scroll');
         if (infiniteContent.length === 0) return;
         $.attachInfiniteScroll(infiniteContent);
-
         //如果是顶部无限刷新，要将滚动条初始化于最下端
         pageContainer.forEach(function(v){
             if($(v).hasClass('infinite-scroll-top')){
