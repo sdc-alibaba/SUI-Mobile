@@ -105,7 +105,7 @@ $(function () {
   //test demo js
 
   //多个标签页下的无限滚动
-  $(document).on("pageInit", "#fixed-tab-infinite-scroll", function(e, id, page) {
+  $(document).on("pageInit", "#page-fixed-tab-infinite-scroll", function(e, id, page) {
     var loading = false;
     // 每次加载添加多少条目
     var itemsPerLoad = 20;
