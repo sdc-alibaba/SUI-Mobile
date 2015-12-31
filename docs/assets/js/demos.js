@@ -116,7 +116,7 @@ $(function () {
       // 生成新条目的HTML
       var html = '';
       for (var i = lastIndex + 1; i <= lastIndex + number; i++) {
-        html += '<li class="item-content" onClick="alert(1)"><div class="item-inner"><div class="item-title">新条目</div></div></li>';
+        html += '<li class="item-content""><div class="item-inner"><div class="item-title">新条目</div></div></li>';
       }
       // 添加新条目
       $('.infinite-scroll.active .list-container').append(html);

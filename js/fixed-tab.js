@@ -80,7 +80,7 @@
     $.fn.fixedTab.Constructor = FixedTab;
     $(document).on('pageInit',function(){
         $.initFixedTab();
-    })
+    });
    
    
 
