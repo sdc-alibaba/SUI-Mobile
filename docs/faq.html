@@ -18,10 +18,12 @@ title: FAQ-常见问题
   <div class="column-group">
     <div class="column lg-units-8 docs-content">
       <div class="docs-section faq">
-        <h2>路由（Router）</h2>
+        <h2><a href="#offline" id="offline">离线文件、本地开发环境</a></h2>
+        <p>如果只是为了使用sui-mobile,请直接使用我们的cdn资源,也可以将CDN的链接保存到本地。如果是为了本地开发，可以参考<a href="https://github.com/sdc-alibaba/SUI-Mobile/blob/dev/develop.md#环境" target="_blank">Github develop.md</a>，执行后，js、css等离线文件就在项目根目录的dist文件夹里。</p>
 
+        <h2>路由（Router）</h2>
         <h3><a href="#router-js" id="router-js">切换到的新页面中的 js 不执行</a></h3>
-        <p>由于浏览器安全性考虑的限制以及可能的 js 重复执行或覆盖的问题，目前是不支持运行 ajax 载入的页面里面的 js 的，参考 <a href="https://github.com/sdc-alibaba/SUI-Mobile/issues/120#issuecomment-160417276">#120</a>。</p>
+        <p>由于浏览器安全性考虑的限制以及可能的 js 重复执行或覆盖的问题，目前是不支持运行 ajax 载入的页面里面的 js 的，参考 <a href="https://github.com/sdc-alibaba/SUI-Mobile/issues/120#issuecomment-160417276" target="_blank">#120</a>。</p>
         <p>解决方法：所有页面都引用相同的 js，而这个 js 里面包含了所有的逻辑，事件部分使用委托来绑定。</p>
 
         <h2><a id="tpl" href="#tpl">前端模板引擎</a></h2>
