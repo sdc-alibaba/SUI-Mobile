@@ -71,8 +71,9 @@
         // android chrome 在移动端加载页面时不会触发一次‘popstate’事件
         this.newLoaded && (this.newLoaded = false);
         this.getPage(url, function(page) {
-
-            var pageid = this.getCurrentPage()[0].id;
+            var curPageList = this.getCurrentPage();
+            var pageid = (curPageList.length > 0) && curPageList[0].id;
+            if(!pageid) return ;    //无页面id，则返回
             this.pushBack({
                 url: url,
                 pageid: "#" + pageid,
@@ -88,9 +89,10 @@
                 });
             }
             this.state.setItem("forward", "[]");  //clearforward
-
-            page.insertAfter($(".page")[0]);
-            this.animatePages(this.getCurrentPage(), page);
+            // 防止页面抖动
+            // page.insertAfter($(".page")[0]);
+            page.insertBefore($(".page")[0]);
+            this.animatePages(curPageList[0], page);
 
             var id = this.genStateID();
             this.setCurrentStateID(id);
@@ -122,33 +124,35 @@
             'page-from-center-to-right',
             'page-from-right-to-center',
             'page-from-left-to-center'].join(' ');
-
-        if (!leftToRight) {
-            // 新页面从右侧切入
-            rightPage.trigger("pageAnimationStart", [rightPage[0].id, rightPage]);
-            leftPage.removeClass(animPageClasses).removeClass(curPageClass).addClass('page-from-center-to-left');
-            rightPage.removeClass(animPageClasses).addClass(curPageClass).addClass('page-from-right-to-center');
-            leftPage.animationEnd(function() {
-                leftPage.removeClass(animPageClasses);
-            });
-            rightPage.animationEnd(function() {
-                rightPage.removeClass(animPageClasses);
-                rightPage.trigger("pageAnimationEnd", [rightPage[0].id, rightPage]);
-                rightPage.trigger("pageInitInternal", [rightPage[0].id, rightPage]);
-            });
-        } else {
-            leftPage.trigger("pageAnimationStart", [rightPage[0].id, rightPage]);
-            leftPage.removeClass(animPageClasses).addClass(curPageClass).addClass('page-from-left-to-center');
-            rightPage.removeClass(animPageClasses).removeClass(curPageClass).addClass('page-from-center-to-right');
-            leftPage.animationEnd(function() {
-                leftPage.removeClass(animPageClasses);
-                leftPage.trigger("pageAnimationEnd", [leftPage[0].id, leftPage]);
-                leftPage.trigger("pageReinit", [leftPage[0].id, leftPage]);
-            });
-            rightPage.animationEnd(function() {
-                rightPage.removeClass(animPageClasses);
-            });
-        }
+        setTimeout(function() { //动画延迟执行，防止page还没被插入到dom中导致动画不起效
+            if (!leftToRight) {
+                // 新页面从右侧切入
+                rightPage.trigger("pageAnimationStart", [rightPage[0].id, rightPage]);
+                leftPage.removeClass(animPageClasses).removeClass(curPageClass).addClass('page-from-center-to-left');
+                rightPage.removeClass(animPageClasses).addClass(curPageClass).addClass('page-from-right-to-center');
+                leftPage.animationEnd(function() {
+                    leftPage.removeClass(animPageClasses);
+                });
+                rightPage.animationEnd(function() {
+                    rightPage.removeClass(animPageClasses);
+                    rightPage.trigger("pageAnimationEnd", [rightPage[0].id, rightPage]);
+                    rightPage.trigger("pageInitInternal", [rightPage[0].id, rightPage]);
+                });
+            } else {
+                leftPage.trigger("pageAnimationStart", [rightPage[0].id, rightPage]);
+                leftPage.removeClass(animPageClasses).addClass(curPageClass).addClass('page-from-left-to-center');
+                rightPage.removeClass(animPageClasses).removeClass(curPageClass).addClass('page-from-center-to-right');
+                leftPage.animationEnd(function() {
+                    leftPage.removeClass(animPageClasses);
+                    leftPage.trigger("pageAnimationEnd", [leftPage[0].id, leftPage]);
+                    leftPage.trigger("pageReinit", [leftPage[0].id, leftPage]);
+                });
+                rightPage.animationEnd(function() {
+                    rightPage.removeClass(animPageClasses);
+                });
+            }
+        }, 10)
+        
 
     };
 
