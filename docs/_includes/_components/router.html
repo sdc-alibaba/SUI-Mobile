@@ -26,7 +26,7 @@
         如果需要使用路由功能,那么页面代码结构上需要满足下面两个条件:
 
         <ol>
-            <li>每一个 url 对应的 html 文档, 里面所有用来展示的内容都应该放在 <code>div.page-container</code> 里</li>
+            <li>每一个 url 对应的 html 文档, 里面所有用来展示的内容都应该放在 <code>div.page-group</code> 里</li>
             <li>html 文档中, 每个可以用来切换显示的块都应该有 <code>page</code> 的 class</li>
         </ol>
 
@@ -34,7 +34,7 @@
 
     {% highlight html %}
     ...
-    <div class="page-container">
+    <div class="page-group">
         <div class="page">...</div>
         <div class="page">...</div>
 
@@ -169,7 +169,7 @@ $.router.load("#about");  //加载内联页面
     </tr>
     <tr>
       <td>beforePageRemove</td>
-      <td>加载新的页面，动画切换完成后，移除旧的 document 前发送，事件回调函数参数是<code>event, $pageContainer</code>，其中<code>$pageContainer</code> 是 <code>.page-container</code>（注：在 window 上触发，且内联 page 的切换不会触发此事件）</td>
+      <td>加载新的页面，动画切换完成后，移除旧的 document 前发送，事件回调函数参数是<code>event, $pageContainer</code>，其中<code>$pageContainer</code> 是 <code>.page-group</code>（注：在 window 上触发，且内联 page 的切换不会触发此事件）</td>
     </tr>
       <tr>
           <td>pageRemoved</td>

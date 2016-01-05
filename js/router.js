@@ -40,11 +40,11 @@
  *  - 块（section），一个文档内有指定块标识的元素
  *
  * 路由实现约定
- *  - 每个文档的需要展示的内容必需位于指定的标识（routerConfig.sectionGroupClass）的元素里面，默认是: div.page-container （注意,如果改变这个需要同时改变 less 中的命名）
+ *  - 每个文档的需要展示的内容必需位于指定的标识（routerConfig.sectionGroupClass）的元素里面，默认是: div.page-group （注意,如果改变这个需要同时改变 less 中的命名）
  *  - 每个块必需带有指定的块标识（routerConfig.pageClass），默认是 .page
  *
  *  即，使用路由功能的每一个文档应当是下面这样的结构（省略 <body> 等）:
- *      <div class="page-container">
+ *      <div class="page-group">
  *          <div class="page">xxx</div>
  *          <div class="page">yyy</div>
  *      </div>
@@ -152,7 +152,7 @@
     };
 
     var routerConfig = {
-        sectionGroupClass: 'page-container',
+        sectionGroupClass: 'page-group',
         // 表示是当前 page 的 class
         curPageClass: 'page-current',
         // 用来辅助切换时表示 page 是 visible 的,
