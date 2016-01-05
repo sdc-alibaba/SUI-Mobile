@@ -162,7 +162,7 @@
         return $.showPreloader.preloaderModal;
     };
     $.hidePreloader = function () {
-        $.closeModal($.showPreloader.preloaderModal);
+        $.showPreloader.preloaderModal && $.closeModal($.showPreloader.preloaderModal);
     };
     $.showIndicator = function () {
         if ($('.preloader-indicator-modal')[0]) return;
