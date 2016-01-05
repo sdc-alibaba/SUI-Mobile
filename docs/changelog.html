@@ -30,6 +30,22 @@ title: 更新日志 &middot; SUI Mobile
 
         <h2>更新日志</h2>
 
+        <h3>V0.6.0 <sub>2016.01.05</sub></h3>
+        <ul>
+            <li>
+                重构 router 功能
+                <p class="notice">注意：这个版本中的 router 功能有了不兼容的变更，使用时请确保符合路由功能约定，具体请阅读 <a href="../components/#router">路由文档</a></p>
+                <ol>
+                    <li>使用路由功能加载的页面必需有约定的 dom 结构</li>
+                    <li>在全局禁用的基础上，允许根据需要设定符合条件的链接在点击时不使用路由功能</li>
+                    <li>新增 <code>beforePageRemove</code> 和 <code>pageRemoved</code> 事件</li>
+                    <li>页面切换后移除前一个页面的 dom 而不是像之前那样保留（内联页面切换不会做移除操作）</li>
+                    <li><code>.back</code> 后退按钮上的 <code>href</code> href 属性不会读取使用</li>
+                    <li>ajax 加载失败（比如跨域或服务端失败等）后会像普通行为那样打开该页面（<code>location.href = 'xxxx'</code>）</li>
+                </ol>
+            </li>
+        </ul>
+
         <h3>V0.5.9 <sub>12.31.23:59, 2015最后一次发布，大家2016年‘16~’</sub></h3>
         <ul>
             <li>修复js滚动模式下，下拉刷新没有顶部bar时失效的bug;</li>
