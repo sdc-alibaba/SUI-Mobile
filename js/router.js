@@ -30,7 +30,7 @@
  *  - pageLodComplete: ajax complete 完成
  *  - pageLoadError: ajax 发生 error
  *  - pageAnimationStart: 执行动画切换前，实参是 event，sectionId 和 $section
- *  - pageAnimationEnd: 执行动画完毕，实参是 event，sectionId 和 $section
+ *  - pagetransitionEnd: 执行动画完毕，实参是 event，sectionId 和 $section
  *  - beforePageRemove: 新 document 载入且动画切换完毕，旧的 document remove 之前在 window 上触发，实参是 event 和 $pageContainer
  *  - pageRemoved: 新的 document 载入且动画切换完毕，旧的 document remove 之后在 window 上触发
  *  - pageInitInternal: （经 init.js 处理后，对外是 pageInit）紧跟着动画完成的事件，实参是 event，sectionId 和 $section
@@ -580,7 +580,7 @@
 
         this._animateElement($from, $to, direction);
 
-        $from.animationEnd(function() {
+        $from.transitionEnd(function() {
             $visibleSectionInFrom.removeClass(routerConfig.visiblePageClass);
             // 移除 document 前后，发送 beforePageRemove 和 pageRemoved 事件
             $(window).trigger('beforePageRemove', [$from]);
@@ -588,8 +588,8 @@
             $(window).trigger('pageRemoved');
         });
 
-        $to.animationEnd(function() {
-            $visibleSection.trigger('pageAnimationEnd', [sectionId, $visibleSection]);
+        $to.transitionEnd(function() {
+            $visibleSection.trigger('pagetransitionEnd', [sectionId, $visibleSection]);
             // 外层（init.js）中会绑定 pageInitInternal 事件，然后对页面进行初始化
             $visibleSection.trigger('pageInitInternal', [sectionId, $visibleSection]);
         });
@@ -610,8 +610,8 @@
         $to.addClass(routerConfig.curPageClass);
         $to.trigger('pageAnimationStart', [toId, $to]);
         this._animateElement($from, $to, direction);
-        $to.animationEnd(function() {
-            $to.trigger('pageAnimationEnd', [toId, $to]);
+        $to.transitionEnd(function() {
+            $to.trigger('pagetransitionEnd', [toId, $to]);
             // 外层（init.js）中会绑定 pageInitInternal 事件，然后对页面进行初始化
             $to.trigger('pageInitInternal', [toId, $to]);
         });
@@ -659,10 +659,10 @@
         $from.removeClass(animPageClasses).addClass(classForFrom);
         $to.removeClass(animPageClasses).addClass(classForTo);
 
-        $from.animationEnd(function() {
+        $from.transitionEnd(function() {
             $from.removeClass(animPageClasses);
         });
-        $to.animationEnd(function() {
+        $to.transitionEnd(function() {
             $to.removeClass(animPageClasses);
         });
     };
