@@ -178,23 +178,6 @@
         }
         return this;
     };
-    $.fn.animationEnd = function(callback) {
-        var events = ['webkitAnimationEnd', 'animationend'],
-            i, dom = this;
-
-        function fireCallBack(e) {
-            callback(e);
-            for (i = 0; i < events.length; i++) {
-                dom.off(events[i], fireCallBack);
-            }
-        }
-        if (callback) {
-            for (i = 0; i < events.length; i++) {
-                dom.on(events[i], fireCallBack);
-            }
-        }
-        return this;
-    };
     $.fn.transition = function(duration) {
         if (typeof duration !== 'string') {
             duration = duration + 'ms';
