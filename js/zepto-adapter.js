@@ -102,26 +102,6 @@
         }
     };
 
-
-    $.fn.transitionEnd = function(callback) {
-        var events = ['webkitTransitionEnd', 'transitionend'],
-            i, dom = this;
-
-        function fireCallBack(e) {
-            /*jshint validthis:true */
-            if (e.target !== this) return;
-            callback.call(this, e);
-            for (i = 0; i < events.length; i++) {
-                dom.off(events[i], fireCallBack);
-            }
-        }
-        if (callback) {
-            for (i = 0; i < events.length; i++) {
-                dom.on(events[i], fireCallBack);
-            }
-        }
-        return this;
-    };
     $.fn.dataset = function() {
         var el = this[0];
         if (el) {
@@ -178,6 +158,26 @@
             return this;
         }
     };
+
+    $.fn.transitionEnd = function(callback) {
+        var events = ['webkitTransitionEnd', 'transitionend'],
+            i, dom = this;
+
+        function fireCallBack(e) {
+            /*jshint validthis:true */
+            if (e.target !== this) return;
+            callback.call(this, e);
+            for (i = 0; i < events.length; i++) {
+                dom.off(events[i], fireCallBack);
+            }
+        }
+        if (callback) {
+            for (i = 0; i < events.length; i++) {
+                dom.on(events[i], fireCallBack);
+            }
+        }
+        return this;
+    };
     $.fn.animationEnd = function(callback) {
         var events = ['webkitAnimationEnd', 'animationend'],
             i, dom = this;
@@ -201,14 +201,14 @@
         }
         for (var i = 0; i < this.length; i++) {
             var elStyle = this[i].style;
-            elStyle.webkitTransitionDuration = elStyle.MsTransitionDuration = elStyle.msTransitionDuration = elStyle.MozTransitionDuration = elStyle.OTransitionDuration = elStyle.transitionDuration = duration;
+            elStyle.webkitTransitionDuration = elStyle.MozTransitionDuration = elStyle.transitionDuration = duration;
         }
         return this;
     };
     $.fn.transform = function(transform) {
         for (var i = 0; i < this.length; i++) {
             var elStyle = this[i].style;
-            elStyle.webkitTransform = elStyle.MsTransform = elStyle.msTransform = elStyle.MozTransform = elStyle.OTransform = elStyle.transform = transform;
+            elStyle.webkitTransform = elStyle.MozTransform = elStyle.transform = transform;
         }
         return this;
     };
