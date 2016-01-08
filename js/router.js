@@ -580,7 +580,7 @@
 
         this._animateElement($from, $to, direction);
 
-        $from.transitionEnd(function() {
+        $from.animationEnd(function() {
             $visibleSectionInFrom.removeClass(routerConfig.visiblePageClass);
             // 移除 document 前后，发送 beforePageRemove 和 pageRemoved 事件
             $(window).trigger('beforePageRemove', [$from]);
@@ -588,7 +588,7 @@
             $(window).trigger('pageRemoved');
         });
 
-        $to.transitionEnd(function() {
+        $to.animationEnd(function() {
             $visibleSection.trigger('pageAnimationEnd', [sectionId, $visibleSection]);
             // 外层（init.js）中会绑定 pageInitInternal 事件，然后对页面进行初始化
             $visibleSection.trigger('pageInitInternal', [sectionId, $visibleSection]);
@@ -610,7 +610,7 @@
         $to.addClass(routerConfig.curPageClass);
         $to.trigger('pageAnimationStart', [toId, $to]);
         this._animateElement($from, $to, direction);
-        $to.transitionEnd(function() {
+        $to.animationEnd(function() {
             $to.trigger('pageAnimationEnd', [toId, $to]);
             // 外层（init.js）中会绑定 pageInitInternal 事件，然后对页面进行初始化
             $to.trigger('pageInitInternal', [toId, $to]);
@@ -659,10 +659,10 @@
         $from.removeClass(animPageClasses).addClass(classForFrom);
         $to.removeClass(animPageClasses).addClass(classForTo);
 
-        $from.transitionEnd(function() {
+        $from.animationEnd(function() {
             $from.removeClass(animPageClasses);
         });
-        $to.transitionEnd(function() {
+        $to.animationEnd(function() {
             $to.removeClass(animPageClasses);
         });
     };
