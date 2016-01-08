@@ -2451,7 +2451,8 @@ input[type="button"].button {
           flex-shrink: 0;
 }
 /* === Pages === */
-.page {
+.page,
+.page-group {
   box-sizing: border-box;
   position: absolute;
   left: 0;
@@ -2462,14 +2463,25 @@ input[type="button"].button {
   display: none;
 }
 .page.page-current,
+.page-group.page-current,
+.page.page-visible,
+.page-group.page-visible,
 .page.page-from-center-to-left,
+.page-group.page-from-center-to-left,
 .page.page-from-center-to-right,
+.page-group.page-from-center-to-right,
 .page.page-from-right-to-center,
-.page.page-from-left-to-center {
+.page-group.page-from-right-to-center,
+.page.page-from-left-to-center,
+.page-group.page-from-left-to-center {
   display: block;
 }
-.page.page-current {
+.page.page-current,
+.page-group.page-current {
   overflow: hidden;
+}
+.page-group {
+  display: block;
 }
 .page-transitioning,
 .page-transitioning .swipeback-page-shadow {
