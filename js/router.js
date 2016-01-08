@@ -101,7 +101,63 @@
 
         });
     };
+ /*
+   * 
+          多重函数，基于Router.prototype.loadPage的函数修改，进行重构。
+          解决问题：1.工具栏ajax按钮请求也会放入队列，解决后，带有toolbar-tab的a元素，将不放入队列
+          2.ajax页面请求后，前面同ID的页面仍存在页面,解决后，在将请求到的页面插入前，会移除页面已有的同ID页面
+      added by xiaohelong 20151214 xiaohelong2005@gmail.com         
+   */
+  Router.prototype.loadPage = function(url,$target) {
+    //调用getPage函数，返回页面内容page对象 <div class="page"></div>区域
+	
+        // android chrome 在移动端加载页面时不会触发一次‘popstate’事件
+        this.newLoaded && (this.newLoaded = false);
+        this.getPage(url, function(page) {
 
+            var pageid = this.getCurrentPage()[0].id;
+ if(!($target.hasClass("toolbar-tab") ||
+    	         $target[0].hasAttribute("toolbar-tab")))
+      {
+    	 this.pushBack({
+                url: url,
+                pageid: "#" + pageid,
+                id: this.getCurrentStateID()
+            });
+      }
+            //删除全部forward
+            var forward = JSON.parse(this.state.getItem("forward") || "[]");
+            for (var i = 0; i < forward.length; i++) {
+                $(forward[i].pageid).each(function() {
+                    var $page = $(this);
+                    if ($page.data("page-remote")) $page.remove();
+                });
+            }
+            this.state.setItem("forward", "[]");  //clearforward
+ /*
+       * 解决问题：当使用ajax时，会保留旧页面，所以在插入新获取的页面后，插入至整个文档前需要将其remove删除掉，以例保证程序正常运行.
+       * added by xiaohelong 20151214
+       */      
+       var newPageId=$(page).attr("id");
+       $("#"+newPageId).remove();
+        if($(".page")[0])
+          page.insertAfter($(".page")[0]);
+      else
+    	  page.appendTo($("body")[0]);
+      /**
+       *  end added 
+       */
+            this.animatePages(this.getCurrentPage(), page);
+
+            var id = this.genStateID();
+            this.setCurrentStateID(id);
+
+            this.pushState(url, id);
+
+            this.forwardStack = [];  //clear forward stack
+
+        });
+  }
     /**
      * 页面转场效果
      *
@@ -346,7 +402,8 @@
             }
 
             if (!url || url === "#") return;
-            router.loadPage(url);
+			//router.loadPage(url);
+            router.loadPage(url,$target);
         })
     });
 }(Zepto);
