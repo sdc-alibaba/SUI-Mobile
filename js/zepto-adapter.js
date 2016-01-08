@@ -147,7 +147,7 @@
     };
     function __dealCssEvent(eventNameArr, callback) {
         var events = eventNameArr,
-            i, dom = this;
+            i, dom = this;// jshint ignore:line
 
         function fireCallBack(e) {
             /*jshint validthis:true */
@@ -164,11 +164,11 @@
         }
     }
     $.fn.animationEnd = function(callback) {
-        __dealCssEvent.call(this, ['webkitAnimationEnd', 'animationend'], callback)
+        __dealCssEvent.call(this, ['webkitAnimationEnd', 'animationend'], callback);
         return this;
     };
     $.fn.transitionEnd = function(callback) {
-        __dealCssEvent.call(this, ['webkitTransitionEnd', 'transitionend'], callback)
+        __dealCssEvent.call(this, ['webkitTransitionEnd', 'transitionend'], callback);
         return this;
     };
     $.fn.transition = function(duration) {
