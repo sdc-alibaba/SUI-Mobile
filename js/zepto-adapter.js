@@ -145,9 +145,8 @@
             return this;
         }
     };
-
-    $.fn.transitionEnd = function(callback) {
-        var events = ['webkitTransitionEnd', 'transitionend'],
+    function __dealCssEvent(eventNameArr, callback) {
+        var events = eventNameArr,
             i, dom = this;
 
         function fireCallBack(e) {
@@ -163,6 +162,13 @@
                 dom.on(events[i], fireCallBack);
             }
         }
+    }
+    $.fn.animationEnd = function(callback) {
+        __dealCssEvent.call(this, ['webkitAnimationEnd', 'animationend'], callback)
+        return this;
+    };
+    $.fn.transitionEnd = function(callback) {
+        __dealCssEvent.call(this, ['webkitTransitionEnd', 'transitionend'], callback)
         return this;
     };
     $.fn.transition = function(duration) {
