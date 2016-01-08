@@ -136,15 +136,17 @@ module.exports = function(grunt) {
         },
 
         copy: {
+            /*
             fonts: {
                 expand: true,
                 src: 'fonts/*',
-                dest: '<%= meta.distPath %>'
+                dest: '<%= meta.docsDistPath %>'
             },
+            */
             img: {
                 expand: true,
                 src: 'img/*',
-                dest: '<%= meta.distPath %>'
+                dest: '<%= meta.doclessetsPath %>'
             },
             docs: {
                 expand: true,

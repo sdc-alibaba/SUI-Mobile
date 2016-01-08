@@ -19,3 +19,58 @@
   border-radius: 1.25rem;
   display: inline-block;
 }
+.icon.icon-f7 {
+  width: 1.45rem;
+  height: 1.45rem;
+  background-image: url("../img/i-f7.png");
+}
+.icon.icon-form-name {
+  width: 1.45rem;
+  height: 1.45rem;
+  background-image: url("../img/i-form-name.png");
+}
+.icon.icon-form-password {
+  width: 1.45rem;
+  height: 1.45rem;
+  background-image: url("../img/i-form-password.png");
+}
+.icon.icon-form-email {
+  width: 1.45rem;
+  height: 1.45rem;
+  background-image: url("../img/i-form-email.png");
+}
+.icon.icon-form-calendar {
+  width: 1.45rem;
+  height: 1.45rem;
+  background-image: url("../img/i-form-calendar.png");
+}
+.icon.icon-form-tel {
+  width: 1.45rem;
+  height: 1.45rem;
+  background-image: url("../img/i-form-tel.png");
+}
+.icon.icon-form-gender {
+  width: 1.45rem;
+  height: 1.45rem;
+  background-image: url("../img/i-form-gender.png");
+}
+.icon.icon-form-toggle {
+  width: 1.45rem;
+  height: 1.45rem;
+  background-image: url("../img/i-form-toggle.png");
+}
+.icon.icon-form-comment {
+  width: 1.45rem;
+  height: 1.45rem;
+  background-image: url("../img/i-form-comment.png");
+}
+.icon.icon-form-settings {
+  width: 1.45rem;
+  height: 1.45rem;
+  background-image: url("../img/i-form-settings.png");
+}
+.icon.icon-form-url {
+  width: 1.45rem;
+  height: 1.45rem;
+  background-image: url("../img/i-form-url.png");
+}
