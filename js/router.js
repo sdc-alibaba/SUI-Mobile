@@ -30,7 +30,7 @@
  *  - pageLodComplete: ajax complete 完成
  *  - pageLoadError: ajax 发生 error
  *  - pageAnimationStart: 执行动画切换前，实参是 event，sectionId 和 $section
- *  - pagetransitionEnd: 执行动画完毕，实参是 event，sectionId 和 $section
+ *  - pageAnimationEnd: 执行动画完毕，实参是 event，sectionId 和 $section
  *  - beforePageRemove: 新 document 载入且动画切换完毕，旧的 document remove 之前在 window 上触发，实参是 event 和 $pageContainer
  *  - pageRemoved: 新的 document 载入且动画切换完毕，旧的 document remove 之后在 window 上触发
  *  - pageInitInternal: （经 init.js 处理后，对外是 pageInit）紧跟着动画完成的事件，实参是 event，sectionId 和 $section
@@ -589,7 +589,7 @@
         });
 
         $to.transitionEnd(function() {
-            $visibleSection.trigger('pagetransitionEnd', [sectionId, $visibleSection]);
+            $visibleSection.trigger('pageAnimationEnd', [sectionId, $visibleSection]);
             // 外层（init.js）中会绑定 pageInitInternal 事件，然后对页面进行初始化
             $visibleSection.trigger('pageInitInternal', [sectionId, $visibleSection]);
         });
@@ -611,7 +611,7 @@
         $to.trigger('pageAnimationStart', [toId, $to]);
         this._animateElement($from, $to, direction);
         $to.transitionEnd(function() {
-            $to.trigger('pagetransitionEnd', [toId, $to]);
+            $to.trigger('pageAnimationEnd', [toId, $to]);
             // 外层（init.js）中会绑定 pageInitInternal 事件，然后对页面进行初始化
             $to.trigger('pageInitInternal', [toId, $to]);
         });
