@@ -1,7 +1,7 @@
 <article class="component" id='router' data-url="router">
   <h2 class="component-title">路由</h2>
-  <p><a href="../demos/routers/">测试 Demo</a></p>
-  <p>默认情况下，router 会自动拦截所有的链接点击事件，如果你希望一个链接通过浏览器原生跳转而不使用 router，你可以在链接上增加一个 <code>class="external"</code> 或者 <code>external</code>.</p>
+  <p><a href="../demos/routers/" target="_blank">更详细的极端测试Demo</a></p>
+  <p>默认router会自动拦截所有链接的点击，如果希望一个链接走浏览器原生跳转而不使用router，可以在链接上增加 <code>class="external"</code> 或者自定义属性,如 <code>&lt;a href="xxx" external&gt;xxx&lt;/a&gt;</code>.</p>
 
  <p>如果需要禁用路由功能,那么可以在 zepto 之后, msui 之前使用 script <code>$.config = {router: false}</code> 来禁用.</p>
 
@@ -25,8 +25,8 @@
     <p class="component-description">
         如果需要使用路由功能,那么页面代码结构上需要满足下面两个条件:
 
-        <ol>
-            <li>每一个 url 对应的 html 文档, 里面所有用来展示的内容都应该放在 <code>div.page-group</code> 里</li>
+        <ol class="notice" style="padding-left:40px">
+            <li>和之前相比的差异：<b>每个 url 对应的 html 文档, 所有的展示内容都必须放在 <code>div.page-group</code> 里</b>。 形式可以参考<a href="../demos/routers/" target="_blank">router Demo</a></li>
             <li>html 文档中, 每个可以用来切换显示的块都应该有 <code>page</code> 的 class</li>
         </ol>
 
