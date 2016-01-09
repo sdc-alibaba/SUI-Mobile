@@ -48,6 +48,11 @@
       <td>默认启用MSUI内置的Router功能。如果想关闭此功能，在页面加载MSUI之前配置<code>$.config.router = false</code> 即可。</td>
     </tr>
     <tr>
+      <td>routerFilter</td>
+      <td>null</td>
+      <td>当前点击链接是否使用路由功能的自定义过滤器。这是一个函数，实参是当前点击的链接的 Zepto 对象（即 $('the-link'）），返回 false 表示不使用路由功能，返回 true 表示进入路由功能后续处理。</td>
+    </tr>
+    <tr>
       <td>showPageLoadingIndicator</td>
       <td>true</td>
       <td>在加载新页面过程中显示一个加载指示器。</td>

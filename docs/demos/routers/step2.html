@@ -1,0 +1,118 @@
+---
+layout: demo
+title: router-2 SUI Mobile Demo
+---
+
+
+
+<div class="page page-current" id='routers-step-2'>
+    <header class="bar bar-nav">
+        <a class="button button-link button-nav pull-left back">
+            <span class="icon icon-left"></span>
+            返回
+        </a>
+        <h1 class="title">路由 Demo 页面 B</h1>
+    </header>
+    <div class="content">
+        <div class="content-block">
+            <p><a href="/demos/routers/step3/">路由 Demo 页面 C</a></p>
+            <p><a href="#routers-step-2-inner">路由 Demo 页面 B 内联 page</a></p>
+            <p><a href="/demos/routers/">路由 Demo 页面 A（不带 .back, 只是普通跳转）</a></p>
+            <p><a href="http://www.aliued.com/" external>跨域的外链:www.aliued.com</a></p>
+
+            <p><a href="javascript:;" class="open-panel" data-panel='#panel-left-demo'>打开左侧栏</a></p>
+
+            <p><a href="javascript:;" class="open-popup" data-popup=".popup-about">打开 about 弹层</a></p>
+            <p><a href="javascript:;" class="open-popup" data-popup=".popup-services">打开 service 弹层</a></p>
+        </div>
+
+        <div class="list-block">
+            <ul>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-name"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">姓名</div>
+                            <div class="item-input">
+                                <input type="text" placeholder="Your name">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-gender"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">性别</div>
+                            <div class="item-input">
+                                <select>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">生日</div>
+                            <div class="item-input">
+                                <input type="date" placeholder="Birth day" value="2014-04-30">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="page" id="routers-step-2-inner">
+    <header class="bar bar-nav">
+        <a class="button button-link button-nav pull-left back" href="/demos"
+           data-transition='slide-out'>
+            <span class="icon icon-left"></span>
+            返回
+        </a>
+        <h1 class="title">路由 Demo 页面 B 内联 page</h1>
+    </header>
+    <div class="content">
+        路由 Demo 页面 B 内联 page
+    </div>
+</div>
+
+
+<!-- About Popup -->
+<div class="popup popup-about">
+    <div class="content-block">
+        <p>About</p>
+        <p><a href="javascript:;" class="close-popup">Close popup</a></p>
+        <p>Lorem ipsum dolor ...</p>
+    </div>
+</div>
+
+<!-- Services Popup -->
+<div class="popup popup-services">
+    <div class="content-block">
+        <p>Services</p>
+        <p><a href="javascript:;" class="close-popup">Close popup</a></p>
+        <p>Lorem ipsum dolor ...</p>
+    </div>
+</div>
+
+
+<div class="panel-overlay"></div>
+<!-- Left Panel with Reveal effect -->
+<div class="panel panel-left panel-reveal theme-dark" id='panel-left-demo'>
+    <div class="content-block">
+        <p>这是一个侧栏</p>
+        <p>你可以在这里放用户设置页面</p>
+        <p><a href="#routers-step-2-inner">路由 Demo 页面 B 内联 page</a></p>
+        <p><a href="javascript:;" class="close-panel">关闭</a></p>
+    </div>
+</div>
+
