@@ -4,7 +4,7 @@
  *
  * =====================================================
  */
-;$.smVersion = "0.6.0";/* global Zepto:true */
+;$.smVersion = "0.6.1";/* global Zepto:true */
 +function ($) {
     "use strict";
 
