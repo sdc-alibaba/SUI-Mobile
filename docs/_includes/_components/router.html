@@ -1,11 +1,11 @@
 <article class="component" id='router' data-url="router">
     <h2 class="component-title"><a href="https://github.com/sdc-alibaba/SUI-Mobile/blob/router/js/router.js" target="_blank">路由</a></h2>
-  <p><a href="../demos/routers/" target="_blank">更详细的极端测试Demo</a></p>
-  <p>默认router会自动拦截所有链接的点击，如果希望一个链接走浏览器原生跳转而不使用router，可以在链接上增加 <code>class="external"</code> 或者自定义属性,如 <code>&lt;a href="xxx" external&gt;xxx&lt;/a&gt;</code>.</p>
+    <p><a href="../demos/routers/" target="_blank">更详细的极端测试Demo</a></p>
+    <p>Router默认开启，会自动拦截所有链接的Touch行为，如果希望一个链接走浏览器原生跳转而不使用router，可以在链接上增加 <code>class="external"</code> 或者自定义属性,如 <code>&lt;a href="xxx" external&gt;xxx&lt;/a&gt;</code>.</p>
 
- <p>如果需要禁用路由功能,那么可以在 zepto 之后, msui 之前使用 script <code>$.config = {router: false}</code> 来禁用.</p>
+    <p>如果需要禁用路由功能,那么可以在 zepto 之后, msui 之前使用 script <code>$.config = {router: false}</code> 来禁用.</p>
 
-    <p>如果只需要对部分链接做禁用处理，那么可以使用自定义过滤器 <code>$.config.routerFilter = function($link) {}</code>，实参 <code>$link</code> 是当前点击的链接，返回 false 表示不使用路由功能，返回 true 表示进入路由处理，参考<a href="/components/#init">初始化</a>，示例如下：</p>
+    <p>如只需禁用部分链接，除了使用<code>external</code>外，还可用自定义动态过滤器 <code>$.config.routerFilter = function($link) {}</code>，实参 <code>$link</code> 是当前点击的链接，返回 false 表示不使用路由功能，返回 true 表示进入路由处理，参考<a href="/components/#init">初始化</a>，示例如下：</p>
 
     {% highlight js %}
     $.config = {
