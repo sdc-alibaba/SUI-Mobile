@@ -12,7 +12,8 @@
 
 ## 问题反馈
 
-首先遇到问题请先在[issue](https://github.com/sdc-alibaba/SUI-Mobile/issues)里搜索一下你的问题关键字，可能之前已经有人遇到并解决了，可以节省大量时间精力。
+首先在[官网FAQ页](http://m.sui.taobao.org/faq/)看下常见疑问里有没有你的问题。     
+其次在[issue](https://github.com/sdc-alibaba/SUI-Mobile/issues)里搜索一下你的问题关键字，可能之前已经有人遇到并解决了，可以节省大量时间精力。
 
 明确的问题更__推荐__直接提[issue反馈](https://github.com/sdc-alibaba/SUI-Mobile/issues)。
 
