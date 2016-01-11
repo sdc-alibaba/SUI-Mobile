@@ -230,7 +230,7 @@
             $curVisibleSection.removeClass(routerConfig.curPageClass);
             $visibleSection.addClass(routerConfig.curPageClass);
         } else {
-            $curVisibleSection.addClass(routerConfig.curPageClass);
+            $visibleSection.addClass(routerConfig.curPageClass);
         }
         curPageId = $visibleSection.attr('id');
 
