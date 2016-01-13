@@ -21,18 +21,29 @@
         $.initPullToRefresh($content);
         $.initInfiniteScroll($content);
         $.initCalendar($content);
-
         //extend
         if ($.initSwiper) $.initSwiper($content);
     };
 
     if ($.smConfig.showPageLoadingIndicator) {
         //这里的 以 push 开头的是私有事件，不要用
+        $(window).on('pageInit',function(){
+            $.lastPosition({
+                needMemoryClass: [
+                    '.content'
+                ]
+            });
+        });
         $(window).on('pageLoadStart', function() {
             $.showIndicator();
         });
         $(window).on('pageAnimationStart', function() {
             $.hideIndicator();
+            $.lastPosition({
+                needMemoryClass: [
+                    '.content'
+                ]
+            });
         });
         $(window).on('pageLoadCancel', function() {
             $.hideIndicator();
