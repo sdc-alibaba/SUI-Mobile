@@ -843,9 +843,11 @@
             'javascript:' // jshint ignore:line
         ];
 
-        for (var j = protoBlackList.length - 1; j >= 0; j--) {
-            if (linkHref.indexOf(protoBlackList[j]) === 0) {
-                return true;
+        if (linkHref) {
+            for (var j = protoBlackList.length - 1; j >= 0; j--) {
+                if (linkHref.indexOf(protoBlackList[j]) === 0) {
+                    return true;
+                }
             }
         }
 
