@@ -864,8 +864,10 @@
 
         var $pages = $('.' + routerConfig.pageClass);
         if (!$pages.length) {
-            var logFn = console.warn || console.log;
-            logFn && logFn('Disable router function because of no .page elements');
+            var warnMsg = 'Disable router function because of no .page elements';
+            if (window.console && window.console.warn) {
+                console.warn(warnMsg);
+            }
             return;
         }
 
