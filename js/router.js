@@ -818,14 +818,28 @@
             'close-panel'
         ];
 
-        for (var i = classBlackList.length -1 ; i >=0; i--) {
+        for (var i = classBlackList.length -1 ; i >= 0; i--) {
             if ($link.hasClass(classBlackList[i])) {
                 return true;
             }
         }
 
+        var linkEle = $link.get(0);
+        var linkHref = linkEle.getAttribute('href');
+
+        var protoBlackList = [
+            'tel:',
+            'javascript:' // jshint ignore:line
+        ];
+
+        for (var j = protoBlackList.length - 1; j >= 0; j--) {
+            if (linkHref.indexOf(protoBlackList[j]) === 0) {
+                return true;
+            }
+        }
+
         //noinspection RedundantIfStatementJS
-        if ($link.get(0).hasAttribute('external')) {
+        if (linkEle.hasAttribute('external')) {
             return true;
         }
 
