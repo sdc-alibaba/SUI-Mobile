@@ -44,16 +44,15 @@ $(function () {
     footerHeight           = $('.docs-footer').outerHeight(false);
     toolbarToggle          = $('.js-docs-component-toolbar');
 
+    menu.initialLeft   = menu.offset().left;
+    menu.initialTop    = menu.initialTop || menu.offset().top;
+
     // Device placement
     if (windowWidth >= 768 && device.offset()) {
       device.initialLeft   = device.offset().left;
       device.initialTop    = device.initialTop || device.offset().top;
       device.dockingOffset = ($(window).height() - device.height()) / 2;
       device.dockingOffset = (device.dockingOffset < -100 ? -100 : device.dockingOffset);
-
-      menu.initialLeft   = menu.offset().left;
-      menu.initialTop    = menu.initialTop || menu.offset().top;
-
 
     }
 
@@ -135,24 +134,10 @@ $(function () {
       return;
     }
 
+    var top;
     // Save scrollTop value
     var contentSectionItem;
     var currentTop = win.scrollTop();
-
-    // exit if no device
-    if (!device.length) {
-      return;
-    }
-
-    var top;
-    if ((device.initialTop - currentTop) <= device.dockingOffset) {
-      top = device.dockingOffset;
-      device[0].className = 'device device-fixed';
-      device.css({ top: top });
-    } else {
-      device[0].className = 'device';
-      device[0].setAttribute('style', '');
-    }
 
     if ((menu.initialTop - currentTop) <= 30) {
       top = 30;
@@ -161,6 +146,20 @@ $(function () {
     } else {
       menu[0].className = 'docs-side-menu';
       menu[0].setAttribute('style', '');
+    }
+
+    // exit if no device
+    if (!device.length) {
+      return;
+    }
+
+    if ((device.initialTop - currentTop) <= device.dockingOffset) {
+      top = device.dockingOffset;
+      device[0].className = 'device device-fixed';
+      device.css({ top: top });
+    } else {
+      device[0].className = 'device';
+      device[0].setAttribute('style', '');
     }
 
     function updateContent(content) {
