@@ -21,7 +21,7 @@
         $.initPullToRefresh($content);
         $.initInfiniteScroll($content);
         $.initCalendar($content);
-
+        
         //extend
         if ($.initSwiper) $.initSwiper($content);
     };
@@ -33,6 +33,11 @@
         });
         $(window).on('pageAnimationStart', function() {
             $.hideIndicator();
+             $.lastPosition({
+                needMemoryClass: [
+                    '.content'
+                ]
+            });
         });
         $(window).on('pageLoadCancel', function() {
             $.hideIndicator();
