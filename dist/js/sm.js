@@ -339,7 +339,7 @@
               $(node).scrollTop(parseInt(memoryHeight));
           });
 
-          memoryNodes.on('scroll', function() {
+          memoryNodes.off('scroll').on('scroll', function() {
             if (timer) clearTimeout(timer);
             timer = setTimeout(updateMemory, 100);
           });  
