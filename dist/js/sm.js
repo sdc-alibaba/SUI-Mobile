@@ -7533,7 +7533,6 @@ Device/OS Detection
         $.initPullToRefresh($content);
         $.initInfiniteScroll($content);
         $.initCalendar($content);
-        
         //extend
         if ($.initSwiper) $.initSwiper($content);
     };
