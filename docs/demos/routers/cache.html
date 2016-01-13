@@ -1,0 +1,26 @@
+---
+layout: demo
+title: router SUI Mobile Demo
+---
+
+<div class="page page-current" id='routers-index'>
+    <header class="bar bar-nav">
+        <a class="button button-link button-nav pull-left back">
+            <span class="icon icon-left"></span>
+            返回
+        </a>
+        <h1 class="title">路由 Demo 页面 / cache</h1>
+    </header>
+    <div class="content">
+        <div class="content-padded">
+            <ul>
+                <li>
+                    <a href="/demos/routers/cache2/">多次点击也只会有一个请求</a>
+                </li>
+                <li>
+                    <a href="/demos/routers/cache2/" data-no-cache="true">每次点击都会发请求</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

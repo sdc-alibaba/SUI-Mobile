@@ -257,13 +257,18 @@
      * 否则是切换文档
      *
      * @param {String} url url
+     * @param {Boolean=} ignoreCache 是否强制请求不使用缓存，对 document 生效，默认是 false
      */
-    Router.prototype.load = function(url) {
+    Router.prototype.load = function(url, ignoreCache) {
+        if (ignoreCache === undefined) {
+            ignoreCache = false;
+        }
+
         if (this._isTheSameDocument(location.href, url)) {
             this._switchToSection(Util.getUrlFragment(url));
         } else {
             this._saveDocumentIntoCache($(document), location.href);
-            this._switchToDocument(url);
+            this._switchToDocument(url, ignoreCache);
         }
     };
 
@@ -326,12 +331,18 @@
      *     因为如果是 popState 时的调用，那么此时 location 已经是 pop 出来的 state 的了
      *
      * @param {String} url 新的文档的 url
+     * @param {Boolean=} ignoreCache 是否不使用缓存强制加载页面
      * @param {Boolean=} isPushState 是否需要 pushState
      * @param {String=} direction 新文档切入的方向
      * @private
      */
-    Router.prototype._switchToDocument = function(url, isPushState, direction) {
+    Router.prototype._switchToDocument = function(url, ignoreCache, isPushState, direction) {
         var baseUrl = Util.toUrlObject(url).base;
+
+        if (ignoreCache) {
+            delete this.cache[baseUrl];
+        }
+
         var cacheDocument = this.cache[baseUrl];
         var context = this;
 
@@ -699,7 +710,7 @@
             }
         } else {
             this._saveDocumentIntoCache($(document), fromState.url.full);
-            this._switchToDocument(state.url.full, false, DIRECTION.leftToRight);
+            this._switchToDocument(state.url.full, false, false, DIRECTION.leftToRight);
             this._saveAsCurrentState(state);
         }
     };
@@ -723,7 +734,7 @@
             }
         } else {
             this._saveDocumentIntoCache($(document), fromState.url.full);
-            this._switchToDocument(state.url.full, false, DIRECTION.rightToLeft);
+            this._switchToDocument(state.url.full, false, false, DIRECTION.rightToLeft);
             this._saveAsCurrentState(state);
         }
     };
@@ -909,7 +920,9 @@
                     return;
                 }
 
-                router.load(url);
+                var ignoreCache = $target.attr('data-no-cache') === 'true';
+
+                router.load(url, ignoreCache);
             }
         });
     });
