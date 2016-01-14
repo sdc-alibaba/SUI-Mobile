@@ -122,6 +122,8 @@
                 }
                 if(p.value[2]) {
                     currentDistrict = p.value[2];
+                }else{
+                    currentDistrict = p.value[2] = "";
                 }
             }
             $(this).picker(p);
