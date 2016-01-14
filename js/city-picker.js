@@ -107,9 +107,15 @@
             if(!this) return;
             var p = $.extend(defaults, params);
             //计算value
-            var val = $(this).val();
-            if(val) {
-                p.value = val.split(" ");
+            if (p.value) {
+                $(this).val(p.value.join(' '));
+            } else {
+                var val = $(this).val();
+                val && (p.value = val.split(' '));
+            }
+
+            if (p.value) {
+                //p.value = val.split(" ");
                 if(p.value[0]) {
                     currentProvince = p.value[0];
                     p.cols[1].values = getCities(p.value[0]);
@@ -120,11 +126,8 @@
                 } else {
                     p.cols[2].values = getDistricts(p.value[0], p.cols[1].values[0]);
                 }
-                if(p.value[2]) {
-                    currentDistrict = p.value[2];
-                }else{
-                    currentDistrict = p.value[2] = "";
-                }
+                !p.value[2] && (p.value[2] = '');
+                currentDistrict = p.value[2];
             }
             $(this).picker(p);
         });

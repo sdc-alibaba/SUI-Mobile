@@ -7,7 +7,7 @@ $(function () {
       // 模拟2s的加载过程
       setTimeout(function() {
         var cardHTML = '<div class="card">' +
-          '<div class="card-header">标题</div>' + 
+          '<div class="card-header">标题</div>' +
           '<div class="card-content">' +
           '<div class="card-content-inner">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容' +
           '</div>' +
@@ -62,7 +62,7 @@ $(function () {
       }, 1000);
     });
   });
-  
+
   //顶部无限滚动
   $(document).on("pageInit", "#page-infinite-scroll-top", function(e, id, page) {
     function addItems(number, lastIndex) {
@@ -90,7 +90,7 @@ $(function () {
       timer = setTimeout(function() {
 
         addItems(20,lastIndex);
-       
+
         $.refreshScroller();
         //  lastLi.scrollIntoView({
         //     behavior: "smooth",
@@ -341,7 +341,10 @@ $(function () {
   });
 
   $(document).on("pageInit", "#page-city-picker", function(e) {
-    $("#city-picker").cityPicker({});
+    $("#city-picker").cityPicker({
+        value: ['天津', '河东区']
+        //value: ['四川', '内江', '东兴区']
+    });
   });
 
   $.init();
