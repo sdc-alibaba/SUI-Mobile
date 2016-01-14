@@ -451,6 +451,7 @@
             }
         }
         function closeOnHTMLClick(e) {
+            if (!p.opened) return;
             if (p.input && p.input.length > 0) {
                 if (e.target !== p.input[0] && $(e.target).parents('.picker-modal').length === 0) p.close();
             }
@@ -495,10 +496,14 @@
                     p.container = $(p.pickerHTML);
                     p.container.addClass('picker-modal-inline');
                     $(p.params.container).append(p.container);
+                    p.opened = true;
                 }
                 else {
                     p.container = $($.pickerModal(p.pickerHTML));
                     $(p.container)
+                        .one('opened', function() {
+                            p.opened = true;
+                        })
                         .on('close', function () {
                             onPickerClose();
                         });
@@ -526,7 +531,6 @@
             }
 
             // Set flag
-            p.opened = true;
             p.initialized = true;
 
             if (p.params.onOpen) p.params.onOpen(p);
