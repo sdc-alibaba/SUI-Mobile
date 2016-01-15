@@ -186,6 +186,10 @@ $.router.load('/detail', true);
           <td>pageRemoved</td>
           <td>加载新的页面，动画切换完成后，移除旧的 document 后发送（注：在 window 上触发，且内联 page 的切换不会触发此事件）</td>
       </tr>
+      <tr>
+          <td>beforePageSwitch</td>
+          <td>page 切换前触发，该事件在 pageAnimationStart 前，beforePageSwitch 之后会做一些额外的处理才触发 pageAnimationStart</td>
+      </tr>
     <tr>
       <td>pageInit</td>
       <td>新页面中的组件初始化完毕</td>

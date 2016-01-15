@@ -33,6 +33,7 @@
  *  - pageAnimationEnd: 执行动画完毕，实参是 event，sectionId 和 $section
  *  - beforePageRemove: 新 document 载入且动画切换完毕，旧的 document remove 之前在 window 上触发，实参是 event 和 $pageContainer
  *  - pageRemoved: 新的 document 载入且动画切换完毕，旧的 document remove 之后在 window 上触发
+ *  - beforePageSwitch: page 切换前，在 pageAnimationStart 前，beforePageSwitch 之后会做一些额外的处理才触发 pageAnimationStart
  *  - pageInitInternal: （经 init.js 处理后，对外是 pageInit）紧跟着动画完成的事件，实参是 event，sectionId 和 $section
  *
  * 术语
@@ -84,6 +85,7 @@
         pageAnimationEnd: 'pageAnimationEnd', // 动画切换 page 结束后
         beforePageRemove: 'beforePageRemove', // 移除旧 document 前（适用于非内联 page 切换）
         pageRemoved: 'pageRemoved', // 移除旧 document 后（适用于非内联 page 切换）
+        beforePageSwitch: 'beforePageSwitch', // page 切换前，在 pageAnimationStart 前，beforePageSwitch 之后会做一些额外的处理才触发 pageAnimationStart
         pageInit: 'pageInitInternal' // 目前是定义为一个 page 加载完毕后（实际和 pageAnimationEnd 等同）
     };
 
@@ -421,6 +423,9 @@
             $visibleSection.attr('id', this._generateRandomId());
         }
 
+        var $currentSection = this._getCurrentSection();
+        $currentSection.trigger(EVENTS.beforePageSwitch, [$currentSection.attr('id'), $currentSection]);
+
         $allSection.removeClass(routerConfig.curPageClass);
         $visibleSection.addClass(routerConfig.curPageClass);
 
@@ -598,6 +603,8 @@
      */
     Router.prototype._animateDocument = function($from, $to, $visibleSection, direction) {
         var sectionId = $visibleSection.attr('id');
+
+
         var $visibleSectionInFrom = $from.find('.' + routerConfig.curPageClass);
         $visibleSectionInFrom.addClass(routerConfig.visiblePageClass).removeClass(routerConfig.curPageClass);
 
@@ -630,6 +637,7 @@
      */
     Router.prototype._animateSection = function($from, $to, direction) {
         var toId = $to.attr('id');
+        $from.trigger(EVENTS.beforePageSwitch, [$from.attr('id'), $from]);
 
         $from.removeClass(routerConfig.curPageClass);
         $to.addClass(routerConfig.curPageClass);
