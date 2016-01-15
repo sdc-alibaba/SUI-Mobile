@@ -128,11 +128,22 @@
 <a class="button button-link button-nav pull-left back" href="/docs-demos/router">返回上一页</a>
 {% endhighlight %}
 
+    <h3 class="component-title">缓存</h3>
+    <div class="component-description">
+        默认地，对于加载过的页面，只要页面没刷新，那么再次进入该页面时，都会优先读取缓存而不发送网络请求。如果需要强制请求，可以用下面两种方式：
+        <ul>
+            <li>在 a 链接上添加 <code>data-no-cache="true"</code> 属性来标明点击该链接时不使用缓存，如：<code>&lt;a href="/detail" data-no-cache="true">no cache&lt;/a></code></li>
+            <li>使用 js 方法 <code>load</code> 来加载时，把可选的参数 <code>ignoreCache</code> 设为 <code>true</code>，如：<code>$.router.load('/detail', true)</code></li>
+        </ul>
+    </div>
+
   <h3 class="component-title">JS方法</h3>
-  <p class="component-description">你可以通过调用 <code>$.router.load(url)</code> 来加载一个页面，参数url既可以是一个ajax页面的地址，也可以是一个内联页面的id.</p>
+  <p class="component-description">你可以通过调用 <code>$.router.load(url, ignoreCache)</code> 来加载一个页面，参数url既可以是一个ajax页面的地址，也可以是一个内联页面的id.</p>
 {% highlight js %}
 $.router.load("/detail");  //加载ajax页面
 $.router.load("#about");  //加载内联页面
+// ignoreCache 是加载一个新页面时是否忽略缓存而发网络请求，默认是 false，表示使用缓存，可以设为 true 来忽略缓存
+$.router.load('/detail', true);
 {% endhighlight %}
 
   <h3 class="component-title">事件</h3>
