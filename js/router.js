@@ -75,6 +75,18 @@
         window.CustomEvent.prototype = window.Event.prototype;
     }
 
+    var EVENTS = {
+        pageLoadStart: 'pageLoadStart', // ajax 开始加载新页面前
+        pageLoadCancel: 'pageLoadCancel', // 取消前一个 ajax 加载动作后
+        pageLoadError: 'pageLoadError', // ajax 加载页面失败后
+        pageLoadComplete: 'pageLoadComplete', // ajax 加载页面完成后（不论成功与否）
+        pageAnimationStart: 'pageAnimationStart', // 动画切换 page 前
+        pageAnimationEnd: 'pageAnimationEnd', // 动画切换 page 结束后
+        beforePageRemove: 'beforePageRemove', // 移除旧 document 前（适用于非内联 page 切换）
+        pageRemoved: 'pageRemoved', // 移除旧 document 后（适用于非内联 page 切换）
+        pageInit: 'pageInitInternal' // 目前是定义为一个 page 加载完毕后（实际和 pageAnimationEnd 等同）
+    };
+
     var Util = {
         /**
          * 获取 url 的 fragment（即 hash 中去掉 # 的剩余部分）
@@ -461,10 +473,10 @@
             this.xhr.onreadystatechange = function() {
             };
             this.xhr.abort();
-            this.dispatch("pageLoadCancel");
+            this.dispatch(EVENTS.pageLoadCancel);
         }
 
-        this.dispatch("pageLoadStart");
+        this.dispatch(EVENTS.pageLoadStart);
 
         callback = callback || {};
         var self = this;
@@ -479,11 +491,11 @@
             }, this),
             error: function(xhr, status, err) {
                 callback.error && callback.error.call(null, xhr, status, err);
-                self.dispatch("pageLoadError");
+                self.dispatch(EVENTS.pageLoadError);
             },
             complete: function(xhr, status) {
                 callback.complete && callback.complete.call(null, xhr, status);
-                self.dispatch("pageLoadComplete");
+                self.dispatch(EVENTS.pageLoadComplete);
             }
         });
     };
@@ -589,22 +601,22 @@
         var $visibleSectionInFrom = $from.find('.' + routerConfig.curPageClass);
         $visibleSectionInFrom.addClass(routerConfig.visiblePageClass).removeClass(routerConfig.curPageClass);
 
-        $visibleSection.trigger('pageAnimationStart', [sectionId, $visibleSection]);
+        $visibleSection.trigger(EVENTS.pageAnimationStart, [sectionId, $visibleSection]);
 
         this._animateElement($from, $to, direction);
 
         $from.animationEnd(function() {
             $visibleSectionInFrom.removeClass(routerConfig.visiblePageClass);
             // 移除 document 前后，发送 beforePageRemove 和 pageRemoved 事件
-            $(window).trigger('beforePageRemove', [$from]);
+            $(window).trigger(EVENTS.beforePageRemove, [$from]);
             $from.remove();
-            $(window).trigger('pageRemoved');
+            $(window).trigger(EVENTS.pageRemoved);
         });
 
         $to.animationEnd(function() {
-            $visibleSection.trigger('pageAnimationEnd', [sectionId, $visibleSection]);
+            $visibleSection.trigger(EVENTS.pageAnimationEnd, [sectionId, $visibleSection]);
             // 外层（init.js）中会绑定 pageInitInternal 事件，然后对页面进行初始化
-            $visibleSection.trigger('pageInitInternal', [sectionId, $visibleSection]);
+            $visibleSection.trigger(EVENTS.pageInit, [sectionId, $visibleSection]);
         });
     };
 
@@ -621,12 +633,12 @@
 
         $from.removeClass(routerConfig.curPageClass);
         $to.addClass(routerConfig.curPageClass);
-        $to.trigger('pageAnimationStart', [toId, $to]);
+        $to.trigger(EVENTS.pageAnimationStart, [toId, $to]);
         this._animateElement($from, $to, direction);
         $to.animationEnd(function() {
-            $to.trigger('pageAnimationEnd', [toId, $to]);
+            $to.trigger(EVENTS.pageAnimationEnd, [toId, $to]);
             // 外层（init.js）中会绑定 pageInitInternal 事件，然后对页面进行初始化
-            $to.trigger('pageInitInternal', [toId, $to]);
+            $to.trigger(EVENTS.pageInit, [toId, $to]);
         });
     };
 
