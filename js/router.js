@@ -56,6 +56,8 @@
  *
  * 为了解决 ajax 载入页面导致重复 ID 以及重复 popup 等功能，上面约定了使用路由功能的所有可展示内容都必需位于指定元素内。从而可以在进行文档间切换时可以进行两个文档的整体移动，切换完毕后再把前一个文档的内容从页面之间移除。
  *
+ * 默认地过滤了部分协议的链接，包括 tel:, javascript:, mailto:，这些链接将不会使用路由功能。如果有更多的自定义控制需求，可以在 $.config.routerFilter 实现
+ *
  * 注: 以 _ 开头的函数标明用于此处内部使用，可根据需要随时重构变更，不对外确保兼容性。
  *
  */
@@ -838,9 +840,11 @@
         var linkEle = $link.get(0);
         var linkHref = linkEle.getAttribute('href');
 
+        // 如果是一下协议，那么不使用路由功能
         var protoBlackList = [
             'tel:',
-            'javascript:' // jshint ignore:line
+            'javascript:', // jshint ignore:line
+            'mailto:'
         ];
 
         if (linkHref) {
