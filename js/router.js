@@ -33,6 +33,7 @@
  *  - pageAnimationEnd: 执行动画完毕，实参是 event，sectionId 和 $section
  *  - beforePageRemove: 新 document 载入且动画切换完毕，旧的 document remove 之前在 window 上触发，实参是 event 和 $pageContainer
  *  - pageRemoved: 新的 document 载入且动画切换完毕，旧的 document remove 之后在 window 上触发
+ *  - beforePageSwitch: page 切换前，在 pageAnimationStart 前，beforePageSwitch 之后会做一些额外的处理才触发 pageAnimationStart
  *  - pageInitInternal: （经 init.js 处理后，对外是 pageInit）紧跟着动画完成的事件，实参是 event，sectionId 和 $section
  *
  * 术语
@@ -56,6 +57,8 @@
  *
  * 为了解决 ajax 载入页面导致重复 ID 以及重复 popup 等功能，上面约定了使用路由功能的所有可展示内容都必需位于指定元素内。从而可以在进行文档间切换时可以进行两个文档的整体移动，切换完毕后再把前一个文档的内容从页面之间移除。
  *
+ * 默认地过滤了部分协议的链接，包括 tel:, javascript:, mailto:，这些链接将不会使用路由功能。如果有更多的自定义控制需求，可以在 $.config.routerFilter 实现
+ *
  * 注: 以 _ 开头的函数标明用于此处内部使用，可根据需要随时重构变更，不对外确保兼容性。
  *
  */
@@ -72,6 +75,19 @@
 
         window.CustomEvent.prototype = window.Event.prototype;
     }
+
+    var EVENTS = {
+        pageLoadStart: 'pageLoadStart', // ajax 开始加载新页面前
+        pageLoadCancel: 'pageLoadCancel', // 取消前一个 ajax 加载动作后
+        pageLoadError: 'pageLoadError', // ajax 加载页面失败后
+        pageLoadComplete: 'pageLoadComplete', // ajax 加载页面完成后（不论成功与否）
+        pageAnimationStart: 'pageAnimationStart', // 动画切换 page 前
+        pageAnimationEnd: 'pageAnimationEnd', // 动画切换 page 结束后
+        beforePageRemove: 'beforePageRemove', // 移除旧 document 前（适用于非内联 page 切换）
+        pageRemoved: 'pageRemoved', // 移除旧 document 后（适用于非内联 page 切换）
+        beforePageSwitch: 'beforePageSwitch', // page 切换前，在 pageAnimationStart 前，beforePageSwitch 之后会做一些额外的处理才触发 pageAnimationStart
+        pageInit: 'pageInitInternal' // 目前是定义为一个 page 加载完毕后（实际和 pageAnimationEnd 等同）
+    };
 
     var Util = {
         /**
@@ -407,6 +423,9 @@
             $visibleSection.attr('id', this._generateRandomId());
         }
 
+        var $currentSection = this._getCurrentSection();
+        $currentSection.trigger(EVENTS.beforePageSwitch, [$currentSection.attr('id'), $currentSection]);
+
         $allSection.removeClass(routerConfig.curPageClass);
         $visibleSection.addClass(routerConfig.curPageClass);
 
@@ -459,10 +478,10 @@
             this.xhr.onreadystatechange = function() {
             };
             this.xhr.abort();
-            this.dispatch("pageLoadCancel");
+            this.dispatch(EVENTS.pageLoadCancel);
         }
 
-        this.dispatch("pageLoadStart");
+        this.dispatch(EVENTS.pageLoadStart);
 
         callback = callback || {};
         var self = this;
@@ -477,11 +496,11 @@
             }, this),
             error: function(xhr, status, err) {
                 callback.error && callback.error.call(null, xhr, status, err);
-                self.dispatch("pageLoadError");
+                self.dispatch(EVENTS.pageLoadError);
             },
             complete: function(xhr, status) {
                 callback.complete && callback.complete.call(null, xhr, status);
-                self.dispatch("pageLoadComplete");
+                self.dispatch(EVENTS.pageLoadComplete);
             }
         });
     };
@@ -584,25 +603,27 @@
      */
     Router.prototype._animateDocument = function($from, $to, $visibleSection, direction) {
         var sectionId = $visibleSection.attr('id');
+
+
         var $visibleSectionInFrom = $from.find('.' + routerConfig.curPageClass);
         $visibleSectionInFrom.addClass(routerConfig.visiblePageClass).removeClass(routerConfig.curPageClass);
 
-        $visibleSection.trigger('pageAnimationStart', [sectionId, $visibleSection]);
+        $visibleSection.trigger(EVENTS.pageAnimationStart, [sectionId, $visibleSection]);
 
         this._animateElement($from, $to, direction);
 
         $from.animationEnd(function() {
             $visibleSectionInFrom.removeClass(routerConfig.visiblePageClass);
             // 移除 document 前后，发送 beforePageRemove 和 pageRemoved 事件
-            $(window).trigger('beforePageRemove', [$from]);
+            $(window).trigger(EVENTS.beforePageRemove, [$from]);
             $from.remove();
-            $(window).trigger('pageRemoved');
+            $(window).trigger(EVENTS.pageRemoved);
         });
 
         $to.animationEnd(function() {
-            $visibleSection.trigger('pageAnimationEnd', [sectionId, $visibleSection]);
+            $visibleSection.trigger(EVENTS.pageAnimationEnd, [sectionId, $visibleSection]);
             // 外层（init.js）中会绑定 pageInitInternal 事件，然后对页面进行初始化
-            $visibleSection.trigger('pageInitInternal', [sectionId, $visibleSection]);
+            $visibleSection.trigger(EVENTS.pageInit, [sectionId, $visibleSection]);
         });
     };
 
@@ -616,15 +637,16 @@
      */
     Router.prototype._animateSection = function($from, $to, direction) {
         var toId = $to.attr('id');
+        $from.trigger(EVENTS.beforePageSwitch, [$from.attr('id'), $from]);
 
         $from.removeClass(routerConfig.curPageClass);
         $to.addClass(routerConfig.curPageClass);
-        $to.trigger('pageAnimationStart', [toId, $to]);
+        $to.trigger(EVENTS.pageAnimationStart, [toId, $to]);
         this._animateElement($from, $to, direction);
         $to.animationEnd(function() {
-            $to.trigger('pageAnimationEnd', [toId, $to]);
+            $to.trigger(EVENTS.pageAnimationEnd, [toId, $to]);
             // 外层（init.js）中会绑定 pageInitInternal 事件，然后对页面进行初始化
-            $to.trigger('pageInitInternal', [toId, $to]);
+            $to.trigger(EVENTS.pageInit, [toId, $to]);
         });
     };
 
@@ -838,9 +860,11 @@
         var linkEle = $link.get(0);
         var linkHref = linkEle.getAttribute('href');
 
+        // 如果是一下协议，那么不使用路由功能
         var protoBlackList = [
             'tel:',
-            'javascript:' // jshint ignore:line
+            'javascript:', // jshint ignore:line
+            'mailto:'
         ];
 
         if (linkHref) {
