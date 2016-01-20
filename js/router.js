@@ -843,7 +843,7 @@
             'https',
         ];
 
-        if (/^(\w+):\/\/./.test(linkHref)) {
+        if (/^(\w+):\/?./.test(linkHref)) {
             return !~protoWhiteList.indexOf(RegExp.$1)
         }
 
