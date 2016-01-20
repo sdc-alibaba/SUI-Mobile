@@ -838,17 +838,13 @@
         var linkEle = $link.get(0);
         var linkHref = linkEle.getAttribute('href');
 
-        var protoBlackList = [
-            'tel:',
-            'javascript:' // jshint ignore:line
+        var protoWhiteList = [
+            'http',
+            'https',
         ];
 
-        if (linkHref) {
-            for (var j = protoBlackList.length - 1; j >= 0; j--) {
-                if (linkHref.indexOf(protoBlackList[j]) === 0) {
-                    return true;
-                }
-            }
+        if (/^(\w+):\/\/./.test(linkHref)) {
+            return !~protoWhiteList.indexOf(RegExp.$1)
         }
 
         //noinspection RedundantIfStatementJS
