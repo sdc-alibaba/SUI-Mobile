@@ -54,8 +54,19 @@
         // 这里暂且处理一下
         $('body').removeClass('panel-closing');
         $.allowPanelOpen = true;
-    });
 
+        
+       
+    });
+ 
+ $(window).on('pageInit', function() {
+        $.hideIndicator();
+        $.lastPosition({
+            needMemoryClass: [
+                '.content'
+            ]
+        });
+    });
     // safari 在后退的时候会使用缓存技术，但实现上似乎存在些问题，
     // 导致路由中绑定的点击事件不会正常如期的运行（log 和 debugger 都没法调试），
     // 从而后续的跳转等完全乱了套。
