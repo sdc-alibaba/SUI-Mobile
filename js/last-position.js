@@ -14,8 +14,8 @@
 
     
       var url = location.href;
-      //var positionName = location.pathname + '?' + (url.split('?')[1] || '');
-      var positionName = JSON.parse(sessionStorage.getItem("sm.router.currentState")).pageId + '?' + (url.split('?')[1] || '');
+      var positionName = location.pathname + '?' + (url.split('?')[1] || '');
+      //var positionName = JSON.parse(sessionStorage.getItem("sm.router.currentState")).pageId + '?' + (url.split('?')[1] || '');
 
       var currentScrollTop;
       try {
@@ -42,7 +42,8 @@
               } catch (e) {
                   memoryHeight = 'auto';
               }
-              $(node).scrollTop(parseInt(memoryHeight));
+              var $node = $(".page-current .content");
+              $node.scrollTop(parseInt(memoryHeight));
           });
           $(window).off('beforePageSwitch').on("beforePageSwitch",function(event,id){
             updateMemory(id);
@@ -56,8 +57,8 @@
      
       function updateMemory(id) {
 
-          //positionName = location.pathname + '?' + (url.split('?')[1] || '');
-          var positionName = id + '?' + (url.split('?')[1] || '');
+          positionName = location.pathname + '?' + (url.split('?')[1] || '');
+          //var positionName = id + '?' + (url.split('?')[1] || '');
           // 存储需要记忆模块的高度
           needMemoryClass.forEach(function(item, index) {
               var memoryNodes = $(item);

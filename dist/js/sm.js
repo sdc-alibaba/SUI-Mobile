@@ -7505,8 +7505,8 @@ Device/OS Detection
 
     
       var url = location.href;
-      //var positionName = location.pathname + '?' + (url.split('?')[1] || '');
-      var positionName = JSON.parse(sessionStorage.getItem("sm.router.currentState")).pageId + '?' + (url.split('?')[1] || '');
+      var positionName = location.pathname + '?' + (url.split('?')[1] || '');
+      //var positionName = JSON.parse(sessionStorage.getItem("sm.router.currentState")).pageId + '?' + (url.split('?')[1] || '');
 
       var currentScrollTop;
       try {
@@ -7533,12 +7533,10 @@ Device/OS Detection
               } catch (e) {
                   memoryHeight = 'auto';
               }
-              $(node).scrollTop(parseInt(memoryHeight));
+              var $node = $(".page-current .content");
+              $node.scrollTop(parseInt(memoryHeight));
           });
           $(window).off('beforePageSwitch').on("beforePageSwitch",function(event,id){
-            // if (timer) clearTimeout(timer);
-            // timer = setTimeout(updateMemory, 100);
-            
             updateMemory(id);
           });
           // memoryNodes.off('scroll').on('scroll', function() {
@@ -7550,8 +7548,8 @@ Device/OS Detection
      
       function updateMemory(id) {
 
-          //positionName = location.pathname + '?' + (url.split('?')[1] || '');
-          var positionName = id + '?' + (url.split('?')[1] || '');
+          positionName = location.pathname + '?' + (url.split('?')[1] || '');
+          //var positionName = id + '?' + (url.split('?')[1] || '');
           // 存储需要记忆模块的高度
           needMemoryClass.forEach(function(item, index) {
               var memoryNodes = $(item);
@@ -7607,6 +7605,7 @@ Device/OS Detection
         //这里的 以 push 开头的是私有事件，不要用
         $(window).on('pageLoadStart', function() {
             $.showIndicator();
+
         });
         $(window).on('pageAnimationStart', function() {
             $.hideIndicator();
@@ -7630,13 +7629,22 @@ Device/OS Detection
         // 如果 panel 的 effect 是 reveal 时,似乎是 page 的动画或别的样式原因导致了 transitionEnd 时间不会触发
         // 这里暂且处理一下
         $('body').removeClass('panel-closing');
-        $.allowPanelOpen = true;
-
-        
-       
+        $.allowPanelOpen = true;  
+         $.lastPosition({
+            needMemoryClass: [
+                '.content'
+            ]
+        });
     });
- 
- $(window).on('pageInit', function() {
+    //  $(window).on('pageAnimationEnd', function() {
+    //     $.hideIndicator();
+    //     $.lastPosition({
+    //         needMemoryClass: [
+    //             '.content'
+    //         ]
+    //     });
+    // });
+    $(window).on('pageInit', function() {
         $.hideIndicator();
         $.lastPosition({
             needMemoryClass: [
