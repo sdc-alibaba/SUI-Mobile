@@ -45,9 +45,6 @@
               $(node).scrollTop(parseInt(memoryHeight));
           });
           $(window).off('beforePageSwitch').on("beforePageSwitch",function(event,id){
-            // if (timer) clearTimeout(timer);
-            // timer = setTimeout(updateMemory, 100);
-            
             updateMemory(id);
           });
           // memoryNodes.off('scroll').on('scroll', function() {
