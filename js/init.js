@@ -47,7 +47,7 @@
         });
     }
 
-    $(window).on('pageAnimationStart', function() {
+    $(window).on('pageAnimationStart', function(event,id,page) {
         // 在路由切换页面动画开始前,为了把位于 .page 之外的 popup 等隐藏,此处做些处理
         $.closeModal();
         $.closePanel();
@@ -55,20 +55,8 @@
         // 这里暂且处理一下
         $('body').removeClass('panel-closing');
         $.allowPanelOpen = true;  
-         $.lastPosition({
-            needMemoryClass: [
-                '.content'
-            ]
-        });
     });
-    //  $(window).on('pageAnimationEnd', function() {
-    //     $.hideIndicator();
-    //     $.lastPosition({
-    //         needMemoryClass: [
-    //             '.content'
-    //         ]
-    //     });
-    // });
+   
     $(window).on('pageInit', function() {
         $.hideIndicator();
         $.lastPosition({
