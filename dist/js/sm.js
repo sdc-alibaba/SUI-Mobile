@@ -7489,6 +7489,57 @@ Device/OS Detection
  * @property {*|HTMLElement} $content $doc 里的 routerConfig.innerViewClass 元素
  */
 
+/*======================================================
+************   Modals   ************
+======================================================*/
+/*jshint unused: false*/
+/* global Zepto:true */
++function ($) {
+  "use strict";
+  $.lastPosition =function(options) {
+    if ( !sessionStorage) {
+        return;
+    }
+    // 需要记忆模块的className
+    var needMemoryClass = options.needMemoryClass || [];
+   
+    $(window).off('beforePageSwitch').on('beforePageSwitch', function(event,id,arg) {
+      updateMemory(id,arg);
+    });   
+    $(window).off('pageAnimationStart').on('pageAnimationStart', function(event,id,arg) {
+      getMemory(id,arg);
+    }); 
+    //让后退页面回到之前的高度  
+    function getMemory(id,arg){
+      needMemoryClass.forEach(function(item, index) {
+          if ($(item).length === 0) {
+              return;
+          }
+          var positionName = id ;
+          // 遍历对应节点设置存储的高度
+          var memoryHeight = sessionStorage.getItem(positionName);
+          arg.find(item).scrollTop(parseInt(memoryHeight));
+         
+      });
+    }
+    //记住即将离开的页面的高度
+    function updateMemory(id,arg) {
+        var positionName = id ;
+        // 存储需要记忆模块的高度
+        needMemoryClass.forEach(function(item, index) {
+            if ($(item).length === 0) {
+                return;
+            }
+            sessionStorage.setItem(
+                positionName,
+                arg.find(item).scrollTop()
+            );
+          
+        });  
+    }
+  };
+}(Zepto);
+
 /* global Zepto:true */
 /*jshint unused: false*/
 +function($) {
@@ -7521,6 +7572,7 @@ Device/OS Detection
         //这里的 以 push 开头的是私有事件，不要用
         $(window).on('pageLoadStart', function() {
             $.showIndicator();
+
         });
         $(window).on('pageAnimationStart', function() {
             $.hideIndicator();
@@ -7537,16 +7589,24 @@ Device/OS Detection
         });
     }
 
-    $(window).on('pageAnimationStart', function() {
+    $(window).on('pageAnimationStart', function(event,id,page) {
         // 在路由切换页面动画开始前,为了把位于 .page 之外的 popup 等隐藏,此处做些处理
         $.closeModal();
         $.closePanel();
         // 如果 panel 的 effect 是 reveal 时,似乎是 page 的动画或别的样式原因导致了 transitionEnd 时间不会触发
         // 这里暂且处理一下
         $('body').removeClass('panel-closing');
-        $.allowPanelOpen = true;
+        $.allowPanelOpen = true;  
     });
-
+   
+    $(window).on('pageInit', function() {
+        $.hideIndicator();
+        $.lastPosition({
+            needMemoryClass: [
+                '.content'
+            ]
+        });
+    });
     // safari 在后退的时候会使用缓存技术，但实现上似乎存在些问题，
     // 导致路由中绑定的点击事件不会正常如期的运行（log 和 debugger 都没法调试），
     // 从而后续的跳转等完全乱了套。
