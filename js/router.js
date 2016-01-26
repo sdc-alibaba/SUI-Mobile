@@ -860,20 +860,15 @@
         var linkEle = $link.get(0);
         var linkHref = linkEle.getAttribute('href');
 
-        // 如果是一下协议，那么不使用路由功能
-        var protoBlackList = [
-            'tel:',
-            'javascript:', // jshint ignore:line
-            'mailto:'
-        ];
+        var protoWhiteList = [
+ +            'http',
+ +            'https'
+         ];
 
-        if (linkHref) {
-            for (var j = protoBlackList.length - 1; j >= 0; j--) {
-                if (linkHref.indexOf(protoBlackList[j]) === 0) {
-                    return true;
-                }
-            }
-        }
+         if(/^(\w+):\/?./.test(linkHref)){
+
+            return !~protoWhiteList.indexOf(RegExp.$1);
+         }
 
         //noinspection RedundantIfStatementJS
         if (linkEle.hasAttribute('external')) {
