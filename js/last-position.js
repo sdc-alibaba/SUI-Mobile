@@ -25,13 +25,8 @@
               return;
           }
           var positionName = id ;
-          var memoryHeight;
           // 遍历对应节点设置存储的高度
-          try {
-              memoryHeight = sessionStorage.getItem(positionName);
-          } catch (e) {
-              memoryHeight = 'auto';
-          }
+          var memoryHeight = sessionStorage.getItem(positionName);
           arg.find(item).scrollTop(parseInt(memoryHeight));
          
       });
@@ -44,13 +39,10 @@
             if ($(item).length === 0) {
                 return;
             }
-            try {
-                sessionStorage.setItem(
-                    positionName,
-                    arg.find(item).scrollTop()
-                );
-            } catch (e) {
-            }
+            sessionStorage.setItem(
+                positionName,
+                arg.find(item).scrollTop()
+            );
           
         });  
     }
