@@ -2447,6 +2447,7 @@ input[type="button"].button {
   height: 100%;
   background: #efeff4;
   display: none;
+  overflow: hidden;
 }
 .page.page-current,
 .page-group.page-current,
