@@ -7374,19 +7374,14 @@ Device/OS Detection
         var linkEle = $link.get(0);
         var linkHref = linkEle.getAttribute('href');
 
-        // 如果是一下协议，那么不使用路由功能
-        var protoBlackList = [
-            'tel:',
-            'javascript:', // jshint ignore:line
-            'mailto:'
+        var protoWhiteList = [
+            'http',
+            'https'
         ];
 
-        if (linkHref) {
-            for (var j = protoBlackList.length - 1; j >= 0; j--) {
-                if (linkHref.indexOf(protoBlackList[j]) === 0) {
-                    return true;
-                }
-            }
+        //如果非noscheme形式的链接，且协议不是http(s)，那么路由不会处理这类链接
+        if (/^(\w+):/.test(linkHref) && protoWhiteList.indexOf(RegExp.$1) < 0) {
+            return true;
         }
 
         //noinspection RedundantIfStatementJS

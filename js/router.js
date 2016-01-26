@@ -861,14 +861,14 @@
         var linkHref = linkEle.getAttribute('href');
 
         var protoWhiteList = [
- +            'http',
- +            'https'
-         ];
+            'http',
+            'https'
+        ];
 
-         if(/^(\w+):\/?./.test(linkHref)){
-
-            return !~protoWhiteList.indexOf(RegExp.$1);
-         }
+        //如果非noscheme形式的链接，且协议不是http(s)，那么路由不会处理这类链接
+        if (/^(\w+):/.test(linkHref) && protoWhiteList.indexOf(RegExp.$1) < 0) {
+            return true;
+        }
 
         //noinspection RedundantIfStatementJS
         if (linkEle.hasAttribute('external')) {
