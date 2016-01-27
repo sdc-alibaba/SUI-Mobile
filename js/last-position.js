@@ -2,7 +2,6 @@
 ************   Modals   ************
 ======================================================*/
 /*jshint unused: false*/
-/* global Zepto:true */
 +function ($) {
   "use strict";
   $.lastPosition =function(options) {
@@ -11,14 +10,14 @@
     }
     // 需要记忆模块的className
     var needMemoryClass = options.needMemoryClass || [];
-   
+
     $(window).off('beforePageSwitch').on('beforePageSwitch', function(event,id,arg) {
       updateMemory(id,arg);
-    });   
+    });
     $(window).off('pageAnimationStart').on('pageAnimationStart', function(event,id,arg) {
       getMemory(id,arg);
-    }); 
-    //让后退页面回到之前的高度  
+    });
+    //让后退页面回到之前的高度
     function getMemory(id,arg){
       needMemoryClass.forEach(function(item, index) {
           if ($(item).length === 0) {
@@ -28,7 +27,7 @@
           // 遍历对应节点设置存储的高度
           var memoryHeight = sessionStorage.getItem(positionName);
           arg.find(item).scrollTop(parseInt(memoryHeight));
-         
+
       });
     }
     //记住即将离开的页面的高度
@@ -43,8 +42,8 @@
                 positionName,
                 arg.find(item).scrollTop()
             );
-          
-        });  
+
+        });
     }
   };
 }(Zepto);

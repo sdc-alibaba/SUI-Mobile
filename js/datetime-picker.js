@@ -1,4 +1,3 @@
-/* global Zepto:true */
 /* jshint unused:false*/
 
 + function($) {

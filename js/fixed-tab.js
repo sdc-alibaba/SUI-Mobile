@@ -1,7 +1,6 @@
 /* ===============================================================================
 ************   Tabs   ************
 =============================================================================== */
-/* global Zepto:true */
 +function ($) {
     "use strict";
     $.initFixedTab = function(){
@@ -72,16 +71,16 @@
             if (!data) {
                 //获取data-api的
                 $this.data('fixedtab', (data = new FixedTab(this, options)));
-            } 
+            }
         });
-        
+
     }
     $.fn.fixedTab = Plugin;
     $.fn.fixedTab.Constructor = FixedTab;
     $(document).on('pageInit',function(){
         $.initFixedTab();
     });
-   
-   
+
+
 
 }(Zepto);

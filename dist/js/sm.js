@@ -4,8 +4,7 @@
  *
  * =====================================================
  */
-;$.smVersion = "0.6.1";/* global Zepto:true */
-+function ($) {
+;$.smVersion = "0.6.1";+function ($) {
     "use strict";
 
     //全局配置
@@ -21,7 +20,6 @@
 
 }(Zepto);
 
-/* global Zepto:true */
 + function($) {
     "use strict";
 
@@ -50,7 +48,6 @@
 
 }(Zepto);
 
-/* global Zepto:true */
 /* global WebKitCSSMatrix:true */
 
 (function($) {
@@ -296,7 +293,6 @@
 /*===========================
 Device/OS Detection
 ===========================*/
-/* global Zepto:true */
 ;(function ($) {
     "use strict";
     var device = {};
@@ -1261,7 +1257,6 @@ Device/OS Detection
 ************   Modals   ************
 ======================================================*/
 /*jshint unused: false*/
-/* global Zepto:true */
 +function ($) {
     "use strict";
     var _modalTemplateTempDiv = document.createElement('div');
@@ -1708,7 +1703,6 @@ Device/OS Detection
 /*======================================================
 ************   Calendar   ************
 ======================================================*/
-/* global Zepto:true */
 /*jshint unused: false*/
 +function ($) {
     "use strict";
@@ -2534,7 +2528,6 @@ Device/OS Detection
 /*======================================================
 ************   Picker   ************
 ======================================================*/
-/* global Zepto:true */
 /* jshint unused:false */
 /* jshint multistr:true */
 + function($) {
@@ -3120,7 +3113,6 @@ Device/OS Detection
     };
 }(Zepto);
 
-/* global Zepto:true */
 /* jshint unused:false*/
 
 + function($) {
@@ -5333,7 +5325,6 @@ Device/OS Detection
 /* ===============================================================================
 ************   scroller   ************
 =============================================================================== */
-/* global Zepto:true */
 + function($) {
     "use strict";
     //重置zepto自带的滚动条
@@ -5397,7 +5388,7 @@ Device/OS Detection
                 //因为iscroll 当页面高度不足 100% 时无法滑动，所以无法触发下拉动作，这里改动一下高度
                 //区分是否有.bar容器，如有，则content的top:0，无则content的top:-2.2rem,这里取2.2rem的最大值，近60
                 var minHeight = $(window).height() + ($pageContent.prev().hasClass(".bar") ? 1 : 61);
-                $pageContent.find('.content-inner').css('min-height', minHeight + 'px'); 
+                $pageContent.find('.content-inner').css('min-height', minHeight + 'px');
             }
 
             var ptr = $(pageContent).hasClass('pull-to-refresh-content');
@@ -5623,7 +5614,6 @@ Device/OS Detection
 /* ===============================================================================
 ************   Tabs   ************
 =============================================================================== */
-/* global Zepto:true */
 +function ($) {
     "use strict";
 
@@ -5723,7 +5713,6 @@ Device/OS Detection
 /* ===============================================================================
 ************   Tabs   ************
 =============================================================================== */
-/* global Zepto:true */
 +function ($) {
     "use strict";
     $.initFixedTab = function(){
@@ -5794,17 +5783,17 @@ Device/OS Detection
             if (!data) {
                 //获取data-api的
                 $this.data('fixedtab', (data = new FixedTab(this, options)));
-            } 
+            }
         });
-        
+
     }
     $.fn.fixedTab = Plugin;
     $.fn.fixedTab.Constructor = FixedTab;
     $(document).on('pageInit',function(){
         $.initFixedTab();
     });
-   
-   
+
+
 
 }(Zepto);
 
@@ -6110,7 +6099,6 @@ Device/OS Detection
 
 + function($) {
     'use strict';
-    /* global Zepto:true */
 
     function handleInfiniteScroll() {
         /*jshint validthis:true */
@@ -6159,7 +6147,7 @@ Device/OS Detection
         pageContainer.forEach(function(v){
             if($(v).hasClass('infinite-scroll-top')){
                 var height = v.scrollHeight - v.clientHeight;
-                $(v).scrollTop(height);     
+                $(v).scrollTop(height);
             }
         });
         function detachEvents() {
@@ -6170,7 +6158,6 @@ Device/OS Detection
     };
 }(Zepto);
 
-/* global Zepto:true */
 +function ($) {
     "use strict";
     $(function() {
@@ -6192,7 +6179,6 @@ Device/OS Detection
 /*======================================================
 ************   Panels   ************
 ======================================================*/
-/* global Zepto:true */
 /*jshint unused: false*/
 +function ($) {
     "use strict";
@@ -6510,8 +6496,6 @@ Device/OS Detection
 
     $.initSwipePanels();
 }(Zepto);
-
-/* globals Zepto */
 
 /**
  * 路由
@@ -7487,7 +7471,6 @@ Device/OS Detection
 ************   Modals   ************
 ======================================================*/
 /*jshint unused: false*/
-/* global Zepto:true */
 +function ($) {
   "use strict";
   $.lastPosition =function(options) {
@@ -7496,14 +7479,14 @@ Device/OS Detection
     }
     // 需要记忆模块的className
     var needMemoryClass = options.needMemoryClass || [];
-   
+
     $(window).off('beforePageSwitch').on('beforePageSwitch', function(event,id,arg) {
       updateMemory(id,arg);
-    });   
+    });
     $(window).off('pageAnimationStart').on('pageAnimationStart', function(event,id,arg) {
       getMemory(id,arg);
-    }); 
-    //让后退页面回到之前的高度  
+    });
+    //让后退页面回到之前的高度
     function getMemory(id,arg){
       needMemoryClass.forEach(function(item, index) {
           if ($(item).length === 0) {
@@ -7513,7 +7496,7 @@ Device/OS Detection
           // 遍历对应节点设置存储的高度
           var memoryHeight = sessionStorage.getItem(positionName);
           arg.find(item).scrollTop(parseInt(memoryHeight));
-         
+
       });
     }
     //记住即将离开的页面的高度
@@ -7528,8 +7511,8 @@ Device/OS Detection
                 positionName,
                 arg.find(item).scrollTop()
             );
-          
-        });  
+
+        });
     }
   };
 }(Zepto);
@@ -7649,11 +7632,10 @@ Device/OS Detection
 ************   ScrollFix   ************
 =============================================================================== */
 
-/* global Zepto:true */
 + function($) {
     "use strict";
     //安卓微信中使用scrollfix会有问题，因此只在ios中使用，安卓机器按照原来的逻辑
-   
+
     if($.device.ios){
         var ScrollFix = function(elem) {
 
@@ -7685,19 +7667,19 @@ Device/OS Detection
             var scrollable = $(prefix + ".content");
             new ScrollFix(scrollable[0]);
         };
-    
+
         $(document).on($.touchEvents.move, ".page-current .bar",function(){
             event.preventDefault();
-        }); 
+        });
         //监听ajax页面跳转
         $(document).on("pageLoadComplete", function(){
-             initScrollFix(); 
-        }); 
+             initScrollFix();
+        });
         //监听内联页面跳转
         $(document).on("pageAnimationEnd", function(){
-             initScrollFix(); 
+             initScrollFix();
         });
         initScrollFix();
     }
-   
+
 }(Zepto);

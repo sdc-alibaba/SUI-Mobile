@@ -1,4 +1,3 @@
-/* global Zepto:true */
 /* global WebKitCSSMatrix:true */
 
 (function($) {

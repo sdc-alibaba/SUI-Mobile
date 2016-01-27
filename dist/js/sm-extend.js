@@ -7,7 +7,6 @@
 /*===========================
 Swiper
 ===========================*/
-/* global Zepto:true */
 /* global WebKitCSSMatrix:true */
 /* global Modernizr:true */
 /* global DocumentTouch:true */
@@ -2713,7 +2712,6 @@ Swiper
     $.Swiper = Swiper;
 }(Zepto);
 
-/* global Zepto:true */
 +function($){
     'use strict';
     $.Swiper.prototype.defaults.pagination = '.page-current .swiper-pagination';
@@ -2766,7 +2764,6 @@ Swiper
 /*======================================================
 ************   Photo Browser   ************
 ======================================================*/
-/* global Zepto:true */
 +function($){
     'use strict';
     var PhotoBrowser = function (params) {

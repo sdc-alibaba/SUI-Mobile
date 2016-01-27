@@ -1,6 +1,5 @@
 + function($) {
     'use strict';
-    /* global Zepto:true */
 
     function handleInfiniteScroll() {
         /*jshint validthis:true */
@@ -49,7 +48,7 @@
         pageContainer.forEach(function(v){
             if($(v).hasClass('infinite-scroll-top')){
                 var height = v.scrollHeight - v.clientHeight;
-                $(v).scrollTop(height);     
+                $(v).scrollTop(height);
             }
         });
         function detachEvents() {

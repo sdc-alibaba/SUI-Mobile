@@ -2,7 +2,6 @@
 ************   Modals   ************
 ======================================================*/
 /*jshint unused: false*/
-/* global Zepto:true */
 +function ($) {
     "use strict";
     var _modalTemplateTempDiv = document.createElement('div');

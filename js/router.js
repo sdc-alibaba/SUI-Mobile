@@ -1,5 +1,3 @@
-/* globals Zepto */
-
 /**
  * 路由
  *
