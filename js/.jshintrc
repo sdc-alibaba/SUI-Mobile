@@ -1,14 +1,18 @@
 {
-  "bitwise" : true,
-  "browser" : true,
-  "devel"   : true,
-  "eqeqeq"  : true,
-  "expr"    : true,
-  "forin"   : true,
-  "freeze"  : true,
-  "latedef" : true,
-  "nonbsp"  : true,
-  "strict"  : true,
-  "undef"   : true,
-  "unused"  : true
+    "bitwise" : true,
+    "browser" : true,
+    "devel"   : true,
+    "eqeqeq"  : true,
+    "expr"    : true,
+    "forin"   : true,
+    "freeze"  : true,
+    "latedef" : true,
+    "nonbsp"  : true,
+    "strict"  : true,
+    "undef"   : true,
+    "unused"  : true,
+    "globals" : {
+        "FastClick": true,
+        "Zepto": true
+    }
 }
