@@ -1254,8 +1254,7 @@ Device/OS Detection
         return new FastClick(layer, options);
     };
 
-    //直接绑定
-    FastClick.attach(document.body);
+    window.FastClick = FastClick;
 }());
 
 /*======================================================
@@ -7535,7 +7534,6 @@ Device/OS Detection
   };
 }(Zepto);
 
-/* global Zepto:true */
 /*jshint unused: false*/
 +function($) {
     'use strict';
@@ -7623,7 +7621,11 @@ Device/OS Detection
         $page.trigger('pageInit', [id, $page]);
     };
 
+    //DOM READY
     $(function() {
+        //直接绑定
+        FastClick.attach(document.body);
+
         if ($.smConfig.autoInit) {
             $.init();
         }
@@ -7632,7 +7634,6 @@ Device/OS Detection
             $.init();
         });
     });
-
 
 }(Zepto);
 

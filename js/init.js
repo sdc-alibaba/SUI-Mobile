@@ -1,4 +1,3 @@
-/* global Zepto:true */
 /*jshint unused: false*/
 +function($) {
     'use strict';
@@ -86,7 +85,11 @@
         $page.trigger('pageInit', [id, $page]);
     };
 
+    //DOM READY
     $(function() {
+        //直接绑定
+        FastClick.attach(document.body);
+
         if ($.smConfig.autoInit) {
             $.init();
         }
@@ -95,6 +98,5 @@
             $.init();
         });
     });
-
 
 }(Zepto);
