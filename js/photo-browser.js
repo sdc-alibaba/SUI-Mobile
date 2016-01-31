@@ -149,7 +149,7 @@
             pb.attachEvents(true);
             // Delete from DOM
             if (pb.params.type === 'standalone') {
-                pb.container.removeClass('photo-browser-in').addClass('photo-browser-out').transitionEnd(function () {
+                pb.container.removeClass('photo-browser-in').addClass('photo-browser-out').animationEnd(function () {
                     pb.container.remove();
                 });
             }
