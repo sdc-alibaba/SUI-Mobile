@@ -441,6 +441,6 @@
         modalButtonOk: '确定',
         modalButtonCancel: '取消',
         modalPreloaderTitle: '加载中',
-        modalContainer : document.body
+        modalContainer : document.body ? document.body : 'body'
     };
 }(Zepto);
