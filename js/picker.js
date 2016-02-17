@@ -485,24 +485,24 @@
 
         p.opened = false;
         p.open = function () {
+        
             if (!p.opened) {
 
                 // Layout
                 p.layout();
-
+                p.opened = true;
                 // Append
                 if (p.inline) {
                     p.container = $(p.pickerHTML);
                     p.container.addClass('picker-modal-inline');
                     $(p.params.container).append(p.container);
-                    p.opened = true;
+                    
                 }
                 else {
+
                     p.container = $($.pickerModal(p.pickerHTML));
+                    
                     $(p.container)
-                        .one('opened', function() {
-                            p.opened = true;
-                        })
                         .on('close', function () {
                             onPickerClose();
                         });
