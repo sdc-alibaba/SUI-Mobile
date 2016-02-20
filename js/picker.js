@@ -425,6 +425,8 @@
                 this.blur();
             }
             if (p.opened) return;
+            //关闭其他picker
+            $.closeModal($('.picker-modal'));
             p.open();
             if (p.params.scrollToInput) {
                 var pageContent = p.input.parents('.content');
@@ -448,6 +450,8 @@
                     pageContent.scrollTop(scrollTop, 300);
                 }
             }
+            //停止事件冒泡，主动处理
+            e.stopPropagation();
         }
         function closeOnHTMLClick(e) {
             if (!p.opened) return;
