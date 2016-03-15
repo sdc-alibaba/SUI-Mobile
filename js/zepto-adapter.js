@@ -84,19 +84,19 @@
     };
     /* jshint ignore:start */
     $.requestAnimationFrame = function (callback) {
-        if (requestAnimationFrame) return requestAnimationFrame(callback);
-        else if (webkitRequestAnimationFrame) return webkitRequestAnimationFrame(callback);
-        else if (mozRequestAnimationFrame) return mozRequestAnimationFrame(callback);
+        if (window.requestAnimationFrame) return window.requestAnimationFrame(callback);
+        else if (window.webkitRequestAnimationFrame) return window.webkitRequestAnimationFrame(callback);
+        else if (window.mozRequestAnimationFrame) return window.mozRequestAnimationFrame(callback);
         else {
-            return setTimeout(callback, 1000 / 60);
+            return window.setTimeout(callback, 1000 / 60);
         }
     };
     $.cancelAnimationFrame = function (id) {
-        if (cancelAnimationFrame) return cancelAnimationFrame(id);
-        else if (webkitCancelAnimationFrame) return webkitCancelAnimationFrame(id);
-        else if (mozCancelAnimationFrame) return mozCancelAnimationFrame(id);
+        if (window.cancelAnimationFrame) return window.cancelAnimationFrame(id);
+        else if (window.webkitCancelAnimationFrame) return window.webkitCancelAnimationFrame(id);
+        else if (window.mozCancelAnimationFrame) return window.mozCancelAnimationFrame(id);
         else {
-            return clearTimeout(id);
+            return window.clearTimeout(id);
         }
     };
     /* jshint ignore:end */
