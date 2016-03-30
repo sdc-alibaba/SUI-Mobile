@@ -99,7 +99,37 @@
          */
         getUrlFragment: function(url) {
             var hashIndex = url.indexOf('#');
-            return hashIndex === -1 ? '' : url.slice(hashIndex + 1);
+            if (hashIndex > -1) {
+                var fragment = url.slice(hashIndex + 1);
+                if (fragment.indexOf('?') > -1) {
+                    fragment = fragment.slice(0, fragment.indexOf('?'));
+                }
+                return fragment;
+            }
+            return '';
+        },
+        /**
+         * 获取 url 中 hash 后面传入的参数
+         *
+         * 如果没有则返回空对象
+         * 如: http://example.com/path/?query=d#123?a=1&b=2 => {a:1, b:2}
+         *
+         * @param {String} url url
+         * @returns {Object}
+         */
+        getUrlSearch: function(url) {
+            var fragment = url.slice(url.indexOf('#')),
+                fIndex = fragment.indexOf('?'),
+                i = 0, fs = [], search = {};
+            if (fIndex > -1) {
+                fragment = fragment.slice(fIndex + 1);
+                fs = fragment.split('&');
+                for (i; i < fs.length; i++) {
+                    var _s = fs[i].split('=');
+                    search[_s[0]] = _s[1];
+                }
+            }
+            return search;
         },
         /**
          * 获取一个链接相对于当前页面的绝对地址形式
@@ -140,13 +170,15 @@
         toUrlObject: function(url) {
             var fullUrl = this.getAbsoluteUrl(url),
                 baseUrl = this.getBaseUrl(fullUrl),
-                fragment = this.getUrlFragment(url);
+                fragment = this.getUrlFragment(url),
+                search = this.getUrlSearch(url);
 
             return {
                 base: baseUrl,
                 full: fullUrl,
                 original: url,
-                fragment: fragment
+                fragment: fragment,
+                search: search
             };
         },
         /**
@@ -224,6 +256,8 @@
         var $visibleSection = $doc.find('.' + routerConfig.curPageClass);
         var $curVisibleSection = $visibleSection.eq(0);
         var $hashSection;
+
+        this.$args = currentUrlObj;
 
         if (currentUrlObj.fragment) {
             $hashSection = $doc.find('#' + currentUrlObj.fragment);
