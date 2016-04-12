@@ -3266,7 +3266,7 @@ Device/OS Detection
 
         me.extend = function(target, obj) {
             for (var i in obj) {  // jshint ignore:line
-                    target[i] = obj[i]; 
+                    target[i] = obj[i];
             }
         };
 
@@ -3513,7 +3513,7 @@ Device/OS Detection
 
             snapThreshold: 0.334,
 
-            // INSERT POINT: OPTIONS 
+            // INSERT POINT: OPTIONS
 
             startX: 0,
             startY: 0,
@@ -3579,7 +3579,7 @@ Device/OS Detection
 
         // INSERT POINT: NORMALIZATION
 
-        // Some defaults    
+        // Some defaults
         this.x = 0;
         this.y = 0;
         this.directionX = 0;
@@ -5589,7 +5589,7 @@ Device/OS Detection
     //获取scroller对象
     $.getScroller = function(content) {
         //以前默认只能有一个无限滚动，因此infinitescroll都是加在content上，现在允许里面有多个，因此要判断父元素是否有content
-        content = content.hasClass('content') ? content : content.parents('.content');
+        content = $(content).hasClass('content') ? content : content.parents('.content');
         if (content) {
             return $(content).data('scroller');
         } else {
@@ -7572,9 +7572,9 @@ Device/OS Detection
         // 如果 panel 的 effect 是 reveal 时,似乎是 page 的动画或别的样式原因导致了 transitionEnd 时间不会触发
         // 这里暂且处理一下
         $('body').removeClass('panel-closing');
-        $.allowPanelOpen = true;  
+        $.allowPanelOpen = true;
     });
-   
+
     $(window).on('pageInit', function() {
         $.hideIndicator();
         $.lastPosition({
