@@ -272,8 +272,121 @@
             p.container.find('.picker-calendar-next-month').on('click', p.nextMonth);
             p.container.find('.picker-calendar-prev-year').on('click', p.prevYear);
             p.container.find('.picker-calendar-next-year').on('click', p.nextYear);
+
+            /**
+             * Start - edit by JSoon
+             */
+            function handleYearTouchStart (e) {
+                if (isMoved || isTouched) return;
+                // e.preventDefault();
+                isTouched = true;
+                touchStartX = touchCurrentY = e.type === 'touchstart' ? e.targetTouches[0].pageX : e.pageX;
+                touchStartY = touchCurrentY = e.type === 'touchstart' ? e.targetTouches[0].pageY : e.pageY;
+                touchStartTime = (new Date()).getTime();
+                percentage = 0;
+                allowItemClick = true;
+                isScrolling = undefined;
+                startTranslate = currentTranslate = p.yearsTranslate;
+            }
+            function handleYearTouchMove (e) {
+                if (!isTouched) return;
+
+                touchCurrentX = e.type === 'touchmove' ? e.targetTouches[0].pageX : e.pageX;
+                touchCurrentY = e.type === 'touchmove' ? e.targetTouches[0].pageY : e.pageY;
+                if (typeof isScrolling === 'undefined') {
+                    isScrolling = !!(isScrolling || Math.abs(touchCurrentY - touchStartY) > Math.abs(touchCurrentX - touchStartX));
+                }
+                if (p.isH && isScrolling) {
+                    isTouched = false;
+                    return;
+                }
+                e.preventDefault();
+                if (p.animating) {
+                    isTouched = false;
+                    return;
+                }
+                allowItemClick = false;
+                if (!isMoved) {
+                    // First move
+                    isMoved = true;
+                    wrapperWidth = p.yearsWrapper[0].offsetWidth;
+                    wrapperHeight = p.yearsWrapper[0].offsetHeight;
+                    p.yearsWrapper.transition(0);
+                }
+                e.preventDefault();
+
+                touchesDiff = p.isH ? touchCurrentX - touchStartX : touchCurrentY - touchStartY;
+                percentage = touchesDiff/(p.isH ? wrapperWidth : wrapperHeight);
+                currentTranslate = (p.yearsTranslate * inverter + percentage) * 100;
+
+                // Transform wrapper
+                p.yearsWrapper.transform('translate3d(' + (p.isH ? currentTranslate : 0) + '%, ' + (p.isH ? 0 : currentTranslate) + '%, 0)');
+
+            }
+            function handleYearTouchEnd (e) {
+                if (!isTouched || !isMoved) {
+                    isTouched = isMoved = false;
+                    return;
+                }
+                isTouched = isMoved = false;
+
+                touchEndTime = new Date().getTime();
+                if (touchEndTime - touchStartTime < 300) {
+                    if (Math.abs(touchesDiff) < 10) {
+                        p.resetYearsGroup();
+                    }
+                    else if (touchesDiff >= 10) {
+                        if (rtl) p.nextYearsGroup();
+                        else p.prevYearsGroup();
+                    }
+                    else {
+                        if (rtl) p.prevYearsGroup();
+                        else p.nextYearsGroup();
+                    }
+                }
+                else {
+                    if (percentage <= -0.5) {
+                        if (rtl) p.prevYearsGroup();
+                        else p.nextYearsGroup();
+                    }
+                    else if (percentage >= 0.5) {
+                        if (rtl) p.nextYearsGroup();
+                        else p.prevYearsGroup();
+                    }
+                    else {
+                        p.resetYearsGroup();
+                    }
+                }
+
+                // Allow click
+                setTimeout(function () {
+                    allowItemClick = true;
+                }, 100);
+            }
+
+            p.container.find('.current-year-value').on('click', function() {
+                var curYear = $(this).text(),
+                    yearsPicker = p.container.find('.picker-calendar-years');
+
+                yearsPicker.show().transform('translate3d(0, 0, 0)');
+                yearsPicker.on('click', '.picker-calendar-year', p.pickYear);
+            });
+            /**
+             * End - edit by JSoon
+             */
+
             p.wrapper.on('click', handleDayClick);
             if (p.params.touchMove) {
+                /**
+                 * Start - edit by JSoon
+                 */
+                p.yearsWrapper.on($.touchEvents.start, handleYearTouchStart);
+                p.yearsWrapper.on($.touchEvents.move, handleYearTouchMove);
+                p.yearsWrapper.on($.touchEvents.end, handleYearTouchEnd);
+                /**
+                 * Start - edit by JSoon
+                 */
+
                 p.wrapper.on($.touchEvents.start, handleTouchStart);
                 p.wrapper.on($.touchEvents.move, handleTouchMove);
                 p.wrapper.on($.touchEvents.end, handleTouchEnd);
@@ -299,6 +412,58 @@
         };
 
         // Calendar Methods
+        
+        /**
+         * Start - edit by JSoon
+         */
+        p.yearsHTML = function(date, offset) {
+            date = new Date(date);
+            var curYear = date.getFullYear(), // 日历上的当前年份
+                trueYear = new Date().getFullYear(), // 当前真实年份
+                yearNum = 25, // 年份面板年份总数量
+                firstYear = curYear - Math.floor(yearNum/2), // 年份面板第一格年份
+                yearsHTML = '';
+            if (offset === 'next') {
+                firstYear = firstYear + yearNum;
+            }
+            if (offset === 'prev') {
+                firstYear = firstYear - yearNum;
+            }
+            console.log(firstYear);
+            for (var i = 0; i < 5; i += 1) {
+                var rowHTML = '';
+                var row = i;
+                rowHTML += '<div class="picker-calendar-row">';
+                for (var j = 0; j < 5; j += 1) {
+                    if (firstYear === trueYear) {
+                        rowHTML += '<div class="picker-calendar-year current-calendar-year"><span>' + firstYear + '</span></div>';
+                    } else if (firstYear === curYear) {
+                        rowHTML += '<div class="picker-calendar-year picker-calendar-year-selected"><span>' + firstYear + '</span></div>';
+                    } else {
+                        rowHTML += '<div class="picker-calendar-year"><span>' + firstYear + '</span></div>';
+                    }
+                    firstYear += 1;
+                }
+                rowHTML += '</div>';
+                yearsHTML += rowHTML;
+            }
+            yearsHTML = '<div class="picker-calendar-years-group">' + yearsHTML + '</div>';
+            return yearsHTML;
+        };
+        p.pickYear = function() {
+            var year = $(this).text(),
+                curYear = p.container.find('.current-year-value').text();
+            p.yearsWrapper.find('.picker-calendar-year').removeClass('picker-calendar-year-selected');
+            $(this).addClass('picker-calendar-year-selected');
+            if (curYear !== year) {
+                p.setYearMonth(year);
+            }
+            p.container.find('.picker-calendar-years').hide().transform('translate3d(0, 100%, 0)');
+        };
+        /**
+         * End - edit by JSoon
+         */ 
+        
         p.daysInMonth = function (date) {
             var d = new Date(date);
             return new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
@@ -444,6 +609,35 @@
                 p.params.onMonthYearChangeEnd(p, p.currentYear, p.currentMonth);
             }
         };
+
+        /**
+         * Start - edit by JSoon
+         */
+        p.setYearsTranslate = function (translate) {
+            translate = translate || p.yearsTranslate || 0;
+            if (typeof p.yearsTranslate === 'undefined') p.yearsTranslate = translate;
+            p.years.removeClass('picker-calendar-year-current picker-calendar-year-prev picker-calendar-year-next');
+            var prevYearTranslate = -(translate + 1) * 100 * inverter;
+            var currentYearTranslate = -translate * 100 * inverter;
+            var nextYearTranslate = -(translate - 1) * 100 * inverter;
+            p.years.eq(0).transform('translate3d(' + (p.isH ? prevYearTranslate : 0) + '%, ' + (p.isH ? 0 : prevYearTranslate) + '%, 0)').addClass('picker-calendar-year-prev');
+            p.years.eq(1).transform('translate3d(' + (p.isH ? currentYearTranslate : 0) + '%, ' + (p.isH ? 0 : currentYearTranslate) + '%, 0)').addClass('picker-calendar-year-current');
+            p.years.eq(2).transform('translate3d(' + (p.isH ? nextYearTranslate : 0) + '%, ' + (p.isH ? 0 : nextYearTranslate) + '%, 0)').addClass('picker-calendar-year-next');
+        };
+        p.nextYearsGroup = function (transition) {
+            if (typeof transition === 'undefined' || typeof transition === 'object') {
+                transition = '';
+                if (!p.params.animate) transition = 0;
+            }
+            p.yearsTranslate --;
+            var translate = (p.yearsTranslate * 100) * inverter;
+            p.yearsWrapper.transition(transition).transform('translate3d(' + (p.isH ? translate : 0) + '%, ' + (p.isH ? 0 : translate) + '%, 0)');
+
+        };
+        /**
+         * End - edit by JSoon
+         */
+
         p.setMonthsTranslate = function (translate) {
             translate = translate || p.monthsTranslate || 0;
             if (typeof p.monthsTranslate === 'undefined') p.monthsTranslate = translate;
@@ -547,8 +741,7 @@
             var targetDate;
             if (year < p.currentYear) {
                 targetDate = new Date(year, month + 1, -1).getTime();
-            }
-            else {
+            } else {
                 targetDate = new Date(year, month).getTime();
             }
             if (p.params.maxDate && targetDate > new Date(p.params.maxDate).getTime()) {
@@ -613,6 +806,16 @@
             var i;
 
             var layoutDate = p.value && p.value.length ? p.value[0] : new Date().setHours(0,0,0,0);
+            /**
+             * Start - edit by JSoon
+             */
+            var prevYearsHTML = p.yearsHTML(layoutDate, 'prev');
+            var currentYearsHTML = p.yearsHTML(layoutDate);
+            var nextYearsHTML = p.yearsHTML(layoutDate, 'next');
+            var yearsHTML = '<div class="picker-calendar-years"><div class="picker-calendar-years-wrapper">' + (prevYearsHTML + currentYearsHTML + nextYearsHTML) + '</div></div>';
+            /**
+             * End - edit by JSoon
+             */
             var prevMonthHTML = p.monthHTML(layoutDate, 'prev');
             var currentMonthHTML = p.monthHTML(layoutDate);
             var nextMonthHTML = p.monthHTML(layoutDate, 'next');
@@ -637,6 +840,18 @@
                     .replace(/{{yearPicker}}/g, (p.params.yearPicker ? p.params.yearPickerTemplate : ''));
             }
 
+            // pickerHTML =
+            //     '<div class="' + (pickerClass) + '">' +
+            //     toolbarHTML +
+            //     '<div class="picker-modal-inner">' +
+            //     weekHeaderHTML +
+            //     monthsHTML +
+            //     '</div>' +
+            //     '</div>';
+            
+            /**
+             * Start - edit by JSoon
+             */
             pickerHTML =
                 '<div class="' + (pickerClass) + '">' +
                 toolbarHTML +
@@ -644,8 +859,11 @@
                 weekHeaderHTML +
                 monthsHTML +
                 '</div>' +
+                yearsHTML +
                 '</div>';
-
+            /**
+             * End - edit by JSoon
+             */
 
             p.pickerHTML = pickerHTML;
         };
@@ -750,6 +968,15 @@
                 p.container[0].f7Calendar = p;
                 p.wrapper = p.container.find('.picker-calendar-months-wrapper');
 
+                /**
+                 * Start - edit by JSoon
+                 */
+                p.yearsWrapper = p.container.find('.picker-calendar-years-wrapper');
+                p.years = p.yearsWrapper.find('.picker-calendar-years-group');
+                /**
+                 * End - edit by JSoon
+                 */
+
                 // Months
                 p.months = p.wrapper.find('.picker-calendar-month');
 
@@ -757,6 +984,14 @@
                 p.updateCurrentMonthYear();
 
                 // Set initial translate
+                /**
+                 * Start - edit by JSoon
+                 */
+                p.yearsTranslate = 0;
+                p.setYearsTranslate();
+                /**
+                 * End - edit by JSoon
+                 */
                 p.monthsTranslate = 0;
                 p.setMonthsTranslate();
 
