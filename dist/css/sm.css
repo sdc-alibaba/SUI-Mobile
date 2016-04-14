@@ -3870,7 +3870,8 @@ body.panel-closing .page {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.picker-calendar-years {
+.picker-calendar-years-picker,
+.picker-calendar-months-picker {
   position: absolute;
   top: 0;
   right: 0;
@@ -3887,7 +3888,8 @@ body.panel-closing .page {
   -webkit-transform: translate3d(0, 100%, 0);
           transform: translate3d(0, 100%, 0);
 }
-.picker-calendar-years:before {
+.picker-calendar-years-picker:before,
+.picker-calendar-months-picker:before {
   content: '';
   position: absolute;
   left: 0;
@@ -3903,18 +3905,20 @@ body.panel-closing .page {
           transform-origin: 50% 0%;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
-  .picker-calendar-years:before {
+  .picker-calendar-years-picker:before,
+  .picker-calendar-months-picker:before {
     -webkit-transform: scaleY(0.5);
             transform: scaleY(0.5);
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 3) {
-  .picker-calendar-years:before {
+  .picker-calendar-years-picker:before,
+  .picker-calendar-months-picker:before {
     -webkit-transform: scaleY(0.33);
             transform: scaleY(0.33);
   }
 }
-.picker-calendar-years .picker-calendar-years-wrapper {
+.picker-calendar-years-picker .picker-calendar-years-picker-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
@@ -3923,18 +3927,18 @@ body.panel-closing .page {
   -webkit-transition-duration: .3s;
           transition-duration: .3s;
 }
-.picker-calendar-years .picker-calendar-years-group {
+.picker-calendar-years-picker .picker-calendar-years-group {
   position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
 }
-.picker-calendar-years .picker-calendar-row {
+.picker-calendar-years-picker .picker-calendar-row {
   height: 20%;
   height: -webkit-calc(100% / 5);
   height: calc(100% / 5);
 }
-.picker-calendar-years .picker-calendar-year {
+.picker-calendar-years-picker .picker-calendar-year-unit {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -3946,25 +3950,70 @@ body.panel-closing .page {
           flex: 1;
   text-align: center;
 }
-.picker-calendar-years .picker-calendar-year span {
+.picker-calendar-years-picker .picker-calendar-year-unit span {
   display: block;
   width: 100%;
 }
-.picker-calendar-years .picker-calendar-year.current-calendar-year {
+.picker-calendar-years-picker .picker-calendar-year-unit.current-calendar-year-unit {
   background: #e3e3e3;
 }
-.picker-calendar-years .picker-calendar-year.picker-calendar-year-selected {
+.picker-calendar-years-picker .picker-calendar-year-unit.picker-calendar-year-unit-selected {
+  color: #fff;
+  background: #0894ec;
+}
+.picker-calendar-months-picker .picker-calendar-months-picker-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-transition-property: -webkit-transform;
+          transition-property: transform;
+  -webkit-transition-duration: .3s;
+          transition-duration: .3s;
+}
+.picker-calendar-months-picker .picker-calendar-months-group {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.picker-calendar-months-picker .picker-calendar-row {
+  height: 33.33333333%;
+  height: -webkit-calc(100% / 3);
+  height: calc(100% / 3);
+}
+.picker-calendar-months-picker .picker-calendar-month-unit {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  text-align: center;
+}
+.picker-calendar-months-picker .picker-calendar-month-unit span {
+  display: block;
+  width: 100%;
+}
+.picker-calendar-months-picker .picker-calendar-month-unit.current-calendar-month-unit {
+  background: #e3e3e3;
+}
+.picker-calendar-months-picker .picker-calendar-month-unit.picker-calendar-month-unit-selected {
   color: #fff;
   background: #0894ec;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
-  .picker-calendar-years:before {
+  .picker-calendar-years-picker:before,
+  .picker-calendar-months-picker:before {
     -webkit-transform: scaleY(0.5);
             transform: scaleY(0.5);
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 3) {
-  .picker-calendar-years:before {
+  .picker-calendar-years-picker:before,
+  .picker-calendar-months-picker:before {
     -webkit-transform: scaleY(0.33);
             transform: scaleY(0.33);
   }

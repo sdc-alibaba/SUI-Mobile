@@ -274,6 +274,8 @@
             p.container.find('.picker-calendar-next-year').on('click', p.nextYear);
 
             /**
+             * 处理选择年份时的手势操作事件
+             * 
              * Start - edit by JSoon
              */
             function handleYearTouchStart (e) {
@@ -288,6 +290,7 @@
                 isScrolling = undefined;
                 startTranslate = currentTranslate = p.yearsTranslate;
             }
+
             function handleYearTouchMove (e) {
                 if (!isTouched) return;
 
@@ -309,9 +312,9 @@
                 if (!isMoved) {
                     // First move
                     isMoved = true;
-                    wrapperWidth = p.yearsWrapper[0].offsetWidth;
-                    wrapperHeight = p.yearsWrapper[0].offsetHeight;
-                    p.yearsWrapper.transition(0);
+                    wrapperWidth = p.yearsPickerWrapper[0].offsetWidth;
+                    wrapperHeight = p.yearsPickerWrapper[0].offsetHeight;
+                    p.yearsPickerWrapper.transition(0);
                 }
                 e.preventDefault();
 
@@ -320,9 +323,10 @@
                 currentTranslate = (p.yearsTranslate * inverter + percentage) * 100;
 
                 // Transform wrapper
-                p.yearsWrapper.transform('translate3d(' + (p.isH ? currentTranslate : 0) + '%, ' + (p.isH ? 0 : currentTranslate) + '%, 0)');
+                p.yearsPickerWrapper.transform('translate3d(' + (p.isH ? currentTranslate : 0) + '%, ' + (p.isH ? 0 : currentTranslate) + '%, 0)');
 
             }
+
             function handleYearTouchEnd (e) {
                 if (!isTouched || !isMoved) {
                     isTouched = isMoved = false;
@@ -364,13 +368,26 @@
                 }, 100);
             }
 
-            p.container.find('.current-year-value').on('click', function() {
+            function handleYearSelector() {
                 var curYear = $(this).text(),
-                    yearsPicker = p.container.find('.picker-calendar-years');
-
+                    yearsPicker = p.container.find('.picker-calendar-years-picker');
                 yearsPicker.show().transform('translate3d(0, 0, 0)');
-                yearsPicker.on('click', '.picker-calendar-year', p.pickYear);
-            });
+                p.updateSelectedInPickers();
+                yearsPicker.on('click', '.picker-calendar-year-unit', p.pickYear);
+            }
+
+            function handleMonthSelector() {
+                var monthsPicker = p.container.find('.picker-calendar-months-picker');
+                monthsPicker.show().transform('translate3d(0, 0, 0)');
+                p.updateSelectedInPickers();
+                monthsPicker.on('click', '.picker-calendar-month-unit', p.pickMonth);
+            }
+
+            // 选择年份
+            p.container.find('.current-year-value').on('click', handleYearSelector);
+
+            // 选择月份
+            p.container.find('.current-month-value').on('click', handleMonthSelector); 
             /**
              * End - edit by JSoon
              */
@@ -378,11 +395,13 @@
             p.wrapper.on('click', handleDayClick);
             if (p.params.touchMove) {
                 /**
+                 * 给年份选择器绑定手势操作事件
+                 * 
                  * Start - edit by JSoon
                  */
-                p.yearsWrapper.on($.touchEvents.start, handleYearTouchStart);
-                p.yearsWrapper.on($.touchEvents.move, handleYearTouchMove);
-                p.yearsWrapper.on($.touchEvents.end, handleYearTouchEnd);
+                p.yearsPickerWrapper.on($.touchEvents.start, handleYearTouchStart);
+                p.yearsPickerWrapper.on($.touchEvents.move, handleYearTouchMove);
+                p.yearsPickerWrapper.on($.touchEvents.end, handleYearTouchEnd);
                 /**
                  * Start - edit by JSoon
                  */
@@ -414,9 +433,13 @@
         // Calendar Methods
         
         /**
+         * 1. 生成年份和月份选择器DOM结构
+         * 2. 年份选择和月份选择的pick事件函数
+         * 3. 年份选择手势操作结束后，更新年分组DOM结构
+         *
          * Start - edit by JSoon
          */
-        p.yearsHTML = function(date, offset) {
+        p.yearsGroupHTML = function(date, offset) {
             date = new Date(date);
             var curYear = date.getFullYear(), // 日历上的当前年份
                 trueYear = new Date().getFullYear(), // 当前真实年份
@@ -429,18 +452,17 @@
             if (offset === 'prev') {
                 firstYear = firstYear - yearNum;
             }
-            console.log(firstYear);
             for (var i = 0; i < 5; i += 1) {
                 var rowHTML = '';
                 var row = i;
                 rowHTML += '<div class="picker-calendar-row">';
                 for (var j = 0; j < 5; j += 1) {
                     if (firstYear === trueYear) {
-                        rowHTML += '<div class="picker-calendar-year current-calendar-year"><span>' + firstYear + '</span></div>';
+                        rowHTML += '<div class="picker-calendar-year-unit current-calendar-year-unit" data-year="'+ firstYear +'"><span>' + firstYear + '</span></div>';
                     } else if (firstYear === curYear) {
-                        rowHTML += '<div class="picker-calendar-year picker-calendar-year-selected"><span>' + firstYear + '</span></div>';
+                        rowHTML += '<div class="picker-calendar-year-unit picker-calendar-year-unit-selected" data-year="'+ firstYear +'"><span>' + firstYear + '</span></div>';
                     } else {
-                        rowHTML += '<div class="picker-calendar-year"><span>' + firstYear + '</span></div>';
+                        rowHTML += '<div class="picker-calendar-year-unit" data-year="'+ firstYear +'"><span>' + firstYear + '</span></div>';
                     }
                     firstYear += 1;
                 }
@@ -450,15 +472,81 @@
             yearsHTML = '<div class="picker-calendar-years-group">' + yearsHTML + '</div>';
             return yearsHTML;
         };
+
         p.pickYear = function() {
             var year = $(this).text(),
-                curYear = p.container.find('.current-year-value').text();
-            p.yearsWrapper.find('.picker-calendar-year').removeClass('picker-calendar-year-selected');
-            $(this).addClass('picker-calendar-year-selected');
+                curYear = p.wrapper.find('.picker-calendar-month-current').attr('data-year');
+            p.yearsPickerWrapper.find('.picker-calendar-year-unit').removeClass('picker-calendar-year-unit-selected');
+            $(this).addClass('picker-calendar-year-unit-selected');
             if (curYear !== year) {
                 p.setYearMonth(year);
+                p.container.find('.picker-calendar-years-picker').hide().transform('translate3d(0, 100%, 0)');
+            } else {
+                p.container.find('.picker-calendar-years-picker').transform('translate3d(0, 100%, 0)');
             }
-            p.container.find('.picker-calendar-years').hide().transform('translate3d(0, 100%, 0)');
+        };
+
+        p.onYearsChangeEnd = function (dir) {
+            p.animating = false;
+            var nextYearsHTML, prevYearsHTML, newCurFirstYear;
+            var yearNum = p.yearsPickerWrapper.children('.picker-calendar-years-next').find('.picker-calendar-year-unit').length;
+            if (dir === 'next') {
+                var newCurFirstYear = parseInt(p.yearsPickerWrapper.children('.picker-calendar-years-next').find('.picker-calendar-year-unit').eq(Math.floor(yearNum/2)).text());
+                nextYearsHTML = p.yearsGroupHTML(new Date(newCurFirstYear, p.currentMonth), 'next');
+                p.yearsPickerWrapper.append(nextYearsHTML);
+                p.yearsPickerWrapper.children().first().remove();
+                p.yearsGroups = p.container.find('.picker-calendar-years-group');
+            }
+            if (dir === 'prev') {
+                var newCurFirstYear = parseInt(p.yearsPickerWrapper.children('.picker-calendar-years-prev').find('.picker-calendar-year-unit').eq(Math.floor(yearNum/2)).text());
+                prevYearsHTML = p.yearsGroupHTML(new Date(newCurFirstYear, p.currentMonth), 'prev');
+                p.yearsPickerWrapper.prepend(prevYearsHTML);
+                p.yearsPickerWrapper.children().last().remove();
+                p.yearsGroups = p.container.find('.picker-calendar-years-group');
+            }
+            p.setYearsTranslate(p.yearsTranslate);
+        };
+
+        p.monthsGroupHTML = function(date) {
+            date = new Date(date);
+            var curMonth = date.getMonth() + 1, // 日历上的当前月份
+                trueMonth = new Date().getMonth() + 1, // 当前真实月份
+                monthNum = 12, // 月份面板月份总数量
+                firstMonth = 1,
+                monthsHTML = '';
+            for (var i = 0; i < 3; i += 1) {
+                var rowHTML = '';
+                var row = i;
+                rowHTML += '<div class="picker-calendar-row">';
+                for (var j = 0; j < 4; j += 1) {
+                    if (firstMonth === trueMonth) {
+                        rowHTML += '<div class="picker-calendar-month-unit current-calendar-month-unit" data-month="'+ (firstMonth-1) +'"><span>' + p.params.monthNames[firstMonth-1] + '</span></div>';
+                    } else if (firstMonth === curMonth) {
+                        rowHTML += '<div class="picker-calendar-month-unit picker-calendar-month-selected" data-month="'+ (firstMonth-1) +'"><span>' + p.params.monthNames[firstMonth-1] + '</span></div>';
+                    } else {
+                        rowHTML += '<div class="picker-calendar-month-unit" data-month="'+ (firstMonth-1) +'"><span>' + p.params.monthNames[firstMonth-1] + '</span></div>';
+                    }
+                    firstMonth += 1;
+                }
+                rowHTML += '</div>';
+                monthsHTML += rowHTML;
+            }
+            monthsHTML = '<div class="picker-calendar-months-group">' + monthsHTML + '</div>';
+            return monthsHTML;
+        };
+
+        p.pickMonth = function() {
+            var month = $(this).attr('data-month'),
+                curYear = p.wrapper.find('.picker-calendar-month-current').attr('data-year'),
+                curMonth = p.wrapper.find('.picker-calendar-month-current').attr('data-month');
+            p.monthsPickerWrapper.find('.picker-calendar-month-unit').removeClass('picker-calendar-month-unit-selected');
+            $(this).addClass('picker-calendar-month-unit-selected');
+            if (curMonth !== month) {
+                p.setYearMonth(curYear, month);
+                p.container.find('.picker-calendar-months-picker').hide().transform('translate3d(0, 100%, 0)');
+            } else {
+                p.container.find('.picker-calendar-months-picker').transform('translate3d(0, 100%, 0)');
+            }
         };
         /**
          * End - edit by JSoon
@@ -608,31 +696,102 @@
             if (p.params.onMonthYearChangeEnd) {
                 p.params.onMonthYearChangeEnd(p, p.currentYear, p.currentMonth);
             }
+            /**
+             * 月历面板结束手势操作后，更新年份/月份选择器中的选中高亮状态
+             *
+             * Start - edit by JSoon
+             */
+            p.updateSelectedInPickers();
+            /**
+             * End - edit by JSoon
+             */
         };
 
         /**
+         * 1. 更新年份/月份选择器中的选中高亮状态函数
+         * 2. 年份选择器过渡动画函数
+         * 3. 下一个/上一个/当前年分组手势操作函数
+         *
          * Start - edit by JSoon
          */
+        p.updateSelectedInPickers = function() {
+            var curYear = parseInt(p.wrapper.find('.picker-calendar-month-current').attr('data-year'), 10),
+                trueYear = new Date().getFullYear(),
+                curMonth = parseInt(p.wrapper.find('.picker-calendar-month-current').attr('data-month'), 10),
+                trueMonth = new Date().getMonth(),
+                selectedYear = parseInt(p.yearsPickerWrapper.find('.picker-calendar-year-unit-selected').attr('data-year'), 10),
+                selectedMonth = parseInt(p.monthsPickerWrapper.find('.picker-calendar-month-unit-selected').attr('data-month'), 10);
+            if (selectedYear !== curYear) {
+                p.yearsPickerWrapper.find('.picker-calendar-year-unit').removeClass('picker-calendar-year-unit-selected');
+                p.yearsPickerWrapper.find('.picker-calendar-year-unit[data-year="' + curYear + '"]').addClass('picker-calendar-year-unit-selected');
+            }
+            if (selectedMonth !== curMonth) {
+                p.monthsPickerWrapper.find('.picker-calendar-month-unit').removeClass('picker-calendar-month-unit-selected');
+                p.monthsPickerWrapper.find('.picker-calendar-month-unit[data-month="' + curMonth + '"]').addClass('picker-calendar-month-unit-selected');
+            }
+            if (trueYear !== curYear) {
+                p.monthsPickerWrapper.find('.picker-calendar-month-unit').removeClass('current-calendar-month-unit');
+            } else {
+                p.monthsPickerWrapper.find('.picker-calendar-month-unit[data-month="' + trueMonth + '"]').addClass('current-calendar-month-unit');
+            }
+        };
+
         p.setYearsTranslate = function (translate) {
             translate = translate || p.yearsTranslate || 0;
             if (typeof p.yearsTranslate === 'undefined') p.yearsTranslate = translate;
-            p.years.removeClass('picker-calendar-year-current picker-calendar-year-prev picker-calendar-year-next');
+            p.yearsGroups.removeClass('picker-calendar-years-current picker-calendar-years-prev picker-calendar-years-next');
             var prevYearTranslate = -(translate + 1) * 100 * inverter;
             var currentYearTranslate = -translate * 100 * inverter;
             var nextYearTranslate = -(translate - 1) * 100 * inverter;
-            p.years.eq(0).transform('translate3d(' + (p.isH ? prevYearTranslate : 0) + '%, ' + (p.isH ? 0 : prevYearTranslate) + '%, 0)').addClass('picker-calendar-year-prev');
-            p.years.eq(1).transform('translate3d(' + (p.isH ? currentYearTranslate : 0) + '%, ' + (p.isH ? 0 : currentYearTranslate) + '%, 0)').addClass('picker-calendar-year-current');
-            p.years.eq(2).transform('translate3d(' + (p.isH ? nextYearTranslate : 0) + '%, ' + (p.isH ? 0 : nextYearTranslate) + '%, 0)').addClass('picker-calendar-year-next');
+            p.yearsGroups.eq(0).transform('translate3d(' + (p.isH ? prevYearTranslate : 0) + '%, ' + (p.isH ? 0 : prevYearTranslate) + '%, 0)').addClass('picker-calendar-years-prev');
+            p.yearsGroups.eq(1).transform('translate3d(' + (p.isH ? currentYearTranslate : 0) + '%, ' + (p.isH ? 0 : currentYearTranslate) + '%, 0)').addClass('picker-calendar-years-current');
+            p.yearsGroups.eq(2).transform('translate3d(' + (p.isH ? nextYearTranslate : 0) + '%, ' + (p.isH ? 0 : nextYearTranslate) + '%, 0)').addClass('picker-calendar-years-next');
         };
+
         p.nextYearsGroup = function (transition) {
             if (typeof transition === 'undefined' || typeof transition === 'object') {
                 transition = '';
                 if (!p.params.animate) transition = 0;
             }
+            var transitionEndCallback = p.animating ? false : true;
             p.yearsTranslate --;
+            p.animating = true;
             var translate = (p.yearsTranslate * 100) * inverter;
-            p.yearsWrapper.transition(transition).transform('translate3d(' + (p.isH ? translate : 0) + '%, ' + (p.isH ? 0 : translate) + '%, 0)');
+            p.yearsPickerWrapper.transition(transition).transform('translate3d(' + (p.isH ? translate : 0) + '%, ' + (p.isH ? 0 : translate) + '%, 0)');
+            if (transitionEndCallback) {
+                p.yearsPickerWrapper.transitionEnd(function () {
+                    p.onYearsChangeEnd('next');
+                });
+            }
+            if (!p.params.animate) {
+                p.onYearsChangeEnd('next');
+            }
+        };
 
+        p.prevYearsGroup = function (transition) {
+            if (typeof transition === 'undefined' || typeof transition === 'object') {
+                transition = '';
+                if (!p.params.animate) transition = 0;
+            }
+            var transitionEndCallback = p.animating ? false : true;
+            p.yearsTranslate ++;
+            p.animating = true;
+            var translate = (p.yearsTranslate * 100) * inverter;
+            p.yearsPickerWrapper.transition(transition).transform('translate3d(' + (p.isH ? translate : 0) + '%, ' + (p.isH ? 0 : translate) + '%, 0)');
+            if (transitionEndCallback) {
+                p.yearsPickerWrapper.transitionEnd(function () {
+                    p.onYearsChangeEnd('prev');
+                });
+            }
+            if (!p.params.animate) {
+                p.onYearsChangeEnd('prev');
+            }
+        };
+
+        p.resetYearsGroup = function (transition) {
+            if (typeof transition === 'undefined') transition = '';
+            var translate = (p.yearsTranslate * 100) * inverter;
+            p.yearsPickerWrapper.transition(transition).transform('translate3d(' + (p.isH ? translate : 0) + '%, ' + (p.isH ? 0 : translate) + '%, 0)');
         };
         /**
          * End - edit by JSoon
@@ -807,12 +966,16 @@
 
             var layoutDate = p.value && p.value.length ? p.value[0] : new Date().setHours(0,0,0,0);
             /**
+             * 生成年份组和月份组DOM
+             * 
              * Start - edit by JSoon
              */
-            var prevYearsHTML = p.yearsHTML(layoutDate, 'prev');
-            var currentYearsHTML = p.yearsHTML(layoutDate);
-            var nextYearsHTML = p.yearsHTML(layoutDate, 'next');
-            var yearsHTML = '<div class="picker-calendar-years"><div class="picker-calendar-years-wrapper">' + (prevYearsHTML + currentYearsHTML + nextYearsHTML) + '</div></div>';
+            var prevYearsHTML = p.yearsGroupHTML(layoutDate, 'prev');
+            var currentYearsHTML = p.yearsGroupHTML(layoutDate);
+            var nextYearsHTML = p.yearsGroupHTML(layoutDate, 'next');
+            var yearsGroupHTML = '<div class="picker-calendar-years-picker"><div class="picker-calendar-years-picker-wrapper">' + (prevYearsHTML + currentYearsHTML + nextYearsHTML) + '</div></div>';
+
+            var monthsGroupHTML = '<div class="picker-calendar-months-picker"><div class="picker-calendar-months-picker-wrapper">' + p.monthsGroupHTML(layoutDate) + '</div></div>';
             /**
              * End - edit by JSoon
              */
@@ -840,16 +1003,9 @@
                     .replace(/{{yearPicker}}/g, (p.params.yearPicker ? p.params.yearPickerTemplate : ''));
             }
 
-            // pickerHTML =
-            //     '<div class="' + (pickerClass) + '">' +
-            //     toolbarHTML +
-            //     '<div class="picker-modal-inner">' +
-            //     weekHeaderHTML +
-            //     monthsHTML +
-            //     '</div>' +
-            //     '</div>';
-            
             /**
+             * 将年份组/月份组DOM添加document中
+             * 
              * Start - edit by JSoon
              */
             pickerHTML =
@@ -859,7 +1015,8 @@
                 weekHeaderHTML +
                 monthsHTML +
                 '</div>' +
-                yearsHTML +
+                monthsGroupHTML +
+                yearsGroupHTML +
                 '</div>';
             /**
              * End - edit by JSoon
@@ -969,10 +1126,15 @@
                 p.wrapper = p.container.find('.picker-calendar-months-wrapper');
 
                 /**
+                 * 获取全局年份组及其wrapper的zepto对象
+                 * 获取全局月份组wrapper的zepto对象
+                 * 
                  * Start - edit by JSoon
                  */
-                p.yearsWrapper = p.container.find('.picker-calendar-years-wrapper');
-                p.years = p.yearsWrapper.find('.picker-calendar-years-group');
+                p.yearsPickerWrapper = p.container.find('.picker-calendar-years-picker-wrapper');
+                p.yearsGroups = p.yearsPickerWrapper.find('.picker-calendar-years-group');
+
+                p.monthsPickerWrapper = p.container.find('.picker-calendar-months-picker-wrapper');
                 /**
                  * End - edit by JSoon
                  */
@@ -985,6 +1147,8 @@
 
                 // Set initial translate
                 /**
+                 * 初始化年份组过渡动画位置
+                 * 
                  * Start - edit by JSoon
                  */
                 p.yearsTranslate = 0;
