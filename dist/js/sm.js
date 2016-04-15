@@ -2778,6 +2778,20 @@ Device/OS Detection
                 if (!p.inline) {
                     p.input.on('click', openOnInput);
                 }
+                /**
+                 * 修复[#308](https://github.com/sdc-alibaba/SUI-Mobile/issues/308)
+                 * 场景：内联页面中存在日历控件的input
+                 * 问题：因未在关闭时unbind click openOnInput事件导致多次调用p.open()而生成多个日历
+                 * 
+                 * Start - edit by JSoon
+                 */
+                $(document).on('beforePageSwitch', function() {
+                    p.input.off('click', openOnInput);
+                    $(document).off('beforePageSwitch');
+                });
+                /**
+                 * End - edit by JSoon
+                 */
             }
 
         }
