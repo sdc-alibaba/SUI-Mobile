@@ -7560,6 +7560,12 @@ $.smConfig.rawCitiesData = [
                         "name":"肥西县"
                     },
                     {
+                        "name":"巢湖市"
+                    },
+                    {
+                        "name":"庐江县"
+                    },
+                    {
                         "name":"其他"
                     }
                 ],
@@ -7591,6 +7597,9 @@ $.smConfig.rawCitiesData = [
                     },
                     {
                         "name":"繁昌县"
+                    },
+                    {
+                        "name":"无为县"
                     },
                     {
                         "name":"其他"
@@ -7678,6 +7687,15 @@ $.smConfig.rawCitiesData = [
                     },
                     {
                         "name":"当涂县"
+                    },
+                    {
+                        "name":"博望区"
+                    },
+                    {
+                        "name":"含山县"
+                    },
+                    {
+                        "name":"和县"
                     },
                     {
                         "name":"其他"
@@ -7903,33 +7921,6 @@ $.smConfig.rawCitiesData = [
                     },
                     {
                         "name":"灵璧县"
-                    },
-                    {
-                        "name":"其他"
-                    }
-                ],
-                "type":0
-            },
-            {
-                "name":"巢湖",
-                "sub":[
-                    {
-                        "name":"请选择"
-                    },
-                    {
-                        "name":"居巢区"
-                    },
-                    {
-                        "name":"含山县"
-                    },
-                    {
-                        "name":"无为县"
-                    },
-                    {
-                        "name":"庐江县"
-                    },
-                    {
-                        "name":"和县"
                     },
                     {
                         "name":"其他"
