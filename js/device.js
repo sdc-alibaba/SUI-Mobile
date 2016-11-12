@@ -101,6 +101,7 @@ Device/OS Detection
 
     // keng..
     device.isWeixin = /MicroMessenger/i.test(ua);
+    device.isQQ = /MQQBrowser/i.test(ua) && /QQ\//i.test(ua);
 
     $.device = device;
 })(Zepto);

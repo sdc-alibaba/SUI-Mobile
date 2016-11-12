@@ -1028,8 +1028,8 @@
         // Input Events
         function openOnInput(e) {
             e.preventDefault();
-            // 安卓微信webviewreadonly的input依然弹出软键盘问题修复
-            if ($.device.isWeixin && $.device.android && p.params.inputReadOnly) {
+            // 安卓微信和QQ webviewreadonly的input依然弹出软键盘问题修复
+            if (($.device.isWeixin || $.device.isQQ) && $.device.android && p.params.inputReadOnly) {
                 /*jshint validthis:true */
                 this.focus();
                 this.blur();
