@@ -46,7 +46,7 @@
         });
     }
 
-    $(window).on('pageAnimationStart', function(event,id,page) {
+    $._wipe = function() {
         // 在路由切换页面动画开始前,为了把位于 .page 之外的 popup 等隐藏,此处做些处理
         $.closeModal();
         $.closePanel();
@@ -54,6 +54,10 @@
         // 这里暂且处理一下
         $('body').removeClass('panel-closing');
         $.allowPanelOpen = true;  
+    }
+
+    $(window).on('pageAnimationStart', function(event,id,page) {
+        $._wipe();
     });
    
     $(window).on('pageInit', function() {

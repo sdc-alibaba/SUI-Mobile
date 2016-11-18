@@ -16,6 +16,7 @@
     });
     $(window).off('pageAnimationStart').on('pageAnimationStart', function(event,id,arg) {
       getMemory(id,arg);
+      $._wipe();
     });
     //让后退页面回到之前的高度
     function getMemory(id,arg){
