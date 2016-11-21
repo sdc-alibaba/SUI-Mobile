@@ -2,7 +2,6 @@
 ************   Modals   ************
 ======================================================*/
 /*jshint unused: false*/
-/* global Zepto:true */
 +function ($) {
     "use strict";
     var _modalTemplateTempDiv = document.createElement('div');
@@ -162,7 +161,7 @@
         return $.showPreloader.preloaderModal;
     };
     $.hidePreloader = function () {
-        $.closeModal($.showPreloader.preloaderModal);
+        $.showPreloader.preloaderModal && $.closeModal($.showPreloader.preloaderModal);
     };
     $.showIndicator = function () {
         if ($('.preloader-indicator-modal')[0]) return;
@@ -442,6 +441,6 @@
         modalButtonOk: '确定',
         modalButtonCancel: '取消',
         modalPreloaderTitle: '加载中',
-        modalContainer : document.body
+        modalContainer : document.body ? document.body : 'body'
     };
 }(Zepto);

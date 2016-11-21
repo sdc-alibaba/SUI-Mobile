@@ -2,9 +2,9 @@
 layout: demo
 title: SUI Mobile Demo
 ---
-<div id="page-tab" class="page">
+<div id="page-fixed-tab" class="page">
   <header class="bar bar-nav">
-    <a class="button button-link button-nav pull-left back" href="/demos">
+    <a class="button button-link button-nav pull-left back" href="/demos/tabs">
       <span class="icon icon-left"></span>
       返回
     </a>
@@ -15,7 +15,12 @@ title: SUI Mobile Demo
     <a class="icon icon-settings pull-right"></a>
   </div>
   <div class="content">
-    <div class="buttons-tab">
+    <p>其他内容区域</p>
+    <p>其他内容区域</p>
+    <p>其他内容区域</p>
+    <p>其他内容区域</p>
+    <p>其他内容区域</p>
+    <div class="buttons-tab fixed-tab" data-offset="44">
       <a href="#tab1" class="tab-link active button">全部</a>
       <a href="#tab2" class="tab-link button">待付款</a>
       <a href="#tab3" class="tab-link button">待发货</a>
@@ -38,12 +43,14 @@ title: SUI Mobile Demo
       </div>
       <div id="tab2" class="tab">
         <div class="content-block">
-          <p>This is tab 2 content</p>
+          <p style="height:600px">This is tab 2 content start</p>
+          <p >This is tab 2 content end</p>
         </div>
       </div>
       <div id="tab3" class="tab">
         <div class="content-block">
-          <p>This is tab 3 content</p>
+          <p style="height:600px">This is tab 3 content start</p>
+          <p >This is tab 3 content end</p>
         </div>
       </div>
     </div>

@@ -1,7 +1,6 @@
 /*======================================================
 ************   Picker   ************
 ======================================================*/
-/* global Zepto:true */
 /* jshint unused:false */
 /* jshint multistr:true */
 + function($) {
@@ -426,6 +425,8 @@
                 this.blur();
             }
             if (p.opened) return;
+            //关闭其他picker
+            $.closeModal($('.picker-modal'));
             p.open();
             if (p.params.scrollToInput) {
                 var pageContent = p.input.parents('.content');
@@ -449,8 +450,11 @@
                     pageContent.scrollTop(scrollTop, 300);
                 }
             }
+            //停止事件冒泡，主动处理
+            e.stopPropagation();
         }
         function closeOnHTMLClick(e) {
+            if (!p.opened) return;
             if (p.input && p.input.length > 0) {
                 if (e.target !== p.input[0] && $(e.target).parents('.picker-modal').length === 0) p.close();
             }
@@ -485,19 +489,23 @@
 
         p.opened = false;
         p.open = function () {
+        
             if (!p.opened) {
 
                 // Layout
                 p.layout();
-
+                p.opened = true;
                 // Append
                 if (p.inline) {
                     p.container = $(p.pickerHTML);
                     p.container.addClass('picker-modal-inline');
                     $(p.params.container).append(p.container);
+                    
                 }
                 else {
+
                     p.container = $($.pickerModal(p.pickerHTML));
+                    
                     $(p.container)
                         .on('close', function () {
                             onPickerClose();
@@ -526,7 +534,6 @@
             }
 
             // Set flag
-            p.opened = true;
             p.initialized = true;
 
             if (p.params.onOpen) p.params.onOpen(p);

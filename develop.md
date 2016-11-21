@@ -92,4 +92,4 @@ JS 组件一般会有这几种依赖
 
 
 ## fastclick
-我们引入了最好的 [fastclick](https://github.com/ftlabs/fastclick) 库赖解决点击穿透问题，所以不要用 zepto 提供的 `tab` 事件，它是由点击穿透的问题的，直接绑定 `click` 事件即可。
+我们引入了最好的 [fastclick](https://github.com/ftlabs/fastclick) 库赖解决点击穿透问题，所以不要用 zepto 提供的 `tab` 事件，它是有点击穿透的问题的，直接绑定 `click` 事件即可。

@@ -30,6 +30,45 @@ title: 更新日志 &middot; SUI Mobile
 
         <h2>更新日志</h2>
 
+        <h3>V0.6.2 <sub>2016.01.27</sub></h3>
+        <ul>
+            <li>返回或进入曾经访问过的页面时，<b>支持记住滚动条位置</b></li>
+            <li><b>允许路由不使用缓存(data-no-cache)</b>，参考<a href="http://m.sui.taobao.org/components/#router" target="_blank">文档，往下搜索“缓存”关键字</a></li>
+            <li>路由优化：如果非noscheme形式的链接，且协议不是http(s)，那么路由不会处理这类链接</li>
+            <li>路由添加 beforePageSwitch 事件</li>
+            <li>支持脚本引用<b>不放在body标签结束前</b></li>
+            <li>修复city-picker有默认值初始化时的缺憾</li>
+            <li>支持外部元素交互JS触发picker打开</li>
+            <li>取消page-group的可滚动，解决popup展示问题</li>
+            <li>修正工具栏以及其他iconfont尺寸定位偏差</li>
+        </ul>
+
+        <h3>V0.6.1 <sub>2016.01.10</sub></h3>
+        <ul>
+            <li>
+                重构 router 功能，<a href="../demos/routers/" target="_blank">新Router体验Demo</a>
+                <p class="notice">注意：这个版本中的 <a href="https://github.com/sdc-alibaba/SUI-Mobile/blob/router/js/router.js" target="_blank">Router </a>功能有了不向下兼容的升级，故版本号升至0.6.0，使用时请确保符合路由功能约定，具体参阅 <a href="../components/#router">路由文档</a></p>
+                <ol>
+                    <li>使用路由功能加载的页面必需有约定的 dom 结构</li>
+                    <li>在全局禁用的基础上，允许根据需要设定符合条件的链接在点击时不使用路由功能</li>
+                    <li>新增 <code>beforePageRemove</code> 和 <code>pageRemoved</code> 事件</li>
+                    <li>页面切换后移除前一个页面的 dom 而不是像之前那样保留（内联页面切换不会做移除操作）</li>
+                    <li><code>.back</code> 后退按钮上的 <code>href</code> href 属性不会读取使用</li>
+                    <li>ajax 加载失败（比如跨域或服务端失败等）后会像普通行为那样打开该页面（<code>location.href = 'xxxx'</code>）</li>
+                    <li>工具方法性能优化，核心库体积减少</li>
+                    <li>部分图片图标剥离出核心库，保留原有的少量iconfont。</li>
+                </ol>
+            </li>
+        </ul>
+
+        <h3>V0.5.9 <sub>12.31.23:59, 2015最后一次发布，大家2016年‘16~’</sub></h3>
+        <ul>
+            <li>修复js滚动模式下，下拉刷新没有顶部bar时失效的bug;</li>
+            <li>优化下拉刷新:正在加载时，refresh事件不会触发两次，只有执行 $.pullToRefreshDone才会再次触发refresh。允许横向滚动</li>
+            <li>支持一个页面内多个标签页内的无限滚动</li>
+            <li>现在判断滚动条类型的优先级是: <b>data-type指定 > 系统版本号</b></li>
+            <li>修复初次showPreloader会关闭其他modal类组件的问题</li>
+        </ul>
         <h3>V0.5.8 <sub>2015.12.18</sub></h3>
         <ul>
             <li>完成顶部触发的无限滚动</li>

@@ -1,7 +1,6 @@
 /* ===============================================================================
 ************   Tabs   ************
 =============================================================================== */
-/* global Zepto:true */
 +function ($) {
     "use strict";
 
@@ -74,6 +73,7 @@
         // Update links' classes
         if (tabLink && tabLink.length > 0) tabLink.addClass('active');
         if (oldTabLink && oldTabLink.length > 0) oldTabLink.removeClass('active');
+        tabLink.trigger('active');
 
         //app.refreshScroller();
 
@@ -87,11 +87,12 @@
         $.showTab = old;
         return this;
     };
-
-
+    //a标签上的click事件，在iscroll下响应有问题
     $(document).on("click", ".tab-link", function(e) {
         e.preventDefault();
         var clicked = $(this);
         showTab(clicked.data("tab") || clicked.attr('href'), clicked);
     });
+
+
 }(Zepto);

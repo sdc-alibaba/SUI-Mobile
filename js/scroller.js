@@ -1,7 +1,6 @@
 /* ===============================================================================
 ************   scroller   ************
 =============================================================================== */
-/* global Zepto:true */
 + function($) {
     "use strict";
     //重置zepto自带的滚动条
@@ -45,7 +44,7 @@
 
         var type = this.options.type;
         //auto的type,系统版本的小于4.4.0的安卓设备和系统版本小于6.0.0的ios设备，启用js版的iscoll
-        var useJSScroller = (type === 'js') || (type === 'auto' && ($.device.android && $.compareVersion('4.4.0', $.device.osVersion) > -1) || ($.device.ios && $.compareVersion('6.0.0', $.device.osVersion) > -1));
+        var useJSScroller = (type === 'js') || (type === 'auto' && ($.device.android && $.compareVersion('4.4.0', $.device.osVersion) > -1) || (type === 'auto' && ($.device.ios && $.compareVersion('6.0.0', $.device.osVersion) > -1)));
 
         if (useJSScroller) {
 
@@ -65,15 +64,18 @@
                 //因为iscroll 当页面高度不足 100% 时无法滑动，所以无法触发下拉动作，这里改动一下高度
                 //区分是否有.bar容器，如有，则content的top:0，无则content的top:-2.2rem,这里取2.2rem的最大值，近60
                 var minHeight = $(window).height() + ($pageContent.prev().hasClass(".bar") ? 1 : 61);
-                $pageContent.find('.content-inner').css('min-height', minHeight + 'px'); 
+                $pageContent.find('.content-inner').css('min-height', minHeight + 'px');
             }
 
             var ptr = $(pageContent).hasClass('pull-to-refresh-content');
+            //js滚动模式，用transform移动内容区位置，会导致fixed失效，表现类似absolute。因此禁用transform模式
+            var useTransform = $pageContent.find('.fixed-tab').length === 0;
             var options = {
                 probeType: 1,
                 mouseWheel: true,
-                //解决安卓js模式下，刷新滚动条后绑定的事件不响应
-                click:true,
+                //解决安卓js模式下，刷新滚动条后绑定的事件不响应，对chrome内核浏览器设置click:true
+                click: $.device.androidChrome,
+                useTransform: useTransform,
                 //js模式下允许滚动条横向滚动，但是需要注意，滚动容易宽度必须大于屏幕宽度滚动才生效
                 scrollX: true
             };
@@ -81,6 +83,11 @@
                 options.ptr = true;
                 options.ptrOffset = 44;
             }
+            //如果用js滚动条，用transform计算内容区位置，position：fixed将实效。若有.fixed-tab，强制使用native滚动条；备选方案，略粗暴
+            // if($(pageContent).find('.fixed-tab').length>0){
+            //     $pageContent.addClass('native-scroll');
+            //     return;
+            // }
             this.scroller = new IScroll(pageContent, options); // jshint ignore:line
             //和native滚动统一起来
             this._bindEventToDomWhenJs();
@@ -89,6 +96,12 @@
             $.pullToRefreshTrigger = $._pullToRefreshJSScroll.pullToRefreshTrigger;
             $.destroyToRefresh = $._pullToRefreshJSScroll.destroyToRefresh;
             $pageContent.addClass('javascript-scroll');
+            if (!useTransform) {
+                $pageContent.find('.content-inner').css({
+                    width: '100%',
+                    position: 'absolute'
+                });
+            }
 
             //如果页面本身已经进行了原生滚动，那么把这个滚动换成JS的滚动
             var nativeScrollTop = this.$pageContent[0].scrollTop;
@@ -251,6 +264,8 @@
     };
     //获取scroller对象
     $.getScroller = function(content) {
+        //以前默认只能有一个无限滚动，因此infinitescroll都是加在content上，现在允许里面有多个，因此要判断父元素是否有content
+        content = content.hasClass('content') ? content : content.parents('.content');
         if (content) {
             return $(content).data('scroller');
         } else {

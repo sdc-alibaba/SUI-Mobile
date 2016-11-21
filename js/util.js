@@ -1,4 +1,3 @@
-/* global Zepto:true */
 + function($) {
     "use strict";
 

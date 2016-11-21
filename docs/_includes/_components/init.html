@@ -1,10 +1,9 @@
 <article class="component active" id="init">
   <h2 class="component-title">初始化</h2>
   <p class="component-description">
-    <p>注意，从 v0.2.1 开始，初始化方法变成了 <code>$.init()</code>， <code>$.config.autoInit = false;</code>，也就是默认不会调用 <code>$.init</code> 方法。现在需要自己手动调用 <code>$.init</code>，他会调用 $.initPage 方法初始化页面组件，并且触发一个 <code>pageInit</code> 事件，所以请确保在所有的 <code>pageInit</code> 事件绑定之后再调用 <code>$.init()</code> 方法。</p>
-    <p>请不要修改 <code>$.init</code> 方法，这个方法是MSUI提供好的，调用它就会初始化页面。</p>
+  <p>注意，必须执行初始化方法: <code>$.init()</code>。<br/>他会调用 $.initPage 方法初始化页面组件，并且触发一个 <code>pageInit</code> 事件，所以请<b>确保在所有的 <code>pageInit</code> 事件绑定之后再调用 <code>$.init()</code> 方法。</b></p>
 
-    <p>如果设置了 <code>$.config.autoInit = true;</code>，那么在 document.onload的时候就会执行 <code>$.init</code>方法，从而触发 <code>pageInit</code>事件，如果在这之后监听了 pageInit 事件是无法被执行的。强烈建议不要设置为true，而是在绑定完所有的 <code>pageInit</code> 事件之后，再调用 <code>$.init</code>方法</p>
+      <p>如果设置了 <code>$.config.autoInit = true;</code>，那么在 document.onload的时候就会执行 <code>$.init</code>方法，从而触发 <code>pageInit</code>事件，如果在这之后监听了 pageInit 事件是无法被执行的。<br/>强烈建议不要设置为true，而是在绑定完所有的 <code>pageInit</code> 事件之后，再调用 <code>$.init</code>方法</p>
 
   </p>
 
@@ -15,7 +14,6 @@
     我们提供了一些全局配置，可以在初始化之前通过这些配置改变一些默认行为。
     在引入JS之前通过一个 <code>$.config</code> 变量来改变默认配置：
   </p>
-  <p>从 v0.2.1 版本开始， <code>autoInit</code> 默认为 false</p>
 
 {% highlight html %}
 <script>
@@ -46,6 +44,11 @@
       <td>router</td>
       <td>true</td>
       <td>默认启用MSUI内置的Router功能。如果想关闭此功能，在页面加载MSUI之前配置<code>$.config.router = false</code> 即可。</td>
+    </tr>
+    <tr>
+      <td>routerFilter</td>
+      <td>null</td>
+      <td>当前点击链接是否使用路由功能的自定义过滤器。这是一个函数，实参是当前点击的链接的 Zepto 对象（即 $('the-link'）），返回 false 表示不使用路由功能，返回 true 表示进入路由功能后续处理。</td>
     </tr>
     <tr>
       <td>showPageLoadingIndicator</td>

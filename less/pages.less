@@ -3,7 +3,7 @@
 // Pages animations
 @pageDuration: 400ms;
 
-.page {
+.page, .page-group {
     box-sizing: border-box;
     position: absolute;
     left: 0;
@@ -12,8 +12,10 @@
     height: 100%;
     background: #efeff4;
     display: none;
+    overflow: hidden;
 
     &.page-current,
+    &.page-visible,
     &.page-from-center-to-left,
     &.page-from-center-to-right,
     &.page-from-right-to-center,
@@ -24,6 +26,10 @@
     &.page-current {
         overflow: hidden;
     }
+}
+
+.page-group {
+  display: block;
 }
 
 //Class that will trigger transition during page custom transitions (like swipe-back)

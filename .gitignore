@@ -1,7 +1,8 @@
 *.swp
 *.swo
 node_modules
-dist/
+npm-debug.log
+docs/dist/
 .package/
 .sass-cache/
 .DS_Store
@@ -9,3 +10,4 @@ _site/*
 *.orig
 docs/demos/test.html
 docs/assets/js/test.js
+test

@@ -100,7 +100,21 @@ $("#picker-name").picker({
       <td>undefined</td>
       <td>为 picker 容器增加额外的类，可以用来自定义样式</td>
     </tr>
-
+    <tr>
+      <td>onOpen</td>
+      <td>undefined</td>
+      <td>自定义 picker 打开时的触发动作</td>
+    </tr>
+    <tr>
+      <td>onClose</td>
+      <td>undefined</td>
+      <td>自定义 picker 关闭时的触发动作</td>
+    </tr>
+    <tr>
+      <td>formatValue</td>
+      <td>undefined</td>
+      <td>自定义方法，用来控制如何显示picker的选中值，<code>formatValue: function (picker, value, displayValue){}</code>，value, displayValue为数组，长度等于cols长度</td>
+    </tr>
   </table>
 
   <h3 class="component-title">picker方法</h3>

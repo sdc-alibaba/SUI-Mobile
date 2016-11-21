@@ -1,4 +1,3 @@
-/* global Zepto:true */
 /* global WebKitCSSMatrix:true */
 
 (function($) {
@@ -24,7 +23,6 @@
             }
         };
     });
-
 
     //support
     $.support = (function() {
@@ -55,7 +53,7 @@
             transformMatrix = new WebKitCSSMatrix(curStyle.webkitTransform === 'none' ? '' : curStyle.webkitTransform);
         }
         else {
-            transformMatrix = curStyle.MozTransform || curStyle.OTransform || curStyle.MsTransform || curStyle.msTransform  || curStyle.transform || curStyle.getPropertyValue('transform').replace('translate(', 'matrix(1, 0, 0, 1,');
+            transformMatrix = curStyle.MozTransform || curStyle.transform || curStyle.getPropertyValue('transform').replace('translate(', 'matrix(1, 0, 0, 1,');
             matrix = transformMatrix.toString().split(',');
         }
 
@@ -84,6 +82,7 @@
 
         return curTransform || 0;
     };
+    /* jshint ignore:start */
     $.requestAnimationFrame = function (callback) {
         if (window.requestAnimationFrame) return window.requestAnimationFrame(callback);
         else if (window.webkitRequestAnimationFrame) return window.webkitRequestAnimationFrame(callback);
@@ -92,7 +91,6 @@
             return window.setTimeout(callback, 1000 / 60);
         }
     };
-
     $.cancelAnimationFrame = function (id) {
         if (window.cancelAnimationFrame) return window.cancelAnimationFrame(id);
         else if (window.webkitCancelAnimationFrame) return window.webkitCancelAnimationFrame(id);
@@ -101,11 +99,54 @@
             return window.clearTimeout(id);
         }
     };
+    /* jshint ignore:end */
 
+    $.fn.dataset = function() {
+        var dataset = {},
+            ds = this[0].dataset;
+        for (var key in ds) { // jshint ignore:line
+            var item = (dataset[key] = ds[key]);
+            if (item === 'false') dataset[key] = false;
+            else if (item === 'true') dataset[key] = true;
+            else if (parseFloat(item) === item * 1) dataset[key] = item * 1;
+        }
+        // mixin dataset and __eleData
+        return $.extend({}, dataset, this[0].__eleData);
+    };
+    $.fn.data = function(key, value) {
+        var tmpData = $(this).dataset();
+        if (!key) {
+            return tmpData;
+        }
+        // value may be 0, false, null
+        if (typeof value === 'undefined') {
+            // Get value
+            var dataVal = tmpData[key],
+                __eD = this[0].__eleData;
 
-    $.fn.transitionEnd = function(callback) {
-        var events = ['webkitTransitionEnd', 'transitionend'],
-            i, dom = this;
+            //if (dataVal !== undefined) {
+            if (__eD && (key in __eD)) {
+                return __eD[key];
+            } else {
+                return dataVal;
+            }
+
+        } else {
+            // Set value,uniformly set in extra ```__eleData```
+            for (var i = 0; i < this.length; i++) {
+                var el = this[i];
+                // delete multiple data in dataset
+                if (key in tmpData) delete el.dataset[key];
+
+                if (!el.__eleData) el.__eleData = {};
+                el.__eleData[key] = value;
+            }
+            return this;
+        }
+    };
+    function __dealCssEvent(eventNameArr, callback) {
+        var events = eventNameArr,
+            i, dom = this;// jshint ignore:line
 
         function fireCallBack(e) {
             /*jshint validthis:true */
@@ -120,79 +161,13 @@
                 dom.on(events[i], fireCallBack);
             }
         }
+    }
+    $.fn.animationEnd = function(callback) {
+        __dealCssEvent.call(this, ['webkitAnimationEnd', 'animationend'], callback);
         return this;
     };
-    $.fn.dataset = function() {
-        var el = this[0];
-        if (el) {
-            var dataset = {};
-            if (el.dataset) {
-
-                for (var dataKey in el.dataset) { // jshint ignore:line
-                    dataset[dataKey] = el.dataset[dataKey];
-                }
-            } else {
-                for (var i = 0; i < el.attributes.length; i++) {
-                    var attr = el.attributes[i];
-                    if (/^data-/.test(attr.name)) {
-                        dataset[$.toCamelCase(attr.name.split('data-')[1])] = attr.value;
-                    }
-                }
-            }
-            for (var key in dataset) {
-                if (dataset[key] === 'false') dataset[key] = false;
-                else if (dataset[key] === 'true') dataset[key] = true;
-                else if (parseFloat(dataset[key]) === dataset[key] * 1) dataset[key] = dataset[key] * 1;
-            }
-            return dataset;
-        } else return undefined;
-    };
-    $.fn.data = function(key, value) {
-        if (typeof key === 'undefined') {
-            return $(this).dataset();
-        }
-        if (typeof value === 'undefined') {
-            // Get value
-            if (this[0] && this[0].getAttribute) {
-                var dataKey = this[0].getAttribute('data-' + key);
-
-                if (dataKey) {
-                    return dataKey;
-                } else if (this[0].smElementDataStorage && (key in this[0].smElementDataStorage)) {
-
-
-                    return this[0].smElementDataStorage[key];
-
-                } else {
-                    return undefined;
-                }
-            } else return undefined;
-
-        } else {
-            // Set value
-            for (var i = 0; i < this.length; i++) {
-                var el = this[i];
-                if (!el.smElementDataStorage) el.smElementDataStorage = {};
-                el.smElementDataStorage[key] = value;
-            }
-            return this;
-        }
-    };
-    $.fn.animationEnd = function(callback) {
-        var events = ['webkitAnimationEnd', 'animationend'],
-            i, dom = this;
-
-        function fireCallBack(e) {
-            callback(e);
-            for (i = 0; i < events.length; i++) {
-                dom.off(events[i], fireCallBack);
-            }
-        }
-        if (callback) {
-            for (i = 0; i < events.length; i++) {
-                dom.on(events[i], fireCallBack);
-            }
-        }
+    $.fn.transitionEnd = function(callback) {
+        __dealCssEvent.call(this, ['webkitTransitionEnd', 'transitionend'], callback);
         return this;
     };
     $.fn.transition = function(duration) {
@@ -201,14 +176,14 @@
         }
         for (var i = 0; i < this.length; i++) {
             var elStyle = this[i].style;
-            elStyle.webkitTransitionDuration = elStyle.MsTransitionDuration = elStyle.msTransitionDuration = elStyle.MozTransitionDuration = elStyle.OTransitionDuration = elStyle.transitionDuration = duration;
+            elStyle.webkitTransitionDuration = elStyle.MozTransitionDuration = elStyle.transitionDuration = duration;
         }
         return this;
     };
     $.fn.transform = function(transform) {
         for (var i = 0; i < this.length; i++) {
             var elStyle = this[i].style;
-            elStyle.webkitTransform = elStyle.MsTransform = elStyle.msTransform = elStyle.MozTransform = elStyle.OTransform = elStyle.transform = transform;
+            elStyle.webkitTransform = elStyle.MozTransform = elStyle.transform = transform;
         }
         return this;
     };

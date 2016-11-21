@@ -4,44 +4,64 @@ title: FAQ-常见问题
 ---
 
 <div class="docs-sub-header">
-  {% include masthead.html %}
-  <div class="container">
-    <div class="docs-sub-content">
-      <h2 class="page-title">FAQ</h2>
-      <p class="page-description">MSUI 常见问题</p>
+    {% include masthead.html %}
+    <div class="container">
+        <div class="docs-sub-content">
+            <h2 class="page-title">FAQ</h2>
+            <p class="page-description">MSUI 常见问题</p>
+        </div>
+        {% include ad.html %}
     </div>
-    {% include ad.html %}
-  </div>
 </div>
 
 <div class="container">
-  <div class="column-group">
-    <div class="column lg-units-8 docs-content">
-      <div class="docs-section faq">
-        <h2>路由（Router）</h2>
+    <div class="column-group">
+        <!-- 左侧导航 -->
+        <div class="docs-side-menu">
+            <li><a href="#offline">本地开发环境</a></li>
+            <li><a href="#jq-ze">jQuery | Zepto?</a></li>
+            <li><a href="#router-js">路由新页面JS</a></li>
+            <li><a href="#bar-tab">工具栏</a></li>
+            <li><a href="#iconfont">iconfont图标</a></li>
+            <li><a href="#tap-click">触摸点击处理</a></li>
+            <li><a href="#tpl">模板引擎</a></li>
+        </div>
+        <!-- 左侧导航 -->
 
-        <h3><a href="#router-js" id="router-js">切换到的新页面中的 js 不执行</a></h3>
-        <p>由于浏览器安全性考虑的限制以及可能的 js 重复执行或覆盖的问题，目前是不支持运行 ajax 载入的页面里面的 js 的，参考 <a href="https://github.com/sdc-alibaba/SUI-Mobile/issues/120#issuecomment-160417276">#120</a>。</p>
-        <p>解决方法：所有页面都引用相同的 js，而这个 js 里面包含了所有的逻辑，事件部分使用委托来绑定。</p>
+        <div class="column docs-column docs-content" style="margin-right:0">
+            <div class="docs-section faq">
+                <h2><a href="#offline" id="offline">离线文件、本地开发环境</a></h2>
+                <p>如果只是为了使用sui-mobile,请直接使用我们的cdn资源,也可以将CDN的链接保存到本地。如果是为了本地开发，可以参考<a href="https://github.com/sdc-alibaba/SUI-Mobile/blob/dev/develop.md#环境" target="_blank">Github develop.md</a>，执行后，js、css等离线文件就在项目根目录的dist文件夹里。</p>
 
-        <h2><a id="tpl" href="#tpl">前端模板引擎</a></h2>
-        <p>原来有内置模板引擎，不过因为众口难调，前端模板引擎从核心库里删去了，大家可以根据自己喜好在产品里自行引用、使用。</p>
+                <h2><a href="#jq-ze" id="jq-ze">是否支持jQuery？一定要Zepto吗</a></h2>
+                <p>参考<a href="https://github.com/sdc-alibaba/SUI-Mobile/issues/143" target="_blank">Github Issue#143</a>的讨论。</p>
 
-        <h2><a id="iconfont" href="#iconfont">iconfont 图标</a></h2>
-        <p>SUI-Mobile内置的iconfont图标并不多，毕竟千人千面，建议大家在<a href="http://iconfont.cn/" target="_blank">官方iconfont定制网站</a>按需选择、生成自己的iconfont库，那里会帮我们生成iconfont文件和对应css的在线地址，我们只要在应用里引入那一个css即可。<a href="http://iconfont.cn/help/platform.html" target="_blank">详见文档</p>
+                <h2>路由（Router）</h2>
+                <h3><a href="#router-js" id="router-js">切换到的新页面中的 js 不执行</a></h3>
+                <p>由于浏览器安全性考虑的限制以及可能的 js 重复执行或覆盖的问题，目前是不支持运行 ajax 载入的页面里面的 js 的，参考 <a href="https://github.com/sdc-alibaba/SUI-Mobile/issues/120#issuecomment-160417276" target="_blank">#120</a>。</p>
+                <p>解决方法：所有页面都引用相同的 js，而这个 js 里面包含了所有的逻辑，事件部分使用委托来绑定。</p>
 
-        <h2><a id="bar-tab" href="#bar-tab">工具栏</a></h2>
-        <p> 工具栏本身只是UI，并没有脚本逻辑。另外我们在<a href="http://m.sui.taobao.org/components/#toolbar" target="_blank">工具栏</a> 设计的初衷是：<b>不同工具栏的icon链接通常代表形态完全不同的业务模块、范畴， 不要做成一个SPA应用 。</b><br>
-        就是说，假如你工具栏有3个入口，那么这3个工具icon对应的链接最好是<code>.external</code>的。也就是刷新页面进入新url的形式，而不是以路由单页的形式滑页进入。可以说这3个icon对应了3个SPA链路的入口。<a href="https://github.com/sdc-alibaba/SUI-Mobile/issues/130#issuecomment-163520628" target="_blank">Issue130</a></p>
+                <h2><a id="bar-tab" href="#bar-tab">工具栏</a></h2>
+                <p> 工具栏本身只是UI，并没有脚本逻辑。另外我们在<a href="http://m.sui.taobao.org/components/#toolbar" target="_blank">工具栏</a> 设计的初衷是：<b>不同工具栏的icon链接通常代表形态完全不同的业务模块、范畴， 不要做成一个SPA应用 。</b><br>
+                就是说，假如你工具栏有3个入口，那么这3个工具icon对应的链接最好是<code>.external</code>的。也就是刷新页面进入新url的形式，而不是以路由单页的形式滑页进入。可以说这3个icon对应了3个SPA链路的入口。<a href="https://github.com/sdc-alibaba/SUI-Mobile/issues/130#issuecomment-163520628" target="_blank">Issue130</a></p>
 
-      </div>
+                <h2><a id="iconfont" href="#iconfont">iconfont 图标</a></h2>
+                <p>SUI-Mobile内置的iconfont图标并不多，毕竟千人千面，建议大家在<a href="http://iconfont.cn/" target="_blank">官方iconfont定制网站</a>按需选择、生成自己的iconfont库，那里会帮我们生成iconfont文件和对应css的在线地址，我们只要在应用里引入那一个css即可。<a href="http://iconfont.cn/help/platform.html" target="_blank">详见文档</a>.  如果font-family冲突了，修改一下产品定制iconfont的font-family即可。</p>
+
+                <h2><a id="tap-click" href="#tap-click">触摸点击处理</a></h2>
+                <p>Zepto自带的tap模块因为有点透等问题，我们借鉴了更有效的<a target-"_blank" href="https://github.com/ftlabs/fastclick">fastclick</a>。需要绑定触摸事件时，<b>直接绑定<code>click</code>即可</b></p>
+                <p>另外fastclick本身也有些问题，而且该项目已有一年没更新了，所以sui-mobile内置的fastclick是经过修改、优化和bugfix的。可以放心使用。</p>
+
+                <h2><a id="tpl" href="#tpl">前端模板引擎</a></h2>
+                <p>原来有内置模板引擎，不过因为众口难调，前端模板引擎从核心库里删去了，大家可以根据自己喜好在产品里自行引用、使用。</p>
+            </div>
+        </div>
     </div>
-  </div>
 
 
-  <div class="column">
-    <!-- Footer -->
-    {% include footer.html %}
-  </div>
+    <div class="column">
+        <!-- Footer -->
+        {% include footer.html %}
+    </div>
 </div>
 

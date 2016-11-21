@@ -1,11 +1,51 @@
 <article class="component" id='router' data-url="router">
-  <h2 class="component-title">路由</h2>
-  <p class="component-description">现在有一个全新的路由代替了以前的 push.js。 这个路由支持在同一个html中内联多个页面，ajax加载新页面，前进和后退操作。</p>
-  <p>默认情况下，router 会自动拦截所有的链接点击事件，如果你希望一个链接通过浏览器原生跳转而不使用 router，你可以在链接上增加一个 <code>class="external"</code> 或者 <code>external</code></p>
+    <h2 class="component-title"><a href="https://github.com/sdc-alibaba/SUI-Mobile/blob/router/js/router.js" target="_blank">路由</a></h2>
+    <p><a href="../demos/routers/" target="_blank">更详细的极端测试Demo</a></p>
+    <p>Router默认开启，会自动拦截所有链接的Touch行为，如果希望一个链接走浏览器原生跳转而不使用router，可以在链接上增加 <code>class="external"</code> 或者自定义属性,如 <code>&lt;a href="xxx" external&gt;xxx&lt;/a&gt;</code>.</p>
 
-  <p>注意：因为PC和移动端表现差异，官网一些Demo<b>在PC上看起来有bug</b>，但在移动端是正常的。</p>
+    <p>如果需要禁用路由功能,那么可以在 zepto 之后, msui 之前使用 script <code>$.config = {router: false}</code> 来禁用.</p>
 
-  <h3 class="component-title">内联页面</h3>
+    <p>如只需禁用部分链接，除了使用<code>external</code>外，还可用自定义动态过滤器 <code>$.config.routerFilter = function($link) {}</code>，实参 <code>$link</code> 是当前点击的链接，返回 false 表示不使用路由功能，返回 true 表示进入路由处理，参考<a href="/components/#init">初始化</a>，示例如下：</p>
+
+    {% highlight js %}
+    $.config = {
+        // 路由功能开关过滤器，返回 false 表示当前点击链接不使用路由
+        routerFilter: function($link) {
+            // 某个区域的 a 链接不想使用路由功能
+            if ($link.is('.disable-router a')) {
+                return false;
+            }
+
+            return true;
+        }
+    };
+    {% endhighlight js %}
+
+    <h3 class="component-title">路由功能前提</h3>
+    <p class="component-description">
+        如果需要使用路由功能,那么页面代码结构上需要满足下面两个条件:
+
+        <ol class="notice" style="padding-left:40px">
+            <li>和之前相比的差异：<b>每个 url 对应的 html 文档, 所有的展示内容都必须放在 <code>div.page-group</code> 里</b>。 形式可以参考<a href="../demos/routers/" target="_blank">router Demo</a></li>
+            <li>html 文档中, 每个可以用来切换显示的块都应该有 <code>page</code> 的 class</li>
+        </ol>
+
+        也就是说,每个 html 页面的基本结构都应该是下面这样（示例中省略 <code>body</code> 等）:
+
+    {% highlight html %}
+    ...
+    <div class="page-group">
+        <div class="page">...</div>
+        <div class="page">...</div>
+
+        <!-- 如果有 popup -->
+        <div class="popup popup-about">...</div>
+    </div>
+    ...
+    {% endhighlight html %}
+    </p>
+
+    <h3 class="component-title">内联页面</h3>
   <p class="component-description">你可以在同一个HTML文件中内联编写多个页面。每一个页面都是一个 <code>.page</code> 容器，如果有多个页面，则需要用 <code>.page-current</code> 标记出第一次进入的时候应该显示的页面。</p>
   <p>每一个 <code>.page</code> 容器都应该有一个全局唯一的id，路由器会使用这个id作为唯一标示，如果没有设置id，可能会导致路由出错。你只需要这样写一个链接就可以跳转到id对应的内联页面 <code>&lt;a href='#{page-id}'&gt;跳转&lt;/a&gt;</code>.</p>
 
@@ -40,10 +80,10 @@
 </div>
 {% endhighlight %}
 
-<p class="notice">注意，内联页面只能在第一个页面编写，通过ajax加载的页面里面不能内联多个页面，且不要把一个 .page
-    的页面嵌在另一个 .page 的页面里。</p>
-
   <h3 class="component-title">ajax页面</h3>
+
+    <p class="notice">注意: ajax 和 pushState 限制了 ajax 加载的页面只能是同域.</p>
+
   <p class="component-description">除了内联编写多个页面以外，你还可以通过ajax来加载新页面。通过ajax加载新页面和普通的链接写法没有区别，路由器会自动拦截链接的点击事件，并通过ajax请求加载新的页面。</p>
 
 {% highlight html %}
@@ -81,18 +121,29 @@
 {% endhighlight %}
 
   <h3 class="component-title">后退</h3>
-  <p class="component-description">我们对后退操作进行了封装，你只需要在任意链接上增加一个 <code>.back</code> 类，点击就会自动返回到上一页。为了防止在某些情况下无法返回，最好同时设置 <code>href</code> 指定上一页的地址，这样当无法后退的时候，会直接加载指定的地址。</p>
-  <p class="component-description">或者你可以通过调用 <code>$.router.back(url)</code> 来执行返回上一页操作，同样为了确保能正常返回，最好把上一页的地址作为参数传入。</p>
+  <p class="component-description">我们对后退操作进行了封装，你只需要在任意链接上增加一个 <code>.back</code> 类，点击就会自动返回到上一页（调用 history.back）。</p>
+  <p class="component-description">或者你可以通过调用 <code>$.router.back()</code> 来执行返回上一页操作。</p>
 
 {% highlight html %}
 <a class="button button-link button-nav pull-left back" href="/docs-demos/router">返回上一页</a>
 {% endhighlight %}
 
+    <h3 class="component-title">缓存</h3>
+    <div class="component-description">
+        默认地，对于加载过的页面，只要页面没刷新，那么再次进入该页面时，都会优先读取缓存而不发送网络请求。如果需要强制请求，可以用下面两种方式：
+        <ul>
+            <li>在 a 链接上添加 <code>data-no-cache="true"</code> 属性来标明点击该链接时不使用缓存，如：<code>&lt;a href="/detail" data-no-cache="true">no cache&lt;/a></code></li>
+            <li>使用 js 方法 <code>load</code> 来加载时，把可选的参数 <code>ignoreCache</code> 设为 <code>true</code>，如：<code>$.router.load('/detail', true)</code></li>
+        </ul>
+    </div>
+
   <h3 class="component-title">JS方法</h3>
-  <p class="component-description">你可以通过调用 <code>$.router.loadPage(url)</code> 来加载一个页面，参数url既可以是一个ajax页面的地址，也可以是一个内联页面的id.</p>
+  <p class="component-description">你可以通过调用 <code>$.router.load(url, ignoreCache)</code> 来加载一个页面，参数url既可以是一个ajax页面的地址，也可以是一个内联页面的id.</p>
 {% highlight js %}
-$.router.loadPage("/detail");  //加载ajax页面
-$.router.loadPage("#about");  //加载内联页面
+$.router.load("/detail");  //加载ajax页面
+$.router.load("#about");  //加载内联页面
+// ignoreCache 是加载一个新页面时是否忽略缓存而发网络请求，默认是 false，表示使用缓存，可以设为 true 来忽略缓存
+$.router.load('/detail', true);
 {% endhighlight %}
 
   <h3 class="component-title">事件</h3>
@@ -128,12 +179,20 @@ $.router.loadPage("#about");  //加载内联页面
       <td>新页面动画执行完毕</td>
     </tr>
     <tr>
+      <td>beforePageRemove</td>
+      <td>加载新的页面，动画切换完成后，移除旧的 document 前发送，事件回调函数参数是<code>event, $pageContainer</code>，其中<code>$pageContainer</code> 是 <code>.page-group</code>（注：在 window 上触发，且内联 page 的切换不会触发此事件）</td>
+    </tr>
+      <tr>
+          <td>pageRemoved</td>
+          <td>加载新的页面，动画切换完成后，移除旧的 document 后发送（注：在 window 上触发，且内联 page 的切换不会触发此事件）</td>
+      </tr>
+      <tr>
+          <td>beforePageSwitch</td>
+          <td>page 切换前触发，该事件在 pageAnimationStart 前，beforePageSwitch 之后会做一些额外的处理才触发 pageAnimationStart</td>
+      </tr>
+    <tr>
       <td>pageInit</td>
       <td>新页面中的组件初始化完毕</td>
-    </tr>
-    <tr>
-      <td>pageReinit</td>
-      <td>返回到上一个页面的时候触发</td>
     </tr>
   </table>
 

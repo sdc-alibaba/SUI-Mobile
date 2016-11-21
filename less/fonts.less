@@ -1,8 +1,6 @@
 @font-face {
   font-family: "iconfont-sm";
-  src: url('//at.alicdn.com/t/font_1433401008_2229297.eot'); /* IE9*/
-  src: url('//at.alicdn.com/t/font_1433401008_2229297.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('//at.alicdn.com/t/font_1433401008_2229297.woff') format('woff'), /* chrome、firefox */
+  src: url('//at.alicdn.com/t/font_1433401008_2229297.woff') format('woff'), /* chrome、firefox */
   url('//at.alicdn.com/t/font_1433401008_2229297.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
   url('//at.alicdn.com/t/font_1433401008_2229297.svg#iconfont') format('svg'); /* iOS 4.1- */
 }
@@ -10,6 +8,11 @@
 .icon {
   font-family:"iconfont-sm" !important;
   font-style:normal;
+  display: inline-block;
+  vertical-align: middle;
+  background-size: 100% auto;
+  background-position: center;
+
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
@@ -46,3 +49,24 @@
 .icon-check:before { content: "\e608"; }
 .icon-search:before { content: "\e61d"; }
 .icon-new:before { content: "\e61e"; }
+
+.icon-next, .icon-prev {
+    width: 0.75rem;
+    height: 0.75rem;
+}
+.icon-next {
+    .encoded-svg-background("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 15 15'><g><path fill='#007aff' d='M1,1.6l11.8,5.8L1,13.4V1.6 M0,0v15l15-7.6L0,0L0,0z'/></g></svg>");
+}
+.icon-prev {
+    .encoded-svg-background("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 15 15'><g><path fill='#007aff' d='M14,1.6v11.8L2.2,7.6L14,1.6 M15,0L0,7.6L15,15V0L15,0z'/></g></svg>");
+}
+/*
+.icon-plus {
+    width: 1.25rem;
+    height: 1.25rem;
+    font-size: 1.55rem;
+    line-height: 1rem;
+    text-align: center;
+    font-weight: 100;
+}
+*/

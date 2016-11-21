@@ -851,6 +851,5 @@
         return new FastClick(layer, options);
     };
 
-    //直接绑定
-    FastClick.attach(document.body);
+    window.FastClick = FastClick;
 }());

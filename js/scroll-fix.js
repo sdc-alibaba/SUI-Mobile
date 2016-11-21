@@ -10,11 +10,10 @@
 ************   ScrollFix   ************
 =============================================================================== */
 
-/* global Zepto:true */
 + function($) {
     "use strict";
     //安卓微信中使用scrollfix会有问题，因此只在ios中使用，安卓机器按照原来的逻辑
-   
+
     if($.device.ios){
         var ScrollFix = function(elem) {
 
@@ -46,19 +45,19 @@
             var scrollable = $(prefix + ".content");
             new ScrollFix(scrollable[0]);
         };
-    
+
         $(document).on($.touchEvents.move, ".page-current .bar",function(){
             event.preventDefault();
-        }); 
+        });
         //监听ajax页面跳转
         $(document).on("pageLoadComplete", function(){
-             initScrollFix(); 
-        }); 
+             initScrollFix();
+        });
         //监听内联页面跳转
         $(document).on("pageAnimationEnd", function(){
-             initScrollFix(); 
+             initScrollFix();
         });
         initScrollFix();
     }
-   
+
 }(Zepto);
