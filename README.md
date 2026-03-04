@@ -17,7 +17,7 @@
 
 明确的问题更__推荐__直接提[issue反馈](https://github.com/sdc-alibaba/SUI-Mobile/issues)。
 
-也可以在旺旺群 1278550944 交流或邮件咨询 itaofe@gmail.com
+也可以在旺旺群 1278550944 交流
 
 ### Issue 注意
 
