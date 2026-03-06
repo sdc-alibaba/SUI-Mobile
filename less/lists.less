@@ -106,7 +106,7 @@
         max-width: 100%;
 
         &.label {
-            width: 35%;
+            width: 55%;
             .flex-shrink(0);
             margin: 4px 0;
         }
@@ -326,7 +326,6 @@
         .hairline-remove(top);
     }
     // Sortable
-    /*
     .sortable-handler {
         position: absolute;
         right: 0;
@@ -335,12 +334,12 @@
         z-index: 10;
         background-repeat: no-repeat;
         background-size: 0.9rem 0.6rem;
-        background-image: url("@{imgBaseUrl}/i-sortable-handler.png");
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAYCAYAAACSuF9OAAAAXUlEQVRIS+3UQQoAIAhEUT153c5Fl2pvxKwMg9+ugpLHqFtaEWua+cjnr/ZOQYK6v9CrrNz+OYQoKAkgpCLRX4hJrUKNkBJSXVB937/LqgXU+wj9L8QcUnMIoSS0ATBUKEUz4fuNAAAAAElFTkSuQmCC");
         background-position: center;
         width: 1.75rem;
         opacity: 0;
         visibility: hidden;
-        right: 0;
+        cursor: pointer;
     }
     &.sortable {
         .item-inner {
@@ -373,7 +372,6 @@
             .hairline-remove(bottom);
         }
     }
-    */
 
     // Last-childs
     li {

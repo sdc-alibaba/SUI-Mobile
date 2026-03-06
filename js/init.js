@@ -20,6 +20,7 @@
         $.initPullToRefresh($content);
         $.initInfiniteScroll($content);
         $.initCalendar($content);
+        $.initSortable();
 
         //extend
         if ($.initSwiper) $.initSwiper($content);
