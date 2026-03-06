@@ -59,6 +59,7 @@
                onMonthYearChangeStart
                onMonthYearChangeEnd
                */
+            isValidate: null
         };
         params = params || {};
         for (var def in defaults) {
@@ -628,7 +629,13 @@
                     if ((minDate && dayDate < minDate) || (maxDate && dayDate > maxDate)) {
                         addClass += ' picker-calendar-day-disabled';
                     }
-
+                    // isValidate
+                    if (typeof params.isValidate == "function") {
+                        if (!params.isValidate(formatDate(dayDate))) {
+                            addClass += ' picker-calendar-day-disabled';
+                        }
+                    }
+                    
                     dayDate = new Date(dayDate);
                     var dayYear = dayDate.getFullYear();
                     var dayMonth = dayDate.getMonth();
