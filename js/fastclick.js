@@ -704,6 +704,7 @@
      * @returns {boolean}
      */
     FastClick.prototype.onClick = function(event) {
+        this.targetElement = event.target;
         var permitted;
 
         // It's possible for another FastClick-like library delivered with third-party code to fire a click event before FastClick does (issue #44). In that case, set the click-tracking flag back to false and return early. This will cause onTouchEnd to return early.
