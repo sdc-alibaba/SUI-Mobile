@@ -1657,7 +1657,7 @@
                     this._key(e);
                     break;
                 case 'click':
-                    if (!e._constructed) {
+                    if (!e._constructed && !utils.preventDefaultException(e.target, this.options.preventDefaultException)) {
                         e.preventDefault();
                         e.stopPropagation();
                     }
