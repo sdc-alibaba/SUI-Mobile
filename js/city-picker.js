@@ -43,8 +43,7 @@
         return d.name;
     });
     var initCities = sub(raw[0]);
-    var initDistricts = [""];
-
+    var initDistricts = getDistricts(provinces[0],initCities[0]);
     var currentProvince = provinces[0];
     var currentCity = initCities[0];
     var currentDistrict = initDistricts[0];
