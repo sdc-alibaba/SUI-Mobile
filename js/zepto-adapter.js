@@ -136,7 +136,7 @@
             for (var i = 0; i < this.length; i++) {
                 var el = this[i];
                 // delete multiple data in dataset
-                if (key in tmpData) delete el.dataset[key];
+                // if (key in tmpData) delete el.dataset[key];
 
                 if (!el.__eleData) el.__eleData = {};
                 el.__eleData[key] = value;
