@@ -12,6 +12,15 @@
         autoInit: false, //自动初始化页面
         showPageLoadingIndicator: true, //push.js加载页面的时候显示一个加载提示
         router: true, //默认使用router
+        //点击超链接时是否使用缓存的全局标识，其中，单个链接通过[data-no-cache]来判断，
+        //同时修改ignoreCache.forward或ignoreCache.back的值。
+        //对于全部链接，则忽略[data-no-cache]，通过全局覆盖。
+        ignoreCache: {
+            forward: false,
+            back: false,
+            allForward: false,
+            allBack: false
+        },
         swipePanel: "left", //滑动打开侧栏
         swipePanelOnlyClose: true  //只允许滑动关闭，不允许滑动打开侧栏
     };
@@ -7646,7 +7655,24 @@ Device/OS Detection
             }
         } else {
             this._saveDocumentIntoCache($(document), fromState.url.full);
-            this._switchToDocument(state.url.full, false, false, DIRECTION.leftToRight);
+            /**
+             * 1. 如果是全局都忽略返回缓存，则每次返回都从服务器获取
+             * 2. 如果是当前带有[data-no-cache="true"]的返回按钮，则只有改指定超链接地址
+             * 从服务器获取，并在之后将$.smConfig.ignoreCache.back重置为false
+             * 
+             * Edit by JSoon
+             */
+            if ($.smConfig.ignoreCache.allBack) {
+                this._switchToDocument(state.url.full, true, false, DIRECTION.leftToRight);
+                this._saveAsCurrentState(state);
+                return;
+            }
+            if (!$.smConfig.ignoreCache.back) {
+                this._switchToDocument(state.url.full, false, false, DIRECTION.leftToRight);
+            } else {
+                this._switchToDocument(state.url.full, true, false, DIRECTION.leftToRight);
+                $.smConfig.ignoreCache.back = false;
+            }
             this._saveAsCurrentState(state);
         }
     };
@@ -7670,6 +7696,19 @@ Device/OS Detection
             }
         } else {
             this._saveDocumentIntoCache($(document), fromState.url.full);
+            /**
+             * 如果是全局都忽略返回缓存，则每次返回都从服务器获取
+             * 
+             * 由于存在单独的load方法，故对于[data-no-cache="true"]超链接的逻辑处理交给
+             * load方法来处理
+             * 
+             * Edit by JSoon
+             */
+            if ($.smConfig.ignoreCache.allForward) {
+                this._switchToDocument(state.url.full, true, false, DIRECTION.rightToLeft);
+                this._saveAsCurrentState(state);
+                return;
+            }
             this._switchToDocument(state.url.full, false, false, DIRECTION.rightToLeft);
             this._saveAsCurrentState(state);
         }
@@ -7835,6 +7874,7 @@ Device/OS Detection
 
         $(document).on('click', 'a', function(e) {
             var $target = $(e.currentTarget);
+            var ignoreCache = $target.attr('data-no-cache') === 'true';
 
             var filterResult = customClickFilter($target);
             if (!filterResult) {
@@ -7848,14 +7888,20 @@ Device/OS Detection
             e.preventDefault();
 
             if ($target.hasClass('back')) {
+                /**
+                 * 如果[cls*="back"]按钮[data-no-cache="true"]，则改指定超链接地址从服务器获取
+                 * 
+                 * Edit by JSoon
+                 */
+                if (ignoreCache) {
+                    $.smConfig.ignoreCache.back = true;
+                }
                 router.back();
             } else {
                 var url = $target.attr('href');
                 if (!url || url === '#') {
                     return;
                 }
-
-                var ignoreCache = $target.attr('data-no-cache') === 'true';
 
                 router.load(url, ignoreCache);
             }

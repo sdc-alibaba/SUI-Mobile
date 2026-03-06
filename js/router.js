@@ -730,7 +730,24 @@
             }
         } else {
             this._saveDocumentIntoCache($(document), fromState.url.full);
-            this._switchToDocument(state.url.full, false, false, DIRECTION.leftToRight);
+            /**
+             * 1. 如果是全局都忽略返回缓存，则每次返回都从服务器获取
+             * 2. 如果是当前带有[data-no-cache="true"]的返回按钮，则只有改指定超链接地址
+             * 从服务器获取，并在之后将$.smConfig.ignoreCache.back重置为false
+             * 
+             * Edit by JSoon
+             */
+            if ($.smConfig.ignoreCache.allBack) {
+                this._switchToDocument(state.url.full, true, false, DIRECTION.leftToRight);
+                this._saveAsCurrentState(state);
+                return;
+            }
+            if (!$.smConfig.ignoreCache.back) {
+                this._switchToDocument(state.url.full, false, false, DIRECTION.leftToRight);
+            } else {
+                this._switchToDocument(state.url.full, true, false, DIRECTION.leftToRight);
+                $.smConfig.ignoreCache.back = false;
+            }
             this._saveAsCurrentState(state);
         }
     };
@@ -754,6 +771,19 @@
             }
         } else {
             this._saveDocumentIntoCache($(document), fromState.url.full);
+            /**
+             * 如果是全局都忽略返回缓存，则每次返回都从服务器获取
+             * 
+             * 由于存在单独的load方法，故对于[data-no-cache="true"]超链接的逻辑处理交给
+             * load方法来处理
+             * 
+             * Edit by JSoon
+             */
+            if ($.smConfig.ignoreCache.allForward) {
+                this._switchToDocument(state.url.full, true, false, DIRECTION.rightToLeft);
+                this._saveAsCurrentState(state);
+                return;
+            }
             this._switchToDocument(state.url.full, false, false, DIRECTION.rightToLeft);
             this._saveAsCurrentState(state);
         }
@@ -919,6 +949,7 @@
 
         $(document).on('click', 'a', function(e) {
             var $target = $(e.currentTarget);
+            var ignoreCache = $target.attr('data-no-cache') === 'true';
 
             var filterResult = customClickFilter($target);
             if (!filterResult) {
@@ -932,14 +963,20 @@
             e.preventDefault();
 
             if ($target.hasClass('back')) {
+                /**
+                 * 如果[cls*="back"]按钮[data-no-cache="true"]，则改指定超链接地址从服务器获取
+                 * 
+                 * Edit by JSoon
+                 */
+                if (ignoreCache) {
+                    $.smConfig.ignoreCache.back = true;
+                }
                 router.back();
             } else {
                 var url = $target.attr('href');
                 if (!url || url === '#') {
                     return;
                 }
-
-                var ignoreCache = $target.attr('data-no-cache') === 'true';
 
                 router.load(url, ignoreCache);
             }
